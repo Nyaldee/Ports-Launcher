@@ -60,7 +60,7 @@ Branche une manette XInput (façon Xbox) et chaque fenêtre y répond immédiate
 
 ## Panneau Info
 
-Sélectionne un port et ouvre son panneau **Info** (bouton, ou `X` à la manette) pour sa version/tag installée, les instructions d'installation éventuelles de `ports.json` (texte sélectionnable, copiable/collable), et des liens en un clic vers son site, sa page de mods, son dossier d'installation et son dossier de sauvegarde — plus un bouton **Save folder 2** pour les ports avec un second emplacement de sauvegarde (`save_folder2`, voir plus bas). N'importe lequel de ces boutons est simplement désactivé s'il n'existe pas encore (pas installé, le jeu n'a pas encore créé de sauvegarde, ou le port n'a tout simplement pas de second emplacement). `↑`/`↓` (ou la croix directionnelle/le stick de la manette) fait défiler le texte d'instructions quand il est trop long pour tenir ; `←`/`→` déplace la sélection entre les boutons, `Entrée`/`A` active celui qui est en surbrillance.
+Sélectionne un port et ouvre son panneau **Info** (bouton, ou `X` à la manette) pour sa version/tag installée, les instructions d'installation éventuelles de `ports.json` (texte sélectionnable, copiable/collable), et des liens en un clic vers son site, sa page de mods, son dossier d'installation et son dossier de sauvegarde — plus un bouton **Save folder 2** pour les ports avec un second emplacement de sauvegarde indépendant (`save_folder2`). N'importe lequel de ces boutons est simplement désactivé s'il n'existe pas encore (pas installé, le jeu n'a pas encore créé de sauvegarde, ou le port n'a tout simplement pas de second emplacement). `↑`/`↓` (ou la croix directionnelle/le stick de la manette) fait défiler le texte d'instructions quand il est trop long pour tenir ; `←`/`→` déplace la sélection entre les boutons, `Entrée`/`A` active celui qui est en surbrillance.
 
 À côté du texte de version, un bouton **Change version** (ports GitHub/GitLab uniquement) récupère les dernières releases disponibles et permet d'en installer une autre que la dernière — pratique quand la version la plus récente n'a pas de build pour ta plateforme, ou pour simplement revenir en arrière.
 
@@ -79,37 +79,9 @@ Deux outils externes reviennent régulièrement dans les instructions **Required
 
 ### `ports.json`
 
-Le catalogue principal, à côté de l'exécutable — jamais embarqué dans le `.exe`, donc lui (et le lanceur lui-même) peuvent être mis à jour indépendamment de n'importe quel port. Chaque entrée décrit un port installable :
+Le catalogue principal, à côté de l'exécutable — jamais embarqué dans le `.exe`, donc lui (et le lanceur lui-même) peuvent être mis à jour indépendamment de n'importe quel port. Pas fait pour être édité à la main : il est remplacé en bloc à chaque mise à jour du catalogue, donc tout ce que tu y ajoutes toi-même se fait silencieusement écraser au prochain rafraîchissement — voir [`ports.local.json`](#portslocaljson) plus bas pour ajouter tes propres ports de façon permanente.
 
-```json
-{
-  "ports": [
-    {
-      "name": "Ape Escape (ApeEscapeRecomp)",
-      "tags": ["Saru", "PS1", "Platformer", "Singleplayer"],
-      "source": "https://github.com/mstan/ApeEscapeRecomp",
-      "folder_name": "ApeEscapeRecomp",
-      "instructions": "Required files: Ape Escape (USA).bin (CRC32 : C6F455BC) + PSX - SCPH1001.BIN\n\nLanguages: English.\nNothing to do, the port guides you.",
-      "image_url": "https://cdn2.steamgriddb.com/grid/dce0cff3ad30897876b169eb066662dd.png",
-      "save_folder": "saves"
-    }
-  ]
-}
-```
-
-- **`name`** (obligatoire) — nom affiché, cherchable de façon floue.
-- **`tags`** — labels libres affichés à côté du nom et inclus dans la recherche floue.
-- **`source`** (optionnel) — une URL de dépôt GitHub ou GitLab (installe depuis la dernière release de ce dépôt, en choisissant automatiquement le bon asset), ou une URL de téléchargement direct. Peut être un dict par plateforme au lieu d'une simple chaîne (ex: `{"windows": "...", "linux": "..."}`) — le format laisse la porte ouverte à un futur build non-Windows, mais ce build-ci ne résout jamais que la valeur `"windows"`. Omets `source` entièrement pour un port que tu installes/gères toi-même — voir [`ports.local.json`](#portslocaljson) plus bas.
-- **`folder_name`** (obligatoire) — sous-dossier de `Library/` dans lequel le port est installé.
-- **`executable`** (optionnel) — chemin vers l'exécutable, relatif à `folder_name` ; peut être un dict par plateforme comme `source`. Omets-le pour auto-détecter le seul `.exe` ou `.lnk` présent — un choix manuel n'est demandé que si plusieurs candidats sont trouvés. Un raccourci `.lnk` est lancé via le Shell Windows plutôt qu'exécuté directement, ce qui permet justement de passer des arguments en ligne de commande à l'exécutable cible : fais pointer la cible du raccourci vers `jeu.exe --un-argument` et dépose le `.lnk` dans le dossier du port.
-- **`website`** (optionnel) — lien vers la page d'accueil affiché dans le panneau Info. Par défaut, reprend `source` lui-même quand c'est déjà une URL GitHub/GitLab.
-- **`instructions`** (optionnel) — texte libre affiché dans le panneau Info (fichiers requis, étapes d'installation, notes de langue...).
-- **`mods_url`** (optionnel) — lien vers la page de mods pour le panneau Info.
-- **`image_url`** (optionnel) — visuel de la boîte ; téléchargé une fois puis mis en cache localement.
-- **`save_folder`** (optionnel) — chemin vers les données de sauvegarde : absolu (avec des variables d'environnement comme `%LOCALAPPDATA%` étendues), ou relatif au dossier d'installation. Affiché comme un lien en un clic dans le panneau Info. Si elle vit *dans* le dossier d'installation, elle est automatiquement préservée lors d'une désinstallation/réinstallation plutôt que supprimée avec le reste.
-- **`save_folder2`** (optionnel) — un second emplacement de sauvegarde indépendant, pour un port qui répartit ses données sur deux endroits (ex : les réglages sous `%APPDATA%` plus une sauvegarde dans le dossier d'installation, ou un mode « sauvegarde portable » en plus d'un mode normal). Mêmes règles que `save_folder` en tout point — son propre bouton **Save folder 2** dans le panneau Info, préservé lors d'une désinstallation/réinstallation de la même façon s'il vit dans le dossier d'installation — juste suivi et sauvegardé complètement à part, pour que les deux ne puissent jamais se percuter ou s'écraser l'un l'autre, même s'ils contiennent des fichiers au nom identique.
-
-Concrètement, cette préservation « lors d'une désinstallation/réinstallation » n'a rien de magique : désinstaller un port dont la sauvegarde vit dans le dossier d'installation la déplace vers `Library/.saves_backup/<folder_name>/save_folder/` (ou `.../save_folder2/` pour le second champ) juste avant que le reste du dossier ne soit supprimé, puis une installation ultérieure de ce même port la remet directement en place et supprime la sauvegarde temporaire. C'est un dossier caché (préfixé d'un point), jamais touché par autre chose que Ports Launcher lui-même — utile à savoir si tu fouilles `Library/` à la main pour une sauvegarde qui semble avoir disparu en pleine réinstallation, ou si une installation est interrompue et qu'il faut la récupérer manuellement.
+Concrètement, la préservation d'une sauvegarde « lors d'une désinstallation/réinstallation » (voir [Fonctionnalités](#fonctionnalités) plus haut) n'a rien de magique : désinstaller un port dont la sauvegarde vit dans le dossier d'installation la déplace vers `Library/.saves_backup/<folder_name>/save_folder/` (ou `.../save_folder2/` pour le second champ) juste avant que le reste du dossier ne soit supprimé, puis une installation ultérieure de ce même port la remet directement en place et supprime la sauvegarde temporaire. C'est un dossier caché (préfixé d'un point), jamais touché par autre chose que Ports Launcher lui-même — utile à savoir si tu fouilles `Library/` à la main pour une sauvegarde qui semble avoir disparu en pleine réinstallation, ou si une installation est interrompue et qu'il faut la récupérer manuellement.
 
 ### `ports.local.json`
 

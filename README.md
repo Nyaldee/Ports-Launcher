@@ -60,7 +60,7 @@ Plug in an XInput controller (Xbox-style) and every window responds to it immedi
 
 ## Info panel
 
-Select a port and open its **Info** panel (button, or `X` on a controller) for its installed version/tag, any setup instructions from `ports.json` (selectable, copy-pastable text), and one-click links to its website, mods page, install folder, and save folder — plus a **Save folder 2** button for ports with a second save location (`save_folder2`, see below). Any of these is simply disabled if it doesn't exist yet (not installed, the game hasn't created a save yet, or the port has no second save location at all). `↑`/`↓` (or the controller D-pad/stick) scrolls the instructions text when it's too long to fit; `←`/`→` moves between the buttons, `Enter`/`A` activates whichever one is highlighted.
+Select a port and open its **Info** panel (button, or `X` on a controller) for its installed version/tag, any setup instructions from `ports.json` (selectable, copy-pastable text), and one-click links to its website, mods page, install folder, and save folder — plus a **Save folder 2** button for ports with a second, independent save location (`save_folder2`). Any of these is simply disabled if it doesn't exist yet (not installed, the game hasn't created a save yet, or the port has no second save location at all). `↑`/`↓` (or the controller D-pad/stick) scrolls the instructions text when it's too long to fit; `←`/`→` moves between the buttons, `Enter`/`A` activates whichever one is highlighted.
 
 Next to the version text, a **Change version** button (GitHub/GitLab ports only) fetches the last few releases and lets you install any of them instead of always the latest — handy when the newest release doesn't have a build for your platform, or you just want to roll back.
 
@@ -79,37 +79,9 @@ A couple of external tools come up repeatedly in `ports.json`'s **Required files
 
 ### `ports.json`
 
-The main catalog, next to the executable — never bundled inside the `.exe`, so it (and the launcher itself) can be updated independently of any single port. Every entry describes one installable port:
+The main catalog, next to the executable — never bundled inside the `.exe`, so it (and the launcher itself) can be updated independently of any single port. Not meant to be hand-edited: it's replaced wholesale by catalog updates, so anything you add here yourself gets silently overwritten the next time it refreshes — see [`ports.local.json`](#portslocaljson) below to add your own ports permanently instead.
 
-```json
-{
-  "ports": [
-    {
-      "name": "Ape Escape (ApeEscapeRecomp)",
-      "tags": ["Saru", "PS1", "Platformer", "Singleplayer"],
-      "source": "https://github.com/mstan/ApeEscapeRecomp",
-      "folder_name": "ApeEscapeRecomp",
-      "instructions": "Required files: Ape Escape (USA).bin (CRC32 : C6F455BC) + PSX - SCPH1001.BIN\n\nLanguages: English.\nNothing to do, the port guides you.",
-      "image_url": "https://cdn2.steamgriddb.com/grid/dce0cff3ad30897876b169eb066662dd.png",
-      "save_folder": "saves"
-    }
-  ]
-}
-```
-
-- **`name`** (required) — display name, fuzzy-searchable.
-- **`tags`** — free-form labels shown next to the name and included in the fuzzy search.
-- **`source`** (optional) — a GitHub or GitLab repo URL (installs from that repo's latest release, auto-picking the right asset), or a direct download URL. Can be a per-platform dict instead of a single string (e.g. `{"windows": "...", "linux": "..."}`) — the format leaves the door open for a future non-Windows build, but this build only ever resolves the `"windows"` value. Omit `source` entirely for a port you install/manage yourself — see [`ports.local.json`](#portslocaljson) below.
-- **`folder_name`** (required) — subfolder of `Library/` the port is installed into.
-- **`executable`** (optional) — path to the executable, relative to `folder_name`; can be a per-platform dict like `source`. Omit it to auto-detect the only `.exe` or `.lnk` present — you're prompted to choose by hand only when more than one candidate is found. A `.lnk` shortcut is launched through the Windows Shell rather than run directly, which is also how you pass command-line arguments to the target executable: point the shortcut's target at `game.exe --some-arg` and drop the `.lnk` in the port's folder.
-- **`website`** (optional) — homepage link shown in the Info panel. Defaults to `source` itself when that's already a GitHub/GitLab URL.
-- **`instructions`** (optional) — free text shown in the Info panel (required files, setup steps, language notes...).
-- **`mods_url`** (optional) — mods page link for the Info panel.
-- **`image_url`** (optional) — box art; downloaded once and cached locally afterward.
-- **`save_folder`** (optional) — path to the save data: absolute (with env vars like `%LOCALAPPDATA%` expanded), or relative to the install folder. Shown as a one-click link in the Info panel. If it lives *inside* the install folder, it's automatically preserved across an uninstall/reinstall instead of being deleted with the rest.
-- **`save_folder2`** (optional) — a second, independent save location, for a port that splits its save data across two places (e.g. settings under `%APPDATA%` plus an in-folder save, or a "portable saves" mode next to a normal one). Same rules as `save_folder` in every respect — its own **Save folder 2** button in the Info panel, and preserved across uninstall/reinstall the same way if it lives inside the install folder — just tracked and backed up completely separately, so the two can never collide or overwrite each other even if they happen to contain files with identical names.
-
-Under the hood, that "preserved across uninstall/reinstall" is a real move, not magic: uninstalling a port whose save lives inside the install folder relocates it to `Library/.saves_backup/<folder_name>/save_folder/` (or `.../save_folder2/` for the second field) a moment before the rest of the folder is deleted, then a later install of that same port moves it straight back into place and removes the backup. It's a hidden dot-folder, only ever touched by Ports Launcher itself — worth knowing about if you're digging through `Library/` by hand for a save that seems to have vanished mid-reinstall, or if an install gets interrupted and you need to recover it manually.
+Under the hood, a save "preserved across uninstall/reinstall" (see [Features](#features) above) is a real move, not magic: uninstalling a port whose save lives inside the install folder relocates it to `Library/.saves_backup/<folder_name>/save_folder/` (or `.../save_folder2/` for the second save location) a moment before the rest of the folder is deleted, then a later install of that same port moves it straight back into place and removes the backup. It's a hidden dot-folder, only ever touched by Ports Launcher itself — worth knowing about if you're digging through `Library/` by hand for a save that seems to have vanished mid-reinstall, or if an install gets interrupted and you need to recover it manually.
 
 ### `ports.local.json`
 
