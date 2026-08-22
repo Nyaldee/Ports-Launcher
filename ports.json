@@ -298,7 +298,7 @@
       "source": "https://github.com/DinosaurPlanetRecomp/dino-recomp",
       "folder_name": "dino-recomp",
       "instructions": "Required files: Dinosaur Planet (USA) (Proto) (2000-12-01).z64 (CRC32: A7DAF9FA)\n\nNothing to do, the port guides you.",
-      "image_url": "https://cdn2.steamgriddb.com/grid/e4f7712cfef7c64d0efabc244b2dad74.jpg",
+      "image_url": "https://cdn2.steamgriddb.com/grid/11738c383581f80d010ca13ac005d763.png",
       "save_folder": "%LOCALAPPDATA%\\DinoPlanetRecompiled"
     },
     {
@@ -709,6 +709,32 @@
       "save_folder": "%LOCALAPPDATA%\\troublemakers-recomp"
     },
     {
+      "name": "Nanosaur",
+      "tags": [
+        "MacOS",
+        "Shooter",
+        "Singleplayer"
+      ],
+      "source": "https://github.com/jorio/Nanosaur",
+      "folder_name": "Nanosaur",
+      "instructions": "Languages: English.",
+      "image_url": "https://cdn2.steamgriddb.com/grid/c3c7fdcce42b0fc408695e1fba02b1a5.png",
+      "save_folder": "%APPDATA%\\Nanosaur"
+    },
+    {
+      "name": "Nanosaur2",
+      "tags": [
+        "MacOS",
+        "Shooter",
+        "Singleplayer"
+      ],
+      "source": "https://github.com/jorio/Nanosaur2",
+      "folder_name": "Nanosaur2",
+      "instructions": "Languages: English.",
+      "image_url": "https://cdn2.steamgriddb.com/grid/e46821a28446c5a2b91908a2c6d82313.png",
+      "save_folder": "%APPDATA%\\Nanosaur2"
+    },
+    {
       "name": "osu!",
       "tags": [
         "PC",
@@ -769,19 +795,6 @@
       "save_folder": "%APPDATA%\\perfectdark"
     },
     {
-      "-name": "Pilotwings 64 (Pilotwings64Recomp)",
-      "tags": [
-        "N64",
-        "Simulation",
-        "Singleplayer"
-      ],
-      "source": "https://github.com/gcsmith/Pilotwings64Recomp",
-      "folder_name": "Pilotwings64Recomp",
-      "instructions": "Required files: Pilotwings 64 (USA).z64 (CRC32: 728807E7)\n\nNothing to do, the port guides you.",
-      "image_url": "https://cdn2.steamgriddb.com/grid/b349a212c3e61e124ae04244eecde663.png",
-      "save_folder": null
-    },
-    {
       "-name": "Pikmin (pikmin)",
       "tags": [
         "GC",
@@ -805,6 +818,19 @@
       "folder_name": "pikmin2",
       "instructions": "Required files: USA or EU\n\nNothing to do, the port guides you.",
       "image_url": "https://cdn2.steamgriddb.com/grid/85f5d7b15ca87ecbd27c3d17b9578a55.png",
+      "save_folder": null
+    },
+    {
+      "-name": "Pilotwings 64 (Pilotwings64Recomp)",
+      "tags": [
+        "N64",
+        "Simulation",
+        "Singleplayer"
+      ],
+      "source": "https://github.com/gcsmith/Pilotwings64Recomp",
+      "folder_name": "Pilotwings64Recomp",
+      "instructions": "Required files: Pilotwings 64 (USA).z64 (CRC32: 728807E7)\n\nNothing to do, the port guides you.",
+      "image_url": "https://cdn2.steamgriddb.com/grid/b349a212c3e61e124ae04244eecde663.png",
       "save_folder": null
     },
     {
