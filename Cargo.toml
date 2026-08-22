@@ -1,0 +1,111 @@
+[package]
+name = "ports-launcher"
+version = "1.0.0"
+edition = "2021"
+description = "Ports Launcher — library manager and installer for native PC ports and recomps"
+license = "GPL-3.0-or-later"
+
+[[bin]]
+name = "ports_launcher"
+path = "src/main.rs"
+
+[dependencies]
+# default-features = false : le défaut de la crate embarque en plus
+# "system-tray" (Ports Launcher n'a pas d'icône de zone de notification --
+# MAGI Launcher, lui, en a une, mais via Shell_NotifyIcon en Win32 brut, pas
+# via Slint : cette feature-ci n'a rien à voir avec ce qu'il fait) et DEUX
+# moteurs de rendu (renderer-femtovg
+# ET renderer-software) alors qu'un seul sert à l'exécution. Gardé
+# uniquement femtovg (GPU/OpenGL) : un lanceur de PORTS DE JEUX suppose déjà
+# un pilote OpenGL fonctionnel sur la machine (même prérequis que les jeux
+# eux-mêmes, obligatoire pour la composition du bureau Windows depuis
+# Vista/7) -- pas de raison de payer le poids du rendu logiciel CPU en plus
+# "juste au cas où".
+slint = { version = "1", default-features = false, features = ["raw-window-handle-06", "std", "backend-default", "renderer-femtovg", "accessibility", "compat-1-2"] }
+raw-window-handle = "0.6"
+# Pas de dépendance directe sur `serde` -- tout le JSON du projet passe par
+# `serde_json::Value` non typé (parsing manuel via as_object()/as_str()...),
+# jamais par un struct #[derive(Serialize/Deserialize)]. `serde_json`
+# l'entraîne déjà en transitif pour son propre fonctionnement interne.
+serde_json = { version = "1", features = ["preserve_order"] }  # preserve_order: resolve_per_platform doit retomber sur la 1ère clé par ordre d'insertion
+ureq = { version = "3", features = ["json"] }  # HTTP synchrone (API GitHub/GitLab + téléchargements streamés)
+# Aucune crate d'extraction en dépendance directe : zip/tar/7z/NSIS/RAR sont
+# tous décompressés en shellant vers un `7z.exe` externe (voir
+# installer::extract_archive_via_7z), pas via des crates Rust liées au
+# binaire -- une seule implémentation pour tous les formats, plutôt qu'une
+# par format (et RAR n'a de toute façon pas d'équivalent Rust pur, le
+# format est propriétaire). `7z.exe`/`7z.dll` vivent à côté de l'exécutable
+# (copiés par build.rs), jamais dans `Cargo.lock` -- y compris les tests
+# fabriquent leurs archives synthétiques via `7z.exe a`, aucune dépendance
+# d'extraction/compression Rust nulle part dans ce projet.
+
+# default-features = false : le défaut de la crate embarque aussi rayon (un
+# pool de threads entier, jamais utilisé ici -- une seule petite jaquette
+# décodée à la fois, jamais en parallèle) et des formats jamais réalistes
+# pour une jaquette de jeu liée depuis ports.json (avif, exr, tiff, dds,
+# hdr, pnm, qoi, tga, gif, bmp, ico) -- gardés seulement les 3 formats
+# effectivement rencontrés en pratique pour une jaquette hébergée par un
+# mainteneur de port. Pas "ico" : seul `icon: @image-url("../Icon.ico")`
+# dans app-window.slint en avait besoin (Slint décode ce genre de
+# référence lui-même, via cette même crate `image` -- Cargo unifie ses
+# features sur tout le graphe de dépendances), ligne retirée -- voir son
+# commentaire, l'icône réelle vient entièrement de `apply_taskbar_icon`
+# (main.rs), sans rapport avec cette crate.
+image = { version = "0.25", default-features = false, features = ["png", "jpeg", "webp"] }
+chrono = "0.4"                       # dates ISO 8601 (state.json, throttle de vérif de MAJ, comparaison de dates de release)
+tempfile = "3"                       # dossier temporaire de téléchargement/extraction avec nettoyage automatique
+
+# `windows`/`gilrs` (backend manette) sont spécifiques à chaque OS -- voir
+# les deux tables `[target...]` ci-dessous plutôt que `[dependencies]`, pour
+# qu'un build Linux ne cherche jamais à récupérer le crate `windows` (qui ne
+# compilerait de toute façon pas hors Windows) ni la feature "xinput" de
+# `gilrs`, propre à l'API XInput.
+
+[target.'cfg(target_os = "windows")'.dependencies]
+# default-features = false + "xinput" -- le backend par défaut du crate est
+# "wgi" (Windows.Gaming.Input), pas l'XInput classique : WGI ne reconnaît pas
+# certaines manettes/émulateurs (DS4Windows, Steam Input...) que l'API XInput
+# reconnaît sans souci (voir core::gamepad, qui visait XInput dès le départ).
+gilrs = { version = "0.11", default-features = false, features = ["xinput"] }
+# GetSystemMetrics (taille d'écran, pour calculer la géométrie de la
+# fenêtre en fraction d'écran) -- seul point Windows-only restant hors
+# gamepad/mono-instance (déjà rendus cross-platform), nécessiterait un repli
+# `#[cfg]`-gated pour un futur portage Linux.
+# Win32_System_Registry : ne sert PAS à lire le Registre ici -- ShellExecuteExW
+# (support des raccourcis .lnk, voir core::launch::launch_shortcut) est
+# rangé sous cette feature côté crate windows pour une raison qui lui est
+# propre, sans rapport avec son usage réel dans ce projet.
+# Win32_System_Com : uniquement pour CoTaskMemFree, qui libère le buffer
+# renvoyé par SHGetKnownFolderPath (voir platform_utils::known_folder) --
+# pas de CoInitialize, cette API-là ne l'exige pas.
+windows = { version = "0", features = ["Win32_UI_WindowsAndMessaging", "Win32_UI_HiDpi", "Win32_UI_Input_KeyboardAndMouse", "Win32_System_SystemInformation", "Win32_System_Threading", "Win32_Globalization", "Win32_Foundation", "Win32_UI_Shell", "Win32_Graphics_Gdi", "Win32_System_Registry", "Win32_System_Com"] }
+
+# Linux-only : équivalent EWMH (via X11) du crate `windows` ci-dessus, voir
+# src/ui/linux_chrome.rs (NON TESTÉ -- écrit sans machine Linux disponible).
+[target.'cfg(target_os = "linux")'.dependencies]
+x11rb = "0.13"
+# Pas de "xinput" ici -- feature propre à l'API Windows, absente sous
+# Linux. Features par défaut (backend udev) laissées telles quelles, jamais
+# vérifiées sur une vraie machine Linux (voir linux_chrome.rs).
+gilrs = "0.11"
+
+[build-dependencies]
+slint-build = "1"
+# Build-only : compile Icon.ico en ressource Windows embarquée dans l'exe.
+# N'existe que pendant la compilation -- jamais lié dans le binaire final.
+winresource = "0.1"
+# Calcule APP_VERSION (voir core::version) à partir de la date du jour au
+# moment du build -- déjà une dépendance normale du projet (dates ISO 8601),
+# ajoutée ici aussi car un build.rs ne voit pas les [dependencies] normales.
+chrono = "0.4"
+
+[profile.release]
+opt-level = "z"
+lto = true
+codegen-units = 1
+strip = true
+# Pas de boîte de dialogue à préserver sur un panic (choix du projet) --
+# "abort" retire les tables de déroulement de pile (unwinding), gagne
+# plusieurs centaines de Ko, et un panic termine directement le processus au
+# lieu de chercher un `catch_unwind` (il n'y en a aucun dans ce projet).
+panic = "abort"

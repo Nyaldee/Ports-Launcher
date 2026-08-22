@@ -1,0 +1,12 @@
+# Lie le runtime C statiquement pour que l'exe compilé n'ait aucune
+# dépendance à la présence du redistribuable Visual C++ sur la machine
+# cible -- même choix que MAGI Launcher, vérifié sans risque ici : aucune
+# dépendance C native dans l'arbre de compilation (seule crate `-sys` du
+# graphe est `windows-sys`, de purs bindings vers les DLL Windows, jamais de
+# code C compilé), et coût quasi nul en pratique (12.14 Mo dynamique contre
+# 12.3 Mo statique -- Slint domine déjà la taille de l'exe).
+[target.x86_64-pc-windows-msvc]
+rustflags = ["-C", "target-feature=+crt-static"]
+
+[target.aarch64-pc-windows-msvc]
+rustflags = ["-C", "target-feature=+crt-static"]

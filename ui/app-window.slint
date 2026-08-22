@@ -1,0 +1,1273 @@
+import { ListView } from "std-widgets.slint";
+import { CardGrid, CardItem, CardRow, GridColors } from "card-grid.slint";
+import { Theme, ThemedScrollbar, InertialScroller, TitleBarIconButton } from "theme-colors.slint";
+import { MessageDialog, ConfirmDialog, ErrorDialog, InfoDialog, ProgressDialog, ListPickerDialog, SettingsDialog, PickerItem } from "dialogs.slint";
+
+export struct PortItem {
+    name: string,
+    // Mise à jour disponible (voir la vérification en tâche de fond,
+    // src/main.rs::start_update_checks) -- affiche le bouton "Update" (voir
+    // plus bas), suffisant à lui seul, jamais en plus une couleur de nom
+    // séparée (redondant).
+    update-available: bool,
+    // Détermine quels boutons d'action affiche la ligne : Jouer+Désinstaller
+    // si installé, Installer sinon -- Info est toujours affiché.
+    installed: bool,
+    // Port SANS "source" (voir core::models::SourceType::Local) -- fichiers
+    // déposés à la main dans Library/, jamais téléchargés par l'appli : pas
+    // de bouton Uninstall, supprimer des fichiers que l'appli n'a pas posés
+    // elle-même est trop risqué.
+    is-local: bool,
+}
+
+export { CardItem, CardRow, GridColors, Theme, MessageDialog, ConfirmDialog, ErrorDialog, InfoDialog, ProgressDialog, ListPickerDialog, SettingsDialog, PickerItem }
+
+// Bouton d'action coloré (ligne de port ET pied de page GitHub/Discord) --
+// factorise le trio Rectangle+TouchArea+Text répété 7 fois : seuls la
+// position (héritée, comme pour toute Rectangle), la couleur (normale/
+// survol) et le texte changent d'un bouton à l'autre.
+// `font-size` en property -- ce composant ne voit pas les propriétés de
+// AppWindow qui l'instancie (item-font-px), chaque appelant la passe donc
+// explicitement, même raison que TitleBarIconButton.size dans
+// theme-colors.slint.
+component ActionButton inherits Rectangle {
+    in property <string> text: "";
+    in property <color> fill-color: GridColors.info;
+    in property <color> fill-hover-color: GridColors.info-hover;
+    in property <length> font-size;
+    // Largeur naturelle du texte à cette police -- exposée pour que
+    // l'appelant calcule sa propre largeur (texte + button-padding des deux
+    // côtés) sans pouvoir lire directement label.preferred-width : label vit
+    // dans CE composant, pas visible depuis l'extérieur (même principe que
+    // DialogButton.text-preferred-width dans dialogs.slint).
+    out property <length> text-preferred-width: label.preferred-width;
+    callback clicked();
+
+    background: area.has-hover ? fill-hover-color : fill-color;
+    area := TouchArea {
+        clicked => { root.clicked(); }
+    }
+    label := Text {
+        text: root.text;
+        color: GridColors.text-on-accent;
+        font-size: root.font-size;
+        overflow: elide;
+        horizontal-alignment: center;
+        vertical-alignment: center;
+        width: 100%;
+        height: 100%;
+    }
+}
+
+export component AppWindow inherits Window {
+    title: "Ports Launcher";
+    // PAS de `icon: @image-url("../Icon.ico")` ici -- insuffisant à lui seul
+    // pour faire apparaître l'icône dans la barre des tâches/Alt+Tab d'une
+    // fenêtre no-frame. L'icône vient de `apply_taskbar_icon` (main.rs), un
+    // WM_SETICON sur l'icône embarquée dans l'exe ; l'ajouter ici ne ferait
+    // que redécoder Icon.ico (et exigerait la feature "ico" de la crate
+    // `image`).
+    no-frame: true;
+    background: Theme.list-background;
+
+    // Famille de police de themes.json (voir ui/theme.rs::resolve_font_family)
+    // -- `default-font-family` cascade automatiquement à tout le texte
+    // descendant. Sans ça, ce réglage de themes.json n'avait aucun effet côté
+    // Rust : l'UI gardait la police par défaut de Slint quel que soit
+    // "font_family".
+    in property <string> font-family: "Segoe UI";
+    default-font-family: root.font-family;
+
+    // Tailles de police résolues côté Rust par mesure GDI réelle (voir
+    // ui::font_metrics) -- reçues ici en pixels PHYSIQUES (suffixe -physical),
+    // jamais utilisées directement dans une propriété `<length>` normale :
+    // `px` désigne des pixels LOGIQUES pour le compilateur Slint, remis à
+    // l'échelle au rendu -- exactement comme `root.width`, voir
+    // logical-width plus bas. item-font-px/title-font-px (sans -physical,
+    // dérivées juste après logical-width) sont les versions déjà
+    // divisées par Theme.scale-factor à utiliser PARTOUT ailleurs dans ce
+    // fichier. item-font-px pilote la liste, la barre de recherche ET les
+    // boutons d'action (Jouer/Installer/MAJ/Désinstaller/Info/GitHub/
+    // Discord) : même taille que le nom des ports, jamais un ratio à part.
+    // title-font-px reste distinct pour la barre de titre (ratio 18/20).
+    in property <length> item-font-px-physical: 14px;
+    in property <length> title-font-px-physical: 13px;
+
+    // Propriétés réglées par Rust AVANT le premier show() (calcul en
+    // fraction d'écran, voir ui::geometry) -- pas un appel impératif
+    // Window::set_size() après coup : Slint resynchronise width/height
+    // depuis CES bindings à chaque affichage, un set_size() imprévu serait
+    // donc écrasé. Valeurs de secours ici seulement au cas où Rust ne les
+    // pousse pas.
+    //
+    // DÉJÀ en pixels LOGIQUES ici (contrairement à item-font-px-physical
+    // plus haut) -- Rust les divise par le facteur d'échelle DPI AVANT de
+    // les pousser (voir ui::geometry::scale_factor_under_cursor et
+    // main.rs), pas après : ce sont ELLES qui fixent `root.width`/
+    // `root.height`, donc la taille RÉELLE de la fenêtre OS -- les recevoir
+    // encore en physique les aurait fait remettre à l'échelle une SECONDE
+    // fois par Slint au rendu (fenêtre affichée `scale`x trop grande, et
+    // donc mal centrée puisque le calcul de centrage se base sur la taille
+    // physique voulue, pas sur la taille physique réellement rendue).
+    in property <length> initial-width: 800px;
+    in property <length> initial-height: 600px;
+    width: initial-width;
+    height: initial-height;
+
+    in property <[PortItem]> ports: [];
+    // Index sélectionné dans `ports` (mode fenêtré uniquement, -1 = aucun)
+    // -- poussé par Rust à chaque déplacement de la sélection, sert
+    // uniquement à faire défiler la liste pour garder la ligne visible (voir
+    // le `changed` correspondant sur port-list plus bas) : PortItem.selected
+    // reste la seule source de vérité pour la couleur de la ligne, cette
+    // propriété-ci ne sert JAMAIS à ça.
+    in property <int> selected-index: -1;
+    in property <string> placeholder-text: "Type to search...";
+    // Horloge optionnelle (themes.json: "show_clock") -- affichée dans la
+    // barre de recherche (voir core::clock::format_now, rafraîchie chaque
+    // seconde par un slint::Timer côté main.rs, jamais recalculée ici).
+    in property <bool> show-clock: true;
+    in property <string> clock-text: "";
+    callback search-changed(string);
+    // Bascule (Rust inverse la valeur à chaque appel, voir main.rs) pour
+    // rendre le focus à la barre de recherche -- appelé à la fermeture de
+    // CHAQUE dialogue (le focus clavier doit TOUJOURS rester sur la
+    // recherche, jamais nulle part ailleurs, voir aussi l'`init` plus bas
+    // pour le focus initial). Une propriété plutôt qu'un
+    // callback "auto-implémenté" côté .slint : seul mécanisme ici dont la
+    // syntaxe soit déjà éprouvée dans ce fichier (`in property` + `changed`).
+    in property <bool> refocus-trigger: false;
+    changed refocus-trigger => { search-input.focus(); }
+    // Bascule (même mécanisme que refocus-trigger juste au-dessus) pour
+    // faire défiler la liste/grille afin de garder la sélection visible --
+    // UNIQUEMENT depuis la navigation clavier/manette (voir move_windowed_
+    // selection/move_grid_selection côté main.rs), JAMAIS depuis le survol
+    // souris (list-row-hovered/card-hovered) : les deux mettent à jour
+    // selected-index/grid-selected-row de la même façon (la ligne survolée
+    // doit se colorer), mais seul un déplacement de sélection (clavier/
+    // manette) doit faire défiler la vue -- jamais le survol seul. Sans
+    // cette distinction, survoler une ligne PENDANT qu'on scrolle à la
+    // souris ramenait la vue de force sur la ligne survolée, empêchant tout
+    // défilement manuel (constaté).
+    in property <bool> scroll-trigger: false;
+    // Focus initial -- sans lui, taper dans la recherche exigeait d'abord
+    // un clic (rien ne demandait le focus par défaut). Le focus clavier
+    // reste ensuite TOUJOURS sur la recherche (voir refocus-trigger
+    // ci-dessus et la remarque sur key-pressed déplacé sur search-input) --
+    // jamais besoin de recliquer pour retaper après avoir navigué/cliqué un
+    // bouton.
+    init => { search-input.focus(); }
+    // Fenêtre sans bordure système (no-frame) -- pas de croix native,
+    // celle-ci est dessinée à la main dans la barre de titre custom
+    // ci-dessous.
+    callback close-requested();
+    // Déplacement de la fenêtre à la souris (no-frame : Windows ne le fait
+    // plus tout seul) -- voir drag-area dans la barre de titre plus bas et
+    // son commentaire (délègue tout le glissé au déplacement de fenêtre
+    // natif de Windows, jamais un recalcul de position par pixel).
+    callback window-drag-requested();
+
+    // Mode "Big Picture" (grille plein écran, ports installés uniquement) --
+    // Rust reconstruit card-rows et redimensionne/repositionne la fenêtre à
+    // chaque bascule (voir main.rs), ce .slint ne fait qu'afficher l'état
+    // courant et notifier la demande de bascule.
+    in property <bool> big-mode: false;
+    in property <[CardRow]> card-rows: [];
+    in property <string> empty-grid-message: "No installed ports yet.";
+    // Poussées depuis Rust (core::grid), en pixels LOGIQUES (200/300/14) --
+    // PAS des pixels physiques, contrairement à
+    // initial-width/height ou item-font-px-physical plus haut : reçues ici
+    // via un `<length>` normal (pas de suffixe -physical), Slint les traite
+    // déjà comme logiques et les remet lui-même à l'échelle au rendu : une
+    // division supplémentaire par Theme.scale-factor à l'usage les rendrait
+    // scale-factor fois trop petites. Ne JAMAIS diviser ces trois valeurs
+    // par le facteur d'échelle.
+    in property <length> card-width: 200px;
+    in property <length> card-height: 300px;
+    in property <length> card-spacing: 14px;
+    // Nombre de colonnes de la grille plein écran (voir core::grid::
+    // compute_grid_columns côté Rust, figé au démarrage comme le reste de
+    // la géométrie plein écran) -- transmis tel quel à CardGrid pour
+    // centrer le bloc de cartes (voir son commentaire dans card-grid.slint).
+    in property <int> grid-columns: 1;
+    // Ligne actuellement sélectionnée dans la grille plein écran -- sert
+    // uniquement à faire défiler la grille pour la garder visible (voir
+    // CardGrid.selected-row-index dans card-grid.slint).
+    in property <int> grid-selected-row: -1;
+    callback fullscreen-toggle-requested();
+    callback settings-requested();
+    callback card-activated(int, int);
+    callback card-hovered(int, int);
+    callback card-unhovered();
+    // Navigation clavier de la liste/grille -- même dispatch grille/liste
+    // que la manette (voir ui::gamepad_router), câblé côté Rust selon
+    // big-mode plutôt que dupliqué ici. dx/dy : haut/bas/gauche/droite.
+    callback move-requested(int, int);
+    callback activate-requested();
+    // Ctrl+1..9/0 -> taille de fenêtre 10%..100%, Ctrl+-/Ctrl+= -> bordure
+    // ∓1px, en temps réel. Fenêtré uniquement (voir key-pressed plus bas) :
+    // en plein écran, la fenêtre occupe déjà tout l'écran, un
+    // redimensionnement n'a pas de sens là.
+    callback window-size-requested(int);
+    callback border-adjust-requested(int);
+    // Maj+Entrée -- ouvre le dossier du port sélectionné dans l'Explorateur.
+    callback reveal-folder-requested();
+    // Clic sur le CORPS d'une ligne de la liste fenêtrée -- sélectionne
+    // seulement, n'active PAS : cliquer la ligne elle-même ne fait rien,
+    // seul un bouton coloré précis déclenche une action ; Entrée/A restent
+    // le seul raccourci qui décide encore tout seul play-vs-install, voir
+    // activate-requested.
+    callback list-row-activated(int);
+    // Survol souris -- déplace la sélection sous la souris, comme la
+    // navigation clavier/manette -- même principe pour la grille plein
+    // écran, voir card-hovered plus bas.
+    callback list-row-hovered(int);
+    // Boutons d'action colorés en bout de ligne -- agissent directement sur
+    // LEUR propre ligne, jamais sur "la sélection courante" : un clic sur
+    // Jouer/Installer/MAJ/Désinstaller/Info marche sur n'importe quelle
+    // ligne sans avoir à d'abord la sélectionner.
+    callback list-row-play-requested(int);
+    callback list-row-install-requested(int);
+    callback list-row-update-requested(int);
+    callback list-row-uninstall-requested(int);
+    // Port LOCAL uniquement (voir PortItem.is-local) -- remplace
+    // list-row-uninstall-requested pour lui, ouvre son dossier dans
+    // l'Explorateur plutôt que de le supprimer.
+    callback list-row-open-folder-requested(int);
+    callback list-row-info-requested(int);
+
+    // Tout dérivé de la taille réelle de la fenêtre (elle-même une
+    // fraction de l'écran, calculée côté Rust) -- pas de pixels fixes
+    // codés en dur ici, à l'exception assumée de la taille des cartes de
+    // la grille plein écran (voir card-grid.slint).
+    //
+    // logical-width part de root.width DIRECTEMENT, SANS division par
+    // Theme.scale-factor : root.width est déjà en pixels LOGIQUES (Rust
+    // pousse initial-width/height déjà divisés, voir plus haut). Diviser une
+    // seconde fois ferait tenir tout le contenu dans une fraction de la
+    // fenêtre affichée. RÈGLE D'UNITÉ : tout (row-height, content-margin,
+    // positions des boutons...) se dérive de logical-width, jamais
+    // directement de root.width -- mélanger les deux dans une même
+    // expression (ex: "title-bar.width", qui vaut root.width brut) donne des
+    // positions fausses, jusqu'à rendre des boutons invisibles.
+    //
+    // Moins deux fois border-px (voir sa déclaration plus bas) : la bordure
+    // du thème est peinte par le Rectangle englobant, SOUS ses enfants, qui
+    // la recouvrent entièrement faute de retrait. La rétrécir ici, une seule
+    // fois, laisse la marge nécessaire à tous les calculs dérivés ; le
+    // VerticalLayout englobant reçoit le même retrait en padding
+    // (horizontalement ET verticalement), d'où l'absence de "logical-height"
+    // séparé.
+    //
+    // root.big-mode ? root.width : ... -- aucune bordure/padding à compenser
+    // en plein écran (tous deux à 0px dans ce mode), garder la soustraction
+    // laisserait un vide de border-px sur les bords.
+    property <length> logical-width: root.big-mode ? root.width : root.width - border-px * 2;
+    // Marge de TOUT le contenu à l'intérieur de la fenêtre (hors barre de
+    // titre) -- UNE seule valeur, FIXE en pixels (12px), PAS un pourcentage
+    // de logical-width : utilisée à la fois comme marge du conteneur ET
+    // comme retrait du texte de chaque ligne (voir plus bas), une valeur en
+    // pourcentage se cumulait deux fois et donnait un vide énorme à gauche
+    // en mode fenêtré, encore pire en plein écran (constaté).
+    // Le VerticalLayout englobant (voir key-handler plus bas) reçoit ce même
+    // retrait en padding pour que tout coïncide.
+    property <length> content-margin: 12px / Theme.scale-factor;
+    property <length> content-width: logical-width - content-margin * 2;
+    // Versions logiques de item/title-font-px-physical et
+    // row/search-bar/title-bar-height-physical (voir leur déclaration plus
+    // haut) -- CES noms-ci (sans -physical) sont ceux à utiliser PARTOUT
+    // ailleurs dans ce fichier, jamais les propriétés -physical directement.
+    property <length> item-font-px: item-font-px-physical / Theme.scale-factor;
+    property <length> title-font-px: title-font-px-physical / Theme.scale-factor;
+    // La barre de recherche utilise une police 20% plus grande que le texte
+    // de la liste, jamais la même taille.
+    property <length> search-font-px: item-font-px * 1.2;
+    // Hauteurs dérivées du linespace RÉELLEMENT mesuré à item/title-font-px
+    // (voir ui::font_metrics côté Rust) + un padding fixe en pixels (6px de
+    // padding vertical de ligne, 10px pour la barre de titre, 10px/16px pour
+    // la barre de recherche fenêtrée/plein écran) -- plus une simple
+    // fraction arbitraire de la fenêtre : une ligne fait exactement la place
+    // qu'il faut pour son texte, ni plus ni moins.
+    in property <length> row-height-physical: 48px;
+    in property <length> search-bar-height-physical: row-height-physical;
+    in property <length> title-bar-height-physical: 34px;
+    // Hauteur EXACTE de content-body en mode FENÊTRÉ -- VISIBLE_ROWS *
+    // row-height, déjà calculée côté Rust (voir apply_font_sizes) : sans
+    // objet en plein écran, où CardGrid n'a pas cet invariant "N lignes
+    // tiennent pile" (voir root.big-mode ? ... : ... sur content-body plus
+    // bas, qui l'ignore dans ce mode). Remplace vertical-stretch: 1 (qui
+    // donnait à content-body TOUT l'espace restant du VerticalLayout, reliquat
+    // de la division entière compris -- voir windowed_font_sizes côté Rust)
+    // par une taille fixe : le reliquat (quelques pixels, jamais une ligne
+    // entière) devient un espace vide invisible en bas de fenêtre plutôt que
+    // de laisser un fragment de la ligne suivante apparaître sans scroller.
+    in property <length> content-body-height-physical: 1000px;
+    property <length> row-height: row-height-physical / Theme.scale-factor;
+    property <length> search-bar-height: search-bar-height-physical / Theme.scale-factor;
+    property <length> title-bar-height: title-bar-height-physical / Theme.scale-factor;
+    property <length> content-body-height: content-body-height-physical / Theme.scale-factor;
+    // Retrait GÉOMÉTRIQUE (proportionnel à row-height, pas un pixel fixe)
+    // qui empêche le texte de toucher les bords d'une ligne.
+    // Réutilisé aussi pour le texte de la barre de recherche (voir son
+    // HorizontalLayout plus bas) -- PAS une valeur séparée : ligne et barre
+    // de recherche partagent déjà content-width, le même retrait garde leurs
+    // textes alignés par construction.
+    property <length> text-margin: row-height * 0.3;
+    // Padding vertical FIXE en pixels (PAS un ratio) -- le bouton □/×
+    // forme un carré à la hauteur RÉELLE du label de titre, plus petit que
+    // la barre entière parce que celle-ci inclut ce padding de chaque côté.
+    // title-bar-height (voir sa déclaration plus haut) inclut déjà ce même
+    // padding (2x, mesuré côté Rust -- voir TITLE_BAR_VERTICAL_PADDING_PX
+    // dans main.rs, qui DOIT rester synchronisé avec Theme.title-button-padding)
+    // -- le retirer ici donne exactement la bonne taille de bouton, jamais
+    // une approximation en ratio.
+    property <length> title-vertical-padding: Theme.title-button-padding;
+    property <length> title-button-size: title-bar-height - title-vertical-padding * 2;
+    // Même retrait, à gauche pour le titre et à droite pour le bouton fermer
+    // -- partagé avec DialogTitleBar (dialogs.slint) via Theme.title-button-padding,
+    // pour que la fenêtre principale et les dialogues alignent leur croix
+    // fermer de façon identique.
+    property <length> title-padding: Theme.title-button-padding;
+    property <length> border-px: Theme.border-width * 1px / Theme.scale-factor;
+    // Boutons d'action (ligne ET pied de page) -- AUCUNE taille fixe : la
+    // largeur de CHAQUE bouton vient de `<son-texte>.preferred-width`
+    // (taille naturelle du texte à cette police, une propriété Slint
+    // native, jamais une mesure approximative) + button-padding de chaque
+    // côté -- "Uninstall" est donc naturellement plus large qu'"Info", sans
+    // avoir besoin d'une largeur dédiée à part. UN SEUL padding, réutilisé
+    // pour TOUS les boutons.
+    property <length> button-padding: 10px / Theme.scale-factor;
+    // Espacement ENTRE deux boutons, au-dessus/en-dessous (padding vertical
+    // des boutons de ligne, symétrique PAR CONSTRUCTION puisque les deux
+    // bords utilisent exactement cette même valeur), et entre le dernier
+    // bouton et la scrollbar (voir btn-info-x plus bas) -- un peu resserré
+    // par rapport à button-padding : la même valeur pour l'espace ENTRE
+    // éléments et le padding INTERNE de chacun se cumule trop. Réutilisé tel
+    // quel pour les boutons du pied de page (GitHub/Discord).
+    property <length> row-spacing: 6px / Theme.scale-factor;
+    // UN SEUL modèle, UNE SEULE marge (content-margin) pour tout ce qui
+    // touche un bord, réutilisée PARTOUT (voir port-list.width et search-bar
+    // plus bas, tous deux = content-width ; voir aussi "x: content-margin"
+    // sur le texte de chaque ligne, IDENTIQUE au retrait du texte de la
+    // barre de recherche) -- plus de propriété séparée "list-content-width"/
+    // "row-horizontal-padding" : deux marges distinctes pour deux éléments
+    // censés être alignés les désalignent. La ligne/le fond surligné et la
+    // barre de recherche font donc EXACTEMENT la même largeur.
+    //
+    // La scrollbar vit dans la marge générale elle-même (entre le bord droit
+    // du contenu, content-width -- le même bord que la barre de recherche --
+    // et le bord droit de la fenêtre), PAS dans la ligne : plus aucun
+    // risque de "collision" avec les boutons ou le fond surligné, puisqu'elle
+    // ne partage plus le même espace du tout. Plus fine (6px, voir
+    // ThemedScrollbar dans theme-colors.slint -- les deux valeurs doivent
+    // rester synchronisées) pour tenir confortablement dans cette marge.
+    // "/ Theme.scale-factor" -- même raison que content-margin : sans elle,
+    // cette largeur ne rétrécit pas au même rythme que la marge qui
+    // l'accueille sur un écran mis à l'échelle.
+    property <length> scrollbar-width: 6px / Theme.scale-factor;
+    // "GitHub" par défaut, "Update" si une nouvelle release du launcher
+    // lui-même est disponible (voir main.rs, vérification en tâche de
+    // fond) -- le lien reste le même (ouvre la page GitHub), seul le
+    // libellé change.
+    in property <string> github-button-text: "GitHub";
+    callback github-requested();
+    callback discord-requested();
+
+    // Wrapper structurel seulement -- le focus clavier ne vit plus ici mais
+    // sur search-input en permanence (voir refocus-trigger/init plus haut
+    // et le key-pressed de search-input plus bas, où vivent maintenant ces
+    // mêmes raccourcis) : un FocusScope qui ne reçoit jamais le focus n'a
+    // simplement plus de key-pressed à gérer.
+    //
+    // focus-on-click: false -- SANS ça, ce FocusScope (qui enveloppe TOUTE
+    // la fenêtre) vole le focus à search-input au moindre clic n'importe où
+    // dedans (comportement PAR DÉFAUT de FocusScope : "will make itself the
+    // focused element when clicked"). N'ayant lui-même aucun key-pressed,
+    // plus aucun raccourci clavier (Alt+Entrée, Échap...) ne répondrait
+    // ensuite tant qu'on n'aurait pas recliqué dans la barre de recherche.
+    key-handler := FocusScope {
+        focus-on-click: false;
+        // Bordure extérieure de toute la fenêtre -- seul élément qui porte
+        // une bordure par défaut (les lignes de la liste n'en ont pas).
+        // Jamais d'arrondi -- tout reste carré. AUCUNE bordure en plein
+        // écran (root.big-mode) : la fenêtre couvre tout l'écran, il n'y a
+        // aucun bord à délimiter contre le bureau.
+        Rectangle {
+            background: Theme.list-background;
+            border-width: root.big-mode ? 0px : border-px;
+            border-color: Theme.border-color;
+
+            VerticalLayout {
+                spacing: 0px;
+                // Même retrait que logical-width (voir son commentaire plus
+                // haut, qui explique aussi pourquoi la hauteur n'a pas
+                // besoin d'un équivalent) -- sans ce padding, les enfants
+                // (barre de titre, contenu) commenceraient à (0,0), sous la
+                // bordure du Rectangle englobant, et la recouvriraient. 0px
+                // en plein écran (voir border-width juste au-dessus, même
+                // raison) : pas de bordure à compenser, et ça éviterait
+                // sinon un cadre de la couleur de fond tout autour de
+                // l'écran, aussi inutile qu'une vraie bordure visible.
+                padding: root.big-mode ? 0px : border-px;
+
+                // Barre de titre custom -- titre + bouton plein écran + bouton
+                // fermer. vertical-stretch: 0 -- sans ça, VerticalLayout étire
+                // ses enfants pour se partager tout l'espace disponible et
+                // ignore la hauteur explicite donnée ci-dessus (c'était la
+                // vraie cause de la barre de titre/des lignes ~2x trop hautes,
+                // pas un souci de DPI).
+                title-bar := Rectangle {
+                    height: title-bar-height;
+                    vertical-stretch: 0;
+                    background: Theme.search-background;
+
+                    // Emplacements des boutons, bord droit d'abord (même
+                    // technique que les boutons d'action de port-list) --
+                    // close-x flush contre title-padding (même marge que le
+                    // titre à gauche, symétrique), fullscreen-x juste à sa
+                    // gauche avec un espacement serré (row-spacing),
+                    // settings-x encore à sa gauche de la même façon.
+                    property <length> close-x: logical-width - title-padding - title-button-size;
+                    property <length> fullscreen-x: title-bar.close-x - row-spacing - title-button-size;
+                    property <length> settings-x: title-bar.fullscreen-x - row-spacing - title-button-size;
+
+                    // Zone de déplacement de la fenêtre (no-frame : rien ne le
+                    // fait nativement) -- tout le bandeau déplace la fenêtre
+                    // au clic-glissé, SAUF le bouton fermer, qui capte déjà
+                    // ses propres clics. PREMIER enfant (donc EN DESSOUS des
+                    // boutons dans l'ordre de rendu/z-order) : les TouchArea
+                    // des boutons, déclarées après, restent prioritaires sur
+                    // leur propre zone -- seul le reste du bandeau (titre
+                    // compris) déclenche le déplacement.
+                    drag-area := TouchArea {
+                        width: 100%;
+                        height: 100%;
+                        pointer-event(event) => {
+                            // root.window-drag-requested() est émis UNE SEULE
+                            // fois, au clic, et délègue tout le glissé au
+                            // déplacement de fenêtre natif de Windows (voir
+                            // main.rs : ReleaseCapture +
+                            // WM_NCLBUTTONDOWN/HTCAPTION). Recalculer
+                            // set_position() à chaque `moved` fonctionne mais
+                            // est visiblement saccadé : chaque déplacement
+                            // repasse par la boucle d'évènements Slint et un
+                            // aller-retour avec l'OS avant de redessiner.
+                            if (event.kind == PointerEventKind.down) {
+                                root.window-drag-requested();
+                            }
+                        }
+                    }
+
+                    // Pas de HorizontalLayout ici -- un layout mélangeant un
+                    // élément extensible (le titre) et des éléments à taille
+                    // fixe (les boutons) ne les affichait jamais dans cette
+                    // version de Slint (constaté au pixel près : bouton
+                    // fermer totalement invisible malgré une largeur non
+                    // nulle). Positionnement explicite à la place, en
+                    // référençant title-bar (nommé) plutôt que "parent" --
+                    // seule approche qui s'est montrée fiable.
+                    Text {
+                        text: "Ports Launcher";
+                        color: Theme.list-text;
+                        vertical-alignment: center;
+                        horizontal-alignment: left;
+                        font-weight: 700;
+                        font-size: title-font-px;
+                        overflow: elide;
+                        x: title-padding;
+                        y: 0px;
+                        width: title-bar.settings-x - title-padding - row-spacing;
+                        height: 100%;
+                    }
+
+                    // Cercle CENTRÉ, même empreinte visuelle que
+                    // fullscreen/close juste en dessous -- ouvre
+                    // SettingsDialog (choix de thème + raccourcis
+                    // fichiers/dossiers). Couleur de survol distincte du
+                    // bleu INFO de fullscreen/close : pas la même famille
+                    // d'action. Rayon 25 (span 25-75), EXACTEMENT les mêmes
+                    // bornes que le carré de fullscreen, sans quoi le cercle
+                    // paraît plus gros que les deux autres icônes. Deux arcs
+                    // de 180° plutôt qu'un seul arc presque complet, dont le
+                    // centre est ambigu quand départ et arrivée sont quasi
+                    // confondus.
+                    TitleBarIconButton {
+                        x: title-bar.settings-x;
+                        y: title-vertical-padding;
+                        size: title-button-size;
+                        hover-color: #AA8ED6;
+                        hover-stroke-color: GridColors.text-on-accent;
+                        icon-commands: "M 22 50 A 28 28 0 1 1 78 50 A 28 28 0 1 1 22 50 Z";
+                        clicked => { root.settings-requested(); }
+                    }
+
+                    // Carré CENTRÉ dans son "emplacement" de title-bar-height de
+                    // large (pas bord à bord) -- voir title-button-size plus
+                    // haut : le survol paraissait trop massif en remplissant
+                    // toute la hauteur de la barre. Couleur INFO (bleu), pas
+                    // DANGER : fermer/plein écran ne sont pas la même
+                    // famille d'action.
+                    TitleBarIconButton {
+                        x: title-bar.fullscreen-x;
+                        y: title-vertical-padding;
+                        size: title-button-size;
+                        hover-color: GridColors.info;
+                        hover-stroke-color: GridColors.text-on-accent;
+                        icon-commands: "M 22 22 L 78 22 L 78 78 L 22 78 Z";
+                        clicked => { root.fullscreen-toggle-requested(); }
+                    }
+
+                    // Carré rouge plein au survol -- convention universelle
+                    // du bouton fermer, indépendante du thème actif :
+                    // GridColors.danger n'est justement pas éditable via
+                    // themes.json (voir sa déclaration dans card-grid.slint).
+                    // Croix dessinée géométriquement (deux diagonales), PAS
+                    // un glyphe de police : le centre optique d'un glyphe ne
+                    // coïncide pas avec son centre géométrique, aucun choix
+                    // de glyphe (× vs ✕) ni de taille ne le centre
+                    // exactement. viewbox 100x100 mise à l'échelle sur le
+                    // carré du bouton -- coordonnées toujours symétriques,
+                    // centrage garanti quelle que soit la taille.
+                    TitleBarIconButton {
+                        x: title-bar.close-x;
+                        y: title-vertical-padding;
+                        size: title-button-size;
+                        hover-color: GridColors.danger;
+                        hover-stroke-color: GridColors.text-on-accent;
+                        icon-commands: "M 22 22 L 78 78 M 78 22 L 22 78";
+                        clicked => { root.close-requested(); }
+                    }
+                }
+
+                // Barre de recherche + liste/grille -- PAS de "if root.big-mode"
+                // sur ce VerticalLayout lui-même : la barre de recherche reste
+                // affichée dans les DEUX modes, juste réglée avec un
+                // padding/une police plus grands, seule la ListView/CardGrid
+                // en dessous change selon le mode.
+                //
+                // padding-left/right: content-margin (12px) : la barre de
+                // recherche et le fond des lignes ne touchent plus le bord de
+                // la fenêtre (voir content-width, dérivée en cohérence avec
+                // CE padding). Le `x: content-margin` du texte de chaque ligne
+                // (voir plus bas) reste un second retrait INTERNE distinct,
+                // pas une addition avec celui-ci -- l'un marge le CONTENEUR
+                // par rapport à la fenêtre, l'autre marge le TEXTE par
+                // rapport à sa propre ligne.
+                VerticalLayout {
+                    padding-left: content-margin;
+                    padding-right: content-margin;
+                    padding-top: content-margin;
+                    padding-bottom: content-margin;
+                    spacing: content-margin;
+
+                    // Enveloppe SANS layout à l'intérieur -- juste un Rectangle
+                    // pris en charge par le VerticalLayout parent (qui lui
+                    // assigne x/largeur comme n'importe quel autre enfant de
+                    // layout, sans qu'on ait besoin de s'en soucier). search-bar
+                    // lui-même est un enfant de CETTE enveloppe, PAS directement
+                    // du VerticalLayout : un x explicite sur un enfant DIRECT
+                    // d'un *Layout est silencieusement ignoré (le layout
+                    // recalcule toujours x lui-même) -- constaté : la barre
+                    // restait plaquée à gauche en plein écran malgré le calcul
+                    // de centrage ci-dessous. Un cran d'indirection plus bas
+                    // (search-bar, enfant d'un simple Rectangle) contourne ça.
+                    search-bar-wrap := Rectangle {
+                        vertical-stretch: 0;
+                        height: search-bar-height;
+
+                        // Rectangle avec x/largeur EXPLICITES (root.big-mode ?
+                        // ... ci-dessous), PAS un HorizontalLayout à stretch :
+                        // le TextInput a une largeur "préférée" qui grandit
+                        // avec le texte tapé, forçant le HorizontalLayout à
+                        // élargir la barre au-delà de sa part de stretch (elle
+                        // s'allonge au fil de la frappe et empiète sur les
+                        // entretoises de centrage). Une largeur explicite,
+                        // dérivée de
+                        // content-width (PAS logical-width -- voir sa
+                        // déclaration : la marge de contenu doit s'appliquer
+                        // ici aussi, JAMAIS de search-bar-wrap.width, voir le
+                        // commentaire au-dessus) n'a pas ce problème -- le
+                        // contenu ne peut plus influencer la taille du
+                        // conteneur. 50% centrés en plein écran, pleine
+                        // largeur en fenêtré.
+                        search-bar := Rectangle {
+                            width: root.big-mode ? content-width * 0.5 : content-width;
+                            height: 100%;
+                            x: root.big-mode ? (content-width - self.width) / 2 : 0px;
+                            y: 0px;
+                            // Empêche le texte tapé de déborder visuellement
+                            // de la barre une fois plus long que sa largeur
+                            // (un Rectangle Slint ne rogne pas ses enfants par
+                            // défaut) -- TextInput fait défiler son contenu
+                            // pour garder le curseur visible, mais sans clip
+                            // le texte qui déborde continuait de se dessiner
+                            // par-dessus le reste de l'UI.
+                            clip: true;
+                            background: Theme.search-background;
+                            // Bordure de la barre de recherche -- TOUJOURS
+                            // 1px physique (jamais
+                            // border-px/Theme.border-width, réservé à la
+                            // bordure de la FENÊTRE) : le contour d'un champ
+                            // de saisie n'a pas besoin de suivre l'épaisseur,
+                            // potentiellement grosse, configurée pour le cadre
+                            // de la fenêtre.
+                            border-width: 1px / Theme.scale-factor;
+                            border-color: Theme.border-color;
+
+                            // Zone de recherche maison plutôt que le LineEdit
+                            // standard -- celui-ci impose un border-radius de 4px
+                            // et des couleurs FluentPalette codées en dur dans le
+                            // widget (thème Fluent, le style actif par défaut),
+                            // incompatibles avec "jamais d'arrondi" et avec les
+                            // couleurs de themes.json.
+
+                            HorizontalLayout {
+                                padding-left: text-margin;
+                                padding-right: text-margin;
+
+                                search-input := TextInput {
+                                    text: "";
+                                    color: Theme.search-text;
+                                    font-size: search-font-px;
+                                    vertical-alignment: center;
+                                    horizontal-alignment: left;
+                                    single-line: true;
+                                    // Prend tout l'espace disponible -- l'horloge
+                                    // est dessinée par-dessus (voir plus bas),
+                                    // pas retirée de cette mise en page : un
+                                    // "if" à l'intérieur d'un *Layout s'est avéré
+                                    // ne rien afficher dans cette version de
+                                    // Slint (constaté par plusieurs tests).
+                                    horizontal-stretch: 1;
+                                    edited => { root.search-changed(self.text); }
+                                    // Raccourcis clavier globaux du launcher --
+                                    // vivent ICI, pas dans un FocusScope séparé,
+                                    // parce que le focus clavier reste TOUJOURS
+                                    // sur ce champ (voir refocus-trigger/init
+                                    // plus haut) : c'est le seul endroit qui
+                                    // reçoit jamais ces touches.
+                                    // "Use this callback to handle keys before
+                                    // TextInput does" (doc Slint) -- accept
+                                    // empêche par ex. Gauche/Droite de déplacer
+                                    // le curseur texte : les flèches n'éditent
+                                    // jamais le texte tapé, seule la navigation
+                                    // manette/clavier classique le permet.
+                                    key-pressed(event) => {
+                                        if (event.text == Key.Escape) {
+                                            if (root.big-mode) {
+                                                root.fullscreen-toggle-requested();
+                                            } else {
+                                                root.close-requested();
+                                            }
+                                            accept
+                                        } else if (event.modifiers.alt && event.text == Key.Return) {
+                                            root.fullscreen-toggle-requested();
+                                            accept
+                                        // Maj+Entrée -- ouvre le dossier du port
+                                        // sélectionné dans l'Explorateur --
+                                        // vérifié AVANT le simple "Key.Return"
+                                        // juste en dessous, sinon ce dernier
+                                        // matcherait en premier et activate-
+                                        // requested() se déclencherait à la place.
+                                        } else if (event.modifiers.shift && event.text == Key.Return) {
+                                            root.reveal-folder-requested();
+                                            accept
+                                        // Ctrl+1..9/0/-/= -- redimensionnement clavier de la
+                                        // fenêtre (voir window-size-requested/border-adjust-requested
+                                        // plus haut), FENÊTRÉ UNIQUEMENT : en plein écran, la
+                                        // fenêtre occupe déjà tout l'écran, redimensionner n'a pas
+                                        // de sens. Vérifié avant le remap Ctrl+S/W/D/A juste en
+                                        // dessous : ces touches n'ont aucune signification hors de
+                                        // Ctrl, donc traitées à part plutôt que comme un alias
+                                        // d'une touche existante.
+                                        } else if (!root.big-mode && event.modifiers.control && event.text == "1") {
+                                            root.window-size-requested(10);
+                                            accept
+                                        } else if (!root.big-mode && event.modifiers.control && event.text == "2") {
+                                            root.window-size-requested(20);
+                                            accept
+                                        } else if (!root.big-mode && event.modifiers.control && event.text == "3") {
+                                            root.window-size-requested(30);
+                                            accept
+                                        } else if (!root.big-mode && event.modifiers.control && event.text == "4") {
+                                            root.window-size-requested(40);
+                                            accept
+                                        } else if (!root.big-mode && event.modifiers.control && event.text == "5") {
+                                            root.window-size-requested(50);
+                                            accept
+                                        } else if (!root.big-mode && event.modifiers.control && event.text == "6") {
+                                            root.window-size-requested(60);
+                                            accept
+                                        } else if (!root.big-mode && event.modifiers.control && event.text == "7") {
+                                            root.window-size-requested(70);
+                                            accept
+                                        } else if (!root.big-mode && event.modifiers.control && event.text == "8") {
+                                            root.window-size-requested(80);
+                                            accept
+                                        } else if (!root.big-mode && event.modifiers.control && event.text == "9") {
+                                            root.window-size-requested(90);
+                                            accept
+                                        } else if (!root.big-mode && event.modifiers.control && event.text == "0") {
+                                            root.window-size-requested(100);
+                                            accept
+                                        } else if (!root.big-mode && event.modifiers.control && event.text == "-") {
+                                            root.border-adjust-requested(-1);
+                                            accept
+                                        } else if (!root.big-mode && event.modifiers.control && event.text == "=") {
+                                            root.border-adjust-requested(1);
+                                            accept
+                                        } else if (event.text == Key.UpArrow || (event.modifiers.control && event.text == "w")) {
+                                            root.move-requested(0, -1);
+                                            accept
+                                        } else if (event.text == Key.DownArrow || (event.modifiers.control && event.text == "s")) {
+                                            root.move-requested(0, 1);
+                                            accept
+                                        } else if (event.text == Key.LeftArrow || (event.modifiers.control && event.text == "a")) {
+                                            root.move-requested(-1, 0);
+                                            accept
+                                        } else if (event.text == Key.RightArrow || (event.modifiers.control && event.text == "d")) {
+                                            root.move-requested(1, 0);
+                                            accept
+                                        } else if (event.text == Key.Return) {
+                                            root.activate-requested();
+                                            accept
+                                        } else {
+                                            reject
+                                        }
+                                    }
+                                }
+                            }
+
+                            // En dehors du HorizontalLayout ci-dessus (voir son
+                            // commentaire) -- superposée à la zone de texte,
+                            // alignée à droite. Largeur dérivée de
+                            // `search-bar.width`, PAS d'une largeur calculée
+                            // côté Rust : une valeur approximative suffit à
+                            // faire disparaître l'horloge derrière le
+                            // `clip: true` de search-bar. Un enfant DIRECT
+                            // lisant une largeur EXPLICITE (pas résolue par
+                            // un *Layout) de son parent NOMMÉ -- jamais
+                            // "parent.width" générique -- reste exact.
+                            if root.show-clock: Text {
+                                text: root.clock-text;
+                                color: Theme.search-text;
+                                font-size: search-font-px;
+                                vertical-alignment: center;
+                                horizontal-alignment: right;
+                                x: 0px;
+                                width: search-bar.width - text-margin;
+                                height: 100%;
+                            }
+
+                            // PAS de "&& !search-input.has-focus" : le champ
+                            // garde le focus en permanence (voir
+                            // refocus-trigger/init plus haut), un
+                            // placeholder qui ne s'affiche que "sans le
+                            // focus" ne réapparaîtrait donc plus jamais une
+                            // fois le texte tapé effacé -- le placeholder ne
+                            // dépend QUE du texte vide, jamais du focus.
+                            if search-input.text.is-empty: Text {
+                                text: root.placeholder-text;
+                                color: Theme.search-text;
+                                font-size: search-font-px;
+                                vertical-alignment: center;
+                                horizontal-alignment: left;
+                                x: search-input.x;
+                            }
+                        }
+                    }
+
+                    // Enveloppe INCONDITIONNELLE (jamais un "if" en enfant
+                    // DIRECT du VerticalLayout, voir CardGrid/list-container
+                    // ci-dessous) : un enfant conditionnel ("if root.big-mode:
+                    // ...") d'un *Layout ne recevait PAS le même x que ses
+                    // frères inconditionnels (ex: search-bar-wrap juste
+                    // au-dessus) dans cette version de Slint -- constaté : le
+                    // survol/la sélection d'une ligne (et son texte) partait
+                    // visiblement plus à gauche que la barre de recherche,
+                    // toutes deux censées partager exactement content-margin.
+                    // Même remède que search-bar-wrap/search-bar (un cran
+                    // d'indirection non-Layout) : CardGrid/list-container
+                    // reçoivent maintenant leur position d'un simple
+                    // Rectangle, jamais du VerticalLayout directement.
+                    content-body := Rectangle {
+                        // Plein écran : élastique (CardGrid n'a pas
+                        // d'invariant "N lignes tiennent pile" comme la liste
+                        // fenêtrée). Fenêtré : hauteur FIXE (voir
+                        // content-body-height-physical plus haut) -- corrige
+                        // une ligne partielle parfois visible sans scroller.
+                        //
+                        // `preferred-height`, PAS `height` -- `height` est une
+                        // contrainte dure : la forcer à 0px en plein écran
+                        // donne réellement 0px de haut (grille invisible,
+                        // aucune carte, pas même le message de repli de
+                        // CardGrid). `preferred-height` n'est qu'une base que
+                        // vertical-stretch peut faire grandir jusqu'à
+                        // l'espace disponible (comme flex-basis: 0 +
+                        // flex-grow: 1 en CSS) -- 0px y est un point de
+                        // départ valide.
+                        vertical-stretch: root.big-mode ? 1 : 0;
+                        preferred-height: root.big-mode ? 0px : content-body-height;
+
+                        if root.big-mode: CardGrid {
+                        width: 100%;
+                        height: 100%;
+                        rows: root.card-rows;
+                        empty-message: root.empty-grid-message;
+                        card-width: root.card-width;
+                        card-height: root.card-height;
+                        card-spacing: root.card-spacing;
+                        columns: root.grid-columns;
+                        selected-row-index: root.grid-selected-row;
+                        scroll-trigger: root.scroll-trigger;
+                        card-activated(r, c) => { root.card-activated(r, c); }
+                        card-hovered(r, c) => { root.card-hovered(r, c); }
+                        card-unhovered() => { root.card-unhovered(); }
+                    }
+
+                    // Enveloppe ListView + ThemedScrollbar -- vertical-stretch: 1
+                    // reprend le rôle que ListView jouait seul avant (prendre
+                    // tout l'espace restant du VerticalLayout), un Rectangle
+                    // nu n'a pas ce comportement par défaut.
+                        if !root.big-mode: list-container := Rectangle {
+                        width: 100%;
+                        height: 100%;
+
+                        // width: content-width -- EXACTEMENT la largeur de la
+                        // barre de recherche (voir search-bar plus haut),
+                        // jamais une largeur réduite pour "laisser la place à
+                        // la scrollbar" : la scrollbar SE SUPERPOSE à la fin
+                        // de la ligne (voir ThemedScrollbar plus bas, dessinée
+                        // après, donc par-dessus), elle ne lui vole pas
+                        // d'espace. Seuls les BOUTONS (voir plus bas) laissent
+                        // la place nécessaire pour ne jamais passer dessous.
+                        // Inertie du clic-glissé -- voir InertialScroller
+                        // dans theme-colors.slint pour pourquoi (le menu de
+                        // thème l'a nativement via Flickable, cette liste
+                        // réimplémente son défilement à la main et ne
+                        // l'avait donc pas). SIBLING de port-list plutôt
+                        // qu'enfant -- un ListView n'accepte QUE son propre
+                        // `for` comme enfant direct (constaté : erreur de
+                        // compilation Slint sinon), la liaison
+                        // bidirectionnelle marche identiquement en dehors.
+                        list-inertia := InertialScroller {
+                            min-viewport-y: Math.min(0px, port-list.visible-height - port-list.viewport-height);
+                            viewport-y <=> port-list.viewport-y;
+                        }
+
+                        port-list := ListView {
+                            width: content-width;
+                            height: 100%;
+                            // La scrollbar native "fluent" est remplacée par
+                            // ThemedScrollbar ci-dessous (voir son commentaire
+                            // dans theme-colors.slint) -- jamais les deux à la
+                            // fois.
+                            vertical-scrollbar-policy: always-off;
+                            horizontal-scrollbar-policy: always-off;
+
+                            // Vrai tant qu'une ligne (row-area, plus bas) est
+                            // en train d'être glissée pour défiler -- consulté
+                            // par TOUTES les lignes pour suspendre leur propre
+                            // survol pendant ce temps (voir le commentaire de
+                            // row-area).
+                            property <bool> dragging: false;
+
+                            // Fait défiler la liste pour garder la ligne
+                            // sélectionnée visible -- UNIQUEMENT depuis la
+                            // navigation clavier/manette (voir
+                            // root.scroll-trigger, jamais root.selected-index
+                            // directement : ce dernier change aussi au survol
+                            // souris, qui ne doit PAS faire défiler -- voir son
+                            // commentaire plus haut). Alias local : un
+                            // `changed` ne peut observer qu'une propriété de
+                            // l'élément sur lequel il est déclaré (voir la doc
+                            // Slint), jamais une propriété d'un ancêtre --
+                            // selected-row-top/bottom, eux, peuvent lire
+                            // root.selected-index directement (une simple
+                            // référence, pas un `changed`).
+                            property <bool> scroll-trigger-local: root.scroll-trigger;
+                            property <length> selected-row-top: root.selected-index * row-height;
+                            property <length> selected-row-bottom: self.selected-row-top + row-height;
+                            changed scroll-trigger-local => {
+                                if (root.selected-index < 0) {
+                                    return;
+                                }
+                                if (self.selected-row-top + self.viewport-y < 0px) {
+                                    self.viewport-y = -self.selected-row-top;
+                                } else if (self.selected-row-bottom + self.viewport-y > self.visible-height) {
+                                    self.viewport-y = self.visible-height - self.selected-row-bottom;
+                                }
+                            }
+
+                            // Toutes les positions ci-dessous viennent de
+                            // content-width/logical-width/button-padding/
+                            // row-spacing (propriétés racine, toujours
+                            // fiables) et de la largeur NATURELLE de chaque
+                            // bouton (voir info-w/install-w/etc. plus bas,
+                            // dérivées de <label>.preferred-width, jamais une
+                            // largeur fixe) -- JAMAIS de "row.width" : lire la
+                            // largeur d'un élément NOMMÉ instancié par un
+                            // `for` depuis l'un de ses propres enfants s'est
+                            // avéré peu fiable dans cette version de Slint
+                            // (bouton positionné à partir de row.width
+                            // simplement invisible, la valeur elle-même
+                            // n'étant pas exploitable). <label>.preferred-width
+                            // n'a pas ce problème, une grandeur intrinsèque au
+                            // texte/à la police, jamais résolue par un
+                            // *Layout.
+                            // Positions calculées en "emplacements depuis la
+                            // droite" (0 = tout à droite) : Info est toujours
+                            // à l'emplacement 0 ; Désinstaller/Installer à
+                            // l'emplacement 1 (l'un exclut l'autre) ; MAJ à
+                            // l'emplacement 2 si installé+dispo ; Jouer juste
+                            // après MAJ si affiché, sinon juste après
+                            // Désinstaller.
+                            for item[index] in ports: row := Rectangle {
+                                height: row-height;
+                                // index == root.selected-index -- JAMAIS un
+                                // champ "selected" dans PortItem : le pousser
+                                // obligerait Rust à reconstruire tout le
+                                // modèle (`set_ports` avec un Vec neuf) à
+                                // chaque changement de sélection, survol
+                                // souris compris, ce qui interrompt un
+                                // défilement à la molette en cours. Une
+                                // comparaison d'entier ne touche pas au
+                                // modèle.
+                                background: index == root.selected-index ? Theme.selected-background : Theme.list-background;
+
+                                // Largeur NATURELLE de chaque bouton --
+                                // texte + button-padding des deux côtés,
+                                // jamais une largeur fixe (voir button-padding
+                                // plus haut) : "Uninstall" est donc
+                                // naturellement plus large qu'"Info", sans
+                                // configuration séparée. <x>-btn.text-preferred-width
+                                // (pas <x>-label.preferred-width) -- label vit
+                                // DANS ActionButton, pas visible d'ici (voir
+                                // son commentaire).
+                                property <length> info-w: info-btn.text-preferred-width + button-padding * 2;
+                                property <length> install-w: install-btn.text-preferred-width + button-padding * 2;
+                                property <length> uninstall-w: uninstall-btn.text-preferred-width + button-padding * 2;
+                                property <length> update-w: update-btn.text-preferred-width + button-padding * 2;
+                                property <length> play-w: play-btn.text-preferred-width + button-padding * 2;
+
+                                // Positions en "emplacements depuis la droite" --
+                                // propriétés locales à CETTE ligne (déclarées
+                                // sur "row", jamais sur ses enfants) pour ne
+                                // calculer chaque décalage qu'une seule fois.
+                                // content-width - row-spacing -- même
+                                // espacement qu'ENTRE deux boutons (voir
+                                // btn-slot1-x etc. juste en dessous), réutilisé
+                                // ici pour laisser un bout de hover visible à
+                                // droite du dernier bouton aussi, symétrique
+                                // avec le reste. La scrollbar n'a plus besoin
+                                // d'espace réservé ici (elle vit dans la marge
+                                // générale, voir ThemedScrollbar plus bas).
+                                property <length> btn-info-x: content-width - row-spacing - row.info-w;
+                                property <length> btn-slot1-width: item.installed ? row.uninstall-w : row.install-w;
+                                property <length> btn-slot1-x: row.btn-info-x - row-spacing - row.btn-slot1-width;
+                                property <length> btn-slot2-x: row.btn-slot1-x - row-spacing - row.update-w;
+                                property <length> btn-slot3-x: item.update-available
+                                    ? row.btn-slot2-x - row-spacing - row.play-w
+                                    : row.btn-slot1-x - row-spacing - row.play-w;
+                                // Bord gauche du bouton le plus à gauche
+                                // actuellement affiché sur cette ligne --
+                                // Jouer (slot3) si installé, sinon Installer
+                                // (slot1) -- utilisé UNIQUEMENT pour la
+                                // largeur du nom ci-dessous.
+                                property <length> btn-leftmost-x: item.installed ? row.btn-slot3-x : row.btn-slot1-x;
+
+                                row-area := TouchArea {
+                                    // Défilement en maintenant le clic --
+                                    // port-list est une ListView dont le
+                                    // Flickable sous-jacent ne reçoit JAMAIS
+                                    // le clic-glissé : row-area (CETTE
+                                    // TouchArea, une par ligne, pour
+                                    // clicked/has-hover ci-dessous) le capte
+                                    // en premier et ne le relaie pas.
+                                    // Reproduit donc le geste à
+                                    // la main -- delta vertical depuis le
+                                    // point de PRESS, appliqué à viewport-y,
+                                    // borné à l'intervalle valide (0 = pas
+                                    // défilé, visible-height -
+                                    // viewport-height = tout en bas ; jamais
+                                    // l'inverse si le contenu tient déjà en
+                                    // entier).
+                                    //
+                                    // drag-start-cursor-y suit la position
+                                    // ÉCRAN ABSOLUE du curseur
+                                    // (absolute-position.y + mouse-y), PAS
+                                    // mouse-y seul : mouse-y est relatif à
+                                    // CETTE ligne, qui bouge à l'écran à
+                                    // chaque écriture de port-list.viewport-y
+                                    // plus bas -- l'utiliser seul crée donc
+                                    // une boucle de rétroaction (chaque petit
+                                    // mouvement réel amplifié par son propre
+                                    // effet), ressentie comme un glissé qui
+                                    // "lutte"/un effet aimant vers la
+                                    // sélection pendant un geste lent
+                                    // (constaté). La position ÉCRAN absolue,
+                                    // elle, ne change jamais à cause d'un
+                                    // défilement qu'on déclenche nous-mêmes,
+                                    // seulement par un vrai mouvement
+                                    // physique de la souris. Voir aussi
+                                    // grid-touch dans card-grid.slint, qui
+                                    // n'a pas ce problème pour une autre
+                                    // raison (une TouchArea UNIQUE, hors du
+                                    // contenu défilant, jamais nichée dans
+                                    // chaque carte).
+                                    property <length> drag-start-cursor-y;
+                                    property <length> drag-start-viewport-y;
+                                    clicked => { root.list-row-activated(index); }
+                                    // !port-list.dragging -- SANS cette garde,
+                                    // un glissé lent faisait défiler les AUTRES
+                                    // lignes (jamais pressées elles-mêmes) SOUS
+                                    // le curseur immobile, et chacune
+                                    // déclenchait son propre has-hover au
+                                    // passage : la sélection sautait d'une
+                                    // ligne à l'autre en pleine tentative de
+                                    // défilement. Un simple `!self.pressed`
+                                    // LOCAL ne suffit pas ici (chaque ligne a
+                                    // sa PROPRE TouchArea, seule celle
+                                    // réellement pressée a self.pressed=true)
+                                    // -- il faut un indicateur PARTAGÉ
+                                    // (port-list.dragging, déclaration plus
+                                    // bas) que TOUTES les lignes consultent.
+                                    changed has-hover => {
+                                        if (self.has-hover && !port-list.dragging) {
+                                            root.list-row-hovered(index);
+                                        }
+                                    }
+                                    pointer-event(event) => {
+                                        if (event.kind == PointerEventKind.down) {
+                                            self.drag-start-cursor-y = self.absolute-position.y + self.mouse-y;
+                                            self.drag-start-viewport-y = port-list.viewport-y;
+                                            port-list.dragging = true;
+                                            list-inertia.begin-drag(self.drag-start-cursor-y);
+                                        } else if (event.kind == PointerEventKind.up || event.kind == PointerEventKind.cancel) {
+                                            port-list.dragging = false;
+                                            list-inertia.release();
+                                        }
+                                    }
+                                    moved => {
+                                        if (self.pressed) {
+                                            port-list.viewport-y = Math.clamp(
+                                                self.drag-start-viewport-y + ((self.absolute-position.y + self.mouse-y) - self.drag-start-cursor-y),
+                                                Math.min(0px, port-list.visible-height - port-list.viewport-height),
+                                                0px,
+                                            );
+                                            list-inertia.record-sample(self.absolute-position.y + self.mouse-y);
+                                        }
+                                    }
+                                }
+
+                                Text {
+                                    text: item.name;
+                                    overflow: elide;
+                                    // Le bouton "Update" (voir plus bas, visible: item.installed
+                                    // && item.update-available) signale déjà une MAJ disponible
+                                    // -- colorer AUSSI le nom serait redondant.
+                                    color: index == root.selected-index ? Theme.selected-text : Theme.list-text;
+                                    font-size: item-font-px;
+                                    vertical-alignment: center;
+                                    // text-margin -- EXACTEMENT le même
+                                    // retrait GÉOMÉTRIQUE (row-height * 0.3,
+                                    // voir sa déclaration) que le texte de la
+                                    // barre de recherche (voir son
+                                    // HorizontalLayout plus haut) : les deux
+                                    // boîtes (recherche et ligne) font la
+                                    // même largeur (content-width) et
+                                    // partagent la même marge interne --
+                                    // leurs textes s'alignent par
+                                    // construction, jamais par coïncidence.
+                                    x: text-margin;
+                                    width: row.btn-leftmost-x - text-margin - row-spacing;
+                                }
+
+                                // Info -- toujours affiché, tout à droite
+                                // (emplacement 0), même bouton que le X manette
+                                // (show_info_for_selection) mais agit sur SA
+                                // PROPRE ligne, pas la sélection courante.
+                                // y/height: row-spacing des DEUX côtés -- PAS
+                                // "row-height*0.7" + centrage par soustraction
+                                // (l'arrondi en pixels physiques de cette
+                                // dernière donnait 11px en haut contre 10px en
+                                // bas, constaté : les deux bords dérivaient
+                                // d'UNE seule valeur complémentaire, jamais
+                                // garantis identiques). Ici les deux bords
+                                // viennent littéralement de la MÊME variable
+                                // -- symétrie garantie par construction (même
+                                // règle pour les 4 autres boutons ci-dessous).
+                                info-btn := ActionButton {
+                                    text: "Info";
+                                    fill-color: GridColors.info;
+                                    fill-hover-color: GridColors.info-hover;
+                                    font-size: item-font-px;
+                                    x: row.btn-info-x;
+                                    y: row-spacing;
+                                    height: row-height - row-spacing * 2;
+                                    width: row.info-w;
+                                    clicked => { root.list-row-info-requested(index); }
+                                }
+
+                                // Installer -- emplacement 1, seulement si pas
+                                // encore installé.
+                                install-btn := ActionButton {
+                                    visible: !item.installed;
+                                    text: "Install";
+                                    fill-color: GridColors.success;
+                                    fill-hover-color: GridColors.success-hover;
+                                    font-size: item-font-px;
+                                    x: row.btn-slot1-x;
+                                    y: row-spacing;
+                                    height: row-height - row-spacing * 2;
+                                    width: row.btn-slot1-width;
+                                    clicked => { root.list-row-install-requested(index); }
+                                }
+
+                                // Désinstaller -- emplacement 1, seulement si
+                                // déjà installé (mutuellement exclusif avec
+                                // Installer ci-dessus, même emplacement).
+                                // "Open Folder" à la place pour un port LOCAL
+                                // (voir PortItem.is-local) -- jamais de
+                                // suppression de fichiers que l'appli n'a pas
+                                // posés elle-même ; leur gestion reste à la
+                                // main depuis l'Explorateur.
+                                uninstall-btn := ActionButton {
+                                    visible: item.installed;
+                                    text: item.is-local ? "Open Folder" : "Uninstall";
+                                    fill-color: item.is-local ? GridColors.info : GridColors.danger;
+                                    fill-hover-color: item.is-local ? GridColors.info-hover : GridColors.danger-hover;
+                                    font-size: item-font-px;
+                                    x: row.btn-slot1-x;
+                                    y: row-spacing;
+                                    height: row-height - row-spacing * 2;
+                                    width: row.btn-slot1-width;
+                                    clicked => {
+                                        if (item.is-local) {
+                                            root.list-row-open-folder-requested(index);
+                                        } else {
+                                            root.list-row-uninstall-requested(index);
+                                        }
+                                    }
+                                }
+
+                                // Mettre à jour -- emplacement 2, seulement si
+                                // installé ET une mise à jour est disponible.
+                                update-btn := ActionButton {
+                                    visible: item.installed && item.update-available;
+                                    text: "Update";
+                                    fill-color: GridColors.warning;
+                                    fill-hover-color: GridColors.warning-hover;
+                                    font-size: item-font-px;
+                                    x: row.btn-slot2-x;
+                                    y: row-spacing;
+                                    height: row-height - row-spacing * 2;
+                                    width: row.update-w;
+                                    clicked => { root.list-row-update-requested(index); }
+                                }
+
+                                // Jouer -- seulement si installé, juste après
+                                // MAJ si affiché (emplacement 3), sinon juste
+                                // après Désinstaller (emplacement 2).
+                                play-btn := ActionButton {
+                                    visible: item.installed;
+                                    text: "Play";
+                                    fill-color: GridColors.success;
+                                    fill-hover-color: GridColors.success-hover;
+                                    font-size: item-font-px;
+                                    x: row.btn-slot3-x;
+                                    y: row-spacing;
+                                    height: row-height - row-spacing * 2;
+                                    width: row.play-w;
+                                    clicked => { root.list-row-play-requested(index); }
+                                }
+                            }
+                        }
+
+                        // x: EN DEHORS de content-width, dans la marge
+                        // générale elle-même -- centrée entre le bord droit
+                        // du contenu (content-width, le même bord que la
+                        // barre de recherche) et le bord droit de la fenêtre
+                        // (content-width + content-margin) : ni collée à la
+                        // ligne, ni à la bordure de la fenêtre. list-container
+                        // ne rogne pas ses enfants (aucun `clip: true`), donc
+                        // rien n'empêche la scrollbar de dépasser sa largeur.
+                        ThemedScrollbar {
+                            x: content-width + (content-margin - scrollbar-width) / 2;
+                            y: 0px;
+                            height: list-container.height;
+                            viewport-height: port-list.viewport-height;
+                            visible-height: port-list.visible-height;
+                            viewport-y <=> port-list.viewport-y;
+                        }
+                        }
+                    }
+
+                    // Boutons GitHub/Discord, bas droite -- uniquement en mode
+                    // fenêtré, masqués en plein écran. MÊME hauteur
+                    // que les boutons de la liste (row-height - row-spacing*2)
+                    // et MÊME principe de largeur au texte (voir button-padding
+                    // plus haut) -- même famille visuelle que le reste, pas un
+                    // pied de page à part.
+                    // footer-body: hauteur EXACTE des boutons (row-height -
+                    // row-spacing*2), PAS row-height -- sinon les boutons
+                    // flottent au milieu d'un bloc trop haut, laissant un vide
+                    // sous eux en plus de content-margin (constaté). Poussé
+                    // vers le bas UNIQUEMENT par content-margin (spacing du
+                    // VerticalLayout englobant), rien d'autre.
+                    // HorizontalLayout à enfants de taille FIXE uniquement
+                    // (jamais mêlé à un enfant extensible, voir la règle
+                    // documentée plus haut sur search-row) -- sûr ici,
+                    // alignment: end suffit à les coller à droite.
+                    // Même enveloppe inconditionnelle que content-body
+                    // plus haut, même raison (un "if" en enfant direct du
+                    // VerticalLayout ne recevait pas le bon x).
+                    footer-body := Rectangle {
+                        vertical-stretch: 0;
+                        // Hauteur conditionnelle -- le contenu (boutons
+                        // GitHub/Discord) est déjà masqué par le "if
+                        // !root.big-mode" ci-dessous, mais l'enveloppe
+                        // réserverait quand même cette hauteur en plein
+                        // écran, où resolve_font_sizes (voir main.rs) ne
+                        // compte plus aucun FOOTER_UNITS : la grille
+                        // (content-body, vertical-stretch: 1) serait alors
+                        // plus courte que l'écran d'une bande vide.
+                        height: root.big-mode ? 0px : row-height - row-spacing * 2;
+
+                        if !root.big-mode: HorizontalLayout {
+                        width: 100%;
+                        height: 100%;
+                        spacing: row-spacing;
+                        alignment: end;
+
+                        // Même couleur "warning" que le bouton Update de
+                        // chaque port (voir plus haut, list-row) quand une
+                        // MAJ du launcher lui-même est dispo -- pas juste le
+                        // texte qui change, pour rester cohérent avec le
+                        // signal déjà utilisé partout ailleurs.
+                        github-btn := ActionButton {
+                            text: root.github-button-text;
+                            fill-color: root.github-button-text == "Update" ? GridColors.warning : GridColors.brand-github;
+                            fill-hover-color: root.github-button-text == "Update" ? GridColors.warning-hover : GridColors.brand-github-hover;
+                            font-size: item-font-px;
+                            width: self.text-preferred-width + button-padding * 2;
+                            height: 100%;
+                            clicked => { root.github-requested(); }
+                        }
+
+                        discord-btn := ActionButton {
+                            text: "Discord";
+                            fill-color: GridColors.brand-discord;
+                            fill-hover-color: GridColors.brand-discord-hover;
+                            font-size: item-font-px;
+                            width: self.text-preferred-width + button-padding * 2;
+                            height: 100%;
+                            clicked => { root.discord-requested(); }
+                        }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

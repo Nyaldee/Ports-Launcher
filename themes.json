@@ -1,0 +1,730 @@
+{
+  "theme": "cappuccino",
+  "font_family": "Segoe UI",
+  "placeholder_text": "Type to search...",
+  "show_clock": true,
+  "window_size": 30,
+  "border": 1,
+  "themes": {
+    "nier_yorha": {
+      "search_background": "#bab5a1",
+      "search_text": "#6a6355",
+      "list_background": "#d1cdb7",
+      "list_text": "#454138",
+      "selected_background": "#454138",
+      "selected_text": "#d1cdb7",
+      "border": "#454138"
+    },
+    "final_fantasy_vii": {
+      "search_background": "#0053a9",
+      "search_text": "#e1e5e1",
+      "list_background": "#000060",
+      "list_text": "#e1e5e1",
+      "selected_background": "#00001a",
+      "selected_text": "#e8e800",
+      "border": "#c1c5c1"
+    },
+    "snes": {
+      "search_background": "#b5b6e4",
+      "search_text": "#211a21",
+      "list_background": "#cec9cc",
+      "list_text": "#211a21",
+      "selected_background": "#4f43ae",
+      "selected_text": "#cec9cc",
+      "border": "#908a99"
+    },
+    "ps1": {
+      "search_background": "#3d423c",
+      "search_text": "#c8c9b5",
+      "list_background": "#c5c1c0",
+      "list_text": "#000000",
+      "selected_background": "#999999",
+      "selected_text": "#c8c9b5",
+      "border": "#b2b39f"
+    },
+    "cappuccino": {
+      "search_background": "#4b3832",
+      "search_text": "#fff4e6",
+      "list_background": "#3c2f2f",
+      "list_text": "#be9b7b",
+      "selected_background": "#854442",
+      "selected_text": "#fff4e6",
+      "border": "#be9b7b"
+    },
+    "arc-dark": {
+      "search_background": "#404552",
+      "search_text": "#7c818c",
+      "list_background": "#383c4a",
+      "list_text": "#d3dae3",
+      "selected_background": "#5294e2",
+      "selected_text": "#ffffff",
+      "border": "#4b5162"
+    },
+    "steam_old": {
+      "search_background": "#4c5844",
+      "search_text": "#968732",
+      "list_background": "#3f4738",
+      "list_text": "#eff6ee",
+      "selected_background": "#968732",
+      "selected_text": "#eff6ee",
+      "border": "#4c5844"
+    },
+    "inazuma": {
+      "search_background": "#845ec2",
+      "search_text": "#eaeaea",
+      "list_background": "#2e3a59",
+      "list_text": "#eaeaea",
+      "selected_background": "#c84b31",
+      "selected_text": "#ffc4d0",
+      "border": "#845ec2"
+    },
+    "facebook": {
+      "search_background": "#3b5998",
+      "search_text": "#ffffff",
+      "list_background": "#ffffff",
+      "list_text": "#8b9dc3",
+      "selected_background": "#3b5998",
+      "selected_text": "#ffffff",
+      "border": "#f7f7f7"
+    },
+    "blue_arctic": {
+      "search_background": "#2e3440",
+      "search_text": "#88c0d0",
+      "list_background": "#2e3440",
+      "list_text": "#d8dee9",
+      "selected_background": "#88c0d0",
+      "selected_text": "#2e3440",
+      "border": "#88c0d0"
+    },
+    "cyberpunk_2077": {
+      "search_background": "#000000",
+      "search_text": "#f3e600",
+      "list_background": "#880425",
+      "list_text": "#55ead4",
+      "selected_background": "#f3e600",
+      "selected_text": "#000000",
+      "border": "#c5003c"
+    },
+    "rimuru_tempest": {
+      "search_background": "#cce9f6",
+      "search_text": "#3a71a4",
+      "list_background": "#282834",
+      "list_text": "#93b9e8",
+      "selected_background": "#93b9e8",
+      "selected_text": "#ffffff",
+      "border": "#b3d8e5"
+    },
+    "kanroji_mitsuri": {
+      "search_background": "#f2c2ce",
+      "search_text": "#53394e",
+      "list_background": "#f8f5fb",
+      "list_text": "#53394e",
+      "selected_background": "#a0c888",
+      "selected_text": "#53394e",
+      "border": "#bdce62"
+    },
+    "kamui_kanna": {
+      "search_background": "#a5e4f0",
+      "search_text": "#4b476a",
+      "list_background": "#efeef5",
+      "list_text": "#4b476a",
+      "selected_background": "#eeb3ed",
+      "selected_text": "#4b476a",
+      "border": "#ffb8ce"
+    },
+    "pikachu": {
+      "search_background": "#5c3613",
+      "search_text": "#ffe62d",
+      "list_background": "#f4dc26",
+      "list_text": "#000000",
+      "selected_background": "#e92929",
+      "selected_text": "#ffe62d",
+      "border": "#000000"
+    },
+    "megumin": {
+      "search_background": "#644e51",
+      "search_text": "#f7c65d",
+      "list_background": "#6b586b",
+      "list_text": "#f7c65d",
+      "selected_background": "#c14545",
+      "selected_text": "#f7c65d",
+      "border": "#dc694a"
+    },
+    "raiden_shogun": {
+      "search_background": "#5e1a41",
+      "search_text": "#aa7eee",
+      "list_background": "#2a2263",
+      "list_text": "#aa7eee",
+      "selected_background": "#6333ae",
+      "selected_text": "#aa7eee",
+      "border": "#4440c0"
+    },
+    "yaoyao": {
+      "search_background": "#eeede5",
+      "search_text": "#a17951",
+      "list_background": "#99a86d",
+      "list_text": "#4a332a",
+      "selected_background": "#a17951",
+      "selected_text": "#eeede5",
+      "border": "#e9c559"
+    },
+    "nahida": {
+      "search_background": "#e6f8b7",
+      "search_text": "#7fb591",
+      "list_background": "#ede8ec",
+      "list_text": "#303322",
+      "selected_background": "#7fb591",
+      "selected_text": "#ede8ec",
+      "border": "#bacd84"
+    },
+    "sucrose": {
+      "search_background": "#bdd4d1",
+      "search_text": "#394b77",
+      "list_background": "#d8dace",
+      "list_text": "#252a4b",
+      "selected_background": "#39312e",
+      "selected_text": "#d8dace",
+      "border": "#394b77"
+    },
+    "skirk": {
+      "search_background": "#373891",
+      "search_text": "#8facdf",
+      "list_background": "#27284b",
+      "list_text": "#e4e5f1",
+      "selected_background": "#6578cf",
+      "selected_text": "#e4e5f1",
+      "border": "#373891"
+    },
+    "varesa": {
+      "search_background": "#80e3d7",
+      "search_text": "#8959ad",
+      "list_background": "#ffbdbc",
+      "list_text": "#484347",
+      "selected_background": "#e1757a",
+      "selected_text": "#484347",
+      "border": "#8959ad"
+    },
+    "kirara": {
+      "search_background": "#e4ddbf",
+      "search_text": "#49332d",
+      "list_background": "#6299ac",
+      "list_text": "#49332d",
+      "selected_background": "#a3bf78",
+      "selected_text": "#49332d",
+      "border": "#eabe64"
+    },
+    "qiqi": {
+      "search_background": "#dedbf9",
+      "search_text": "#954d81",
+      "list_background": "#9db8f1",
+      "list_text": "#5b558b",
+      "selected_background": "#fff7f1",
+      "selected_text": "#5b558b",
+      "border": "#954d81"
+    },
+    "venti": {
+      "search_background": "#3e9f85",
+      "search_text": "#e8dcbf",
+      "list_background": "#e8dcbf",
+      "list_text": "#24574b",
+      "selected_background": "#4b3522",
+      "selected_text": "#e8dcbf",
+      "border": "#3b3e86"
+    },
+    "kachina": {
+      "search_background": "#f0d897",
+      "search_text": "#a17e5a",
+      "list_background": "#f0ebac",
+      "list_text": "#473024",
+      "selected_background": "#dca33e",
+      "selected_text": "#473024",
+      "border": "#a17e5a"
+    },
+    "paimon": {
+      "search_background": "#ffe599",
+      "search_text": "#9fc5e8",
+      "list_background": "#eeeeee",
+      "list_text": "#b4a7d6",
+      "selected_background": "#9fc5e8",
+      "selected_text": "#eeeeee",
+      "border": "#ffc4c4"
+    },
+    "cirno": {
+      "search_background": "#539cc1",
+      "search_text": "#b7e2ef",
+      "list_background": "#294271",
+      "list_text": "#f1ecec",
+      "selected_background": "#960d14",
+      "selected_text": "#f1ecec",
+      "border": "#b7e2ef"
+    },
+    "cartman_eric": {
+      "search_background": "#48b3bb",
+      "search_text": "#fad9b3",
+      "list_background": "#fad9b3",
+      "list_text": "#6b3a2a",
+      "selected_background": "#d82546",
+      "selected_text": "#f8df01",
+      "border": "#d82546"
+    },
+    "eva_01": {
+      "search_background": "#1d1a2f",
+      "search_text": "#8bd450",
+      "list_background": "#734f9a",
+      "list_text": "#8bd450",
+      "selected_background": "#8bd450",
+      "selected_text": "#1d1a2f",
+      "border": "#965fd4"
+    },
+    "eva_02": {
+      "search_background": "#281d2d",
+      "search_text": "#fbe6e5",
+      "list_background": "#ed2323",
+      "list_text": "#fbe6e5",
+      "selected_background": "#ea8533",
+      "selected_text": "#281d2d",
+      "border": "#f99d52"
+    },
+    "elma": {
+      "search_background": "#90bdd4",
+      "search_text": "#506dbe",
+      "list_background": "#d2cdfe",
+      "list_text": "#506dbe",
+      "selected_background": "#7899ec",
+      "selected_text": "#506dbe",
+      "border": "#8ba79d"
+    },
+    "gojo_satoru": {
+      "search_background": "#ddedf3",
+      "search_text": "#3e497d",
+      "list_background": "#f6f6f8",
+      "list_text": "#192428",
+      "selected_background": "#3e497d",
+      "selected_text": "#f6f6f8",
+      "border": "#c5afdc"
+    },
+    "zero_two": {
+      "search_background": "#f0b2bc",
+      "search_text": "#ffffff",
+      "list_background": "#a90000",
+      "list_text": "#ffffff",
+      "selected_background": "#1d75b7",
+      "selected_text": "#faefe1",
+      "border": "#faefe1"
+    },
+    "edward_elric": {
+      "search_background": "#850a0a",
+      "search_text": "#f1ba0a",
+      "list_background": "#372b2b",
+      "list_text": "#f6de26",
+      "selected_background": "#a70b0b",
+      "selected_text": "#f6de26",
+      "border": "#f1ba0a"
+    },
+    "son_goku": {
+      "search_background": "#01080a",
+      "search_text": "#e7e5e8",
+      "list_background": "#e76a24",
+      "list_text": "#e7e5e8",
+      "selected_background": "#1c4595",
+      "selected_text": "#fbbc42",
+      "border": "#fbbc42"
+    },
+    "uchiha_itachi": {
+      "search_background": "#282f3f",
+      "search_text": "#a7a3b4",
+      "list_background": "#090909",
+      "list_text": "#af1313",
+      "selected_background": "#af1313",
+      "selected_text": "#f5dad1",
+      "border": "#a7a3b4"
+    },
+    "kamado_tanjiro": {
+      "search_background": "#5a3536",
+      "search_text": "#f9d4af",
+      "list_background": "#58c29e",
+      "list_text": "#2e2723",
+      "selected_background": "#2e2723",
+      "selected_text": "#f9d4af",
+      "border": "#7c3a43"
+    },
+    "saber": {
+      "search_background": "#1a65a9",
+      "search_text": "#ffd700",
+      "list_background": "#234e98",
+      "list_text": "#ffd700",
+      "selected_background": "#0f9f52",
+      "selected_text": "#ffd700",
+      "border": "#1a598f"
+    },
+    "spiderman": {
+      "search_background": "#007fd7",
+      "search_text": "#e2e2e2",
+      "list_background": "#3f3f3f",
+      "list_text": "#e2e2e2",
+      "selected_background": "#de0606",
+      "selected_text": "#e2e2e2",
+      "border": "#ac0202"
+    },
+    "trans": {
+      "search_background": "#5bcefA",
+      "search_text": "#ffffff",
+      "list_background": "#5bcefA",
+      "list_text": "#ffffff",
+      "selected_background": "#f5a9b8",
+      "selected_text": "#ffffff",
+      "border": "#f5a9b8"
+    },
+    "mew": {
+      "search_background": "#c48199",
+      "search_text": "#fffbfb",
+      "list_background": "#f7b8cf",
+      "list_text": "#0071ff",
+      "selected_background": "#f29cbb",
+      "selected_text": "#fffbfb",
+      "border": "#0071ff"
+    },
+    "mewtwo": {
+      "search_background": "#f2ecf6",
+      "search_text": "#875575",
+      "list_background": "#493c4b",
+      "list_text": "#e1c0cc",
+      "selected_background": "#875575",
+      "selected_text": "#f2ecf6",
+      "border": "#c9a8c7"
+    },
+    "donkey_kong": {
+      "search_background": "#753513",
+      "search_text": "#F8C477",
+      "list_background": "#663605",
+      "list_text": "#F8C477",
+      "selected_background": "#EA0000",
+      "selected_text": "#F8C477",
+      "border": "#8B500B"
+    },
+    "saya_no_uta": {
+      "search_background": "#0a1810",
+      "search_text": "#4a6b52",
+      "list_background": "#0f2015",
+      "list_text": "#c8e6d0",
+      "selected_background": "#056D62",
+      "selected_text": "#ffffff",
+      "border": "#056D62"
+    },
+    "dracula": {
+      "search_background": "#44475a",
+      "search_text": "#6272a4",
+      "list_background": "#282a36",
+      "list_text": "#f8f8f2",
+      "selected_background": "#44475a",
+      "selected_text": "#f8f8f2",
+      "border": "#bd93f9"
+    },
+    "vaporwave": {
+      "search_background": "#01cdfe",
+      "search_text": "#ff71ce",
+      "list_background": "#b967ff",
+      "list_text": "#fffb96",
+      "selected_background": "#05ffa1",
+      "selected_text": "#fffb96",
+      "border": "#ff71ce"
+    },
+    "majoras_mask": {
+      "search_background": "#46336b",
+      "search_text": "#f5de14",
+      "list_background": "#46336b",
+      "list_text": "#f5de14",
+      "selected_background": "#f5de14",
+      "selected_text": "#46336b",
+      "border": "#f5de14"
+    },
+    "link": {
+      "search_background": "#432f0f",
+      "search_text": "#a5a202",
+      "list_background": "#026012",
+      "list_text": "#ffffff",
+      "selected_background": "#0f68b8",
+      "selected_text": "#ffffff",
+      "border": "#a5a202"
+    },
+    "magi": {
+      "search_background": "#000000",
+      "search_text": "#484848",
+      "list_background": "#000000",
+      "list_text": "#ec7420",
+      "selected_background": "#f02020",
+      "selected_text": "#000000",
+      "border": "#ec7420"
+    },
+    "windows98": {
+      "search_background": "#ffffff",
+      "search_text": "#808080",
+      "list_background": "#c0c0c0",
+      "list_text": "#000000",
+      "selected_background": "#000080",
+      "selected_text": "#ffffff",
+      "border": "#808080"
+    },
+    "windowsxp": {
+      "search_background": "#ffffff",
+      "search_text": "#aca899",
+      "list_background": "#ece9d8",
+      "list_text": "#000000",
+      "selected_background": "#316ac5",
+      "selected_text": "#ffffff",
+      "border": "#0054e3"
+    },
+    "windowsxp_silver": {
+      "search_background": "#ffffff",
+      "search_text": "#aca899",
+      "list_background": "#e0dfe3",
+      "list_text": "#000000",
+      "selected_background": "#b2b4bf",
+      "selected_text": "#000000",
+      "border": "#c0c0c0"
+    },
+    "windowsxp_olive_green": {
+      "search_background": "#ffffff",
+      "search_text": "#aca899",
+      "list_background": "#ece9d8",
+      "list_text": "#000000",
+      "selected_background": "#93a070",
+      "selected_text": "#ffffff",
+      "border": "#8ba169"
+    },
+    "windowsxp_royale": {
+      "search_background": "#ffffff",
+      "search_text": "#a7a6aa",
+      "list_background": "#ebe9ed",
+      "list_text": "#000000",
+      "selected_background": "#335ea8",
+      "selected_text": "#ffffff",
+      "border": "#335ea8"
+    },
+    "windowsxp_royale_noir": {
+      "search_background": "#ffffff",
+      "search_text": "#a7a6aa",
+      "list_background": "#ebe9ed",
+      "list_text": "#000000",
+      "selected_background": "#5e81bc",
+      "selected_text": "#ffffff",
+      "border": "#5e81bc"
+    },
+    "windowsxp_zune": {
+      "search_background": "#ffffff",
+      "search_text": "#646464",
+      "list_background": "#e2e2e2",
+      "list_text": "#000000",
+      "selected_background": "#bebebe",
+      "selected_text": "#000000",
+      "border": "#343434"
+    },
+    "windowsxp_embedded": {
+      "search_background": "#ffffff",
+      "search_text": "#b5b4b8",
+      "list_background": "#ebe9ed",
+      "list_text": "#000000",
+      "selected_background": "#3e9de8",
+      "selected_text": "#ffffff",
+      "border": "#3e9de8"
+    },
+    "windowsxp_classic_standard": {
+      "search_background": "#ffffff",
+      "search_text": "#808080",
+      "list_background": "#d4d0c8",
+      "list_text": "#000000",
+      "selected_background": "#0a246a",
+      "selected_text": "#ffffff",
+      "border": "#0a246a"
+    },
+    "windowsxp_classic": {
+      "search_background": "#ffffff",
+      "search_text": "#808080",
+      "list_background": "#c0c0c0",
+      "list_text": "#000000",
+      "selected_background": "#000080",
+      "selected_text": "#ffffff",
+      "border": "#000080"
+    },
+    "windowsxp_brick": {
+      "search_background": "#ffffff",
+      "search_text": "#8d8961",
+      "list_background": "#c2bfa5",
+      "list_text": "#000000",
+      "selected_background": "#8d8961",
+      "selected_text": "#ffffff",
+      "border": "#800000"
+    },
+    "windowsxp_desert": {
+      "search_background": "#ffffff",
+      "search_text": "#a28d68",
+      "list_background": "#d5ccbb",
+      "list_text": "#000000",
+      "selected_background": "#008080",
+      "selected_text": "#ffffff",
+      "border": "#008080"
+    },
+    "windowsxp_eggplant": {
+      "search_background": "#ffffff",
+      "search_text": "#588078",
+      "list_background": "#90b0a8",
+      "list_text": "#000000",
+      "selected_background": "#588078",
+      "selected_text": "#ffffff",
+      "border": "#588078"
+    },
+    "windowsxp_lilac": {
+      "search_background": "#ffffff",
+      "search_text": "#5a4eb1",
+      "list_background": "#aea8d9",
+      "list_text": "#000000",
+      "selected_background": "#5a4eb1",
+      "selected_text": "#ffffff",
+      "border": "#5a4eb1"
+    },
+    "windowsxp_maple": {
+      "search_background": "#ffffff",
+      "search_text": "#c6a646",
+      "list_background": "#e6d8ae",
+      "list_text": "#000000",
+      "selected_background": "#c6a646",
+      "selected_text": "#000000",
+      "border": "#800000"
+    },
+    "windowsxp_marine": {
+      "search_background": "#c8e0d8",
+      "search_text": "#489088",
+      "list_background": "#88c0b8",
+      "list_text": "#000000",
+      "selected_background": "#000080",
+      "selected_text": "#ffffff",
+      "border": "#000080"
+    },
+    "windowsxp_plum": {
+      "search_background": "#d8d0c8",
+      "search_text": "#786058",
+      "list_background": "#a89890",
+      "list_text": "#000000",
+      "selected_background": "#008080",
+      "selected_text": "#d8d0c8",
+      "border": "#484060"
+    },
+    "windowsxp_pumpkin": {
+      "search_background": "#ffffff",
+      "search_text": "#d7a52f",
+      "list_background": "#ecd59d",
+      "list_text": "#000000",
+      "selected_background": "#800080",
+      "selected_text": "#ffffff",
+      "border": "#d7a52f"
+    },
+    "windowsxp_rainy_day": {
+      "search_background": "#ffffff",
+      "search_text": "#4f657d",
+      "list_background": "#8399b1",
+      "list_text": "#000000",
+      "selected_background": "#4f657d",
+      "selected_text": "#ffffff",
+      "border": "#4f657d"
+    },
+    "windowsxp_red_white_blue": {
+      "search_background": "#ffffff",
+      "search_text": "#808080",
+      "list_background": "#c0c0c0",
+      "list_text": "#000000",
+      "selected_background": "#800000",
+      "selected_text": "#ffffff",
+      "border": "#800000"
+    },
+    "windowsxp_rose": {
+      "search_background": "#ffffff",
+      "search_text": "#9f6070",
+      "list_background": "#cfafb7",
+      "list_text": "#000000",
+      "selected_background": "#9f6070",
+      "selected_text": "#ffffff",
+      "border": "#9f6070"
+    },
+    "windowsxp_slate": {
+      "search_background": "#ffffff",
+      "search_text": "#558097",
+      "list_background": "#9db9c8",
+      "list_text": "#000000",
+      "selected_background": "#558097",
+      "selected_text": "#ffffff",
+      "border": "#558097"
+    },
+    "windowsxp_spruce": {
+      "search_background": "#ffffff",
+      "search_text": "#599764",
+      "list_background": "#a2c8a9",
+      "list_text": "#000000",
+      "selected_background": "#599764",
+      "selected_text": "#ffffff",
+      "border": "#599764"
+    },
+    "windowsxp_storm": {
+      "search_background": "#ffffff",
+      "search_text": "#808080",
+      "list_background": "#c0c0c0",
+      "list_text": "#000000",
+      "selected_background": "#800080",
+      "selected_text": "#ffffff",
+      "border": "#800080"
+    },
+    "windowsxp_teal": {
+      "search_background": "#ffffff",
+      "search_text": "#808080",
+      "list_background": "#c0c0c0",
+      "list_text": "#000000",
+      "selected_background": "#008080",
+      "selected_text": "#ffffff",
+      "border": "#008080"
+    },
+    "windowsxp_wheat": {
+      "search_background": "#ffffff",
+      "search_text": "#bcbc41",
+      "list_background": "#dedea0",
+      "list_text": "#000000",
+      "selected_background": "#808000",
+      "selected_text": "#ffffff",
+      "border": "#808000"
+    },
+    "gamecube": {
+      "search_background": "#6b5cb1",
+      "search_text": "#dddddd",
+      "list_background": "#dddddd",
+      "list_text": "#109b61",
+      "selected_background": "#f6392c",
+      "selected_text": "#ffd248",
+      "border": "#109b61"
+    },
+    "ps1_2": {
+      "search_background": "#df0024",
+      "search_text": "#000000",
+      "list_background": "#00ab9f",
+      "list_text": "#000000",
+      "selected_background": "#2e6db4",
+      "selected_text": "#f3c300",
+      "border": "#000000"
+    },
+    "mario": {
+      "search_background": "#005ca7",
+      "search_text": "#ffffff",
+      "list_background": "#e60012",
+      "list_text": "#ffffff",
+      "selected_background": "#a5371d",
+      "selected_text": "#ffffff",
+      "border": "#fff100"
+    },
+    "luigi": {
+      "search_background": "#274c92",
+      "search_text": "#ffffff",
+      "list_background": "#00a73b",
+      "list_text": "#ffffff",
+      "selected_background": "#8c4826",
+      "selected_text": "#ffffff",
+      "border": "#fff100"
+    }
+  }
+}

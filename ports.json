@@ -1,0 +1,1370 @@
+{
+  "ports": [
+    {
+      "name": "3D Pinball for Windows: Space Cadet (SpaceCadetPinball)",
+      "tags": [
+        "PC",
+        "Pinball",
+        "Singleplayer"
+      ],
+      "source": "https://github.com/k4zmu2a/SpaceCadetPinball",
+      "folder_name": "SpaceCadetPinball",
+      "instructions": "Required files: 3d-pinball-space-cadet_multi.zip (CRC32: 3DBD6B2C)\n\nMove the pinball.dat file to the port's root folder.",
+      "image_url": "https://cdn2.steamgriddb.com/grid/c06fea7bbaf463d21ae0cb8ca11a79f7.png",
+      "save_folder": null
+    },
+    {
+      "name": "Ace Combat 6: Fires of Liberation (AC6_recomp)",
+      "tags": [
+        "360",
+        "Simulation",
+        "Singleplayer",
+        "Multilingual"
+      ],
+      "source": "https://github.com/sal063/AC6_recomp",
+      "folder_name": "AC6_recomp",
+      "instructions": "Required files: Ace Combat 6 - Fires of Liberation (USA, Japan) (En,Fr,De,Es,It).iso (CRC32: 314CFB1B)\n\nLanguages: Multilingual.\n\nNothing to do, the port guides you.",
+      "image_url": "https://cdn2.steamgriddb.com/grid/4d3939e078927ce83662958dd1eb11f0.png",
+      "save_folder": null
+    },
+    {
+      "name": "Animal Crossing (ACGC-PC-Port)",
+      "tags": [
+        "GC",
+        "Simulation",
+        "Singleplayer"
+      ],
+      "source": "https://github.com/flyngmt/ACGC-PC-Port",
+      "folder_name": "ACGC-PC-Port",
+      "instructions": "Required files: Animal Crossing (USA).iso (CRC32: 7BE72542)\n\nLanguages: English.\n\nNothing to do, the port guides you.",
+      "image_url": "https://cdn2.steamgriddb.com/grid/d9e16849e6c8440f27574666b9e9735a.png",
+      "save_folder": "save"
+    },
+    {
+      "name": "Ape Escape (ApeEscapeRecomp)",
+      "tags": [
+        "Saru",
+        "PS1",
+        "Platformer",
+        "Singleplayer"
+      ],
+      "source": "https://github.com/mstan/ApeEscapeRecomp",
+      "folder_name": "ApeEscapeRecomp",
+      "instructions": "Required files: Ape Escape (USA).bin (CRC32: C6F455BC) + PSX - SCPH1001.BIN\n\nLanguages: English.\n\nNothing to do, the port guides you.",
+      "image_url": "https://cdn2.steamgriddb.com/grid/dce0cff3ad30897876b169eb066662dd.png",
+      "save_folder": "saves"
+    },
+    {
+      "name": "Automobili Lamborghini (automobililamborghini-recomp)",
+      "tags": [
+        "N64",
+        "Racing",
+        "Singleplayer"
+      ],
+      "source": "https://github.com/alondero/automobililamborghini-recomp",
+      "folder_name": "automobililamborghini-recomp",
+      "instructions": "Required files: Automobili Lamborghini (USA).z64 (CRC32: A4374EAC)\n\nPut the required file in the port folder.",
+      "image_url": "https://cdn2.steamgriddb.com/grid/1c7e02e71df12a6cdae7888b9785b38f.png",
+      "save_folder": "%LOCALAPPDATA%\\LamborghiniRecomp"
+    },
+    {
+      "name": "Banjo-Kazooie (BanjoRecomp)",
+      "tags": [
+        "N64",
+        "Platformer",
+        "Singleplayer",
+        "Multilingual"
+      ],
+      "source": "https://github.com/BanjoRecomp/BanjoRecomp",
+      "folder_name": "BanjoRecomp",
+      "instructions": "Required files: Banjo-Kazooie (USA).z64 (CRC32: AD429961)\n\nLanguages: Multilingual with mod.\n\nNothing to do, the port guides you.\nPortable saves : portable.txt in root folder.",
+      "mods_url": "https://thunderstore.io/c/banjo-recompiled/",
+      "image_url": "https://cdn2.steamgriddb.com/grid/a154a70f923c579313aa9c47ed7c34e2.png",
+      "save_folder": "%LOCALAPPDATA%\\BanjoRecompiled",
+      "save_folder2": "saves"
+    },
+    {
+      "name": "Banjo-Kazooie (Lighthouse)",
+      "tags": [
+        "N64",
+        "Platformer",
+        "Singleplayer",
+        "Multilingual"
+      ],
+      "source": "https://github.com/HarbourMasters/Lighthouse",
+      "folder_name": "Lighthouse",
+      "instructions": "Required files: Banjo-Kazooie (USA).z64 (CRC32: AD429961)\n\nLanguages: Multilingual with mod.\n\nNothing to do, the port guides you.",
+      "mods_url": "https://discord.com/invite/shipofharkinian",
+      "image_url": "https://cdn2.steamgriddb.com/grid/a154a70f923c579313aa9c47ed7c34e2.png",
+      "save_folder": "Save"
+    },
+    {
+      "name": "Banjo-Kazooie: Nuts & Bolts (reNut)",
+      "tags": [
+        "360",
+        "Platformer",
+        "Singleplayer",
+        "Multilingual"
+      ],
+      "source": "https://github.com/masterspike52/reNut",
+      "folder_name": "reNut",
+      "instructions": "Required files: Banjo-Kazooie - Nuts & Bolts (USA) (En,Ja,Fr,De,Es,It,Nl,Sv,No,Zh,Ko,Pl,Ru,Cs).iso (CRC32: 32FE9EF7)\n\nLanguages: Multilingual.\nUse extract-xiso.exe to extract the assets and place the files in the assets folder at the root of the port folder.",
+      "image_url": "https://cdn2.steamgriddb.com/grid/17faa600670ae46a32ff83f76e83806a.png",
+      "save_folder": "%USERPROFILE%\\Documents\\renut"
+    },
+    {
+      "name": "Bomberman 64 (BM64Recomp)",
+      "tags": [
+        "N64",
+        "Platformer",
+        "Multiplayer"
+      ],
+      "source": "https://github.com/RevoSucks/BM64Recomp",
+      "folder_name": "BM64Recomp",
+      "instructions": "Required files: Bomberman 64 (USA).z64 (CRC32: 3ED0E0DC)\n\nNothing to do, the port guides you.",
+      "image_url": "https://cdn2.steamgriddb.com/grid/c5b781ce025e8217c23f95f9569a0b96.png",
+      "save_folder": null
+    },
+    {
+      "name": "Bomberman Hero (BMHeroRecomp)",
+      "tags": [
+        "N64",
+        "Platformer",
+        "Singleplayer"
+      ],
+      "source": "https://github.com/RevoSucks/BMHeroRecomp",
+      "folder_name": "BMHeroRecomp",
+      "instructions": "Required files: Bomberman Hero (USA).z64 (CRC32: 2CC2E634)\n\nNothing to do, the port guides you.",
+      "image_url": "https://cdn2.steamgriddb.com/grid/c066a90d58918e9b6bd5073037966adc.png",
+      "save_folder": null
+    },
+    {
+      "name": "Castlevania: Legacy of Darkness (cvlod_recomp)",
+      "tags": [
+        "N64",
+        "Action-Adventure",
+        "Singleplayer"
+      ],
+      "source": "https://github.com/fliperama86/cvlod_recomp",
+      "folder_name": "cvlod_recomp",
+      "instructions": "Required files: Castlevania - Legacy of Darkness (USA).z64 (CRC32: AB13028C)\n\nNothing to do, the port guides you.",
+      "mods_url": "https://thunderstore.io/c/banjo-recompiled/",
+      "image_url": "https://cdn2.steamgriddb.com/grid/363ed890155b2eeda0aa492cc52e3d34.png",
+      "save_folder": "%APPDATA%\\LodRecomp"
+    },
+    {
+      "name": "Castlevania: Symphony of the Night (NocturneRecomp)",
+      "tags": [
+        "360",
+        "Metroidvania",
+        "Singleplayer",
+        "Multilingual"
+      ],
+      "source": "https://github.com/birabittoh/NocturneRecomp",
+      "folder_name": "NocturneRecomp",
+      "instructions": "Required files: 9F2DAA064D494AA82B43B65362C59E9B89A88F8F58 (CRC32: CBC68CD8)\n\nLanguages: Multilingual, edit the nocturnerecomp.toml file at the line user_language : 1 = english, 2 = japanese, 3 = german, 4 = french, 5 = spanish, 6 = italian.\nUse Goopie or Python to extract the assets and place the files in the assets folder at the root of the port folder.",
+      "image_url": "https://cdn2.steamgriddb.com/grid/14c31b2ebc49eaf271d65ff4522eae4e.png",
+      "save_folder": "%USERPROFILE%\\Documents\\nocturnerecomp"
+    },
+    {
+      "name": "Castlevania: Symphony of the Night (SymphonyRecomp)",
+      "tags": [
+        "PS1",
+        "Metroidvania",
+        "Singleplayer"
+      ],
+      "source": "https://github.com/BlackLabelHQ/SymphonyRecomp",
+      "folder_name": "SymphonyRecomp",
+      "instructions": "Required files: Castlevania - Symphony of the Night (USA) (Track 1/2).bin/.cue (CRC32: 05BE47B2/70EFB5C6/8B07C1CC)\n\nThe .bin and .cue files must be in the same folder; provide the .cue file to the port.",
+      "image_url": "https://cdn2.steamgriddb.com/grid/14c31b2ebc49eaf271d65ff4522eae4e.png",
+      "save_folder": null
+    },
+    {
+      "name": "Chameleon Twist (ChameleonTwist1-JP-Recomp)",
+      "tags": [
+        "N64",
+        "Platformer",
+        "Singleplayer"
+      ],
+      "source": "https://github.com/Rainchus/ChameleonTwist1-JP-Recomp",
+      "folder_name": "ChameleonTwist1-JP-Recomp",
+      "instructions": "Required files: Chameleon Twist (Japan).z64 (CRC32: 6395C475)\n\nNothing to do, the port guides you.",
+      "image_url": "https://cdn2.steamgriddb.com/grid/78ec3e9ba98d856873f1bdb01194eef9.png",
+      "save_folder": "%LOCALAPPDATA%\\ChameleonTwistRecompiled"
+    },
+    {
+      "name": "Condemned 2: Bloodshot (Condemned2Recomp)",
+      "tags": [
+        "360",
+        "Survival Horror",
+        "Singleplayer",
+        "Multilingual"
+      ],
+      "source": "https://github.com/psxrestore/Condemned2Recomp",
+      "folder_name": "Condemned2Recomp",
+      "instructions": "Required files: Condemned 2 - Bloodshot (USA, Europe) (En,Fr,Es,It).iso (CRC32: 68F0A111)\n\nUse extract-xiso.exe to extract the assets and place the files in the assets folder at the root of the port folder.",
+      "image_url": "https://cdn2.steamgriddb.com/grid/2ac8f1d97ea8fe3c911b0f0395312583.png",
+      "save_folder": null
+    },
+    {
+      "-name": "Conker's Bad Fur Day (ConkerRecomp)",
+      "tags": [
+        "N64",
+        "Platformer",
+        "Singleplayer"
+      ],
+      "source": "https://github.com/ConkerRecomp/ConkerRecomp",
+      "folder_name": "ConkerRecomp",
+      "instructions": "Required files: Conker's Bad Fur Day (USA).z64 (CRC32: CE8CC172).",
+      "image_url": "https://cdn2.steamgriddb.com/grid/29badebfcb56e531b4e38f81fff9dd20.png",
+      "save_folder": null
+    },
+    {
+      "name": "Crash Bandicoot (CrashBandicoot-Launcher)",
+      "tags": [
+        "PS1",
+        "Platformer",
+        "Singleplayer"
+      ],
+      "source": "https://github.com/Matteo842/CrashBandicoot-Launcher",
+      "folder_name": "CrashBandicoot-Launcher",
+      "instructions": "Required files: Crash Bandicoot (USA).bin/cue (CRC32: 41B5F211/7420271E)\n\nLanguages: English\n\nNothing to do, the port guides you.",
+      "image_url": "https://cdn2.steamgriddb.com/grid/8282b546dda9ec05515966ba0fe3e5d1.png",
+      "save_folder": null
+    },
+    {
+      "name": "Crash Team Racing (ctr-native)",
+      "tags": [
+        "PS1",
+        "Racing",
+        "Multiplayer"
+      ],
+      "source": "https://github.com/CTR-tools/ctr-native",
+      "folder_name": "ctr-native",
+      "instructions": "Required files: CTR - Crash Team Racing (USA).bin (CRC32: 9A742438)\n\nLanguages: English.\nPlace the .bin file in the assets folder at the root of the port folder.",
+      "mods_url": "https://github.com/CTR-tools/CTR-ModSDK",
+      "image_url": "https://cdn2.steamgriddb.com/grid/9ab753f52cc2010c347f05159edb9bd6.png"
+    },
+    {
+      "name": "Deadly Premonition (DPRecomp)",
+      "tags": [
+        "360",
+        "Survival Horror",
+        "Singleplayer",
+        "Multilingual"
+      ],
+      "source": "https://github.com/LittleBitUA/DPRecomp",
+      "folder_name": "DPRecomp",
+      "instructions": "Required files: Deadly Premonition (Europe) (En,Fr,De,Es,It).iso (CRC32: 7F7CCA9B)\nUse extract-xiso.exe to extract the assets and place the files in the assets folder at the root of the port folder.",
+      "image_url": "https://cdn2.steamgriddb.com/grid/cd25d94f494c9aad155c867922594c01.png",
+      "save_folder": "%USERPROFILE%\\Documents\\deadlyprem"
+    },
+    {
+      "name": "Diddy Kong Racing (DKR-R)",
+      "tags": [
+        "N64",
+        "Racing",
+        "Multiplayer",
+        "Multilingual"
+      ],
+      "source": "https://github.com/ThatGuyMcd/DKR-R",
+      "folder_name": "DKR-R",
+      "instructions": "Required files: Diddy Kong Racing (USA) (En,Fr)/(En,Fr,De) (Rev 1).z64 (CRC32: 5ACCA298/B1E87639)\n\nLanguages: English, French, German.\n\nNothing to do, the port guides you.",
+      "image_url": "https://cdn2.steamgriddb.com/grid/4c38b84197c2e1a8444814d95c2487a8.png",
+      "save_folder": "%APPDATA%\\DKRPort"
+    },
+    {
+      "name": "Diddy Kong Racing (goldenballoon)",
+      "tags": [
+        "N64",
+        "Racing",
+        "Multiplayer",
+        "Multilingual"
+      ],
+      "source": "https://github.com/akratch/goldenballoon",
+      "folder_name": "goldenballoon",
+      "instructions": "Required files: Diddy Kong Racing (USA) (En,Fr)/(En,Fr,De) (Rev 1).z64 (CRC32: 5ACCA298/B1E87639)\n\nLanguages: English, French, German.\n\nNothing to do, the port guides you.",
+      "image_url": "https://cdn2.steamgriddb.com/grid/4c38b84197c2e1a8444814d95c2487a8.png",
+      "save_folder": "save"
+    },
+    {
+      "name": "Dinosaur Planet (dino-recomp)",
+      "tags": [
+        "Star Fox",
+        "N64",
+        "Action-Adventure",
+        "Singleplayer"
+      ],
+      "source": "https://github.com/DinosaurPlanetRecomp/dino-recomp",
+      "folder_name": "dino-recomp",
+      "instructions": "Required files: Dinosaur Planet (USA) (Proto) (2000-12-01).z64 (CRC32: A7DAF9FA)\n\nNothing to do, the port guides you.",
+      "image_url": "https://cdn2.steamgriddb.com/grid/e4f7712cfef7c64d0efabc244b2dad74.jpg",
+      "save_folder": "%LOCALAPPDATA%\\DinoPlanetRecompiled"
+    },
+    {
+      "name": "DoDonPachi SaiDaiOuJou (SDOJ-Recomp)",
+      "tags": [
+        "360",
+        "SHMUP",
+        "Danmaku",
+        "Multiplayer"
+      ],
+      "source": "https://github.com/eandis/SDOJ-Recomp",
+      "folder_name": "SDOJ-Recomp",
+      "instructions": "Required files: DoDonPachi Saidaioujou (Japan).iso + Title Update 1.01 from microsoft_xbox360_title-updates (CRC32: B1B392D3/6D68D98D)\n\nPut the two required files in the port folder and run launch.bat. You can delete the required files after the first start of the game. Use launch.bat to start the game.",
+      "image_url": "https://cdn2.steamgriddb.com/grid/5bde181ef9b6510a35508dc44a31c920.png",
+      "save_folder": null
+    },
+    {
+      "-name": "Donkey Kong 64 (dk64)",
+      "tags": [
+        "N64",
+        "DK",
+        "Platformer",
+        "Singleplayer"
+      ],
+      "source": "https://gitlab.com/dk64_decomp/dk64",
+      "folder_name": "dk64",
+      "instructions": "Required files: Donkey Kong 64 (USA).z64 (CRC32: D44B4FC6)",
+      "image_url": "https://cdn2.steamgriddb.com/grid/86f7d456aa5848c284f7940bdecdef5d.png",
+      "save_folder": null
+    },
+    {
+      "name": "Doom (uzdoom)",
+      "tags": [
+        "PC",
+        "FPS",
+        "Singleplayer"
+      ],
+      "source": "https://github.com/UZDoom/uzdoom",
+      "folder_name": "uzdoom",
+      "instructions": "Required files: Doom/2.wad (CRC32: BF0EAAC0/EC8725DB)\n\nPut the two required files in the port folder.",
+      "mods_url": "https://www.moddb.com/games/doom",
+      "image_url": "https://cdn2.steamgriddb.com/grid/ef58f7ffe086514aa0164c7fc4f6cea8.png",
+      "save_folder": "%USERPROFILE%\\Documents\\My Games\\UZDoom"
+    },
+    {
+      "name": "Dr. Mario 64 (drmario64_recomp_plus)",
+      "tags": [
+        "N64",
+        "Puzzle",
+        "Multiplayer"
+      ],
+      "source": "https://github.com/theboy181/drmario64_recomp_plus",
+      "folder_name": "drmario64_recomp_plus",
+      "instructions": "Required files: Dr. Mario 64 (USA).z64 (CRC32: A4701927)\n\nNothing to do, the port guides you.",
+      "image_url": "https://cdn2.steamgriddb.com/grid/55b8547448d21dd203768b4873194667.png",
+      "save_folder": "%LOCALAPPDATA%\\drmario64_recomp"
+    },
+    {
+      "name": "Dragon Ball Z: Budokai (DBZ1)",
+      "tags": [
+        "360",
+        "Fighting",
+        "Multiplayer"
+      ],
+      "source": "https://github.com/WistfulHopes/DBZ1",
+      "folder_name": "DBZ1",
+      "instructions": "Required files: Dragon Ball Z - Budokai HD Collection (USA).iso (CRC32: 63DEBD61) for Xbox 360\n\nUse extract-xiso.exe to extract the contents of the ISO.\nInside the newly created folder, rename the DBZ1 folder to assets.\nMove the assets folder to the root of the port folder.\nInside the assets folder, rename yae1_xenon.xex to default.xex.\n\nLanguages: English.",
+      "image_url": "https://cdn2.steamgriddb.com/grid/fc5d2ffcd6a10b1863e56d5ec5859bab.png",
+      "save_folder": null
+    },
+    {
+      "name": "Driver 2 (REDRIVER2)",
+      "tags": [
+        "PS1",
+        "Racing",
+        "Multiplayer",
+        "Multilingual"
+      ],
+      "source": "https://github.com/OpenDriver2/REDRIVER2",
+      "folder_name": "REDRIVER2",
+      "instructions": "Required files: Driver 2 (USA) (Disc 1) (Rev 1).bin (CRC32: ADA7217B)\n\nLanguages: Multilingual.\nOpen the port folder, run Launcher.exe, and enter the path to the ISO in the Configure section. In the install folder, there is a .bat script that can extract and convert videos from other versions of the game to retrieve the voiceover language.",
+      "image_url": "https://cdn2.steamgriddb.com/grid/eb101d7eef150524b3cd895d08e4f673.png",
+      "save_folder": "%USERPROFILE%\\.driver2"
+    },
+    {
+      "name": "Duck Game (DuckGameRebuilt)",
+      "tags": [
+        "PC",
+        "Shooter",
+        "Multiplayer"
+      ],
+      "source": "https://github.com/TheFlyingFoool/DuckGameRebuilt",
+      "folder_name": "DuckGameRebuilt",
+      "instructions": "Nothing to do, the port guides you.",
+      "image_url": "https://cdn2.steamgriddb.com/grid/3b589ac96f1627eab36fe02d9bec41ce.png",
+      "save_folder": "%APPDATA%\\DuckGame"
+    },
+    {
+      "name": "Duke Nukem: Zero Hour (dnzh-overclocked)",
+      "tags": [
+        "N64",
+        "FPS",
+        "Multiplayer"
+      ],
+      "source": {
+        "windows": "https://dnzh-overclocked.com/assets/files/dnzh-windows-x64-full-1.0.0.zip",
+        "linux": "https://dnzh-overclocked.com/assets/files/dnzh-linux-x64-full-1.0.1.zip"
+      },
+      "website": "https://dnzh-overclocked.com/",
+      "folder_name": "dnzh-overclocked",
+      "executable": {
+        "windows": "DNZHRecompiled.exe",
+        "linux": "DNZHRecompiled"
+      },
+      "instructions": "Required files: Duke Nukem - Zero Hour (USA).z64 (CRC32: 9A3258D7)\n\nNothing to do, the port guides you.\nCheck for updates manually at https://dnzh-overclocked.com/\nPortable saves : portable.txt in root folder.",
+      "image_url": "https://cdn2.steamgriddb.com/grid/867b40a424378bfa56d7800e23f93070.png",
+      "save_folder": {
+        "windows": "%LOCALAPPDATA%\\DNZHRecompiled",
+        "linux": null
+      },
+      "save_folder2": {
+        "windows": "overclocked\\saves",
+        "linux": null
+      }
+    },
+    {
+      "name": "Eternal Sonata (EternalSonataReprise)",
+      "tags": [
+        "Trusty Bell",
+        "360",
+        "RPG",
+        "Singleplayer",
+        "Multilingual"
+      ],
+      "source": "https://github.com/birabittoh/EternalSonataReprise",
+      "folder_name": "EternalSonataReprise",
+      "instructions": "Required files: Eternal Sonata (Europe) (En,Fr,De,Es,It).iso (CRC32: 2CEC7D69)\n\nLanguages: Multilingual.\n\nNothing to do, the port guides you.\nManual Installation: Use extract-xiso.exe to extract the assets and place the files in the assets folder at the root of the port folder.",
+      "image_url": "https://cdn2.steamgriddb.com/grid/8eebd21cc10fece20a43e9b1cc05e4a9.jpg",
+      "save_folder": "%USERPROFILE%\\Documents\\eternalsonata"
+    },
+    {
+      "name": "F-Zero X (G-Diffuser)",
+      "tags": [
+        "N64",
+        "Racing",
+        "Multiplayer"
+      ],
+      "source": "https://github.com/Zorkats/G-Diffuser",
+      "folder_name": "G-Diffuser",
+      "instructions": "Required files: F-Zero X (USA)/[BIOS] Nintendo 64DD IPL (Japan) (v1.2).z64/NUD-EFZE-USA_2.ndd (CRC32: 0B561FBA/7F933CE2/EBDFBD2B)\n\nLanguages: English\n\nNothing to do, the port guides you.",
+      "image_url": "https://cdn2.steamgriddb.com/grid/652e2fd3b2fa943f2b4ff310e419d7f2.png",
+      "save_folder": "saves"
+    },
+    {
+      "-name": "Fatal Frame (MikuPan)",
+      "tags": [
+        "Project Zero",
+        "PS2",
+        "Survival Horror",
+        "Singleplayer",
+        "Multilingual"
+      ],
+      "source": "https://github.com/Mikompilation/MikuPan",
+      "folder_name": "MikuPan",
+      "instructions": "Required files: NTSC-U and PAL/EU\n\nLanguages: Multilingual.\nYou need to copy the files IMG_HD.BIN and IMG_BD.BIN from the matching Fatal Frame ISO to the folder containing the MikuPan executable.",
+      "image_url": "https://cdn2.steamgriddb.com/grid/830c8e7e327466f868edbc4d3071118e.png",
+      "save_folder": null
+    },
+    {
+      "name": "Goemon's Great Adventure (Goemon64Recomp)",
+      "tags": [
+        "N64",
+        "Platformer",
+        "Singleplayer"
+      ],
+      "source": "https://github.com/klorfmorf/Goemon64Recomp",
+      "folder_name": "Goemon64Recomp",
+      "instructions": "Required files: Goemon's Great Adventure (USA).z64 (CRC32: 52D418E1)\n\nNothing to do, the port guides you.",
+      "mods_url": "https://gamebanana.com/games/24290",
+      "image_url": "https://cdn2.steamgriddb.com/grid/7363d3772d8fa8d638fedddde16e4437.png"
+    },
+    {
+      "name": "GoldenEye 007 (GoldenEye-Recomp)",
+      "tags": [
+        "N64",
+        "FPS",
+        "Multiplayer"
+      ],
+      "source": "https://github.com/SunJaycy/GoldenEye-Recomp",
+      "folder_name": "GoldenEye-Recomp",
+      "instructions": "Required files: 30BA92710985645EF623D4A6BA9E8EFFAEC62617 (CRC32: 2DFBEE46)\n\nUse Python to extract the assets and place the files in the assets folder at the root of the port folder.",
+      "image_url": "https://cdn2.steamgriddb.com/grid/8b984267df4e0dd976e818f727e19e94.png",
+      "save_folder": "%USERPROFILE%\\Documents\\ge"
+    },
+    {
+      "-name": "Grand Theft Auto: Vice City Stories (PSPRecomp_vcs)",
+      "tags": [
+        "GTA",
+        "PSP",
+        "Action-Adventure",
+        "Singleplayer"
+      ],
+      "source": "https://github.com/jessicanataliagta/PSPRecomp/tree/main/profiles/vcs",
+      "folder_name": "PSPRecomp_vcs",
+      "instructions": "Required files: Vice City\n\nNothing to do, the port guides you.",
+      "image_url": "https://cdn2.steamgriddb.com/grid/c8aa48a3667e7a29486f3f978b0e0279.png",
+      "save_folder": null
+    },
+    {
+      "name": "Harvest Moon 64 (HarvestMoon64Recomp)",
+      "tags": [
+        "HM",
+        "N64",
+        "Simulation",
+        "Singleplayer"
+      ],
+      "source": "https://github.com/HarvestMoon64Recomp/HarvestMoon64Recomp",
+      "folder_name": "HarvestMoon64Recomp",
+      "instructions": "Required files: Harvest Moon 64 (USA).z64 (CRC32: DECDC0AD)\n\nNothing to do, the port guides you.",
+      "image_url": "https://cdn2.steamgriddb.com/grid/cab8fb3904dfe2e30a8579bc38e74ada.png",
+      "save_folder": "%LOCALAPPDATA%\\HarvestMoon64Recompiled"
+    },
+    {
+      "name": "Ikemen GO",
+      "tags": [
+        "PC",
+        "Mugen",
+        "Fighting",
+        "Multiplayer"
+      ],
+      "source": "https://github.com/ikemen-engine/Ikemen-GO/",
+      "folder_name": "Ikemen-GO",
+      "instructions": "https://ikemen-engine.github.io/\nhttps://discord.com/invite/QWxxwjE",
+      "mods_url": "https://google.com/search?q=Ikemen%20GO%20mods",
+      "image_url": "https://cdn2.steamgriddb.com/grid/b3044296f44c3e1e9f8a4f6b53c1c3cb.jpg",
+      "save_folder": "save"
+    },
+    {
+      "name": "Infinite Mario 64 Ever (infinite-mario-64-ever)",
+      "tags": [
+        "N64",
+        "Platformer",
+        "Singleplayer"
+      ],
+      "source": "https://github.com/Brawmario/infinite-mario-64-ever",
+      "folder_name": "infinite-mario-64-ever",
+      "instructions": "Required files: Super Mario 64 (USA).z64 (CRC32: 3CE60709)\n\nNothing to do, the port guides you.",
+      "image_url": "https://cdn2.steamgriddb.com/grid/2af7ac10b0b96eb5757defbb65e21b99.png",
+      "save_folder": "%APPDATA%\\Godot"
+    },
+    {
+      "name": "Jak and Daxter / Jak II / Jak 3 (jak-project)",
+      "tags": [
+        "PS2",
+        "Platformer",
+        "Singleplayer",
+        "Multilingual"
+      ],
+      "source": "https://github.com/open-goal/jak-project",
+      "folder_name": "jak-project",
+      "instructions": "Required files: Jak and Daxter / Jak II / Jak 3 USA\nLanguages: Multilingual.\n\nDownload OpenGOAL_Launcher.bat here: https://github.com/Nyaldee/Ports-Launcher/tree/main/misc\nPlace the .bat file in the assets folder at the root of the port folder, then start it.",
+      "image_url": "https://cdn2.steamgriddb.com/grid/ad7bd21ea211a539896e40e449cdfd14.png",
+      "save_folder": "%APPDATA%\\OpenGOAL"
+    },
+    {
+      "name": "Kirby's Return to Dream Land (ModernGekko)",
+      "tags": [
+        "Wii",
+        "Platformer",
+        "Co-op",
+        "Multilingual"
+      ],
+      "source": "https://github.com/ExpansionPak/ModernGekko",
+      "folder_name": "ModernGekko",
+      "instructions": "Languages: Multilingual.\n\nNothing to do, the port guides you.",
+      "image_url": "https://cdn2.steamgriddb.com/grid/4a71f15b68d8a684643e2d899020ac2a.png",
+      "save_folder": null
+    },
+    {
+      "name": "Luanti",
+      "tags": [
+        "PC",
+        "Minecraft",
+        "Multiplayer"
+      ],
+      "source": "https://github.com/luanti-org/luanti",
+      "folder_name": "luanti",
+      "instructions": "https://luanti.org/",
+      "mods_url": "https://content.luanti.org/packages/?type=mod",
+      "image_url": "https://cdn2.steamgriddb.com/grid/88612c6b1238c067e266c39ad5e09668.jpg",
+      "save_folder": "worlds"
+    },
+    {
+      "name": "Marble Blast Gold (OpenMBG)",
+      "tags": [
+        "PC",
+        "Platformer",
+        "Multiplayer"
+      ],
+      "source": "https://github.com/The-New-Platinum-Team/OpenMBG",
+      "folder_name": "OpenMBG",
+      "instructions": "Nothing to do, the port guides you.",
+      "image_url": "https://cdn2.steamgriddb.com/grid/f810cd5fce2258332616ad1d501f1029.png",
+      "save_folder": null
+    },
+    {
+      "name": "Marble Blast Ultra (OpenMBU)",
+      "tags": [
+        "360",
+        "Platformer",
+        "Multiplayer"
+      ],
+      "source": "https://github.com/MBU-Team/OpenMBU",
+      "folder_name": "OpenMBU",
+      "instructions": "Nothing to do, the port guides you.",
+      "image_url": "https://cdn2.steamgriddb.com/grid/6a14ada8ce6fbfebedc2154db173d2f7.png"
+    },
+    {
+      "-name": "Mario Party 4 (marioparty4)",
+      "tags": [
+        "GC",
+        "Party",
+        "Multiplayer"
+      ],
+      "source": "https://github.com/mariopartyrd/marioparty4",
+      "folder_name": "marioparty4",
+      "instructions": "Nothing to do, the port guides you.",
+      "image_url": "https://cdn2.steamgriddb.com/grid/34ee49ced5744eeb86d6e8e9661634aa.png",
+      "save_folder": null
+    },
+    {
+      "name": "Mega Man 64 (MegaMan64Recompiled)",
+      "tags": [
+        "N64",
+        "Action-Adventure",
+        "Singleplayer"
+      ],
+      "source": "https://github.com/MegaMan64Recomp/MegaMan64Recompiled",
+      "folder_name": "MegaMan64Recompiled",
+      "instructions": "Required files: Mega Man 64 (USA).z64 (CRC32: 1BFC71F0)\n\nNothing to do, the port guides you.",
+      "image_url": "https://cdn2.steamgriddb.com/grid/922fe63760ee36d06e26a0d6776974b0.png",
+      "save_folder": null
+    },
+    {
+      "name": "Mega Man X (MegaManXSNESRecomp)",
+      "tags": [
+        "SNES",
+        "Platformer",
+        "Singleplayer"
+      ],
+      "source": "https://github.com/mstan/MegaManXSNESRecomp",
+      "folder_name": "MegaManXSNESRecomp",
+      "instructions": "Required files: Mega Man X (USA) (Rev 1).sfc (CRC32: DED53C64)\n\nNothing to do, the port guides you.",
+      "image_url": "https://cdn2.steamgriddb.com/grid/3f92b9e6169016db21873da9cd07b0c8.png",
+      "save_folder": "saves"
+    },
+    {
+      "name": "Mega Man X4 (MegaManX4Recomp)",
+      "tags": [
+        "PS1",
+        "Platformer",
+        "Singleplayer"
+      ],
+      "source": "https://github.com/mstan/MegaManX4Recomp",
+      "folder_name": "MegaManX4Recomp",
+      "instructions": "Required files: Mega Man X4 (USA).bin (CRC32: 84774766) + PSX - SCPH1001.BIN\n\nNothing to do, the port guides you.",
+      "image_url": "https://cdn2.steamgriddb.com/grid/1a8e3803ba73d4c2d88022c00c79cef7.png",
+      "save_folder": "saves"
+    },
+    {
+      "name": "Mega Man X6 (MegaManX6Recomp)",
+      "tags": [
+        "PS1",
+        "Platformer",
+        "Singleplayer"
+      ],
+      "source": "https://github.com/mstan/MegaManX6Recomp",
+      "folder_name": "MegaManX6Recomp",
+      "instructions": "Required files: Mega Man X6 (USA).bin (CRC32: 031BE0E9) + PSX - SCPH1001.BIN\n\nNothing to do, the port guides you.",
+      "image_url": "https://cdn2.steamgriddb.com/grid/34f96fc507d7e51695026346e0393eae.jpg",
+      "save_folder": "saves"
+    },
+    {
+      "name": "Metroid Prime Hunters (MetroidPrimeHuntersRecomp)",
+      "tags": [
+        "DS",
+        "Platformer",
+        "Singleplayer"
+      ],
+      "source": "https://github.com/mstan/MetroidPrimeHuntersRecomp",
+      "folder_name": "MetroidPrimeHuntersRecomp",
+      "instructions": "Required files: Metroid Prime - Hunters (USA, Australia).nds (CRC32: 7FE4554A)\n\nLanguages: English.\n\nNothing to do, the port guides you.",
+      "image_url": "https://cdn2.steamgriddb.com/grid/5df556f9abb947b5d17d3d67a67029e3.png",
+      "save_folder": "%APPDATA%\\MetroidPrimeHuntersRecomp"
+    },
+    {
+      "name": "Mischief Makers (trouble-makers-pc-recomp)",
+      "tags": [
+        "Trouble Makers",
+        "N64",
+        "Platformer",
+        "Singleplayer"
+      ],
+      "source": "https://github.com/ThiagoLira/trouble-makers-pc-recomp",
+      "folder_name": "trouble-makers-pc-recomp",
+      "instructions": "Required files: Mischief Makers (USA) (Rev 1).z64 (CRC32: C3300CEF)\n\nLanguages: English.\n\nNothing to do, the port guides you.",
+      "image_url": "https://cdn2.steamgriddb.com/grid/9f393794277e9179468aad98ce4eb57f.png",
+      "save_folder": "%LOCALAPPDATA%\\troublemakers-recomp"
+    },
+    {
+      "name": "osu!",
+      "tags": [
+        "PC",
+        "Rhythm",
+        "Singleplayer",
+        "Multiplayer"
+      ],
+      "source": "https://github.com/ppy/osu",
+      "folder_name": "osu",
+      "instructions": "https://osu.ppy.sh/\nhttps://discord.com/invite/osu",
+      "mods_url": "https://osu.ppy.sh/beatmapsets",
+      "image_url": "https://cdn2.steamgriddb.com/grid/79bd2e9fd8400fb610d59e4f0e1019f3.png",
+      "save_folder": "%APPDATA%\\osu",
+      "exe_is_archive": true,
+      "preferred_asset": {
+        "windows": ".exe",
+        "linux": ".AppImage"
+      }
+    },
+    {
+      "name": "OutRun (cannonball)",
+      "tags": [
+        "Arcade",
+        "Racing",
+        "Singleplayer"
+      ],
+      "source": "https://github.com/djyt/cannonball",
+      "folder_name": "cannonball",
+      "instructions": "Required files: outrun.zip (CRC32: 87CC12C6)\n\nUnzip the outrun.zip files into the port's roms folder.",
+      "image_url": "https://cdn2.steamgriddb.com/grid/6c13d0dc13c70776478a77704df67b28.png",
+      "save_folder": null
+    },
+    {
+      "name": "Paper Mario (Paper-Mario-ReCut)",
+      "tags": [
+        "N64",
+        "RPG",
+        "Singleplayer"
+      ],
+      "source": "https://github.com/SMCGames/Paper-Mario-ReCut",
+      "folder_name": "Paper-Mario-ReCut",
+      "instructions": "Required files: Paper Mario (USA).z64 (CRC32: A7F5CD7E)\n\nLanguages: English.\n\nNothing to do, the port guides you.",
+      "image_url": "https://cdn2.steamgriddb.com/grid/f98e8082f2b3924b8a137d1cfc12e08b.png",
+      "save_folder": "user"
+    },
+    {
+      "name": "Perfect Dark (perfect_dark)",
+      "tags": [
+        "N64",
+        "FPS",
+        "Multiplayer",
+        "Multilingual"
+      ],
+      "source": "https://github.com/perfect-dark-pc-port/perfect_dark",
+      "folder_name": "perfect_dark",
+      "instructions": "Required files: Perfect Dark (USA)/(Japan)/(Europe) (En,Fr,De,Es,It).z64 (CRC32: 68446AD4/639C0DA9/7718A714)\n\nLanguages: Multilingual.\n\nNothing to do, the port guides you.",
+      "image_url": "https://cdn2.steamgriddb.com/grid/f2eaa301f9c53bb10fb8e5b9d3d0ea9c.png",
+      "save_folder": "%APPDATA%\\perfectdark"
+    },
+    {
+      "-name": "Pilotwings 64 (Pilotwings64Recomp)",
+      "tags": [
+        "N64",
+        "Simulation",
+        "Singleplayer"
+      ],
+      "source": "https://github.com/gcsmith/Pilotwings64Recomp",
+      "folder_name": "Pilotwings64Recomp",
+      "instructions": "Required files: Pilotwings 64 (USA).z64 (CRC32: 728807E7)\n\nNothing to do, the port guides you.",
+      "image_url": "https://cdn2.steamgriddb.com/grid/b349a212c3e61e124ae04244eecde663.png",
+      "save_folder": null
+    },
+    {
+      "-name": "Pikmin (pikmin)",
+      "tags": [
+        "GC",
+        "Strategy",
+        "Singleplayer"
+      ],
+      "source": "https://github.com/projectPiki/pikmin",
+      "folder_name": "pikmin",
+      "instructions": "Required files: USA or EU\n\nNothing to do, the port guides you.",
+      "image_url": "https://cdn2.steamgriddb.com/grid/fbb12b97a88a081cf8528b62df955103.png",
+      "save_folder": null
+    },
+    {
+      "-name": "Pikmin 2 (pikmin2)",
+      "tags": [
+        "GC",
+        "Strategy",
+        "Singleplayer"
+      ],
+      "source": "https://github.com/projectPiki/pikmin2",
+      "folder_name": "pikmin2",
+      "instructions": "Required files: USA or EU\n\nNothing to do, the port guides you.",
+      "image_url": "https://cdn2.steamgriddb.com/grid/85f5d7b15ca87ecbd27c3d17b9578a55.png",
+      "save_folder": null
+    },
+    {
+      "name": "Pokémon Gen 1 (pokemon-gen1-recomp-project)",
+      "tags": [
+        "GB",
+        "RPG",
+        "Singleplayer",
+        "Multilingual"
+      ],
+      "source": "https://github.com/bryanthaboi/pokemon-gen1-recomp-project",
+      "folder_name": "pokemon-gen1-recomp-project",
+      "instructions": "Required files:\nPokemon - Red/Blue Version (USA, Europe) (SGB Enhanced).gb (CRC32: 9F7FDD53/D6DA8A1A), Pokemon - Yellow Version - Special Pikachu Edition (USA, Europe) (CGB+SGB Enhanced).gb (CRC32: 7D527D62), Pokemon - Silver/Gold Version (USA, Europe) (SGB Enhanced) (GB Compatible).gbc (CRC32: 8AD48636/6BDE3C3E)\n\nLanguages: Multilingual with mod.\n\nNothing to do, the port guides you.",
+      "image_url": "https://cdn2.steamgriddb.com/grid/4d53e7e87772a51972bc942a99de63c9.png",
+      "save_folder": "%APPDATA%\\pokemon-love2d"
+    },
+    {
+      "-name": "Pokémon Platinum (pokeplatinum)",
+      "tags": [
+        "DS",
+        "RPG",
+        "Singleplayer"
+      ],
+      "source": "https://github.com/pret/pokeplatinum",
+      "folder_name": "pokeplatinum",
+      "instructions": "Required files: Pokemon - Platinum Version (USA).nds (CRC32: 9253921D)\n\nLanguages: English.\n\nNothing to do, the port guides you.",
+      "image_url": "https://cdn2.steamgriddb.com/grid/293d4b3062d071218312a5eb322a3a47.png",
+      "save_folder": null
+    },
+    {
+      "name": "Pokémon Stadium (PokemonStadiumRecomp)",
+      "tags": [
+        "N64",
+        "Strategy",
+        "Multiplayer"
+      ],
+      "source": "https://github.com/mstan/PokemonStadiumRecomp",
+      "folder_name": "PokemonStadiumRecomp",
+      "instructions": "Required files: Pokemon Stadium (USA).z64 (CRC32: 72F66F05)\n\nLanguages: English.\n\nNothing to do, the port guides you.",
+      "image_url": "https://cdn2.steamgriddb.com/grid/a53188698d5edf6d2bbe471f7ec7ce5b.png",
+      "save_folder": "saves"
+    },
+    {
+      "-name": "Project Gotham Racing 4 (PGR4-Recomp)",
+      "tags": [
+        "360",
+        "Racing",
+        "Multiplayer"
+      ],
+      "source": "https://github.com/beatrixzy/PGR4-Recomp",
+      "folder_name": "PGR4-Recomp",
+      "instructions": "Required files: Project Gotham Racing 4 (World) (En,Ja,Fr,De,Es,It,Zh,Ko,Pl,Ru,Cs,Hu).iso (CRC32: 8DED8ED7)\n\nLanguages: Multilingual.\n\nUse extract-xiso.exe to extract the assets and place the files in the assets folder at the root of the port folder. Edit run.bat: --game_data_root \"assets\"",
+      "image_url": "https://cdn2.steamgriddb.com/grid/90e6b40f3728f30b437e6b71ccda6d0b.png",
+      "save_folder": "%USERPROFILE%\\Documents\\pgr4_recomp"
+    },
+    {
+      "name": "Quest 64 (Quest64-Recomp)",
+      "tags": [
+        "N64",
+        "RPG",
+        "Singleplayer"
+      ],
+      "source": "https://github.com/Rainchus/Quest64-Recomp",
+      "folder_name": "Quest64-Recomp",
+      "instructions": "Required files: Quest 64 (USA).z64 (CRC32: D75B45C6)\n\nNothing to do, the port guides you.",
+      "image_url": "https://cdn2.steamgriddb.com/grid/59e6bb2bb03821bb51050ea6d0a23bb8.png",
+      "save_folder": null
+    },
+    {
+      "name": "Re-Volt (RVGL Launcher/Re-Volt)",
+      "tags": [
+        "PC",
+        "Racing",
+        "Multiplayer"
+      ],
+      "source": {
+        "windows": "https://rvgl.org/downloads/rvgl_launcher_win64.zip",
+        "linux": "https://rvgl.org/downloads/rvgl_launcher_linux.zip"
+      },
+      "website": "https://re-volt.gitlab.io/",
+      "folder_name": "Re-Volt",
+      "instructions": "Nothing to do, the port guides you.",
+      "image_url": "https://cdn2.steamgriddb.com/grid/fb28d8ab066e9745db1b24d392a6d38a.png",
+      "save_folder": null
+    },
+    {
+      "name": "Ridge Racer (rage-racer-pc)",
+      "tags": [
+        "PS1",
+        "Racing",
+        "Singleplayer"
+      ],
+      "source": "https://github.com/khasinski/rage-racer-pc",
+      "folder_name": "rage-racer-pc",
+      "instructions": "Required files: Ridge Racer (Europe).bin/cue\n\nNothing to do, the port guides you.",
+      "image_url": "https://cdn2.steamgriddb.com/grid/7fccaf0a51b9cbbcbcca2a4e5cefe7c8.png",
+      "save_folder": null
+    },
+    {
+      "name": "Sega Superstars Tennis (Sega-Superstars-Tennis-ReMatch)",
+      "tags": [
+        "360",
+        "Sports",
+        "Multiplayer"
+      ],
+      "source": "https://github.com/m1ndcrap/Sega-Superstars-Tennis-ReMatch",
+      "folder_name": "Sega-Superstars-Tennis-ReMatch",
+      "instructions": "Required files: Sega Superstars Tennis .iso\n\nLanguages: English.\nPlace the .bin file in the assets folder at the root of the port folder.",
+      "image_url": "https://cdn2.steamgriddb.com/grid/cc4e7c9bb2d268a78876927c0343ac5c.png",
+      "save_folder": null
+    },
+    {
+      "name": "Snowboard Kids 2 (snowboardkids2-recomp)",
+      "tags": [
+        "SK2",
+        "N64",
+        "Racing",
+        "Multiplayer"
+      ],
+      "source": "https://github.com/cdlewis/snowboardkids2-recomp",
+      "folder_name": "snowboardkids2-recomp",
+      "instructions": "Required files: Snowboard Kids 2 (USA).z64 (CRC32: D0DC8A8E)\n\nNothing to do, the port guides you.",
+      "image_url": "https://cdn2.steamgriddb.com/grid/120f6c07fc3ec6295d01f6e11c59d8fc.png",
+      "save_folder": "%LOCALAPPDATA%\\SnowboardKids2Recompiled"
+    },
+    {
+      "name": "Sonic 3 & Knuckles (sonic3air)",
+      "tags": [
+        "SMD",
+        "Platformer",
+        "Singleplayer"
+      ],
+      "source": "https://github.com/Eukaryot/sonic3air",
+      "folder_name": "sonic3air",
+      "instructions": "Required files: Sonic_Knuckles_wSonic3.bin (CRC32: 0C06AA82)\n\nNothing to do, the port guides you.",
+      "mods_url": "https://gamebanana.com/games/6878",
+      "image_url": "https://cdn2.steamgriddb.com/grid/8d5c814bc831f35be11c5b95b26a534f.png",
+      "save_folder": "%APPDATA%\\Sonic3AIR"
+    },
+    {
+      "-name": "Sonic Advance 2 (sa2)",
+      "tags": [
+        "GBA",
+        "Platformer",
+        "Singleplayer",
+        "Multilingual"
+      ],
+      "source": "https://github.com/SAT-R/sa2",
+      "folder_name": "sa2",
+      "instructions": "Required files: Sonic Advance 2 (Japan) (En,Ja,Fr,De,Es,It) (Virtual Console).gba (CRC32: 6C6C65A3)\n\nNothing to do, the port guides you.",
+      "image_url": "https://cdn2.steamgriddb.com/grid/98178e2c5d08c023bf55d71236cd07f2.png",
+      "save_folder": null
+    },
+    {
+      "name": "Sonic Robo Blast 2 (srb2)",
+      "tags": [
+        "PC",
+        "Platformer",
+        "Singleplayer"
+      ],
+      "source": "https://github.com/stjr/srb2",
+      "folder_name": "srb2",
+      "instructions": "If you have a 2160p monitor, the F11 key on your keyboard will help.\n\nhttps://srb2.org/",
+      "mods_url": "https://srb2.org/addons/",
+      "image_url": "https://cdn2.steamgriddb.com/grid/f655d686ece627fa58304aa1b6bf8b39.png",
+      "save_folder": null,
+      "preferred_asset": "Full.zip"
+    },
+    {
+      "name": "Sonic Robo Blast 2 Kart (Kart-Public)",
+      "tags": [
+        "PC",
+        "Racing",
+        "Multiplayer"
+      ],
+      "source": "https://github.com/STJr/Kart-Public",
+      "folder_name": "Kart-Public",
+      "instructions": "If you have a 2160p monitor, the F11 key on your keyboard will help.\n\nhttps://srb2.org/",
+      "mods_url": "https://mb.srb2.org/addons/categories/download-srb2kart.20/",
+      "image_url": "https://cdn2.steamgriddb.com/grid/e1337663bad9b826bde21203e72aa145.png",
+      "save_folder": null,
+      "exe_is_archive": true,
+      "preferred_asset": ".exe"
+    },
+    {
+      "name": "Sonic Unleashed (UnleashedRecomp)",
+      "tags": [
+        "360",
+        "Platformer",
+        "Singleplayer"
+      ],
+      "source": "https://github.com/hedge-dev/UnleashedRecomp",
+      "folder_name": "UnleashedRecomp",
+      "instructions": "Required files: Sonic Unleashed (Xbox 360)\n\nNothing to do, the port guides you.",
+      "mods_url": "https://gamebanana.com/games/21975",
+      "image_url": "https://cdn2.steamgriddb.com/grid/b80c0932cb6f7be27c8d37b4c847a8bd.png",
+      "save_folder": null
+    },
+    {
+      "-name": "Spyro the Dragon (openpete)",
+      "tags": [
+        "PS1",
+        "Platformer",
+        "Singleplayer"
+      ],
+      "source": "https://openpete.com/",
+      "folder_name": "openpete",
+      "instructions": "Required files: Spyro the Dragon (USA).bin/cue (CRC32: D5E11056/639D58E5)\n\nNothing to do, the port guides you.",
+      "image_url": "https://cdn2.steamgriddb.com/grid/a99316b58bd2d4539e9153e24f616e6f.png",
+      "save_folder": null
+    },
+    {
+      "name": "Star Fox 64 (starship)",
+      "tags": [
+        "Lylat Wars",
+        "N64",
+        "Shooter",
+        "Singleplayer"
+      ],
+      "source": "https://github.com/harbourmasters/starship",
+      "folder_name": "starship",
+      "instructions": "Required files: Star Fox 64 (USA) (Rev 1).z64 (CRC32: B1B5FC46)\n\nLanguages: English.\nNothing to do, the port guides you.",
+      "mods_url": "https://gamebanana.com/games/21612",
+      "image_url": "https://cdn2.steamgriddb.com/grid/9122b7acc2588eff1d20211ce8fb8798.png",
+      "save_folder": "Save"
+    },
+    {
+      "name": "Street Fighter Alpha 3 (Street-Fighter-Alpha-3-Recomp)",
+      "tags": [
+        "SF",
+        "PS1",
+        "Fighting",
+        "Multiplayer"
+      ],
+      "source": "https://github.com/TechnicallyComputers/Street-Fighter-Alpha-3-Recomp",
+      "folder_name": "Street-Fighter-Alpha-3-Recomp",
+      "instructions": "Required files: Street Fighter Alpha 3 (USA) (Track 1/2).bin/cue (CRC32: D5E20D47/E0078F93/1DB7CAA6)\n\nNothing to do, the port guides you.",
+      "image_url": "https://cdn2.steamgriddb.com/grid/b05aa5ae598aff32ec94a1156bd7132b.png",
+      "save_folder": null
+    },
+    {
+      "name": "Street Fighter III: 3rd Strike (3sx)",
+      "tags": [
+        "SF",
+        "PS2",
+        "Fighting",
+        "Multiplayer"
+      ],
+      "source": "https://github.com/crowded-street/3sx",
+      "folder_name": "3sx",
+      "instructions": "Required files: Street Fighter III - 3rd Strike - Fight for the Future (Japan).iso (CRC32: 83D3A28C)\n\nNothing to do, the port guides you.",
+      "image_url": "https://cdn2.steamgriddb.com/grid/5c8ba7cea22ea2704b5389dabaa266ee.png",
+      "save_folder": "%APPDATA%\\CrowdedStreet"
+    },
+    {
+      "name": "Super Mario 64 (Ghostship)",
+      "tags": [
+        "N64",
+        "Platformer",
+        "Singleplayer"
+      ],
+      "source": "https://github.com/HarbourMasters/Ghostship",
+      "folder_name": "Ghostship",
+      "instructions": "Required files: Super Mario 64 (USA).z64 (CRC32: 3CE60709)",
+      "mods_url": "https://gamebanana.com/games/24131",
+      "image_url": "https://cdn2.steamgriddb.com/grid/ea98cb4ef75b56acda616e5166438fb6.png",
+      "save_folder": "%APPDATA%\\sm64coopdx"
+    },
+    {
+      "name": "Super Mario 64 (sm64coopdx)",
+      "tags": [
+        "N64",
+        "Platformer",
+        "Co-op"
+      ],
+      "source": "https://github.com/coop-deluxe/sm64coopdx",
+      "folder_name": "sm64coopdx",
+      "instructions": "Required files: Super Mario 64 (USA).z64 (CRC32: 3CE60709)\nPortable saves : create a shortcut of sm64coopdx with this arguments  --savepath .\\saves\n\nENGLISH\n\nLaunch sm64coopdx. Alt + Enter switches the game to fullscreen. Choose your preferred language, then press Esc to close a menu. If the game has no sound, select \"Quit\" → \"Yes\", then relaunch the game.\n\nGo to \"Options\" → \"Player\" to change the nickname displayed in-game. You will probably be playing with custom characters, so there is no need to edit the palette.\n\nStill in \"Options\", go to \"DynOS Packs\". I recommend enabling \"3D Kaze Coins\", \"3D Trees\" and \"Fixed Smoke\".\n\nIn \"Camera\", you can enable \"Invert X\" if you prefer to invert the horizontal camera axis. Then enable \"Free Camera\", \"Analog Camera\", \"L Centering\" and \"Camera Collision\". Leave all other options disabled.\n\nSet \"X/Y Sensitivity\" to 20. This value works well with an XInput controller.\n\nFRANÇAIS\n\nLancer sm64coopdx. Alt + Entrée permet de passer le jeu en plein écran. Choisir la langue souhaitée, puis appuyer sur Échap pour quitter un menu. Si le jeu n’a pas de son, sélectionner « Quit » → « Yes », puis relancer le jeu.\n\nAller dans « Options » → « Player » pour modifier le pseudo affiché en jeu. Vous jouerez probablement avec des personnages inédits, il n’est donc pas nécessaire de modifier la palette.\n\nToujours dans « Options », aller dans « DynOS Packs ». Je recommande d’activer « 3D Kaze Coins », « 3D Trees » et « Fixed Smoke ».\n\nDans « Camera », vous pouvez activer « Invert X » si vous préférez inverser l’axe horizontal. Activer ensuite « Free Camera », « Analog Camera », « L Centering » et « Camera Collision ». Toutes les autres options doivent rester désactivées.\n\nRégler « X/Y Sensitivity » sur 20. Cette valeur convient bien à une manette XInput.",
+      "mods_url": "https://mods.sm64coopdx.com/mods/",
+      "image_url": "https://cdn2.steamgriddb.com/grid/ec5b75bbd6d1a33e507d666a49dddf95.png",
+      "save_folder": "%APPDATA%\\sm64coopdx",
+      "save_folder2": "saves"
+    },
+    {
+      "-name": "Super Mario 64 DS (sm64ds-decomp)",
+      "tags": [
+        "DS",
+        "Platformer",
+        "Singleplayer"
+      ],
+      "source": "https://github.com/tangosdev/sm64ds-decomp",
+      "folder_name": "sm64ds-decomp",
+      "instructions": "Required files: Super Mario 64 DS (USA).nds (CRC32: E6321562)\n\nNothing to do, the port guides you.",
+      "mods_url": "https://mods.sm64coopdx.com/mods/",
+      "image_url": "https://cdn2.steamgriddb.com/grid/16311c87e5635893abd76815d276cbdf.png",
+      "save_folder": null
+    },
+    {
+      "name": "Super Mario Bros. (Super-Mario-Bros.-Remastered-Public)",
+      "tags": [
+        "SMB",
+        "NES",
+        "Platformer",
+        "Singleplayer"
+      ],
+      "source": "https://github.com/JHDev2006/Super-Mario-Bros.-Remastered-Public",
+      "folder_name": "Super-Mario-Bros.-Remastered-Public",
+      "instructions": "Required files: Super Mario Bros. (World).nes (CRC32: 3337EC46)\n\nNothing to do, the port guides you.\nPortable saves : portable.txt in root folder.",
+      "mods_url": "https://gamebanana.com/games/22798",
+      "image_url": "https://cdn2.steamgriddb.com/grid/46c5aac38809435b12ece6f71de65c1e.png",
+      "save_folder": "%APPDATA%\\SMB1R",
+      "save_folder2": "config"
+    },
+    {
+      "name": "Super Mario World (smw)",
+      "tags": [
+        "SNES",
+        "Platformer",
+        "Singleplayer"
+      ],
+      "source": "https://github.com/snesrev/smw",
+      "folder_name": "smw",
+      "instructions": "Required files: Super Mario World (USA).sfc (CRC32: B19ED489)\n\nRename the ROM to smw.sfc and place it in the root of the port folder.",
+      "image_url": "https://cdn2.steamgriddb.com/grid/65bc947e5802af99f2c98229b618cfed.png",
+      "save_folder": "saves"
+    },
+    {
+      "name": "Super Metroid (Super-Metroid-Launcher)",
+      "tags": [
+        "SNES",
+        "Metroidvania",
+        "Singleplayer",
+        "Multilingual"
+      ],
+      "source": "https://github.com/RadzPrower/Super-Metroid-Launcher",
+      "folder_name": "Super-Metroid-Launcher",
+      "instructions": "Required files: Super Metroid (Japan, USA) (En,Ja).sfc (CRC32: D63ED5F8)\n\nNothing to do, the port guides you.",
+      "image_url": "https://cdn2.steamgriddb.com/grid/167248f62dbaf61aff4b7d1be9439282.jpg",
+      "save_folder": "saves"
+    },
+    {
+      "name": "Super Smash Bros. (BattleShip)",
+      "tags": [
+        "N64",
+        "Fighting",
+        "Multiplayer",
+        "Multilingual"
+      ],
+      "source": "https://github.com/JRickey/BattleShip",
+      "folder_name": "BattleShip",
+      "instructions": "Required files: Languages: English, Japanese.\nSuper Smash Bros. (USA).z64 (CRC32: EB97929E) or Nintendo All-Star! Dairantou Smash Brothers (Japan).z64 (CRC32: 04C9D3B1)\n\nNothing to do, the port guides you.",
+      "image_url": "https://cdn2.steamgriddb.com/grid/841c7673350b87929092101876156f09.png",
+      "save_folder": "%APPDATA%\\BattleShip"
+    },
+    {
+      "name": "Syphon Filter (SF-pc-port)",
+      "tags": [
+        "PS1",
+        "Shooter",
+        "Singleplayer"
+      ],
+      "source": "https://github.com/Madxbio97/SF-pc-port",
+      "folder_name": "SF-pc-port",
+      "instructions": "Required files: Syphon Filter (USA) (Rev 1)bin/cue (CRC32: 3E270096/8E1EE69A)\n\nNothing to do, the port guides you.",
+      "image_url": "https://cdn2.steamgriddb.com/grid/dd3915f642b3304770608bf2d36a1346.png",
+      "save_folder": "%LOCALAPPDATA%\\SyphonFilterPC"
+    },
+    {
+      "name": "The Elder Scrolls III: Morrowind (openmw)",
+      "tags": [
+        "PC",
+        "RPG",
+        "Singleplayer"
+      ],
+      "source": "https://gitlab.com/OpenMW/openmw",
+      "folder_name": "openmw",
+      "instructions": "Required files: The Elder Scrolls III: Morrowind GOTY Edition on GOG\n\nLanguages: Multilingual with mod.\n\nNothing to do, the port guides you.",
+      "mods_url": "https://modding-openmw.com/lists/",
+      "image_url": "https://cdn2.steamgriddb.com/grid/0236be6e04a4916f04215374f9c83ac5.png",
+      "save_folder": "%USERPROFILE%\\Documents\\My Games\\OpenMW",
+      "exe_is_archive": true,
+      "base_exe": "openmw.exe"
+    },
+    {
+      "-name": "The Legend of Dragoon (Severed-Chains)",
+      "tags": [
+        "PS1",
+        "RPG",
+        "Singleplayer"
+      ],
+      "source": "https://github.com/Legend-of-Dragoon-Modding/Severed-Chains",
+      "folder_name": "Severed-Chains",
+      "instructions": "Required files: The Legend of Dragoon .iso\n\nLanguages: English.\n\nNothing to do, the port guides you.",
+      "image_url": "https://cdn2.steamgriddb.com/grid/307c27aeb32c02e2561f228b0e758196.png",
+      "save_folder": null
+    },
+    {
+      "name": "The Legend of Zelda: A Link to the Past (zelda3)",
+      "tags": [
+        "SNES",
+        "Action-Adventure",
+        "Singleplayer"
+      ],
+      "source": "https://github.com/snesrev/zelda3",
+      "folder_name": "zelda3",
+      "instructions": "Required files: Legend of Zelda, The - A Link to the Past (USA)/(France)/(Canada).sfc (CRC32: 777AAC2F/1F8C30E8/47760381)\n\nTo change the game's language, you have tools available here: https://github.com/Nyaldee/Ports-Launcher/tree/main/misc\nPlace the .bat file in the assets folder at the root of the port folder, then start it.\n\nIl y a aussi une traduction française du patch Redux à patcher avec Lunar IPS sur le zelda3_assets.dat extrait avec mon Zelda3_Launcher.bat, et pensez à paramétrer la langue dans le zelda3.ini.",
+      "image_url": "https://cdn2.steamgriddb.com/grid/7edaadde50012f0860952123564eb1ba.jpg",
+      "save_folder": "saves"
+    },
+    {
+      "name": "The Legend of Zelda: Link's Awakening DX (LADXHD)",
+      "tags": [
+        "GB",
+        "Action-Adventure",
+        "Singleplayer",
+        "Multilingual"
+      ],
+      "source": "https://gitlab.com/bighead.0/ladxhd_updated",
+      "folder_name": "LADXHD Updated",
+      "executable": "Link's Awakening DX HD.exe",
+      "instructions": "Required files: Links Awakening DX HD v1.0.0.zip\n\nLanguages: Multilingual.\nMove the Content and Data folders, along with the Link's Awakening DX HD.exe file, into the port folder, then run LADXHD.patcher to update the game.",
+      "image_url": "https://cdn2.steamgriddb.com/grid/4ece40a0b5412a3f236aea3e6531de87.png",
+      "save_folder": "%LOCALAPPDATA%\\Zelda_LA"
+    },
+    {
+      "name": "The Legend of Zelda: Majora's Mask (2ship2harkinian)",
+      "tags": [
+        "N64",
+        "Action-Adventure",
+        "Singleplayer"
+      ],
+      "source": "https://github.com/HarbourMasters/2ship2harkinian",
+      "folder_name": "2ship2harkinian",
+      "instructions": "Required files: Legend of Zelda, The - Majora's Mask (USA).z64 (CRC32: B428D8A7)\n\nNothing to do, the port guides you.",
+      "mods_url": "https://gamebanana.com/games/20371",
+      "image_url": "https://cdn2.steamgriddb.com/grid/592954b9c7445a8007d638eecc863362.jpg",
+      "save_folder": "Save"
+    },
+    {
+      "name": "The Legend of Zelda: Majora's Mask (Zelda64Recomp)",
+      "tags": [
+        "N64",
+        "Action-Adventure",
+        "Singleplayer"
+      ],
+      "source": "https://github.com/Zelda64Recomp/Zelda64Recomp",
+      "folder_name": "Zelda64Recomp",
+      "instructions": "Required files: Legend of Zelda, The - Majora's Mask (USA).z64 (CRC32: B428D8A7)\n\nNothing to do, the port guides you.",
+      "mods_url": "https://thunderstore.io/c/zelda-64-recompiled/",
+      "image_url": "https://cdn2.steamgriddb.com/grid/592954b9c7445a8007d638eecc863362.jpg",
+      "save_folder": "%LOCALAPPDATA%\\Zelda64Recompiled"
+    },
+    {
+      "name": "The Legend of Zelda: Ocarina of Time (Shipwright)",
+      "tags": [
+        "N64",
+        "Action-Adventure",
+        "Singleplayer",
+        "Multilingual"
+      ],
+      "source": "https://github.com/HarbourMasters/Shipwright",
+      "folder_name": "Shipwright",
+      "instructions": "Required files: Legend of Zelda, The - Ocarina of Time (USA) (GameCube)/Master Quest (Europe) (GameCube).z64 (CRC32: 346DE3AE/832D6449) for all language.\n\nNothing to do, the port guides you.",
+      "mods_url": "https://gamebanana.com/games/16121",
+      "image_url": "https://cdn2.steamgriddb.com/grid/f711cc70dbdab88f32389ec84e56a242.png",
+      "save_folder": "Save"
+    },
+    {
+      "name": "The Legend of Zelda: The Minish Cap (tmc)",
+      "tags": [
+        "GBA",
+        "Action-Adventure",
+        "Singleplayer"
+      ],
+      "source": "https://github.com/zeldaret/tmc",
+      "folder_name": "tmc",
+      "instructions": "Required files: Legend of Zelda, The - The Minish Cap (USA).gba (CRC32: ABCEBBB1)\n\nNothing to do, the port guides you.",
+      "image_url": "https://cdn2.steamgriddb.com/grid/722ddf840508c083992ea795c2bda28f.png",
+      "save_folder": null
+    },
+    {
+      "name": "The Legend of Zelda: Twilight Princess (dusklight)",
+      "tags": [
+        "GC",
+        "Action-Adventure",
+        "Singleplayer",
+        "Multilingual"
+      ],
+      "source": "https://github.com/TwilitRealm/dusklight",
+      "folder_name": "dusklight",
+      "instructions": "Required files: Languages: Multilingual.\nLegend of Zelda, The - Twilight Princess PAL or NTSC\n\nNothing to do, the port guides you.",
+      "image_url": "https://cdn2.steamgriddb.com/grid/f131cd3852b7f0b100cd0255b077e948.png",
+      "save_folder": "%APPDATA%\\TwilitRealm"
+    },
+    {
+      "name": "Tomba (tombarecomp)",
+      "tags": [
+        "PS1",
+        "Platformer",
+        "Singleplayer"
+      ],
+      "source": "https://github.com/mstan/tombarecomp",
+      "folder_name": "tombarecomp",
+      "instructions": "Required files: Tomba! (USA).bin (CRC32: B00ECB0D) + PSX - SCPH1001.BIN\n\nNothing to do, the port guides you.",
+      "image_url": "https://cdn2.steamgriddb.com/grid/b5b03b0b1f713cd2fffdb28d09adff6e.png",
+      "save_folder": null
+    },
+    {
+      "name": "Vandal Hearts (VandalHearts-PcPort)",
+      "tags": [
+        "PS1",
+        "RPG",
+        "Singleplayer"
+      ],
+      "source": "https://github.com/HalmyLyseas/VandalHearts-PcPort",
+      "folder_name": "VandalHearts-PcPort",
+      "instructions": "Required files: Vandal Hearts (USA).bin (CRC32: C7622112)\n\nPut the required file in the port folder.",
+      "image_url": "https://cdn2.steamgriddb.com/grid/3afe7eae0504b08cd09bd4474ef4dcf1.png",
+      "save_folder": "saves"
+    },
+    {
+      "name": "Virtua Racing (Virtua-Racing---XBOXONE-Windows)",
+      "tags": [
+        "VR",
+        "XONE",
+        "Racing",
+        "Multiplayer"
+      ],
+      "source": "https://github.com/wanszai/Virtua-Racing---XBOXONE-Windows",
+      "folder_name": "Virtua-Racing---XBOXONE-Windows",
+      "instructions": "Required files: vr.zip (CRC32: 200649A9)\n\nNothing to do, the port guides you.",
+      "image_url": "https://cdn2.steamgriddb.com/grid/4ca729e39627cf59fbc4478a9a1d7385.jpg",
+      "save_folder": "VirtuaRacing"
+    },
+    {
+      "name": "Viva Piñata: Trouble in Paradise (TiP-Recomp)",
+      "tags": [
+        "360",
+        "Simulation",
+        "Singleplayer",
+        "Multilingual"
+      ],
+      "source": "https://github.com/SolarCookies/TiP-Recomp",
+      "folder_name": "TiP-Recomp",
+      "instructions": "Required files: Viva Piñata\n\nLanguages: Multilingual.\n\nNothing to do, the port guides you.",
+      "image_url": "https://cdn2.steamgriddb.com/grid/e9437348054c27c0951c7d9d59bac04f.png",
+      "save_folder": "saves"
+    },
+    {
+      "name": "WipeOut (wipeout-phantom-edition)",
+      "tags": [
+        "PS1",
+        "Racing",
+        "Multiplayer"
+      ],
+      "source": "https://github.com/wipeout-phantom-edition/wipeout-phantom-edition",
+      "folder_name": "wipeout-phantom-edition",
+      "instructions": "Required files: Wipeout (USA)\n\nNothing to do, the port guides you.",
+      "image_url": "https://cdn2.steamgriddb.com/grid/641d7c29f6e6d7dbc3f543df1612bd76.png",
+      "save_folder": "saves"
+    }
+  ]
+}

@@ -1,0 +1,343 @@
+import { ListView } from "std-widgets.slint";
+import { Theme, ThemedScrollbar, InertialScroller } from "theme-colors.slint";
+
+// Une carte = un port installé, image ou repli texte -- jamais de bouton
+// dessus (activer se fait par simple clic, voir CardGrid.card-activated),
+// jamais de coin arrondi (choix de design assumé pour toute l'UI : tout
+// reste carré ici aussi).
+export struct CardItem {
+    name: string,
+    image: image,
+    selected: bool,
+}
+
+// Regroupement en lignes -- c'est CETTE liste qui alimente la ListView
+// (virtualisée verticalement par Slint), jamais la liste de cartes à plat :
+// voir core::grid::chunk_into_rows pour le pourquoi (grille à 1000+ ports).
+export struct CardRow {
+    cards: [CardItem],
+}
+
+// Couleurs fixes (non éditables via themes.json), poussées depuis Rust
+// (voir ui/theme.rs::SemanticColors) -- valeurs de secours ici seulement au
+// cas où Rust ne les pousse pas avant le premier rendu.
+export global GridColors {
+    in-out property <color> selection-border: #ffffff;
+    in-out property <color> fallback-text: #d3dae3;
+    in-out property <color> card-background: #383c4a;
+    // Boutons d'action colorés de la liste fenêtrée (Jouer/Installer/MAJ/
+    // Désinstaller/Info) -- couleurs sémantiques fixes elles aussi, jamais
+    // éditables via themes.json.
+    in-out property <color> success: #78b159;
+    in-out property <color> success-hover: #93c17a;
+    in-out property <color> warning: #f4900c;
+    in-out property <color> warning-hover: #f6a63d;
+    in-out property <color> danger: #dd2e44;
+    in-out property <color> danger-hover: #e45869;
+    in-out property <color> info: #55acee;
+    in-out property <color> info-hover: #77bdf1;
+    in-out property <color> text-on-accent: #ffffff;
+    // Boutons GitHub/Discord du pied de page -- couleurs imposées par les
+    // chartes de ces marques, jamais éditables via themes.json, comme le
+    // reste de ce global.
+    in-out property <color> brand-github: #24292f;
+    in-out property <color> brand-github-hover: #32383f;
+    in-out property <color> brand-discord: #5865f2;
+    in-out property <color> brand-discord-hover: #6b76f5;
+}
+
+// Une ListView ne peut avoir qu'un seul enfant direct : un unique `for`
+// (voir la doc Slint) -- le message "bibliothèque vide" ne peut donc pas
+// être un enfant conditionnel de la ListView elle-même, d'où ce composant
+// englobant qui choisit entre les deux.
+export component CardGrid {
+    in property <[CardRow]> rows: [];
+    // Pixels fixes -- seule exception à la règle du reste de l'UI (tout en
+    // fraction d'écran) : la jaquette doit garder un format lisible.
+    in property <length> card-width: 200px;
+    in property <length> card-height: 300px;
+    in property <length> card-spacing: 14px;
+    // Nombre de colonnes de la grille COMPLÈTE (voir core::grid::
+    // compute_grid_columns côté Rust) -- PAS row.cards.length : la dernière
+    // ligne peut être incomplète (catalogue pas multiple du nombre de
+    // colonnes), et ses cartes doivent rester alignées sous les mêmes
+    // colonnes que les lignes pleines, jamais recentrées sur leur propre
+    // compte réduit. Sert à centrer le bloc de cartes dans la largeur
+    // disponible (voir row-block plus bas) plutôt que de le plaquer à
+    // gauche avec le reste perdu à droite.
+    in property <int> columns: 1;
+    in property <string> empty-message: "No installed ports yet.";
+    // Numéro de LIGNE actuellement sélectionnée (-1 = aucune) -- sert
+    // uniquement à faire défiler la grille pour la garder visible (voir le
+    // `changed` sur card-list plus bas), pas à la colonne : toutes les
+    // cartes d'une même ligne sont déjà visibles ensemble, seul le défilement
+    // vertical (par ligne) a un sens ici.
+    in property <int> selected-row-index: -1;
+    // Bascule -- fait défiler UNIQUEMENT depuis la navigation manette (voir
+    // son commentaire équivalent, root.scroll-trigger, dans app-window.slint) :
+    // jamais depuis card-hovered (le survol souris change aussi selected-
+    // row-index pour colorer la carte, mais ne doit pas ramener la vue de
+    // force pendant un défilement manuel).
+    in property <bool> scroll-trigger: false;
+    callback card-activated(int, int);
+    // Survol souris -- déplace la sélection sous la souris, comme la
+    // navigation clavier.
+    callback card-hovered(int, int);
+    // La souris quitte entièrement la grille (plus aucune carte survolée) --
+    // permet à Rust d'effacer le surlignage sans toucher à la position
+    // mémorisée, que la navigation clavier/manette doit reprendre là où le
+    // survol l'a laissée.
+    callback card-unhovered();
+
+    if root.rows.length == 0: Text {
+        text: root.empty-message;
+        color: GridColors.fallback-text;
+        horizontal-alignment: center;
+        vertical-alignment: center;
+        width: 100%;
+        height: 100%;
+    }
+
+    // Enveloppe ListView + ThemedScrollbar (voir son commentaire dans
+    // theme-colors.slint -- remplace la scrollbar native "fluent", qui
+    // peint sa poignée avec sa propre palette figée, jamais la nôtre).
+    if root.rows.length > 0: grid-container := Rectangle {
+        width: 100%;
+        height: 100%;
+
+        // Largeur du bloc de `root.columns` cartes (grille COMPLÈTE, pas
+        // une ligne précise -- voir le commentaire de root.columns) + les
+        // espacements ENTRE elles, sans marge extérieure des deux côtés :
+        // centrer CE bloc dans la largeur réellement disponible répartit
+        // l'espace inutilisé également des deux côtés au lieu de le laisser
+        // collé à droite (max(0px, ...) -- ne jamais partir en x négatif si
+        // un catalogue chargé après coup contient moins de cartes que
+        // root.columns ne le laissait supposer, ex: juste après une
+        // désinstallation). Calculée UNE FOIS ici plutôt que redupliquée
+        // dans `for row` (qui l'instancierait par ligne alors qu'elle ne
+        // dépend d'aucune variable de la boucle) et dans grid-touch, qui la
+        // référencent tous les deux (voir plus bas).
+        property <length> row-block-width: root.columns * card-width + (root.columns - 1) * card-spacing;
+        property <length> row-left-margin: max(0px, (self.width - self.row-block-width) / 2);
+
+        card-list := ListView {
+            width: 100%;
+            height: 100%;
+            vertical-scrollbar-policy: always-off;
+            horizontal-scrollbar-policy: always-off;
+
+            // Fait défiler la grille pour garder la LIGNE sélectionnée
+            // visible -- même raison/mécanisme que port-list dans
+            // app-window.slint (voir son commentaire) : alias local plutôt
+            // qu'observer root.scroll-trigger directement, un `changed` ne
+            // pouvant observer qu'une propriété de CET élément.
+            property <bool> scroll-trigger-local: root.scroll-trigger;
+            property <length> row-height: card-height + card-spacing;
+            property <length> selected-row-top: root.selected-row-index * self.row-height;
+            property <length> selected-row-bottom: self.selected-row-top + self.row-height;
+            changed scroll-trigger-local => {
+                if (root.selected-row-index < 0) {
+                    return;
+                }
+                if (self.selected-row-top + self.viewport-y < 0px) {
+                    self.viewport-y = -self.selected-row-top;
+                } else if (self.selected-row-bottom + self.viewport-y > self.visible-height) {
+                    self.viewport-y = self.visible-height - self.selected-row-bottom;
+                }
+            }
+
+            for row[row-index] in rows: Rectangle {
+                // width EXPLICITE -- sans elle, cette Rectangle n'a aucune
+                // largeur propre définie (seule sa hauteur l'est) et tout
+                // enfant en `width: 100%` hérite d'une largeur non fiable.
+                width: 100%;
+                height: card-height + card-spacing;
+
+                // PAS de HorizontalLayout ici -- positionnement explicite,
+                // comme pour les boutons d'action de port-list dans
+                // app-window.slint.
+                for card[col-index] in row.cards: Rectangle {
+                    x: grid-container.row-left-margin + col-index * (card-width + card-spacing);
+                    // card-spacing / 2 (pas 0px) -- la lueur de sélection
+                    // (drop-shadow-blur plus bas) doit pouvoir déborder
+                    // aussi vers le HAUT de la carte. Répartir la marge
+                    // moitié en haut, moitié en bas (total inchangé) la
+                    // rend visible sur toutes les lignes, y compris la
+                    // première, collée au bord haut de la ListView.
+                    y: card-spacing / 2;
+                    width: card-width;
+                    height: card-height;
+                    background: GridColors.card-background;
+                    border-width: card.selected ? 4px : 0px;
+                    border-color: GridColors.selection-border;
+                    // Lueur sur la carte active, couleur du bouton Jouer
+                    // (GridColors.success) -- la sélection plein écran
+                    // reprend ainsi la couleur d'action du reste de l'UI et
+                    // reste lisible à distance, ce que la bordure seule ne
+                    // permettait pas.
+                    drop-shadow-color: card.selected ? GridColors.success : transparent;
+                    drop-shadow-blur: card.selected ? 28px : 0px;
+
+                    if card.image.width > 0: Image {
+                        source: card.image;
+                        width: 100%;
+                        height: 100%;
+                        image-fit: cover;
+                    }
+
+                    if card.image.width <= 0: Text {
+                        text: card.name;
+                        color: GridColors.fallback-text;
+                        wrap: word-wrap;
+                        horizontal-alignment: center;
+                        vertical-alignment: center;
+                        width: 100%;
+                        x: 0px;
+                    }
+
+                    // Éclaircit la carte sélectionnée -- même principe que la
+                    // variante -hover des boutons d'action, la bordure et la
+                    // lueur seules ne distinguant pas assez la sélection.
+                    // Changer `background` serait sans effet (l'Image le
+                    // recouvre entièrement) : d'où ce Rectangle
+                    // semi-transparent PAR-DESSUS l'image.
+                    if card.selected: Rectangle {
+                        width: 100%;
+                        height: 100%;
+                        background: GridColors.success-hover.with-alpha(0.22);
+                    }
+                }
+
+            }
+        }
+
+        // TouchArea UNIQUE pour toute la grille, sibling de card-list et
+        // NON nichée dans son contenu défilant : le Flickable sous-jacent au
+        // ListView capte la pression avant toute TouchArea placée dans ce
+        // contenu, quel que soit le niveau d'imbrication -- `clicked` et le
+        // suivi manuel de `pressed` n'y sont alors jamais déclenchés (le
+        // survol, lui, fonctionne : il ne dépend que de la position).
+        //
+        // Couvrant toutes les lignes, elle calcule elle-même la
+        // ligne/colonne visée à partir de la position ET du défilement
+        // courant (card-list.viewport-y, négatif ou nul).
+        //
+        // Inertie du clic-glissé -- voir InertialScroller dans
+        // theme-colors.slint : cette grille réimplémente son défilement à la
+        // main et n'a donc pas l'inertie native d'un Flickable.
+        grid-inertia := InertialScroller {
+            min-viewport-y: Math.min(0px, card-list.visible-height - card-list.viewport-height);
+            viewport-y <=> card-list.viewport-y;
+        }
+
+        grid-touch := TouchArea {
+            width: 100%;
+            height: 100%;
+            property <length> row-height: card-height + card-spacing;
+            // Bornées -- restent nécessaires pour indexer root.rows/
+            // row.cards sans jamais déborder, y compris quand la souris
+            // n'est PAS réellement sur une carte (voir pointer-on-card
+            // ci-dessous, qui décide si cette position bornée doit vraiment
+            // compter).
+            property <int> hovered-row: Math.clamp(Math.floor((self.mouse-y - card-list.viewport-y) / row-height), 0, root.rows.length - 1);
+            property <int> hovered-column: Math.clamp(Math.floor((self.mouse-x - grid-container.row-left-margin) / (card-width + card-spacing)), 0, root.rows[self.hovered-row].cards.length - 1);
+            // Vrai UNIQUEMENT quand la souris est dans le rectangle RÉEL de
+            // la carte visée (mêmes coordonnées que son rendu plus haut :
+            // y = card-spacing / 2 dans sa ligne), pas seulement dans le
+            // "seau" de sa ligne/colonne : Math.clamp seul élargit ce seau à
+            // tout l'espace disponible, une carte seule sur la dernière
+            // ligne resterait donc sélectionnée sur toute la largeur.
+            property <length> card-top: self.hovered-row * row-height + card-spacing / 2;
+            property <length> card-left: grid-container.row-left-margin + self.hovered-column * (card-width + card-spacing);
+            property <bool> pointer-on-card:
+                (self.mouse-y - card-list.viewport-y) >= self.card-top && (self.mouse-y - card-list.viewport-y) < self.card-top + card-height
+                && self.mouse-x >= self.card-left && self.mouse-x < self.card-left + card-width;
+            // Défilement en maintenant le clic, même principe que row-area
+            // dans app-window.slint (voir son commentaire) : delta vertical
+            // depuis le point de PRESS, appliqué à card-list.viewport-y,
+            // borné à l'intervalle valide. grid-touch est déjà l'endroit où
+            // vit tout le clic de cette grille (voir le commentaire plus
+            // haut sur pourquoi une TouchArea nichée dans le contenu du
+            // ListView ne reçoit jamais le clic), donc le glissé y trouve
+            // naturellement sa place aussi.
+            property <length> drag-start-mouse-y;
+            property <length> drag-start-viewport-y;
+            clicked => {
+                if (self.pointer-on-card) {
+                    root.card-activated(self.hovered-row, self.hovered-column);
+                }
+            }
+            changed has-hover => {
+                if (!self.has-hover) {
+                    root.card-unhovered();
+                }
+            }
+            // Détection de clic manuelle EN PLUS de `clicked` -- même
+            // principe que list-row/dialogues ailleurs dans le projet :
+            // relâchement à moins de 8px du point de press = un vrai clic,
+            // au cas où `clicked` resterait fragile même hors du contenu
+            // défilant. Inoffensif si `clicked` fonctionne déjà :
+            // is_port_running rend activate_port idempotent.
+            changed pressed => {
+                if (self.pressed) {
+                    self.drag-start-mouse-y = self.mouse-y;
+                    self.drag-start-viewport-y = card-list.viewport-y;
+                    grid-inertia.begin-drag(self.mouse-y);
+                } else {
+                    grid-inertia.release();
+                    if (self.has-hover && self.pointer-on-card
+                        && Math.abs(self.mouse-x - self.pressed-x) < 8px
+                        && Math.abs(self.mouse-y - self.pressed-y) < 8px) {
+                        root.card-activated(self.hovered-row, self.hovered-column);
+                    }
+                }
+            }
+            // !self.pressed sur les deux gardes ci-dessous -- même
+            // comportement que le clic-glissé dans app-window.slint, où la
+            // capture du pointeur reste sur la ligne pressée et le survol
+            // des AUTRES lignes ne se met donc jamais à jour pendant un
+            // glissé. Ici une seule TouchArea couvre toute la grille (voir
+            // plus haut pourquoi), donc sans cette garde le survol
+            // recalculerait hovered-row/hovered-column à chaque pixel
+            // parcouru et ferait sauter la sélection d'une carte à l'autre
+            // pendant le défilement.
+            changed mouse-x => {
+                if (!self.pressed) {
+                    if (self.has-hover && self.pointer-on-card) {
+                        root.card-hovered(self.hovered-row, self.hovered-column);
+                    } else {
+                        root.card-unhovered();
+                    }
+                }
+            }
+            changed mouse-y => {
+                if (self.pressed) {
+                    card-list.viewport-y = Math.clamp(
+                        self.drag-start-viewport-y + (self.mouse-y - self.drag-start-mouse-y),
+                        Math.min(0px, card-list.visible-height - card-list.viewport-height),
+                        0px,
+                    );
+                    grid-inertia.record-sample(self.mouse-y);
+                } else if (self.has-hover && self.pointer-on-card) {
+                    root.card-hovered(self.hovered-row, self.hovered-column);
+                } else {
+                    root.card-unhovered();
+                }
+            }
+        }
+
+        ThemedScrollbar {
+            x: grid-container.width - self.width - 4px;
+            y: 0px;
+            height: grid-container.height;
+            viewport-height: card-list.viewport-height;
+            visible-height: card-list.visible-height;
+            viewport-y <=> card-list.viewport-y;
+            // Défauts de ThemedScrollbar = déjà Theme.border-color/sa
+            // version éclaircie (voir theme-colors.slint) -- rien à
+            // redéfinir ici, pas GridColors.selection-border (blanc fixe,
+            // non éditable via themes.json) : la scrollbar plein écran doit
+            // suivre le thème actif comme partout ailleurs.
+        }
+    }
+}
