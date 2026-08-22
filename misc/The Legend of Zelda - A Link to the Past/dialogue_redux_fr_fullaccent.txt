@@ -1,0 +1,397 @@
+1: 
+2: [Speed 00][3]      [2]    >[Choose]
+3: [Speed 00][2]      [3]    >[Choose]
+4: [Speed 00]Sauvegarder et continuer[2]Sauvegarder et quitter[3]Continuer sans sauvegarder
+5: [Speed 00]0- [Number 00]. 1- [Number 01][2]2- [Number 02]. 3- [Number 03]
+6: Tu ne peux pas entrer avec[2]quelque chose qui te suit.
+7: [Speed 00][1]>[2]  [3]  [Choose3]
+8: [Speed 00][1]  [2]>[3]  [Choose3]
+9: [Speed 00][1]  [2]  [3]>[Choose3]
+10: [Speed 00][1]>[2]  [Choose2]
+11: [Speed 00][1]  [2]>[Choose2]
+12: [Speed 00][3]    [2]  >[Selchg]
+13: [Speed 00][2]    [3]  >[Selchg]
+14: [Name], je sors pour un[2]moment. Je rentrerai au matin.[3]Ne quitte pas la maison.
+15: Ugh[...] Cette voix ! [Name] ?[2]C'est toi ? Je t'avais dit[3]d'attendre à la maison[...][Waitkey][Scroll]Prends mon épée, mon bouclier,[Scroll]et écoute. Tu peux concentrer[Scroll]la force dans la lame (touche B).[Waitkey][Scroll][...]Puis libère-la grâce à la[Scroll]technique secrète transmise[Scroll]par notre peuple[...][Waitkey][Scroll][Name][...] Tu dois sauver[Scroll]la princesse Zelda. Notre peuple[Scroll]est destiné à cela.[Waitkey][Scroll]Mais ne succombe pas[...][Scroll]au destin[...] [Name][...][Waitkey][Scroll]Je me souviendrai toujours[...][Scroll]de notre temps[...] ensemble[...]
+16: Que fais-tu debout si tard,[2]petit ? Tu pourras veiller[3]une fois grand ! File au lit !
+17: Je vois que tu as pris une carte[2]pour ne pas te perdre. (Appuie[3]sur X pour voir ta carte.)
+18: Tu sembles fort pour ton âge.[2]Combien peux-tu soulever ?[3](Appuie sur A en touchant un[Waitkey][Scroll]objet pour le soulever.)
+19: Je parie que tu as hâte d'être[2]assez grand pour avoir une épée ![3](Appuie sur B pour utiliser[Waitkey][Scroll]ton épée quand tu l'auras.)
+20: Cette marque sur ta carte doit[2]être ta destination.
+21: Tu trouveras souvent des objets[2]précieux dans les coffres.[3](Appuie sur A devant un coffre[Waitkey][Scroll]pour l'ouvrir.)
+22: On en a vu, nous les soldats,[2]petit. On a de quoi t'apprendre,[3]mais tu le sais déjà !
+23: Rencontre l'ancien du village[2]et obtiens l'Épée de Légende.
+24: Princesse Zelda, vous êtes[2]en sécurité ![3]Est-ce votre œuvre, [Name] ?
+25: Je sens qu'une force maléfique[2]puissante guide les actions[3]du prêtre et augmente ses[Waitkey][Scroll]pouvoirs magiques. La seule arme[Scroll]assez puissante pour vaincre[Scroll]le prêtre est la légendaire[Waitkey][Scroll]Épée de Légende.[Scroll]On dit que l'ancien du village[Scroll]est un descendant de l'un des[Waitkey][Scroll]sept sages. Peut-être[Scroll]pourra-t-il t'en dire plus[...][Scroll]Je vais marquer sa maison sur[Waitkey][Scroll]ta carte. Mais fais attention à[Scroll]chacun de tes gestes ! Je suis sûre[Scroll]que les soldats du château vont[Waitkey][Scroll]te chercher maintenant !  [...]    [...]    [...][Sound 45][Scroll]Je vais cacher la princesse Zelda ici.[Scroll]Ne t'inquiète pas ! Cherche l'ancien ![Waitkey][Scroll][...]    [...]    [...][Scroll]As-tu compris ?[Scroll]    > Oui[Scroll]       Pas du tout[Choose]
+26: Si tu vaincs le prêtre, les[2]soldats retrouveront peut-être[3]la raison.[Waitkey][Scroll]Va chercher les Pendentifs !
+27: Apporte les trois Pendentifs[2]dans les Bois Perdus. L'Épée[3]de Légende t'y attend.
+28: [Name] !  Tu arrives une seconde[2]trop tard.  J'ai échoué[...] Zelda[...][3]Les soldats l'ont[Waitkey][Scroll]enlevée.[Scroll]Ils l'ont emmenée au[Scroll]château.[Waitkey][Scroll]Tu dois la retrouver avant que[Scroll]le prêtre n'utilise sa magie.[Waitkey][Scroll]Je t'en prie[...] Tu es notre seul[Scroll]espoir[...]
+29: Merci, [Name].  Je sentais bien[2]que tu approchais.
+30: Oui, c'est [Name] qui m'a aidée[2]à m'échapper du donjon ![3]Quand j'étais captive, le prêtre[Waitkey][Scroll]a dit : « Une fois que j'en aurai fini[Scroll]avec toi, la dernière, le sceau[Scroll]des sages s'ouvrira. »[Waitkey][Scroll][...]    [...]    [...][Scroll][Name], tu ne dois pas laisser[Scroll]le pays d'Hyrule tomber entre[Waitkey][Scroll]les griffes du prêtre.[Scroll]S'il brise le sceau des sept[Scroll]sages, un pouvoir maléfique va[Waitkey][Scroll]submerger ce pays.[Scroll]Avant que cela n'arrive[...][Scroll]avant qu'il ne soit trop tard[...] détruis[Waitkey][Scroll]le prêtre avant qu'il ne détruise[Scroll]tout Hyrule !  Tu peux le faire ![Scroll]Tu peux[...]
+31: [Name], sois prudent là-dehors ![2]Je sais que tu peux sauver Hyrule !
+32: [Window 02][Speed 03]Aide-moi[...][Wait 01][3]Je t'en prie, aide-moi[...][Waitkey][Scroll]Je suis prisonnière dans le donjon[Scroll]du château.[Scroll]Je m'appelle Zelda.[Waitkey][Scroll]Le prêtre, Agahnim, a fait[...][Scroll]quelque chose aux autres filles[Scroll]disparues.  Il ne reste que moi[...][Waitkey][Scroll]Agahnim a pris le contrôle du[Scroll]château et essaie maintenant[Scroll]d'ouvrir le sceau des sept sages.[Waitkey][Scroll][...]   [...][Scroll]Je suis dans le donjon du[Scroll]château.[Waitkey][Scroll]Je t'en prie, aide-moi[...]
+33: [Window 02][Speed 03]Aide-moi[...][2]Je suis dans le donjon du[3]château.[Waitkey][Scroll]Je sais qu'il existe un passage[Scroll]secret menant de l'extérieur du[Scroll]château jusqu'au jardin intérieur.
+34: Il y a un passage secret dans[2]la salle du trône qui mène[3]au Sanctuaire.[Waitkey][Scroll]Je suis sûre que le vieil homme[Scroll]qui s'y trouve nous aidera.
+35: Cette étagère décorative devrait[2]s'ouvrir.  As-tu une lanterne ?[3]C'est plongé dans le noir et tu[Waitkey][Scroll]ne verras rien sans lumière.[Scroll]Si tu es prêt, allons-y ![Scroll]Aide-moi à la pousser par la gauche !
+36: Tu dois tirer le levier pour[2]ouvrir la porte.  (Appuie sur A[3]et maintiens Bas sur la[Waitkey][Scroll]croix directionnelle.)
+37: Bien, sortons d'ici[2]avant que le prêtre ne s'en aperçoive.[3]Je connais un passage secret, mais[Waitkey][Scroll]il faut d'abord aller au[Scroll]premier étage.  Allons-y !
+38: [Name], écoute-moi bien.  Le[2]prêtre contrôle par magie[3]tous les soldats du château.[Waitkey][Scroll]Je crains le pire pour[Scroll]mon père[...][Scroll]Le prêtre est un monstre inhumain[Waitkey][Scroll]aux pouvoirs magiques redoutables ![Scroll][...]   [...]   [...][Waitkey][Scroll]As-tu compris ?[Scroll]    > Oui[Scroll]       Pas du tout[Choose]
+39: Tu devrais suivre les marques[2]que l'ancien a faites sur ta carte[3]lors de tes explorations.[Waitkey][Scroll]Si tu ne sais pas quoi faire[Scroll]ensuite, tu peux aussi consulter[Scroll]une diseuse de bonne aventure.
+40: [Name], tu es formidable ![2]Comme je le pensais, tu as en toi[3]le pouvoir du Héros ![Waitkey][Scroll]Tu devrais maintenant récupérer[Scroll]l'Épée de Légende.  Je suis sûre[Scroll]que tu vaincras le prêtre maléfique !
+41: [Window 02][Speed 03][Name] ! À l'aide !  Les soldats[2]arrivent au Sanctuaire ![3]AAAAAH ![Waitkey][Scroll][...] [...] [...]
+42: Une fois ces égouts traversés,[2]nous serons tout près[3]du Sanctuaire ![Waitkey][Scroll]Soyons prudents !
+43: Le Sanctuaire se trouve juste[2]derrière cette porte.  Actionne[3]le levier là-bas.
+44: Qui ça ?  Ah, c'est toi, [Name] ![2]Que puis-je faire pour toi,[3]jeune homme ?  L'ancien ?  Oh, personne[Waitkey][Scroll]ne l'a vu depuis que le prêtre[Scroll]a commencé à faire des victimes[...][Scroll][...]   [...]   [...][Waitkey][Scroll]Quoi ?  L'Épée de Légende ?  Eh bien,[Scroll]je ne me souviens pas des détails[Scroll]exactement, mais[...]
+45: Il y a bien longtemps, un peuple[2]prospère appelé les Hyliens[3]habitait ce pays[...][Waitkey][Scroll]Les légendes parlent de nombreux[Scroll]trésors que les Hyliens ont cachés[Scroll]à travers le pays[...][Waitkey][Scroll]L'Épée de Légende, une lame[Scroll]puissante forgée contre ceux[Scroll]au cœur maléfique, en fait[Waitkey][Scroll]partie.  On dit qu'elle dort[Scroll]aujourd'hui au fond de la forêt[...][Scroll][...] [...] [...][Waitkey][Scroll]As-tu compris la légende ?[Scroll]    > Oui[Scroll]       Pas du tout[Choose]
+46: Enfin bref, cherche l'ancien.[2]Il doit bien y avoir quelqu'un au[3]village qui sait où il se trouve.[Waitkey][Scroll]Prends soin de toi, [Name][...]
+47: Ohhh, [Name].  Tu as bien changé ![2]Tu as l'air formidable[...][3]Je t'en prie, sauve-nous d'Agahnim[Waitkey][Scroll]le prêtre !
+48: Hé !  Voici [Name], l'homme[2]recherché !  Soldats !  N'importe qui ![3]Venez vite !
+49: Incroyable !  Tu as enfin réuni[2]les trois Pendentifs[...]  Il te faut[3]maintenant aller aux Bois Perdus.[Waitkey][Scroll]Si tu es le véritable Héros,[Scroll]l'épée elle-même te choisira.[Scroll][...] [...] [...]
+50: Je suis trop vieux pour me battre.[2]Je ne peux compter que sur toi.
+51: Je suis en effet Sahasrahla,[2]l'ancien du village et un[3]descendant des sept sages.[Waitkey][Scroll][...]   [...]     Ah bon ?[Scroll][Name], je suis surpris qu'un[Scroll]jeune homme comme toi recherche[Waitkey][Scroll]l'épée qui vainc le mal.[Scroll]Tout le monde ne peut pas[Scroll]manier cette arme.[Waitkey][Scroll]Seul le Héros ayant réuni les[Scroll]trois Pendentifs peut la brandir.[Scroll][...]   [...]   [...][Waitkey][Scroll]Veux-tu vraiment la trouver ?[Scroll]    > Ouais ![Scroll]       Bien sûr ![Choose]
+52: Bien.  Pour te mettre à l'épreuve,[2]peux-tu rapporter le Pendentif[3]de Courage du Temple de l'Est ?[Waitkey][Scroll]Si tu me le rapportes, je te[Scroll]raconterai la légende et[Scroll]te donnerai un artefact magique.[Sound 45][Waitkey][Scroll]Maintenant, avance vers le temple.
+53: D'autres proches des sages[2]se cachent des disciples du[3]prêtre maléfique.[Waitkey][Scroll]Tu devrais les retrouver.
+54: [Window 02][Speed 03][Name], c'est moi, Sahasrahla.[2]Je communique avec toi[3]à travers le vide par[Waitkey][Scroll]télépathie[...]  L'endroit où[Scroll]tu te trouves était le Royaume[Scroll]Sacré, mais un pouvoir maléfique[Waitkey][Scroll]l'a transformé en Monde des[Scroll]Ténèbres.  Le prêtre a brisé le[Scroll]sceau des sages et ouvert un[Waitkey][Scroll]portail reliant les deux mondes[Scroll]au Château d'Hyrule.  Pour[Scroll]sauver cette moitié du monde,[Waitkey][Scroll]le Monde de Lumière, tu dois[Scroll]récupérer le Pouvoir Doré.[Scroll]Tu dois aussi sauver[Waitkey][Scroll]les sept jeunes filles qu'Agahnim[Scroll]a envoyées dans le Monde des[Scroll]Ténèbres.  En tant que membres[Waitkey][Scroll]de la lignée des sept sages,[Scroll]elles possèdent un pouvoir qui[Scroll]t'aidera sûrement.  Elles sont[Waitkey][Scroll]enfermées dans des donjons cachés,[Scroll]pleins de créatures maléfiques[Scroll]et de pièges dangereux.[Waitkey][Scroll]Va d'abord au Temple des Ténèbres ![Sound 45][Scroll][Name], je ne peux compter que[Scroll]sur toi.  Je t'en prie, réalise[Waitkey][Scroll]le souhait d'un vieil homme.[Scroll]Je t'en supplie !
+55: [Window 02][Speed 03]Mais je sens ton impuissance[...][2]Avant d'aller plus loin,[3]trouve la Perle de Lune sur[Waitkey][Scroll]le Mont Hébra.  Elle te protégera[Scroll]de la magie du Monde des[Scroll]Ténèbres et te permettra de garder[Waitkey][Scroll]ta forme héroïque.
+56: Un objet utile est caché dans[2]la grotte à l'est du Lac[3]Hylia.  Va le chercher !
+57: Oh !?  Tu as le Pendentif de[2]Courage !  Je vais donc t'en dire[3]plus sur la légende[...][Waitkey][Scroll]Il y a trois ou quatre générations,[Scroll]un ordre de chevaliers protégeait[Scroll]la royauté hylienne.[Waitkey][Scroll]Ces Chevaliers d'Hyrule étaient[Scroll]aussi les gardiens du Pendentif[Scroll]de Courage.[Waitkey][Scroll]Malheureusement, la plupart[Scroll]d'entre eux périrent lors de la[Scroll]grande guerre contre le mal qui[Waitkey][Scroll]eut lieu quand les sept sages[Scroll]créèrent leur sceau.  Parmi les[Scroll]descendants des Chevaliers[Waitkey][Scroll]d'Hyrule, un héros doit apparaître.[Scroll][...]Je vois.  [Name], je te crois.[Scroll]Tu devrais récupérer les[Waitkey][Scroll]Pendentifs restants.[Scroll]Et prends ceci avec toi.[Scroll]C'est un trésor transmis[Waitkey][Scroll]par les familles des sages.[Scroll]Je veux que tu l'aies.
+58: Tu as raison, jeune homme ![2]Je suis Sahasrahla, l'ancien[3]du village et un descendant[Waitkey][Scroll]des sept sages.[Scroll][...] [...] [...] Quoi ?[Scroll][Name], je suis surpris qu'un[Waitkey][Scroll]jeune homme comme toi cherche[Scroll]l'épée qui vainc le mal.  Tout[Scroll]le monde ne peut pas la manier.[Waitkey][Scroll]Selon les récits transmis[Scroll]par les Hyliens, seul le[Scroll]Héros ayant détruit trois[Waitkey][Scroll]grands maux et réuni les trois[Scroll]Pendentifs peut brandir l'épée[...][Scroll][...] [...] [...][Waitkey][Scroll]Je vois que tu as obtenu le[Scroll]Pendentif de Courage.  Je vais te[Scroll]raconter la légende qui s'y rattache.[Waitkey][Scroll]Il y a trois ou quatre générations,[Scroll]un ordre de chevaliers protégeait[Scroll]la royauté hylienne.[Waitkey][Scroll]Ces Chevaliers d'Hyrule étaient[Scroll]aussi les gardiens du Pendentif[Scroll]de Courage.[Waitkey][Scroll]Malheureusement, la plupart[Scroll]d'entre eux périrent lors de la[Scroll]grande guerre contre le mal qui[Waitkey][Scroll]eut lieu quand les sept sages[Scroll]créèrent leur sceau.  Parmi les[Scroll]descendants des Chevaliers[Waitkey][Scroll]d'Hyrule, un héros doit apparaître.[Scroll][...]Je vois.  [Name], je te crois.[Scroll]Tu devrais récupérer les[Waitkey][Scroll]Pendentifs restants.[Scroll]Et prends ceci avec toi.[Scroll]C'est un trésor transmis[Waitkey][Scroll]par les familles des sages.[Scroll]Je veux que tu l'aies.
+59: J'offrirai 100 Rubis à celui[2]qui retrouvera les descendants[3]des sages.   LE ROI
+60:        [LinkL][LinkR]  RECHERCHÉ ![2]Voici [Name], le criminel[3]qui a enlevé la princesse Zelda.[Waitkey][Scroll]Appelez un soldat si vous le voyez !
+61:                 DANGER ![2]N'entrez pas sur le Mont Hébra[3]sans la permission du Roi !
+62: Par ici[2]      [Up] Bois Perdus
+63:                 DANGER ![2]Attention aux eaux[3]profondes et aux Zoras !
+64: Bienvenue à la Boutique de[2]Potions.  La Cascade des Vœux[3]est juste devant !
+65: Cette grotte mène au chemin[2]qui retourne au village[3]de Cocorico.
+66: Par ici[2]      [Down] Lac Hylia[3]      [Down] Boutique
+67: Par ici[2]      [Left] Village de Cocorico
+68: Par ici[2]       [Left] Désert du Mystère
+69: Par ici[2]      [Up] Boutique de Potions[3]      [Right] Cascade des Vœux
+70: Par ici[2]      [Right] Temple de l'Est[3]      [Left] Château d'Hyrule
+71: [2]        Lac Hylia
+72: Ne prêtez pas attention à[2]cet homme moyen d'âge mûr[3]posté près de ce panneau.[Waitkey][Scroll]Laissez-le tranquille !
+73: [2]La Maison des Bûcherons[3]A. Bumpkin et B. Bumpkin
+74: Par ici[2]      [Down] Village de Cocorico
+75: Double, double, peine et trouble,[2]feu ardent, chaudron bouillonnant[...][3]Je mijote une mixture de champignons[...]
+76: Héhé[...]  Merci, jeune[2]homme[...]  Reviens à la boutique[3]plus tard, j'aurai un bon truc[...][Waitkey][Scroll]Héhé[...]
+77: Mmmmm[...]  L'odeur des fruits[2]pourris[...]  Si tu me donnes ce[3]Champignon, je finirai ma mixture.[Waitkey][Scroll]Héhé[...]
+78: Si tu veux acheter la potion,[2]il te faut apporter une[3]bouteille pour la mettre[...]  Héhéhé !
+79: La Rouge restaure ta vie.[2]La Verte restaure ta magie.[3]La Bleue renouvelle vie et[Waitkey][Scroll]magie.[Scroll]Tiens, goûte un échantillon de[Scroll]Potion Rouge[...]  Héhé !
+80: Sans bouteille magique, tu ne[2]peux acheter aucune potion.[3]Héhéhé !
+81: Non,  non,  non[...]  Je ne peux[2]rien mettre dans une bouteille[3]pleine.  Héhéhé !
+82: Tu as obtenu la Lanterne ![2]Tu peux maintenant allumer les[3]torches et voir dans le noir.
+83: Tu as obtenu le Boomerang ![2]Équipe-le avec Start et[3]essaie-le !
+84: Tu as trouvé l'Arc ![2]Tu peux maintenant tirer des[3]flèches jusqu'à épuisement !
+85: Tu as emprunté une pelle ![2]Tu peux creuser à divers[3]endroits.  On ne sait jamais ce[Waitkey][Scroll]qu'on va trouver !
+86: Voici la Cape Magique ![2]Tu disparais dans les airs[3]quand tu la portes ![Waitkey][Scroll]Mais surveille ta Jauge Magique !
+87: Voici la Poudre Magique ![2]Essaie de la saupoudrer sur les[3]ennemis et bien d'autres choses !
+88: Tu as acheté les Palmes de Zora ![2]Avec elles, tu devrais pouvoir[3]nager même en eaux profondes !
+89: Tu as obtenu le Gant de Force ![2]Tu sens la puissance dans tes[3]deux mains !  Tu peux maintenant[Waitkey][Scroll]soulever et porter des pierres !
+90: Tu as gagné le Pendentif de[2]Courage !  Apporte-le à[3]l'ancien Sahasrahla ![Waitkey][Scroll]Il reste deux Pendentifs !
+91: Tu as gagné le Pendentif de[2]Sagesse !  Ton objectif de[3]trouver les trois Pendentifs[Waitkey][Scroll]est en vue ![Scroll]Va chercher le dernier !
+92: Tu as gagné le Pendentif de[2]Puissance !  Tu as maintenant[3]réuni les trois Pendentifs !  Va[Waitkey][Scroll]maintenant aux Bois Perdus pour[Scroll]obtenir l'Épée de Légende !
+93: Ce Champignon sent le doux[2]fruit pourri[...][3]Tu peux le donner à quiconque[Waitkey][Scroll]le veut en le sélectionnant[Scroll]et en appuyant sur le bouton Y.
+94: Tu as trouvé le Livre de[2]Mudora !  Il te permet de lire[3]la langue ancienne des[Waitkey][Scroll]Hyliens !
+95: Tu as trouvé la Perle de Lune ![2]Elle protège ton corps des[3]effets pervers du[Waitkey][Scroll]Pouvoir Doré.
+96: Tu as trouvé la Boussole ![2]Tu peux maintenant localiser[3]le repaire du maître maléfique[Waitkey][Scroll]du donjon !
+97: Tu as obtenu la Carte ![2]Elle te montre ta position[3]actuelle et le reste du donjon[Waitkey][Scroll]en appuyant sur  X.
+98: Tu as trouvé le Bâton de Glace ![2]Il envoie un froid tranchant[3]fendre l'air.[Waitkey][Scroll]Mais surveille ta Jauge Magique !
+99: Tu as trouvé le Bâton de Feu ![2]Il projette des flammes[3]pourpres à travers les airs.[Waitkey][Scroll]Mais surveille ta Jauge Magique !
+100: Voici le Médaillon d'Ether ![2]Sa magie invoque des vents[3]glacés depuis la haute[Waitkey][Scroll]atmosphère !  Surveille ta[Scroll]Jauge Magique !
+101: Voici le Médaillon de Bombos ![2]Sa magie fait exploser le sol[3]en gerbes de flammes ![Waitkey][Scroll]Surveille ta Jauge Magique !
+102: Voici le Médaillon de Séisme ![2]Sa magie provoque de violentes[3]secousses qui étourdissent[Waitkey][Scroll]les ennemis proches ![Scroll]Surveille ta Jauge Magique !
+103: Tu as obtenu le Marteau Magique ![2]Tu peux enfoncer les piquets[3]en bois dans le sol ![Waitkey][Scroll]Tu peux aussi t'en servir pour[Scroll]frapper d'autres choses !
+104: Oh !  Voici l'Ocarina ![2]Sa musique possède sûrement[3]un pouvoir mystérieux !
+105: Tu as obtenu la Canne de[2]Somaria !  Elle te sera très[3]utile si tu apprends à t'en[Waitkey][Scroll]servir !  Quelle canne[Scroll]mystérieuse !
+106: BOING !  Voici le Grappin ![2]Il s'étire et se rétracte[...][3]BOING !![Waitkey][Scroll]Il peut s'accrocher à bien des[Scroll]choses !
+107: Tu as obtenu des Bombes ![2]Après en avoir posé une, tu[3]peux la reprendre avec A !
+108: Voici une Bouteille Magique ![2]Tu peux y ranger un objet[3]pour l'utiliser plus tard !
+109: Tu as obtenu la Grande Clé ![2]C'est la clé maîtresse du[3]donjon.  Elle ouvre bien des[Waitkey][Scroll]serrures que les petites clés[Scroll]ne peuvent pas ouvrir.
+110: Tu as obtenu les Moufles du[2]Titan !  Tu peux maintenant[3]soulever les pierres les plus[Waitkey][Scroll]lourdes, jadis impossibles[Scroll]à déplacer.
+111: Il t'offre le Miroir Magique ![2]Il est bleu, clair et splendide[...][Waitkey][3]En le regardant, tu sens que[Scroll]tu es aspiré vers[Scroll] un autre monde[...]
+112: C'est elle !  L'Épée de Légende ![2][...]  [...]  [...][3]Non, ce n'est pas possible[...]
+113: [Window 02][Speed 03]Soudain, Sahasrahla te contacte[2]par télépathie[...][3][...]  [...]  [...][Waitkey][Scroll][Name], c'est extraordinaire[Scroll]que tu aies gagné l'Épée de[Scroll]Légende qui fait fuir le mal[...][Waitkey][Scroll]Avec cette épée brillante, je[Scroll]crois que tu peux dévier les[Scroll]pouvoirs maléfiques du prêtre.[Waitkey][Scroll][Scroll]Le destin de cette terre[Scroll]est entre tes mains.[Waitkey][Scroll]Je t'en prie, [Name][...]
+114: Héhéhé[...]  Merci ![2]Voici la Potion Rouge.[3]Utilise-la pour restaurer ta vie.
+115: Héhéhé[...]  Merci ![2]Voici la Potion Verte.[3]Elle te permet de restaurer[Waitkey][Scroll]ta magie.
+116: Héhéhé[...]  Merci ![2]Voici la Potion Bleue.[Waitkey][3]Bois-la pour restaurer à la fois[Scroll]ta vie et ta magie.
+117: Tu as emprunté le[2]Filet à Insectes ![Waitkey][3]Tu pourrais bien attraper[Scroll]d'autres choses avec, en plus[Scroll]des insectes !
+118: Tu as trouvé la Tunique Bleue ![2]Elle réduit les dégâts que tu[3]subis de la part des ennemis !
+119: Tu as trouvé la Tunique Rouge ![2]Elle offre encore plus de[3]protection que la Tunique Bleue !
+120: Génial !  Ton épée est plus[2]forte !  Tu sens une pure[3]puissance parcourir ton corps !
+121: Tu as trouvé le Bouclier[2]Miroir !  Tu peux désormais[3]dévier les rayons que ton[Waitkey][Scroll]ancien bouclier ne pouvait[Scroll]pas bloquer !
+122: Tu as obtenu la Canne de[2]Byrna !  Agite-la une fois et[3]un anneau de lumière te[Waitkey][Scroll]protégera !
+123: Hein ?  C'est verrouillé ![2]Si tu avais la Grande Clé, tu[3]pourrais peut-être l'ouvrir !
+124: Il te manque de la Magie ![2]Tu ne peux pas utiliser cet[3]objet maintenant.  Surveille ta[Waitkey][Scroll]Jauge Magique !
+125: Il te donne les[2]Bottes de Pégase ![Waitkey][3]Tu peux maintenant exécuter[Scroll]une charge dévastatrice en[Scroll]maintenant le bouton A enfoncé !
+126: Waouh !  Je n'ai pas vu un[2]être normal depuis des siècles ![Waitkey][3]Laisse-moi te parler un peu.[Scroll]Voici une bonne histoire[...]
+127: Connais-tu la statue de[2]Gargouille du village ?[3]On dit qu'on peut entendre une[Waitkey][Scroll]fille appeler à l'aide sous la[Scroll]statue.  N'est-ce pas une[Scroll]étrange histoire[...]
+128: Étonnamment, la Triforce[2]a créé ce monde pour exaucer[3]le vœu de Ganon.[Waitkey][Scroll]Quel est le vœu de Ganon,[Scroll]demandes-tu ?  C'est de[Scroll]régner sur le monde entier ![Waitkey][Scroll]Ne penses-tu pas que ce soit[Scroll]possible avec le pouvoir de la[Scroll]Triforce derrière toi ?
+129: Je vivais dans les Bois Perdus,[2]jusqu'au jour où j'ai erré dans[3]un téléporteur magique[...][Waitkey][Scroll]Le pouvoir du Monde des[Scroll]Ténèbres m'a vite changé en[Scroll]cette forme d'arbre[...][Waitkey][Scroll]Je suppose que les deux forêts[Scroll]sont reliées entre elles[...]
+130: J'ai entendu dire que les[2]Bombes sont le meilleur moyen[3]de vaincre les géants borgnes.[Waitkey][Scroll]C'est tout ce que je sais !
+131: Arrête de m'embêter !  Et[2]fais attention où tu vas[3]quand tu fonces partout !
+132: Tu as obtenu le Pendentif de[2]Sagesse !  Tu as maintenant[3]réuni les trois Pendentifs ![Waitkey][Scroll]Rends-toi aux Bois Perdus pour[Scroll]l'Épée de Légende !
+133: Tu as obtenu le Pendentif de[2]Puissance !  Ta force a encore[3]augmenté !  Va chercher le[Waitkey][Scroll]dernier !
+134: Salut, gars du Monde de[2]Lumière !  T'as l'air d'être[3]un fin tireur[...]  Ça te dit[Waitkey][Scroll]d'essayer ton adresse dans mon[Scroll]stand de tir ?  Je te donne cinq[Scroll]tirs pour 20 Rubis.  Si tu es[Waitkey][Scroll]aussi doué que je le pense, tu[Scroll]vas ramasser plein de Rubis.[Waitkey][Scroll]Alors, ça te tente, l'ami ?[Scroll]    > Jouer[Scroll]       Pas question[Choose]
+135: Très bien !  Vise bien ![2]Prêt ?  PARTEZ !
+136: Eh bien, petit gars, tu peux[2]faire demi-tour et repartir[3]par où tu es[Waitkey][Scroll]venu.[Scroll]À plus tard !  Bonne journée !
+137: Tu veux retirer ?[2]    > Continuer[3]       Arrêter[Choose]
+138:          --PUITS AUX VŒUX--[2]Jette-y des Rubis et tes vœux[3]se réaliseront sûrement.[Waitkey][Scroll]Veux-tu jeter des Rubis ?[Scroll]    > En jeter quelques-uns[Scroll]       Pas envie[Choose]
+139: Sélectionne un objet avec[2]la croix directionnelle et[3]lance-le avec le bouton Y.[Item]
+140: Bonjour.  Tu as fait tomber ça ?[2]    > Oui[3]       Non, pas moi[Choose]
+141: J'apprécie les gens honnêtes.[2]Je vais te donner quelque chose[3]de mieux en retour.
+142: Es-tu sûr que ce n'est pas à toi ?[2]    > Vraiment, non[3]       À vrai dire, si[Choose]
+143: Allons,  allons, ne me mens pas.[2]Reprends-le, je t'en prie.
+144: Tu as obtenu le Boomerang[2]Magique !  Tu peux le lancer[3]plus vite et plus loin que[Waitkey][Scroll]l'ancien !
+145: Ton bouclier est amélioré ![2]Tu peux maintenant te défendre[3]contre les boules de feu !
+146: Voici les Flèches d'Argent ![2]Il t'en faut pour vaincre Ganon !
+147: Elle a rempli ta bouteille[2]de Potion Verte.[3]Obtenir une telle potion[Waitkey][Scroll]gratuitement, quelle affaire !
+148: Ton épée est encore plus[2]forte !  Elle est chaude au[3]toucher[...]
+149: Ton bonheur a augmenté de[2][Number 03][Number 02] Rubis.[Waitkey][3]Au total, ton bonheur est de [Number 01][Number 00].[Scroll]Tu es devenu un peu plus[Scroll]heureux.
+150: Je vais réaliser ton vœu.[2]  >Je veux porter plus de Bombes[3]    Je veux porter plus de Flèches[Selchg]
+151: Alors j'augmenterai ta[2]capacité de transport pour que[3]tu puisses porter [Number 01][Number 00] Bombes[Waitkey][Scroll]au maximum.  Ce n'est là qu'un[Scroll]petit bonheur que je peux[Scroll]t'offrir.
+152: Alors j'augmenterai ta[2]capacité de transport pour que[3]tu puisses porter [Number 01][Number 00] Flèches[Waitkey][Scroll]au maximum.  Ce n'est là qu'un[Scroll]petit bonheur que je peux[Scroll]t'offrir.
+153: Je ne peux plus exaucer de[2]vœux pour toi, mais une de mes[3]amies le pourrait peut-être[...][Waitkey][Scroll]Elle vit à la Cascade des Vœux,[Scroll]près du lac des Zoras.[Scroll]Je vais te rendre tes Rubis.[Waitkey][Scroll]Sois heureux[...]
+154: Ah[...]  Fais attention où tu[2]marches.  Il y a des trous dans[3]le sol.  Peux-tu tourner ici ?[Waitkey][Scroll]Jeune homme, vas-tu toi aussi[Scroll]sur la montagne chercher le[Scroll]Pouvoir Doré ?[Waitkey][Scroll]Juste devant se trouve une[Scroll]montagne pleine de monstres.[Scroll]Beaucoup de gens y ont disparu[Waitkey][Scroll]en cherchant le Pouvoir Doré.[Scroll][Scroll][Waitkey][Scroll]Je ne veux pas te donner de[Scroll]mauvais conseil, alors ne te[Scroll]lance pas dans une telle folie.
+155: Euh[...]  Il doit y avoir un[2]Cœur dans le pot.
+156: Oh[...]  Tourne ici[...]   [...][2]Tu sais, j'ai une[3]petite-fille de ton[Waitkey][Scroll]âge[...]  Le Roi l'a emmenée au[Scroll]château et elle n'est jamais[Scroll]revenue.  Ces enlèvements de[Waitkey][Scroll]jeunes filles doivent faire[Scroll]partie du complot du prêtre ![Scroll]Je suis sûr qu'il essaie[Waitkey][Scroll]d'utiliser le pouvoir des[Scroll]descendantes des sages[...]
+157: Je ne sais pas qui tu es,[2]mais si tu comptes[3]monter sur la montagne,[Waitkey][Scroll]m'emmènerais-tu avec toi ?[Scroll]J'ai perdu ma lanterne, alors[...]
+158: Les jeunes filles disparues[2]sont encore en vie quelque[3]part.  Je crois qu'un Héros[Waitkey][Scroll]viendra les sauver[...][Scroll]J'attends ce jour[...][Scroll]Euh[...]  Ce sont des temps[Waitkey][Scroll]dangereux[...]  J'ai trop parlé.[Scroll]Enfin[...]  Merci pour ta[Scroll]gentillesse envers un vieil[Waitkey][Scroll]homme comme moi.  Euh[...]  Je[Scroll]voulais te donner ceci.  Si tu[Scroll]erres dans un téléporteur[Waitkey][Scroll]magique, regarde dans ce miroir.
+159: Le prêtre a trompé le Roi,[2]et il essaie maintenant[3]d'ouvrir la voie vers le[Waitkey][Scroll]Monde des Ténèbres.  Pour[Scroll]achever ta quête, il te faudra[Scroll]la Perle de Lune, qui se trouve[Waitkey][Scroll]dans la tour au sommet de la[Scroll]montagne.  Tout ce que je peux[Scroll]faire pour toi maintenant,[Waitkey][Scroll]c'est apaiser ta fatigue[...][Scroll]Reviens ici quand tu veux.
+160: [1]La Perle de Lune protégera son[2]porteur de l'air magique du[3]Royaume Sacré, ce qui te[Waitkey][Scroll]permettra d'y garder forme[Scroll]humaine.  Tout ce que je peux[Scroll]faire pour toi maintenant, c'est[Waitkey][Scroll]apaiser ta fatigue[...][Scroll]Reviens ici quand tu veux.
+161: [Name], je pense que le prêtre[2]a relié les deux mondes[3]quelque part près du château.[Waitkey][Scroll]Tout ce que je peux faire, c'est[Scroll]apaiser ta fatigue[...][Scroll]Reviens ici quand tu veux.
+162: [...](marmonne marmonne)[...]  Mon[2]fils aimait tant jouer de[3]l'ocarina, mais il est parti[Waitkey][Scroll]chercher le Pouvoir Doré et[Scroll]n'est jamais revenu[...] [...] [...][Scroll]Je me demande où il est et ce[Waitkey][Scroll]qu'il fait maintenant ?[...][Scroll][...]  Zzzzzz  Zzzzzz
+163: [...](marmonne marmonne)[...]  Oh ?[2]C'est l'ocarina de mon fils[...] ![3]As-tu rencontré mon fils ?[Waitkey][Scroll]Où est-il ?  Va-t-il bien ?[Scroll][...] [...] [...] [...][Scroll][Waitkey][Scroll]Oh, je vois[...]  Je devine ce[Scroll]que tu veux dire rien qu'en[Scroll]regardant tes yeux[...]
+164: Voudrais-tu garder l'ocarina ?[2]Et voudrais-tu jouer sa douce[3]mélodie pour l'oiseau de la[Waitkey][Scroll]place du village ?[Scroll]Je t'en supplie, s'il te plaît ![Scroll]Mon fils l'aurait sûrement[Waitkey][Scroll]voulu ainsi[...][Scroll][...]Mais malgré tout, j'aimerais[Scroll]le revoir une dernière fois[...]
+165: Zzzzzzz  Zzzzzzzz[2][...]  [...]  [...][3](ronfle)  Zzzzzz  Zzzzzz
+166: Oh, [Name].  On raconte que[2]tu as enlevé la Princesse,[3]mais je n'y crois pas.
+167: Je n'arrive pas à croire que tu[2]m'aies attrapé !  Avec ta[3]vitesse, ça a dû être facile[Waitkey][Scroll]d'enlever Zelda[...][Scroll]Pourtant, tu n'as pas l'air[Scroll]d'un si mauvais bougre[...][Waitkey][Scroll]Enfin bref, puisque tu as des[Scroll]jambes si rapides, ce serait[Scroll]peut-être une bonne idée de[Waitkey][Scroll]courir et de foncer dans plein[Scroll]de choses[...][Scroll]Par exemple, les arbres de ce[Waitkey][Scroll]village ont plein de choses[Scroll]utiles accrochées à leurs[Scroll]branches[...][Waitkey][Scroll]Allez, essaie donc, d'accord ?!
+168: Si tu as le temps de lire[2]ce panneau, tu devrais foncer[3]vers l'objectif immédiatement !
+169: Je donnerai un Fragment de[2]Cœur à qui porte une Cape.
+170: Malédiction à quiconque jette[2]quelque chose dans mon cercle[3]de pierres.
+171: Par ici[2]      [Up] Bois du Crâne[3]      [Down] Village des Bannis
+172: Par ici[2]      [Right] Grotte
+173: Par ici[2]      [Right] Temple des Ténèbres
+174: Par ici[2]      [Left] Boutique de Bombes
+175: [Left]  Marais du Mal[2]         Pas d'entrée[3]         Pas de sortie
+176: Voici le Village des Bannis.[2]Les gens sans Rubis n'y sont[3]pas les bienvenus.
+177: La Cascade des Vœux est juste[2]au coin.
+178: Par ici[2]      [Right][Up] Lac de Mauvais Augure
+179: Depuis qu'Agahnim a pris le[2]pouvoir, tout le monde se met[3]à agir bizarrement.[Waitkey][Scroll]Je suppose que ce n'est[Scroll]qu'une question de temps[Scroll]avant que je sois touché aussi.
+180: Hé hé !  Tu n'as pas le droit[2]d'entrer dans le château, fiston ![3]Rentre chez toi dormir un peu !
+181: [Window 02][Name], c'est moi, Sahasrahla.  Je[2]peux te parler par télépathie[3]quand tu touches ces dalles.[Waitkey][Scroll]Voici un indice.  Tu peux[Scroll]utiliser le trésor caché ici[Scroll]pour vaincre les ennemis blindés.
+182: [Window 02][Name], c'est moi, l'ancien[2]Sahasrahla.  Un orbe appelé la[3]Perle de Lune se trouve dans[Waitkey][Scroll]cette tour.  Quiconque la[Scroll]détient est protégé et ne[Scroll]change pas de forme dans le[Waitkey][Scroll]Monde des Ténèbres.[Scroll]Tu dois la trouver et t'échapper[Scroll]de la tour ![Waitkey][Scroll]N'oublie pas la Perle de Lune[...]
+183:       [Snake][X][Waves][B][Waves][B]   [Snake][X][Waves][B][Waves][B]   [Ankh][A][Waves][B][Waves][B][2]          [Ankh][A]   [Snake][X][Waves][B][Waves][B][Snake][X]   [Ankh][A][3]     [Snake][X][Waves][B][Waves][B]   [Ankh][A][Snake][X][Snake][X][Ankh][A]   [Waves][B][Waves][B][Ankh][A]
+184: Le triomphe du Héros à[2]la Veille du Cataclysme[3]Lui vaut trois symboles de vertu.[Waitkey][Scroll]L'Épée de Légende, il pourra[Scroll]alors la retrouver,[Scroll]Gardant la lignée des Chevaliers fidèle.
+185: [Window 02][Name], c'est moi, Sahasrahla.[2]Tu dois d'une manière ou d'une[3]autre atteindre le sommet du[Waitkey][Scroll]Rocher Spectacle.  De là, tu[Scroll]pourras rejoindre la Tour de[Scroll]Héra au sommet du Mont Hébra.
+186: [Window 02][Name], c'est moi, Sahasrahla.[2]Les objets existent simultanément[3]dans les deux mondes, sous des[Waitkey][Scroll]formes semblables.  Si la forme[Scroll]d'une chose change, cela[Scroll]affecte la forme de son jumeau[Waitkey][Scroll]dans l'autre monde.
+187: [Window 02][Name][...]  C'est moi, Zelda[...][2]Ne te laisse pas tromper par[3]la sorcellerie de Blind le Voleur ![Waitkey][Scroll]Sois prudent !
+188: [Window 02][Name],  c'est moi, l'ancien[2]Sahasrahla !  Tu dois allumer[3]quatre torches pour ouvrir[Waitkey][Scroll]le passage.
+189:         [Snake][X][Snake][X][Ankh][A][Waves][B]   [Snake][X][Waves][B][Waves][B][Snake][X][2]           [Ankh][A]   [Waves][B][Snake][X][Ankh][A][Waves][B][3]        [Waves][B][Waves][B][Snake][X][Waves][B]   [Ankh][A][Ankh][A][Snake][X][Ankh][A]
+190: Offre une prière devant[2]cette tablette de pierre.[Waitkey][3]Si ton vœu est entendu,[Scroll]le chemin s'ouvrira devant toi.
+191: [Window 02]Quand Ganon est étourdi,[2]assure-toi de l'achever avec[3]une Flèche d'Argent ![Waitkey][Scroll][Name], je sais que tu[Scroll]triompheras.
+192: [Window 02][Name], m'entends-tu ?[2]C'est moi, Zelda.  Je suis[3]enfermée au Rocher-Tortue,[Waitkey][Scroll]au sommet du Mont du Péril.[Scroll]Je sais que tu fais de ton[Scroll]mieux, mais dépêche-toi[...]
+193: [Window 02][Name], c'est moi, Sahasrahla.[2]Ne manque jamais de trouver[3]tous les trésors de chaque donjon.
+194: [Window 02]Écoute bien, [Name].[2]Même avec l'Épée de Légende,[3]tu ne peux infliger de dégâts[Waitkey][Scroll]physiques au prêtre.[Scroll]Tu dois trouver un moyen de lui[Scroll]renvoyer son propre pouvoir maléfique.
+195: [Window 02][Name], n'utilise pas toute ta[2]magie si tu ne possèdes pas[3]la Potion de Magie.[Waitkey][Scroll]Maintenant, prépare-toi à[Scroll]plonger dans les profondeurs[Scroll]de ce donjon.
+196: [Window 02][Name], possèdes-tu la[2]Potion de Magie ?  Sinon, je[3]te déconseille d'aller plus[Waitkey][Scroll]loin.
+197: [Window 02][Name], les flammes magiques te[2]protégeront dans ce donjon[3]glacé.
+198: [Window 02]Tu ne peux détruire le[2]Chevalier Squelette avec la[3]seule épée.  Quand il s'effondre,[Waitkey][Scroll]il est vulnérable à une autre arme.
+199: [Window 02][Name], c'est moi, l'ancien[2]Sahasrahla.  J'ai un conseil[...][3]Dans les donjons, tu peux[Waitkey][Scroll]regarder dans le Miroir Magique[Scroll]pour revenir à l'entrée à tout[Scroll]moment.  Ne l'oublie pas !
+200: Je m'appelle Chris Houlihan.[2]Voici ma salle top secrète.[3]Garde ça entre nous, d'accord ?
+201: Tu as attrapé une abeille ![Waitkey][2]Que vas-tu faire ?[3]    > La garder en bouteille[Scroll]       La relâcher[Choose]
+202: Tu as attrapé une fée ![Waitkey][2]Que vas-tu faire ?[3]    > La garder en bouteille[Scroll]       La relâcher[Choose]
+203: Tu n'as pas de bouteille vide.[2]Tu n'as pas le choix[...][3]Il faut la relâcher.
+204: Ton temps était de [Number 03][Number 02] minutes[2]et [Number 01][Number 00] secondes.
+205: Si tu atteins l'objectif en[2]moins de 15 secondes, on te[3]donnera quelque chose de bien.[Waitkey][Scroll]À vos marques, prêt[...] [...]  PARTEZ !
+206: Tu as réussi ![2]Félicitations ![3]Je t'offre un[Waitkey][Scroll]Fragment de Cœur !
+207: Tu n'as pas réussi.[2]Dommage ![3]Pourquoi ne pas réessayer ?
+208: Je n'ai plus rien à[2]te donner.[3]Désolé !
+209: Tu dois entrer dans le[2]labyrinthe par la bonne entrée,[3]sinon je ne peux pas te[Waitkey][Scroll]chronométrer[...]
+210: Hé, toi !  As-tu passé ta vie[2]sans l'une de mes bouteilles[3]capables de tout contenir ?[Waitkey][Scroll]Alors approche et complète[Scroll]ta vie !  J'en ai justement une[Scroll]en solde, pour le prix[Waitkey][Scroll]imbattable de 100 Rubis ![Waitkey][Scroll]Alors, ça t'intéresse ?[Scroll]    > J'en prends une[Scroll]       Pas besoin[Choose]
+211: Bon achat !  Merci beaucoup ![2]Maintenant, lève-la au-dessus[3]de ta tête pour que tout le[Waitkey][Scroll]monde la voie, d'accord ?[Scroll]C'est bon pour les affaires !
+212: Alors t'es fauché, hein ?[2]Dommage[...]  Reviens quand tu[3]auras plus de Rubis.  Elle sera[Waitkey][Scroll]peut-être encore là.
+213: Je n'ai plus de bouteilles.[2]Reviens plus tard, d'accord ?[3][...] [...] [...]
+214: Waouh !  Je n'ai jamais vu[2]une abeille aussi rare !  Je[3]te l'achète 100 Rubis.  Tiens !
+215: Hé !  On dit que manger du[2]poisson rend intelligent.  Tu[3]dois me donner ce poisson[Waitkey][Scroll]contre ce truc, d'accord ?[Scroll]Marché conclu !
+216: Salut !  [Name] !  Tu sembles[2]avoir de gros ennuis, mais[3]c'est tout ce que je peux te donner.
+217: Hé toi ![2]Bienvenue ![3][Waitkey][Scroll]Demande-nous ce que tu veux ![Scroll]    > Trempe mon épée[Scroll]       Je passais juste[Choose]
+218: Je te fais un gros rabais ![2]    > Tremper l'épée[...] 10 Rubis[3]       Attends un peu[Choose]
+219: Trempée, hein ?  Tu es sûr ?[2]    > Oui[3]       J'ai changé d'avis[Choose]
+220: Eh bien, on ne peut pas la[2]rendre plus forte que ça[...][3]Désolé !
+221: Repasse quand tu veux.[2]Hé ho !  Hé ho ![3]On repart au boulot !
+222: D'accord, pas de souci.[2]On va devoir garder ton épée[3]un moment.
+223: Ton épée est trempée ![2]Lève-la maintenant vers le ciel !
+224: Si mon partenaire disparu[2]revient, on pourra tremper ton[3]épée, mais pour l'instant, je[Waitkey][Scroll]ne peux rien faire pour toi.
+225: Oh !  Les jours heureux sont[2]de retour !  Tu as retrouvé[3]mon partenaire ![...]  On est[Waitkey][Scroll]très heureux maintenant[...][Scroll]Repasse par ici ![Scroll]On trempera alors ton épée[Waitkey][Scroll]à la perfection !
+226: Croa croa[...]  Ton corps n'a[2]pas changé !  Tu n'es pas un[3]type ordinaire, n'est-ce pas ?[Waitkey][Scroll]Je vivais autrefois au village[Scroll]de Cocorico.  Je me demande ce[Scroll]que fait mon partenaire là-bas[Waitkey][Scroll]sans moi[...][Scroll]Croa !  J'ai une faveur à te[Scroll]demander.[Waitkey][Scroll]Emmène-moi voir mon partenaire ![Scroll]S'il te plaît !  Croa !  S'il[Scroll]te plaît !
+227: Désolé, on n'a pas encore fini.[2]Reviens un peu plus tard.
+228: Merci ![2][3]Merci !
+229: Hé hé, les amateurs ne[2]devraient pas essayer ça.[3]Tu ne fais que gêner !
+230: En errant dans ce monde,[2]j'ai pris cette forme.[3][...]  [...]  [...][Waitkey][Scroll]J'aimais jouer de l'ocarina[Scroll]dans le monde d'origine[...][Scroll][...]  [...]  [...][Waitkey][Scroll]Il y avait un petit bosquet où[Scroll]se rassemblaient de nombreux[Scroll]animaux.  J'aimerais revoir[Waitkey][Scroll]cet endroit[...][Scroll]J'y ai enterré mon ocarina[Scroll]avec des graines de fleurs.[Waitkey][Scroll]Veux-tu le chercher pour moi ?[Scroll]    > Oui[Scroll]       Pas question[Choose]
+231: Alors je te prête ma pelle.[2]Je compte sur toi !
+232: [...]  [...]  [...][2]Je vois.  Je ne te redemanderai[3]pas[...]  Adieu.
+233: As-tu trouvé mon ocarina ?[2][...]  [...]  [...][3]Continue de le chercher, je[Waitkey][Scroll]t'en prie[...]
+234: Merci, [Name].  Mais on dirait[2]que je ne peux plus jouer de[3]mon ocarina.[Waitkey][Scroll]S'il te plaît, prends-le.[Waitkey][Scroll]Si par hasard tu passes par le[Scroll]village où je vivais, donne-le[Scroll]à un vieil homme fatigué que tu[Waitkey][Scroll]y trouveras.[Scroll][...]  [...]  [...][Scroll]Eh bien,  mon esprit devient[Waitkey][Scroll]confus[...][Scroll]Laisse-moi entendre le son de[Scroll]l'ocarina une dernière fois[...]
+235: [Position 00]Abracadabra ![2]Tu trouveras l'ancien[3]Sahasrahla[...]
+236: [Position 00]Abracadabra alakazam ![2]Tu ouvriras une serrure du[3]désert avec le Livre de Mudora.
+237: [Position 00]Abracadabra ![2]Tu trouveras un membre de la[3]lignée des sages dans le désert.
+238: [Position 00]Abracadabra alakazam ![2]Tu trouveras un amateur de[3]champignons à la Boutique de[Waitkey][Scroll]Potions[...]
+239: [Position 00]Abracadabra ![2]Tu rencontreras Zora vivant[3]dans un lac à la source de la[Waitkey][Scroll]rivière[...]
+240: [Position 00]Abracadabra alakazam ![2]Le vrai Héros trouvera la[3]Perle de Lune dans une[Waitkey][Scroll]tour de montagne.
+241: [Position 00]Abracadabra ![2]Même la puissante Épée de[3]Légende ne peut blesser le[Waitkey][Scroll]corps du prêtre.
+242: [Position 00]Abracadabra alakazam ![2]Le vrai Héros sautera dans le[3]puits près de la forge.
+243: [Position 00]Eh bien, je dois dire que ma[2]forme n'est pas terrible[3]aujourd'hui.  Mais j'aimerais[Waitkey][Scroll]que tu reviennes[...]
+244: [Position 00]Hmmm[...]  Tu sembles avoir un[2]destin intéressant[...][3]Puis-je lire ton avenir ?[Waitkey][Scroll]Je te ferai un prix[...][Scroll]    > Lui demander de le lire[Scroll]       Pas intéressé[Choose]
+245: [Position 00]Je vais prendre [Number 00][Number 01] Rubis.[2]J'espère que tu resteras en[3]bonne santé.  Yiiihaha !
+246: [Position 00]C'est vraiment un pauvre homme[2]qui ne s'intéresse pas à son[3]avenir[...]  J'attendrai ton retour.
+247: [Position 00]Abracadabra ![2]Tu rencontreras un homme[3]étrange debout dans le désert[...]
+248: [Position 00]Abracadabra alakazam ![2]La boutique à ragots du Monde[3]des Ténèbres offre un trésor[Waitkey][Scroll]à qui le demande[...]
+249: [Position 00]Abracadabra ![2]Tu trouveras le partenaire du[3]forgeron au[Waitkey][Scroll]Village des Bannis.
+250: [Position 00]Abracadabra alakazam ![2]Un trésor repose dans le[3]cimetière du Monde de Lumière.
+251: [Position 00]Abracadabra ![2]Tu achèteras un nouveau type[3]de bombe à la Boutique de Bombes.
+252: [Position 00]Abracadabra alakazam ![2]Tu trouveras un secret à[3]l'intérieur de la pyramide du[Waitkey][Scroll]Monde des Ténèbres.
+253: [Position 00]Abracadabra ![2]Une barrière protège la Tour[3]de Ganon sur le Mont du Péril.
+254: [Position 00]Abracadabra alakazam ![2]Il te faudra des Flèches[3]d'Argent pour achever Ganon.
+255: Hé !  Je te raconterai une[2]histoire payante si tu me[3]donnes 20 Rubis.[Waitkey][Scroll]Alors, ça te tente ?[Scroll]    > Payer les Rubis[Scroll]       Pas envie de l'entendre[Choose]
+256: Hah !  Merci.  On dit qu'il y[2]a un petit cercle de pierres[3]dans le lac à la source de la[Waitkey][Scroll]rivière.  Je ne sais pas ce qui[Scroll]se passerait, mais ce serait[Scroll]peut-être amusant d'y jeter[Waitkey][Scroll]quelque chose[...][Scroll]Héhé.  À plus[...]
+257: Héhé.  Je vois.  Ça ne[2]m'intéresse pas de parler à des[3]gens sans Rubis[...]
+258: Héhé.  Merci.  À vrai dire,[2]j'étais autrefois un voleur[3]dans le Monde de Lumière[...][Waitkey][Scroll]certains de mes compagnons[Scroll]voleurs se sont cachés car ils[Scroll]avaient peur d'être attrapés.[Waitkey][Scroll]L'un d'eux était un maître[Scroll]serrurier, mais il cache[Scroll]maintenant qu'il fut voleur[...][Waitkey][Scroll][...]en se faisant passer pour[Scroll]un étrange homme d'âge mûr ![Scroll]Ha ha ha[...]
+259: Hah !  Merci.  À vrai dire,[2]j'ai trouvé une beauté[3]incroyable dans la pyramide,[Waitkey][Scroll]mais quelqu'un a scellé la[Scroll]porte.  On dit qu'une bombe[Scroll]ordinaire n'y peut rien[...]
+260: Héhé.  Merci.  En fait, la[2]magie des monstres fait[3]tomber la pluie sur le marais.[Waitkey][Scroll]Si tu peux déplacer l'air avec[Scroll]plus de force que les monstres,[Scroll]la pluie pourrait s'arrêter.
+261: -snif- Hé, frangin [Name] ![2]As-tu une bouteille pour[3]garder un insecte ?[Waitkey][Scroll][...][Scroll]Je vois.  Tu n'en as pas[...][Scroll]-tousse- -tousse-
+262: Je ne peux pas sortir, je suis[2]malade[...]  -tousse- -tousse-[3]On dit que j'ai attrapé ce rhume[Waitkey][Scroll]à cause de l'air maléfique qui[Scroll]descend de la montagne[...][Scroll]-snif- -snif-[Waitkey][Scroll]Voici mon filet à insectes.[Scroll]Je m'en servirai une fois[Scroll]guéri, mais pour l'instant, je[Waitkey][Scroll]te le prête.
+263: -snif-[2]J'espère guérir bientôt[...][3]-tousse- -tousse-
+264: [...]  [...]  [...]  [...]  [...]  [...][2][...]  [...]  [...]
+265: Pourquoi as-tu pris mon[2]panneau ?  Il dit clairement de[3]me laisser tranquille !  Pff !
+266: J'ai entendu dire que tu sais[2]que j'étais voleur, pas vrai ?[3][Waitkey][Scroll]Bon, je vais t'ouvrir un[Scroll]coffre.  Garderas-tu ça secret[Scroll]pour tous les autres ?[Waitkey][Scroll]Peux-tu me le promettre ?[Scroll]    > Promettre de ne rien dire[Scroll]       Le dire à tout le monde[Choose]
+267: Bon, si c'est comme ça que tu[2]le veux, j'espère que tu[3]traîneras ce coffre pour toujours !
+268: Rappelle-toi, tu as promis[...][2]Ne le dis à personne.
+269: Très bien, apporte ce coffre[2]ici[...]  Sérieusement, garde ça[3]secret pour tout le monde.
+270:     [Ankh][A][Ankh][A]   [Ankh][A][Snake][X][Waves][B][Ankh][A][Waves][B]   [Waves][B][Snake][X][Waves][B][2]        [Waves][B][Snake][X][Snake][X]   [Waves][B][Snake][X][Snake][X][Waves][B][Ankh][A][3]     [Waves][B][Waves][B][Snake][X][Ankh][A][Waves][B]   [Snake][X][Waves][B][Ankh][A][Ankh][A][Snake][X]
+271: Lève l'Épée de Légende[2]et tu recevras la magie[3]d'Ether.
+272: Lève l'Épée de Légende[2]et tu recevras la magie[3]de Bombos.
+273: Hé, sale type  Comment oses-tu[2]me réveiller de mon sommeil[3]profond et ténébreux ![...]Enfin,[Waitkey][Scroll]merci beaucoup, monsieur ![Scroll]Mais je vais maintenant me[Scroll]venger de toi.  Prépare-toi ![Waitkey][Scroll][...]Euh, ça te va,[Scroll]monsieur ?
+274: Kekeke !  Je ris de ton[2]malheur !  Ta magie va[3]maintenant baisser de moitié ![Waitkey][Scroll]Félicitations ![Scroll]Fais de ton mieux, même si je[Scroll]suis sûr que ça ne suffira pas ![Waitkey][Scroll]Bonne journée !  À plus !
+275: [ScrollSpd 00][Color 07][Speed 03][Window 02][NextPic]Il y a bien longtemps, dans le[2]magnifique royaume d'Hyrule,[3]entouré de montagnes et de forêts[...][Wait 09][Scroll]la légende racontait un[Scroll]Pouvoir Doré omnipotent et[Scroll]omniscient, caché en ces terres.[Wait 09][NextPic][NextPic][Scroll]Beaucoup de gens cherchaient[Scroll]avec acharnement à pénétrer[Scroll]dans le Royaume Sacré caché[...][Wait 07][Scroll]Mais nul n'en revint jamais.[Scroll]Un jour, un pouvoir maléfique[Scroll]se mit à émaner du Royaume Sacré[...][Wait 07][Scroll]Le Roi ordonna alors à sept[Scroll]sages de sceller la porte du[Scroll]royaume du Pouvoir Doré.[Wait 09][NextPic][NextPic][Scroll]Ce sceau aurait dû durer[Scroll]pour l'éternité[...][Scroll][Wait 09][NextPic][NextPic][Scroll][...]  [...]Mais, quand ces événements[Scroll]furent voilés par les brumes du[Scroll]temps et devinrent légende[...]
+276: [Window 02][Color 07][Speed 03][1]Un mystérieux prêtre nommé[2]Agahnim vint à Hyrule pour[3]briser le sceau.  Il élimina[Wait 05][Scroll]le bon Roi d'Hyrule[...][Wait 05]
+277: [Window 02][Color 07][Speed 03][1]Par une magie maléfique, il[2]se mit à faire disparaître les[3]descendants des sept sages,[Wait 05][Scroll]les uns après les autres.[Wait 05]
+278: [Window 02][Color 07][Speed 03][1]Et l'heure du destin pour[2]la Princesse Zelda approche[3]à grands pas.[Wait 05]
+279: Comme la clé est enfermée[2]à l'intérieur de ce coffre, tu[3]ne pourras jamais l'ouvrir.[Waitkey][Scroll]Emporte-le simplement avec toi.
+280: 100 Rubis pour 30 Bombes !  30[2]Bombes pour seulement 100 Rubis ![3]Achète-les, m'sieur !
+281: 100 Rubis pour 30 Bombes !  J'ai[2]aussi une nouvelle Super Bombe[3]en stock pour seulement 100[Waitkey][Scroll]Rubis !  Achète-la aussi, m'sieur !
+282: Merci beaucoup.[2]Merci beaucoup.
+283: Merci beaucoup.  Tu peux[2]déposer cette Bombe n'importe[3]où.  (Appuie sur le bouton A.)[Waitkey][Scroll]Ne l'oublie pas, s'il te plaît.
+284: Ki ki ki !  Si tu me donnes[2]100 Rubis, je t'ouvrirai[3]l'entrée.  Ki ki ki ![Waitkey][Scroll]   Que vas-tu faire ?[Scroll]    > Lui demander de l'ouvrir[Scroll]       Essayer de l'ouvrir toi-même[Choose]
+285: Ki ki ki !  Humpf ![2]Fais-le toi-même, alors ![3]Kik ki ki !
+286: Ki ki !  Bon choix !  Je prends[2]donc tes 100 Rubis.  Kik ki ki !
+287: Je suis Kiki le singe, ki ki ![2]J'adore les Rubis plus que[3]tout.  Peux-tu m'en donner[Waitkey][Scroll]10 ?[Waitkey][Scroll]  Que vas-tu faire ?[Scroll]    > Lui donner 10 Rubis[Scroll]       Ne rien lui donner[Choose]
+288: Ki ki ki ki !  Bon choix !  Je[2]vais t'accompagner un moment.[3]Kik kiki !
+289: Ki ki !  Humpf !  Je n'ai alors[2]aucune raison de te parler.[3]Salut !  Kik ki ki !
+290: Ki ki ?  Qu'est-ce que tu fais ?[2]Je ne veux pas aller là-bas !
+291: Ohh, merci beaucoup ![2]Tu m'as sauvé la vie.  Emmène-[3]moi dehors, je t'en prie.
+292: Gyaaah ![2]Trop lumineux !
+293: Euh[...]  Attends une minute[...][2]Ne va pas par là, je t'en prie.
+294: Je suis Aginah.  Je sens que[2]quelque chose se passe dans le[3]Royaume Sacré scellé par les[Waitkey][Scroll]sept sages[...][Scroll]Ce doit être un présage du[Scroll]Grand Cataclysme prédit par[Waitkey][Scroll]le peuple de sang hylien[...][Scroll][...] [...] [...][Scroll]La prophétie dit : « Le Héros[Waitkey][Scroll]se tiendra dans le désert en[Scroll]tenant le Livre de Mudora. »[Scroll]Si tu as le Livre de Mudora,[Waitkey][Scroll]tu pourras lire la langue du[Scroll]peuple hylien.[Scroll]Il devrait se trouver dans la[Waitkey][Scroll]maison des livres du village[...][Scroll]Tu dois l'obtenir ![Scroll]Si tu es celui qui doit être[Waitkey][Scroll]le Héros[...]
+295: Tu as réuni les trois[2]Pendentifs.[3]Si tu es vraiment le Héros[Waitkey][Scroll]doté de Courage, de Sagesse et[Scroll]de Puissance, l'Épée de[Scroll]Légende endormie dans la forêt[Waitkey][Scroll]sera à toi.
+296: Aha !  C'est le Livre de[2]Mudora.  Avec lui, tu peux lire[3]la langue du peuple hylien.
+297: Tu es le vrai Héros[...][2]Je crois que tu ramèneras[3]la paix sur cette terre.
+298: Ton épreuve dans le désert t'a[2]rendu plus fort.  Le sang du[3]Héros doit couler dans tes[Waitkey][Scroll]veines[...]
+299: Est-ce toi qui as troublé ma[2]paisible sieste ?  Je te donne[3]ceci si tu t'en vas !
+300: Je n'ai plus de bons cadeaux[2]pour toi.  Prends plutôt ça,[3]petite peste !
+301: Yo [Name] !  Une brume[2]mystérieuse est récemment[3]tombée sur la forêt.  Prudence !
+302: C'est peut-être rien, mais cet[2]arbre semble bizarre quand[3]on le coupe[...]
+303: Yo !  La brume de la forêt se[2]dissipe.  Merci !  On peut y[3]retourner !  Hé, frangin !
+304: Ouais [Name], je suis en ce[2]moment fâché avec mon petit[3]frère.  J'ai scellé la porte de[Waitkey][Scroll]sa chambre.
+305: Alors la porte est de nouveau[2]ouverte[...]  Bon, bon, je devrais[3]peut-être me réconcilier avec[Waitkey][Scroll]mon frère[...]
+306: Hé [Name], tu viens de la[2]chambre de mon grand frère ?[3]Est-il toujours fâché ?
+307: [Speed 02][Position 00][Window 02][Name], grâce à toi, je peux[2]échapper aux griffes des[3]monstres maléfiques.  Merci ![Waitkey][Scroll][...]Ce monde était autrefois le[Scroll]Royaume Sacré où était caché[Scroll]la Triforce.[Waitkey][Scroll]Mais parce que Ganon, le chef[Scroll]des voleurs, l'a souhaité, le[Scroll]monde a été transformé[...][Waitkey][Scroll]Je suis sûre qu'il compte[Scroll]conquérir même notre Monde de[Scroll]Lumière une fois sa puissance[Waitkey][Scroll]bâtie ici.[Scroll]Il essaie d'ouvrir une plus[Scroll]grande porte entre les mondes[Waitkey][Scroll]près du château, en utilisant[Scroll]nos pouvoirs.[Scroll]Mais la porte n'est pas encore[Waitkey][Scroll]complètement ouverte[...][Scroll]Si nous, les sept jeunes[Scroll]filles, nous réunissons, nous[Waitkey][Scroll]pouvons briser la barrière[Scroll]autour de la cachette de[Scroll]Ganon.[Waitkey][Scroll]Je te dirai où sont retenues[Scroll]les autres filles.  Je crois[Scroll]que tu détruiras Ganon.[Waitkey][Scroll]Je reprendrai ma forme[Scroll]originale à ce moment-là.[Scroll]  [...] [...] [...] [...] [...][Sound 45]
+308: [Speed 02][Position 00][Window 02][Name], grâce à toi, je peux[2]échapper aux griffes des[3]monstres maléfiques.  Merci ![Waitkey][Scroll][...]La Triforce exauce les vœux[Scroll]de quiconque la touche, tant[Scroll]que cette personne vit[...][Waitkey][Scroll]C'est pourquoi elle fut cachée[Scroll]dans le Royaume Sacré.[Waitkey][Scroll]Seuls quelques[Scroll]élus connaissaient son[Waitkey][Scroll]emplacement, mais à un moment[Scroll]ce savoir fut perdu[...][Scroll]Celui qui redécouvrit[Waitkey][Scroll]le Royaume Sacré fut[Scroll]Ganondorf, le voleur maléfique.[Scroll]Par chance, il ne trouva pas[Waitkey][Scroll]comment retourner dans le[Scroll]Monde de Lumière[...][Scroll][...]Souviens-toi que tu[Waitkey][Scroll]possèdes des pouvoirs magiques,[Scroll]que seul le Héros peut pleinement[Scroll]exploiter ![Waitkey][Scroll]Il existe d'autres points de[Scroll]téléportation magiques comme[Scroll]celui que tu as vu sur le[Waitkey][Scroll]Mont Hébra.[Scroll]En les utilisant, tu peux[Scroll]aller entre les deux mondes et[Waitkey][Scroll]trouver les maux cachés dans[Scroll]le Monde des Ténèbres.  Tu es[Scroll]le seul qui puisse détruire[Waitkey][Scroll]Ganondorf, le voleur - non,[Scroll]Ganon, le maléfique Roi des[Waitkey][Scroll]Ténèbres !
+309: [Speed 02][Position 00][Window 02][Name], grâce à toi, je peux[2]échapper aux griffes des[3]monstres maléfiques.  Merci ![Waitkey][Scroll][...]Connais-tu la prophétie du[Scroll]Grand Cataclysme ?[Scroll]Voici comment je l'ai entendue[...][Waitkey][Scroll]Si une personne au cœur[Scroll]maléfique obtient la Triforce,[Scroll]un Héros est destiné à[Waitkey][Scroll]apparaître[...][Scroll][...]et lui seul devra affronter[Scroll]la personne qui a déclenché le[Waitkey][Scroll]Grand Cataclysme.[Scroll]Si le maléfique détruit le[Scroll]Héros, rien ne pourra sauver[Waitkey][Scroll]le monde de son règne funeste.[Scroll]Seule une personne de la[Scroll]lignée des Chevaliers d'Hyrule,[Waitkey][Scroll]qui protégeaient la royauté[Scroll]hylienne, peut devenir[Scroll]le Héros[...]  Tu es de leur[Waitkey][Scroll]lignée, n'est-ce pas ?  Alors[Scroll]tu dois sauver[Scroll]Zelda sans faute.
+310: [Speed 02][Position 00][Window 02][Name], grâce à toi, je peux[2]échapper aux griffes des[3]monstres maléfiques.  Merci ![Waitkey][Scroll]Tandis que les sages scellaient[Scroll]la voie vers le Monde des[Scroll]Ténèbres, les Chevaliers[Waitkey][Scroll]d'Hyrule les défendaient contre[Scroll]les attaques des monstres[Scroll]maléfiques.[Waitkey][Scroll]J'ai entendu dire que les[Scroll]Chevaliers d'Hyrule furent[Scroll]presque exterminés lors de[Waitkey][Scroll]cette bataille[...][Scroll]Tu es peut-être le dernier à[Scroll]perpétuer la lignée des[Waitkey][Scroll]Chevaliers[...][Scroll]C'est ironique que le dernier[Scroll]de la lignée ait le potentiel[Waitkey][Scroll]de devenir le Héros de la[Scroll]légende.[Scroll]Tu peux sûrement détruire Ganon !
+311: [Speed 02][Position 00][Window 02][Name], grâce à toi, je peux[2]échapper aux griffes des[3]monstres maléfiques.  Merci ![Waitkey][Scroll]On dit que le peuple hylien[Scroll]maîtrisait des pouvoirs[Scroll]mystérieux, tout comme les[Waitkey][Scroll]sept sages.[Scroll]Mais le sang des Hyliens s'est[Scroll]affaibli avec le temps.[Waitkey][Scroll]Nous qui portons le sang[Scroll]des sept sages[Scroll]ne possédons plus non plus de[Waitkey][Scroll]grand pouvoir.[Scroll]Nos pouvoirs augmenteront si[Scroll]nous mêlons le courage des[Waitkey][Scroll]Chevaliers à la sagesse des[Scroll]sages.[Scroll]Il ne reste que peu de temps[Waitkey][Scroll]avant que la porte du château[Scroll]reliant les mondes ne s'ouvre[Scroll]complètement.  Si tu vaincs[Waitkey][Scroll]Ganon, ce monde disparaîtra[Scroll]et la Triforce attendra un[Scroll]nouveau porteur.[Waitkey][Scroll]J'ai confiance en toi[...][Scroll]Bonne chance !
+312: [Speed 02][Position 00][Window 02][Name], grâce à toi, je peux[2]échapper aux griffes des[3]monstres maléfiques.  Merci ![Waitkey][Scroll]Ganon nous a capturées car il[Scroll]ne pouvait briser le sceau des[Scroll]sages avec sa seule puissance.[Waitkey][Scroll]Puis, utilisant le prêtre[Scroll]Agahnim comme pion, il nous a[Scroll]entraînées dans le Monde des[Waitkey][Scroll]Ténèbres.[Scroll]Après avoir brisé le sceau[Scroll]avec nos pouvoirs, il nous a[Waitkey][Scroll]enfermées dans ces cristaux.[Scroll]Il nous a ensuite données à[Scroll]ses monstres fidèles.  Mais[Waitkey][Scroll]Ganon ne s'attendait pas à ce[Scroll]que tu ailles aussi loin.[Scroll]Maintenant, la Princesse Zelda[Waitkey][Scroll]t'attend à l'intérieur du[Scroll]Rocher-Tortue.[Scroll]Dépêche-toi, je t'en prie !
+313: [Speed 02][Position 00][Window 02]J'apprécie que tu sois venu de[2]si loin pour me sauver.  Comme[3]je le pensais, tu es le Héros[Waitkey][Scroll]légendaire.[Scroll]Je l'ai senti dès notre première[Scroll]rencontre.[Waitkey][Scroll][...]  [...]  [...][Scroll]Ganon attend dans sa tour[Waitkey][Scroll]pour franchir la porte reliant[Scroll]les deux mondes.[Scroll]Une fois que Ganon entrera[Waitkey][Scroll]dans le Monde de Lumière, il[Scroll]est peu probable que quiconque[Scroll]puisse l'arrêter.[Waitkey][Scroll]Mais s'il reste dans l'espace[Scroll]clos de ce monde, tu peux le[Scroll]trouver où qu'il fuie.[Waitkey][Scroll]Maintenant, va à la Tour de[Scroll]Ganon !  Nous unirons nos[Scroll]pouvoirs pour briser la barrière.[Waitkey][Scroll]Ramenons la paix dans ce pays[Scroll]sans faute[...][Scroll][...]  [...]  [...][Sound 45]
+314: [Speed 02][Position 00][Window 02]Que le chemin du Héros mène[2]à la Triforce.
+315: [Speed 02][Position 00][Window 02]As-tu compris ?[2]    > Oui[3]       Pas du tout[Choose]
+316: [Name], nous allons briser[2]la barrière de la Tour de[3]Ganon avec notre pouvoir.
+317: [Speed 02][Position 00][Window 02]J'apprécie que tu sois venu de[2]si loin pour me sauver.  Comme[3]je le pensais, tu es le Héros[Waitkey][Scroll]légendaire.[Scroll]Je l'ai senti dès notre première[Scroll]rencontre.[Waitkey][Scroll][...]  [...]  [...][Scroll]Ganon attend dans sa tour[Waitkey][Scroll]pour franchir la porte reliant[Scroll]les deux mondes.[Scroll]Une fois que Ganon entrera[Waitkey][Scroll]dans le Monde de Lumière, il[Scroll]est peu probable que quiconque[Scroll]puisse l'arrêter.[Waitkey][Scroll]Mais s'il reste dans l'espace[Scroll]clos de ce monde, tu peux le[Scroll]trouver où qu'il fuie.[Waitkey][Scroll]Il reste cependant des jeunes[Scroll]filles qui ont besoin de ton[Scroll]aide.  Une fois toutes[Waitkey][Scroll]sauvées, va à la Tour de Ganon.[Scroll]Nous, qui sommes de la lignée[Scroll]des sages, unirons alors notre[Waitkey][Scroll]pouvoir pour briser[Scroll]la barrière de Ganon !  [Scroll][Name][...]  Tu dois ramener[Waitkey][Scroll]la paix dans ce pays[...]
+318: Ahah[...] [Name] ![2]Je t'attendais ![3]Héhéhé[...][Waitkey][Scroll]J'espérais faire disparaître[Scroll]Zelda sous tes yeux.[Scroll]Contemple !  Le dernier[Waitkey][Scroll]moment de la Princesse Zelda !
+319: Ho ho ho[...]  Avec ce dernier[2]sacrifice, le sceau des Sept[3]Sages est enfin brisé.[Waitkey][Scroll]Ce n'est maintenant plus qu'une[Scroll]question de temps avant que le[Scroll]pouvoir maléfique ne recouvre[Waitkey][Scroll]cette terre[...][Scroll]Après tout, le Héros légendaire[Scroll]ne peut nous vaincre, nous, la[Waitkey][Scroll]tribu du mal, quand nous sommes[Scroll]armés du Pouvoir Doré.[Scroll]Ho ho ho[...] Maintenant, je[Waitkey][Scroll]dois y aller !
+320: Oh, vraiment ?[...]  Tu veux[2]dire que tu aimerais être[3]totalement détruit ?  Eh bien,[Waitkey][Scroll]je peux exaucer ton vœu !
+321: Grrrargh !  Bien joué !  Comme[2]le vrai Héros que tu es[...][3]Mais je ne suis pas prêt à[Waitkey][Scroll]admettre ma défaite.  Je vais[Scroll]t'entraîner dans le Monde des[Scroll]Ténèbres !
+322: Ho ho ho !  C'est génial que[2]tu aies pu venir jusqu'ici,[3][Name].[Waitkey][Scroll]Je suis très heureux de te[Scroll]revoir, mais[Scroll]crois-moi, il n'y aura pas de[Waitkey][Scroll]troisième rencontre !  Prépare-[Scroll]toi à affronter ta perte !
+323: Wah ha ha !  Que veux-tu,[2]petit homme ?  As-tu quelque[3]chose à me demander ?[Waitkey][Scroll]    > Je veux les palmes[Scroll]       Je passais juste[Choose]
+324: Wah ha ha !  Mais je ne donne[2]pas les palmes gratuitement.[3]Je les vends[Waitkey][Scroll]500 Rubis la paire.[Waitkey][Scroll]Que fais-tu ?[Scroll]    > Payer 500 Rubis[Scroll]       Finalement, abandonner[Choose]
+325: Wah ha ha !  Une paire de[2]palmes arrive.  Je vais te[3]donner un bonus gratuit avec[Waitkey][Scroll]ton achat.[Scroll]Je te laisserai utiliser les[Scroll]voies d'eau magiques du peuple[Waitkey][Scroll]marin qui relient lacs et[Scroll]rivières.[Scroll]Quand tu vois un tourbillon,[Waitkey][Scroll]plonge dedans.  On ne sait[Scroll]jamais où tu remonteras !  Wah[Scroll]ha ha !
+326: Reviens par ici quand tu[2]auras plus de Rubis[...][3]Wah ha ha !  À bientôt !
+327: Génial !  Chaque fois que tu[2]veux revoir ma tête de poisson,[3]tu es le bienvenu ici.[Waitkey][Scroll][...][Scroll]Wah ha ha !  Au revoir[...] !
+328: Salut [Name] !  L'ancien ?![2]Tu parles du grand-père ?[3]D'accord, mais n'en parle pas[Waitkey][Scroll]aux méchants.[Scroll]Il se cache dans le temple[Scroll]au-delà du château.[Waitkey][Scroll]Je vais marquer l'endroit sur[Scroll]ta carte.  Voilà[...][Sound 45]
+329: As-tu rencontré le grand-père ?[2]Si tous les méchants[3]partent, il pourra revenir au village.
+330: Tu es nouveau ici, non ?[2]Es-tu venu chercher le[3]Pouvoir Doré ?[Waitkey][Scroll]Eh bien, c'est trop tard.  Il[Scroll]n'obéit qu'à la première[Scroll]personne qui le touche.[Waitkey][Scroll]L'homme qui a réclamé en[Scroll]dernier le Pouvoir Doré a[Scroll]souhaité ce monde.  Il reflète[Waitkey][Scroll]son cœur.[Scroll]Oui, je suis venu ici par[Scroll]cupidité pour le Pouvoir Doré,[Waitkey][Scroll]et regarde ce qui m'est[Scroll]arrivé[...][Scroll]Pour restaurer le Royaume[Waitkey][Scroll]Sacré, une personne digne du[Scroll]Pouvoir Doré doit vaincre[Scroll]l'homme qui a créé cet[Waitkey][Scroll]endroit[...][Scroll]Jusque-là, je suis coincé[Scroll]dans cette forme bizarre.[Waitkey][Scroll]Mais quelle chose espiègle à[Scroll]laisser traîner[...][Scroll]Le Pouvoir Doré[...][Waitkey][Scroll]Ou pour l'appeler par son vrai[Scroll]nom, la Triforce[...]
+331:          -Étang Mystérieux-[2]Ne veux-tu pas y jeter quelque chose ?[3][Waitkey][Scroll]Que vas-tu faire ?[Scroll]    > Jeter un objet[Scroll]       Ne pas essayer[Choose]
+332: Ne fais pas ça !
+333: Ne fais pas ça !
+334: Je vais te le rendre alors.[2]Ne le laisse pas tomber à[3]nouveau.
+335: Combien de Rubis vas-tu jeter ?[2]    > [Number 01][Number 00] Rubis[3]       [Number 03][Number 02] Rubis[Choose]
+336: Tu es quelqu'un d'honnête.[2]Je t'apprécie.[3]Je vais te donner quelque chose[Waitkey][Scroll]d'important[...][Scroll]Voici les Flèches d'Argent.[Scroll]Pour donner à Ganon son[Waitkey][Scroll]dernier instant, tu en as[Scroll]vraiment besoin !  Je sais que[Scroll]je n'ai pas tout à fait la[Waitkey][Scroll]silhouette d'une fée.[Scroll]C'est la faute du cruel[Scroll]pouvoir de Ganon ![Waitkey][Scroll]Tu dois vaincre Ganon !
+337: [2]   Grande Chance.
+338: [2]   Bonne Chance.
+339: [2]   Un Peu de Chance.
+340: [2]   Une Terrible Malédiction.
+341: Ta fortune du jour est[...]
+342: Tu as trouvé un Fragment[2]de Cœur !        [1HeartL][1HeartR]
+343: Tu as trouvé un Fragment[2]de Cœur !        [2HeartL][1HeartR]
+344: Tu as trouvé un Fragment[2]de Cœur !        [3HeartL][3HeartR]
+345: Tu as trouvé un Fragment[2]de Cœur !        [4HeartL][4HeartR][3]Ton niveau de Cœur a augmenté !
+346: Tu as trouvé un Réceptacle de[2]Cœur !           [4HeartL][4HeartR][3]Ton niveau de Cœur a augmenté !
+347: Voyageur épuisé[...][2]Laisse-moi soigner tes blessures[3]et apaiser ta fatigue[...][Waitkey][Scroll]Ferme les yeux et détends-toi[...]
+348: Aïe ! J'en ai marre de me faire[2]botter.  Oh ?  Qui es-tu, M.[Waitkey][3]Lapin ?  Ce monde et le nôtre[Scroll]se ressemblent, mais le mal l'a[Scroll]déformé.[Waitkey][Scroll]Le Pouvoir Doré change ta[Scroll]forme pour refléter ce qu'il[Scroll]y a dans ton cœur et ton esprit.[Waitkey][Scroll]Je suis le premier à rebondir[Scroll]dès qu'il y a un problème,[Scroll]alors je suis devenu une[Waitkey][Scroll]boule[...][Scroll]Mais si tu as un orbe appelé[Scroll]la Perle de Lune, tu peux[Waitkey][Scroll]garder ta forme originale ici.[Scroll]Ah ! Le revoilà[...]
+349: Tu n'as pas changé de forme ?[2]Tu n'es pas juste un type[3]ordinaire, n'est-ce pas ?
+350: Qu'est-ce que tu veux ?![2]T'as quelque chose à me dire,[3]stupide lapin ?![Waitkey][Scroll]Je suis venu ici chercher le[Scroll]Pouvoir Doré, mais maintenant[Scroll]je suis un monstre et je ne[Waitkey][Scroll]peux plus retourner dans le[Scroll]vrai monde !  Si seulement[Scroll]j'avais la Perle de Lune de la[Waitkey][Scroll]Tour de Héra, je pourrais[Scroll]reprendre ma forme originale ![Scroll]J'ai de bonnes raisons d'être[Waitkey][Scroll]stressé ![Scroll]Alors dégage !  Ouste, ouste !
+351: WAOUH !  Ta forme n'a pas[2]changé !  T'as eu la Perle de[3]Lune, hein ?
+352: Dans un monde aussi dangereux,[2]tu pourrais avoir besoin de[3]bien des choses.  Choisis[Waitkey][Scroll]quelque chose qui te plaît[...]
+353: Salut, je peux t'aider ?  Tu[2]peux ouvrir deux coffres pour[3]30 Rubis.  Pourquoi ne pas[Waitkey][Scroll]jouer ?[Scroll]    > Jouer ici[Scroll]       Peut-être une autre fois[Choose]
+354: Bon, reviens jouer une autre[2]fois.  Je t'attendrai.[3]D'ici là, au revoir !
+355: Hé, gamin ![2]Tu peux ouvrir un coffre[3]après avoir payé des Rubis !
+356: Tu ne peux plus ouvrir de[2]coffres.  La partie est terminée.
+357: Très bien, gamin.[2]Choisis bien !  Bonne chance !
+358: Je peux t'aider ?  Sélectionne[2]ce qui te plaît et appuie sur[3]A pour l'acheter.  Prix indiqués !
+359: Tu n'as pas besoin de cet[2]objet[...]  Pourquoi ne pas[3]en choisir un autre ?
+360: Merci beaucoup.[2]Chaque fois que tu perds ton[3]bouclier, reviens ici.
+361: Merci beaucoup.[2]Voici la Potion Rouge.[3]Elle t'aide à récupérer ta Vie.
+362: Merci !  Voici des Flèches.[2]Il te faut un arc pour[3]les utiliser.
+363: Voici des Bombes.[2]Savais-tu que tu peux ramasser[3]une Bombe déjà posée[Waitkey][Scroll]avec le bouton A ?
+364: Merci beaucoup.[2]C'est une Abeille.  Ne me[3]demande pas à quoi elle sert.
+365: Merci beaucoup.[2]Tu peux récupérer un Cœur.
+366: Non non non[...]  Je ne peux pas[2]vendre la marchandise car tu[3]n'as pas de bouteille vide.
+367: Tu ne peux plus en porter[2]maintenant, mais tu en auras[3]peut-être besoin plus tard !
+368: Je n'aurais jamais cru qu'un[2]morveux comme toi puisse me[3]donner autant de fil à retordre.[Waitkey][Scroll]Et dire que tu as réussi à[Scroll]vaincre mon alter ego, Agahnim[Scroll]le Prêtre des Ténèbres, deux fois ![Waitkey][Scroll]Mais même ainsi, tu n'arracheras[Scroll]jamais la Triforce de mes[Scroll]mains.[Waitkey][Scroll]Je vais te détruire, petit[Scroll]morveux, et mon vœu de régner[Scroll]sur les mondes de lumière et[Waitkey][Scroll]de ténèbres se réalisera sans[Scroll]tarder.
+369: Tu te débrouilles bien, petit.[2]Mais peux-tu percer cette[3]technique secrète des Ténèbres ?[Waitkey][Scroll]En garde !
+370: Hé gamin, c'est la planque[2]secrète d'une bande de voleurs ![3]N'entre pas sans permission ![Waitkey][Scroll]Au fait, un ancien membre[Scroll]traîne près de l'entrée du[Scroll]Désert du Mystère.[Waitkey][Scroll]Je me demande ce qu'il[Scroll]manigance[...]
+371: Salut [Name] !  Cette maison[2]était autrefois la planque[3]d'une bande de voleurs.[Waitkey][Scroll]Quel était le nom de leur[Scroll]chef, déjà[...][Scroll]Ah oui, il s'appelait Blind,[Waitkey][Scroll]il détestait vraiment la[Scroll]lumière vive.
+372: [Speed 02][Position 00][Window 02]Bienvenue, [Name][...][2]Je   suis   l'Esprit[3]de   la   Triforce.[Waitkey][Scroll][...]   [...]   [...][Speed 01][Waitkey][1]                                          [2]                                          [3]                                          [Speed 02][1]La Triforce exaucera les[2]vœux du cœur et de l'esprit de[3]la personne qui la touche.[Speed 01][Waitkey][1]                                          [2]                                          [3]                                          [Speed 02][1]Si quelqu'un au cœur juste[2]la touche, un vœu juste[3]sera exaucé[...][Waitkey][Scroll]Mais si quelqu'un au cœur[Scroll]maléfique la touche, un vœu[Scroll]maléfique sera exaucé.[Speed 01][Waitkey][1]                                          [2]                                          [3]                                          [Speed 02][1]Plus le vœu est sincère,[2]plus la Triforce le[3]manifestera avec puissance.[Speed 01][Waitkey][1]                                          [2]                                          [3]                                          [Speed 02][1]Le vœu de Ganon était de[2]conquérir ces mondes.  En[3]touchant la Triforce, ce vœu[Waitkey][Scroll]maléfique changea le Royaume[Scroll]Sacré en Monde des Ténèbres.[Speed 01][Waitkey][1]                                          [2]                                          [3]                                          [Speed 02][1]Ganon resta dans ce monde,[2]accumulant patiemment sa[3]puissance.  Il chercha à[Waitkey][Scroll]conquérir le Monde de Lumière[Scroll]pour accomplir pleinement son vœu.[Speed 01][Waitkey][1]                                          [2]                                          [3]                                          [Speed 02][1]Cependant, maintenant que[2]Ganon est tombé, son Monde des[3]Ténèbres va lui aussi disparaître.[Speed 01][Waitkey][1]                                          [2]                                          [3]                                          [Speed 02][1]La Triforce attend un[2]nouveau maître.  Son Pouvoir[3]Doré est entre tes mains[...][Speed 01][Waitkey][1]                                          [2]                                          [3]                                          [Speed 02][1]Maintenant, touche-la avec[2]un vœu dans ton cœur.[3][...]  [...]  [...]  [...]
+373: Très bien ![2]Prends-le, sale voleur cupide !
+374: -hips-  J'ai vu une sacrée[2]bonne femme[...][3]Elle était vraiment incroyable[...][Waitkey][Scroll]En remontant la rivière, à la[Scroll]Cascade des Vœux, dans les[Scroll]collines où la rivière prend[Waitkey][Scroll]sa source[...][Scroll]Quelle beauté ![Scroll][Name], tu dois aller la[Waitkey][Scroll]rencontrer au moins une fois.[Scroll]Elle va vraiment te plaire.
+375: Prends des Rubis, mais ne dis[2]à personne que je te les ai[3]donnés.  Garde ça secret entre[Waitkey][Scroll]nous.
+376: Y a un truc bien dans la[2]grotte à l'est du Lac Hylia.[3]Garde ça secret entre nous.
+377: Tu peux gagner plein de Rubis[2]en battant des ennemis.  C'est[3]le secret de ma réussite[...]
+378: [Name], savais-tu que si tu[2]brises des ennemis gelés avec[3]le Marteau, tu obtiens souvent[Waitkey][Scroll]des Fioles Magiques ?
+379: Tu dois chercherahla[2]Sahasrahla.[3][...]  [...]  [...]
+380: Oh oui, comme je le pensrahla,[2]tu as trouvé Sahasrahla ![3][...]  [...]  [...]
+381: Désolé, mais tu ne sembles[2]pas avoir assez de Rubis[...]
+382: Cot cot[...]  Quoi ?![2]Tu m'as transformé en humain.[3]Je peux même parler la langue ![Waitkey][Scroll]Ah, ça doit être toi qui[Scroll]embêtes toujours mes amis.[Scroll]La Girouette te voit toujours[Waitkey][Scroll]les harceler.[Scroll]Enfin, cette forme humaine[Scroll]m'est inconfortable.[Waitkey][Scroll]Ahhh, je veux redevenir une[Scroll]poule !  Cot cot[...]
+383: Paie-moi 20 Rubis et je te[2]laisserai ouvrir un coffre.[3]Tu pourras garder ce qu'il y a dedans.[Waitkey][Scroll]Que vas-tu faire ?[Scroll]    > Ouvrir un coffre[Scroll]       Fuir[Choose]
+384: Très bien !![2]Ouvre le coffre que tu veux !
+385: Oh, je vois[...]  Dommage.[2]Repasse après avoir collecté[3]des Rubis.
+386: Pour 100 Rubis, je te laisserai[2]ouvrir un coffre et garder le[3]trésor qu'il contient.[Waitkey][Scroll]Que vas-tu faire ?[Scroll]    > Ouvrir un coffre[Scroll]       Fuir[Choose]
+387: Salut, [Name].[2]Désolé pour mon jardin.[3]Il est un peu envahi.[Waitkey][Scroll]Merci de ta visite.[Waitkey][Scroll]Je suis content d'avoir de la[Scroll]compagnie.  Je vais te[Scroll]raconter une histoire[Waitkey][Scroll]intéressante.[Scroll]Il y a un lac grouillant de[Scroll]Zoras à la source de la[Waitkey][Scroll]rivière, mais il est difficile[Scroll]à trouver.[Scroll]Le trésor des Zoras peut[Waitkey][Scroll]transformer les gens en[Scroll]poissons.  Héhéhé.[Scroll]J'adorerais voir ça.
+388: Je n'ai pas eu l'occasion de[2]tailler mes haies récemment.[3]Merci de ta visite quand même[...][Waitkey][Scroll]Il y a un moment, il y avait[Scroll]un garçon dans ce village qui[Scroll]savait parler aux animaux avec[Waitkey][Scroll]son Ocarina.[Scroll]Il avait un oiseau qui volait[Scroll]partout avec lui, mais il est[Waitkey][Scroll]parti à la montagne et n'est[Scroll]jamais revenu.
+389: [Position 00][Speed 00]>Commencer chez [Name][2]  Commencer au Sanctuaire[Choose2]
+390: [Position 00][Speed 00]>Commencer chez [Name][2]  Commencer au Sanctuaire[3]  Commencer à la Grotte de la Montagne[Choose3]
+391: [Speed 00]> Continuer la partie[2]   Sauvegarder et quitter[Choose2]
+392: Bienvenue au Jeu de Fouilles.[2]Le but est de creuser le plus[3]de trous possible en 30 secondes.[Waitkey][Scroll]Tous les trésors que tu[Scroll]découvres seront à toi.[Scroll]Ça ne coûte que 80 Rubis pour jouer.[Waitkey][Scroll]Alors, qu'en dis-tu ?[Scroll]    > Je veux creuser[Scroll]       Je ne veux pas creuser[Choose]
+393: Alors je vais te prêter une[2]pelle.  Quand tu l'as en main,[3]appuie sur Y pour creuser !
+394: Je vois.  Alors j'abandonne.[2]Économise des Rubis et reviens.
+395: OK !  Le temps est écoulé, la[2]partie est finie.  Reviens.[3]Au revoir[...]
+396: Reviens un autre jour ![2]Je t'attendrai.
+397: Je ne peux pas te donner de[2]détails, mais ce n'est pas le[3]bon moment pour moi.[Waitkey][Scroll]Reviens une autre fois.  Désolé.

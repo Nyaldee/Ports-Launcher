@@ -1,0 +1,1708 @@
+import { Theme, ThemedScrollbar, TitleBarIconButton } from "theme-colors.slint";
+import { GridColors } from "card-grid.slint";
+
+// Classification de touche partagée entre ConfirmDialog/ErrorDialog/
+// ListPickerDialog -- Échap, Haut/Ctrl+W, Bas/Ctrl+S, Entrée. Un `global`
+// plutôt qu'une base commune : ces trois dialogues ont chacun leurs propres
+// callbacks (move-selection-requested, etc.), et `slint::include_modules!()`
+// ne génère d'accesseurs Rust que pour le composant exporté lui-même (voir
+// l'en-tête du fichier) -- rien de tel ici, `global` ne porte aucun état.
+export global DialogNavKey {
+    public pure function classify(event: KeyEvent) -> int {
+        if (event.text == Key.Escape) {
+            return 0;
+        } else if (event.text == Key.UpArrow || (event.modifiers.control && event.text == "w")) {
+            return 1;
+        } else if (event.text == Key.DownArrow || (event.modifiers.control && event.text == "s")) {
+            return 2;
+        } else if (event.text == Key.Return) {
+            return 3;
+        }
+        return -1;
+    }
+}
+
+// AUCUN VerticalLayout/HorizontalLayout dans tout ce fichier -- un élément
+// dont la taille vient d'être résolue par un *Layout ne permet pas à SES
+// PROPRES enfants de relire cette taille de façon fiable dans cette version
+// de Slint (bouton fermer/bouton OK/zone de texte invisibles ou mal
+// placés, constaté au pixel près). Un Rectangle simple positionné
+// explicitement n'a pas ce problème -- toute la structure ci-dessous
+// n'utilise donc que ce mécanisme.
+//
+// RÈGLE D'UNITÉ CRITIQUE : chaque fenêtre de dialogue définit UNE FOIS
+// logical-w/logical-h (root.width/height divisés par Theme.scale-factor),
+// et TOUT le reste (gutter, bar-height, positions/tailles des enfants) se
+// dérive UNIQUEMENT de logical-w/logical-h -- jamais directement de
+// root.width/root.height. Mélanger les deux dans une même soustraction
+// (ex: root.height - bar-height où bar-height est déjà divisé) produisait
+// des positions totalement fausses, poussées hors de la fenêtre visible
+// une fois repassées par le facteur d'échelle au moment de la peinture --
+// c'est ce qui rendait le bouton OK/la croix de fermeture invisibles tout
+// ce temps, pas un problème de *Layout en soi. La bordure/barre de titre/
+// zone de contenu vit UNE SEULE FOIS dans DialogChrome (voir plus bas),
+// instanciée par chaque dialogue plutôt que recopiée à la main -- la
+// plomberie physique -> logique (item-font-px, gutter...) reste en
+// revanche déclarée dans chaque dialogue : `slint::include_modules!()` ne
+// génère d'accesseurs Rust (set_xxx) que pour les propriétés du composant
+// exporté lui-même, jamais pour celles héritées d'une base non exportée --
+// la factoriser casserait apply_dialog_theme!/apply_dialog_chrome! côté Rust.
+// Même barre de titre que AppWindow (voir sa title-bar dans
+// app-window.slint) -- fond identique (Theme.search-background), même
+// croix fermer géométrique (Path, pas un glyphe de police, pour les mêmes
+// raisons de centrage exact) avec le même carré plein rouge au survol.
+// `title-font-px` en property (pas de valeur fixe codée en dur) -- les
+// appelants qui veulent correspondre exactement à la fenêtre principale
+// (voir InfoDialog) poussent la même taille que celle-ci ; les autres
+// gardent le repli proportionnel à bar-height ci-dessous.
+component DialogTitleBar inherits Rectangle {
+    in property <string> title: "";
+    in property <length> bar-height: 40px;
+    in property <length> title-font-px: bar-height * 0.4;
+    in property <bool> closable: true;
+    callback close-requested();
+
+    height: bar-height;
+    background: Theme.search-background;
+
+    Text {
+        text: root.title;
+        color: Theme.list-text;
+        vertical-alignment: center;
+        horizontal-alignment: left;
+        font-weight: 700;
+        font-size: root.title-font-px;
+        // Theme.title-button-padding -- même retrait que le titre de
+        // app-window.slint, pas un ratio de bar-height (qui ne coïncidait
+        // avec la fenêtre principale qu'à une hauteur de barre précise).
+        x: Theme.title-button-padding;
+        y: 0px;
+        width: root.width - Theme.title-button-padding - bar-height;
+        height: 100%;
+    }
+
+    // Partagé avec title-vertical-padding/title-padding dans app-window.slint
+    // via Theme.title-button-padding -- un carré INSÉRÉ dans son
+    // "emplacement" de bar-height de large, pas collé aux bords (même
+    // raison que là-bas : plein bord à bord, le survol paraît trop massif).
+    property <length> close-padding: Theme.title-button-padding;
+    property <length> close-size: bar-height - close-padding * 2;
+
+    TitleBarIconButton {
+        x: root.width - close-padding - close-size;
+        y: close-padding;
+        size: close-size;
+        enabled: root.closable;
+        hover-color: GridColors.danger;
+        hover-stroke-color: GridColors.text-on-accent;
+        icon-commands: "M 22 22 L 78 78 M 78 22 L 22 78";
+        clicked => { root.close-requested(); }
+    }
+}
+
+// Bouton carré "navigable" -- surbrillance au survol, jamais de coin
+// arrondi. `enabled` grise le bouton sans le retirer de l'arbre (mêmes
+// raisons que "closable" ci-dessus : jamais un "if" qui retire un élément,
+// seulement son interactivité/opacité).
+component DialogButton inherits Rectangle {
+    in property <string> text: "";
+    in property <bool> enabled: true;
+    in property <length> border-px: 1px;
+    // Repli par défaut, jamais utilisé en pratique -- tous les appelants
+    // passent explicitement item-font-px.
+    in property <length> font-size: 14px;
+    // Surbrillance de navigation manette (voir ListPickerDialog.selected-index
+    // et src/main.rs::DialogGamepadTarget) -- même rendu que le survol
+    // souris, pas un second style à part : les deux moyens de désigner "ce
+    // bouton-ci" doivent avoir l'air identiques.
+    in property <bool> selected: false;
+    // ListPickerDialog aligne ses options à gauche -- tous les autres
+    // appelants gardent le centrage par défaut (OK, Reinstall, Website...).
+    in property <bool> left-align: false;
+    // Largeur naturelle du texte à sa police actuelle -- exposée pour les
+    // appelants qui veulent une largeur pilotée par le contenu (voir
+    // InfoDialog) plutôt qu'une largeur fixe/répartie également, même
+    // principe que <label>.preferred-width dans app-window.slint. Pas
+    // nommée "preferred-width" -- déjà une propriété intégrée de tout
+    // élément Slint, impossible à redéclarer (erreur de compilation
+    // "Cannot override property").
+    out property <length> text-preferred-width: label.preferred-width;
+    callback clicked();
+    // Survol souris -- déplace la sélection manette/clavier sous la souris
+    // (voir InfoDialog/ListPickerDialog), même principe que list-row-hovered
+    // dans app-window.slint : sans ça, `selected` (piloté par la manette) et
+    // le survol souris sont deux indicateurs indépendants, allumables en
+    // même temps sur deux boutons différents.
+    callback hovered();
+
+    background: Theme.list-background;
+    border-width: border-px;
+    border-color: Theme.border-color;
+    opacity: root.enabled ? 1.0 : 0.4;
+
+    area := TouchArea {
+        clicked => {
+            if (root.enabled) {
+                root.clicked();
+            }
+        }
+        changed has-hover => {
+            if (self.has-hover && root.enabled) {
+                root.hovered();
+            }
+        }
+    }
+    label := Text {
+        text: root.text;
+        // UNIQUEMENT root.selected (jamais area.has-hover directement) --
+        // root.hovered() ci-dessus fait déjà remonter le survol côté Rust,
+        // qui répercute alors root.selected pour TOUS les boutons (voir
+        // on_nav_hovered/on_item_hovered dans main.rs). Utiliser has-hover
+        // ICI EN PLUS créerait deux sources de vérité indépendantes : la
+        // souris immobile sur un bouton garde has-hover à `true` sur CE
+        // bouton précis, même après que la manette/le clavier a déplacé
+        // root.selected ailleurs -- deux boutons surlignés en même temps.
+        color: root.selected && root.enabled ? Theme.selected-text : Theme.list-text;
+        font-size: root.font-size;
+        // PAS d'ellipse ici -- les libellés doivent rester lisibles en
+        // entier : voir ListPickerDialog.list_picker_dialog_size côté Rust,
+        // qui mesure le plus long libellé et élargit le dialogue en
+        // conséquence, rendant toute troncature inutile.
+        horizontal-alignment: root.left-align ? left : center;
+        vertical-alignment: center;
+        x: root.left-align ? 12px : 0px;
+        y: 0px;
+        width: root.left-align ? root.width - 24px : root.width;
+        height: 100%;
+    }
+
+    states [
+        // Même raison que label.color ci-dessus -- root.selected seul.
+        hover when root.selected && root.enabled: {
+            background: Theme.selected-background;
+        }
+    ]
+}
+
+struct ButtonRowItem {
+    text: string,
+    enabled: bool,
+}
+
+// Rangée de 5 DialogButton centrée dans `content-width`, partagée entre
+// InfoDialog et SettingsDialog (même style de raccourcis dans les deux).
+// Nombre fixe de 5 emplacements plutôt qu'un `for` générique : ce fichier
+// interdit les Layout (voir l'en-tête), donc centrer une rangée exige de
+// connaître la largeur totale AVANT de placer le premier bouton, ce qui
+// suppose de chaîner chaque bouton à la largeur réelle du précédent --
+// une dépendance qu'un `for` ne peut pas exprimer entre ses propres
+// instances. Composant "muet" : il ne gère aucun état, se contente
+// d'afficher `items`/`selected-index` et de remonter `clicked`/`hovered`
+// (Info les relaie à Rust pour la navigation clavier/manette, Settings les
+// traite en local).
+//
+// Retour à la ligne responsive : sur petites résolutions, les 5 boutons ne
+// tiennent plus sur une seule rangée et débordent du dialogue. Aucune
+// boucle ni Layout n'étant possible ici (voir l'en-tête), la rupture est
+// exprimée comme un point de coupure UNIQUE (break-index, 1 à 4, ou 5 =
+// pas de coupure) déterminé glouton de gauche à droite : dès qu'un bouton
+// dépasse, LUI et tous les suivants basculent sur la rangée 2. Chaque
+// bouton sait ensuite s'il est le PREMIER de sa rangée (is-start, il se
+// centre alors sur la largeur réelle de SA rangée) ou s'il continue la
+// chaîne x du précédent, dont le .x/.y déjà résolu porte l'information.
+component ButtonRow inherits Rectangle {
+    in property <[ButtonRowItem]> items: [];
+    in property <length> button-padding;
+    in property <length> row-spacing;
+    in property <length> button-height;
+    in property <length> item-font-px;
+    in property <length> border-px;
+    in property <length> content-width;
+    in property <int> selected-index: -1;
+    callback clicked(int);
+    callback hovered(int);
+
+    // 1 rangée si tout tient, 2 sinon -- jamais plus (5 boutons, 2 rangées
+    // suffisent toujours à condition qu'AU MOINS un bouton tienne par
+    // rangée, cas réaliste vu la longueur des libellés utilisés ici).
+    height: break-index == 5 ? button-height : button-height * 2 + row-spacing;
+
+    property <length> w0: btn0.width;
+    property <length> w1: btn1.width;
+    property <length> w2: btn2.width;
+    property <length> w3: btn3.width;
+    property <length> w4: btn4.width;
+
+    // Largeur cumulée si btn0..N tenaient tous sur la rangée 1.
+    property <length> cum1: w0 + row-spacing + w1;
+    property <length> cum2: cum1 + row-spacing + w2;
+    property <length> cum3: cum2 + row-spacing + w3;
+    property <length> cum4: cum3 + row-spacing + w4;
+
+    // Premier bouton dont l'ajout ferait dépasser content-width -- lui et
+    // tout ce qui suit passe en rangée 2.
+    property <bool> wrap-at-1: cum1 > content-width;
+    property <bool> wrap-at-2: !wrap-at-1 && cum2 > content-width;
+    property <bool> wrap-at-3: !wrap-at-1 && !wrap-at-2 && cum3 > content-width;
+    property <bool> wrap-at-4: !wrap-at-1 && !wrap-at-2 && !wrap-at-3 && cum4 > content-width;
+    property <int> break-index: wrap-at-1 ? 1 : wrap-at-2 ? 2 : wrap-at-3 ? 3 : wrap-at-4 ? 4 : 5;
+
+    property <length> row1-width:
+        break-index == 1 ? w0 :
+        break-index == 2 ? w0 + row-spacing + w1 :
+        break-index == 3 ? w0 + row-spacing + w1 + row-spacing + w2 :
+        break-index == 4 ? w0 + row-spacing + w1 + row-spacing + w2 + row-spacing + w3 :
+        w0 + row-spacing + w1 + row-spacing + w2 + row-spacing + w3 + row-spacing + w4;
+    property <length> row2-width:
+        break-index == 1 ? w1 + row-spacing + w2 + row-spacing + w3 + row-spacing + w4 :
+        break-index == 2 ? w2 + row-spacing + w3 + row-spacing + w4 :
+        break-index == 3 ? w3 + row-spacing + w4 :
+        break-index == 4 ? w4 :
+        0px;
+    property <length> row2-y: button-height + row-spacing;
+
+    btn0 := DialogButton {
+        text: root.items[0].text;
+        enabled: root.items[0].enabled;
+        selected: root.selected-index == 0;
+        border-px: root.border-px;
+        font-size: root.item-font-px;
+        x: (root.content-width - row1-width) / 2;
+        y: 0;
+        width: self.text-preferred-width + button-padding * 2;
+        height: button-height;
+        clicked => { root.clicked(0); }
+        hovered => { root.hovered(0); }
+    }
+    btn1 := DialogButton {
+        text: root.items[1].text;
+        enabled: root.items[1].enabled;
+        selected: root.selected-index == 1;
+        border-px: root.border-px;
+        font-size: root.item-font-px;
+        property <bool> is-start: break-index == 1;
+        x: self.is-start ? (root.content-width - row2-width) / 2 : btn0.x + btn0.width + row-spacing;
+        y: self.is-start ? row2-y : btn0.y;
+        width: self.text-preferred-width + button-padding * 2;
+        height: button-height;
+        clicked => { root.clicked(1); }
+        hovered => { root.hovered(1); }
+    }
+    btn2 := DialogButton {
+        text: root.items[2].text;
+        enabled: root.items[2].enabled;
+        selected: root.selected-index == 2;
+        border-px: root.border-px;
+        font-size: root.item-font-px;
+        property <bool> is-start: break-index == 2;
+        x: self.is-start ? (root.content-width - row2-width) / 2 : btn1.x + btn1.width + row-spacing;
+        y: self.is-start ? row2-y : btn1.y;
+        width: self.text-preferred-width + button-padding * 2;
+        height: button-height;
+        clicked => { root.clicked(2); }
+        hovered => { root.hovered(2); }
+    }
+    btn3 := DialogButton {
+        text: root.items[3].text;
+        enabled: root.items[3].enabled;
+        selected: root.selected-index == 3;
+        border-px: root.border-px;
+        font-size: root.item-font-px;
+        property <bool> is-start: break-index == 3;
+        x: self.is-start ? (root.content-width - row2-width) / 2 : btn2.x + btn2.width + row-spacing;
+        y: self.is-start ? row2-y : btn2.y;
+        width: self.text-preferred-width + button-padding * 2;
+        height: button-height;
+        clicked => { root.clicked(3); }
+        hovered => { root.hovered(3); }
+    }
+    btn4 := DialogButton {
+        text: root.items[4].text;
+        enabled: root.items[4].enabled;
+        selected: root.selected-index == 4;
+        border-px: root.border-px;
+        font-size: root.item-font-px;
+        property <bool> is-start: break-index == 4;
+        x: self.is-start ? (root.content-width - row2-width) / 2 : btn3.x + btn3.width + row-spacing;
+        y: self.is-start ? row2-y : btn3.y;
+        width: self.text-preferred-width + button-padding * 2;
+        height: button-height;
+        clicked => { root.clicked(4); }
+        hovered => { root.hovered(4); }
+    }
+}
+
+// Bordure + barre de titre + zone de contenu -- structure IDENTIQUE des 6
+// fenêtres de dialogue (elle ne l'était plus qu'à une recopie manuelle
+// près), seul le contenu de la zone diffère (passé en enfants à
+// l'instanciation, voir @children). Composant autonome (pas un Window) :
+// chaque dialogue l'instancie DANS son propre FocusScope quand il en a un
+// (ou directement sous sa Window sinon, voir ProgressDialog) -- ce
+// composant ne porte donc aucune logique de touche, qui reste propre à
+// chaque dialogue et diffère réellement de l'un à l'autre.
+component DialogChrome inherits Rectangle {
+    in property <string> dialog-title: "";
+    in property <length> bar-height: 40px;
+    in property <length> title-font-px: bar-height * 0.4;
+    in property <length> border-px: 1px;
+    in property <length> logical-w: 400px;
+    in property <length> logical-h: 300px;
+    in property <bool> closable: true;
+    // Vrai pour ListPickerDialog/SettingsDialog (contenu défilant qui peut
+    // dépasser sans clip visuel autrement) -- faux ailleurs.
+    in property <bool> content-clip: false;
+    callback close-requested();
+    // Exposées pour les propriétés du dialogue appelant qui ont besoin de
+    // la taille RÉELLE de la zone de contenu (ex: content-width dans
+    // InfoDialog, list-width dans ListPickerDialog/SettingsDialog) -- cette
+    // instance étant un composant séparé, l'id "content-area" lui-même
+    // n'est pas visible depuis l'extérieur (contrairement à root.width/
+    // height d'un Rectangle classique).
+    out property <length> content-width: content-area.width;
+    out property <length> content-height: content-area.height;
+
+    width: logical-w + border-px * 2;
+    height: logical-h + border-px * 2;
+    background: Theme.list-background;
+    border-width: border-px;
+    border-color: Theme.border-color;
+
+    DialogTitleBar {
+        title: root.dialog-title;
+        bar-height: root.bar-height;
+        title-font-px: root.title-font-px;
+        closable: root.closable;
+        x: border-px;
+        y: border-px;
+        width: logical-w;
+        close-requested => { root.close-requested(); }
+    }
+
+    content-area := Rectangle {
+        x: border-px;
+        y: border-px + bar-height;
+        width: logical-w;
+        height: logical-h - bar-height;
+        background: Theme.list-background;
+        clip: root.content-clip;
+
+        @children
+    }
+}
+
+// Toutes les tailles/positions des fenêtres de dialogue sont calculées côté
+// Rust (voir src/ui/dialog_geometry.rs) et poussées via
+// initial-width/initial-height, exactement comme AppWindow (voir son
+// commentaire sur ce même sujet) -- jamais un Window::set_size() impératif
+// après coup.
+export component MessageDialog inherits Window {
+    no-frame: true;
+    // Titre natif -- sans lui, Windows retombe sur "Slint Window" dans
+    // Alt+Tab (le texte affiché par DialogTitleBar n'est qu'un élément
+    // dessiné, jamais poussé au niveau natif de la fenêtre). Même texte que
+    // la barre de titre custom, pour rester cohérent.
+    title: root.dialog-title;
+    background: Theme.list-background;
+    in property <length> initial-width: 400px;
+    in property <length> initial-height: 200px;
+    width: initial-width;
+    height: initial-height;
+
+    // Famille de police de themes.json -- même mécanisme que AppWindow (voir
+    // son commentaire sur font-family/default-font-family) : sans elle, ce
+    // dialogue (comme les 5 autres de ce fichier) gardait la police par
+    // défaut de Slint quel que soit "font_family" dans themes.json, alors
+    // que apply_dialog_theme!/apply_dialog_chrome! (voir main.rs) poussent
+    // déjà couleurs/tailles/scale-factor -- seule la police manquait.
+    in property <string> font-family: "Segoe UI";
+    default-font-family: root.font-family;
+
+    in property <string> dialog-title: "";
+    in property <string> message-text: "";
+    callback close-requested();
+
+    // Poussées par Rust depuis app.normal_mode/fullscreen_mode.fonts (voir
+    // open_message_dialog dans main.rs) -- EXACTEMENT les mêmes valeurs que
+    // la fenêtre principale/InfoDialog/ListPickerDialog, jamais une fraction
+    // recalculée à partir de la hauteur de CE dialogue.
+    in property <length> item-font-px-physical: 14px;
+    in property <length> title-font-px-physical: 13px;
+    in property <length> row-height-physical: 48px;
+    in property <length> title-bar-height-physical: 34px;
+
+    // SANS division par Theme.scale-factor : root.width/height sont déjà en
+    // pixels LOGIQUES (Rust pousse initial-width/height déjà divisés par le
+    // facteur d'échelle avant de les pousser). Moins deux fois border-px --
+    // la bordure de la Rectangle englobante (voir DialogChrome) est peinte
+    // SOUS ses enfants, qui la recouvrent entièrement faute de retrait.
+    property <length> logical-w: root.width - border-px * 2;
+    property <length> logical-h: root.height - border-px * 2;
+    property <length> border-px: Theme.border-width * 1px / Theme.scale-factor;
+    property <length> item-font-px: item-font-px-physical / Theme.scale-factor;
+    property <length> title-font-px: title-font-px-physical / Theme.scale-factor;
+    property <length> bar-height: title-bar-height-physical / Theme.scale-factor;
+    // MÊME marge FIXE que content-margin dans app-window.slint -- "UN SEUL
+    // modèle, UNE SEULE marge" pour tout ce qui touche un bord.
+    property <length> gutter: 12px / Theme.scale-factor;
+
+    forward-focus: key-handler;
+
+    // Seule croix pour fermer -- pas de bouton OK séparé (rien à confirmer,
+    // juste un message à acquitter), Échap fait de même (voir key-handler
+    // ci-dessous) -- même convention que la fenêtre principale, où Échap
+    // ferme déjà l'appli.
+    key-handler := FocusScope {
+        key-pressed(event) => {
+            if (event.text == Key.Escape) {
+                root.close-requested();
+                accept
+            } else {
+                reject
+            }
+        }
+
+        chrome := DialogChrome {
+            dialog-title: root.dialog-title;
+            bar-height: root.bar-height;
+            title-font-px: root.title-font-px;
+            border-px: root.border-px;
+            logical-w: root.logical-w;
+            logical-h: root.logical-h;
+            close-requested => { root.close-requested(); }
+
+            Text {
+                text: root.message-text;
+                color: Theme.list-text;
+                font-size: root.item-font-px;
+                wrap: word-wrap;
+                x: root.gutter;
+                y: root.gutter;
+                // chrome.content-width/height (PAS parent.width/height) --
+                // @children résout `parent` sur l'élément DialogChrome
+                // TEL QU'ÉCRIT ici (le composant instancié), pas sur
+                // content-area où ces enfants sont réellement greffés à
+                // l'affichage -- une taille bien plus grande que prévu,
+                // constaté : les boutons finissaient positionnés hors de la
+                // fenêtre visible. content-width/height, exposées par
+                // DialogChrome pour exactement ce cas, donnent la vraie
+                // taille de la zone de contenu.
+                width: chrome.content-width - root.gutter * 2;
+                height: chrome.content-height - root.gutter * 2;
+            }
+        }
+    }
+}
+
+// Demande une confirmation avant une action destructive (ex: désinstaller un
+// port) -- même structure qu'ErrorDialog (message + deux boutons empilés),
+// voir son commentaire pour le détail des propriétés partagées.
+export component ConfirmDialog inherits Window {
+    no-frame: true;
+    // Voir le commentaire équivalent dans MessageDialog.
+    title: root.dialog-title;
+    background: Theme.list-background;
+    in property <length> initial-width: 400px;
+    in property <length> initial-height: 220px;
+    width: initial-width;
+    height: initial-height;
+
+    // Voir le commentaire équivalent dans MessageDialog.
+    in property <string> font-family: "Segoe UI";
+    default-font-family: root.font-family;
+
+    in property <string> dialog-title: "";
+    in property <string> message-text: "";
+    // Libellé du bouton principal -- "Uninstall", pas un "OK" générique, pour
+    // que l'action confirmée reste explicite même sans relire le message.
+    in property <string> confirm-text: "Confirm";
+    callback confirmed();
+    callback close-requested();
+    // Bouton en surbrillance (0 = confirmer, 1 = annuler) -- souris ET
+    // clavier/manette convergent vers ce même indicateur, voir
+    // DialogButton.hovered et son commentaire.
+    in property <int> selected-index: 0;
+    callback nav-hovered(int);
+    // Haut/bas + Entrée -- voir key-handler plus bas ; réutilise la même
+    // logique que la manette (DialogGamepadTarget::move_selection/
+    // activate_selection côté Rust).
+    callback move-selection-requested(int);
+    callback activate-selection-requested();
+    forward-focus: key-handler;
+
+    // Voir le commentaire équivalent dans MessageDialog.
+    in property <length> item-font-px-physical: 14px;
+    in property <length> title-font-px-physical: 13px;
+    in property <length> row-height-physical: 48px;
+    in property <length> title-bar-height-physical: 34px;
+
+    property <length> logical-w: root.width - border-px * 2;
+    property <length> logical-h: root.height - border-px * 2;
+    property <length> border-px: Theme.border-width * 1px / Theme.scale-factor;
+    property <length> item-font-px: item-font-px-physical / Theme.scale-factor;
+    property <length> title-font-px: title-font-px-physical / Theme.scale-factor;
+    property <length> bar-height: title-bar-height-physical / Theme.scale-factor;
+    property <length> gutter: 12px / Theme.scale-factor;
+    // Largeur utile de la zone de contenu -- une seule propriété nommée
+    // plutôt que "chrome.content-width - root.gutter * 2" répété à chaque
+    // élément, même principe que InfoDialog.content-width.
+    property <length> content-width: chrome.content-width - root.gutter * 2;
+
+    key-handler := FocusScope {
+        key-pressed(event) => {
+            // Voir DialogNavKey en tête de fichier.
+            let action = DialogNavKey.classify(event);
+            if (action == 0) {
+                root.close-requested();
+                accept
+            } else if (action == 1) {
+                root.move-selection-requested(-1);
+                accept
+            } else if (action == 2) {
+                root.move-selection-requested(1);
+                accept
+            } else if (action == 3) {
+                root.activate-selection-requested();
+                accept
+            } else {
+                reject
+            }
+        }
+
+        chrome := DialogChrome {
+            dialog-title: root.dialog-title;
+            bar-height: root.bar-height;
+            title-font-px: root.title-font-px;
+            border-px: root.border-px;
+            logical-w: root.logical-w;
+            logical-h: root.logical-h;
+            close-requested => { root.close-requested(); }
+
+            // chrome.content-width/height (PAS parent.width/height) -- voir
+            // le commentaire équivalent dans MessageDialog.
+            Text {
+                text: root.message-text;
+                color: Theme.list-text;
+                font-size: root.item-font-px;
+                wrap: word-wrap;
+                x: root.gutter;
+                y: root.gutter;
+                width: root.content-width;
+                height: chrome.content-height - root.gutter * 4 - root.bar-height * 2;
+            }
+
+            DialogButton {
+                text: root.confirm-text;
+                selected: root.selected-index == 0;
+                font-size: root.item-font-px;
+                x: root.gutter;
+                y: chrome.content-height - root.gutter * 2 - root.bar-height * 2;
+                width: root.content-width;
+                height: root.bar-height;
+                border-px: root.border-px;
+                clicked => { root.confirmed(); }
+                hovered => { root.nav-hovered(0); }
+            }
+
+            DialogButton {
+                text: "Cancel";
+                selected: root.selected-index == 1;
+                font-size: root.item-font-px;
+                x: root.gutter;
+                y: chrome.content-height - root.gutter - root.bar-height;
+                width: root.content-width;
+                height: root.bar-height;
+                border-px: root.border-px;
+                clicked => { root.close-requested(); }
+                hovered => { root.nav-hovered(1); }
+            }
+        }
+    }
+}
+
+export component ErrorDialog inherits Window {
+    no-frame: true;
+    // Voir le commentaire équivalent dans MessageDialog.
+    title: root.dialog-title;
+    background: Theme.list-background;
+    in property <length> initial-width: 400px;
+    in property <length> initial-height: 260px;
+    width: initial-width;
+    height: initial-height;
+
+    // Voir le commentaire équivalent dans MessageDialog.
+    in property <string> font-family: "Segoe UI";
+    default-font-family: root.font-family;
+
+    in property <string> dialog-title: "";
+    in property <string> message-text: "";
+    callback reinstall-requested();
+    callback info-requested();
+    callback close-requested();
+    // Bouton en surbrillance (0 = réinstaller, 1 = infos) -- même pattern
+    // que ConfirmDialog, voir son commentaire.
+    in property <int> selected-index: 0;
+    callback nav-hovered(int);
+    callback move-selection-requested(int);
+    callback activate-selection-requested();
+    forward-focus: key-handler;
+
+    // Voir le commentaire équivalent dans MessageDialog.
+    in property <length> item-font-px-physical: 14px;
+    in property <length> title-font-px-physical: 13px;
+    in property <length> row-height-physical: 48px;
+    in property <length> title-bar-height-physical: 34px;
+
+    property <length> logical-w: root.width - border-px * 2;
+    property <length> logical-h: root.height - border-px * 2;
+    property <length> border-px: Theme.border-width * 1px / Theme.scale-factor;
+    property <length> item-font-px: item-font-px-physical / Theme.scale-factor;
+    property <length> title-font-px: title-font-px-physical / Theme.scale-factor;
+    property <length> bar-height: title-bar-height-physical / Theme.scale-factor;
+    property <length> gutter: 12px / Theme.scale-factor;
+    // Largeur utile de la zone de contenu -- une seule propriété nommée
+    // plutôt que "chrome.content-width - root.gutter * 2" répété à chaque
+    // élément, même principe que InfoDialog.content-width.
+    property <length> content-width: chrome.content-width - root.gutter * 2;
+
+    key-handler := FocusScope {
+        key-pressed(event) => {
+            // Voir DialogNavKey en tête de fichier.
+            let action = DialogNavKey.classify(event);
+            if (action == 0) {
+                root.close-requested();
+                accept
+            } else if (action == 1) {
+                root.move-selection-requested(-1);
+                accept
+            } else if (action == 2) {
+                root.move-selection-requested(1);
+                accept
+            } else if (action == 3) {
+                root.activate-selection-requested();
+                accept
+            } else {
+                reject
+            }
+        }
+
+        chrome := DialogChrome {
+            dialog-title: root.dialog-title;
+            bar-height: root.bar-height;
+            title-font-px: root.title-font-px;
+            border-px: root.border-px;
+            logical-w: root.logical-w;
+            logical-h: root.logical-h;
+            close-requested => { root.close-requested(); }
+
+            // chrome.content-width/height (PAS parent.width/height) -- voir
+            // le commentaire équivalent dans MessageDialog.
+            Text {
+                text: root.message-text;
+                color: Theme.list-text;
+                font-size: root.item-font-px;
+                wrap: word-wrap;
+                x: root.gutter;
+                y: root.gutter;
+                width: root.content-width;
+                height: chrome.content-height - root.gutter * 4 - root.bar-height * 2;
+            }
+
+            DialogButton {
+                text: "Reinstall";
+                selected: root.selected-index == 0;
+                font-size: root.item-font-px;
+                x: root.gutter;
+                y: chrome.content-height - root.gutter * 2 - root.bar-height * 2;
+                width: root.content-width;
+                height: root.bar-height;
+                border-px: root.border-px;
+                clicked => { root.reinstall-requested(); }
+                hovered => { root.nav-hovered(0); }
+            }
+
+            DialogButton {
+                text: "Open Info";
+                selected: root.selected-index == 1;
+                font-size: root.item-font-px;
+                x: root.gutter;
+                y: chrome.content-height - root.gutter - root.bar-height;
+                width: root.content-width;
+                height: root.bar-height;
+                border-px: root.border-px;
+                clicked => { root.info-requested(); }
+                hovered => { root.nav-hovered(1); }
+            }
+        }
+    }
+}
+
+export component InfoDialog inherits Window {
+    no-frame: true;
+    // Voir le commentaire équivalent dans MessageDialog.
+    title: root.dialog-title;
+    background: Theme.list-background;
+    in property <length> initial-width: 500px;
+    in property <length> initial-height: 400px;
+    width: initial-width;
+    height: initial-height;
+
+    // Voir le commentaire équivalent dans MessageDialog.
+    in property <string> font-family: "Segoe UI";
+    default-font-family: root.font-family;
+
+    in property <string> dialog-title: "";
+    in property <string> version-text: "";
+    in property <string> instructions-text: "";
+    // Première URL trouvée dans instructions-text (voir
+    // Port::instructions_link côté Rust) -- vide si aucune, auquel cas le
+    // lien cliquable ci-dessous reste caché.
+    in property <string> instructions-link: "";
+    in property <bool> website-enabled: false;
+    in property <bool> mods-enabled: false;
+    in property <bool> game-folder-enabled: false;
+    in property <bool> save-folder-enabled: false;
+    in property <bool> save-folder2-enabled: false;
+    // GitHub/GitLab uniquement (voir main.rs::open_info_dialog) -- une
+    // source DirectUrl/Local n'a aucun historique de releases à proposer.
+    in property <bool> change-version-enabled: false;
+    // Même condition que game-folder-enabled côté Rust (voir
+    // open_info_dialog) -- rien à scanner comme exécutable candidat si le
+    // port n'est même pas installé.
+    in property <bool> favorite-exe-enabled: false;
+    // Surbrillance de navigation manette (voir
+    // src/main.rs::DialogGamepadTarget) -- Website=0, Mods website=1,
+    // Game folder=2, Save folder=3, Save folder 2=4, Change version=5,
+    // Favorite executable=6. -1 = aucune (souris seule) -- même convention
+    // que ListPickerDialog.selected-index.
+    in property <int> selected-index: -1;
+    callback website-requested();
+    callback mods-requested();
+    callback game-folder-requested();
+    callback save-folder-requested();
+    callback save-folder2-requested();
+    callback change-version-requested();
+    callback favorite-exe-requested();
+    callback instructions-link-requested();
+    callback close-requested();
+    // Survol souris d'un bouton -- voir DialogButton.hovered, fait suivre la
+    // sélection manette/clavier (root.selected-index) sous la souris, un
+    // seul indicateur pour les deux au lieu de deux indépendants.
+    callback nav-hovered(int);
+    // Gauche/droite + Entrée -- voir key-handler plus bas ; réutilise la
+    // même logique que la manette (DialogGamepadTarget::move_selection/
+    // activate_selection côté Rust).
+    callback move-selection-requested(int);
+    callback activate-selection-requested();
+    // Défile le texte d'instructions d'un cran (Haut/Bas manette -- voir
+    // DialogGamepadTarget::move_selection côté Rust, qui n'y route que
+    // `dy`, jamais `dx` : Gauche/Droite restent réservés à la navigation
+    // entre boutons ci-dessous, un axe indépendant). `direction` positif =
+    // vers le bas (même convention que dy dans DIRECTION_DELTAS côté Rust).
+    callback scroll-instructions(int);
+    scroll-instructions(direction) => {
+        instructions-flick.viewport-y = Math.clamp(
+            instructions-flick.viewport-y - direction * row-height,
+            min(0px, instructions-flick.height - instructions-flick.viewport-height),
+            0px,
+        );
+    }
+    forward-focus: key-handler;
+
+    // Partagée entre key-handler et instructions-input (voir plus bas) --
+    // les mêmes raccourcis marchent quel que soit celui des deux qui a le
+    // focus clavier.
+    function handle-nav-key(event: KeyEvent) -> EventResult {
+        if (event.text == Key.Escape) {
+            root.close-requested();
+            return accept;
+        // Ctrl+WASD -- même alias que dans app-window.slint (voir son
+        // commentaire), pour les claviers/dispositions sans flèches dédiées.
+        } else if (event.text == Key.LeftArrow || (event.modifiers.control && event.text == "a")) {
+            root.move-selection-requested(-1);
+            return accept;
+        } else if (event.text == Key.RightArrow || (event.modifiers.control && event.text == "d")) {
+            root.move-selection-requested(1);
+            return accept;
+        } else if (event.text == Key.UpArrow || (event.modifiers.control && event.text == "w")) {
+            root.scroll-instructions(-1);
+            return accept;
+        } else if (event.text == Key.DownArrow || (event.modifiers.control && event.text == "s")) {
+            root.scroll-instructions(1);
+            return accept;
+        } else if (event.text == Key.Return) {
+            root.activate-selection-requested();
+            return accept;
+        } else {
+            return reject;
+        }
+    }
+
+    // Voir le commentaire équivalent dans MessageDialog.
+    in property <length> item-font-px-physical: 14px;
+    in property <length> title-font-px-physical: 13px;
+    in property <length> row-height-physical: 48px;
+    in property <length> title-bar-height-physical: 34px;
+
+    property <length> logical-w: root.width - border-px * 2;
+    property <length> logical-h: root.height - border-px * 2;
+    property <length> border-px: Theme.border-width * 1px / Theme.scale-factor;
+    property <length> item-font-px: item-font-px-physical / Theme.scale-factor;
+    property <length> title-font-px: title-font-px-physical / Theme.scale-factor;
+    property <length> bar-height: title-bar-height-physical / Theme.scale-factor;
+    property <length> gutter: 12px / Theme.scale-factor;
+    // Même hauteur EXACTE que le nom d'un port dans la fenêtre principale.
+    property <length> row-height: root.row-height-physical / Theme.scale-factor;
+    // Mêmes valeurs LITTÉRALES que button-padding/row-spacing dans
+    // app-window.slint (10px/6px physiques / Theme.scale-factor) -- pas des
+    // propriétés poussées séparément par Rust : ce sont des constantes de
+    // style, pas des mesures GDI, aucune raison de dupliquer la plomberie
+    // pour une valeur qui ne change jamais.
+    property <length> button-padding: 10px / Theme.scale-factor;
+    property <length> row-spacing: 6px / Theme.scale-factor;
+    // Largeur utile de la zone de contenu, marge root.gutter des deux côtés --
+    // une seule propriété nommée plutôt que "chrome.content-width - root.gutter
+    // * 2" répété à chaque élément (texte, cadre d'instructions, rangée de
+    // boutons) : même principe que list-width dans SettingsDialog.
+    // chrome.content-width (pas content-area.width) -- content-area vit
+    // DANS DialogChrome, pas accessible directement par nom depuis ici.
+    property <length> content-width: chrome.content-width - root.gutter * 2;
+    // MÊME formule que les boutons GitHub/Discord de la fenêtre principale
+    // (row-height - row-spacing*2, voir footer-body dans app-window.slint),
+    // pas row-height directement -- même respiration verticale que la rangée
+    // de raccourcis de SettingsDialog.
+    property <length> button-height: row-height - row-spacing * 2;
+    // MÊME largeur que ThemedScrollbar (voir son commentaire dans
+    // theme-colors.slint) -- juste pour réserver la place qui lui revient
+    // dans instructions-flick, pas pour surcharger sa propre largeur.
+    property <length> scrollbar-width: 6px / Theme.scale-factor;
+
+    key-handler := FocusScope {
+        key-pressed(event) => { return root.handle-nav-key(event); }
+
+        chrome := DialogChrome {
+            dialog-title: root.dialog-title;
+            bar-height: root.bar-height;
+            title-font-px: root.title-font-px;
+            border-px: root.border-px;
+            logical-w: root.logical-w;
+            logical-h: root.logical-h;
+            close-requested => { root.close-requested(); }
+
+            // Même rendu que le nom d'un port dans la fenêtre principale
+            // (voir sa Text dans app-window.slint) : même police, même
+            // taille, même couleur, pas de gras.
+            Text {
+                text: root.version-text;
+                color: Theme.list-text;
+                font-size: root.item-font-px;
+                vertical-alignment: center;
+                x: root.gutter;
+                y: root.gutter;
+                // content-width seul -- les deux boutons sont SOUS ce texte
+                // (voir plus bas), pas sur la même ligne : aucune place à
+                // leur réserver ici.
+                width: content-width;
+                height: row-height;
+            }
+
+            // Pas dans ButtonRow plus bas -- codée en dur pour 5 boutons
+            // (voir son commentaire), et liée contextuellement au texte de
+            // version au-dessus.
+            favorite-exe-btn := DialogButton {
+                text: "Favorite executable";
+                enabled: root.favorite-exe-enabled;
+                selected: root.selected-index == 6;
+                border-px: root.border-px;
+                font-size: root.item-font-px;
+                x: root.gutter;
+                y: root.gutter + row-height + row-spacing;
+                width: self.text-preferred-width + button-padding * 2;
+                height: row-height;
+                clicked => { root.favorite-exe-requested(); }
+                hovered => { root.nav-hovered(6); }
+            }
+
+            change-version-btn := DialogButton {
+                text: "Change version";
+                enabled: root.change-version-enabled;
+                selected: root.selected-index == 5;
+                border-px: root.border-px;
+                font-size: root.item-font-px;
+                x: favorite-exe-btn.x + favorite-exe-btn.width + row-spacing;
+                y: root.gutter + row-height + row-spacing;
+                width: self.text-preferred-width + button-padding * 2;
+                height: row-height;
+                clicked => { root.change-version-requested(); }
+                hovered => { root.nav-hovered(5); }
+            }
+
+            instructions-box := Rectangle {
+                background: Theme.search-background;
+                border-width: root.border-px;
+                border-color: Theme.border-color;
+                x: root.gutter;
+                // Juste sous favorite-exe-btn -- dérivé de la position RÉELLE
+                // de l'en-tête, jamais d'une constante recalculée
+                // séparément, qui divergerait dès que l'en-tête change de
+                // nombre de rangées (même principe que button-row.height
+                // plus bas).
+                y: favorite-exe-btn.y + favorite-exe-btn.height + root.gutter;
+                width: content-width;
+                // Symétrique de y ci-dessus : tout l'espace restant jusqu'à
+                // la rangée de boutons du bas. button-row.height, PAS le
+                // littéral button-height -- la rangée peut occuper DEUX
+                // lignes sur une petite résolution (voir ButtonRow).
+                // root.gutter * 2, même formule que footer-height dans
+                // SettingsDialog : un root.gutter pour la marge sous button-row,
+                // déjà comptée dans button-row.y (chrome.content-height -
+                // root.gutter - self.height), un second pour l'écart visible
+                // au-dessus de la rangée. Un seul root.gutter colle les deux.
+                // chrome.content-height (PAS parent.height) -- voir le
+                // commentaire équivalent dans MessageDialog.
+                height: chrome.content-height - self.y - root.gutter * 2 - button-row.height;
+
+                // Flickable -- sans lui, un texte d'instructions plus long
+                // que la hauteur disponible est simplement coupé (le
+                // TextInput ci-dessous n'a aucun mécanisme de défilement
+                // propre). viewport-height suit le PLUS GRAND entre la
+                // hauteur du cadre et la hauteur réellement nécessaire au
+                // texte replié à cette largeur (`preferred-height`, déjà le
+                // même mécanisme que text-preferred-width sur DialogButton
+                // plus haut dans ce fichier) -- jamais de défilement pour un
+                // texte qui tient déjà, jamais de texte coupé pour un texte
+                // qui ne tient pas.
+                // Clic droit -- Copier -- sur le texte d'instructions, comme
+                // le TextEdit standard de Slint (voir instructions-input.copy(),
+                // fourni par TextInput lui-même).
+                ContextMenuArea {
+                    Menu {
+                        MenuItem {
+                            title: "Copy";
+                            enabled: !root.instructions-text.is-empty;
+                            activated => { instructions-input.copy(); }
+                        }
+                    }
+
+                instructions-flick := Flickable {
+                    x: root.gutter * 0.5;
+                    y: root.gutter * 0.5;
+                    // - scrollbar-width EN PLUS du root.gutter*0.5 des deux
+                    // côtés déjà réservé -- sinon la scrollbar ajoutée
+                    // ci-dessous se superpose au texte (même règle que
+                    // list-width/scrollbar dans SettingsDialog : jamais
+                    // l'un par-dessus l'autre).
+                    width: instructions-box.width - root.gutter - scrollbar-width;
+                    height: instructions-box.height - root.gutter;
+                    viewport-width: self.width;
+                    viewport-height: max(self.height, link-row.height + instructions-input.preferred-height);
+                    // Jamais de glissé-pour-défiler ici -- glisser dans le
+                    // texte sert TOUJOURS à sélectionner (jamais les deux à
+                    // la fois, sans quoi les deux gestes se disputent le
+                    // même drag). Molette/flèches/scrollbar (voir plus bas)
+                    // restent les seuls moyens de défiler, `interactive`
+                    // n'affecte que le glissé.
+                    interactive: false;
+
+                    // Lien séparé du texte plutôt qu'une URL cliquable
+                    // au fil du paragraphe : le TextInput ci-dessous reste un
+                    // bloc de texte simple (pas de texte enrichi en Slint),
+                    // repositionner une zone cliquable pile sur l'URL selon
+                    // son retour à la ligne serait fragile. N'occupe aucune
+                    // place quand instructions-link est vide.
+                    link-row := TouchArea {
+                        x: 0px;
+                        y: 0px;
+                        width: instructions-flick.width;
+                        height: root.instructions-link == "" ? 0px : row-height;
+                        mouse-cursor: pointer;
+                        clicked => { root.instructions-link-requested(); }
+
+                        Text {
+                            visible: root.instructions-link != "";
+                            text: "🔗 " + root.instructions-link;
+                            color: Theme.selected-background;
+                            font-size: root.item-font-px;
+                            vertical-alignment: center;
+                            overflow: elide;
+                            width: parent.width;
+                            height: 100%;
+                        }
+                    }
+
+                    // TextInput en lecture seule (pas un simple Text) -- un
+                    // Text ne permet aucune sélection à la souris/au clavier ;
+                    // read-only désactive l'ÉDITION mais garde la sélection et
+                    // le Ctrl+C, nécessaires pour copier les instructions.
+                    instructions-input := TextInput {
+                        y: link-row.height;
+                        text: root.instructions-text;
+                        color: Theme.list-text;
+                        font-size: root.item-font-px;
+                        read-only: true;
+                        single-line: false;
+                        wrap: word-wrap;
+                        // Couleurs du thème (themes.json), pas le bleu/noir par
+                        // défaut de Slint -- mêmes couleurs que la
+                        // surbrillance manette/clavier partout ailleurs dans
+                        // les dialogues (voir DialogButton).
+                        selection-background-color: Theme.selected-background;
+                        selection-foreground-color: Theme.selected-text;
+                        width: instructions-flick.width;
+                        // Sélectionner du texte donne le focus clavier à CE
+                        // TextInput (nécessaire pour Ctrl+C) et il le garde
+                        // ensuite (rien ne le reprend au clic ailleurs) --
+                        // handle-nav-key (partagée avec key-handler) fait
+                        // marcher les mêmes touches quel que soit celui des
+                        // deux qui a le focus.
+                        key-pressed(event) => { return root.handle-nav-key(event); }
+                    }
+                }
+                }
+
+                // Barre de défilement custom (couleurs du thème, voir son
+                // commentaire dans theme-colors.slint) -- sans elle, un
+                // texte trop long ne se parcourt qu'au glissé, sans indice
+                // visuel qu'il reste du contenu à lire. Centrée dans la
+                // marge restante à droite de instructions-flick, même
+                // formule que la scrollbar de theme-list dans
+                // SettingsDialog.
+                ThemedScrollbar {
+                    x: instructions-flick.x + instructions-flick.width + (root.gutter * 0.5 - scrollbar-width) / 2;
+                    y: instructions-flick.y;
+                    height: instructions-flick.height;
+                    viewport-height: instructions-flick.viewport-height;
+                    visible-height: instructions-flick.height;
+                    viewport-y <=> instructions-flick.viewport-y;
+                }
+            }
+
+            // Rangée de raccourcis -- voir ButtonRow, partagé avec
+            // SettingsDialog. Le survol relaie vers Rust (nav-hovered) qui
+            // renvoie ensuite `selected-index` : contrairement à Settings,
+            // Info a aussi une navigation clavier (Gauche/Droite, voir
+            // key-handler) qui doit rester en phase avec le survol souris,
+            // Rust reste donc l'arbitre unique des deux.
+            button-row := ButtonRow {
+                x: root.gutter;
+                // self.height PAS button-height littéral -- réagit
+                // automatiquement si la rangée bascule sur 2 lignes (voir
+                // ButtonRow), reste collée au bas du dialogue dans les deux
+                // cas. chrome.content-height (PAS parent.height) -- voir le
+                // commentaire équivalent dans MessageDialog.
+                y: chrome.content-height - root.gutter - self.height;
+                content-width: content-width;
+                button-padding: button-padding;
+                row-spacing: row-spacing;
+                button-height: button-height;
+                item-font-px: root.item-font-px;
+                border-px: root.border-px;
+                selected-index: root.selected-index;
+                items: [
+                    { text: "Website", enabled: root.website-enabled },
+                    { text: "Mods website", enabled: root.mods-enabled },
+                    { text: "Game folder", enabled: root.game-folder-enabled },
+                    { text: "Save folder", enabled: root.save-folder-enabled },
+                    { text: "Save folder 2", enabled: root.save-folder2-enabled },
+                ];
+                clicked(index) => {
+                    if (index == 0) { root.website-requested(); }
+                    else if (index == 1) { root.mods-requested(); }
+                    else if (index == 2) { root.game-folder-requested(); }
+                    else if (index == 3) { root.save-folder-requested(); }
+                    else { root.save-folder2-requested(); }
+                }
+                hovered(index) => { root.nav-hovered(index); }
+            }
+        }
+    }
+}
+
+// Pas de bouton fermer fonctionnel (closable: false) -- une install en
+// cours ne peut pas être interrompue : fermer pendant qu'un worker tourne
+// en fond laissait le port bloqué "en cours d'installation" tout le reste
+// de la session.
+export component ProgressDialog inherits Window {
+    no-frame: true;
+    // Voir le commentaire équivalent dans MessageDialog.
+    title: root.dialog-title;
+    background: Theme.list-background;
+    in property <length> initial-width: 400px;
+    in property <length> initial-height: 180px;
+    width: initial-width;
+    height: initial-height;
+
+    // Voir le commentaire équivalent dans MessageDialog.
+    in property <string> font-family: "Segoe UI";
+    default-font-family: root.font-family;
+
+    in property <string> dialog-title: "";
+    in property <string> status-text: "";
+    // Couleur sémantique fixe (voir ui/theme.rs::SemanticColors), poussée
+    // depuis Rust -- jamais un littéral hexa figé côté .slint.
+    in property <color> progress-fill-color: #78b159;
+
+    // Voir le commentaire équivalent dans MessageDialog.
+    in property <length> item-font-px-physical: 14px;
+    in property <length> title-font-px-physical: 13px;
+    in property <length> row-height-physical: 48px;
+    in property <length> title-bar-height-physical: 34px;
+
+    property <length> logical-w: root.width - border-px * 2;
+    property <length> logical-h: root.height - border-px * 2;
+    property <length> border-px: Theme.border-width * 1px / Theme.scale-factor;
+    property <length> item-font-px: item-font-px-physical / Theme.scale-factor;
+    property <length> title-font-px: title-font-px-physical / Theme.scale-factor;
+    property <length> bar-height: title-bar-height-physical / Theme.scale-factor;
+    property <length> gutter: 12px / Theme.scale-factor;
+
+    chrome := DialogChrome {
+        dialog-title: root.dialog-title;
+        bar-height: root.bar-height;
+        title-font-px: root.title-font-px;
+        border-px: root.border-px;
+        logical-w: root.logical-w;
+        logical-h: root.logical-h;
+        closable: false;
+
+        // chrome.content-width/height (PAS parent.width/height) -- voir le
+        // commentaire équivalent dans MessageDialog.
+        Text {
+            text: root.status-text;
+            color: Theme.list-text;
+            font-size: root.item-font-px;
+            wrap: word-wrap;
+            x: root.gutter;
+            y: root.gutter;
+            width: chrome.content-width - root.gutter * 2;
+            height: chrome.content-height - root.gutter * 4;
+        }
+
+        // Barre indéterminée simplifiée -- un remplissage fixe plutôt
+        // qu'une animation va-et-vient (pas essentiel au fonctionnement
+        // du dialogue, une future itération pourra l'animer via un
+        // slint::Timer côté Rust).
+        progress-track := Rectangle {
+            x: root.gutter;
+            y: chrome.content-height - root.gutter * 2;
+            width: chrome.content-width - root.gutter * 2;
+            height: root.gutter;
+            background: Theme.search-background;
+            border-width: root.border-px;
+            border-color: Theme.border-color;
+
+            Rectangle {
+                // Retrait de root.border-px de chaque côté -- SANS ça, ce
+                // remplissage (posé à 0,0 sur 100%x100%) recouvre
+                // entièrement la bordure de progress-track : un Rectangle
+                // ne rogne pas ses enfants par défaut et sa propre
+                // bordure est peinte SOUS eux -- même contrainte que la
+                // bordure de la fenêtre principale (voir
+                // logical-width/height dans app-window.slint).
+                x: root.border-px;
+                y: root.border-px;
+                width: (progress-track.width - root.border-px * 2) * 0.4;
+                height: progress-track.height - root.border-px * 2;
+                background: root.progress-fill-color;
+            }
+        }
+    }
+}
+
+export struct PickerItem {
+    label: string,
+}
+
+export component ListPickerDialog inherits Window {
+    no-frame: true;
+    // Voir le commentaire équivalent dans MessageDialog.
+    title: root.dialog-title;
+    background: Theme.list-background;
+    in property <length> initial-width: 400px;
+    in property <length> initial-height: 300px;
+    width: initial-width;
+    height: initial-height;
+
+    // Voir le commentaire équivalent dans MessageDialog.
+    in property <string> font-family: "Segoe UI";
+    default-font-family: root.font-family;
+
+    in property <string> dialog-title: "";
+    in property <[PickerItem]> items: [];
+    // Hauteur d'une option -- calculée côté Rust (voir dialog_geometry.rs),
+    // pas en fraction de root.height ici : le nombre d'options est
+    // variable, contrairement aux autres dialogues à contenu fixe. Fournie
+    // en pixels PHYSIQUES par Rust (comme initial-width/height) -- divisée
+    // ici pour rester dans la même unité "logique" que le reste.
+    in property <length> item-height-physical: 40px;
+    // Option actuellement mise en avant par la navigation manette (voir
+    // src/main.rs::DialogGamepadTarget) -- `-1` = aucune (souris seule).
+    in property <int> selected-index: -1;
+    callback item-selected(int);
+    // Survol souris -- voir DialogButton.hovered, fait suivre la sélection
+    // manette/clavier sous la souris, un seul indicateur pour les deux au
+    // lieu de deux indépendants (même correctif que InfoDialog.nav-hovered).
+    callback item-hovered(int);
+    callback close-requested();
+    // Haut/bas + Entrée -- voir key-handler plus bas ; réutilise la même
+    // logique que la manette (DialogGamepadTarget::move_selection/
+    // activate_selection côté Rust), jamais une seconde implémentation à
+    // maintenir en synchronisation.
+    callback move-selection-requested(int);
+    callback activate-selection-requested();
+    // Fait défiler la liste pour garder l'option sélectionnée visible,
+    // UNIQUEMENT depuis la navigation clavier/manette -- même mécanisme que
+    // SettingsDialog.scroll-trigger.
+    in property <bool> scroll-trigger: false;
+    forward-focus: key-handler;
+
+    // Voir le commentaire équivalent dans MessageDialog.
+    in property <length> item-font-px-physical: 14px;
+    in property <length> title-font-px-physical: 13px;
+    in property <length> row-height-physical: 48px;
+    in property <length> title-bar-height-physical: 34px;
+
+    property <length> logical-w: root.width - border-px * 2;
+    property <length> logical-h: root.height - border-px * 2;
+    property <length> border-px: Theme.border-width * 1px / Theme.scale-factor;
+    property <length> item-font-px: item-font-px-physical / Theme.scale-factor;
+    property <length> title-font-px: title-font-px-physical / Theme.scale-factor;
+    property <length> bar-height: title-bar-height-physical / Theme.scale-factor;
+    property <length> gutter: 12px / Theme.scale-factor;
+    property <length> item-height: item-height-physical / Theme.scale-factor;
+    property <length> spacing: root.gutter * 0.5;
+    // Même formule que list-width/scrollbar dans SettingsDialog : la
+    // scrollbar vit dans la marge droite (root.gutter), jamais superposée aux
+    // options.
+    property <length> scrollbar-width: 6px / Theme.scale-factor;
+    // chrome.content-width (pas content-area.width) -- voir le commentaire
+    // équivalent dans InfoDialog.content-width.
+    property <length> list-width: chrome.content-width - root.gutter * 2;
+
+    key-handler := FocusScope {
+        key-pressed(event) => {
+            // Voir DialogNavKey en tête de fichier.
+            let action = DialogNavKey.classify(event);
+            if (action == 0) {
+                root.close-requested();
+                accept
+            } else if (action == 1) {
+                root.move-selection-requested(-1);
+                accept
+            } else if (action == 2) {
+                root.move-selection-requested(1);
+                accept
+            } else if (action == 3) {
+                root.activate-selection-requested();
+                accept
+            } else {
+                reject
+            }
+        }
+
+        chrome := DialogChrome {
+            dialog-title: root.dialog-title;
+            bar-height: root.bar-height;
+            title-font-px: root.title-font-px;
+            border-px: root.border-px;
+            logical-w: root.logical-w;
+            logical-h: root.logical-h;
+            content-clip: true;
+            close-requested => { root.close-requested(); }
+
+            // Défilante -- un dossier avec beaucoup de fichiers (choix
+            // d'exécutable/asset) dépasse la hauteur du dialogue, qu'aucun
+            // clip ni scrollbar ne signalerait autrement.
+            picker-list := Flickable {
+                x: root.gutter;
+                y: root.gutter;
+                width: list-width;
+                // chrome.content-height (PAS parent.height) -- voir le
+                // commentaire équivalent dans MessageDialog.
+                height: chrome.content-height - root.gutter * 2;
+                viewport-width: self.width;
+                viewport-height: max(self.height, items.length * (item-height + spacing) - spacing);
+
+                property <bool> scroll-trigger-local: root.scroll-trigger;
+                property <length> selected-top: root.selected-index * (item-height + spacing);
+                property <length> selected-bottom: self.selected-top + item-height;
+                changed scroll-trigger-local => {
+                    if (root.selected-index < 0) {
+                        return;
+                    }
+                    if (self.selected-top + self.viewport-y < 0px) {
+                        self.viewport-y = -self.selected-top;
+                    } else if (self.selected-bottom + self.viewport-y > self.height) {
+                        self.viewport-y = self.height - self.selected-bottom;
+                    }
+                }
+
+                for item[index] in items: DialogButton {
+                    text: item.label;
+                    border-px: root.border-px;
+                    left-align: true;
+                    font-size: root.item-font-px;
+                    selected: index == root.selected-index;
+                    x: 0px;
+                    y: index * (item-height + spacing);
+                    width: picker-list.width;
+                    height: item-height;
+                    clicked => { root.item-selected(index); }
+                    hovered => { root.item-hovered(index); }
+                }
+            }
+            ThemedScrollbar {
+                x: root.gutter + list-width + (root.gutter - scrollbar-width) / 2;
+                y: picker-list.y;
+                height: picker-list.height;
+                viewport-height: picker-list.viewport-height;
+                visible-height: picker-list.height;
+                viewport-y <=> picker-list.viewport-y;
+            }
+        }
+    }
+}
+
+// Sélecteur de thème + raccourcis fichiers/dossiers (Library/ports.json/
+// ports.local.json/state.json/themes.json) -- squelette de ListPickerDialog
+// (liste d'options, navigation clavier/manette) plus une rangée de boutons
+// fixe en bas. Composant séparé pour ne pas alourdir ListPickerDialog, qui
+// sert aussi au choix d'asset/exécutable, sans rapport avec ces raccourcis.
+export component SettingsDialog inherits Window {
+    no-frame: true;
+    // Voir le commentaire équivalent dans MessageDialog.
+    title: root.dialog-title;
+    background: Theme.list-background;
+    in property <length> initial-width: 400px;
+    in property <length> initial-height: 300px;
+    width: initial-width;
+    height: initial-height;
+
+    // Voir le commentaire équivalent dans MessageDialog.
+    in property <string> font-family: "Segoe UI";
+    default-font-family: root.font-family;
+
+    in property <string> dialog-title: "";
+    in property <[PickerItem]> items: [];
+    // Même défaut que search-bar-height-physical dans app-window.slint --
+    // poussée séparément par Rust (voir open_settings_dialog), pas via
+    // apply_dialog_chrome! (partagée par des dialogues sans barre de
+    // recherche) : root.row-height-physical n'est qu'un repli avant ce push.
+    in property <length> search-bar-height-physical: root.row-height-physical;
+    in property <int> selected-index: -1;
+    // Fait défiler la liste pour garder l'option sélectionnée visible,
+    // UNIQUEMENT depuis la navigation clavier/manette -- un survol souris
+    // change aussi selected-index (voir item-hovered) mais ne doit jamais
+    // interrompre un défilement manuel à la molette.
+    in property <bool> scroll-trigger: false;
+
+    in property <bool> library-enabled: false;
+    in property <bool> ports-json-enabled: false;
+    in property <bool> ports-local-json-enabled: false;
+    in property <bool> state-json-enabled: false;
+    in property <bool> themes-json-enabled: false;
+    // Surbrillance de la rangée de raccourcis -- le survol souris (`hovered
+    // =>` du ButtonRow) et la navigation clavier/manette (voir
+    // move-footer-selection-requested) se partagent la même valeur, d'où le
+    // `in-out` : Rust doit pouvoir la piloter comme root.selected-index pour
+    // la liste de thèmes. Même principe que selected-index d'InfoDialog.
+    in-out property <int> footer-selected-index: -1;
+    // Placeholder configurable (themes.json: "placeholder_text"), même
+    // champ que la barre de recherche principale.
+    in property <string> placeholder-text: "Type to search...";
+    // Horloge optionnelle (themes.json: "show_clock") -- même champ que la
+    // fenêtre principale (voir app-window.slint), fixée à l'ouverture du
+    // dialogue plutôt que rafraîchie en continu : Settings reste rarement
+    // ouvert assez longtemps pour qu'un décalage d'une minute se voie.
+    in property <bool> show-clock: true;
+    in property <string> clock-text: "";
+
+    callback item-selected(int);
+    callback item-hovered(int);
+    callback close-requested();
+    callback move-selection-requested(int);
+    // Navigation clavier/manette Gauche/Droite de la rangée de raccourcis
+    // -- axe INDÉPENDANT de move-selection-requested (Haut/Bas, la liste de
+    // thèmes), même séparation que scroll-instructions/
+    // move-selection-requested dans InfoDialog.
+    callback move-footer-selection-requested(int);
+    // Survol souris de la rangée de raccourcis -- relayé à Rust plutôt que
+    // d'écrire footer-selected-index directement d'ici, même principe que
+    // item-hovered/nav-hovered ailleurs dans ce fichier : Rust reste
+    // l'arbitre unique de la sélection, sinon la navigation clavier/manette
+    // (qui, elle, part de son propre index côté Rust) désynchroniserait de
+    // ce qui est affiché après un survol souris.
+    callback footer-hovered(int);
+    callback activate-selection-requested();
+    callback library-requested();
+    callback ports-json-requested();
+    callback ports-local-json-requested();
+    callback state-json-requested();
+    callback themes-json-requested();
+    callback search-changed(string);
+    // Focus initial -- même mécanisme que search-input dans
+    // app-window.slint (init, pas de forward-focus).
+    init => { search-input.focus(); }
+
+    // Voir le commentaire équivalent dans MessageDialog.
+    in property <length> item-font-px-physical: 14px;
+    in property <length> title-font-px-physical: 13px;
+    in property <length> row-height-physical: 48px;
+    in property <length> title-bar-height-physical: 34px;
+
+    property <length> logical-w: root.width - border-px * 2;
+    property <length> logical-h: root.height - border-px * 2;
+    property <length> border-px: Theme.border-width * 1px / Theme.scale-factor;
+    property <length> item-font-px: item-font-px-physical / Theme.scale-factor;
+    property <length> title-font-px: title-font-px-physical / Theme.scale-factor;
+    property <length> bar-height: title-bar-height-physical / Theme.scale-factor;
+    property <length> gutter: 12px / Theme.scale-factor;
+
+    // Même échelle que search-font-px dans app-window.slint -- la barre de
+    // recherche y affiche son texte 20% plus grand que le reste de la
+    // liste, jamais root.item-font-px directement.
+    property <length> search-font-px: root.item-font-px * 1.2;
+    property <length> row-height: root.row-height-physical / Theme.scale-factor;
+    // Même retrait géométrique que le texte de la barre de recherche/des
+    // lignes de la fenêtre principale (voir son commentaire dans
+    // app-window.slint) -- PAS root.gutter, une valeur différente qui
+    // désalignait le texte entre les deux fenêtres.
+    property <length> text-margin: row-height * 0.3;
+    property <length> button-padding: 10px / Theme.scale-factor;
+    property <length> row-spacing: 6px / Theme.scale-factor;
+    // Chrome fixe sous la liste, jamais rognée par son défilement.
+    // button-height -- même formule que GitHub/Discord dans la fenêtre
+    // principale (row-height - row-spacing*2), pas row-height directement.
+    property <length> button-height: row-height - row-spacing * 2;
+    // root.gutter*2 -- un root.gutter au-dessus des boutons (écart avec la liste), un
+    // second en dessous (marge avec le bord du dialogue). Même principe
+    // qu'InfoDialog (instructions-box se termine `root.gutter` avant ses boutons).
+    // button-row.height PAS button-height littéral -- réagit
+    // automatiquement si la rangée bascule sur 2 lignes (voir ButtonRow).
+    property <length> footer-height: root.gutter * 2 + button-row.height;
+    // Barre de recherche fixe en haut, jamais défilante -- même formule
+    // EXACTE que search-bar-height dans app-window.slint (search-bar-
+    // height-physical / scale-factor), poussée par Rust avec la VRAIE
+    // valeur (fenêtré ET plein écran ont des formules différentes côté
+    // Rust, voir open_settings_dialog) plutôt que reconstruite ici.
+    property <length> search-height: search-bar-height-physical / Theme.scale-factor;
+    // Même formule que content-width/scrollbar dans app-window.slint : la
+    // scrollbar vit dans la marge droite (root.gutter), jamais superposée au
+    // contenu -- list-width réserve root.gutter des deux côtés, recherche/liste/
+    // boutons l'utilisent tous. chrome.content-width (pas content-area.
+    // width) -- voir le commentaire équivalent dans InfoDialog.content-width.
+    property <length> scrollbar-width: 6px / Theme.scale-factor;
+    property <length> list-width: chrome.content-width - root.gutter * 2;
+
+    chrome := DialogChrome {
+        dialog-title: root.dialog-title;
+        bar-height: root.bar-height;
+        title-font-px: root.title-font-px;
+        border-px: root.border-px;
+        logical-w: root.logical-w;
+        logical-h: root.logical-h;
+        content-clip: true;
+        close-requested => { root.close-requested(); }
+
+        // Barre de recherche -- filtre la liste (themes.json dépasse
+        // les 100 thèmes). Même construction "maison" que search-input
+        // dans app-window.slint (pas de LineEdit standard, dont le
+        // style Fluent ignore le thème actif).
+        search-box := Rectangle {
+            x: root.gutter;
+            // Même marge que padding-top: content-margin sur le
+            // VerticalLayout de la barre de recherche principale.
+            y: root.gutter;
+            width: list-width;
+            height: search-height;
+            background: Theme.search-background;
+            border-width: 1px / Theme.scale-factor;
+            border-color: Theme.border-color;
+
+            if search-input.text == "": Text {
+                text: root.placeholder-text;
+                color: Theme.search-text;
+                font-size: search-font-px;
+                vertical-alignment: center;
+                x: text-margin;
+                width: parent.width - text-margin * 2;
+                height: parent.height;
+            }
+
+            // Superposée à la zone de texte, alignée à droite -- même
+            // construction que la fenêtre principale (voir son
+            // commentaire dans app-window.slint).
+            if root.show-clock: Text {
+                text: root.clock-text;
+                color: Theme.search-text;
+                font-size: search-font-px;
+                vertical-alignment: center;
+                horizontal-alignment: right;
+                x: 0px;
+                width: parent.width - text-margin;
+                height: parent.height;
+            }
+
+            search-input := TextInput {
+                text: "";
+                color: Theme.search-text;
+                font-size: search-font-px;
+                vertical-alignment: center;
+                single-line: true;
+                x: text-margin;
+                y: 0px;
+                width: parent.width - text-margin * 2;
+                height: parent.height;
+                edited => { root.search-changed(self.text); }
+                // Flèches/Entrée/Échap interceptées ici (seul endroit
+                // qui garde le focus en permanence, voir root.init) au
+                // lieu d'un FocusScope séparé ; `accept` les empêche
+                // d'atteindre le comportement par défaut de TextInput.
+                key-pressed(event) => {
+                    if (event.text == Key.Escape) {
+                        root.close-requested();
+                        accept
+                    // Ctrl+WS -- même alias que dans app-window.slint
+                    // (voir son commentaire), pour les claviers/
+                    // dispositions sans flèches dédiées.
+                    } else if (event.text == Key.UpArrow || (event.modifiers.control && event.text == "w")) {
+                        root.move-selection-requested(-1);
+                        accept
+                    } else if (event.text == Key.DownArrow || (event.modifiers.control && event.text == "s")) {
+                        root.move-selection-requested(1);
+                        accept
+                    } else if (event.text == Key.LeftArrow || (event.modifiers.control && event.text == "a")) {
+                        root.move-footer-selection-requested(-1);
+                        accept
+                    } else if (event.text == Key.RightArrow || (event.modifiers.control && event.text == "d")) {
+                        root.move-footer-selection-requested(1);
+                        accept
+                    } else if (event.text == Key.Return) {
+                        root.activate-selection-requested();
+                        accept
+                    } else {
+                        reject
+                    }
+                }
+            }
+        }
+
+        // Liste des thèmes -- défilante (themes.json en a plus de 100).
+        // Laisse footer-height de côté en bas pour les raccourcis, et
+        // search-height en haut pour la recherche, jamais recouvertes
+        // par le contenu défilant.
+        theme-list := Flickable {
+            x: root.gutter;
+            // Un root.gutter pour la marge au-dessus de la recherche, un
+            // second pour l'écart entre recherche et liste.
+            y: search-height + root.gutter * 2;
+            width: list-width;
+            // chrome.content-height (PAS parent.height) -- voir le
+            // commentaire équivalent dans MessageDialog.
+            height: chrome.content-height - footer-height - search-height - root.gutter * 2;
+            viewport-width: self.width;
+            // row-height, PAS item-height (une métrique séparée, calculée
+            // différemment pour les autres pickers) -- même hauteur de
+            // ligne EXACTE que la liste de ports de la fenêtre
+            // principale (voir son commentaire ci-dessous).
+            viewport-height: max(self.height, items.length * row-height);
+
+            property <bool> scroll-trigger-local: root.scroll-trigger;
+            property <length> selected-top: root.selected-index * row-height;
+            property <length> selected-bottom: self.selected-top + row-height;
+            changed scroll-trigger-local => {
+                if (root.selected-index < 0) {
+                    return;
+                }
+                if (self.selected-top + self.viewport-y < 0px) {
+                    self.viewport-y = -self.selected-top;
+                } else if (self.selected-bottom + self.viewport-y > self.height) {
+                    self.viewport-y = self.height - self.selected-bottom;
+                }
+            }
+
+            // Lignes de texte simples, sans bordure ni fond de bouton
+            // -- même rendu ET même hauteur (row-height, pas
+            // item-height) que la liste de ports de la fenêtre
+            // principale (fond selected-background si sélectionnée,
+            // sinon list-background), pas DialogButton.
+            for item[index] in items: Rectangle {
+                background: index == root.selected-index ? Theme.selected-background : Theme.list-background;
+                x: 0px;
+                y: index * row-height;
+                width: theme-list.width;
+                height: row-height;
+
+                Text {
+                    text: item.label;
+                    color: index == root.selected-index ? Theme.selected-text : Theme.list-text;
+                    font-size: root.item-font-px;
+                    vertical-alignment: center;
+                    // Même décalage que le texte à l'intérieur de
+                    // search-box (search-input), pour que les deux
+                    // textes restent alignés verticalement.
+                    x: text-margin;
+                    width: parent.width - text-margin;
+                    height: 100%;
+                }
+                row-touch := TouchArea {
+                    clicked => { root.item-selected(index); }
+                    changed has-hover => {
+                        if (self.has-hover) {
+                            root.item-hovered(index);
+                        }
+                    }
+                }
+            }
+        }
+        ThemedScrollbar {
+            // MÊME formule que la scrollbar principale dans
+            // app-window.slint : centrée dans la marge droite (root.gutter),
+            // jamais superposée à list-width.
+            x: root.gutter + list-width + (root.gutter - scrollbar-width) / 2;
+            y: theme-list.y;
+            height: theme-list.height;
+            viewport-height: theme-list.viewport-height;
+            visible-height: theme-list.height;
+            viewport-y <=> theme-list.viewport-y;
+        }
+
+        // Raccourcis fichiers/dossiers -- rangée fixe. Gauche/Droite
+        // (voir move-footer-selection-requested) navigue cette rangée au
+        // clavier/manette, Haut/Bas restant réservé à la liste de thèmes
+        // au-dessus -- même principe que Info.
+        // Grisés via *-enabled si le fichier/dossier n'existe pas.
+        // Centrée dans list-width plutôt que collée à droite :
+        // list-width suit les ~100 noms de thèmes, quasi
+        // toujours plus large que ces 5 libellés, un calage à droite
+        // laisserait un vide disproportionné d'un seul côté.
+        button-row := ButtonRow {
+            x: root.gutter;
+            // self.height PAS button-height littéral -- voir le
+            // commentaire équivalent dans InfoDialog. chrome.content-height
+            // (PAS parent.height) -- voir le commentaire dans MessageDialog.
+            y: chrome.content-height - root.gutter - self.height;
+            content-width: list-width;
+            button-padding: button-padding;
+            row-spacing: row-spacing;
+            button-height: button-height;
+            item-font-px: root.item-font-px;
+            border-px: root.border-px;
+            selected-index: root.footer-selected-index;
+            items: [
+                { text: "Library", enabled: root.library-enabled },
+                { text: "ports.json", enabled: root.ports-json-enabled },
+                { text: "ports.local.json", enabled: root.ports-local-json-enabled },
+                { text: "state.json", enabled: root.state-json-enabled },
+                { text: "themes.json", enabled: root.themes-json-enabled },
+            ];
+            clicked(index) => {
+                if (index == 0) { root.library-requested(); }
+                else if (index == 1) { root.ports-json-requested(); }
+                else if (index == 2) { root.ports-local-json-requested(); }
+                else if (index == 3) { root.state-json-requested(); }
+                else { root.themes-json-requested(); }
+            }
+            hovered(index) => { root.footer-hovered(index); }
+        }
+    }
+}

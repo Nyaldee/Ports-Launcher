@@ -1,0 +1,397 @@
+1: 
+2: [Speed 00][3]      [2]    >[Choose]
+3: [Speed 00][2]      [3]    >[Choose]
+4: [Speed 00]Save and Continue[2]Save and Quit[3]Do Not Save and Continue
+5: [Speed 00]0- [Number 00]. 1- [Number 01][2]2- [Number 02]. 3- [Number 03]
+6: You can't enter with something[2]following you.
+7: [Speed 00][1]>[2]  [3]  [Choose3]
+8: [Speed 00][1]  [2]>[3]  [Choose3]
+9: [Speed 00][1]  [2]  [3]>[Choose3]
+10: [Speed 00][1]>[2]  [Choose2]
+11: [Speed 00][1]  [2]>[Choose2]
+12: [Speed 00][3]    [2]  >[Selchg]
+13: [Speed 00][2]    [3]  >[Selchg]
+14: [Name], I'm going out for a[2]while.  I'll be back by morning.[3]Don't leave the house.
+15: Ugh[...] That voice! [Name]?[2]Is it you?  I told you[3]to wait at home[...][Waitkey][Scroll]Take my sword and shield and[Scroll]listen.  You can focus power in[Scroll]the blade (hold the B Button).[Waitkey][Scroll][...]Then release it using the[Scroll]secret technique handed down[Scroll]by our people[...][Waitkey][Scroll][Name][...] You must rescue[Scroll]Princess Zelda. Our people are[Scroll]fated to do so.[Waitkey][Scroll]But do not fall victim[...][Scroll]to fate[...] [Name][...][Waitkey][Scroll]I shall always remember[...][Scroll]our time[...] together[...]
+16: What're you doing up this late,[2]kid?  You can stay up when[3]you're grown up!  Now go home!
+17: I see you brought a map so you[2]don't get lost.  (Press the[3]X Button to see your map).
+18: You look strong for a kid.  How[2]much can you lift?  (Press the[3]A Button while touching a thing[Waitkey][Scroll]to lift it.)
+19: I'll bet you can't wait until you[2]are old enough to use a sword![3](Press the B Button to use[Waitkey][Scroll]your sword when you get it.)
+20: That mark on your map must be[2]your destination.
+21: You can often find valuables[2]in chests.  (Press the A[3]Button in front of a chest to[Waitkey][Scroll]open it.)
+22: Us soldiers have been around,[2]kid.  You can learn a lot from[3]us.  But you already know that!
+23: Meet the elder of the village[2]and get the Master Sword.
+24: Princess Zelda, you are safe![2]Is this your doing, [Name]?
+25: I sense that a mighty evil[2]force guides the priest's[3]actions and augments his[Waitkey][Scroll]magical power.  The only[Scroll]weapon potent enough to[Scroll]defeat the priest is the[Waitkey][Scroll]legendary Master Sword.[Scroll]It is said that the village elder[Scroll]is a descendant of one of the[Waitkey][Scroll]seven sages.  Maybe[Scroll]he can tell you more[...][Scroll]I will mark his house on your[Waitkey][Scroll]map.  But watch your every[Scroll]move!  I am certain that the[Scroll]castle soldiers will be looking[Waitkey][Scroll]for you now!  [...]    [...]    [...][Sound 45][Scroll]I will hide Princess Zelda here.[Scroll]Do not worry!  Seek the elder![Waitkey][Scroll][...]    [...]    [...][Scroll]Do you understand?[Scroll]    > Yes[Scroll]       Not at all[Choose]
+26: If you defeat the priest, the[2]soldiers may regain[3]their sanity.[Waitkey][Scroll]Go, seek the Pendants!
+27: Take the three Pendants into[2]the Lost Woods.  The Master[3]Sword awaits you there.
+28: [Name]!  You are a second too[2]late.  I have failed[...] Zelda[...][3]The soldiers have[Waitkey][Scroll]abducted her.[Scroll]They have taken her to[Scroll]the castle.[Waitkey][Scroll]You must find her before the[Scroll]priest works his magic.[Waitkey][Scroll]Please[...]You are our only[Scroll]hope[...]
+29: Thank you, [Name].  I had a[2]feeling you were getting close.
+30: Yes, it was [Name] who helped[2]me escape from the dungeon![3]When I was captive the priest[Waitkey][Scroll]said, "Once I have finished with[Scroll]you, the final one, the seal of[Scroll]the sages will open."[Waitkey][Scroll][...]    [...]    [...][Scroll][Name], you must not let the[Scroll]land of Hyrule fall into the[Waitkey][Scroll]priest's clutches.[Scroll]If he releases the seal of the[Scroll]seven sages, evil power will[Waitkey][Scroll]overwhelm this land.[Scroll]Before that happens[...][Scroll]before it's too late[...] destroy[Waitkey][Scroll]the priest before he destroys[Scroll]all of Hyrule!  You can do it![Scroll]You can[...]
+31: [Name], be careful out there![2]I know you can save Hyrule!
+32: [Window 02][Speed 03]Help me[...][Wait 01][3]Please help me[...][Waitkey][Scroll]I am a prisoner in the dungeon[Scroll]of the castle.[Scroll]My name is Zelda.[Waitkey][Scroll]The priest, Agahnim, has done[...][Scroll]something to the other missing[Scroll]girls.  Now only I remain[...][Waitkey][Scroll]Agahnim has seized control of[Scroll]the castle and is now trying to[Scroll]open the seven sages' seal.[Waitkey][Scroll][...]   [...][Scroll]I am in the dungeon of the[Scroll]castle.[Waitkey][Scroll]Please help me[...]
+33: [Window 02][Speed 03]Help me[...][2]I am in the dungeon of the[3]castle.[Waitkey][Scroll]I know there is a hidden path[Scroll]from outside of the castle to[Scroll]the garden inside.
+34: There is a secret passage in[2]the throne room that leads[3]to the Sanctuary.[Waitkey][Scroll]I'm sure the old man there[Scroll]will help us.
+35: That ornamental shelf should[2]open.  Do you have a light?[3]It's pitch dark inside and you[Waitkey][Scroll]can't see without one.[Scroll]If you're ready, let's go![Scroll]Help me push it from the left!
+36: You have to pull the lever to[2]open the door.  (Press the A[3]Button and hold Down on the[Waitkey][Scroll]Control Pad.)
+37: All right,  let's get out of here[2]before the priest notices.  I[3]know a secret path, but first[Waitkey][Scroll]we have to go to the[Scroll]first floor.  Let's go!
+38: [Name], listen carefully.  The[2]priest is magically controlling[3]all the soldiers in the castle.[Waitkey][Scroll]I fear the worst for[Scroll]my father[...][Scroll]The priest is an inhuman fiend[Waitkey][Scroll]with strong magical powers![Scroll][...]   [...]   [...][Waitkey][Scroll]Do you understand?[Scroll]    > Yes[Scroll]       Not at all[Choose]
+39: You should follow the marks[2]the elder made on your map[3]when you explore.[Waitkey][Scroll]If you don't know what to do[Scroll]next, you can also visit a[Scroll]fortune teller.
+40: [Name], you are wonderful![2]As I thought, you have the[3]power of the Hero inside you![Waitkey][Scroll]Now, you should get the Master[Scroll]Sword.  I am confident that you[Scroll]can defeat the evil priest!
+41: [Window 02][Speed 03][Name]!  Help!  The soldiers[2]are coming to the Sanctuary![3]AIEEEEEEE![Waitkey][Scroll][...] [...] [...]
+42: After passing through these[2]sewers, we will be very close[3]to the Sanctuary![Waitkey][Scroll]Let's be careful!
+43: The Sanctuary is just beyond[2]that door.  Pull the switch[3]over there.
+44: Who? Oh, it's you, [Name]![2]What can I do for you, young[3]man?  The elder?  Oh, no one[Waitkey][Scroll]has seen him since the priest[Scroll]began collecting victims[...][Scroll][...]   [...]   [...][Waitkey][Scroll]What?  Master Sword?  Well, I[Scroll]don't remember the details[Scroll]exactly, but[...]
+45: Long ago, a prosperous people[2]known as the Hylians inhabited[3]this land[...][Waitkey][Scroll]Legends tell of many treasures[Scroll]that the Hylians hid throughout[Scroll]the land[...][Waitkey][Scroll]The Master Sword, a mighty[Scroll]blade forged against those[Scroll]with evil hearts, is one of[Waitkey][Scroll]them.  People say that now it[Scroll]is sleeping deep in the forest[...][Scroll][...] [...] [...][Waitkey][Scroll]Do you understand the legend?[Scroll]    > Yes[Scroll]       Not at all[Choose]
+46: Anyway, look for the elder.[2]There must be someone in the[3]village who knows where he is.[Waitkey][Scroll]You take care now, [Name][...]
+47: Ohhh,[Name].  You've changed![2]You look marvelous[...][3]Please save us from Agahnim[Waitkey][Scroll]the priest!
+48: Hey!  Here is [Name], the[2]wanted man!  Soldiers!  Anyone![3]Come quickly!
+49: Incredible!  At last you have[2]the three Pendants[...]  Now, you[3]should go to the Lost Woods.[Waitkey][Scroll]If you are the true Hero, the[Scroll]sword itself will select you.[Scroll][...] [...] [...]
+50: I am too old to fight.[2]I can only rely on you.
+51: I am, indeed, Sahasrahla, the[2]village elder and a descendent[3]of the seven sages.[Waitkey][Scroll][...]   [...]     Oh really?[Scroll][Name], I am surprised a young[Scroll]man like you is searching for[Waitkey][Scroll]the sword of evil's bane.[Scroll]Not just anyone can use that[Scroll]weapon.  Legends say only the[Waitkey][Scroll]Hero who has won the three[Scroll]Pendants can wield the sword.[Scroll][...]   [...]   [...][Waitkey][Scroll]Do you really want to find it?[Scroll]    > Yeah![Scroll]       Of Course![Choose]
+52: Good.  As a test, can you[2]retrieve the Pendant Of[3]Courage from the East Temple?[Waitkey][Scroll]If you bring it here, I will tell[Scroll]you more of the legend and[Scroll]give you a magical artifact.[Sound 45][Waitkey][Scroll]Now, go forward to the temple.
+53: Other relatives of the sages[2]are hiding from the evil[3]priest's followers.[Waitkey][Scroll]You should find them.
+54: [Window 02][Speed 03][Name], it is I, Sahasrahla.[2]I am communicating to you[3]across the void through[Waitkey][Scroll]telepathy[...]  The place where[Scroll]you now stand was the Sacred[Scroll]Realm, but evil power turned it[Waitkey][Scroll]into the Dark World.  The[Scroll]priest has broken the sages'[Scroll]seal and opened a gate[Waitkey][Scroll]to link the worlds[Scroll]at Hyrule Castle.  In[Scroll]order to save this half of the[Waitkey][Scroll]world, the Light World, you[Scroll]must win back the Golden[Scroll]Power.  You must also rescue[Waitkey][Scroll]the seven maidens who Agahnim[Scroll]sent to the Dark World.  As[Scroll]members of the bloodline of[Waitkey][Scroll]the seven sages, they have[Scroll]power that will surely help you.[Scroll]The maidens are locked in[Waitkey][Scroll]hidden dungeons full of evil[Scroll]creatures and dangerous traps.[Scroll]The Dark Temple should[Waitkey][Scroll]be your first goal in this world![Sound 45][Scroll][Name], I can rely on only[Scroll]you.  Please make this old[Waitkey][Scroll]man's wishes come true.[Scroll]I beg you!
+55: [Window 02][Speed 03]But I sense your helplessness[...][2]Before you go any further,[3]find the Moon Pearl on[Waitkey][Scroll]Hebra Mountain.  It will protect[Scroll]you from the Dark World's[Scroll]magic so you can keep your[Waitkey][Scroll]heroic figure.
+56: A helpful item is hidden in the[2]cave on the east side of Lake[3]Hylia.  Get it!
+57: Oh!?  You got the Pendant Of[2]Courage!  Now I will tell you[3]more of the legend[...][Waitkey][Scroll]Three or four generations ago,[Scroll]an order of knights protected[Scroll]the Hylian royalty.[Waitkey][Scroll]These Knights Of Hyrule were[Scroll]also guardians of the Pendant[Scroll]Of Courage.[Waitkey][Scroll]Unfortunately, most of them[Scroll]were destroyed in the great[Scroll]war against evil that took[Waitkey][Scroll]place when the seven sages[Scroll]created their seal.  Among the[Scroll]descendants of the Knights Of[Waitkey][Scroll]Hyrule a hero must appear.[Scroll][...]I see.  [Name], I believe you.[Scroll]You should get the remaining[Waitkey][Scroll]Pendants.[Scroll]And carry this with you.[Scroll]This is a treasure passed down[Waitkey][Scroll]by the families of the sages.[Scroll]I want you to have it.
+58: You are correct, young man![2]I am Sahasrahla, the village[3]elder and a descendent of the[Waitkey][Scroll]seven sages.[Scroll][...] [...] [...] What?[Scroll][Name], I'm surprised a young[Waitkey][Scroll]man like you is looking for the[Scroll]sword of evil's bane.  Not just[Scroll]anyone can use that sword.[Waitkey][Scroll]According to the tales handed[Scroll]down by the Hylians, only the[Scroll]Hero who has destroyed three[Waitkey][Scroll]great evils and won the three[Scroll]Pendants can wield the sword[...][Scroll][...] [...] [...][Waitkey][Scroll]I see you have acquired the[Scroll]Pendant of Courage.  I will tell[Scroll]you about the legend behind it.[Waitkey][Scroll]Three or four generations ago,[Scroll]an order of knights protected[Scroll]the Hylian royalty.[Waitkey][Scroll]These Knights Of Hyrule were[Scroll]also guardians of the Pendant[Scroll]Of Courage.[Waitkey][Scroll]Unfortunately, most of them[Scroll]were destroyed in the great[Scroll]war against evil that took[Waitkey][Scroll]place when the seven sages[Scroll]created their seal.  Among the[Scroll]descendants of the Knights Of[Waitkey][Scroll]Hyrule a hero must appear.[Scroll][...]I see.  [Name], I believe you.[Scroll]You should get the remaining[Waitkey][Scroll]Pendants.[Scroll]And carry this with you.[Scroll]This is a treasure passed down[Waitkey][Scroll]by the families of the sages.[Scroll]I want you to have it.
+59: I will give 100 Rupees to the[2]man who finds the descendants[3]of the sages.   THE KING
+60:        [LinkL][LinkR]  WANTED![2]This is [Name], the criminal[3]who kidnapped Princess Zelda.[Waitkey][Scroll]Call a soldier if you see him!
+61:                 DANGER![2]Do not enter Hebra Mountain[3]without the King's permission!
+62: This way[2]      [Up] Lost Woods
+63:                 DANGER![2]Beware of deep water and Zora!
+64: Welcome to the Potion Shop.[2]The Waterfall Of Wishing is[3]just ahead.!
+65: This cave leads to the path[2]back to Kakariko Village.
+66: This way[2]      [Down] Lake Hylia[3]      [Down] Shop
+67: This way[2]      [Left] Kakariko Village
+68: This way[2]       [Left] Desert of Mystery
+69: This way[2]      [Up] Potion Shop[3]      [Right] Waterfall of Wishing
+70: This way[2]      [Right] Eastern Temple[3]      [Left] Hyrule Castle
+71: [2]        Lake Hylia
+72: Pay no attention to the[2]average middle-aged man[3]standing by this sign.[Waitkey][Scroll]Leave him alone!
+73: [2]The House Of Lumberjacks[3]A. Bumpkin and B. Bumpkin
+74: This way[2]      [Down] Kakariko Village
+75: Double, double toil and trouble,[2]fire burn and cauldron bubble[...][3]Making mushroom brew, I am[...]
+76: Heh heh[...]  Thank you, young[2]man[...]  Come back to the shop[3]later for something good[...][Waitkey][Scroll]Heh heh[...]
+77: Mmmmm[...]  The smell of rotten[2]fruit[...]  If you give me that[3]Mushroom, I can finish my brew.[Waitkey][Scroll]Heh heh[...]
+78: If you want to buy the potion,[2]you should bring a bottle to[3]put it in[...]  He he he!
+79: Red restores your life.[2]Green restores your magic.[3]Blue renews both life and[Waitkey][Scroll]magic.[Scroll]Here, taste a sample of the[Scroll]Red Potion[...]  He he!
+80: Without a magic bottle, you can[2]not buy any potions.[3]He he he!
+81: No,  no,  no[...]  I can't put[2]anything into a full bottle.[3]He he he!
+82: You got the Lantern![2]Now you can light torches and[3]see your way in darkness.
+83: You got the Boomerang![2]Equip it with Start and give [3]it a try!
+84: You found the Bow![2]Now you can shoot arrows until[3]you run out!
+85: You borrowed a shovel![2]You can dig in many places.[3]You never know what you'll[Waitkey][Scroll]find!
+86: This is the Magic Cape![2]You vanish into thin air[3]when you wear it![Waitkey][Scroll]But watch your Magic Meter!
+87: This is Magic Powder![2]Try to sprinkle it on enemies[3]and many other things!
+88: You bought Zora's Flippers![2]With these you should be able[3]to swim even in deep water!
+89: You got the Power Glove![2]You can feel strength in both[3]hands!  You can pick up and[Waitkey][Scroll]carry stones now!
+90: You won the Pendant Of[2]Courage!  Take it to[3]the elder Sahasrahla![Waitkey][Scroll]Two more Pendants remain!
+91: You won the Pendant of Wisdom![2]Your goal of finding three[3]Pendants is in sight![Waitkey][Scroll]Go for the last one!
+92: You won the Pendant of Power![2]With this, you have collected[3]all three Pendants!  Go now to[Waitkey][Scroll]the Lost Woods to get[Scroll]the Master Sword!
+93: This Mushroom smells like sweet[2]rotten fruit[...][3]You can give this to anyone[Waitkey][Scroll]who wants it by selecting it[Scroll]and pressing the Y Button.
+94: You found the Tome of Mudora![2]You can use it to read the[3]ancient language of the[Waitkey][Scroll]Hylians!
+95: You found the Moon Pearl![2]This protects your body from[3]the twisted effects of the[Waitkey][Scroll]Golden Power.
+96: You found the Compass![2]Now you can pinpoint the[3]lair of the dungeon's evil[Waitkey][Scroll]master!
+97: You got the Map![2]You can use it to see your[3]current position and the rest[Waitkey][Scroll]of the dungeon by pressing  X.
+98: You found the Ice Rod![2]It sends a sharp chill cleaving[3]through the air.[Waitkey][Scroll]But watch your Magic Meter!
+99: You found the Fire Rod![2]It sends crimson flames[3]shooting through the air.[Waitkey][Scroll]But watch your Magic Meter!
+100: This is the Ether Medallion![2]Its magic summons icy winds[3]from the upper atmosphere![Waitkey][Scroll]Watch your Magic Meter!
+101: This is the Bombos Medallion![2]Its magic makes the ground[3]erupt in fiery explosions![Waitkey][Scroll]Watch your Magic Meter!
+102: This is the Quake Medallion![2]Its magic causes violent[3]tremors and stuns nearby[Waitkey][Scroll]enemies![Scroll]Watch your Magic Meter!
+103: You got the Magic Hammer![2]You can drive the wooden[3]stakes down into the ground![Waitkey][Scroll]You can use it to pound on[Scroll]other things too!
+104: Oh!  Here is the Ocarina![2]Its music surely has some[3]mysterious power!
+105: You got the Cane Of Somaria![2]It will be very helpful if you[3]learn how to use it![Waitkey][Scroll]What a mysterious cane!
+106: BOING!  This is the Hookshot![2]It extends and contracts and[...][3]BOING!![Waitkey][Scroll]It can grapple many things!
+107: You got some Bombs![2]After  placing a Bomb, you can[3]pick up with A to throw it!
+108: This is a Magic Bottle![2]You can store an item[3]inside and then use it later!
+109: You got the Big Key![2]This is the master key of the[3]dungeon.  It can open many[Waitkey][Scroll]locks that small keys cannot.
+110: You got the Titan's Mitts![2]Now you can lift the heaviest[3]stones that were once[Waitkey][Scroll]impossible to budge.
+111: He gave you the Magic Mirror![2]It's blue, clear and beautiful[...][Waitkey][3]Gazing into it, you feel like[Scroll]you're being swallowed into[Scroll] another world[...]
+112: This is it!  The Master Sword![2][...]  [...]  [...][3]No, this can't be it[...]
+113: [Window 02][Speed 03]Suddenly, Sahasrahla contacts[2]you telepathically[...][3][...]  [...]  [...][Waitkey][Scroll][Name], it is extraordinary[Scroll]that you won the Master Sword[Scroll]that makes evil retreat[...][Waitkey][Scroll]With this shining sword, I[Scroll]believe you can deflect the[Scroll]priest's evil powers.[Waitkey][Scroll][Scroll]The destiny of this land[Scroll]is in your hands.[Waitkey][Scroll]Please, [Name][...]
+114: Heh heh heh[...]  Thank you![2]This is the Red Potion.[3]Use it to restore your life.
+115: Heh heh heh[...]  Thank you![2]This is the Green Potion.[3]You can restore your magic[Waitkey][Scroll]power with it.
+116: Heh heh heh[...]  Thank you![2]This is the Blue Potion.[Waitkey][3]Drink it to restore both life[Scroll]and magic power.
+117: You borrowed the[2]Bug-Catching Net![Waitkey][3]There may be some other[Scroll]things you can catch with it[Scroll]besides insects!
+118: You found the Blue Tunic![2]This reduces the damage that[3]you take from enemies!
+119: You found the Red Tunic![2]This provides even more[3]protection than the Blue Tunic!
+120: Great!  Your sword is stronger![2]You can feel the sheer power[3]flowing through your body!
+121: You found the Mirror Shield![2]You can now deflect beams[3]that your old shield[Waitkey][Scroll]couldn't block!
+122: You got the Cane Of Byrna![2]If you wave it once, a ring of[3]light will protect you!
+123: Eh?  It's locked![2]If you had the Big Key, you[3]might be able to open it!
+124: You are short on Magic Power![2]You can't use this item now.[3]Watch your Magic Meter!
+125: He gives you the[2]Pegasus Boots![Waitkey][3]Now you can execute a[Scroll]devastating dash attack by[Scroll]holding  down the A Button!
+126: Wow!  I haven't seen a normal[2]person in a few hundred years![Waitkey][3]Let me talk to you for a while.[Scroll]Here's a good story[...]
+127: Do you know about the[2]Gargoyle statue in the village?[3]People say they can hear a girl[Waitkey][Scroll]calling for help from under the[Scroll]statue.  Isn't that a strange[Scroll]story[...]
+128: Surprisingly, the Triforce[2]created this world to fulfill[3]Ganon's wish.[Waitkey][Scroll]What is Ganon's wish,[Scroll]you ask?  It is to rule the[Scroll]entire world!  Don't you think[Waitkey][Scroll]it might be possible with the[Scroll]power of the Triforce[Scroll]behind you?
+129: I once lived in the Lost Woods,[2]until the day I wandered into a[3]magic transporter[...][Waitkey][Scroll]The power of the Dark World[Scroll]quickly turned me into this[Scroll]tree shape[...][Waitkey][Scroll]I guess the two forests are[Scroll]connected with each other[...]
+130: I heard that using Bombs is the[2]best way to defeat the[3]one-eyed giants.[Waitkey][Scroll]That's all I know!
+131: Quit bothering me!  And watch[2]where you're going when you[3]dash around!
+132: You got the Pendant of Wisdom![2]You have now collected all[3]three Pendants!  Go forth now[Waitkey][Scroll]to the Lost Woods for the[Scroll]Master Sword!
+133: You got the Pendant of Power![2]Again your power has increased![3]Now, go for the last one!
+134: Well howdy, Light Worlder![2]You look like a straight[3]shooter[...]  Want to try your[Waitkey][Scroll]skill in my shooting gallery?[Scroll]I'll give you five shots for 20[Scroll]Rupees.  If you're as sharp[Waitkey][Scroll]as I think you are, you stand[Scroll]to rake in the Rupees.[Waitkey][Scroll]How about it, stranger?[Scroll]    > Play[Scroll]       No way[Choose]
+135: All right!  Aim carefully![2]Ready?  GO!
+136: Well little partner, you can[2]turn yourself right around and[3]leave the same way you[Waitkey][Scroll]came in.[Scroll]See you later!  Have a nice day!
+137: Want to shoot again?[2]    > Continue[3]       Quit[Choose]
+138:          --WISHING WELL--[2]Throw some Rupees in and your[3]wishes will surely come true.[Waitkey][Scroll]Do you want to throw Rupees?[Scroll]    > Throw a few[Scroll]       Don't feel like it[Choose]
+139: Select an item using the[2]Control Pad and throw it using[3]the Y Button.[Item]
+140: Hello there.  Did you drop this?[2]    > Yes[3]       No, I didn't[Choose]
+141: I like an honest person.[2]I will give you something better[3]in return.
+142: Are you sure this is not yours?[2]    > Really, it isn't[3]       To tell the truth, it is[Choose]
+143: Now,  now, don't tell me a lie.[2]Please take it back.
+144: You got the Magical Boomerang![2]You can throw this faster and[3]farther than your old one!
+145: Your shield is improved![2]Now you can defend yourself[3]against fireballs!
+146: These are the Silver Arrows![2]You need to defeat Ganon!
+147: She filled your bottle with[2]the Green Potion.[3]To get such a potion free is[Waitkey][Scroll]quite a bargain!
+148: Your sword is even stronger![2]It feels warm to the touch[...]
+149: Your happiness increased by[2][Number 03][Number 02] Rupees.[Waitkey][3]In total, your happiness is [Number 01][Number 00].[Scroll]You became happier by one[Scroll]step.
+150: I will make your wish come true.[2]  >I want to carry more Bombs[3]    I want to carry more Arrows[Selchg]
+151: Then I will increase your[2]carrying ability so you can[3]carry [Number 01][Number 00] Bombs at maximum.[Waitkey][Scroll]This is just a small happiness[Scroll]I can give to you.
+152: Then I will increase your[2]carrying ability so you can[3]carry [Number 01][Number 00] Arrows at maximum.[Waitkey][Scroll]This is just a small happiness[Scroll]I can give to you.
+153: I cannot grant any more wishes[2]for you, but a friend of mine[3]might be able to[...][Waitkey][Scroll]She lives in the Waterfall Of[Scroll]Wishing near Zora's lake.[Scroll]I will return your Rupees to[Waitkey][Scroll]you.  May you be happy[...]
+154: Ah[...]  Watch your step.[2]There are holes in the ground.[3]Could you turn right here?[Waitkey][Scroll]Young man, are you also going[Scroll]to the mountain to look for the[Scroll]Golden Power?[Waitkey][Scroll]Just ahead is a mountain full[Scroll]of monsters.  Many people have[Scroll]vanished in this mountain while[Waitkey][Scroll]looking for the Golden Power.[Scroll][Scroll][Waitkey][Scroll]I don't want to steer you[Scroll]wrong, so please don't get too[Scroll]involved in such a mad quest.
+155: Uhh[...]  There must be a Heart[2]in the pot.
+156: Oh[...]  Turn right here[...]   [...][2]You know, I have a[3]granddaughter who is your[Waitkey][Scroll]age[...]  The King took her to the[Scroll]castle and she never returned.[Scroll]Kidnapping those maidens must[Waitkey][Scroll]be part of the priest's plot![Scroll]I'm sure he is trying to[Scroll]somehow use the power of the[Waitkey][Scroll]descendants of the sages[...]
+157: I don't know who you are,[2]but if you are going to[3]go up the mountain,[Waitkey][Scroll]will you take me with you?[Scroll]I lost my lantern, so[...]
+158: The missing maidens are still[2]alive somewhere.  I believe that[3]a Hero will rescue them[...][Waitkey][Scroll]I wait for that day[...][Scroll]Uhh[...]  These are dangerous[Scroll]times[...]  I talked too much.[Waitkey][Scroll]Anyway[...]  Thank you for your[Scroll]kindness to an old man like me.[Scroll]Uhh[...]  I wanted to give you[Waitkey][Scroll]this.  If you wander into[Scroll]a magical transporter, gaze[Scroll]into this mirror.
+159: The priest has deceived the[2]King, and now he is trying to[3]open the way to the[Waitkey][Scroll]Dark World.  To complete[Scroll]your quest, you will need[Scroll]the Moon Pearl, which is in the[Waitkey][Scroll]tower on top of the mountain.[Scroll]All I can do for you now is to[Scroll]comfort your weariness[...][Waitkey][Scroll]Come back here any time.
+160: [1]The Moon Pearl will protect its[2]bearer from the magical air of[3]the Sacred Realm, so you can[Waitkey][Scroll]keep your human shape there.[Scroll]All I can do for you now is[Scroll]comfort your weariness[...][Waitkey][Scroll]Come back here any time.
+161: [Name], I think the priest[2]connected the two worlds[3]somewhere around the castle.[Waitkey][Scroll]All I can do for you now is to[Scroll]comfort your weariness[...][Scroll]Come back here any time.
+162: [...](mumble mumble)[...]  My son[2]really liked to play the ocarina,[3]but he went to look for the[Waitkey][Scroll]Golden Power and has not[Scroll]returned[...] [...] [...][Scroll]I wonder where he is and what[Waitkey][Scroll]he is doing now?[...][Scroll][...]  Zzzzzz  Zzzzzz
+163: [...](mumble mumble)[...]  Oh?  This[2]is my son's ocarina[...]![3]Did you meet my son?[Waitkey][Scroll]Where is he?  Is he all right?[Scroll][...] [...] [...] [...][Scroll][Waitkey][Scroll]Oh, I see[...]  Well, I can tell[Scroll]what you want to say by the[Scroll]look in your eyes[...]
+164: Would you keep the ocarina?[2]And will you play its sweet[3]melody for the bird in the[Waitkey][Scroll]village square?[Scroll]I beg of you, please![Scroll]My son would probably want it[Waitkey][Scroll]this way[...][Scroll][...]But still, I wish I could[Scroll]see him once more[...]
+165: Zzzzzzz  Zzzzzzzz[2][...]  [...]  [...][3](snore)  Zzzzzz  Zzzzzz
+166: Oh, [Name].  The rumors say[2]you kidnapped the Princess,[3]but I don't believe them.
+167: I can't believe you caught me![2]With your speed it must have[3]been easy to kidnap Zelda[...][Waitkey][Scroll]You don't look like such a bad[Scroll]guy, though[...][Scroll]Anyway, because you have[Waitkey][Scroll]such quick feet, it might be a[Scroll]good idea to run and bash into[Scroll]many things[...][Waitkey][Scroll]For example, the trees in this[Scroll]village have many useful things[Scroll]hanging in their branches[...][Waitkey][Scroll]Well, just try it, OK?!
+168: If you have enough time to[2]read this sign, you should go[3]to the goal immediately!
+169: I'll give a Piece of Heart to[2]the person who wears a Cape.
+170: Curses to anyone who throws[2]something into my circle of[3]stones.
+171: This way[2]      [Up] Skull Woods[3]      [Down] Outcast Village
+172: This way[2]      [Right] Cave
+173: This way[2]      [Right] Dark Temple
+174: This way[2]      [Left] Bomb Shop
+175: [Left]  Swamp Of Evil[2]         No Entrance[3]         No Escape
+176: This is the Outcast Village.[2]People without Rupees are not[3]welcome here.
+177: The Waterfall Of Wishing is just[2]around the corner.
+178: This way[2]      [Right][Up] Lake Of Ill Omen
+179: After Agahnim took over,[2]everyone began to act[3]strangely.[Waitkey][Scroll]I suppose it's only[Scroll]a matter of time before[Scroll]I'm affected, too.
+180: Hey hey!  You're not allowed in[2]the castle, son![3]Go home and get some sleep!
+181: [Window 02][Name], it is I, Sahasrahla.  I[2]can talk to you telepathically[3]when you touch these tiles.[Waitkey][Scroll]Here is a hint.  You can use the[Scroll]treasure hidden in this temple[Scroll]to defeat armored foes.
+182: [Window 02][Name], it is I, Sahasrahla the[2]elder.  An orb known as the[3]Moon Pearl is in this tower.[Waitkey][Scroll]Whoever holds the Moon Pearl is[Scroll]protected so that his form will[Scroll]not change in the Dark World.[Waitkey][Scroll]You must find it and escape[Scroll]from the tower![Scroll]Don't forget the Moon Pearl[...]
+183:       [Snake][X][Waves][B][Waves][B]   [Snake][X][Waves][B][Waves][B]   [Ankh][A][Waves][B][Waves][B][2]          [Ankh][A]   [Snake][X][Waves][B][Waves][B][Snake][X]   [Ankh][A][3]     [Snake][X][Waves][B][Waves][B]   [Ankh][A][Snake][X][Snake][X][Ankh][A]   [Waves][B][Waves][B][Ankh][A]
+184: The Hero's triumph on[2]Cataclysm's Eve[3]Wins three symbols of virtue.[Waitkey][Scroll]The Master Sword he will then[Scroll]retrieve,[Scroll]Keeping the Knight's line true.
+185: [Window 02][Name], it is I, Sahasrahla.[2]You must somehow make your[3]way to the top of Spectacle[Waitkey][Scroll]Rock.  From there you can[Scroll]reach the Tower of Hera on[Scroll]top of Hebra Mountain.
+186: [Window 02][Name], it is I, Sahasrahla.[2]Objects exist simultaneously in[3]both worlds with similar shapes.[Waitkey][Scroll]If the form of a thing changes,[Scroll]it will affect the shape of its[Scroll]twin in the other world.
+187: [Window 02][Name][...]  It's me, Zelda[...][2]Don't be deceived by the[3]sorcery of Blind the Thief![Waitkey][Scroll]Be careful!
+188: [Window 02][Name],  it is I, Sahasrahla[2]the elder!  You must set fire[3]to four torches to open[Waitkey][Scroll]the way forward.
+189:         [Snake][X][Snake][X][Ankh][A][Waves][B]   [Snake][X][Waves][B][Waves][B][Snake][X][2]           [Ankh][A]   [Waves][B][Snake][X][Ankh][A][Waves][B][3]        [Waves][B][Waves][B][Snake][X][Waves][B]   [Ankh][A][Ankh][A][Snake][X][Ankh][A]
+190: Offer a prayer before[2]this stone tablet.[Waitkey][3]If your wish is heard, the[Scroll]way shall open before you.
+191: [Window 02]When Ganon is stunned, be[2]sure to finish him off with[3]Silver Arrow![Waitkey][Scroll][Name], I know you shall[Scroll]prevail.
+192: [Window 02][Name], can you hear me?[2]It's me, Zelda.  I am locked in[3]Turtle Rock on top of Death[Waitkey][Scroll]Mountain.  I know you are doing[Scroll]your best, but please hurry[...]
+193: [Window 02][Name], it is I, Sahasrahla.[2]You must never fail to find all[3]the treasures in each dungeon.
+194: [Window 02]Listen well, [Name].[2]Even with the Master Sword,[3]you cannot inflict physical[Waitkey][Scroll]harm on the priest.[Scroll]You must find a way to return[Scroll]his own evil magic power to him.
+195: [Window 02][Name], do not use all your[2]magic power if you do not[3]possess the Potion Of Magic.[Waitkey][Scroll]Now, get ready to go into the[Scroll]depths of this dungeon.
+196: [Window 02][Name], do you possess the[2]Potion of Magic?  If not, I[3]recommend against going any[Waitkey][Scroll]further.
+197: [Window 02][Name], the magic flames will[2]protect you inside this icy[3]dungeon.
+198: [Window 02]You cannot destroy the[2]Skeleton Knight with the sword[3]alone.  When he collapses, he is[Waitkey][Scroll]vulnerable to another weapon.
+199: [Window 02][Name], it is I, Sahasrahla the[2]elder.  I have some advice[...][3]In the dungeons, you can gaze[Waitkey][Scroll]into the Magic Mirror to return[Scroll]to the entrance at any time.[Scroll]Do not forget this!
+200: My name is Chris Houlihan.[2]This is my top secret room.[3]Keep it between us, OK?
+201: You caught a bee![Waitkey][2]What will you do?[3]    > Keep it in a bottle[Scroll]       Set it free[Choose]
+202: You caught a fairy![Waitkey][2]What will you do?[3]    > Keep it in a bottle[Scroll]       Set it free[Choose]
+203: You don't have any empty[2]bottles.  You have no choice[...][3]Just set it free.
+204: Your time was [Number 03][Number 02] minutes[2]and [Number 01][Number 00] seconds.
+205: If you can reach the goal[2]within 15 seconds, we will give[3]you something good.[Waitkey][Scroll]Ready, Set[...] [...]  GO!
+206: You qualified![2]Congratulations![3]I present you with a[Waitkey][Scroll]Piece of Heart!
+207: You're not qualified.[2]Too bad![3]Why don't you try again?
+208: I don't have anything more to[2]give you.[3]I'm sorry!
+209: You have to enter the maze[2]from the proper entrance or I[3]can't clock your time[...]
+210: You, sir!  Have you been going[2]through life without one of my[3]hold-anything bottles?[Waitkey][Scroll]Well step right up and make[Scroll]your life complete!  I've got[Scroll]one on sale now for the low,[Waitkey][Scroll]low price of 100 Rupees![Waitkey][Scroll]What do you say?  Interested?[Scroll]    > I'll take one[Scroll]       Don't need it[Choose]
+211: Good buy!  Thanks a lot![2]Now, hold it above your head[3]for the whole world to see, OK?[Waitkey][Scroll]It's good for business!
+212: So you're broke, eh?  Too bad[...][2]Come back after you earn more[3]Rupees.  It might still be here.
+213: I'm all sold out of bottles.[2]Come back later, OK?[3][...] [...] [...]
+214: Wow!  I've never seen such a[2]rare bee!  I'll buy it for[3]100 Rupees. Here you go!
+215: Hey!  They say eating fish[2]makes you smart.  You have to[3]give me this fish for this[Waitkey][Scroll]stuff, OK?  Done!
+216: Yo!  [Name]! You seem to be in[2]a heap of trouble, but this is[3]all I can give you.
+217: Hey you![2]Welcome![3][Waitkey][Scroll]Ask us to do anything![Scroll]    > Temper my sword[Scroll]       I just dropped by[Choose]
+218: I'll give you a big discount![2]    > Temper sword[...] 10 Rupees[3]       Wait a minute[Choose]
+219: Tempered, eh?  Are you sure?[2]    > Yes[3]       I changed my mind[Choose]
+220: Well, we can't make it any[2]stronger than that[...] Sorry!
+221: Drop by again anytime you[2]want to.  Hi ho!  Hi ho![3]We're off to work!
+222: All right, no problem.[2]We'll have to keep your sword[3]for a while.
+223: Your sword is tempered![2]Now hold it up to the sky!
+224: If my lost partner returns,[2]we can temper your sword,[3]but now, I can't do[Waitkey][Scroll]anything for you.
+225: Oh!  Happy days are here again![2]You found my partner![3][...]  We are very happy now[...][Waitkey][Scroll]Drop by here again![Scroll]At that time, we will temper[Scroll]your sword perfectly!
+226: Ribbit ribbit[...]  Your body did[2]not change!  You are not just[3]an ordinary guy, are you?[Waitkey][Scroll]I used to live in Kakariko Town.[Scroll]I wonder what my partner is[Scroll]doing there without me[...][Waitkey][Scroll]Ribbit!  I have a request of[Scroll]you.[Scroll]Please take me to my partner![Waitkey][Scroll]Please!  Ribbit!  Please!
+227: I'm sorry, we're not done yet.[2]Come back after a while.
+228: Thank you![2][3]Thank you!
+229: Hey hey, amateurs shouldn't[2]try to do this.  You're just[3]getting in the way!
+230: After wandering into this world[2]I turned into this shape.[3][...]  [...]  [...][Waitkey][Scroll]I enjoyed playing the[Scroll]ocarina in the original world[...][Scroll][...]  [...]  [...][Waitkey][Scroll]There was a small grove where[Scroll]many animals gathered.  I want[Scroll]to see that place again[...][Waitkey][Scroll]I buried my ocarina there[Scroll]with some flower seeds.[Scroll][Waitkey][Scroll]Will you try to find it for me?[Scroll]    > Yes[Scroll]       No way[Choose]
+231: Then I will lend you my shovel.[2]I'm counting on you!
+232: [...]  [...]  [...][2]I see.  I won't ask you again[...][3]Farewell.
+233: Did you find my ocarina?[2][...]  [...]  [...][3]Please keep looking for it[...]
+234: Thank you, [Name].  But it[2]looks like I can't play my[3]ocarina any more.[Waitkey][Scroll]Please take it.[Waitkey][Scroll]If by chance you go to the[Scroll]village I lived in, please give[Scroll]it to a tired old man you will[Waitkey][Scroll]find there.[Scroll][...]  [...]  [...][Scroll]Well,  my mind is getting[Waitkey][Scroll]hazy[...][Scroll]Please let me hear the sound of[Scroll]the ocarina one last time[...]
+235: [Position 00]Hocus pocus![2]You will find the elder[3]Sahasrahla[...]
+236: [Position 00]Abracadabra alakazam![2]You will open a desert lock with[3]the Tome of Mudora.
+237: [Position 00]Hocus pocus![2]You will find a member of the[3]sages' line in the desert.
+238: [Position 00]Abracadabra alakazam![2]You will find a mushroom lover[3]at the Potion Shop[...]
+239: [Position 00]Hocus pocus![2]You will meet Zora living in a[3]lake at the river's source[...]
+240: [Position 00]Abracadabra alakazam![2]The true Hero will find the[3]Moon Pearl in a[Waitkey][Scroll]mountain tower.
+241: [Position 00]Hocus pocus![2]Even the mighty Master Sword[3]cannot harm the priest's body.
+242: [Position 00]Abracadabra alakazam![2]The true Hero will jump into the[3]well near the smithy's shop.
+243: [Position 00]Well, I have to say my condition[2]isn't very good today.  But I[3]want you to come back again[...]
+244: [Position 00]Hmmm[...]  You look like you might[2]have an interesting destiny[...][3]May I tell your fortune?[Waitkey][Scroll]I'll make it cheap[...][Scroll]    > Ask him to tell it[Scroll]       Not interested[Choose]
+245: [Position 00]Now I will take [Number 00][Number 01] Rupees.[2]I hope you will be healthy.[3]Yeehah ha hah!
+246: [Position 00]It is indeed a poor man who is[2]not interested in his future[...][3]I'll be waiting for your return.
+247: [Position 00]Hocus pocus![2]You will meet a strange man[3]standing in the desert[...]
+248: [Position 00]Abracadabra alakazam![2]The gossip shop in the Dark[3]World has treasure for the[Waitkey][Scroll]asking[...]
+249: [Position 00]Hocus pocus![2]You will find the smith's[3]partner in the[Waitkey][Scroll]Outcast Village.
+250: [Position 00]Abracadabra alakazam![2]A treasure is laid to rest in[3]the Light World graveyard.
+251: [Position 00]Hocus pocus![2]You will buy a new kind of bomb[3]at the Bomb Shop.
+252: [Position 00]Abracadabra alakazam![2]You will find a secret inside[3]the pyramid of the Dark World.
+253: [Position 00]Hocus pocus![2]A barrier protects Ganon's[3]Tower on Death Mountain.
+254: [Position 00]Abracadabra alakazam![2]You will need Silver Arrows to[3]finish off Ganon.
+255: Hey!  I'll tell you a profitable[2]story if you pay me 20 Rupees.[Waitkey][Scroll]How about it?[Scroll]    > Pay Rupees[Scroll]       Don't want to hear it[Choose]
+256: Hah!  Thank you.  They say[2]there is a tiny circle of rocks[3]in the lake at the source of[Waitkey][Scroll]the river.  I don't know what[Scroll]will happen, but it might be fun[Scroll]to throw something into it[...][Waitkey][Scroll]Heh heh.  See you[...]
+257: Heh heh.  I see.  I'm not[2]interested in talking to people[3]who don't have Rupees[...]
+258: Heh heh.  Thank you.  To tell[2]you the truth, I used to be a[3]thief in the Light World[...][Waitkey][Scroll]some of my fellow thieves went[Scroll]into hiding because they were[Scroll]afraid of being caught.[Waitkey][Scroll]One of them was a master[Scroll]locksmith, but now he is hiding[Scroll]the fact that he was a thief[...][Waitkey][Scroll][...]by pretending to be a[Scroll]strange middle-aged guy![Scroll]Ha ha ha[...]
+259: Hah!  Thank you.  To tell you[2]the truth, I found incredible[3]beauty inside the pyramid,[Waitkey][Scroll]but someone sealed the door.[Scroll]You can't do anything with a[Scroll]standard bomb, they say[...]
+260: Heh heh.  Thank you.  As a[2]matter of fact, monster magic[3]is making it rain in the swamp.[Waitkey][Scroll]If you can move the air with[Scroll]more force than the monsters,[Scroll]the rain may stop.
+261: -sniffle- Hey brother [Name]![2]Do you have a bottle to keep[3]a bug in?[Waitkey][Scroll][...][Scroll]I see.  You don't have one[...][Scroll]-cough- -cough-
+262: I can't go out 'cause I'm sick[...][2]-cough- -cough-[3]People say I caught this cold[Waitkey][Scroll]from the evil air that is coming[Scroll]down off the mountain[...][Scroll]-sniff- -sniff-[Waitkey][Scroll]This is my bug-catching net.[Scroll]I'll use it when I'm better, but[Scroll]for now, I'll lend it to you.
+263: -sniffle-[2]I hope I get well soon[...][3]-cough- -cough-
+264: [...]  [...]  [...]  [...]  [...]  [...][2][...]  [...]  [...]
+265: Why did you take my sign?  It[2]says plain as day to just leave[3]me alone!  Sheeesh!
+266: I heard that you know I used to[2]be a thief, right?[3][Waitkey][Scroll]Well, I'll open a chest for you.[Scroll]Will you keep it secret from[Scroll]everyone else?[Waitkey][Scroll]Would you please promise?[Scroll]    > Promise not to tell[Scroll]       Tell it to everyone[Choose]
+267: OK, if that's the way you want[2]it, I hope you drag that chest[3]around forever!
+268: Remember, you promised[...][2]Don't tell anyone.
+269: All right, bring that chest over[2]here[...]  Seriously, keep this a[3]secret from everyone.
+270:     [Ankh][A][Ankh][A]   [Ankh][A][Snake][X][Waves][B][Ankh][A][Waves][B]   [Waves][B][Snake][X][Waves][B][2]        [Waves][B][Snake][X][Snake][X]   [Waves][B][Snake][X][Snake][X][Waves][B][Ankh][A][3]     [Waves][B][Waves][B][Snake][X][Ankh][A][Waves][B]   [Snake][X][Waves][B][Ankh][A][Ankh][A][Snake][X]
+271: Hold up the Master Sword[2]and you will receive the[3]magic of Ether.
+272: Hold up the Master Sword[2]and you will receive the[3]magic of Bombos.
+273: Hey, jerk  How dare you wake[2]me from my deep, dark sleep![3][...]I mean, thanks a lot, sir![Waitkey][Scroll]But now I will get my revenge[Scroll]on you.  Get ready for it![Scroll][...]Err, is that OK with you,[Waitkey][Scroll]sir?
+274: Kekeke!  I laugh at your[2]misfortune!  Now your magic[3]power will drop by one half![Waitkey][Scroll]Congratulations![Scroll]Now, do your best, even though[Scroll]I'm sure it won't be enough![Waitkey][Scroll]Have a nice day!  See you!
+275: [ScrollSpd 00][Color 07][Speed 03][Window 02][NextPic]Long ago, in the beautiful[2]kingdom of Hyrule surrounded[3]by mountains and forests[...][Wait 09][Scroll]legends told of an omnipotent[Scroll]and omniscient Golden Power[Scroll]that resided in a hidden land.[Wait 09][NextPic][NextPic][Scroll]Many people aggressively[Scroll]sought to enter the hidden[Scroll]Sacred Realm[...][Wait 07][Scroll]But no one ever returned.[Scroll]One day evil power began to[Scroll]flow from the Sacred Realm[...][Wait 07][Scroll]So the King commanded seven[Scroll]sages to seal the gate to[Scroll]the realm of the Golden Power.[Wait 09][NextPic][NextPic][Scroll]That seal should have remained[Scroll]for all time[...][Scroll][Wait 09][NextPic][NextPic][Scroll][...]  [...]But, when these events[Scroll]were obscured by the mists of[Scroll]time and became legend[...]
+276: [Window 02][Color 07][Speed 03][1]A mysterious priest known as[2]Agahnim came to Hyrule to[3]release the seal.  He eliminated[Wait 05][Scroll]the good King of Hyrule[...][Wait 05]
+277: [Window 02][Color 07][Speed 03][1]Through evil magic, he began[2]to make descendants of the[3]seven sages vanish, one[Wait 05][Scroll]after another.[Wait 05]
+278: [Window 02][Color 07][Speed 03][1]And the time of destiny for[2]Princess Zelda is drawing[3]near.[Wait 05]
+279: Because the key is locked[2]inside this chest, you can[3]never open it.[Waitkey][Scroll]Just take it with you.
+280: 100 Rupees for 30 Bombs!  30[2]Bombs for just 100 Rupees![3]Please buy 'em, mister!
+281: 100 Rupees for 30 Bombs!  I also[2]have a new Super Bomb in stock[3]for only 100 Rupees!  Please[Waitkey][Scroll]buy it too, mister!
+282: Thank you very much.[2]Thank you very much.
+283: Thank you very much.  You can[2]drop this Bomb off anywhere.[3](Press the A Button.)[Waitkey][Scroll]Please don't forget it.
+284: Ki ki ki!  If you give me 100[2]Rupees,  I will open the[3]entrance for you.  Ki ki ki![Waitkey][Scroll]   What will you do?[Scroll]    > Ask him to open it[Scroll]       Try to open it yourself[Choose]
+285: Ki ki ki!  Hmph![2]Do it yourself, then![3]Kik ki ki!
+286: Ki ki!  Good choice!  Then I get[2]100 of your Rupees.  Kik ki ki!
+287: I'm Kiki the monkey ki ki![2]I love Rupees more than[3]anything.  Can you spare me[Waitkey][Scroll]10 Rupees?[Waitkey][Scroll]  What will you do?[Scroll]    > Give him 10 Rupees[Scroll]       Never give him anything[Choose]
+288: Ki ki ki ki!  Good choice!  I[2]will accompany you for a while.[3]Kik kiki!
+289: Ki ki!  Harumph!  I have no[2]reason to talk to you, then.[3]Bye bye!  Kik ki ki!
+290: Ki ki?  What are you doing?[2]I don't want to go there!
+291: Ohh, thank you very much![2]You saved my life.  Please take[3]me outside.
+292: Gyaaah![2]Too bright!
+293: Err[...]  Wait a minute[...][2]Please don't go this way.
+294: I am Aginah.  I sense something[2]is happening in the Sacred[3]Realm the seven sages sealed[...][Waitkey][Scroll]This must be an omen of the[Scroll]Great Cataclysm foretold by[Scroll]the people of Hylian blood[...][Waitkey][Scroll][...] [...] [...][Scroll]The prophecy says, "The Hero[Scroll]will stand in the desert holding[Waitkey][Scroll]the Tome Of Mudora."[Scroll]If you have the Tome Of Mudora[Scroll]you can read the language of[Waitkey][Scroll]the Hylian people.[Scroll]It should be in the house of[Scroll]books in the village[...][Waitkey][Scroll]You must get it![Scroll]If you are the person who will[Scroll]be The Hero[...]
+295: You have collected the three[2]Pendants.[3]If you are indeed the Hero who[Waitkey][Scroll]has Courage, Wisdom and Power,[Scroll]the Master Sword sleeping in[Scroll]the forest will be yours.
+296: Aha!  It is the Tome Of Mudora.[2]With it, you can read the[3]language of the Hylian people.
+297: You are the true Hero[...][2]I believe that you will return[3]peace to this land again.
+298: Your trial in the desert has[2]made you stronger.  The blood[3]of the Hero must be in your[Waitkey][Scroll]veins[...]
+299: Was it you who disturbed my[2]peaceful nap?  I will give this[3]to you if you go away!
+300: I don't have any more good[2]presents for you.  Take this[3]instead, pest!
+301: Yo [Name]!  A mysterious mist[2]has recently fallen over the[3]forest.  We have to be careful!
+302: Maybe it's nothing, but this[2]tree feels kind of strange as[3]we cut it[...]
+303: Yo!  The mist in the forest is[2]clearing.  Thank you!  We can[3]go there again!  Hey brother!
+304: Yeah [Name], now I'm[2]quarreling with my younger[3]brother.  I sealed the door to[Waitkey][Scroll]his room.
+305: So the doorway is open again[...][2]OK OK, maybe I should make up[3]with my brother[...]
+306: Hey [Name], did you come from[2]my older brother's room?  Is he[3]still angry?
+307: [Speed 02][Position 00][Window 02][Name], because of you, I can[2]escape from the clutches of[3]the evil monsters.  Thank you![Waitkey][Scroll][...]This world used to be the[Scroll]Sacred Realm where the[Scroll]Triforce was hidden.[Waitkey][Scroll]But because Ganon, the boss[Scroll]of thieves, wished it, the world[Scroll]was transformed[...][Waitkey][Scroll]I'm sure he's intending to[Scroll]conquer even our Light World[Scroll]after building his power here.[Waitkey][Scroll]He is trying to open a larger[Scroll]gate between worlds near the[Scroll]castle using our powers.[Waitkey][Scroll]But the gate is not open[Scroll]completely yet[...][Scroll]If we seven maidens come[Waitkey][Scroll]together, we can break the[Scroll]barrier around Ganon's hiding[Scroll]place.[Waitkey][Scroll]I will tell you where the other[Scroll]girls are held.  I believe you[Scroll]will destroy Ganon.[Waitkey][Scroll]I will return to my original[Scroll]form at that time.[Scroll]  [...] [...] [...] [...] [...][Sound 45]
+308: [Speed 02][Position 00][Window 02][Name], because of you, I can[2]escape from the clutches of[3]the evil monsters.  Thank you![Waitkey][Scroll][...]The Triforce will grant the[Scroll]wishes of whoever touches it,[Scroll]as long as that person lives[...][Waitkey][Scroll]That is why it was hidden in[Scroll]the Sacred Realm.[Waitkey][Scroll]Only a select[Scroll]few knew of its location,[Waitkey][Scroll]but at some point that[Scroll]knowledge was lost[...][Scroll]The person who rediscovered[Waitkey][Scroll]the Sacred Realm was[Scroll]Ganondorf the evil thief.[Scroll]Luckily, he couldn't figure out[Waitkey][Scroll]how to return to the Light[Scroll]World[...][Scroll][...]Well, remember that you[Waitkey][Scroll]have magical powers, which only[Scroll]The Hero can make the most of![Scroll]There are some other magical[Waitkey][Scroll]warping points like the one you[Scroll]saw on Hebra Mountain.[Scroll]By using them you can go[Waitkey][Scroll]between the two worlds and[Scroll]find the evils hidden in the[Scroll]Dark World.  You are the only[Waitkey][Scroll]one who can destroy[Scroll]Ganondorf, the thief-no,[Scroll]Ganon, the evil King Of[Waitkey][Scroll]Darkness!
+309: [Speed 02][Position 00][Window 02][Name], because of you, I can[2]escape from the clutches of[3]the evil monsters.  Thank you![Waitkey][Scroll][...]Do you know the prophecy of[Scroll]the Great Cataclysm?[Scroll]This is the way I heard it[...][Waitkey][Scroll]If a person who has an evil[Scroll]heart gets the Triforce, a Hero[Scroll]is destined to appear[...][Waitkey][Scroll][...]and he alone must face the[Scroll]person who began the Great[Scroll]Cataclysm.[Waitkey][Scroll]If the evil one destroys the[Scroll]Hero, nothing can save the[Scroll]world from his wicked reign.[Waitkey][Scroll]Only a person of the Knights Of[Scroll]Hyrule, who protected the[Scroll]Hylian royalty, can become[Waitkey][Scroll]the Hero[...]  You are of their[Scroll]bloodline, aren't you?  Then[Scroll]you must rescue[Waitkey][Scroll]Zelda without fail.
+310: [Speed 02][Position 00][Window 02][Name], because of you, I can[2]escape from the clutches of[3]the evil monsters.  Thank you![Waitkey][Scroll]As the sages sealed the way[Scroll]to the Dark World, the Knights[Scroll]Of Hyrule defended them from[Waitkey][Scroll]the attacks of evil monsters.[Waitkey][Scroll]I heard that the Knights Of[Scroll]Hyrule were nearly wiped out in[Scroll]that battle[...][Waitkey][Scroll]You are perhaps the last one[Scroll]to carry on the bloodline of[Scroll]the Knights[...][Waitkey][Scroll]It is ironic that the last one in[Scroll]the line has the potential to[Scroll]become the Hero of legend.[Waitkey][Scroll]Surely you can destroy Ganon!
+311: [Speed 02][Position 00][Window 02][Name], because of you, I can[2]escape from the clutches of[3]the evil monsters.  Thank you![Waitkey][Scroll]They say the Hylian people[Scroll]controlled mysterious powers,[Scroll]as did the seven sages.[Waitkey][Scroll]But the blood of the Hylians[Scroll]has become thin over time.[Waitkey][Scroll]We who carry the blood[Scroll]of the seven sages[Waitkey][Scroll]do not possess strong power[Scroll]any more, either.[Waitkey][Scroll]Our powers will increase if we[Scroll]mix the courage of the Knights[Scroll]with the wisdom of the sages.[Waitkey][Scroll]Only a short time remains[Scroll]until the gate at the castle[Scroll]linking the worlds opens[Waitkey][Scroll]completely.  If you defeat[Scroll]Ganon, this world will vanish[Scroll]and the Triforce will wait for[Waitkey][Scroll]a new holder.[Scroll]I believe in you[...][Scroll]Good luck!
+312: [Speed 02][Position 00][Window 02][Name], because of you, I can[2]escape from the clutches of[3]the evil monsters.  Thank you![Waitkey][Scroll]Ganon captured us because he[Scroll]couldn't break the seal of the[Scroll]sages with his power alone.[Waitkey][Scroll]And then, using the priest[Scroll]Agahnim as his pawn, he drew us[Scroll]to the Dark World.[Waitkey][Scroll]After cracking the seal with[Scroll]our powers, he sealed us inside[Scroll]of these crystals.[Waitkey][Scroll]He then gave us to his loyal[Scroll]monsters.  But Ganon didn't[Scroll]plan on your getting this far.[Waitkey][Scroll]Now, Princess Zelda is waiting[Scroll]for you inside of Turtle Rock.[Scroll]Please hurry!
+313: [Speed 02][Position 00][Window 02]I appreciate your coming so far[2]to rescue me.  As I thought,[3]you are the legendary Hero.[Waitkey][Scroll]I have felt this from the first[Scroll]time we met.[Scroll][...]  [...]  [...][Waitkey][Scroll]Ganon is waiting inside of his[Scroll]tower to pass through the[Scroll]gate linking the two worlds.[Waitkey][Scroll]Once Ganon enters the Light[Scroll]World, it is unlikely that[Scroll]anyone can stop him.[Waitkey][Scroll]But if he stays in the closed[Scroll]space of this world, you can[Scroll]find him wherever he runs.[Waitkey][Scroll]Now, go to Ganon's  Tower![Scroll]We will use our combined[Scroll]powers to break the barrier.[Waitkey][Scroll]Let's return peace to the[Scroll]country without fail[...][Scroll][...]  [...]  [...][Sound 45]
+314: [Speed 02][Position 00][Window 02]May the way of the Hero lead[2]to the Triforce.
+315: [Speed 02][Position 00][Window 02]Do you understand?[2]    > Yes[3]       Not at all[Choose]
+316: [Name], we are going to break[2]the barrier of Ganon's Tower[3]with our power.
+317: [Speed 02][Position 00][Window 02]I appreciate your coming so far[2]to rescue me.  As I thought,[3]you are the legendary Hero.[Waitkey][Scroll]I have felt this from the first[Scroll]time we met.[Scroll][...]  [...]  [...][Waitkey][Scroll]Ganon is waiting inside of his[Scroll]tower to pass through the[Scroll]gate linking the two worlds.[Waitkey][Scroll]Once Ganon enters the Light[Scroll]World, it is unlikely that[Scroll]anyone can stop him.[Waitkey][Scroll]But if he stays in the closed[Scroll]space of this world, you can[Scroll]find him wherever he runs.[Waitkey][Scroll]Some maidens still need your[Scroll]help, though.  Once you rescue[Scroll]them all, go to Ganon's Tower.[Waitkey][Scroll]We who are of the bloodline of[Scroll]the sages will then use our[Scroll]power to break[Waitkey][Scroll]Ganon's barrier!  [Scroll][Name][...]  You must return[Scroll]peace to this country[...]
+318: Ahah[...] [Name]![2]I have been waiting for you![3]Heh heh heh[...][Waitkey][Scroll]I was hoping I could make Zelda[Scroll]vanish in front of your eyes.[Scroll]Behold!  The final moment of[Waitkey][Scroll]Princess Zelda!
+319: Ho ho ho[...]  With this final[2]sacrifice, the seal of the[3]Seven Sages is broken at last.[Waitkey][Scroll]It is now only a matter of time[Scroll]before evil power covers this[Scroll]land[...][Waitkey][Scroll]After all, the legendary Hero[Scroll]cannot defeat us, the tribe of[Scroll]evil, when we are armed with[Waitkey][Scroll]the Golden Power.[Scroll]Ho ho ho[...] Now, I must go!
+320: Oh, so?[...]  You mean to say you[2]would like to be totally[3]destroyed?  Well, I can make[Waitkey][Scroll]your wish come true!
+321: Grrrrugh!  Well met!  Like the[2]true Hero that you are[...][3]But I am not ready to admit[Waitkey][Scroll]defeat yet.  I will draw you[Scroll]into the Dark World!
+322: Ho ho ho!  It's great that you[2]could come all the way here,[3][Name].[Waitkey][Scroll]I'm very happy to see you[Scroll]again, but[Scroll]you'd better believe that we[Waitkey][Scroll]will not have a third meeting![Scroll]Prepare to meet your doom!
+323: Wah ha ha!  What do you want,[2]little man?  Do you have[3]something to ask me?[Waitkey][Scroll]    > I want the flippers[Scroll]       I just dropped by[Choose]
+324: Wah ha ha!  But I don't just[2]give flippers away for free.[3]I sell them for[Waitkey][Scroll]500 Rupees a pair.[Waitkey][Scroll]What do you do?[Scroll]    > Pay 500 Rupees[Scroll]       Quit after all[Choose]
+325: Wah ha ha!  One pair of[2]flippers coming up.  I will[3]give you a free bonus with[Waitkey][Scroll]your purchase.[Scroll]I will let you use the magic[Scroll]water ways of the sea folk[Waitkey][Scroll]which link lakes and rivers.[Scroll]When you see a whirlpool, dive[Scroll]into it.  You never know where[Waitkey][Scroll]you'll surface!  Wah ha ha!
+326: Wade back this way when you[2]have more Rupees[...][3]Wah ha ha!  I'll see you again!
+327: Great!  Whenever you want to[2]see my fishy face, you are[3]welcome here.[Waitkey][Scroll][...][Scroll]Wah ha ha!  Good bye[...]!
+328: Hi [Name]!  The Elder?![2]Are you talking about the[3]grandpa?  OK,  but don't [Waitkey][Scroll]tell any of the bad people[Scroll]about this.[Scroll]He's hiding in the temple past[Waitkey][Scroll]the castle.[Scroll]I will mark the spot on your[Scroll]map.  Here you are[...][Sound 45]
+329: Did you meet the grandpa?  If[2]all the bad people go away, he[3]can come back to the village.
+330: You're new here, aren't you?[2]Did you come here looking for[3]the Golden Power?[Waitkey][Scroll]Well, you're too late.  It will[Scroll]obey only the first person who[Scroll]touches it.[Waitkey][Scroll]The man who last claimed the[Scroll]Golden Power wished for this[Scroll]world.  It reflects his heart.[Waitkey][Scroll]Yes, I came here because of[Scroll]greed for the Golden Power,[Scroll]and look what happened to me[...][Waitkey][Scroll]To restore the Sacred Realm,[Scroll]a person worthy of the Golden[Scroll]Power must defeat the man who[Waitkey][Scroll]created this place[...][Scroll]Until that time, I am stuck in[Scroll]this bizarre shape.[Waitkey][Scroll]But what a mischievous thing[Scroll]to leave lying around[...][Scroll]The Golden Power[...][Waitkey][Scroll]Or to call it by its true name,[Scroll]the Triforce[...]
+331:         -Mysterious Pond-[2]Won't you throw something in?[3][Waitkey][Scroll]What will you do?[Scroll]    > Throw an item[Scroll]       Don't try it[Choose]
+332: Don't do it!
+333: Don't do it!
+334: I will give this back to you[2]then.  Don't drop it again.
+335: How many Rupees will you toss?[2]    > [Number 01][Number 00] Rupees[3]       [Number 03][Number 02] Rupees[Choose]
+336: You are an honest person.[2]I like you.[3]I will give you something[Waitkey][Scroll]important[...][Scroll]These are the Silver Arrows.[Scroll]To give Ganon his last[Waitkey][Scroll]moment, you definitely need[Scroll]them!  I know I don't quite have[Scroll]the figure of a fairy.[Waitkey][Scroll]Ganon's cruel power[Scroll]is to blame![Scroll]You must defeat Ganon!
+337: [2]   Great Luck.
+338: [2]   Good Luck.
+339: [2]   A Little Luck.
+340: [2]   A Terrible Curse.
+341: Your fortune for today is[...]
+342: You found a Piece of Heart![2]                 [1HeartL][1HeartR]
+343: You found a Piece of Heart![2]                 [2HeartL][1HeartR]
+344: You found a Piece of Heart![2]                 [3HeartL][3HeartR]
+345: You found a Piece of Heart![2]                 [4HeartL][4HeartR][3]Your Heart level increased!
+346: You found a Heart Container![2]                 [4HeartL][4HeartR][3]Your Heart level increased!
+347: Weary traveler[...][2]Let me sooth your wounds[3]and comfort your weariness[...][Waitkey][Scroll]Close your eyes and relax[...]
+348: Eep! I'm tired of getting kicked[2]Oh?  Who are you, Mr. Bunny?[Waitkey][3]This world and ours might look[Scroll]similar, but evil has twisted it.[Waitkey][Scroll]The Golden Power changes[Scroll]your shape to reflect what[Scroll]is in your heart and mind.[Waitkey][Scroll]I'm the first to bounce[Scroll]whenever there's trouble,[Scroll]so I turned into a ball[...][Waitkey][Scroll]But if you have an orb called[Scroll]the Moon Pearl, you can keep[Scroll]your original shape here.[Waitkey][Scroll]Ahh! Here he comes again[...]
+349: You didn't change your shape?[2]You aren't just an ordinary[3]guy, are you?
+350: What do you want?![2]Do you have something to say[3]to me, silly rabbit?![Waitkey][Scroll]I came here to get the Golden[Scroll]Power but now I'm a freak and[Scroll]I can't go back to the real[Waitkey][Scroll]world!  If only I had the Moon[Scroll]Pearl from the Tower Of Hera, I[Scroll]could go back to my original[Waitkey][Scroll]shape!  I've got good reason[Scroll]to be stressed out![Scroll]So back off!  Shoo shoo!
+351: WOW!  Your shape didn't change![2]You got the Moon Pearl, huh?
+352: In such a dangerous world you[2]may need many things.  Select[3]something that you like[...]
+353: Hi, may I help you?  You can[2]open two chests for 30 Rupees.[3]Why don't you play?[Waitkey][Scroll]What will you do?[Scroll]    > Play here[Scroll]       Maybe next time[Choose]
+354: Well, come back and play some[2]time.  I'll be waiting for you.[3]Until then, good bye!
+355: Hey kid![2]You can open a chest after[3]paying Rupees!
+356: You can't open any more[2]chests.  The game is over.
+357: All right, kid.[2]Choose well!  Good luck!
+358: May I help you?  Select the[2]thing you like and press A[3]to buy it.  Prices as marked!
+359: You don't need that item[...][2]Why not select something else?
+360: Thank you very much.[2]Whenever you lose your shield,[3]come back here again.
+361: Thank you very much.[2]This is the Red Potion.[3]It helps you recover your Life.
+362: Thank you! These are Arrows.[2]You need a bow to use them.
+363: These are Bombs.[2]Did you know you can pick up[3]a Bomb you already placed [Waitkey][Scroll]with the A Button?
+364: Thank you very much.[2]That is a Bee.  Don't ask me[3]what it is used for, either.
+365: Thank you very much.[2]You can recover one Heart.
+366: No no no[...]  I can't sell the[2]merchandise because you don't[3]have an empty bottle.
+367: You can't carry any more[2]now, but you may need[3]some later!
+368: I never thought a brat like you[2]could give me so much trouble.[Waitkey][3]And to think you were able to[Scroll]defeated my alter ego, Agahnim[Scroll]the Dark Priest, twice![Waitkey][Scroll]But even so, you will never[Scroll]wrest the Triforce from my[Scroll]hands.[Waitkey][Scroll]I will destroy you, little brat,[Scroll]and my wish to rule the worlds[Scroll]of light and darkness will[Waitkey][Scroll]come true without delay.
+369: You are doing well, lad.  But[2]can you break through this[3]secret technique of Darkness?[Waitkey][Scroll]En Garde!
+370: Hey kid, this is a secret hide-[2]out for a gang of thieves![3]Don't enter without permission![Waitkey][Scroll]By the way, a former member's[Scroll]been hangin' around the[Scroll]entrance to the Desert of[Waitkey][Scroll]Mystery. [Scroll]I wonder what he's up to[...]
+371: Yo [Name]!  This house used[2]to be a hideout for a gang of[3]thieves.[Waitkey][Scroll]What was their leader's name[...][Scroll]Oh yeah, his name was Blind,[Scroll]he hated bright light a lot.
+372: [Speed 02][Position 00][Window 02]Welcome, [Name][...][2]I   am   the   Spirit[3]Of   The   Triforce.[Waitkey][Scroll][...]   [...]   [...][Speed 01][Waitkey][1]                                          [2]                                          [3]                                          [Speed 02][1]The Triforce will grant the[2]wishes in the heart and mind of[3]the person who touches it.[Speed 01][Waitkey][1]                                          [2]                                          [3]                                          [Speed 02][1]If one with a righteous heart[2]touches it, a righteous wish[3]will be granted[...][Waitkey][Scroll]But if one with an evil heart[Scroll]touches it, an evil wish[Scroll]will be granted.[Speed 01][Waitkey][1]                                          [2]                                          [3]                                          [Speed 02][1]The more heartfelt the wish,[2]the more powerfully the[3]Triforce will manifest it.[Speed 01][Waitkey][1]                                          [2]                                          [3]                                          [Speed 02][1]Ganon's wish was to conquer[2]these worlds. When he touched[3]the Triforce, that evil wish[Waitkey][Scroll]changed the Sacred Realm into[Scroll]the Dark World.[Speed 01][Waitkey][1]                                          [2]                                          [3]                                          [Speed 02][1]Ganon remained in this land,[2]biding his time, accumulating[3]power. He sought to conquer[Waitkey][Scroll]the Light World so his wish[Scroll]could be completely fulfilled.[Speed 01][Waitkey][1]                                          [2]                                          [3]                                          [Speed 02][1]However, now that Ganon has[2]fallen, his Dark World shall [3]disappear as well.[Speed 01][Waitkey][1]                                          [2]                                          [3]                                          [Speed 02][1]The Triforce awaits a new[2]master.  Its Golden Power is[3]in your hands[...][Speed 01][Waitkey][1]                                          [2]                                          [3]                                          [Speed 02][1]Now, touch it with a wish in[2]your heart.[3][...]  [...]  [...]  [...]
+373: All right![2]Take it, greedy thief!
+374: -hic-  I saw one heck[2]of a lady[...][3]She was absolutely incredible[...][Waitkey][Scroll]Up the river at the Waterfall [Scroll]Of Wishing in the hills where[Scroll]the river begins[...][Waitkey][Scroll]What a beauty![Scroll][Name], you've gotta go meet[Scroll]her at least once.[Waitkey][Scroll]You are gonna really  like her.
+375: Take some Rupees, but don't[2]tell anyone I gave them to you.[3]Keep this a secret between us.
+376: There's somethin' good in the[2]cave east of Lake Hylia.[3]Keep this a secret between us.
+377: You can earn a lot of Rupees[2]by defeating enemies.  It's[3]the secret of my success[...]
+378: [Name], did you know that if[2]you shatter frozen enemies[3]with the Hammer, you will often[Waitkey][Scroll]get a Magic Jars?
+379: You must searchrahla[2]for Sahasrahla.[3][...]  [...]  [...]
+380: Oh yah, as I thoughtrahla,[2]you found Sahasrahla![3][...]  [...]  [...]
+381: I'm sorry, but you don't[2]seem to have enough Rupees[...]
+382: Cluck cluck[...]  What?![2]You turned me into a human.[3]I can even speak the language![Waitkey][Scroll]Aha, it must be you who is[Scroll]always teasing my friends.[Scroll]The Weathercock is always[Waitkey][Scroll]watching you harass them.[Scroll]Well, this human shape is[Scroll]uncomfortable for me.[Waitkey][Scroll]Ahhh, I want to be a chicken[Scroll]again!  Cluck cluck[...]
+383: Pay me 20 Rupees and I'll[2]let you open one chest.[3]You can keep what is inside.[Waitkey][Scroll]What will you do?[Scroll]    > Open a chest[Scroll]       Escape[Choose]
+384: All right!![2]Open the chest you like!
+385: Oh, I see[...]  Too bad.[2]Drop by again after collecting[3]Rupees.
+386: For 100 Rupees, I'll let you[2]open one chest and keep the[3]treasure that is inside.[Waitkey][Scroll]What will you do?[Scroll]    > Open a chest[Scroll]       Escape[Choose]
+387: Hi, [Name].[2]Sorry about my yard.[3]It's a little over grown.[Waitkey][Scroll]Thanks for visiting.[Waitkey][Scroll]I'm glad to have company to[Scroll]talk to.  I will tell you an[Scroll]interesting story.[Waitkey][Scroll]There is a lake swimming with[Scroll]Zoras at the source of the[Scroll]river, but it is hard to find.[Waitkey][Scroll]The treasure of Zora can turn[Scroll]people into fish.  Heh heh heh.[Scroll]I'd love to see that.
+388: I haven't had a chance to[2]trim my hedges recently.[3]Thanks for visiting anyway[...][Waitkey][Scroll]A while ago, there was a boy in[Scroll]this village who could talk to[Scroll]animals with his Ocarina.[Waitkey][Scroll]He had a pet bird that flew[Scroll]with him everywhere, but[Scroll]he went to the mountain and[Waitkey][Scroll]never returned.
+389: [Position 00][Speed 00]>Start from [Name]'s House[2]  Start from Sanctuary[Choose2]
+390: [Position 00][Speed 00]>Start from [Name]'s House[2]  Start from the Sanctuary[3]  Start from the Mountain Cave[Choose3]
+391: [Speed 00]> Continue Game[2]   Save and Quit[Choose2]
+392: Welcome to the Digging Game.[2]The object is to dig as many[3]holes as you can in 30 seconds.[Waitkey][Scroll]Any treasures you uncover [Scroll]will be yours to keep.[Scroll]It's only 80 Rupees to play.[Waitkey][Scroll]What do you say?[Scroll]    > I want to dig[Scroll]       I don't want to dig[Choose]
+393: Then I will lend you a shovel.[2]When you have it in your hand,[3]press Y to start digging!
+394: I see.  Then I give up.  Save[2]some Rupees and come back.
+395: OK!  Time's up, game's  over.[2]Come back again.  Good bye[...]
+396: Come back again![2]I will be waiting for you.
+397: I can't tell you details,[2]but it's not a convenient[3]time for me now.[Waitkey][Scroll]Come back here again.  Sorry.
