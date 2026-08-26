@@ -1,0 +1,226 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Language: ru\n"
+
+msgid "Info"
+msgstr "Информация"
+
+msgid "Install"
+msgstr "Установить"
+
+msgid "Open folder"
+msgstr "Открыть папку"
+
+msgid "Uninstall"
+msgstr "Удалить"
+
+msgid "Update"
+msgstr "Обновить"
+
+msgid "Play"
+msgstr "Играть"
+
+msgid "GitHub"
+msgstr "GitHub"
+
+msgid "Discord"
+msgstr "Discord"
+
+msgid "No installed ports yet."
+msgstr "Установленных портов пока нет."
+
+msgid "Cancel"
+msgstr "Отмена"
+
+msgid "Reinstall"
+msgstr "Переустановить"
+
+msgid "Open info"
+msgstr "Открыть информацию"
+
+msgid "Favorite executable"
+msgstr "Избранный исполняемый файл"
+
+msgid "Change version"
+msgstr "Сменить версию"
+
+msgid "Copy"
+msgstr "Копировать"
+
+msgid "Game website"
+msgstr "Сайт игры"
+
+msgid "Mods website"
+msgstr "Сайт модов"
+
+msgid "Game folder"
+msgstr "Папка игры"
+
+msgid "Save folder"
+msgstr "Папка сохранений"
+
+msgid "Save folder 2"
+msgstr "Папка сохранений 2"
+
+msgid "Library"
+msgstr "Библиотека"
+
+msgid "Save Backup"
+msgstr "Резервная копия сохранений"
+
+msgid "Language"
+msgstr "Язык"
+
+msgid "Themes"
+msgstr "Темы"
+
+msgid "Files"
+msgstr "Файлы"
+
+msgid "Default (System)"
+msgstr "По умолчанию (система)"
+
+msgid "Ask every time (default)"
+msgstr "Спрашивать каждый раз (по умолчанию)"
+
+msgid "Settings"
+msgstr "Настройки"
+
+msgid "Saves Backup"
+msgstr "Резервная копия сохранений"
+
+msgid "Installing"
+msgstr "Установка"
+
+msgid "Loading"
+msgstr "Загрузка"
+
+msgid "No Executable Found"
+msgstr "Исполняемый файл не найден"
+
+msgid "Choose favorite executable"
+msgstr "Выбрать избранный исполняемый файл"
+
+msgid "Invalid Port"
+msgstr "Недопустимый порт"
+
+msgid "Choose an executable"
+msgstr "Выбрать исполняемый файл"
+
+msgid "Executable Not Found"
+msgstr "Исполняемый файл не найден"
+
+msgid "Uninstall Error"
+msgstr "Ошибка удаления"
+
+msgid "Choose a file"
+msgstr "Выбрать файл"
+
+msgid "Choose a version"
+msgstr "Выбрать версию"
+
+msgid "Error"
+msgstr "Ошибка"
+
+msgid "Installation Error"
+msgstr "Ошибка установки"
+
+msgid "Update Error"
+msgstr "Ошибка обновления"
+
+msgid "Error - {}"
+msgstr "Ошибка - {}"
+
+msgid "Uninstall - {}"
+msgstr "Удаление - {}"
+
+msgid "Info - {}"
+msgstr "Информация - {}"
+
+msgid "This port's folder name is invalid."
+msgstr "Имя папки этого порта недопустимо."
+
+msgid "\"{}\" could not be launched. The game files may be missing or incomplete."
+msgstr "Не удалось запустить «{}». Возможно, файлы игры отсутствуют или повреждены."
+
+msgid "Uninstall \"{}\"? All of its files will be deleted."
+msgstr "Удалить «{}»? Все файлы игры будут удалены."
+
+msgid "{} save folder(s) backed up, {} skipped (empty or missing), {} failed (disk full or permission denied?)."
+msgstr "Скопировано папок сохранений: {}, пропущено: {} (пусто или отсутствует), ошибок: {} (диск переполнен или нет доступа?)."
+
+msgid "{} save folder(s) backed up, {} skipped (empty or missing)."
+msgstr "Скопировано папок сохранений: {}, пропущено: {} (пусто или отсутствует)."
+
+msgid "Backing up saves..."
+msgstr "Резервное копирование сохранений..."
+
+msgid "Backing up {}..."
+msgstr "Копирование {}..."
+
+msgid "Installing {}..."
+msgstr "Установка {}..."
+
+msgid "Fetching versions for {}..."
+msgstr "Получение версий для {}..."
+
+msgid "Version: Not installed"
+msgstr "Версия: не установлено"
+
+msgid "Version: {}"
+msgstr "Версия: {}"
+
+msgid "Version: Installed (tag unknown -- still checked against GitHub)"
+msgstr "Версия: установлено (тег неизвестен -- проверка через GitHub продолжается)"
+
+msgid "Version: Installed (tag unknown -- still checked against GitLab)"
+msgstr "Версия: установлено (тег неизвестен -- проверка через GitLab продолжается)"
+
+msgid "Version: Installed (this source has no version tracking)"
+msgstr "Версия: установлено (этот источник не отслеживает версии)"
+
+msgid "Update - {}"
+msgstr "Обновление - {}"
+
+msgid "Disable"
+msgstr "Отключить"
+
+msgid "Enable"
+msgstr "Включить"
+
+msgid "Favorite executable: Default"
+msgstr "Избранный исполняемый файл: по умолчанию"
+
+msgid "Favorite executable: {}"
+msgstr "Избранный исполняемый файл: {}"
+
+msgid "Update: On"
+msgstr "Обновление: вкл."
+
+msgid "Update: Off"
+msgstr "Обновление: выкл."
+
+msgid "Playtime: {}"
+msgstr "Время в игре: {}"
+
+msgid "Reset Game Time - {}"
+msgstr "Сбросить время в игре - {}"
+
+msgid "Reset the tracked playtime for \"{}\"? This cannot be undone."
+msgstr "Сбросить учтённое время в игре для «{}»? Это действие нельзя отменить."
+
+msgid "Reset"
+msgstr "Сбросить"
+
+msgid "Reset game time"
+msgstr "Сбросить время в игре"
+
+msgid "Check for Updates: On"
+msgstr "Проверка обновлений: вкл."
+
+msgid "Check for Updates: Off"
+msgstr "Проверка обновлений: выкл."
+
+msgid "Type to search..."
+msgstr "Поиск..."

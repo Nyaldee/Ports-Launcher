@@ -1,0 +1,226 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Language: zh-TW\n"
+
+msgid "Info"
+msgstr "資訊"
+
+msgid "Install"
+msgstr "安裝"
+
+msgid "Open folder"
+msgstr "開啟資料夾"
+
+msgid "Uninstall"
+msgstr "解除安裝"
+
+msgid "Update"
+msgstr "更新"
+
+msgid "Play"
+msgstr "執行"
+
+msgid "GitHub"
+msgstr "GitHub"
+
+msgid "Discord"
+msgstr "Discord"
+
+msgid "No installed ports yet."
+msgstr "尚未安裝任何移植版。"
+
+msgid "Cancel"
+msgstr "取消"
+
+msgid "Reinstall"
+msgstr "重新安裝"
+
+msgid "Open info"
+msgstr "開啟資訊"
+
+msgid "Favorite executable"
+msgstr "常用執行檔"
+
+msgid "Change version"
+msgstr "變更版本"
+
+msgid "Copy"
+msgstr "複製"
+
+msgid "Game website"
+msgstr "遊戲官方網站"
+
+msgid "Mods website"
+msgstr "模組網站"
+
+msgid "Game folder"
+msgstr "遊戲資料夾"
+
+msgid "Save folder"
+msgstr "存檔資料夾"
+
+msgid "Save folder 2"
+msgstr "存檔資料夾2"
+
+msgid "Library"
+msgstr "庫"
+
+msgid "Save Backup"
+msgstr "備份存檔"
+
+msgid "Language"
+msgstr "語言"
+
+msgid "Themes"
+msgstr "佈景主題"
+
+msgid "Files"
+msgstr "檔案"
+
+msgid "Default (System)"
+msgstr "預設（系統）"
+
+msgid "Ask every time (default)"
+msgstr "每次詢問（預設）"
+
+msgid "Settings"
+msgstr "設定"
+
+msgid "Saves Backup"
+msgstr "存檔備份"
+
+msgid "Installing"
+msgstr "安裝中"
+
+msgid "Loading"
+msgstr "載入中"
+
+msgid "No Executable Found"
+msgstr "找不到執行檔"
+
+msgid "Choose favorite executable"
+msgstr "選擇常用執行檔"
+
+msgid "Invalid Port"
+msgstr "無效的移植版"
+
+msgid "Choose an executable"
+msgstr "選擇執行檔"
+
+msgid "Executable Not Found"
+msgstr "找不到執行檔"
+
+msgid "Uninstall Error"
+msgstr "解除安裝錯誤"
+
+msgid "Choose a file"
+msgstr "選擇檔案"
+
+msgid "Choose a version"
+msgstr "選擇版本"
+
+msgid "Error"
+msgstr "錯誤"
+
+msgid "Installation Error"
+msgstr "安裝錯誤"
+
+msgid "Update Error"
+msgstr "更新錯誤"
+
+msgid "Error - {}"
+msgstr "錯誤 - {}"
+
+msgid "Uninstall - {}"
+msgstr "解除安裝 - {}"
+
+msgid "Info - {}"
+msgstr "資訊 - {}"
+
+msgid "This port's folder name is invalid."
+msgstr "這個移植版的資料夾名稱無效。"
+
+msgid "\"{}\" could not be launched. The game files may be missing or incomplete."
+msgstr "無法啟動「{}」。遊戲檔案可能遺失或不完整。"
+
+msgid "Uninstall \"{}\"? All of its files will be deleted."
+msgstr "要解除安裝「{}」嗎？該遊戲的所有檔案都將被刪除。"
+
+msgid "{} save folder(s) backed up, {} skipped (empty or missing), {} failed (disk full or permission denied?)."
+msgstr "已備份 {} 個存檔資料夾，略過 {} 個（空白或不存在），失敗 {} 個（磁碟已滿或權限被拒？）。"
+
+msgid "{} save folder(s) backed up, {} skipped (empty or missing)."
+msgstr "已備份 {} 個存檔資料夾，略過 {} 個（空白或不存在）。"
+
+msgid "Backing up saves..."
+msgstr "正在備份存檔..."
+
+msgid "Backing up {}..."
+msgstr "正在備份 {}..."
+
+msgid "Installing {}..."
+msgstr "正在安裝 {}..."
+
+msgid "Fetching versions for {}..."
+msgstr "正在取得 {} 的版本..."
+
+msgid "Version: Not installed"
+msgstr "版本：未安裝"
+
+msgid "Version: {}"
+msgstr "版本：{}"
+
+msgid "Version: Installed (tag unknown -- still checked against GitHub)"
+msgstr "版本：已安裝（標籤未知 -- 仍透過 GitHub 檢查）"
+
+msgid "Version: Installed (tag unknown -- still checked against GitLab)"
+msgstr "版本：已安裝（標籤未知 -- 仍透過 GitLab 檢查）"
+
+msgid "Version: Installed (this source has no version tracking)"
+msgstr "版本：已安裝（此來源不支援版本追蹤）"
+
+msgid "Update - {}"
+msgstr "更新 - {}"
+
+msgid "Disable"
+msgstr "關閉"
+
+msgid "Enable"
+msgstr "開啟"
+
+msgid "Favorite executable: Default"
+msgstr "慣用執行檔：預設"
+
+msgid "Favorite executable: {}"
+msgstr "慣用執行檔：{}"
+
+msgid "Update: On"
+msgstr "更新：開"
+
+msgid "Update: Off"
+msgstr "更新：關"
+
+msgid "Playtime: {}"
+msgstr "遊戲時數：{}"
+
+msgid "Reset Game Time - {}"
+msgstr "重設遊戲時數 - {}"
+
+msgid "Reset the tracked playtime for \"{}\"? This cannot be undone."
+msgstr "要重設「{}」的遊戲時數記錄嗎？此操作無法復原。"
+
+msgid "Reset"
+msgstr "重設"
+
+msgid "Reset game time"
+msgstr "重設遊戲時數"
+
+msgid "Check for Updates: On"
+msgstr "檢查更新：開"
+
+msgid "Check for Updates: Off"
+msgstr "檢查更新：關"
+
+msgid "Type to search..."
+msgstr "輸入以搜尋..."

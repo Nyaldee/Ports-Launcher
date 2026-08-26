@@ -1,0 +1,226 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Language: ko\n"
+
+msgid "Info"
+msgstr "정보"
+
+msgid "Install"
+msgstr "설치"
+
+msgid "Open folder"
+msgstr "폴더 열기"
+
+msgid "Uninstall"
+msgstr "제거"
+
+msgid "Update"
+msgstr "업데이트"
+
+msgid "Play"
+msgstr "실행"
+
+msgid "GitHub"
+msgstr "GitHub"
+
+msgid "Discord"
+msgstr "Discord"
+
+msgid "No installed ports yet."
+msgstr "설치된 포트가 없습니다."
+
+msgid "Cancel"
+msgstr "취소"
+
+msgid "Reinstall"
+msgstr "다시 설치"
+
+msgid "Open info"
+msgstr "정보 열기"
+
+msgid "Favorite executable"
+msgstr "즐겨찾는 실행 파일"
+
+msgid "Change version"
+msgstr "버전 변경"
+
+msgid "Copy"
+msgstr "복사"
+
+msgid "Game website"
+msgstr "게임 웹사이트"
+
+msgid "Mods website"
+msgstr "모드 사이트"
+
+msgid "Game folder"
+msgstr "게임 폴더"
+
+msgid "Save folder"
+msgstr "세이브 폴더"
+
+msgid "Save folder 2"
+msgstr "세이브 폴더 2"
+
+msgid "Library"
+msgstr "라이브러리"
+
+msgid "Save Backup"
+msgstr "세이브 백업"
+
+msgid "Language"
+msgstr "언어"
+
+msgid "Themes"
+msgstr "테마"
+
+msgid "Files"
+msgstr "파일"
+
+msgid "Default (System)"
+msgstr "기본값(시스템)"
+
+msgid "Ask every time (default)"
+msgstr "매번 묻기(기본값)"
+
+msgid "Settings"
+msgstr "설정"
+
+msgid "Saves Backup"
+msgstr "세이브 백업"
+
+msgid "Installing"
+msgstr "설치 중"
+
+msgid "Loading"
+msgstr "불러오는 중"
+
+msgid "No Executable Found"
+msgstr "실행 파일을 찾을 수 없음"
+
+msgid "Choose favorite executable"
+msgstr "즐겨찾는 실행 파일 선택"
+
+msgid "Invalid Port"
+msgstr "잘못된 포트"
+
+msgid "Choose an executable"
+msgstr "실행 파일 선택"
+
+msgid "Executable Not Found"
+msgstr "실행 파일을 찾을 수 없음"
+
+msgid "Uninstall Error"
+msgstr "제거 오류"
+
+msgid "Choose a file"
+msgstr "파일 선택"
+
+msgid "Choose a version"
+msgstr "버전 선택"
+
+msgid "Error"
+msgstr "오류"
+
+msgid "Installation Error"
+msgstr "설치 오류"
+
+msgid "Update Error"
+msgstr "업데이트 오류"
+
+msgid "Error - {}"
+msgstr "오류 - {}"
+
+msgid "Uninstall - {}"
+msgstr "제거 - {}"
+
+msgid "Info - {}"
+msgstr "정보 - {}"
+
+msgid "This port's folder name is invalid."
+msgstr "이 포트의 폴더 이름이 잘못되었습니다."
+
+msgid "\"{}\" could not be launched. The game files may be missing or incomplete."
+msgstr "\"{}\"을(를) 실행할 수 없습니다. 게임 파일이 없거나 손상되었을 수 있습니다."
+
+msgid "Uninstall \"{}\"? All of its files will be deleted."
+msgstr "\"{}\"을(를) 제거하시겠습니까? 게임의 모든 파일이 삭제됩니다."
+
+msgid "{} save folder(s) backed up, {} skipped (empty or missing), {} failed (disk full or permission denied?)."
+msgstr "세이브 폴더 {}개를 백업했습니다. {}개는 건너뜀(비어 있거나 없음), {}개는 실패(디스크 공간 부족 또는 권한 거부?)."
+
+msgid "{} save folder(s) backed up, {} skipped (empty or missing)."
+msgstr "세이브 폴더 {}개를 백업했습니다. {}개는 건너뛰었습니다(비어 있거나 없음)."
+
+msgid "Backing up saves..."
+msgstr "세이브 백업 중..."
+
+msgid "Backing up {}..."
+msgstr "{} 백업 중..."
+
+msgid "Installing {}..."
+msgstr "{} 설치 중..."
+
+msgid "Fetching versions for {}..."
+msgstr "{}의 버전을 가져오는 중..."
+
+msgid "Version: Not installed"
+msgstr "버전: 설치되지 않음"
+
+msgid "Version: {}"
+msgstr "버전: {}"
+
+msgid "Version: Installed (tag unknown -- still checked against GitHub)"
+msgstr "버전: 설치됨(태그 알 수 없음 -- GitHub에서 계속 확인 중)"
+
+msgid "Version: Installed (tag unknown -- still checked against GitLab)"
+msgstr "버전: 설치됨(태그 알 수 없음 -- GitLab에서 계속 확인 중)"
+
+msgid "Version: Installed (this source has no version tracking)"
+msgstr "버전: 설치됨(이 소스는 버전을 추적하지 않음)"
+
+msgid "Update - {}"
+msgstr "업데이트 - {}"
+
+msgid "Disable"
+msgstr "끄기"
+
+msgid "Enable"
+msgstr "켜기"
+
+msgid "Favorite executable: Default"
+msgstr "즐겨찾는 실행 파일: 기본값"
+
+msgid "Favorite executable: {}"
+msgstr "즐겨찾는 실행 파일: {}"
+
+msgid "Update: On"
+msgstr "업데이트: 켜짐"
+
+msgid "Update: Off"
+msgstr "업데이트: 꺼짐"
+
+msgid "Playtime: {}"
+msgstr "플레이 시간: {}"
+
+msgid "Reset Game Time - {}"
+msgstr "플레이 시간 초기화 - {}"
+
+msgid "Reset the tracked playtime for \"{}\"? This cannot be undone."
+msgstr "\"{}\"의 기록된 플레이 시간을 초기화하시겠습니까? 이 작업은 되돌릴 수 없습니다."
+
+msgid "Reset"
+msgstr "초기화"
+
+msgid "Reset game time"
+msgstr "플레이 시간 초기화"
+
+msgid "Check for Updates: On"
+msgstr "업데이트 확인: 켜짐"
+
+msgid "Check for Updates: Off"
+msgstr "업데이트 확인: 꺼짐"
+
+msgid "Type to search..."
+msgstr "검색..."

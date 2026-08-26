@@ -1,0 +1,226 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Language: vi\n"
+
+msgid "Info"
+msgstr "Thông tin"
+
+msgid "Install"
+msgstr "Cài đặt"
+
+msgid "Open folder"
+msgstr "Mở thư mục"
+
+msgid "Uninstall"
+msgstr "Gỡ cài đặt"
+
+msgid "Update"
+msgstr "Cập nhật"
+
+msgid "Play"
+msgstr "Chơi"
+
+msgid "GitHub"
+msgstr "GitHub"
+
+msgid "Discord"
+msgstr "Discord"
+
+msgid "No installed ports yet."
+msgstr "Chưa có port nào được cài đặt."
+
+msgid "Cancel"
+msgstr "Hủy"
+
+msgid "Reinstall"
+msgstr "Cài đặt lại"
+
+msgid "Open info"
+msgstr "Mở thông tin"
+
+msgid "Favorite executable"
+msgstr "Tệp thực thi yêu thích"
+
+msgid "Change version"
+msgstr "Đổi phiên bản"
+
+msgid "Copy"
+msgstr "Sao chép"
+
+msgid "Game website"
+msgstr "Trang web trò chơi"
+
+msgid "Mods website"
+msgstr "Trang web mod"
+
+msgid "Game folder"
+msgstr "Thư mục trò chơi"
+
+msgid "Save folder"
+msgstr "Thư mục lưu"
+
+msgid "Save folder 2"
+msgstr "Thư mục lưu 2"
+
+msgid "Library"
+msgstr "Thư viện"
+
+msgid "Save Backup"
+msgstr "Bản sao lưu dữ liệu"
+
+msgid "Language"
+msgstr "Ngôn ngữ"
+
+msgid "Themes"
+msgstr "Giao diện"
+
+msgid "Files"
+msgstr "Tệp"
+
+msgid "Default (System)"
+msgstr "Mặc định (Hệ thống)"
+
+msgid "Ask every time (default)"
+msgstr "Luôn hỏi (mặc định)"
+
+msgid "Settings"
+msgstr "Cài đặt"
+
+msgid "Saves Backup"
+msgstr "Sao lưu dữ liệu"
+
+msgid "Installing"
+msgstr "Đang cài đặt"
+
+msgid "Loading"
+msgstr "Đang tải"
+
+msgid "No Executable Found"
+msgstr "Không tìm thấy tệp thực thi"
+
+msgid "Choose favorite executable"
+msgstr "Chọn tệp thực thi yêu thích"
+
+msgid "Invalid Port"
+msgstr "Port không hợp lệ"
+
+msgid "Choose an executable"
+msgstr "Chọn một tệp thực thi"
+
+msgid "Executable Not Found"
+msgstr "Không tìm thấy tệp thực thi"
+
+msgid "Uninstall Error"
+msgstr "Lỗi gỡ cài đặt"
+
+msgid "Choose a file"
+msgstr "Chọn một tệp"
+
+msgid "Choose a version"
+msgstr "Chọn một phiên bản"
+
+msgid "Error"
+msgstr "Lỗi"
+
+msgid "Installation Error"
+msgstr "Lỗi cài đặt"
+
+msgid "Update Error"
+msgstr "Lỗi cập nhật"
+
+msgid "Error - {}"
+msgstr "Lỗi - {}"
+
+msgid "Uninstall - {}"
+msgstr "Gỡ cài đặt - {}"
+
+msgid "Info - {}"
+msgstr "Thông tin - {}"
+
+msgid "This port's folder name is invalid."
+msgstr "Tên thư mục của port này không hợp lệ."
+
+msgid "\"{}\" could not be launched. The game files may be missing or incomplete."
+msgstr "Không thể khởi chạy \"{}\". Tệp trò chơi có thể bị thiếu hoặc không đầy đủ."
+
+msgid "Uninstall \"{}\"? All of its files will be deleted."
+msgstr "Gỡ cài đặt \"{}\"? Tất cả tệp của trò chơi sẽ bị xóa."
+
+msgid "{} save folder(s) backed up, {} skipped (empty or missing), {} failed (disk full or permission denied?)."
+msgstr "Đã sao lưu {} thư mục lưu, {} bị bỏ qua (trống hoặc không tồn tại), {} thất bại (ổ đĩa đầy hoặc bị từ chối quyền truy cập?)."
+
+msgid "{} save folder(s) backed up, {} skipped (empty or missing)."
+msgstr "Đã sao lưu {} thư mục lưu, {} bị bỏ qua (trống hoặc không tồn tại)."
+
+msgid "Backing up saves..."
+msgstr "Đang sao lưu dữ liệu..."
+
+msgid "Backing up {}..."
+msgstr "Đang sao lưu {}..."
+
+msgid "Installing {}..."
+msgstr "Đang cài đặt {}..."
+
+msgid "Fetching versions for {}..."
+msgstr "Đang lấy danh sách phiên bản cho {}..."
+
+msgid "Version: Not installed"
+msgstr "Phiên bản: Chưa cài đặt"
+
+msgid "Version: {}"
+msgstr "Phiên bản: {}"
+
+msgid "Version: Installed (tag unknown -- still checked against GitHub)"
+msgstr "Phiên bản: Đã cài đặt (không rõ tag -- vẫn được kiểm tra với GitHub)"
+
+msgid "Version: Installed (tag unknown -- still checked against GitLab)"
+msgstr "Phiên bản: Đã cài đặt (không rõ tag -- vẫn được kiểm tra với GitLab)"
+
+msgid "Version: Installed (this source has no version tracking)"
+msgstr "Phiên bản: Đã cài đặt (nguồn này không theo dõi phiên bản)"
+
+msgid "Update - {}"
+msgstr "Cập nhật - {}"
+
+msgid "Disable"
+msgstr "Tắt"
+
+msgid "Enable"
+msgstr "Bật"
+
+msgid "Favorite executable: Default"
+msgstr "Tệp thực thi yêu thích: Mặc định"
+
+msgid "Favorite executable: {}"
+msgstr "Tệp thực thi yêu thích: {}"
+
+msgid "Update: On"
+msgstr "Cập nhật: Bật"
+
+msgid "Update: Off"
+msgstr "Cập nhật: Tắt"
+
+msgid "Playtime: {}"
+msgstr "Thời gian chơi: {}"
+
+msgid "Reset Game Time - {}"
+msgstr "Đặt lại thời gian chơi - {}"
+
+msgid "Reset the tracked playtime for \"{}\"? This cannot be undone."
+msgstr "Đặt lại thời gian chơi đã ghi nhận cho \"{}\"? Không thể hoàn tác thao tác này."
+
+msgid "Reset"
+msgstr "Đặt lại"
+
+msgid "Reset game time"
+msgstr "Đặt lại thời gian chơi"
+
+msgid "Check for Updates: On"
+msgstr "Kiểm tra cập nhật: Bật"
+
+msgid "Check for Updates: Off"
+msgstr "Kiểm tra cập nhật: Tắt"
+
+msgid "Type to search..."
+msgstr "Tìm kiếm..."

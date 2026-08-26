@@ -1,0 +1,435 @@
+import { SemanticColors, Theme, TitleBarIconButton } from "../shared.slint";
+
+// Classification de touche partagée entre ConfirmDialog/ErrorDialog/
+// ListPickerDialog -- Échap, Haut/Ctrl+W, Bas/Ctrl+S, Entrée. Un `global`
+// plutôt qu'une base commune : ces trois dialogues ont chacun leurs propres
+// callbacks (move-selection-requested, etc.), et `slint::include_modules!()`
+// ne génère d'accesseurs Rust que pour le composant exporté lui-même --
+// rien de tel ici, `global` ne porte aucun état.
+export global DialogNavKey {
+    public pure function classify(event: KeyEvent) -> int {
+        if (event.text == Key.Escape) {
+            return 0;
+        } else if (event.text == Key.UpArrow || (event.modifiers.control && event.text == "w")) {
+            return 1;
+        } else if (event.text == Key.DownArrow || (event.modifiers.control && event.text == "s")) {
+            return 2;
+        } else if (event.text == Key.Return) {
+            return 3;
+        }
+        return -1;
+    }
+}
+
+// FocusScope prêt à l'emploi pour ConfirmDialog/ErrorDialog/ListPickerDialog
+// -- ces trois dialogues n'ont qu'une liste linéaire à naviguer (Échap/Haut/
+// Bas/Entrée via DialogNavKey ci-dessus) et partagent donc le même
+// `key-pressed`, contrairement à InfoDialog (Gauche/Droite en plus,
+// raccourcis contextuels) qui garde son propre FocusScope. `forward-focus`
+// des dialogues appelants pointe directement sur cette instance -- c'est
+// bien un FocusScope utilisable comme tel, pas juste un conteneur de
+// callbacks.
+export component DialogNavKeyHandler inherits FocusScope {
+    callback close-requested();
+    callback move-selection-requested(int);
+    callback activate-selection-requested();
+
+    key-pressed(event) => {
+        let action = DialogNavKey.classify(event);
+        if (action == 0) {
+            root.close-requested();
+            accept
+        } else if (action == 1) {
+            root.move-selection-requested(-1);
+            accept
+        } else if (action == 2) {
+            root.move-selection-requested(1);
+            accept
+        } else if (action == 3) {
+            root.activate-selection-requested();
+            accept
+        } else {
+            reject
+        }
+    }
+}
+
+// AUCUN VerticalLayout/HorizontalLayout dans tout ce dossier -- un élément
+// dont la taille vient d'être résolue par un *Layout ne permet pas à SES
+// PROPRES enfants de relire cette taille de façon fiable dans cette version
+// de Slint. Un Rectangle simple positionné explicitement n'a pas ce
+// problème -- toute la structure des fichiers de ce dossier n'utilise donc
+// que ce mécanisme.
+//
+// RÈGLE D'UNITÉ CRITIQUE : chaque fenêtre de dialogue définit UNE FOIS
+// logical-w/logical-h (root.width/height divisés par Theme.scale-factor),
+// et TOUT le reste (gutter, bar-height, positions/tailles des enfants) se
+// dérive UNIQUEMENT de logical-w/logical-h -- jamais directement de
+// root.width/root.height. Mélanger les deux dans une même soustraction
+// (ex: root.height - bar-height où bar-height est déjà divisé) produit des
+// positions fausses une fois repassées par le facteur d'échelle au moment
+// de la peinture. La bordure/barre de titre/zone de contenu vit UNE SEULE
+// FOIS dans DialogChrome ci-dessous, instanciée par chaque dialogue plutôt
+// que recopiée à la main -- la plomberie physique -> logique (item-font-px,
+// gutter...) reste en revanche déclarée dans chaque dialogue :
+// `slint::include_modules!()` ne génère d'accesseurs Rust (set_xxx) que
+// pour les propriétés du composant exporté lui-même, jamais pour celles
+// héritées d'une base non exportée -- la factoriser casserait
+// apply_dialog_theme!/apply_dialog_chrome! côté Rust (voir app::dialogs).
+// Même barre de titre que AppWindow (voir sa title-bar dans
+// app-window.slint) -- fond identique (Theme.search-background), même
+// croix fermer géométrique (Path, pas un glyphe de police, pour les mêmes
+// raisons de centrage exact) avec le même carré plein rouge au survol.
+// `title-font-px` en property (pas de valeur fixe codée en dur) -- les
+// appelants qui veulent correspondre exactement à la fenêtre principale
+// (voir InfoDialog) poussent la même taille que celle-ci ; les autres
+// gardent le repli proportionnel à bar-height ci-dessous.
+component DialogTitleBar inherits Rectangle {
+    in property <string> title: "";
+    in property <length> bar-height: 40px;
+    in property <length> title-font-px: bar-height * 0.4;
+    in property <bool> closable: true;
+    callback close-requested();
+
+    height: bar-height;
+    background: Theme.search-background;
+
+    Text {
+        text: root.title;
+        color: Theme.list-text;
+        vertical-alignment: center;
+        horizontal-alignment: left;
+        font-weight: 700;
+        font-size: root.title-font-px;
+        // Theme.title-button-padding -- même retrait que le titre de
+        // app-window.slint, pas un ratio de bar-height (qui ne coïncidait
+        // avec la fenêtre principale qu'à une hauteur de barre précise).
+        x: Theme.title-button-padding;
+        y: 0px;
+        width: root.width - Theme.title-button-padding - bar-height;
+        height: 100%;
+    }
+
+    // Partagé avec title-vertical-padding/title-padding dans app-window.slint
+    // via Theme.title-button-padding -- un carré INSÉRÉ dans son
+    // "emplacement" de bar-height de large, pas collé aux bords (même
+    // raison que là-bas : plein bord à bord, le survol paraît trop massif).
+    property <length> close-padding: Theme.title-button-padding;
+    property <length> close-size: bar-height - close-padding * 2;
+
+    TitleBarIconButton {
+        x: root.width - close-padding - close-size;
+        y: close-padding;
+        size: close-size;
+        enabled: root.closable;
+        hover-color: SemanticColors.danger;
+        hover-stroke-color: SemanticColors.text-on-accent;
+        icon-commands: "M 22 22 L 78 78 M 78 22 L 22 78";
+        clicked => { root.close-requested(); }
+    }
+}
+
+// Bouton carré "navigable" -- surbrillance au survol, jamais de coin
+// arrondi. `enabled` grise le bouton sans le retirer de l'arbre (mêmes
+// raisons que "closable" ci-dessus : jamais un "if" qui retire un élément,
+// seulement son interactivité/opacité).
+export component DialogButton inherits Rectangle {
+    in property <string> text: "";
+    in property <bool> enabled: true;
+    in property <length> border-px: 1px;
+    // Repli par défaut, jamais utilisé en pratique -- tous les appelants
+    // passent explicitement item-font-px.
+    in property <length> font-size: 14px;
+    // Surbrillance de navigation manette (voir ListPickerDialog.selected-index
+    // et app::gamepad_target::DialogGamepadTarget) -- même rendu que le
+    // survol souris, pas un second style à part : les deux moyens de
+    // désigner "ce bouton-ci" doivent avoir l'air identiques.
+    in property <bool> selected: false;
+    // ListPickerDialog aligne ses options à gauche -- tous les autres
+    // appelants gardent le centrage par défaut (OK, Reinstall, Website...).
+    in property <bool> left-align: false;
+    // Largeur naturelle du texte à sa police actuelle -- exposée pour les
+    // appelants qui veulent une largeur pilotée par le contenu (voir
+    // InfoDialog) plutôt qu'une largeur fixe/répartie également, même
+    // principe que <label>.preferred-width dans app-window.slint. Pas
+    // nommée "preferred-width" -- déjà une propriété intégrée de tout
+    // élément Slint, impossible à redéclarer (erreur de compilation
+    // "Cannot override property").
+    out property <length> text-preferred-width: label.preferred-width;
+    callback clicked();
+    // Survol souris -- déplace la sélection manette/clavier sous la souris
+    // (voir InfoDialog/ListPickerDialog), même principe que list-row-hovered
+    // dans app-window.slint : sans ça, `selected` (piloté par la manette) et
+    // le survol souris sont deux indicateurs indépendants, allumables en
+    // même temps sur deux boutons différents.
+    callback hovered();
+
+    background: Theme.list-background;
+    border-width: border-px;
+    border-color: Theme.border-color;
+    opacity: root.enabled ? 1.0 : 0.4;
+
+    area := TouchArea {
+        clicked => {
+            if (root.enabled) {
+                root.clicked();
+            }
+        }
+        changed has-hover => {
+            if (self.has-hover && root.enabled) {
+                root.hovered();
+            }
+        }
+    }
+    label := Text {
+        text: root.text;
+        // UNIQUEMENT root.selected (jamais area.has-hover directement) --
+        // root.hovered() ci-dessus fait déjà remonter le survol côté Rust,
+        // qui répercute alors root.selected pour TOUS les boutons (voir
+        // on_nav_hovered/on_item_hovered dans app::dialogs). Utiliser
+        // has-hover ICI EN PLUS créerait deux sources de vérité
+        // indépendantes : la souris immobile sur un bouton garde has-hover
+        // à `true` sur CE bouton précis, même après que la manette/le
+        // clavier a déplacé root.selected ailleurs -- deux boutons
+        // surlignés en même temps.
+        color: root.selected && root.enabled ? Theme.selected-text : Theme.list-text;
+        font-size: root.font-size;
+        // PAS d'ellipse ici -- les libellés doivent rester lisibles en
+        // entier : voir ListPickerDialog.list_picker_dialog_size côté Rust,
+        // qui mesure le plus long libellé et élargit le dialogue en
+        // conséquence, rendant toute troncature inutile.
+        horizontal-alignment: root.left-align ? left : center;
+        vertical-alignment: center;
+        x: root.left-align ? 12px : 0px;
+        y: 0px;
+        width: root.left-align ? root.width - 24px : root.width;
+        height: 100%;
+    }
+
+    states [
+        // Même raison que label.color ci-dessus -- root.selected seul.
+        hover when root.selected && root.enabled: {
+            background: Theme.selected-background;
+        }
+    ]
+}
+
+export struct ButtonRowItem {
+    text: string,
+    enabled: bool,
+}
+
+// Rangée de 3 à 5 DialogButton centrée dans `content-width`, partagée par
+// les deux rangées de boutons d'InfoDialog (raccourcis contextuels et
+// boutons du bas). Nombre fixe de 5 EMPLACEMENTS (pas forcément 5 boutons
+// AFFICHÉS, voir `count`) plutôt qu'un `for` générique : ce dossier
+// interdit les Layout (voir l'en-tête), donc centrer une rangée exige de
+// connaître la largeur totale AVANT de placer le premier bouton, ce qui
+// suppose de chaîner chaque bouton à la largeur réelle du précédent -- une
+// dépendance qu'un `for` ne peut pas exprimer entre ses propres instances.
+// Composant "muet" : il ne gère aucun état, se contente d'afficher
+// `items`/`selected-index` et de remonter `clicked`/`hovered` (relayés à
+// Rust pour la navigation clavier/manette).
+//
+// Retour à la ligne responsive : sur petites résolutions, les boutons ne
+// tiennent plus sur une seule rangée et débordent du dialogue. Aucune
+// boucle ni Layout n'étant possible ici (voir l'en-tête), la rupture est
+// exprimée comme un point de coupure UNIQUE (break-index, 1 à count-1, ou
+// count = pas de coupure) déterminé glouton de gauche à droite : dès qu'un
+// bouton dépasse, LUI et tous les suivants basculent sur la rangée 2.
+// Chaque bouton sait ensuite s'il est le PREMIER de sa rangée (is-start, il
+// se centre alors sur la largeur réelle de SA rangée) ou s'il continue la
+// chaîne x du précédent, dont le .x/.y déjà résolu porte l'information.
+export component ButtonRow inherits Rectangle {
+    in property <[ButtonRowItem]> items: [];
+    in property <length> button-padding;
+    in property <length> row-spacing;
+    in property <length> button-height;
+    in property <length> item-font-px;
+    in property <length> border-px;
+    in property <length> content-width;
+    in property <int> selected-index: -1;
+    // Nombre de boutons RÉELLEMENT affichés (3 à 5) -- au-delà, l'emplacement
+    // (btn4) est masqué et exclu de tous les calculs de largeur/retour à la
+    // ligne. Vaut 5 par défaut : préserve tel quel le comportement du
+    // premier appelant (button-row plus bas dans InfoDialog, toujours 5).
+    in property <int> count: 5;
+    callback clicked(int);
+    callback hovered(int);
+
+    // 1 rangée si tout tient, 2 sinon -- jamais plus (`count` boutons, 2
+    // rangées suffisent toujours à condition qu'AU MOINS un bouton tienne
+    // par rangée, cas réaliste vu la longueur des libellés utilisés ici).
+    height: break-index == count ? button-height : button-height * 2 + row-spacing;
+
+    property <length> w0: btn0.width;
+    property <length> w1: btn1.width;
+    property <length> w2: btn2.width;
+    property <length> w3: btn3.width;
+    // 0px hors calcul si ce 5e emplacement n'existe pas pour cette rangée
+    // (voir `count`) -- btn4 lui-même reste caché (visible: count > 4).
+    property <length> w4: root.count > 4 ? btn4.width : 0px;
+
+    // Largeur cumulée si btn0..N tenaient tous sur la rangée 1.
+    property <length> cum1: w0 + row-spacing + w1;
+    property <length> cum2: cum1 + row-spacing + w2;
+    property <length> cum3: cum2 + row-spacing + w3;
+    property <length> cum4: root.count > 4 ? cum3 + row-spacing + w4 : cum3;
+
+    // Premier bouton dont l'ajout ferait dépasser content-width -- lui et
+    // tout ce qui suit passe en rangée 2. wrap-at-4 impossible si `count`
+    // vaut 4 : il n'y a alors pas de 5e bouton à faire déborder.
+    property <bool> wrap-at-1: cum1 > content-width;
+    property <bool> wrap-at-2: !wrap-at-1 && cum2 > content-width;
+    property <bool> wrap-at-3: !wrap-at-1 && !wrap-at-2 && cum3 > content-width;
+    property <bool> wrap-at-4: root.count > 4 && !wrap-at-1 && !wrap-at-2 && !wrap-at-3 && cum4 > content-width;
+    property <int> break-index: wrap-at-1 ? 1 : wrap-at-2 ? 2 : wrap-at-3 ? 3 : wrap-at-4 ? 4 : root.count;
+
+    property <length> row1-width:
+        break-index == 1 ? w0 :
+        break-index == 2 ? w0 + row-spacing + w1 :
+        break-index == 3 ? w0 + row-spacing + w1 + row-spacing + w2 :
+        break-index == 4 ? w0 + row-spacing + w1 + row-spacing + w2 + row-spacing + w3 :
+        root.count > 4
+            ? w0 + row-spacing + w1 + row-spacing + w2 + row-spacing + w3 + row-spacing + w4
+            : w0 + row-spacing + w1 + row-spacing + w2 + row-spacing + w3;
+    property <length> row2-width:
+        break-index == 1 ? (root.count > 4 ? w1 + row-spacing + w2 + row-spacing + w3 + row-spacing + w4 : w1 + row-spacing + w2 + row-spacing + w3) :
+        break-index == 2 ? (root.count > 4 ? w2 + row-spacing + w3 + row-spacing + w4 : w2 + row-spacing + w3) :
+        break-index == 3 ? (root.count > 4 ? w3 + row-spacing + w4 : w3) :
+        break-index == 4 ? (root.count > 4 ? w4 : 0px) :
+        0px;
+    property <length> row2-y: button-height + row-spacing;
+
+    btn0 := DialogButton {
+        text: root.items[0].text;
+        enabled: root.items[0].enabled;
+        selected: root.selected-index == 0;
+        border-px: root.border-px;
+        font-size: root.item-font-px;
+        x: (root.content-width - row1-width) / 2;
+        y: 0;
+        width: self.text-preferred-width + button-padding * 2;
+        height: button-height;
+        clicked => { root.clicked(0); }
+        hovered => { root.hovered(0); }
+    }
+    btn1 := DialogButton {
+        text: root.items[1].text;
+        enabled: root.items[1].enabled;
+        selected: root.selected-index == 1;
+        border-px: root.border-px;
+        font-size: root.item-font-px;
+        property <bool> is-start: break-index == 1;
+        x: self.is-start ? (root.content-width - row2-width) / 2 : btn0.x + btn0.width + row-spacing;
+        y: self.is-start ? row2-y : btn0.y;
+        width: self.text-preferred-width + button-padding * 2;
+        height: button-height;
+        clicked => { root.clicked(1); }
+        hovered => { root.hovered(1); }
+    }
+    btn2 := DialogButton {
+        text: root.items[2].text;
+        enabled: root.items[2].enabled;
+        selected: root.selected-index == 2;
+        border-px: root.border-px;
+        font-size: root.item-font-px;
+        property <bool> is-start: break-index == 2;
+        x: self.is-start ? (root.content-width - row2-width) / 2 : btn1.x + btn1.width + row-spacing;
+        y: self.is-start ? row2-y : btn1.y;
+        width: self.text-preferred-width + button-padding * 2;
+        height: button-height;
+        clicked => { root.clicked(2); }
+        hovered => { root.hovered(2); }
+    }
+    btn3 := DialogButton {
+        text: root.items[3].text;
+        enabled: root.items[3].enabled;
+        selected: root.selected-index == 3;
+        border-px: root.border-px;
+        font-size: root.item-font-px;
+        property <bool> is-start: break-index == 3;
+        x: self.is-start ? (root.content-width - row2-width) / 2 : btn2.x + btn2.width + row-spacing;
+        y: self.is-start ? row2-y : btn2.y;
+        width: self.text-preferred-width + button-padding * 2;
+        height: button-height;
+        clicked => { root.clicked(3); }
+        hovered => { root.hovered(3); }
+    }
+    btn4 := DialogButton {
+        // Emplacement inexistant pour une rangée à 4 boutons (voir `count`)
+        // -- caché plutôt que retiré de l'arbre : ses propriétés (w4 etc.)
+        // restent lisibles sans erreur, déjà neutralisées ailleurs (voir
+        // les gardes `root.count > 4` sur w4/cum4/wrap-at-4).
+        visible: root.count > 4;
+        text: root.items[4].text;
+        enabled: root.items[4].enabled;
+        selected: root.selected-index == 4;
+        border-px: root.border-px;
+        font-size: root.item-font-px;
+        property <bool> is-start: break-index == 4;
+        x: self.is-start ? (root.content-width - row2-width) / 2 : btn3.x + btn3.width + row-spacing;
+        y: self.is-start ? row2-y : btn3.y;
+        width: self.text-preferred-width + button-padding * 2;
+        height: button-height;
+        clicked => { root.clicked(4); }
+        hovered => { root.hovered(4); }
+    }
+}
+
+// Bordure + barre de titre + zone de contenu -- structure IDENTIQUE des 7
+// fenêtres de dialogue, seul le contenu de la zone diffère (passé en
+// enfants à l'instanciation, voir @children). Composant autonome (pas un
+// Window) : chaque dialogue l'instancie DANS son propre FocusScope quand il
+// en a un (ou directement sous sa Window sinon, voir ProgressDialog) -- ce
+// composant ne porte donc aucune logique de touche, qui reste propre à
+// chaque dialogue et diffère réellement de l'un à l'autre.
+export component DialogChrome inherits Rectangle {
+    in property <string> dialog-title: "";
+    in property <length> bar-height: 40px;
+    in property <length> title-font-px: bar-height * 0.4;
+    in property <length> border-px: 1px;
+    in property <length> logical-w: 400px;
+    in property <length> logical-h: 300px;
+    in property <bool> closable: true;
+    // Vrai pour ListPickerDialog/SearchListDialog (contenu défilant qui
+    // peut dépasser sans clip visuel autrement) -- faux ailleurs.
+    in property <bool> content-clip: false;
+    callback close-requested();
+    // Exposées pour les propriétés du dialogue appelant qui ont besoin de
+    // la taille RÉELLE de la zone de contenu (ex: content-width dans
+    // InfoDialog, list-width dans ListPickerDialog/SearchListDialog) --
+    // cette instance étant un composant séparé, l'id "content-area" lui-même
+    // n'est pas visible depuis l'extérieur (contrairement à root.width/
+    // height d'un Rectangle classique).
+    out property <length> content-width: content-area.width;
+    out property <length> content-height: content-area.height;
+
+    width: logical-w + border-px * 2;
+    height: logical-h + border-px * 2;
+    background: Theme.list-background;
+    border-width: border-px;
+    border-color: Theme.border-color;
+
+    DialogTitleBar {
+        title: root.dialog-title;
+        bar-height: root.bar-height;
+        title-font-px: root.title-font-px;
+        closable: root.closable;
+        x: border-px;
+        y: border-px;
+        width: logical-w;
+        close-requested => { root.close-requested(); }
+    }
+
+    content-area := Rectangle {
+        x: border-px;
+        y: border-px + bar-height;
+        width: logical-w;
+        height: logical-h - bar-height;
+        background: Theme.list-background;
+        clip: root.content-clip;
+
+        @children
+    }
+}

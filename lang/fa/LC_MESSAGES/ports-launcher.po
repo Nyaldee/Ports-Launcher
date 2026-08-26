@@ -1,0 +1,226 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Language: fa\n"
+
+msgid "Info"
+msgstr "اطلاعات"
+
+msgid "Install"
+msgstr "نصب"
+
+msgid "Open folder"
+msgstr "باز کردن پوشه"
+
+msgid "Uninstall"
+msgstr "حذف نصب"
+
+msgid "Update"
+msgstr "به‌روزرسانی"
+
+msgid "Play"
+msgstr "بازی"
+
+msgid "GitHub"
+msgstr "GitHub"
+
+msgid "Discord"
+msgstr "Discord"
+
+msgid "No installed ports yet."
+msgstr "هنوز هیچ پورتی نصب نشده است."
+
+msgid "Cancel"
+msgstr "لغو"
+
+msgid "Reinstall"
+msgstr "نصب مجدد"
+
+msgid "Open info"
+msgstr "نمایش اطلاعات"
+
+msgid "Favorite executable"
+msgstr "فایل اجرایی منتخب"
+
+msgid "Change version"
+msgstr "تغییر نسخه"
+
+msgid "Copy"
+msgstr "کپی"
+
+msgid "Game website"
+msgstr "وب‌سایت بازی"
+
+msgid "Mods website"
+msgstr "وب‌سایت مادها"
+
+msgid "Game folder"
+msgstr "پوشه بازی"
+
+msgid "Save folder"
+msgstr "پوشه ذخیره‌ها"
+
+msgid "Save folder 2"
+msgstr "پوشه ذخیره‌ها ۲"
+
+msgid "Library"
+msgstr "کتابخانه"
+
+msgid "Save Backup"
+msgstr "پشتیبان‌گیری از ذخیره‌ها"
+
+msgid "Language"
+msgstr "زبان"
+
+msgid "Themes"
+msgstr "پوسته‌ها"
+
+msgid "Files"
+msgstr "فایل‌ها"
+
+msgid "Default (System)"
+msgstr "پیش‌فرض (سیستم)"
+
+msgid "Ask every time (default)"
+msgstr "هر بار بپرس (پیش‌فرض)"
+
+msgid "Settings"
+msgstr "تنظیمات"
+
+msgid "Saves Backup"
+msgstr "پشتیبان ذخیره‌ها"
+
+msgid "Installing"
+msgstr "در حال نصب"
+
+msgid "Loading"
+msgstr "در حال بارگذاری"
+
+msgid "No Executable Found"
+msgstr "فایل اجرایی پیدا نشد"
+
+msgid "Choose favorite executable"
+msgstr "فایل اجرایی منتخب را انتخاب کنید"
+
+msgid "Invalid Port"
+msgstr "پورت نامعتبر"
+
+msgid "Choose an executable"
+msgstr "یک فایل اجرایی انتخاب کنید"
+
+msgid "Executable Not Found"
+msgstr "فایل اجرایی پیدا نشد"
+
+msgid "Uninstall Error"
+msgstr "خطا در حذف نصب"
+
+msgid "Choose a file"
+msgstr "یک فایل انتخاب کنید"
+
+msgid "Choose a version"
+msgstr "یک نسخه انتخاب کنید"
+
+msgid "Error"
+msgstr "خطا"
+
+msgid "Installation Error"
+msgstr "خطای نصب"
+
+msgid "Update Error"
+msgstr "خطای به‌روزرسانی"
+
+msgid "Error - {}"
+msgstr "خطا - {}"
+
+msgid "Uninstall - {}"
+msgstr "حذف نصب - {}"
+
+msgid "Info - {}"
+msgstr "اطلاعات - {}"
+
+msgid "This port's folder name is invalid."
+msgstr "نام پوشه این پورت نامعتبر است."
+
+msgid "\"{}\" could not be launched. The game files may be missing or incomplete."
+msgstr "\"{}\" اجرا نشد. ممکن است فایل‌های بازی گم یا ناقص باشند."
+
+msgid "Uninstall \"{}\"? All of its files will be deleted."
+msgstr "\"{}\" حذف شود؟ تمام فایل‌های بازی حذف خواهند شد."
+
+msgid "{} save folder(s) backed up, {} skipped (empty or missing), {} failed (disk full or permission denied?)."
+msgstr "{} پوشه ذخیره پشتیبان‌گیری شد، {} نادیده گرفته شد (خالی یا موجود نیست)، {} ناموفق بود (دیسک پر است یا دسترسی رد شد؟)."
+
+msgid "{} save folder(s) backed up, {} skipped (empty or missing)."
+msgstr "{} پوشه ذخیره پشتیبان‌گیری شد، {} نادیده گرفته شد (خالی یا موجود نیست)."
+
+msgid "Backing up saves..."
+msgstr "در حال پشتیبان‌گیری از ذخیره‌ها..."
+
+msgid "Backing up {}..."
+msgstr "در حال پشتیبان‌گیری از {}..."
+
+msgid "Installing {}..."
+msgstr "در حال نصب {}..."
+
+msgid "Fetching versions for {}..."
+msgstr "در حال دریافت نسخه‌ها برای {}..."
+
+msgid "Version: Not installed"
+msgstr "نسخه: نصب نشده"
+
+msgid "Version: {}"
+msgstr "نسخه: {}"
+
+msgid "Version: Installed (tag unknown -- still checked against GitHub)"
+msgstr "نسخه: نصب شده (تگ نامشخص -- همچنان از طریق GitHub بررسی می‌شود)"
+
+msgid "Version: Installed (tag unknown -- still checked against GitLab)"
+msgstr "نسخه: نصب شده (تگ نامشخص -- همچنان از طریق GitLab بررسی می‌شود)"
+
+msgid "Version: Installed (this source has no version tracking)"
+msgstr "نسخه: نصب شده (این منبع نسخه‌ها را پیگیری نمی‌کند)"
+
+msgid "Update - {}"
+msgstr "به‌روزرسانی - {}"
+
+msgid "Disable"
+msgstr "غیرفعال کردن"
+
+msgid "Enable"
+msgstr "فعال کردن"
+
+msgid "Favorite executable: Default"
+msgstr "فایل اجرایی منتخب: پیش‌فرض"
+
+msgid "Favorite executable: {}"
+msgstr "فایل اجرایی منتخب: {}"
+
+msgid "Update: On"
+msgstr "به‌روزرسانی: روشن"
+
+msgid "Update: Off"
+msgstr "به‌روزرسانی: خاموش"
+
+msgid "Playtime: {}"
+msgstr "زمان بازی: {}"
+
+msgid "Reset Game Time - {}"
+msgstr "بازنشانی زمان بازی - {}"
+
+msgid "Reset the tracked playtime for \"{}\"? This cannot be undone."
+msgstr "زمان بازی ثبت‌شده برای \"{}\" بازنشانی شود؟ این کار قابل بازگشت نیست."
+
+msgid "Reset"
+msgstr "بازنشانی"
+
+msgid "Reset game time"
+msgstr "بازنشانی زمان بازی"
+
+msgid "Check for Updates: On"
+msgstr "بررسی به‌روزرسانی‌ها: روشن"
+
+msgid "Check for Updates: Off"
+msgstr "بررسی به‌روزرسانی‌ها: خاموش"
+
+msgid "Type to search..."
+msgstr "جستجو..."

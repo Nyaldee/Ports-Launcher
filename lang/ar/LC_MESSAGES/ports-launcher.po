@@ -1,0 +1,226 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Language: ar\n"
+
+msgid "Info"
+msgstr "معلومات"
+
+msgid "Install"
+msgstr "تثبيت"
+
+msgid "Open folder"
+msgstr "فتح المجلد"
+
+msgid "Uninstall"
+msgstr "إلغاء التثبيت"
+
+msgid "Update"
+msgstr "تحديث"
+
+msgid "Play"
+msgstr "تشغيل"
+
+msgid "GitHub"
+msgstr "GitHub"
+
+msgid "Discord"
+msgstr "Discord"
+
+msgid "No installed ports yet."
+msgstr "لا توجد إصدارات مثبتة بعد."
+
+msgid "Cancel"
+msgstr "إلغاء"
+
+msgid "Reinstall"
+msgstr "إعادة التثبيت"
+
+msgid "Open info"
+msgstr "فتح المعلومات"
+
+msgid "Favorite executable"
+msgstr "الملف التنفيذي المفضل"
+
+msgid "Change version"
+msgstr "تغيير الإصدار"
+
+msgid "Copy"
+msgstr "نسخ"
+
+msgid "Game website"
+msgstr "موقع اللعبة"
+
+msgid "Mods website"
+msgstr "موقع التعديلات"
+
+msgid "Game folder"
+msgstr "مجلد اللعبة"
+
+msgid "Save folder"
+msgstr "مجلد الحفظ"
+
+msgid "Save folder 2"
+msgstr "مجلد الحفظ 2"
+
+msgid "Library"
+msgstr "المكتبة"
+
+msgid "Save Backup"
+msgstr "نسخ احتياطي للحفظ"
+
+msgid "Language"
+msgstr "اللغة"
+
+msgid "Themes"
+msgstr "السمات"
+
+msgid "Files"
+msgstr "الملفات"
+
+msgid "Default (System)"
+msgstr "افتراضي (النظام)"
+
+msgid "Ask every time (default)"
+msgstr "السؤال في كل مرة (افتراضي)"
+
+msgid "Settings"
+msgstr "الإعدادات"
+
+msgid "Saves Backup"
+msgstr "نسخ احتياطي للحفظ"
+
+msgid "Installing"
+msgstr "جارٍ التثبيت"
+
+msgid "Loading"
+msgstr "جارٍ التحميل"
+
+msgid "No Executable Found"
+msgstr "لم يتم العثور على ملف تنفيذي"
+
+msgid "Choose favorite executable"
+msgstr "اختر الملف التنفيذي المفضل"
+
+msgid "Invalid Port"
+msgstr "إصدار غير صالح"
+
+msgid "Choose an executable"
+msgstr "اختر ملفًا تنفيذيًا"
+
+msgid "Executable Not Found"
+msgstr "الملف التنفيذي غير موجود"
+
+msgid "Uninstall Error"
+msgstr "خطأ في إلغاء التثبيت"
+
+msgid "Choose a file"
+msgstr "اختر ملفًا"
+
+msgid "Choose a version"
+msgstr "اختر إصدارًا"
+
+msgid "Error"
+msgstr "خطأ"
+
+msgid "Installation Error"
+msgstr "خطأ في التثبيت"
+
+msgid "Update Error"
+msgstr "خطأ في التحديث"
+
+msgid "Error - {}"
+msgstr "خطأ - {}"
+
+msgid "Uninstall - {}"
+msgstr "إلغاء التثبيت - {}"
+
+msgid "Info - {}"
+msgstr "معلومات - {}"
+
+msgid "This port's folder name is invalid."
+msgstr "اسم مجلد هذا الإصدار غير صالح."
+
+msgid "\"{}\" could not be launched. The game files may be missing or incomplete."
+msgstr "تعذّر تشغيل \"{}\". قد تكون ملفات اللعبة مفقودة أو غير مكتملة."
+
+msgid "Uninstall \"{}\"? All of its files will be deleted."
+msgstr "هل تريد إلغاء تثبيت \"{}\"؟ سيتم حذف جميع ملفات اللعبة."
+
+msgid "{} save folder(s) backed up, {} skipped (empty or missing), {} failed (disk full or permission denied?)."
+msgstr "تم نسخ {} مجلد حفظ احتياطيًا، وتم تخطي {} (فارغ أو غير موجود)، وفشل {} (القرص ممتلئ أو تم رفض الإذن؟)."
+
+msgid "{} save folder(s) backed up, {} skipped (empty or missing)."
+msgstr "تم نسخ {} مجلد حفظ احتياطيًا، وتم تخطي {} (فارغ أو غير موجود)."
+
+msgid "Backing up saves..."
+msgstr "جارٍ إنشاء نسخة احتياطية من الحفظ..."
+
+msgid "Backing up {}..."
+msgstr "جارٍ نسخ {} احتياطيًا..."
+
+msgid "Installing {}..."
+msgstr "جارٍ تثبيت {}..."
+
+msgid "Fetching versions for {}..."
+msgstr "جارٍ جلب الإصدارات لـ {}..."
+
+msgid "Version: Not installed"
+msgstr "الإصدار: غير مثبت"
+
+msgid "Version: {}"
+msgstr "الإصدار: {}"
+
+msgid "Version: Installed (tag unknown -- still checked against GitHub)"
+msgstr "الإصدار: مثبت (الوسم غير معروف -- لا يزال يتم التحقق منه عبر GitHub)"
+
+msgid "Version: Installed (tag unknown -- still checked against GitLab)"
+msgstr "الإصدار: مثبت (الوسم غير معروف -- لا يزال يتم التحقق منه عبر GitLab)"
+
+msgid "Version: Installed (this source has no version tracking)"
+msgstr "الإصدار: مثبت (هذا المصدر لا يتتبع الإصدارات)"
+
+msgid "Update - {}"
+msgstr "تحديث - {}"
+
+msgid "Disable"
+msgstr "تعطيل"
+
+msgid "Enable"
+msgstr "تفعيل"
+
+msgid "Favorite executable: Default"
+msgstr "الملف التنفيذي المفضل: افتراضي"
+
+msgid "Favorite executable: {}"
+msgstr "الملف التنفيذي المفضل: {}"
+
+msgid "Update: On"
+msgstr "تحديث: مفعّل"
+
+msgid "Update: Off"
+msgstr "تحديث: معطّل"
+
+msgid "Playtime: {}"
+msgstr "وقت اللعب: {}"
+
+msgid "Reset Game Time - {}"
+msgstr "إعادة تعيين وقت اللعب - {}"
+
+msgid "Reset the tracked playtime for \"{}\"? This cannot be undone."
+msgstr "إعادة تعيين وقت اللعب المسجل لـ \"{}\"؟ لا يمكن التراجع عن هذا الإجراء."
+
+msgid "Reset"
+msgstr "إعادة تعيين"
+
+msgid "Reset game time"
+msgstr "إعادة تعيين وقت اللعب"
+
+msgid "Check for Updates: On"
+msgstr "التحقق من التحديثات: مفعّل"
+
+msgid "Check for Updates: Off"
+msgstr "التحقق من التحديثات: معطّل"
+
+msgid "Type to search..."
+msgstr "ابحث..."

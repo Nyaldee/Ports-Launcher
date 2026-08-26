@@ -1,0 +1,226 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Language: tr\n"
+
+msgid "Info"
+msgstr "Bilgi"
+
+msgid "Install"
+msgstr "Yükle"
+
+msgid "Open folder"
+msgstr "Klasörü aç"
+
+msgid "Uninstall"
+msgstr "Kaldır"
+
+msgid "Update"
+msgstr "Güncelle"
+
+msgid "Play"
+msgstr "Oyna"
+
+msgid "GitHub"
+msgstr "GitHub"
+
+msgid "Discord"
+msgstr "Discord"
+
+msgid "No installed ports yet."
+msgstr "Henüz yüklenmiş port yok."
+
+msgid "Cancel"
+msgstr "İptal"
+
+msgid "Reinstall"
+msgstr "Yeniden yükle"
+
+msgid "Open info"
+msgstr "Bilgiyi aç"
+
+msgid "Favorite executable"
+msgstr "Favori çalıştırılabilir dosya"
+
+msgid "Change version"
+msgstr "Sürümü değiştir"
+
+msgid "Copy"
+msgstr "Kopyala"
+
+msgid "Game website"
+msgstr "Oyun web sitesi"
+
+msgid "Mods website"
+msgstr "Mod sitesi"
+
+msgid "Game folder"
+msgstr "Oyun klasörü"
+
+msgid "Save folder"
+msgstr "Kayıt klasörü"
+
+msgid "Save folder 2"
+msgstr "Kayıt klasörü 2"
+
+msgid "Library"
+msgstr "Kitaplık"
+
+msgid "Save Backup"
+msgstr "Kayıt yedeği"
+
+msgid "Language"
+msgstr "Dil"
+
+msgid "Themes"
+msgstr "Temalar"
+
+msgid "Files"
+msgstr "Dosyalar"
+
+msgid "Default (System)"
+msgstr "Varsayılan (Sistem)"
+
+msgid "Ask every time (default)"
+msgstr "Her seferinde sor (varsayılan)"
+
+msgid "Settings"
+msgstr "Ayarlar"
+
+msgid "Saves Backup"
+msgstr "Kayıt yedeği"
+
+msgid "Installing"
+msgstr "Kuruluyor"
+
+msgid "Loading"
+msgstr "Yükleniyor"
+
+msgid "No Executable Found"
+msgstr "Çalıştırılabilir dosya bulunamadı"
+
+msgid "Choose favorite executable"
+msgstr "Favori çalıştırılabilir dosyayı seç"
+
+msgid "Invalid Port"
+msgstr "Geçersiz port"
+
+msgid "Choose an executable"
+msgstr "Bir çalıştırılabilir dosya seç"
+
+msgid "Executable Not Found"
+msgstr "Çalıştırılabilir dosya bulunamadı"
+
+msgid "Uninstall Error"
+msgstr "Kaldırma hatası"
+
+msgid "Choose a file"
+msgstr "Bir dosya seç"
+
+msgid "Choose a version"
+msgstr "Bir sürüm seç"
+
+msgid "Error"
+msgstr "Hata"
+
+msgid "Installation Error"
+msgstr "Kurulum hatası"
+
+msgid "Update Error"
+msgstr "Güncelleme hatası"
+
+msgid "Error - {}"
+msgstr "Hata - {}"
+
+msgid "Uninstall - {}"
+msgstr "Kaldır - {}"
+
+msgid "Info - {}"
+msgstr "Bilgi - {}"
+
+msgid "This port's folder name is invalid."
+msgstr "Bu portun klasör adı geçersiz."
+
+msgid "\"{}\" could not be launched. The game files may be missing or incomplete."
+msgstr "\"{}\" başlatılamadı. Oyun dosyaları eksik veya bozuk olabilir."
+
+msgid "Uninstall \"{}\"? All of its files will be deleted."
+msgstr "\"{}\" kaldırılsın mı? Oyunun tüm dosyaları silinecek."
+
+msgid "{} save folder(s) backed up, {} skipped (empty or missing), {} failed (disk full or permission denied?)."
+msgstr "{} kayıt klasörü yedeklendi, {} atlandı (boş veya eksik), {} başarısız oldu (disk dolu mu yoksa izin mi reddedildi?)."
+
+msgid "{} save folder(s) backed up, {} skipped (empty or missing)."
+msgstr "{} kayıt klasörü yedeklendi, {} atlandı (boş veya eksik)."
+
+msgid "Backing up saves..."
+msgstr "Kayıtlar yedekleniyor..."
+
+msgid "Backing up {}..."
+msgstr "{} yedekleniyor..."
+
+msgid "Installing {}..."
+msgstr "{} kuruluyor..."
+
+msgid "Fetching versions for {}..."
+msgstr "{} için sürümler alınıyor..."
+
+msgid "Version: Not installed"
+msgstr "Sürüm: Yüklü değil"
+
+msgid "Version: {}"
+msgstr "Sürüm: {}"
+
+msgid "Version: Installed (tag unknown -- still checked against GitHub)"
+msgstr "Sürüm: Yüklü (etiket bilinmiyor -- GitHub üzerinden hâlâ kontrol ediliyor)"
+
+msgid "Version: Installed (tag unknown -- still checked against GitLab)"
+msgstr "Sürüm: Yüklü (etiket bilinmiyor -- GitLab üzerinden hâlâ kontrol ediliyor)"
+
+msgid "Version: Installed (this source has no version tracking)"
+msgstr "Sürüm: Yüklü (bu kaynak sürüm takibi yapmıyor)"
+
+msgid "Update - {}"
+msgstr "Güncelleme - {}"
+
+msgid "Disable"
+msgstr "Kapat"
+
+msgid "Enable"
+msgstr "Aç"
+
+msgid "Favorite executable: Default"
+msgstr "Favori çalıştırılabilir dosya: Varsayılan"
+
+msgid "Favorite executable: {}"
+msgstr "Favori çalıştırılabilir dosya: {}"
+
+msgid "Update: On"
+msgstr "Güncelleme: Açık"
+
+msgid "Update: Off"
+msgstr "Güncelleme: Kapalı"
+
+msgid "Playtime: {}"
+msgstr "Oynama süresi: {}"
+
+msgid "Reset Game Time - {}"
+msgstr "Oynama süresini sıfırla - {}"
+
+msgid "Reset the tracked playtime for \"{}\"? This cannot be undone."
+msgstr "\"{}\" için kayıtlı oynama süresi sıfırlansın mı? Bu işlem geri alınamaz."
+
+msgid "Reset"
+msgstr "Sıfırla"
+
+msgid "Reset game time"
+msgstr "Oynama süresini sıfırla"
+
+msgid "Check for Updates: On"
+msgstr "Güncelleme kontrolü: Açık"
+
+msgid "Check for Updates: Off"
+msgstr "Güncelleme kontrolü: Kapalı"
+
+msgid "Type to search..."
+msgstr "Ara..."

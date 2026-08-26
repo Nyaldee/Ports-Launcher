@@ -1,0 +1,483 @@
+import { Theme, ThemedScrollbar } from "../shared.slint";
+import { ButtonRow, ButtonRowItem, DialogChrome } from "chrome.slint";
+
+// Aucun *Layout dans ce fichier -- voir chrome.slint pour pourquoi.
+export component InfoDialog inherits Window {
+    no-frame: true;
+    // Voir le commentaire équivalent dans simple.slint::MessageDialog.
+    title: root.dialog-title;
+    background: Theme.list-background;
+    in property <length> initial-width: 500px;
+    in property <length> initial-height: 400px;
+    width: initial-width;
+    height: initial-height;
+
+    // Voir le commentaire équivalent dans simple.slint::MessageDialog.
+    in property <string> font-family: "Segoe UI";
+    default-font-family: root.font-family;
+
+    in property <string> dialog-title: "";
+    in property <string> version-text: "";
+    // Sous la rangée de boutons contextuels (voir context-button-row plus
+    // bas) -- même condition de visibilité que le bouton correspondant
+    // (favorite-exe-enabled/change-version-enabled), pas de propriété
+    // dédiée en plus.
+    in property <string> favorite-exe-status-text: "";
+    in property <string> update-status-text: "";
+    in property <string> playtime-status-text: "";
+    in property <string> instructions-text: "";
+    // Première URL trouvée dans instructions-text (voir
+    // Port::instructions_link côté Rust) -- vide si aucune, auquel cas le
+    // lien cliquable ci-dessous reste caché.
+    in property <string> instructions-link: "";
+    in property <bool> website-enabled: false;
+    in property <bool> mods-enabled: false;
+    in property <bool> game-folder-enabled: false;
+    in property <bool> save-folder-enabled: false;
+    in property <bool> save-folder2-enabled: false;
+    // GitHub/GitLab uniquement (voir app::dialogs::open_info_dialog) -- une
+    // source DirectUrl/Local n'a aucun historique de releases à proposer.
+    in property <bool> change-version-enabled: false;
+    // Même condition que game-folder-enabled côté Rust (voir
+    // open_info_dialog) -- rien à scanner comme exécutable candidat si le
+    // port n'est même pas installé.
+    in property <bool> favorite-exe-enabled: false;
+    // Même condition que change-version-enabled -- pas de sens de proposer
+    // d'activer/désactiver l'auto-MAJ d'une source qui n'a de toute façon
+    // aucune release à comparer (voir app::dialogs::open_info_dialog).
+    in property <bool> update-toggle-enabled: false;
+    // Même condition que favorite-exe-enabled -- rien à réinitialiser pour
+    // un port qui n'est même pas installé.
+    in property <bool> reset-playtime-enabled: false;
+    // Surbrillance de navigation manette (voir
+    // app::gamepad_target::DialogGamepadTarget) -- Website=0, Mods
+    // website=1, Game folder=2, Save folder=3, Save folder 2=4, Change
+    // version=5, Favorite executable=6, Update=7, Reset Game Time=8. -1 =
+    // aucune (souris seule) -- même convention que ListPickerDialog.selected-index.
+    in property <int> selected-index: -1;
+    callback website-requested();
+    callback mods-requested();
+    callback game-folder-requested();
+    callback save-folder-requested();
+    callback save-folder2-requested();
+    callback change-version-requested();
+    callback favorite-exe-requested();
+    callback update-toggle-requested();
+    callback reset-playtime-requested();
+    callback instructions-link-requested();
+    callback close-requested();
+    // Survol souris d'un bouton -- voir DialogButton.hovered, fait suivre la
+    // sélection manette/clavier (root.selected-index) sous la souris, un
+    // seul indicateur pour les deux au lieu de deux indépendants.
+    callback nav-hovered(int);
+    // Gauche/droite + Entrée -- voir key-handler plus bas ; réutilise la
+    // même logique que la manette (DialogGamepadTarget::move_selection/
+    // activate_selection côté Rust).
+    callback move-selection-requested(int);
+    callback activate-selection-requested();
+    // Défile le texte d'instructions d'un cran (Haut/Bas manette -- voir
+    // DialogGamepadTarget::move_selection côté Rust, qui n'y route que
+    // `dy`, jamais `dx` : Gauche/Droite restent réservés à la navigation
+    // entre boutons ci-dessous, un axe indépendant). `direction` positif =
+    // vers le bas (même convention que dy dans DIRECTION_DELTAS côté Rust).
+    callback scroll-instructions(int);
+    scroll-instructions(direction) => {
+        instructions-flick.viewport-y = Math.clamp(
+            instructions-flick.viewport-y - direction * row-height,
+            min(0px, instructions-flick.height - instructions-flick.viewport-height),
+            0px,
+        );
+    }
+    forward-focus: key-handler;
+
+    // Partagée entre key-handler et instructions-input (voir plus bas) --
+    // les mêmes raccourcis marchent quel que soit celui des deux qui a le
+    // focus clavier.
+    function handle-nav-key(event: KeyEvent) -> EventResult {
+        if (event.text == Key.Escape) {
+            root.close-requested();
+            return accept;
+        // Ctrl+WASD -- même alias que dans app-window.slint (voir son
+        // commentaire), pour les claviers/dispositions sans flèches dédiées.
+        } else if (event.text == Key.LeftArrow || (event.modifiers.control && event.text == "a")) {
+            root.move-selection-requested(-1);
+            return accept;
+        } else if (event.text == Key.RightArrow || (event.modifiers.control && event.text == "d")) {
+            root.move-selection-requested(1);
+            return accept;
+        } else if (event.text == Key.UpArrow || (event.modifiers.control && event.text == "w")) {
+            root.scroll-instructions(-1);
+            return accept;
+        } else if (event.text == Key.DownArrow || (event.modifiers.control && event.text == "s")) {
+            root.scroll-instructions(1);
+            return accept;
+        } else if (event.text == Key.Return) {
+            root.activate-selection-requested();
+            return accept;
+        } else {
+            return reject;
+        }
+    }
+
+    // Voir le commentaire équivalent dans simple.slint::MessageDialog.
+    in property <length> item-font-px-physical: 14px;
+    in property <length> title-font-px-physical: 13px;
+    in property <length> row-height-physical: 48px;
+    in property <length> title-bar-height-physical: 34px;
+
+    property <length> logical-w: root.width - border-px * 2;
+    property <length> logical-h: root.height - border-px * 2;
+    property <length> border-px: Theme.border-width * 1px / Theme.scale-factor;
+    property <length> item-font-px: item-font-px-physical / Theme.scale-factor;
+    property <length> title-font-px: title-font-px-physical / Theme.scale-factor;
+    property <length> bar-height: title-bar-height-physical / Theme.scale-factor;
+    property <length> gutter: 12px / Theme.scale-factor;
+    // Même hauteur EXACTE que le nom d'un port dans la fenêtre principale.
+    property <length> row-height: root.row-height-physical / Theme.scale-factor;
+    // Mêmes valeurs LITTÉRALES que button-padding/row-spacing dans
+    // app-window.slint (10px/6px physiques / Theme.scale-factor) -- pas des
+    // propriétés poussées séparément par Rust : ce sont des constantes de
+    // style, pas des mesures GDI, aucune raison de dupliquer la plomberie
+    // pour une valeur qui ne change jamais.
+    property <length> button-padding: 10px / Theme.scale-factor;
+    property <length> row-spacing: 6px / Theme.scale-factor;
+    // Largeur utile de la zone de contenu, marge root.gutter des deux côtés --
+    // une seule propriété nommée plutôt que "chrome.content-width - root.gutter
+    // * 2" répété à chaque élément (texte, cadre d'instructions, rangée de
+    // boutons). chrome.content-width (pas content-area.width) --
+    // content-area vit DANS DialogChrome, pas accessible directement par
+    // nom depuis ici.
+    property <length> content-width: chrome.content-width - root.gutter * 2;
+    // Alias sémantique -- purement pour le nom, même valeur que row-height :
+    // les deux rangées de boutons d'InfoDialog (context-button-row et
+    // button-row plus bas) passent toutes les deux big-button-height en
+    // `button-height:` à leur ButtonRow, pour un gabarit identique.
+    property <length> big-button-height: row-height;
+    // MÊME largeur que ThemedScrollbar (voir son commentaire dans
+    // shared.slint) -- juste pour réserver la place qui lui revient
+    // dans instructions-flick, pas pour surcharger sa propre largeur.
+    property <length> scrollbar-width: 6px / Theme.scale-factor;
+
+    key-handler := FocusScope {
+        key-pressed(event) => { return root.handle-nav-key(event); }
+
+        chrome := DialogChrome {
+            dialog-title: root.dialog-title;
+            bar-height: root.bar-height;
+            title-font-px: root.title-font-px;
+            border-px: root.border-px;
+            logical-w: root.logical-w;
+            logical-h: root.logical-h;
+            close-requested => { root.close-requested(); }
+
+            // Même rendu que le nom d'un port dans la fenêtre principale
+            // (voir sa Text dans app-window.slint) : même police, même
+            // taille, même couleur, pas de gras.
+            // height: status-line-height (PAS row-height) -- même correctif
+            // que pour favorite-exe-status/update-status/playtime-status
+            // (voir leur commentaire juste en dessous) : row-height est
+            // pensé pour une rangée CLIQUABLE (48px physiques), bien plus
+            // haute qu'une simple ligne de texte -- gardée ici, le texte se
+            // recentre au milieu d'une boîte trop grande et donne
+            // l'impression d'un trou avant la ligne de statut suivante,
+            // même sans le moindre espacement entre les deux.
+            version-text-label := Text {
+                text: root.version-text;
+                color: Theme.list-text;
+                font-size: root.item-font-px;
+                vertical-alignment: center;
+                x: root.gutter;
+                y: root.gutter;
+                // content-width seul -- les boutons/statuts sont SOUS ce
+                // texte (voir plus bas), pas sur la même ligne : aucune
+                // place à leur réserver ici.
+                width: content-width;
+                height: status-line-height;
+            }
+
+            // Statut juste sous le texte de version -- même condition de
+            // visibilité que le bouton correspondant, voir le commentaire
+            // de favorite-exe-status-text/update-status-text plus haut.
+            // Aucun row-spacing dans la chaîne des y ci-dessous (ni ici, ni
+            // entre les trois statuts) -- un seul et même écart (zéro) du
+            // texte de version jusqu'au dernier statut visible, jamais un
+            // row-spacing à un endroit de la chaîne et pas à un autre.
+            property <length> status-line-height: item-font-px * 1.3;
+
+            favorite-exe-status := Text {
+                text: root.favorite-exe-status-text;
+                visible: root.favorite-exe-enabled;
+                color: Theme.list-text;
+                font-size: root.item-font-px;
+                vertical-alignment: center;
+                x: root.gutter;
+                y: version-text-label.y + version-text-label.height;
+                width: content-width;
+                // 0px si masqué -- sinon un statut invisible (port pas
+                // installé : favorite-exe-enabled/reset-playtime-enabled à
+                // faux, mais update-toggle-enabled reste vrai) laisse quand
+                // même son espace dans la chaîne des y ci-dessous, un trou
+                // pour chaque ligne masquée avant la première visible.
+                height: root.favorite-exe-enabled ? status-line-height : 0px;
+            }
+
+            update-status := Text {
+                text: root.update-status-text;
+                visible: root.update-toggle-enabled;
+                color: Theme.list-text;
+                font-size: root.item-font-px;
+                vertical-alignment: center;
+                x: root.gutter;
+                y: favorite-exe-status.y + favorite-exe-status.height;
+                width: content-width;
+                height: root.update-toggle-enabled ? status-line-height : 0px;
+            }
+
+            playtime-status := Text {
+                text: root.playtime-status-text;
+                visible: root.reset-playtime-enabled;
+                color: Theme.list-text;
+                font-size: root.item-font-px;
+                vertical-alignment: center;
+                x: root.gutter;
+                y: update-status.y + update-status.height;
+                width: content-width;
+                height: root.reset-playtime-enabled ? status-line-height : 0px;
+            }
+
+            // Même ButtonRow que la rangée de raccourcis plus bas (voir son
+            // commentaire), count: 4. Ordre visuel (version, update, favori,
+            // reset) PAS séquentiel avec les selected-index globaux (5-8,
+            // hérités du reste de la navigation clavier/manette
+            // d'InfoDialog -- 5=version, 6=favori, 7=update, 8=reset) :
+            // selected-index/clicked/hovered traduisent donc entre position
+            // LOCALE (0-3, dans items) et index GLOBAL, plutôt que de
+            // renuméroter tout le reste de la navigation d'InfoDialog pour
+            // un simple changement d'ordre d'affichage. Sous les statuts
+            // (favorite-exe-status/update-status/playtime-status ci-dessus),
+            // pas au-dessus : les boutons agissent sur ce que ces lignes
+            // affichent, plus lisible juste en dessous d'elles.
+            context-button-row := ButtonRow {
+                x: root.gutter;
+                y: playtime-status.y + playtime-status.height + row-spacing;
+                content-width: content-width;
+                button-padding: button-padding;
+                row-spacing: row-spacing;
+                button-height: big-button-height;
+                item-font-px: root.item-font-px;
+                border-px: root.border-px;
+                count: 4;
+                selected-index:
+                    root.selected-index == 5 ? 0 :
+                    root.selected-index == 7 ? 1 :
+                    root.selected-index == 6 ? 2 :
+                    root.selected-index == 8 ? 3 : -1;
+                items: [
+                    { text: @tr("Change version"), enabled: root.change-version-enabled },
+                    { text: @tr("Update"), enabled: root.update-toggle-enabled },
+                    { text: @tr("Favorite executable"), enabled: root.favorite-exe-enabled },
+                    { text: @tr("Reset game time"), enabled: root.reset-playtime-enabled },
+                ];
+                clicked(index) => {
+                    if (index == 0) { root.change-version-requested(); }
+                    else if (index == 1) { root.update-toggle-requested(); }
+                    else if (index == 2) { root.favorite-exe-requested(); }
+                    else { root.reset-playtime-requested(); }
+                }
+                hovered(index) => {
+                    root.nav-hovered(index == 0 ? 5 : index == 1 ? 7 : index == 2 ? 6 : 8);
+                }
+            }
+
+            instructions-box := Rectangle {
+                background: Theme.search-background;
+                border-width: root.border-px;
+                border-color: Theme.border-color;
+                x: root.gutter;
+                // Juste sous context-button-row -- dérivé de la position
+                // RÉELLE de l'en-tête, jamais d'une constante recalculée
+                // séparément, qui divergerait dès que l'en-tête change de
+                // nombre de rangées (même principe que button-row.height
+                // plus bas).
+                y: context-button-row.y + context-button-row.height + root.gutter;
+                width: content-width;
+                // Symétrique de y ci-dessus : tout l'espace restant jusqu'à
+                // la rangée de boutons du bas. button-row.height, PAS le
+                // littéral button-height -- la rangée peut occuper DEUX
+                // lignes sur une petite résolution (voir ButtonRow).
+                // root.gutter * 2 : un root.gutter pour la marge sous
+                // button-row (déjà comptée dans button-row.y, voir
+                // chrome.content-height - root.gutter - self.height), un
+                // second pour l'écart visible au-dessus de la rangée. Un
+                // seul root.gutter colle les deux. chrome.content-height
+                // (PAS parent.height) -- voir le commentaire équivalent
+                // dans simple.slint::MessageDialog.
+                height: chrome.content-height - self.y - root.gutter * 2 - button-row.height;
+
+                // Flickable -- sans lui, un texte d'instructions plus long
+                // que la hauteur disponible est simplement coupé (le
+                // TextInput ci-dessous n'a aucun mécanisme de défilement
+                // propre). viewport-height suit le PLUS GRAND entre la
+                // hauteur du cadre et la hauteur réellement nécessaire au
+                // texte replié à cette largeur (`preferred-height`, déjà le
+                // même mécanisme que text-preferred-width sur DialogButton
+                // dans chrome.slint) -- jamais de défilement pour un
+                // texte qui tient déjà, jamais de texte coupé pour un texte
+                // qui ne tient pas.
+                // Clic droit -- Copier -- sur le texte d'instructions, comme
+                // le TextEdit standard de Slint (voir instructions-input.copy(),
+                // fourni par TextInput lui-même).
+                ContextMenuArea {
+                    Menu {
+                        MenuItem {
+                            title: @tr("Copy");
+                            enabled: !root.instructions-text.is-empty;
+                            activated => { instructions-input.copy(); }
+                        }
+                    }
+
+                instructions-flick := Flickable {
+                    x: root.gutter * 0.5;
+                    y: root.gutter * 0.5;
+                    // - scrollbar-width EN PLUS du root.gutter*0.5 des deux
+                    // côtés déjà réservé -- sinon la scrollbar ajoutée
+                    // ci-dessous se superpose au texte.
+                    width: instructions-box.width - root.gutter - scrollbar-width;
+                    height: instructions-box.height - root.gutter;
+                    viewport-width: self.width;
+                    viewport-height: max(self.height, link-row.height + instructions-input.preferred-height);
+                    // Jamais de glissé-pour-défiler ici -- glisser dans le
+                    // texte sert TOUJOURS à sélectionner (jamais les deux à
+                    // la fois, sans quoi les deux gestes se disputent le
+                    // même drag). Molette/flèches/scrollbar (voir plus bas)
+                    // restent les seuls moyens de défiler, `interactive`
+                    // n'affecte que le glissé.
+                    interactive: false;
+
+                    // Lien séparé du texte plutôt qu'une URL cliquable
+                    // au fil du paragraphe : le TextInput ci-dessous reste un
+                    // bloc de texte simple (pas de texte enrichi en Slint),
+                    // repositionner une zone cliquable pile sur l'URL selon
+                    // son retour à la ligne serait fragile. N'occupe aucune
+                    // place quand instructions-link est vide.
+                    link-row := TouchArea {
+                        x: 0px;
+                        y: 0px;
+                        width: instructions-flick.width;
+                        height: root.instructions-link == "" ? 0px : row-height;
+                        mouse-cursor: pointer;
+                        clicked => { root.instructions-link-requested(); }
+
+                        Text {
+                            visible: root.instructions-link != "";
+                            text: "🔗 " + root.instructions-link;
+                            color: Theme.selected-background;
+                            font-size: root.item-font-px;
+                            vertical-alignment: center;
+                            overflow: elide;
+                            width: parent.width;
+                            height: 100%;
+                        }
+                    }
+
+                    // TextInput en lecture seule (pas un simple Text) -- un
+                    // Text ne permet aucune sélection à la souris/au clavier ;
+                    // read-only désactive l'ÉDITION mais garde la sélection et
+                    // le Ctrl+C, nécessaires pour copier les instructions.
+                    instructions-input := TextInput {
+                        y: link-row.height;
+                        text: root.instructions-text;
+                        color: Theme.list-text;
+                        font-size: root.item-font-px;
+                        read-only: true;
+                        single-line: false;
+                        wrap: word-wrap;
+                        // Couleurs du thème (themes.json), pas le bleu/noir par
+                        // défaut de Slint -- mêmes couleurs que la
+                        // surbrillance manette/clavier partout ailleurs dans
+                        // les dialogues (voir DialogButton dans chrome.slint).
+                        selection-background-color: Theme.selected-background;
+                        selection-foreground-color: Theme.selected-text;
+                        width: instructions-flick.width;
+                        // Sélectionner du texte donne le focus clavier à CE
+                        // TextInput (nécessaire pour Ctrl+C) et il le garde
+                        // ensuite (rien ne le reprend au clic ailleurs) --
+                        // handle-nav-key (partagée avec key-handler) fait
+                        // marcher les mêmes touches quel que soit celui des
+                        // deux qui a le focus.
+                        key-pressed(event) => { return root.handle-nav-key(event); }
+                    }
+                }
+                }
+
+                // Barre de défilement custom (couleurs du thème, voir son
+                // commentaire dans shared.slint) -- sans elle, un
+                // texte trop long ne se parcourt qu'au glissé, sans indice
+                // visuel qu'il reste du contenu à lire. Centrée dans la
+                // marge restante à droite de instructions-flick.
+                ThemedScrollbar {
+                    x: instructions-flick.x + instructions-flick.width + (root.gutter * 0.5 - scrollbar-width) / 2;
+                    y: instructions-flick.y;
+                    height: instructions-flick.height;
+                    viewport-height: instructions-flick.viewport-height;
+                    visible-height: instructions-flick.height;
+                    viewport-y <=> instructions-flick.viewport-y;
+                }
+            }
+
+            // Rangée de raccourcis -- voir ButtonRow dans chrome.slint. Le
+            // survol relaie vers Rust (nav-hovered) qui renvoie ensuite
+            // `selected-index` : InfoDialog a aussi une navigation clavier
+            // (Gauche/Droite, voir key-handler) qui doit rester en phase
+            // avec le survol souris, Rust reste donc l'arbitre unique des
+            // deux. Ordre visuel (dossier du jeu, sauvegarde(s), mods,
+            // site) PAS séquentiel avec les selected-index globaux (0-4,
+            // hérités du reste de la navigation -- 0=site, 1=mods, 2=dossier
+            // du jeu, 3=save, 4=save2) : même principe de traduction
+            // locale/globale que context-button-row plus haut, plutôt que
+            // de renuméroter tout le reste de la navigation d'InfoDialog
+            // pour un simple changement d'ordre d'affichage.
+            button-row := ButtonRow {
+                x: root.gutter;
+                // self.height PAS button-height littéral -- réagit
+                // automatiquement si la rangée bascule sur 2 lignes (voir
+                // ButtonRow), reste collée au bas du dialogue dans les deux
+                // cas. chrome.content-height (PAS parent.height) -- voir le
+                // commentaire équivalent dans simple.slint::MessageDialog.
+                y: chrome.content-height - root.gutter - self.height;
+                content-width: content-width;
+                button-padding: button-padding;
+                row-spacing: row-spacing;
+                // Même taille que la rangée de boutons contextuels plus
+                // haut (voir context-button-row) -- les deux rangées
+                // d'InfoDialog partagent le même gabarit.
+                button-height: big-button-height;
+                item-font-px: root.item-font-px;
+                border-px: root.border-px;
+                selected-index:
+                    root.selected-index == 2 ? 0 :
+                    root.selected-index == 3 ? 1 :
+                    root.selected-index == 4 ? 2 :
+                    root.selected-index == 1 ? 3 :
+                    root.selected-index == 0 ? 4 : -1;
+                items: [
+                    { text: @tr("Game folder"), enabled: root.game-folder-enabled },
+                    { text: @tr("Save folder"), enabled: root.save-folder-enabled },
+                    { text: @tr("Save folder 2"), enabled: root.save-folder2-enabled },
+                    { text: @tr("Mods website"), enabled: root.mods-enabled },
+                    { text: @tr("Game website"), enabled: root.website-enabled },
+                ];
+                clicked(index) => {
+                    if (index == 0) { root.game-folder-requested(); }
+                    else if (index == 1) { root.save-folder-requested(); }
+                    else if (index == 2) { root.save-folder2-requested(); }
+                    else if (index == 3) { root.mods-requested(); }
+                    else { root.website-requested(); }
+                }
+                hovered(index) => {
+                    root.nav-hovered(index == 0 ? 2 : index == 1 ? 3 : index == 2 ? 4 : index == 3 ? 1 : 0);
+                }
+            }
+        }
+    }
+}

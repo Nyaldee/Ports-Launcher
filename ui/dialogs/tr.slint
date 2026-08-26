@@ -1,0 +1,118 @@
+// Rust ne peut pas appeler @tr() lui-même (pas de fonction de traduction
+// exposée côté hôte, seulement dans le code généré par le compilateur
+// Slint) -- ce global centralise tout le texte que Rust construisait avant
+// comme des String littérales (titres de dialogue, messages avec
+// interpolation) pour que ce soit le .slint qui porte le gabarit traduit.
+// Rust n'y passe plus que des données brutes (nom de port, compteurs) et
+// appelle `<n'importe quel composant>.global::<Tr>().invoke_xxx(...)`
+// (même mécanisme que `.global::<Theme>()` déjà utilisé partout ailleurs
+// dans ce dossier/le code Rust) juste avant de pousser le résultat vers l'UI.
+export global Tr {
+    // -- Titres de dialogue statiques --
+    public pure function dialog-title-settings() -> string { @tr("Settings") }
+    public pure function dialog-title-saves-backup() -> string { @tr("Saves Backup") }
+    public pure function dialog-title-installing() -> string { @tr("Installing") }
+    public pure function dialog-title-loading() -> string { @tr("Loading") }
+    public pure function dialog-title-no-executable-found() -> string { @tr("No Executable Found") }
+    public pure function dialog-title-choose-favorite-executable() -> string { @tr("Choose favorite executable") }
+    public pure function dialog-title-invalid-port() -> string { @tr("Invalid Port") }
+    public pure function dialog-title-choose-executable() -> string { @tr("Choose an executable") }
+    public pure function dialog-title-executable-not-found() -> string { @tr("Executable Not Found") }
+    public pure function dialog-title-uninstall-error() -> string { @tr("Uninstall Error") }
+    public pure function dialog-title-choose-file() -> string { @tr("Choose a file") }
+    public pure function dialog-title-choose-version() -> string { @tr("Choose a version") }
+    public pure function dialog-title-error() -> string { @tr("Error") }
+    public pure function dialog-title-installation-error() -> string { @tr("Installation Error") }
+    public pure function dialog-title-update-error() -> string { @tr("Update Error") }
+    public pure function dialog-title-language() -> string { @tr("Language") }
+    // Réutilisées à la fois comme libellé dans le menu Settings ET comme
+    // titre de leur propre sous-dialogue (même texte, les deux rôles) --
+    // voir app::dialogs::open_settings_dialog/open_theme_picker/open_files_picker.
+    public pure function label-themes() -> string { @tr("Themes") }
+    public pure function label-files() -> string { @tr("Files") }
+    public pure function label-language() -> string { @tr("Language") }
+    public pure function label-library() -> string { @tr("Library") }
+    public pure function label-backup-saves() -> string { @tr("Save Backup") }
+    // Bouton bascule du menu Settings (voir app::dialogs::toggle_release_sync)
+    // -- reflète l'état ACTUEL de release_sync, choisi côté Rust selon
+    // lequel des deux appeler.
+    public pure function label-check-updates-on() -> string { @tr("Check for Updates: On") }
+    public pure function label-check-updates-off() -> string { @tr("Check for Updates: Off") }
+
+    // -- Titres de dialogue avec le nom du port --
+    public pure function dialog-title-error-port(name: string) -> string { @tr("Error - {}", name) }
+    public pure function dialog-title-uninstall-port(name: string) -> string { @tr("Uninstall - {}", name) }
+    public pure function dialog-title-info-port(name: string) -> string { @tr("Info - {}", name) }
+    public pure function dialog-title-toggle-update(name: string) -> string { @tr("Update - {}", name) }
+
+    // -- Messages --
+    public pure function message-invalid-folder-name() -> string { @tr("This port's folder name is invalid.") }
+    public pure function message-launch-failed(name: string) -> string {
+        @tr("\"{}\" could not be launched. The game files may be missing or incomplete.", name)
+    }
+    public pure function message-uninstall-confirm(name: string) -> string {
+        @tr("Uninstall \"{}\"? All of its files will be deleted.", name)
+    }
+    public pure function message-backup-summary(copied: int, skipped: int, failed: int) -> string {
+        if (failed > 0) {
+            return @tr("{} save folder(s) backed up, {} skipped (empty or missing), {} failed (disk full or permission denied?).", copied, skipped, failed);
+        }
+        return @tr("{} save folder(s) backed up, {} skipped (empty or missing).", copied, skipped);
+    }
+    // Bouton "Update" d'InfoDialog / badge barré de la ligne principale
+    // (voir app::dialogs::open_update_toggle_dialog) -- libellés du picker
+    // générique à deux entrées Enable/Disable.
+    public pure function confirm-disable() -> string { @tr("Disable") }
+    public pure function confirm-enable() -> string { @tr("Enable") }
+
+    // -- Texte de progression --
+    public pure function progress-backing-up-saves() -> string { @tr("Backing up saves...") }
+    public pure function progress-backing-up-named(name: string) -> string { @tr("Backing up {}...", name) }
+    public pure function progress-installing(name: string) -> string { @tr("Installing {}...", name) }
+    public pure function progress-fetching-versions(name: string) -> string { @tr("Fetching versions for {}...", name) }
+
+    // -- Version affichée dans InfoDialog --
+    public pure function version-not-installed() -> string { @tr("Version: Not installed") }
+    public pure function version-tag(tag: string) -> string { @tr("Version: {}", tag) }
+    public pure function version-installed-tag-unknown-github() -> string {
+        @tr("Version: Installed (tag unknown -- still checked against GitHub)")
+    }
+    public pure function version-installed-tag-unknown-gitlab() -> string {
+        @tr("Version: Installed (tag unknown -- still checked against GitLab)")
+    }
+    public pure function version-installed-no-tracking() -> string {
+        @tr("Version: Installed (this source has no version tracking)")
+    }
+
+    // -- Statut sous la rangée de boutons contextuels d'InfoDialog --
+    public pure function favorite-exe-status-default() -> string { @tr("Favorite executable: Default") }
+    public pure function favorite-exe-status-named(name: string) -> string { @tr("Favorite executable: {}", name) }
+    public pure function update-status-on() -> string { @tr("Update: On") }
+    public pure function update-status-off() -> string { @tr("Update: Off") }
+    // `formatted` déjà mis en forme côté Rust ("3h 42m", "45m"...) -- voir
+    // app::playtime::format_playtime.
+    public pure function playtime-status(formatted: string) -> string { @tr("Playtime: {}", formatted) }
+
+    // Bouton "Reset Game Time" d'InfoDialog -- même dialogue yes/no que le
+    // basculement d'auto-MAJ (ConfirmDialog réutilisé tel quel).
+    public pure function dialog-title-reset-playtime(name: string) -> string { @tr("Reset Game Time - {}", name) }
+    public pure function message-reset-playtime-confirm(name: string) -> string {
+        @tr("Reset the tracked playtime for \"{}\"? This cannot be undone.", name)
+    }
+    public pure function confirm-reset() -> string { @tr("Reset") }
+
+    // -- Entrée de liste --
+    public pure function picker-ask-every-time() -> string { @tr("Ask every time (default)") }
+    // Nom des langues elles-mêmes ("Français", "日本語"...) volontairement
+    // PAS traduits -- un nom de langue est un endonyme, identique quelle
+    // que soit la langue de l'interface (voir
+    // app::dialogs::open_language_picker). Seule cette première entrée
+    // ("suit la langue du système") est un vrai texte d'UI à traduire.
+    public pure function language-default-system() -> string { @tr("Default (System)") }
+
+    // Seed UNIQUE de placeholder_text au tout premier lancement (voir
+    // main(), core::state::StateManager::placeholder_text) -- ensuite un
+    // réglage utilisateur en clair dans state.json, jamais re-traduit par
+    // un changement de langue.
+    public pure function placeholder-default-search() -> string { @tr("Type to search...") }
+}

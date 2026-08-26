@@ -1,0 +1,19 @@
+{
+  "_readme": "Add your own local ports here -- games you already have installed yourself, no \"source\" needed. Just point folder at the folder you created under Library/, put the game files there yourself, and it shows up like any other port. This file is never overwritten by a ports.json update, so your own additions always survive. The two examples below are DISABLED on purpose (\"name\"/\"folder\" set to null, which makes Ports Launcher skip them) -- copy one, fill in real values, and it becomes a real entry.",
+  "ports": [
+    {
+      "name": null,
+      "folder": null,
+      "tags": ["Example", "Local"],
+      "instructions": "Copy your game's files into Library/<folder> yourself, then set \"name\" and \"folder\" above to real values (folder must match the folder you created).",
+      "image": "https://example.com/cover.png",
+      "save": "Save",
+      "executable": "game.exe"
+    },
+    {
+      "name": null,
+      "folder": null,
+      "tags": []
+    }
+  ]
+}

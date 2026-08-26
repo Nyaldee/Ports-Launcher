@@ -1,0 +1,226 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Language: de\n"
+
+msgid "Info"
+msgstr "Info"
+
+msgid "Install"
+msgstr "Installieren"
+
+msgid "Open folder"
+msgstr "Ordner öffnen"
+
+msgid "Uninstall"
+msgstr "Deinstallieren"
+
+msgid "Update"
+msgstr "Aktualisieren"
+
+msgid "Play"
+msgstr "Spielen"
+
+msgid "GitHub"
+msgstr "GitHub"
+
+msgid "Discord"
+msgstr "Discord"
+
+msgid "No installed ports yet."
+msgstr "Noch keine Ports installiert."
+
+msgid "Cancel"
+msgstr "Abbrechen"
+
+msgid "Reinstall"
+msgstr "Neu installieren"
+
+msgid "Open info"
+msgstr "Info öffnen"
+
+msgid "Favorite executable"
+msgstr "Bevorzugte ausführbare Datei"
+
+msgid "Change version"
+msgstr "Version ändern"
+
+msgid "Copy"
+msgstr "Kopieren"
+
+msgid "Game website"
+msgstr "Spiel-Website"
+
+msgid "Mods website"
+msgstr "Mod-Webseite"
+
+msgid "Game folder"
+msgstr "Spielordner"
+
+msgid "Save folder"
+msgstr "Speicherordner"
+
+msgid "Save folder 2"
+msgstr "Speicherordner 2"
+
+msgid "Library"
+msgstr "Bibliothek"
+
+msgid "Save Backup"
+msgstr "Sicherung der Speicherstände"
+
+msgid "Language"
+msgstr "Sprache"
+
+msgid "Themes"
+msgstr "Designs"
+
+msgid "Files"
+msgstr "Dateien"
+
+msgid "Default (System)"
+msgstr "Standard (System)"
+
+msgid "Ask every time (default)"
+msgstr "Jedes Mal fragen (Standard)"
+
+msgid "Settings"
+msgstr "Einstellungen"
+
+msgid "Saves Backup"
+msgstr "Sicherung der Speicherstände"
+
+msgid "Installing"
+msgstr "Wird installiert"
+
+msgid "Loading"
+msgstr "Wird geladen"
+
+msgid "No Executable Found"
+msgstr "Keine ausführbare Datei gefunden"
+
+msgid "Choose favorite executable"
+msgstr "Bevorzugte ausführbare Datei wählen"
+
+msgid "Invalid Port"
+msgstr "Ungültiger Port"
+
+msgid "Choose an executable"
+msgstr "Eine ausführbare Datei wählen"
+
+msgid "Executable Not Found"
+msgstr "Ausführbare Datei nicht gefunden"
+
+msgid "Uninstall Error"
+msgstr "Fehler beim Deinstallieren"
+
+msgid "Choose a file"
+msgstr "Eine Datei wählen"
+
+msgid "Choose a version"
+msgstr "Eine Version wählen"
+
+msgid "Error"
+msgstr "Fehler"
+
+msgid "Installation Error"
+msgstr "Installationsfehler"
+
+msgid "Update Error"
+msgstr "Aktualisierungsfehler"
+
+msgid "Error - {}"
+msgstr "Fehler - {}"
+
+msgid "Uninstall - {}"
+msgstr "Deinstallieren - {}"
+
+msgid "Info - {}"
+msgstr "Info - {}"
+
+msgid "This port's folder name is invalid."
+msgstr "Der Ordnername dieses Ports ist ungültig."
+
+msgid "\"{}\" could not be launched. The game files may be missing or incomplete."
+msgstr "\"{}\" konnte nicht gestartet werden. Die Spieldateien fehlen möglicherweise oder sind unvollständig."
+
+msgid "Uninstall \"{}\"? All of its files will be deleted."
+msgstr "\"{}\" deinstallieren? Alle Dateien des Spiels werden gelöscht."
+
+msgid "{} save folder(s) backed up, {} skipped (empty or missing), {} failed (disk full or permission denied?)."
+msgstr "{} Speicherordner gesichert, {} übersprungen (leer oder fehlend), {} fehlgeschlagen (Festplatte voll oder Zugriff verweigert?)."
+
+msgid "{} save folder(s) backed up, {} skipped (empty or missing)."
+msgstr "{} Speicherordner gesichert, {} übersprungen (leer oder fehlend)."
+
+msgid "Backing up saves..."
+msgstr "Speicherstände werden gesichert..."
+
+msgid "Backing up {}..."
+msgstr "{} wird gesichert..."
+
+msgid "Installing {}..."
+msgstr "{} wird installiert..."
+
+msgid "Fetching versions for {}..."
+msgstr "Versionen für {} werden abgerufen..."
+
+msgid "Version: Not installed"
+msgstr "Version: Nicht installiert"
+
+msgid "Version: {}"
+msgstr "Version: {}"
+
+msgid "Version: Installed (tag unknown -- still checked against GitHub)"
+msgstr "Version: Installiert (Tag unbekannt -- wird weiterhin über GitHub geprüft)"
+
+msgid "Version: Installed (tag unknown -- still checked against GitLab)"
+msgstr "Version: Installiert (Tag unbekannt -- wird weiterhin über GitLab geprüft)"
+
+msgid "Version: Installed (this source has no version tracking)"
+msgstr "Version: Installiert (diese Quelle verfolgt keine Versionen)"
+
+msgid "Update - {}"
+msgstr "Update - {}"
+
+msgid "Disable"
+msgstr "Deaktivieren"
+
+msgid "Enable"
+msgstr "Aktivieren"
+
+msgid "Favorite executable: Default"
+msgstr "Bevorzugte Ausführungsdatei: Standard"
+
+msgid "Favorite executable: {}"
+msgstr "Bevorzugte Ausführungsdatei: {}"
+
+msgid "Update: On"
+msgstr "Update: Ein"
+
+msgid "Update: Off"
+msgstr "Update: Aus"
+
+msgid "Playtime: {}"
+msgstr "Spielzeit: {}"
+
+msgid "Reset Game Time - {}"
+msgstr "Spielzeit zurücksetzen - {}"
+
+msgid "Reset the tracked playtime for \"{}\"? This cannot be undone."
+msgstr "Erfasste Spielzeit für \"{}\" zurücksetzen? Dies kann nicht rückgängig gemacht werden."
+
+msgid "Reset"
+msgstr "Zurücksetzen"
+
+msgid "Reset game time"
+msgstr "Spielzeit zurücksetzen"
+
+msgid "Check for Updates: On"
+msgstr "Auf Updates prüfen: An"
+
+msgid "Check for Updates: Off"
+msgstr "Auf Updates prüfen: Aus"
+
+msgid "Type to search..."
+msgstr "Suchen..."

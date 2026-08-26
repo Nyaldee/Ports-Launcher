@@ -1,0 +1,226 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Language: ja\n"
+
+msgid "Info"
+msgstr "情報"
+
+msgid "Install"
+msgstr "インストール"
+
+msgid "Open folder"
+msgstr "フォルダを開く"
+
+msgid "Uninstall"
+msgstr "アンインストール"
+
+msgid "Update"
+msgstr "アップデート"
+
+msgid "Play"
+msgstr "プレイ"
+
+msgid "GitHub"
+msgstr "GitHub"
+
+msgid "Discord"
+msgstr "Discord"
+
+msgid "No installed ports yet."
+msgstr "インストール済みのポートはありません。"
+
+msgid "Cancel"
+msgstr "キャンセル"
+
+msgid "Reinstall"
+msgstr "再インストール"
+
+msgid "Open info"
+msgstr "情報を開く"
+
+msgid "Favorite executable"
+msgstr "お気に入りの実行ファイル"
+
+msgid "Change version"
+msgstr "バージョンを変更"
+
+msgid "Copy"
+msgstr "コピー"
+
+msgid "Game website"
+msgstr "ゲームのウェブサイト"
+
+msgid "Mods website"
+msgstr "MODサイト"
+
+msgid "Game folder"
+msgstr "ゲームフォルダ"
+
+msgid "Save folder"
+msgstr "セーブフォルダ"
+
+msgid "Save folder 2"
+msgstr "セーブフォルダ2"
+
+msgid "Library"
+msgstr "ライブラリ"
+
+msgid "Save Backup"
+msgstr "セーブのバックアップ"
+
+msgid "Language"
+msgstr "言語"
+
+msgid "Themes"
+msgstr "テーマ"
+
+msgid "Files"
+msgstr "ファイル"
+
+msgid "Default (System)"
+msgstr "デフォルト（システム）"
+
+msgid "Ask every time (default)"
+msgstr "毎回確認する（デフォルト）"
+
+msgid "Settings"
+msgstr "設定"
+
+msgid "Saves Backup"
+msgstr "セーブのバックアップ"
+
+msgid "Installing"
+msgstr "インストール中"
+
+msgid "Loading"
+msgstr "読み込み中"
+
+msgid "No Executable Found"
+msgstr "実行ファイルが見つかりません"
+
+msgid "Choose favorite executable"
+msgstr "お気に入りの実行ファイルを選択"
+
+msgid "Invalid Port"
+msgstr "無効なポート"
+
+msgid "Choose an executable"
+msgstr "実行ファイルを選択"
+
+msgid "Executable Not Found"
+msgstr "実行ファイルが見つかりません"
+
+msgid "Uninstall Error"
+msgstr "アンインストールエラー"
+
+msgid "Choose a file"
+msgstr "ファイルを選択"
+
+msgid "Choose a version"
+msgstr "バージョンを選択"
+
+msgid "Error"
+msgstr "エラー"
+
+msgid "Installation Error"
+msgstr "インストールエラー"
+
+msgid "Update Error"
+msgstr "アップデートエラー"
+
+msgid "Error - {}"
+msgstr "エラー - {}"
+
+msgid "Uninstall - {}"
+msgstr "アンインストール - {}"
+
+msgid "Info - {}"
+msgstr "情報 - {}"
+
+msgid "This port's folder name is invalid."
+msgstr "このポートのフォルダ名が無効です。"
+
+msgid "\"{}\" could not be launched. The game files may be missing or incomplete."
+msgstr "「{}」を起動できませんでした。ゲームファイルが不足しているか、破損している可能性があります。"
+
+msgid "Uninstall \"{}\"? All of its files will be deleted."
+msgstr "「{}」をアンインストールしますか？ゲームのすべてのファイルが削除されます。"
+
+msgid "{} save folder(s) backed up, {} skipped (empty or missing), {} failed (disk full or permission denied?)."
+msgstr "{}個のセーブフォルダをバックアップしました。{}個はスキップ（空または存在しない）、{}個は失敗（ディスク容量不足または権限エラー？）。"
+
+msgid "{} save folder(s) backed up, {} skipped (empty or missing)."
+msgstr "{}個のセーブフォルダをバックアップしました。{}個はスキップしました（空または存在しない）。"
+
+msgid "Backing up saves..."
+msgstr "セーブをバックアップ中..."
+
+msgid "Backing up {}..."
+msgstr "{} をバックアップ中..."
+
+msgid "Installing {}..."
+msgstr "{} をインストール中..."
+
+msgid "Fetching versions for {}..."
+msgstr "{} のバージョンを取得中..."
+
+msgid "Version: Not installed"
+msgstr "バージョン：未インストール"
+
+msgid "Version: {}"
+msgstr "バージョン：{}"
+
+msgid "Version: Installed (tag unknown -- still checked against GitHub)"
+msgstr "バージョン：インストール済み（タグ不明 -- GitHubで確認中）"
+
+msgid "Version: Installed (tag unknown -- still checked against GitLab)"
+msgstr "バージョン：インストール済み（タグ不明 -- GitLabで確認中）"
+
+msgid "Version: Installed (this source has no version tracking)"
+msgstr "バージョン：インストール済み（このソースはバージョン管理なし）"
+
+msgid "Update - {}"
+msgstr "更新 - {}"
+
+msgid "Disable"
+msgstr "オフにする"
+
+msgid "Enable"
+msgstr "オンにする"
+
+msgid "Favorite executable: Default"
+msgstr "お気に入りの実行ファイル：デフォルト"
+
+msgid "Favorite executable: {}"
+msgstr "お気に入りの実行ファイル：{}"
+
+msgid "Update: On"
+msgstr "更新：オン"
+
+msgid "Update: Off"
+msgstr "更新：オフ"
+
+msgid "Playtime: {}"
+msgstr "プレイ時間：{}"
+
+msgid "Reset Game Time - {}"
+msgstr "プレイ時間をリセット - {}"
+
+msgid "Reset the tracked playtime for \"{}\"? This cannot be undone."
+msgstr "「{}」のプレイ時間をリセットしますか？この操作は元に戻せません。"
+
+msgid "Reset"
+msgstr "リセット"
+
+msgid "Reset game time"
+msgstr "プレイ時間をリセット"
+
+msgid "Check for Updates: On"
+msgstr "更新チェック：オン"
+
+msgid "Check for Updates: Off"
+msgstr "更新チェック：オフ"
+
+msgid "Type to search..."
+msgstr "検索..."

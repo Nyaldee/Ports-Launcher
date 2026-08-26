@@ -1,0 +1,226 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Language: ro\n"
+
+msgid "Info"
+msgstr "Informații"
+
+msgid "Install"
+msgstr "Instalează"
+
+msgid "Open folder"
+msgstr "Deschide folderul"
+
+msgid "Uninstall"
+msgstr "Dezinstalează"
+
+msgid "Update"
+msgstr "Actualizează"
+
+msgid "Play"
+msgstr "Joacă"
+
+msgid "GitHub"
+msgstr "GitHub"
+
+msgid "Discord"
+msgstr "Discord"
+
+msgid "No installed ports yet."
+msgstr "Niciun port instalat încă."
+
+msgid "Cancel"
+msgstr "Anulează"
+
+msgid "Reinstall"
+msgstr "Reinstalează"
+
+msgid "Open info"
+msgstr "Deschide informațiile"
+
+msgid "Favorite executable"
+msgstr "Executabil favorit"
+
+msgid "Change version"
+msgstr "Schimbă versiunea"
+
+msgid "Copy"
+msgstr "Copiază"
+
+msgid "Game website"
+msgstr "Site-ul jocului"
+
+msgid "Mods website"
+msgstr "Site de moduri"
+
+msgid "Game folder"
+msgstr "Folderul jocului"
+
+msgid "Save folder"
+msgstr "Folder de salvare"
+
+msgid "Save folder 2"
+msgstr "Folder de salvare 2"
+
+msgid "Library"
+msgstr "Bibliotecă"
+
+msgid "Save Backup"
+msgstr "Copie de rezervă a salvărilor"
+
+msgid "Language"
+msgstr "Limbă"
+
+msgid "Themes"
+msgstr "Teme"
+
+msgid "Files"
+msgstr "Fișiere"
+
+msgid "Default (System)"
+msgstr "Implicit (Sistem)"
+
+msgid "Ask every time (default)"
+msgstr "Întreabă de fiecare dată (implicit)"
+
+msgid "Settings"
+msgstr "Setări"
+
+msgid "Saves Backup"
+msgstr "Backup salvări"
+
+msgid "Installing"
+msgstr "Se instalează"
+
+msgid "Loading"
+msgstr "Se încarcă"
+
+msgid "No Executable Found"
+msgstr "Niciun executabil găsit"
+
+msgid "Choose favorite executable"
+msgstr "Alege executabilul favorit"
+
+msgid "Invalid Port"
+msgstr "Port invalid"
+
+msgid "Choose an executable"
+msgstr "Alege un executabil"
+
+msgid "Executable Not Found"
+msgstr "Executabil negăsit"
+
+msgid "Uninstall Error"
+msgstr "Eroare la dezinstalare"
+
+msgid "Choose a file"
+msgstr "Alege un fișier"
+
+msgid "Choose a version"
+msgstr "Alege o versiune"
+
+msgid "Error"
+msgstr "Eroare"
+
+msgid "Installation Error"
+msgstr "Eroare de instalare"
+
+msgid "Update Error"
+msgstr "Eroare de actualizare"
+
+msgid "Error - {}"
+msgstr "Eroare - {}"
+
+msgid "Uninstall - {}"
+msgstr "Dezinstalează - {}"
+
+msgid "Info - {}"
+msgstr "Informații - {}"
+
+msgid "This port's folder name is invalid."
+msgstr "Numele folderului acestui port este invalid."
+
+msgid "\"{}\" could not be launched. The game files may be missing or incomplete."
+msgstr "„{}” nu a putut fi lansat. Fișierele jocului ar putea lipsi sau fi incomplete."
+
+msgid "Uninstall \"{}\"? All of its files will be deleted."
+msgstr "Dezinstalezi „{}”? Toate fișierele jocului vor fi șterse."
+
+msgid "{} save folder(s) backed up, {} skipped (empty or missing), {} failed (disk full or permission denied?)."
+msgstr "{} foldere de salvare au fost salvate, {} omise (goale sau lipsă), {} eșuate (disc plin sau permisiune refuzată?)."
+
+msgid "{} save folder(s) backed up, {} skipped (empty or missing)."
+msgstr "{} foldere de salvare au fost salvate, {} omise (goale sau lipsă)."
+
+msgid "Backing up saves..."
+msgstr "Se salvează backup-ul..."
+
+msgid "Backing up {}..."
+msgstr "Se salvează {}..."
+
+msgid "Installing {}..."
+msgstr "Se instalează {}..."
+
+msgid "Fetching versions for {}..."
+msgstr "Se obțin versiunile pentru {}..."
+
+msgid "Version: Not installed"
+msgstr "Versiune: neinstalat"
+
+msgid "Version: {}"
+msgstr "Versiune: {}"
+
+msgid "Version: Installed (tag unknown -- still checked against GitHub)"
+msgstr "Versiune: instalat (tag necunoscut -- încă verificat pe GitHub)"
+
+msgid "Version: Installed (tag unknown -- still checked against GitLab)"
+msgstr "Versiune: instalat (tag necunoscut -- încă verificat pe GitLab)"
+
+msgid "Version: Installed (this source has no version tracking)"
+msgstr "Versiune: instalat (această sursă nu urmărește versiuni)"
+
+msgid "Update - {}"
+msgstr "Actualizare - {}"
+
+msgid "Disable"
+msgstr "Dezactivează"
+
+msgid "Enable"
+msgstr "Activează"
+
+msgid "Favorite executable: Default"
+msgstr "Executabil favorit: Implicit"
+
+msgid "Favorite executable: {}"
+msgstr "Executabil favorit: {}"
+
+msgid "Update: On"
+msgstr "Actualizare: Activă"
+
+msgid "Update: Off"
+msgstr "Actualizare: Dezactivată"
+
+msgid "Playtime: {}"
+msgstr "Timp de joc: {}"
+
+msgid "Reset Game Time - {}"
+msgstr "Resetează timpul de joc - {}"
+
+msgid "Reset the tracked playtime for \"{}\"? This cannot be undone."
+msgstr "Resetezi timpul de joc înregistrat pentru „{}”? Această acțiune nu poate fi anulată."
+
+msgid "Reset"
+msgstr "Resetează"
+
+msgid "Reset game time"
+msgstr "Resetează timpul de joc"
+
+msgid "Check for Updates: On"
+msgstr "Verificare actualizări: Activ"
+
+msgid "Check for Updates: Off"
+msgstr "Verificare actualizări: Dezactivat"
+
+msgid "Type to search..."
+msgstr "Caută..."

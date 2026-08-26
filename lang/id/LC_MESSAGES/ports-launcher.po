@@ -1,0 +1,226 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Language: id\n"
+
+msgid "Info"
+msgstr "Info"
+
+msgid "Install"
+msgstr "Pasang"
+
+msgid "Open folder"
+msgstr "Buka folder"
+
+msgid "Uninstall"
+msgstr "Hapus pemasangan"
+
+msgid "Update"
+msgstr "Perbarui"
+
+msgid "Play"
+msgstr "Main"
+
+msgid "GitHub"
+msgstr "GitHub"
+
+msgid "Discord"
+msgstr "Discord"
+
+msgid "No installed ports yet."
+msgstr "Belum ada port yang terpasang."
+
+msgid "Cancel"
+msgstr "Batal"
+
+msgid "Reinstall"
+msgstr "Pasang ulang"
+
+msgid "Open info"
+msgstr "Buka info"
+
+msgid "Favorite executable"
+msgstr "Executable favorit"
+
+msgid "Change version"
+msgstr "Ubah versi"
+
+msgid "Copy"
+msgstr "Salin"
+
+msgid "Game website"
+msgstr "Situs web permainan"
+
+msgid "Mods website"
+msgstr "Situs mod"
+
+msgid "Game folder"
+msgstr "Folder game"
+
+msgid "Save folder"
+msgstr "Folder simpanan"
+
+msgid "Save folder 2"
+msgstr "Folder simpanan 2"
+
+msgid "Library"
+msgstr "Perpustakaan"
+
+msgid "Save Backup"
+msgstr "Cadangan simpanan"
+
+msgid "Language"
+msgstr "Bahasa"
+
+msgid "Themes"
+msgstr "Tema"
+
+msgid "Files"
+msgstr "Berkas"
+
+msgid "Default (System)"
+msgstr "Default (Sistem)"
+
+msgid "Ask every time (default)"
+msgstr "Tanya setiap kali (default)"
+
+msgid "Settings"
+msgstr "Pengaturan"
+
+msgid "Saves Backup"
+msgstr "Cadangan simpanan"
+
+msgid "Installing"
+msgstr "Memasang"
+
+msgid "Loading"
+msgstr "Memuat"
+
+msgid "No Executable Found"
+msgstr "Executable tidak ditemukan"
+
+msgid "Choose favorite executable"
+msgstr "Pilih executable favorit"
+
+msgid "Invalid Port"
+msgstr "Port tidak valid"
+
+msgid "Choose an executable"
+msgstr "Pilih sebuah executable"
+
+msgid "Executable Not Found"
+msgstr "Executable tidak ditemukan"
+
+msgid "Uninstall Error"
+msgstr "Kesalahan saat menghapus"
+
+msgid "Choose a file"
+msgstr "Pilih sebuah berkas"
+
+msgid "Choose a version"
+msgstr "Pilih sebuah versi"
+
+msgid "Error"
+msgstr "Kesalahan"
+
+msgid "Installation Error"
+msgstr "Kesalahan instalasi"
+
+msgid "Update Error"
+msgstr "Kesalahan pembaruan"
+
+msgid "Error - {}"
+msgstr "Kesalahan - {}"
+
+msgid "Uninstall - {}"
+msgstr "Hapus pemasangan - {}"
+
+msgid "Info - {}"
+msgstr "Info - {}"
+
+msgid "This port's folder name is invalid."
+msgstr "Nama folder port ini tidak valid."
+
+msgid "\"{}\" could not be launched. The game files may be missing or incomplete."
+msgstr "\"{}\" tidak dapat dijalankan. File game mungkin hilang atau tidak lengkap."
+
+msgid "Uninstall \"{}\"? All of its files will be deleted."
+msgstr "Hapus pemasangan \"{}\"? Semua file game akan dihapus."
+
+msgid "{} save folder(s) backed up, {} skipped (empty or missing), {} failed (disk full or permission denied?)."
+msgstr "{} folder simpanan dicadangkan, {} dilewati (kosong atau tidak ada), {} gagal (disk penuh atau izin ditolak?)."
+
+msgid "{} save folder(s) backed up, {} skipped (empty or missing)."
+msgstr "{} folder simpanan dicadangkan, {} dilewati (kosong atau tidak ada)."
+
+msgid "Backing up saves..."
+msgstr "Mencadangkan simpanan..."
+
+msgid "Backing up {}..."
+msgstr "Mencadangkan {}..."
+
+msgid "Installing {}..."
+msgstr "Memasang {}..."
+
+msgid "Fetching versions for {}..."
+msgstr "Mengambil versi untuk {}..."
+
+msgid "Version: Not installed"
+msgstr "Versi: Belum terpasang"
+
+msgid "Version: {}"
+msgstr "Versi: {}"
+
+msgid "Version: Installed (tag unknown -- still checked against GitHub)"
+msgstr "Versi: Terpasang (tag tidak diketahui -- tetap diperiksa lewat GitHub)"
+
+msgid "Version: Installed (tag unknown -- still checked against GitLab)"
+msgstr "Versi: Terpasang (tag tidak diketahui -- tetap diperiksa lewat GitLab)"
+
+msgid "Version: Installed (this source has no version tracking)"
+msgstr "Versi: Terpasang (sumber ini tidak melacak versi)"
+
+msgid "Update - {}"
+msgstr "Pembaruan - {}"
+
+msgid "Disable"
+msgstr "Nonaktifkan"
+
+msgid "Enable"
+msgstr "Aktifkan"
+
+msgid "Favorite executable: Default"
+msgstr "Executable favorit: Default"
+
+msgid "Favorite executable: {}"
+msgstr "Executable favorit: {}"
+
+msgid "Update: On"
+msgstr "Pembaruan: Aktif"
+
+msgid "Update: Off"
+msgstr "Pembaruan: Nonaktif"
+
+msgid "Playtime: {}"
+msgstr "Waktu bermain: {}"
+
+msgid "Reset Game Time - {}"
+msgstr "Atur ulang waktu bermain - {}"
+
+msgid "Reset the tracked playtime for \"{}\"? This cannot be undone."
+msgstr "Atur ulang waktu bermain yang tercatat untuk \"{}\"? Tindakan ini tidak dapat dibatalkan."
+
+msgid "Reset"
+msgstr "Atur ulang"
+
+msgid "Reset game time"
+msgstr "Atur ulang waktu bermain"
+
+msgid "Check for Updates: On"
+msgstr "Periksa pembaruan: Aktif"
+
+msgid "Check for Updates: Off"
+msgstr "Periksa pembaruan: Nonaktif"
+
+msgid "Type to search..."
+msgstr "Cari..."

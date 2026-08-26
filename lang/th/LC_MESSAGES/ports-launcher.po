@@ -1,0 +1,226 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Language: th\n"
+
+msgid "Info"
+msgstr "ข้อมูล"
+
+msgid "Install"
+msgstr "ติดตั้ง"
+
+msgid "Open folder"
+msgstr "เปิดโฟลเดอร์"
+
+msgid "Uninstall"
+msgstr "ถอนการติดตั้ง"
+
+msgid "Update"
+msgstr "อัปเดต"
+
+msgid "Play"
+msgstr "เล่น"
+
+msgid "GitHub"
+msgstr "GitHub"
+
+msgid "Discord"
+msgstr "Discord"
+
+msgid "No installed ports yet."
+msgstr "ยังไม่มีพอร์ตที่ติดตั้ง"
+
+msgid "Cancel"
+msgstr "ยกเลิก"
+
+msgid "Reinstall"
+msgstr "ติดตั้งใหม่"
+
+msgid "Open info"
+msgstr "เปิดข้อมูล"
+
+msgid "Favorite executable"
+msgstr "ไฟล์ปฏิบัติการที่ชื่นชอบ"
+
+msgid "Change version"
+msgstr "เปลี่ยนเวอร์ชัน"
+
+msgid "Copy"
+msgstr "คัดลอก"
+
+msgid "Game website"
+msgstr "เว็บไซต์เกม"
+
+msgid "Mods website"
+msgstr "เว็บไซต์มอด"
+
+msgid "Game folder"
+msgstr "โฟลเดอร์เกม"
+
+msgid "Save folder"
+msgstr "โฟลเดอร์เซฟ"
+
+msgid "Save folder 2"
+msgstr "โฟลเดอร์เซฟ 2"
+
+msgid "Library"
+msgstr "ไลบรารี"
+
+msgid "Save Backup"
+msgstr "สำเนาสำรองข้อมูลเซฟ"
+
+msgid "Language"
+msgstr "ภาษา"
+
+msgid "Themes"
+msgstr "ธีม"
+
+msgid "Files"
+msgstr "ไฟล์"
+
+msgid "Default (System)"
+msgstr "ค่าเริ่มต้น (ระบบ)"
+
+msgid "Ask every time (default)"
+msgstr "ถามทุกครั้ง (ค่าเริ่มต้น)"
+
+msgid "Settings"
+msgstr "การตั้งค่า"
+
+msgid "Saves Backup"
+msgstr "สำรองข้อมูลเซฟ"
+
+msgid "Installing"
+msgstr "กำลังติดตั้ง"
+
+msgid "Loading"
+msgstr "กำลังโหลด"
+
+msgid "No Executable Found"
+msgstr "ไม่พบไฟล์ปฏิบัติการ"
+
+msgid "Choose favorite executable"
+msgstr "เลือกไฟล์ปฏิบัติการที่ชื่นชอบ"
+
+msgid "Invalid Port"
+msgstr "พอร์ตไม่ถูกต้อง"
+
+msgid "Choose an executable"
+msgstr "เลือกไฟล์ปฏิบัติการ"
+
+msgid "Executable Not Found"
+msgstr "ไม่พบไฟล์ปฏิบัติการ"
+
+msgid "Uninstall Error"
+msgstr "ข้อผิดพลาดในการถอนการติดตั้ง"
+
+msgid "Choose a file"
+msgstr "เลือกไฟล์"
+
+msgid "Choose a version"
+msgstr "เลือกเวอร์ชัน"
+
+msgid "Error"
+msgstr "ข้อผิดพลาด"
+
+msgid "Installation Error"
+msgstr "ข้อผิดพลาดในการติดตั้ง"
+
+msgid "Update Error"
+msgstr "ข้อผิดพลาดในการอัปเดต"
+
+msgid "Error - {}"
+msgstr "ข้อผิดพลาด - {}"
+
+msgid "Uninstall - {}"
+msgstr "ถอนการติดตั้ง - {}"
+
+msgid "Info - {}"
+msgstr "ข้อมูล - {}"
+
+msgid "This port's folder name is invalid."
+msgstr "ชื่อโฟลเดอร์ของพอร์ตนี้ไม่ถูกต้อง"
+
+msgid "\"{}\" could not be launched. The game files may be missing or incomplete."
+msgstr "ไม่สามารถเปิด \"{}\" ได้ ไฟล์เกมอาจหายไปหรือไม่สมบูรณ์"
+
+msgid "Uninstall \"{}\"? All of its files will be deleted."
+msgstr "ถอนการติดตั้ง \"{}\" หรือไม่? ไฟล์ทั้งหมดของเกมจะถูกลบ"
+
+msgid "{} save folder(s) backed up, {} skipped (empty or missing), {} failed (disk full or permission denied?)."
+msgstr "สำรองข้อมูลแล้ว {} โฟลเดอร์เซฟ, ข้าม {} (ว่างเปล่าหรือไม่มี), ล้มเหลว {} (ดิสก์เต็มหรือถูกปฏิเสธสิทธิ์?)"
+
+msgid "{} save folder(s) backed up, {} skipped (empty or missing)."
+msgstr "สำรองข้อมูลแล้ว {} โฟลเดอร์เซฟ, ข้าม {} (ว่างเปล่าหรือไม่มี)"
+
+msgid "Backing up saves..."
+msgstr "กำลังสำรองข้อมูลเซฟ..."
+
+msgid "Backing up {}..."
+msgstr "กำลังสำรองข้อมูล {}..."
+
+msgid "Installing {}..."
+msgstr "กำลังติดตั้ง {}..."
+
+msgid "Fetching versions for {}..."
+msgstr "กำลังดึงเวอร์ชันสำหรับ {}..."
+
+msgid "Version: Not installed"
+msgstr "เวอร์ชัน: ยังไม่ได้ติดตั้ง"
+
+msgid "Version: {}"
+msgstr "เวอร์ชัน: {}"
+
+msgid "Version: Installed (tag unknown -- still checked against GitHub)"
+msgstr "เวอร์ชัน: ติดตั้งแล้ว (ไม่ทราบแท็ก -- ยังคงตรวจสอบผ่าน GitHub)"
+
+msgid "Version: Installed (tag unknown -- still checked against GitLab)"
+msgstr "เวอร์ชัน: ติดตั้งแล้ว (ไม่ทราบแท็ก -- ยังคงตรวจสอบผ่าน GitLab)"
+
+msgid "Version: Installed (this source has no version tracking)"
+msgstr "เวอร์ชัน: ติดตั้งแล้ว (แหล่งนี้ไม่มีการติดตามเวอร์ชัน)"
+
+msgid "Update - {}"
+msgstr "อัปเดต - {}"
+
+msgid "Disable"
+msgstr "ปิดใช้งาน"
+
+msgid "Enable"
+msgstr "เปิดใช้งาน"
+
+msgid "Favorite executable: Default"
+msgstr "ไฟล์ปฏิบัติการที่ชื่นชอบ: ค่าเริ่มต้น"
+
+msgid "Favorite executable: {}"
+msgstr "ไฟล์ปฏิบัติการที่ชื่นชอบ: {}"
+
+msgid "Update: On"
+msgstr "อัปเดต: เปิด"
+
+msgid "Update: Off"
+msgstr "อัปเดต: ปิด"
+
+msgid "Playtime: {}"
+msgstr "เวลาเล่น: {}"
+
+msgid "Reset Game Time - {}"
+msgstr "รีเซ็ตเวลาเล่น - {}"
+
+msgid "Reset the tracked playtime for \"{}\"? This cannot be undone."
+msgstr "รีเซ็ตเวลาเล่นที่บันทึกไว้สำหรับ \"{}\" หรือไม่? การกระทำนี้ไม่สามารถย้อนกลับได้"
+
+msgid "Reset"
+msgstr "รีเซ็ต"
+
+msgid "Reset game time"
+msgstr "รีเซ็ตเวลาเล่น"
+
+msgid "Check for Updates: On"
+msgstr "ตรวจสอบการอัปเดต: เปิด"
+
+msgid "Check for Updates: Off"
+msgstr "ตรวจสอบการอัปเดต: ปิด"
+
+msgid "Type to search..."
+msgstr "ค้นหา..."

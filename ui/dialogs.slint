@@ -1,0 +1,13 @@
+// Barrel : ré-exporte les 7 dialogues (et PickerItem/Tr) depuis leurs
+// fichiers respectifs sous dialogs/ (chrome.slint pour le kit partagé --
+// DialogNavKey/DialogButton/ButtonRow/DialogChrome --, tr.slint pour les
+// traductions, simple.slint pour Message/Confirm/Error/Progress,
+// picker.slint pour List/SearchList, info.slint pour Info) -- app-window.slint/
+// card-grid.slint continuent d'importer depuis "dialogs.slint" sans savoir
+// que le contenu est découpé en plusieurs fichiers.
+import { Tr } from "dialogs/tr.slint";
+import { ConfirmDialog, ErrorDialog, MessageDialog, ProgressDialog } from "dialogs/simple.slint";
+import { ListPickerDialog, PickerItem, SearchListDialog } from "dialogs/picker.slint";
+import { InfoDialog } from "dialogs/info.slint";
+
+export { ConfirmDialog, ErrorDialog, InfoDialog, ListPickerDialog, MessageDialog, PickerItem, ProgressDialog, SearchListDialog, Tr }

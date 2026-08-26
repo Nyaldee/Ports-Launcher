@@ -1,0 +1,226 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Language: uk\n"
+
+msgid "Info"
+msgstr "Інформація"
+
+msgid "Install"
+msgstr "Встановити"
+
+msgid "Open folder"
+msgstr "Відкрити папку"
+
+msgid "Uninstall"
+msgstr "Видалити"
+
+msgid "Update"
+msgstr "Оновити"
+
+msgid "Play"
+msgstr "Грати"
+
+msgid "GitHub"
+msgstr "GitHub"
+
+msgid "Discord"
+msgstr "Discord"
+
+msgid "No installed ports yet."
+msgstr "Ще немає встановлених портів."
+
+msgid "Cancel"
+msgstr "Скасувати"
+
+msgid "Reinstall"
+msgstr "Перевстановити"
+
+msgid "Open info"
+msgstr "Відкрити інформацію"
+
+msgid "Favorite executable"
+msgstr "Улюблений виконуваний файл"
+
+msgid "Change version"
+msgstr "Змінити версію"
+
+msgid "Copy"
+msgstr "Копіювати"
+
+msgid "Game website"
+msgstr "Сайт гри"
+
+msgid "Mods website"
+msgstr "Сайт модів"
+
+msgid "Game folder"
+msgstr "Папка гри"
+
+msgid "Save folder"
+msgstr "Папка збережень"
+
+msgid "Save folder 2"
+msgstr "Папка збережень 2"
+
+msgid "Library"
+msgstr "Бібліотека"
+
+msgid "Save Backup"
+msgstr "Резервна копія збережень"
+
+msgid "Language"
+msgstr "Мова"
+
+msgid "Themes"
+msgstr "Теми"
+
+msgid "Files"
+msgstr "Файли"
+
+msgid "Default (System)"
+msgstr "За замовчуванням (система)"
+
+msgid "Ask every time (default)"
+msgstr "Питати щоразу (за замовчуванням)"
+
+msgid "Settings"
+msgstr "Налаштування"
+
+msgid "Saves Backup"
+msgstr "Резервна копія збережень"
+
+msgid "Installing"
+msgstr "Встановлення"
+
+msgid "Loading"
+msgstr "Завантаження"
+
+msgid "No Executable Found"
+msgstr "Виконуваний файл не знайдено"
+
+msgid "Choose favorite executable"
+msgstr "Виберіть улюблений виконуваний файл"
+
+msgid "Invalid Port"
+msgstr "Недійсний порт"
+
+msgid "Choose an executable"
+msgstr "Виберіть виконуваний файл"
+
+msgid "Executable Not Found"
+msgstr "Виконуваний файл не знайдено"
+
+msgid "Uninstall Error"
+msgstr "Помилка видалення"
+
+msgid "Choose a file"
+msgstr "Виберіть файл"
+
+msgid "Choose a version"
+msgstr "Виберіть версію"
+
+msgid "Error"
+msgstr "Помилка"
+
+msgid "Installation Error"
+msgstr "Помилка встановлення"
+
+msgid "Update Error"
+msgstr "Помилка оновлення"
+
+msgid "Error - {}"
+msgstr "Помилка - {}"
+
+msgid "Uninstall - {}"
+msgstr "Видалити - {}"
+
+msgid "Info - {}"
+msgstr "Інформація - {}"
+
+msgid "This port's folder name is invalid."
+msgstr "Назва папки цього порту недійсна."
+
+msgid "\"{}\" could not be launched. The game files may be missing or incomplete."
+msgstr "Не вдалося запустити «{}». Файли гри можуть бути відсутні або пошкоджені."
+
+msgid "Uninstall \"{}\"? All of its files will be deleted."
+msgstr "Видалити «{}»? Усі файли гри буде видалено."
+
+msgid "{} save folder(s) backed up, {} skipped (empty or missing), {} failed (disk full or permission denied?)."
+msgstr "Резервну копію створено для {} папок збережень, пропущено {} (порожні або відсутні), не вдалося {} (диск заповнений або відмовлено в доступі?)."
+
+msgid "{} save folder(s) backed up, {} skipped (empty or missing)."
+msgstr "Резервну копію створено для {} папок збережень, пропущено {} (порожні або відсутні)."
+
+msgid "Backing up saves..."
+msgstr "Створення резервної копії збережень..."
+
+msgid "Backing up {}..."
+msgstr "Резервне копіювання {}..."
+
+msgid "Installing {}..."
+msgstr "Встановлення {}..."
+
+msgid "Fetching versions for {}..."
+msgstr "Отримання версій для {}..."
+
+msgid "Version: Not installed"
+msgstr "Версія: не встановлено"
+
+msgid "Version: {}"
+msgstr "Версія: {}"
+
+msgid "Version: Installed (tag unknown -- still checked against GitHub)"
+msgstr "Версія: встановлено (тег невідомий -- усе ще перевіряється через GitHub)"
+
+msgid "Version: Installed (tag unknown -- still checked against GitLab)"
+msgstr "Версія: встановлено (тег невідомий -- усе ще перевіряється через GitLab)"
+
+msgid "Version: Installed (this source has no version tracking)"
+msgstr "Версія: встановлено (це джерело не відстежує версії)"
+
+msgid "Update - {}"
+msgstr "Оновлення - {}"
+
+msgid "Disable"
+msgstr "Вимкнути"
+
+msgid "Enable"
+msgstr "Увімкнути"
+
+msgid "Favorite executable: Default"
+msgstr "Улюблений виконуваний файл: за замовчуванням"
+
+msgid "Favorite executable: {}"
+msgstr "Улюблений виконуваний файл: {}"
+
+msgid "Update: On"
+msgstr "Оновлення: увімк."
+
+msgid "Update: Off"
+msgstr "Оновлення: вимк."
+
+msgid "Playtime: {}"
+msgstr "Час у грі: {}"
+
+msgid "Reset Game Time - {}"
+msgstr "Скинути час у грі - {}"
+
+msgid "Reset the tracked playtime for \"{}\"? This cannot be undone."
+msgstr "Скинути облікований час у грі для «{}»? Цю дію не можна скасувати."
+
+msgid "Reset"
+msgstr "Скинути"
+
+msgid "Reset game time"
+msgstr "Скинути час у грі"
+
+msgid "Check for Updates: On"
+msgstr "Перевірка оновлень: увімк."
+
+msgid "Check for Updates: Off"
+msgstr "Перевірка оновлень: вимк."
+
+msgid "Type to search..."
+msgstr "Пошук..."
