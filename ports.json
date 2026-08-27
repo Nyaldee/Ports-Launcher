@@ -76,6 +76,13 @@
       "image": "https://cdn2.steamgriddb.com/grid/17faa600670ae46a32ff83f76e83806a.png",
       "save": "%USERPROFILE%\\Documents\\renut"
     },{
+      "-name": "Blue Dragon (reblue-XenosRecomp)",
+      "tags": ["360", "rpg"],
+      "source": "https://github.com/zolaware/reblue-XenosRecomp",
+      "folder": "reblue-XenosRecomp",
+      "instructions": "Required files: Blue Dragon (USA, Europe) (En,Fr)\n\nLanguages: English, French.\n\nPlace the .bin file in the assets folder at the root of the port folder.",
+      "image": "https://cdn2.steamgriddb.com/grid/28e3bed162f123fc16f3084bbe61d98c.png"
+    },{
       "name": "Bomberman 64 (BM64Recomp)",
       "tags": ["n64", "platformer", "multiplayer"],
       "source": "https://github.com/RevoSucks/BM64Recomp",
@@ -326,6 +333,13 @@
       "instructions": "Required files: NTSC-U and PAL/EU\n\nLanguages: Multilingual.\n\nYou need to copy the files IMG_HD.BIN and IMG_BD.BIN from the matching Fatal Frame ISO to the folder containing the MikuPan executable.",
       "image": "https://cdn2.steamgriddb.com/grid/830c8e7e327466f868edbc4d3071118e.png"
     },{
+      "-name": "Forza Horizon (pinyon-shift)",
+      "tags": ["360", "racing"],
+      "source": "https://github.com/arcanite24/pinyon-shift",
+      "folder": "pinyon-shift",
+      "instructions": "",
+      "image": "https://cdn2.steamgriddb.com/grid/c43043335d711ee1590cfcba87ed0009.png"
+    },{
       "-name": "Gears of War 2 (??)",
       "tags": ["360", "shooter"],
       "source": "",
@@ -419,6 +433,13 @@
       "folder": "ModernGekko",
       "instructions": "Languages: Multilingual.",
       "image": "https://cdn2.steamgriddb.com/grid/4a71f15b68d8a684643e2d899020ac2a.png"
+    },{
+      "-name": "Lost Odyssey (??)",
+      "tags": ["360", "rpg"],
+      "source": "??",
+      "folder": "??",
+      "instructions": "??",
+      "image": "https://cdn2.steamgriddb.com/grid/cc45afd64609c369cc7ac4e8d70fbdc8.jpg"
     },{
       "name": "Luanti",
       "tags": ["free", "pc", "minecraft", "multiplayer"],
@@ -654,6 +675,13 @@
       "instructions": "",
       "image": "https://cdn2.steamgriddb.com/grid/fb28d8ab066e9745db1b24d392a6d38a.png"
     },{
+      "name": "Resident Evil Gaiden (regaiden-recomp)",
+      "tags": ["gbc", "survival horror"],
+      "source": "https://github.com/sergiomanzur/regaiden-recomp",
+      "folder": "regaiden-recomp",
+      "instructions": "Required files: Resident Evil Gaiden (USA).gbc (CRC32: F8C5021B)\n\nLanguages: English.",
+      "image": "https://cdn2.steamgriddb.com/grid/ee53170806b5ded86ff5ad2083ae556f.png"
+    },{
       "name": "Ridge Racer (rage-racer-pc)",
       "tags": ["ps1", "racing"],
       "source": "https://github.com/khasinski/rage-racer-pc",
@@ -888,7 +916,7 @@
       "tags": ["pc", "rpg"],
       "source": "https://github.com/OpenMW/openmw",
       "folder": "openmw",
-      "instructions": "Required files: The Elder Scrolls III: Morrowind GOTY Edition on GOG\n\nLanguages: Multilingual with mod.",
+      "instructions": "Required files: The Elder Scrolls III: Morrowind GOTY Edition on GOG\nExecute openmw-wizard.exe first.\n\nLanguages: Multilingual with mod.",
       "mods": "https://modding-openmw.com/lists/",
       "image": "https://cdn2.steamgriddb.com/grid/0236be6e04a4916f04215374f9c83ac5.png",
       "save": "%USERPROFILE%\\Documents\\My Games\\OpenMW",
