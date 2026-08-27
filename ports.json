@@ -194,6 +194,14 @@
       "image": "https://cdn2.steamgriddb.com/grid/4c38b84197c2e1a8444814d95c2487a8.png",
       "save": "save"
     },{
+      "-name": "Digimon World (??)",
+      "tags": ["ps1", "rpg"],
+      "source": "??",
+      "folder": "??",
+      "instructions": "",
+      "image": "https://cdn2.steamgriddb.com/grid/a390cc25cb3fe73e3a4ce9fbc03f73a5.png",
+      "save": "saves"
+    },{
       "name": "Dinosaur Planet (dino-recomp)",
       "tags": ["star fox", "n64", "action-adventure"],
       "source": "https://github.com/DinosaurPlanetRecomp/dino-recomp",
@@ -630,7 +638,7 @@
       "tags": ["gb", "rpg", "multilingual"],
       "source": "https://github.com/bryanthaboi/pokemon-gen1-recomp-project",
       "folder": "pokemon-gen1-recomp-project",
-      "instructions": "Required files:\n\n• Pokemon - Blue Version (USA, Europe) (SGB Enhanced).gb (CRC32: D6DA8A1A)\n• Pokemon - Red Version (USA, Europe) (SGB Enhanced).gb (CRC32: 9F7FDD53)\n• Pokemon - Yellow Version - Special Pikachu Edition (USA, Europe) (CGB+SGB Enhanced).gb (CRC32: 7D527D62)\n• Pokemon - Gold Version (USA, Europe) (SGB Enhanced) (GB Compatible).gbc (CRC32: 6BDE3C3E)\n• Pokemon - Silver Version (USA, Europe) (SGB Enhanced) (GB Compatible).gbc (CRC32: 8AD48636)\n• Pokemon - Crystal Version (USA, Europe) (Rev 1).gbc (CRC32: 3358E30A)\n\nLanguages: Multilingual with mod.",
+      "instructions": "Required files:\n\n• Pokemon - Blue Version (USA, Europe) (SGB Enhanced).gb (CRC32: D6DA8A1A)\n• Pokemon - Red Version (USA, Europe) (SGB Enhanced).gb (CRC32: 9F7FDD53)\n• Pokemon - Yellow Version - Special Pikachu Edition (USA, Europe) (CGB+SGB Enhanced).gb (CRC32: 7D527D62)\n• Pokemon - Gold Version (USA, Europe) (SGB Enhanced) (GB Compatible).gbc (CRC32: 6BDE3C3E)\n• Pokemon - Silver Version (USA, Europe) (SGB Enhanced) (GB Compatible).gbc (CRC32: 8AD48636)\n• Pokemon - Crystal Version (USA, Europe) (Rev 1).gbc (CRC32: 3358E30A)\n\nLanguages: Multilingual with this mod: https://github.com/thibautbus/gen1recomp-translation-mod-generator",
       "image": "https://cdn2.steamgriddb.com/grid/4d53e7e87772a51972bc942a99de63c9.png",
       "save": "%APPDATA%\\pokemon-love2d"
     },{
@@ -1054,8 +1062,8 @@
       "save": "saves"
     },{
       "name": "Xonotic",
-      "tags": ["pc", "fps", "multiplayer", "online"],
-      "source": "https://github.com/xonotic/xonotic",
+      "tags": ["free", "pc", "fps", "multiplayer", "online"],
+      "source": "https://dl.xonotic.org/xonotic-0.8.6.zip",
       "folder": "xonotic",
       "instructions": "https://xonotic.org/\n\nLanguages: English.",
       "image": "https://cdn2.steamgriddb.com/grid/3a78cc37cec7abf6057c0a5ab20cff72.png"
