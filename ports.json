@@ -228,6 +228,18 @@
       "instructions": "Required files: Donkey Kong 64 (USA).z64 (CRC32: D44B4FC6)",
       "image": "https://cdn2.steamgriddb.com/grid/86f7d456aa5848c284f7940bdecdef5d.png"
     },{
+      "name": "Donkey Kong 64 (Donkey-Kong-64-Recompiled)",
+      "tags": ["n64", "dk", "platformer"],
+      "source": "https://github.com/Rainchus/Donkey-Kong-64-Recompiled",
+      "folder": "Donkey-Kong-64-Recompiled",
+      "instructions": "Required files: Donkey Kong 64 (USA).z64 (CRC32: D44B4FC6)\n\nPortable saves : portable.txt in root folder.\n\nDiscord server: https://discord.com/invite/SR8qWG9Ve",
+      "mods": "https://dk64recomp.com/mods.html",
+      "image": "https://cdn2.steamgriddb.com/grid/86f7d456aa5848c284f7940bdecdef5d.png",
+      "save": {
+        "windows": "%LOCALAPPDATA%\\DK64Recompiled",
+        "linux": "~/.config/DK64Recompiled"
+      }
+    },{
       "name": "Doom (uzdoom)",
       "tags": ["pc", "fps"],
       "source": "https://github.com/UZDoom/uzdoom",
@@ -787,6 +799,13 @@
       "instructions": "Required files: Spyro the Dragon (USA).bin/cue (CRC32: D5E11056/639D58E5)",
       "image": "https://cdn2.steamgriddb.com/grid/a99316b58bd2d4539e9153e24f616e6f.png"
     },{
+      "-name": "Star Fox (starfox-enhanced)",
+      "tags": ["snes", "shooter"],
+      "source": "https://github.com/kandowontu/starfox-enhanced",
+      "folder": "starfox-enhanced",
+      "instructions": "Required files: Star Fox (USA) (Rev 2).sfc (CRC32: 8FC4E6D0)\n\nLanguages: English.",
+      "image": "https://cdn2.steamgriddb.com/grid/081b26a8bdc5222518e51ecdbcc2021c.png"
+    },{
       "name": "Star Fox 64 (Starfox64Recomp)",
       "tags": ["lylat wars", "n64", "shooter"],
       "source": "https://gitlab.com/sonicdcer/Starfox64Recomp",
@@ -808,12 +827,26 @@
       "image": "https://cdn2.steamgriddb.com/grid/9122b7acc2588eff1d20211ce8fb8798.png",
       "save": "Save"
     },{
+      "name": "Star Wars: TIE Fighter (OpenTIE)",
+      "tags": ["pc", "simulation"],
+      "source": "https://github.com/elyosh/OpenTIE/",
+      "folder": "xmen-mutant-academy-2-pc",
+      "instructions": "Required files: Star Wars: TIE Fighter on GOG\n\nLanguages: English.",
+      "image": "https://cdn2.steamgriddb.com/grid/2197d705fea3a6f01b7f20fd444d803d.png"
+    },{
       "name": "Street Fighter Alpha 3 (Street-Fighter-Alpha-3-Recomp)",
       "tags": ["sf", "ps1", "fighting", "multiplayer"],
       "source": "https://github.com/TechnicallyComputers/Street-Fighter-Alpha-3-Recomp",
       "folder": "Street-Fighter-Alpha-3-Recomp",
       "instructions": "Required files: Street Fighter Alpha 3 (USA) (Track 1/2).bin/cue (CRC32: D5E20D47/E0078F93/1DB7CAA6)",
       "image": "https://cdn2.steamgriddb.com/grid/b05aa5ae598aff32ec94a1156bd7132b.png"
+    },{
+      "name": "Street Fighter EX Plus Alpha (plusalpha-recomp)",
+      "tags": ["sf", "ps1", "fighting", "multiplayer"],
+      "source": "https://github.com/guimaraf/plusalpha-recomp",
+      "folder": "plusalpha-recomp",
+      "instructions": "Required files: Street Fighter EX Plus Alpha (USA).bin/cue (CRC32: C7F78B70/7030F8E1)",
+      "image": "https://cdn2.steamgriddb.com/grid/245142a8282a24362c6a1762f55dab27.png"
     },{
       "name": "Street Fighter III: 3rd Strike (3sx)",
       "tags": ["sf", "ps2", "fighting", "multiplayer"],
@@ -822,6 +855,14 @@
       "instructions": "Required files: Street Fighter III - 3rd Strike - Fight for the Future (Japan).iso (CRC32: 83D3A28C)",
       "image": "https://cdn2.steamgriddb.com/grid/5c8ba7cea22ea2704b5389dabaa266ee.png",
       "save": "%APPDATA%\\CrowdedStreet"
+    },{
+      "name": "Strider 2 (STRIDER-2-Recompiled)",
+      "tags": ["ps1", "platformer"],
+      "source": "https://github.com/strider973/STRIDER-2-Recompiled",
+      "folder": "STRIDER-2-Recompiled",
+      "instructions": "Required files: Strider 2 (USA).bin/cue (CRC32: 606BDC0B/54FDB3E0)\n\nLanguages: English.",
+      "image": "https://cdn2.steamgriddb.com/grid/bbbbe1ade7fc26bb848062806c908d15.png",
+      "save": "saves"
     },{
       "name": "Super Mario 64 (Ghostship)",
       "tags": ["n64", "platformer"],
@@ -1059,6 +1100,14 @@
       "folder": "wipeout-phantom-edition",
       "instructions": "Required files: Wipeout (USA)",
       "image": "https://cdn2.steamgriddb.com/grid/641d7c29f6e6d7dbc3f543df1612bd76.png",
+      "save": "saves"
+    },{
+      "name": "X-Men: Mutant Academy 2 (xmen-mutant-academy-2-pc)",
+      "tags": ["ps1", "fighting"],
+      "source": "https://github.com/GTTeancum/xmen-mutant-academy-2-pc",
+      "folder": "xmen-mutant-academy-2-pc",
+      "instructions": "Required files: X-Men: Mutant Academy 2 (SLUS-01382)\n\nLanguages: English.",
+      "image": "https://cdn2.steamgriddb.com/grid/abac2e160023bcce4ff4ed0ed446138f.png",
       "save": "saves"
     },{
       "name": "Xonotic",
