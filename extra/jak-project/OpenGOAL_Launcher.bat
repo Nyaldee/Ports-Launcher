@@ -1,6 +1,6 @@
 @echo off
 setlocal EnableExtensions
-color 0E
+title OpenGOAL for Ports Launcher & Color 0E
 mode con cols=90 lines=35
 
 cd /d "%~dp0"
