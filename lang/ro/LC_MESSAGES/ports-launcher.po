@@ -42,8 +42,8 @@ msgstr "Deschide informațiile"
 msgid "Favorite executable"
 msgstr "Executabil favorit"
 
-msgid "Change version"
-msgstr "Schimbă versiunea"
+msgid "Select version"
+msgstr "Selectează versiunea"
 
 msgid "Copy"
 msgstr "Copiază"
@@ -224,3 +224,24 @@ msgstr "Verificare actualizări: Dezactivat"
 
 msgid "Type to search..."
 msgstr "Caută..."
+
+msgid "Extras"
+msgstr "Extra"
+
+msgid "Install extras"
+msgstr "Instalează fișierele extra"
+
+msgid "Install extras - {}"
+msgstr "Instalează fișierele extra - {}"
+
+msgid "Download and install the extra files for \"{}\"? These add optional play options or preset configurations (often an arbitrary pick) and overwrite any existing copies in the port's folder."
+msgstr "Descarci și instalezi fișierele extra pentru {}? Adaugă opțiuni de lansare opționale sau configurații predefinite (adesea o alegere arbitrară) și suprascriu copiile existente din folderul portului."
+
+msgid "Downloading extras for {}..."
+msgstr "Se descarcă fișierele extra pentru {}..."
+
+msgid "Extra files installed."
+msgstr "Fișierele extra au fost instalate."
+
+msgid "Couldn't download the extra files ({}). Nothing was changed."
+msgstr "Fișierele extra ({}) nu au putut fi descărcate. Nu s-a modificat nimic."

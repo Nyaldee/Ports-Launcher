@@ -42,8 +42,8 @@ msgstr "เปิดข้อมูล"
 msgid "Favorite executable"
 msgstr "ไฟล์ปฏิบัติการที่ชื่นชอบ"
 
-msgid "Change version"
-msgstr "เปลี่ยนเวอร์ชัน"
+msgid "Select version"
+msgstr "เลือกเวอร์ชัน"
 
 msgid "Copy"
 msgstr "คัดลอก"
@@ -224,3 +224,24 @@ msgstr "ตรวจสอบการอัปเดต: ปิด"
 
 msgid "Type to search..."
 msgstr "ค้นหา..."
+
+msgid "Extras"
+msgstr "ไฟล์เสริม"
+
+msgid "Install extras"
+msgstr "ติดตั้งไฟล์เสริม"
+
+msgid "Install extras - {}"
+msgstr "ติดตั้งไฟล์เสริม - {}"
+
+msgid "Download and install the extra files for \"{}\"? These add optional play options or preset configurations (often an arbitrary pick) and overwrite any existing copies in the port's folder."
+msgstr "ดาวน์โหลดและติดตั้งไฟล์เสริมสำหรับ {} หรือไม่? ไฟล์เหล่านี้จะเพิ่มตัวเลือกการเรียกใช้เสริมหรือค่าตั้งสำเร็จรูป (มักเป็นการเลือกตามอำเภอใจ) และเขียนทับสำเนาที่มีอยู่แล้วในโฟลเดอร์ของพอร์ต"
+
+msgid "Downloading extras for {}..."
+msgstr "กำลังดาวน์โหลดไฟล์เสริมสำหรับ {}..."
+
+msgid "Extra files installed."
+msgstr "ติดตั้งไฟล์เสริมแล้ว"
+
+msgid "Couldn't download the extra files ({}). Nothing was changed."
+msgstr "ดาวน์โหลดไฟล์เสริม ({}) ไม่สำเร็จ ไม่มีการเปลี่ยนแปลงใด ๆ"

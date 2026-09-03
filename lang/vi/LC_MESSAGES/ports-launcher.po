@@ -42,8 +42,8 @@ msgstr "Mở thông tin"
 msgid "Favorite executable"
 msgstr "Tệp thực thi yêu thích"
 
-msgid "Change version"
-msgstr "Đổi phiên bản"
+msgid "Select version"
+msgstr "Chọn phiên bản"
 
 msgid "Copy"
 msgstr "Sao chép"
@@ -224,3 +224,24 @@ msgstr "Kiểm tra cập nhật: Tắt"
 
 msgid "Type to search..."
 msgstr "Tìm kiếm..."
+
+msgid "Extras"
+msgstr "Tệp bổ sung"
+
+msgid "Install extras"
+msgstr "Cài đặt tệp bổ sung"
+
+msgid "Install extras - {}"
+msgstr "Cài đặt tệp bổ sung - {}"
+
+msgid "Download and install the extra files for \"{}\"? These add optional play options or preset configurations (often an arbitrary pick) and overwrite any existing copies in the port's folder."
+msgstr "Tải và cài đặt các tệp bổ sung cho {}? Chúng thêm các tùy chọn khởi chạy không bắt buộc hoặc cấu hình dựng sẵn (thường là lựa chọn tùy ý) và ghi đè các bản sao đã có trong thư mục của port."
+
+msgid "Downloading extras for {}..."
+msgstr "Đang tải tệp bổ sung cho {}..."
+
+msgid "Extra files installed."
+msgstr "Đã cài đặt tệp bổ sung."
+
+msgid "Couldn't download the extra files ({}). Nothing was changed."
+msgstr "Không thể tải các tệp bổ sung ({}). Không có gì thay đổi."

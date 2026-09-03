@@ -42,8 +42,8 @@ msgstr "Buka info"
 msgid "Favorite executable"
 msgstr "Executable favorit"
 
-msgid "Change version"
-msgstr "Ubah versi"
+msgid "Select version"
+msgstr "Pilih versi"
 
 msgid "Copy"
 msgstr "Salin"
@@ -224,3 +224,24 @@ msgstr "Periksa pembaruan: Nonaktif"
 
 msgid "Type to search..."
 msgstr "Cari..."
+
+msgid "Extras"
+msgstr "Ekstra"
+
+msgid "Install extras"
+msgstr "Pasang ekstra"
+
+msgid "Install extras - {}"
+msgstr "Pasang ekstra - {}"
+
+msgid "Download and install the extra files for \"{}\"? These add optional play options or preset configurations (often an arbitrary pick) and overwrite any existing copies in the port's folder."
+msgstr "Unduh dan pasang berkas ekstra untuk {}? Berkas ini menambahkan opsi peluncuran opsional atau konfigurasi siap pakai (sering kali pilihan sembarang) dan menimpa salinan yang sudah ada di folder port."
+
+msgid "Downloading extras for {}..."
+msgstr "Mengunduh ekstra untuk {}..."
+
+msgid "Extra files installed."
+msgstr "Berkas ekstra terpasang."
+
+msgid "Couldn't download the extra files ({}). Nothing was changed."
+msgstr "Tidak dapat mengunduh berkas ekstra ({}). Tidak ada yang diubah."

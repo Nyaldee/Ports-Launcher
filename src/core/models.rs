@@ -277,7 +277,7 @@ pub struct InstalledInfo {
     /// date de release/asset est absente pour certaines sources.
     pub installed_at: String,
     /// Chemin de l'exécutable choisi explicitement par l'utilisateur pour ce
-    /// port (voir le bouton sous "Change version" dans InfoDialog) -- RELATIF
+    /// port (voir le bouton sous "Select version" dans InfoDialog) -- RELATIF
     /// au dossier du jeu (`game_dir` dans `launch_flow`/
     /// `open_favorite_exe_picker`), jamais absolu : un chemin absolu
     /// casserait silencieusement tous les favoris déjà choisis dès que

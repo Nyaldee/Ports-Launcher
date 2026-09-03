@@ -4,7 +4,9 @@
 
 use super::events::{lock, AppEvent};
 use super::gamepad_target::DialogGamepadTarget;
-use super::install_launch::{delete_port, open_favorite_exe_picker, open_path_if_exists, open_version_picker, start_install};
+use super::install_launch::{
+    delete_port, open_favorite_exe_picker, open_path_if_exists, open_version_picker, start_extra_install, start_install,
+};
 use super::playtime::format_playtime;
 use super::state::AppState;
 use crate::core::models::{Port, SourceType};
@@ -614,7 +616,7 @@ pub(crate) fn open_info_dialog(app: &Rc<AppState>, router: &Rc<RefCell<GamepadRo
     let favorite_exe_ok = game_folder_ok;
     dialog.set_favorite_exe_enabled(favorite_exe_ok);
 
-    // change_version_ok ET installé -- contrairement à Change version
+    // change_version_ok ET installé -- contrairement à Select version
     // (utilisable AVANT toute install, pour choisir quelle release
     // installer en premier), basculer l'auto-MAJ n'a de sens que pour un
     // port déjà installé : sinon `set_port_update` crée quand même une
@@ -629,6 +631,12 @@ pub(crate) fn open_info_dialog(app: &Rc<AppState>, router: &Rc<RefCell<GamepadRo
     let reset_playtime_ok = game_folder_ok;
     dialog.set_reset_playtime_enabled(reset_playtime_ok);
 
+    // Bouton "Install extras" -- actif seulement si le port déclare un champ
+    // "extra" dans ports.json ET est installé (aucun dossier où fusionner
+    // les fichiers sinon, voir installer::install_extra_only).
+    let extra_ok = port.extra.is_some() && game_folder_ok;
+    dialog.set_extra_enabled(extra_ok);
+
     let favorite_exe_status = match app.state.borrow().get(port.key()).and_then(|i| i.favorite_exe.clone()) {
         None => tr.invoke_favorite_exe_status_default(),
         Some(exe) => tr.invoke_favorite_exe_status_named(exe.into()),
@@ -640,12 +648,23 @@ pub(crate) fn open_info_dialog(app: &Rc<AppState>, router: &Rc<RefCell<GamepadRo
     dialog.set_playtime_status_text(tr.invoke_playtime_status(format_playtime(playtime_seconds).into()));
 
     // Premier bouton ACTIVÉ -- 0 si aucun ne l'est, auquel cas
-    // activate_selection reste de toute façon un no-op.
-    let first_enabled =
-        [website_ok, mods_ok, game_folder_ok, save_ok, save2_ok, change_version_ok, favorite_exe_ok, update_toggle_ok, reset_playtime_ok]
-            .iter()
-            .position(|&ok| ok)
-            .unwrap_or(0);
+    // activate_selection reste de toute façon un no-op. Même ordre que
+    // InfoDialog.selected-index (voir dialogs/info.slint).
+    let first_enabled = [
+        website_ok,
+        mods_ok,
+        game_folder_ok,
+        save_ok,
+        save2_ok,
+        change_version_ok,
+        favorite_exe_ok,
+        update_toggle_ok,
+        reset_playtime_ok,
+        extra_ok,
+    ]
+    .iter()
+    .position(|&ok| ok)
+    .unwrap_or(0);
     app.dialog_nav.info_nav_index.set(first_enabled as i32);
     dialog.set_selected_index(first_enabled as i32);
 
@@ -695,6 +714,12 @@ pub(crate) fn open_info_dialog(app: &Rc<AppState>, router: &Rc<RefCell<GamepadRo
         let port2 = port.clone();
         dialog.on_reset_playtime_requested(move || open_reset_playtime_dialog(&app2, &router2, port2.clone()));
     }
+    if extra_ok {
+        let app2 = app.clone();
+        let router2 = router.clone();
+        let port2 = port.clone();
+        dialog.on_extra_requested(move || open_extra_install_confirm_dialog(&app2, &router2, port2.clone()));
+    }
     wire_dialog_close!(dialog, app, router);
     wire_dialog_nav_hovered!(dialog, app, dialog_nav.info_nav_index);
     wire_dialog_selection_nav!(dialog, app, horizontal);
@@ -718,6 +743,20 @@ pub(crate) fn open_update_toggle_dialog(app: &Rc<AppState>, router: &Rc<RefCell<
     open_picker_dialog(app, router, &title, labels, move |app, _router, idx| {
         app.state.borrow_mut().set_port_update(&key, idx == 0);
         app.refresh_current_view();
+    });
+}
+
+/// Bouton "Install extras" d'InfoDialog -- confirme avant de télécharger et
+/// fusionner les fichiers `extra` de `port` dans son dossier (voir
+/// `app::install_launch::start_extra_install`). Le message prévient que ces
+/// ajouts (options de lancement, configurations prédéfinies -- souvent des
+/// choix arbitraires) écrasent les copies déjà présentes dans le dossier.
+pub(crate) fn open_extra_install_confirm_dialog(app: &Rc<AppState>, router: &Rc<RefCell<GamepadRouter>>, port: Port) {
+    let title = tr!(app).invoke_dialog_title_install_extras(port.name.clone().into());
+    let message = tr!(app).invoke_message_install_extras_confirm(port.name.clone().into());
+    let confirm_label = tr!(app).invoke_confirm_install();
+    open_confirm_dialog(app, router, title, message, Some(confirm_label), move |app, router| {
+        start_extra_install(app, router, port.clone());
     });
 }
 
@@ -794,7 +833,7 @@ pub(crate) fn open_picker_dialog(
 }
 
 /// menu Settings -- 5 boutons (Themes/Language/Files/Library/Backup Saves),
-/// réutilise le picker générique (même mécanisme que "Change version",
+/// réutilise le picker générique (même mécanisme que "Select version",
 /// voir open_picker_dialog) plutôt qu'un composant dédié. Chaque sous-écran
 /// (thèmes, langue, fichiers) vit dans sa propre fonction ci-dessous.
 pub(crate) fn open_settings_dialog(app: &Rc<AppState>, router: &Rc<RefCell<GamepadRouter>>) {
@@ -847,6 +886,12 @@ type CloseWithoutSelectFn = Box<dyn Fn(&Rc<AppState>) + 'static>;
 /// après une recherche (sinon l'aperçu resterait sur l'ancienne valeur
 /// jusqu'au prochain déplacement). `on_close_without_select` annule l'effet
 /// d'une prévisualisation si le dialogue se ferme sans validation.
+///
+/// Les 8 paramètres n'ont aucun regroupement honnête (3 pour le contenu de
+/// la liste, 3 closures indépendantes) -- un struct de bundling serait
+/// artificiel, d'où l'`allow` plutôt qu'un `InstallPaths`-like ici (même
+/// choix que `installer::download_release_asset`).
+#[allow(clippy::too_many_arguments)]
 fn open_search_list_dialog(
     app: &Rc<AppState>,
     router: &Rc<RefCell<GamepadRouter>>,

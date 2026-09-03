@@ -76,7 +76,15 @@
       "image": "https://cdn2.steamgriddb.com/grid/17faa600670ae46a32ff83f76e83806a.png",
       "save": "%USERPROFILE%\\Documents\\renut"
     },{
-      "-name": "Blue Dragon (reblue-XenosRecomp)",
+      "name": "Bloody Roar 2: Bringer of the New Age (BloodyRoar2Recomp)",
+      "tags": ["ps1", "fighting"],
+      "source": "https://github.com/novapowers0/BloodyRoar2Recomp",
+      "folder": "BloodyRoar2Recomp",
+      "instructions": "Required files: Bloody Roar II (USA).bin/cue (CRC32: F5EC130A/5679034E)\n\nLanguages: English.",
+      "image": "https://cdn2.steamgriddb.com/grid/8b840ab8671c2a17b7b49fb9169df960.png",
+      "save": "saves"
+    },{
+      "name": "Blue Dragon (reblue-XenosRecomp)",
       "tags": ["360", "rpg"],
       "source": "https://github.com/zolaware/reblue-XenosRecomp",
       "folder": "reblue-XenosRecomp",
@@ -163,6 +171,13 @@
       "mods": "https://github.com/CTR-tools/CTR-ModSDK",
       "image": "https://cdn2.steamgriddb.com/grid/9ab753f52cc2010c347f05159edb9bd6.png"
     },{
+      "name": "Dante's Inferno (hells-gate-recomp)",
+      "tags": ["360", "beat them all"],
+      "source": "https://github.com/florinp93/hells-gate-recomp",
+      "folder": "hells-gate-recomp",
+      "instructions": "Required files: ",
+      "image": "https://cdn2.steamgriddb.com/grid/4b16f49bdb6b891e01276afbaed1d675.png"
+    },{
       "name": "Deadly Premonition (DPRecomp)",
       "tags": ["360", "survival horror", "multilingual"],
       "source": "https://github.com/LittleBitUA/DPRecomp",
@@ -179,7 +194,7 @@
       "image": "https://cdn2.steamgriddb.com/grid/d0ae205c142c0aa84e1f7a7c20c0c7e5.png"
     },{
       "name": "Diddy Kong Racing (DKR-R)",
-      "tags": ["n64", "racing", "multiplayer", "multilingual"],
+      "tags": ["online", "n64", "racing", "multiplayer", "multilingual"],
       "source": "https://github.com/ThatGuyMcd/DKR-R",
       "folder": "DKR-R",
       "instructions": "Required files: Diddy Kong Racing (USA) (En,Fr)/(En,Fr,De) (Rev 1).z64 (CRC32: 5ACCA298/B1E87639)\n\nLanguages: English, French, German.",
@@ -228,17 +243,12 @@
       "instructions": "Required files: Donkey Kong 64 (USA).z64 (CRC32: D44B4FC6)",
       "image": "https://cdn2.steamgriddb.com/grid/86f7d456aa5848c284f7940bdecdef5d.png"
     },{
-      "name": "Donkey Kong 64 (Donkey-Kong-64-Recompiled)",
+      "-name": "Donkey Kong 64 (dk64)",
       "tags": ["n64", "dk", "platformer"],
-      "source": "https://github.com/Rainchus/Donkey-Kong-64-Recompiled",
-      "folder": "Donkey-Kong-64-Recompiled",
-      "instructions": "Required files: Donkey Kong 64 (USA).z64 (CRC32: D44B4FC6)\n\nPortable saves : portable.txt in root folder.\n\nDiscord server: https://discord.com/invite/SR8qWG9Ve",
-      "mods": "https://dk64recomp.com/mods.html",
-      "image": "https://cdn2.steamgriddb.com/grid/86f7d456aa5848c284f7940bdecdef5d.png",
-      "save": {
-        "windows": "%LOCALAPPDATA%\\DK64Recompiled",
-        "linux": "~/.config/DK64Recompiled"
-      }
+      "source": "https://gitlab.com/dk64_decomp/dk64",
+      "folder": "dk64",
+      "instructions": "Required files: Donkey Kong 64 (USA).z64 (CRC32: D44B4FC6)",
+      "image": "https://cdn2.steamgriddb.com/grid/86f7d456aa5848c284f7940bdecdef5d.png"
     },{
       "name": "Doom (uzdoom)",
       "tags": ["pc", "fps"],
@@ -257,6 +267,16 @@
       "image": "https://cdn2.steamgriddb.com/grid/55b8547448d21dd203768b4873194667.png",
       "save": "%LOCALAPPDATA%\\drmario64_recomp"
     },{
+      "name": "Dr. Robotnik's Ring Racers (RingRacers)",
+      "tags": ["pc", "racing", "multiplayer", "online"],
+      "source": "https://github.com/KartKrewDev/RingRacers",
+      "folder": "RingRacers",
+      "instructions": "If you have a 2160p monitor, the F11 key on your keyboard will help.\n\nhttps://kartkrew.org/",
+      "mods": "https://mb.srb2.org/addons/categories/dr-robotniks-ring-racers-v2-x.23/",
+      "image": "https://cdn2.steamgriddb.com/grid/79455e981b40f5af04ca6570c59099c8.png",
+      "exe_is_archive": "ringracers.exe",
+      "preferred_asset": ".exe"
+    },{
       "name": "Dragon Ball Z: Budokai (DBZ1)",
       "tags": ["360", "fighting", "multiplayer"],
       "source": "https://github.com/WistfulHopes/DBZ1",
@@ -273,7 +293,7 @@
       "save": "%USERPROFILE%\\.driver2"
     },{
       "name": "Duck Game (DuckGameRebuilt)",
-      "tags": ["pc", "shooter", "multiplayer", "online"],
+      "tags": ["free", "pc", "shooter", "multiplayer", "online"],
       "source": "https://github.com/TheFlyingFoool/DuckGameRebuilt",
       "folder": "DuckGameRebuilt",
       "instructions": "",
@@ -437,6 +457,13 @@
       "instructions": "Required files: Super Mario 64 (USA).z64 (CRC32: 3CE60709)",
       "image": "https://cdn2.steamgriddb.com/grid/2af7ac10b0b96eb5757defbb65e21b99.png",
       "save": "%APPDATA%\\Godot"
+    },{
+      "name": "Initial D Arcade Stage Ver. 3 (Initial-D-Arcade-Stage-3-Native-SH-4-Recompilation-WIP-)",
+      "tags": ["naomi", "arcade", "racing"],
+      "source": "https://github.com/distilledorion-sketch/Initial-D-Arcade-Stage-3-Native-SH-4-Recompilation-WIP-",
+      "folder": "Initial-D-Arcade-Stage-3-Native-SH-4-Recompilation-WIP-",
+      "instructions": "",
+      "image": "https://cdn2.steamgriddb.com/grid/f04b4053b5b1c5fabd05ca595aedf1c9.png"
     },{
       "name": "Jak and Daxter / Jak II / Jak 3 (jak-project)",
       "tags": ["ps2", "platformer", "multilingual"],
@@ -873,7 +900,7 @@
       "image": "https://cdn2.steamgriddb.com/grid/ea98cb4ef75b56acda616e5166438fb6.png"
     },{
       "name": "Super Mario 64 (sm64coopdx)",
-      "tags": ["n64", "platformer", "co-op", "online"],
+      "tags": ["online", "n64", "platformer", "co-op"],
       "source": "https://github.com/coop-deluxe/sm64coopdx",
       "folder": "sm64coopdx",
       "instructions": "Required files: Super Mario 64 (USA).z64 (CRC32: 3CE60709)\n\nPortable saves : create a shortcut of sm64coopdx with this arguments  --savepath .\\saves\n\nENGLISH\n\nLaunch sm64coopdx. Alt + Enter switches the game to fullscreen. Choose your preferred language, then press Esc to close a menu. If the game has no sound, select \"Quit\" → \"Yes\", then relaunch the game.\n\nGo to \"Options\" → \"Player\" to change the nickname displayed in-game. You will probably be playing with custom characters, so there is no need to edit the palette.\n\nStill in \"Options\", go to \"DynOS Packs\". I recommend enabling \"3D Kaze Coins\", \"3D Trees\" and \"Fixed Smoke\".\n\nIn \"Camera\", you can enable \"Invert X\" if you prefer to invert the horizontal camera axis. Then enable \"Free Camera\", \"Analog Camera\", \"L Centering\" and \"Camera Collision\". Leave all other options disabled.\n\nSet \"X/Y Sensitivity\" to 20. This value works well with an XInput controller.\n\nFRANÇAIS\n\nLancer sm64coopdx. Alt + Entrée permet de passer le jeu en plein écran. Choisir la langue souhaitée, puis appuyer sur Échap pour quitter un menu. Si le jeu n’a pas de son, sélectionner « Quit » → « Yes », puis relancer le jeu.\n\nAller dans « Options » → « Player » pour modifier le pseudo affiché en jeu. Vous jouerez probablement avec des personnages inédits, il n’est donc pas nécessaire de modifier la palette.\n\nToujours dans « Options », aller dans « DynOS Packs ». Je recommande d’activer « 3D Kaze Coins », « 3D Trees » et « Fixed Smoke ».\n\nDans « Camera », vous pouvez activer « Invert X » si vous préférez inverser l’axe horizontal. Activer ensuite « Free Camera », « Analog Camera », « L Centering » et « Camera Collision ». Toutes les autres options doivent rester désactivées.\n\nRégler « X/Y Sensitivity » sur 20. Cette valeur convient bien à une manette XInput.",
@@ -978,14 +1005,14 @@
       "instructions": "Required files: The Legend of Dragoon .iso\n\nLanguages: English.",
       "image": "https://cdn2.steamgriddb.com/grid/307c27aeb32c02e2561f228b0e758196.png"
     },{
-      "name": "The Legend of Zelda: A Link to the Past (zelda3)",
+      "name": "The Legend of Zelda: A Link to the Past (zelda3-PL)",
       "tags": ["snes", "action-adventure"],
-      "source": "https://github.com/snesrev/zelda3",
-      "folder": "zelda3",
-      "instructions": "Required files: Legend of Zelda, The - A Link to the Past (USA)/(France)/(Canada).sfc (CRC32: 777AAC2F/1F8C30E8/47760381)\n\nTo change the game's language, start Zelda3_Launcher.bat.\n\nIl y a aussi une traduction française du patch Redux à patcher avec Lunar IPS sur le zelda3_assets.dat extrait avec mon Zelda3_Launcher.bat, et pensez à paramétrer la langue dans le zelda3.ini.",
+      "source": "https://raw.githubusercontent.com/Nyaldee/Ports-Launcher/main/extra/zelda3/zelda3-PL.zip",
+      "folder": "zelda3-PL",
+      "instructions": "Required files: Legend of Zelda, The - A Link to the Past (USA).sfc (CRC32: 777AAC2F)\n\nTo change the game's language, use the IPS patch in the extra, or extract the text from your game with Zelda3_Launcher.bat and modify the zelda3.ini",
       "image": "https://cdn2.steamgriddb.com/grid/7edaadde50012f0860952123564eb1ba.jpg",
       "save": "saves",
-      "extra": "https://raw.githubusercontent.com/Nyaldee/Ports-Launcher/main/extra/zelda3/zelda3.zip"
+      "extra": "https://raw.githubusercontent.com/Nyaldee/Ports-Launcher/main/extra/zelda3/ja, zh, pt, ga, pl, frredux, redux apply on zelda3_assets.dat.ips"
     },{
       "name": "The Legend of Zelda: Link's Awakening DX (LADXHD)",
       "tags": ["gb", "action-adventure", "multilingual"],
@@ -1019,13 +1046,14 @@
       "save2": "saves"
     },{
       "name": "The Legend of Zelda: Ocarina of Time (Shipwright)",
-      "tags": ["n64", "action-adventure", "multilingual", "online"],
+      "tags": ["online", "n64", "action-adventure", "multilingual"],
       "source": "https://github.com/HarbourMasters/Shipwright",
       "folder": "Shipwright",
       "instructions": "Required files: Legend of Zelda, The - Ocarina of Time (USA) (GameCube)/Master Quest (Europe) (GameCube).z64 (CRC32: 346DE3AE/832D6449) for all language.",
       "mods": "https://gamebanana.com/games/16121",
       "image": "https://cdn2.steamgriddb.com/grid/f711cc70dbdab88f32389ec84e56a242.png",
-      "save": "Save"
+      "save": "Save",
+      "extra": "https://raw.githubusercontent.com/Nyaldee/Ports-Launcher/main/extra/Shipwright/"
     },{
       "name": "The Legend of Zelda: The Minish Cap (tmc)",
       "tags": ["gba", "action-adventure"],
@@ -1101,6 +1129,13 @@
       "instructions": "Required files: Wipeout (USA)",
       "image": "https://cdn2.steamgriddb.com/grid/641d7c29f6e6d7dbc3f543df1612bd76.png",
       "save": "saves"
+    },{
+      "-name": "X-Men: Destiny (xmd-recompiled)",
+      "tags": ["360", "action-adventure", "multilingual"],
+      "source": "https://github.com/florinp93/xmd-recompiled",
+      "folder": "xmd-recompiled",
+      "instructions": "Required files: \n\nLanguages: Multilingual.",
+      "image": "https://cdn2.steamgriddb.com/grid/3636d84dd596dd83dc16a81270036aeb.jpg"
     },{
       "name": "X-Men: Mutant Academy 2 (xmen-mutant-academy-2-pc)",
       "tags": ["ps1", "fighting"],

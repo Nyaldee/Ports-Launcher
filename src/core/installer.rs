@@ -139,16 +139,55 @@ fn rename_dest(dest: &Path, filename: &str) -> PathBuf {
     dest.parent().map(|parent| parent.join(safe_download_name(filename))).unwrap_or_else(|| dest.to_path_buf())
 }
 
+/// `dest`/`name` porte-t-il déjà une extension reconnue comme conteneur
+/// téléchargeable (même liste que `extract_to_staging`, qui décide zip/7z/
+/// etc. sur ce même suffixe) ? Jamais `Path::extension()` ici : un nom de
+/// release contient presque toujours un numéro de version avec points (ex:
+/// "ExtremeGRecompiled-v1.0.0-Windows-RelWithDebInfo"), que
+/// `Path::extension()` prendrait pour une extension ("0-windows-...") et
+/// empêcherait `download` de corriger un nom par ailleurs dépourvu de toute
+/// vraie extension.
+fn has_known_archive_extension(name: &str) -> bool {
+    let lower = name.to_lowercase();
+    [".zip", ".tar.gz", ".tgz", ".tar", ".7z", ".rar", ".exe"].iter().any(|ext| lower.ends_with(ext))
+}
+
+/// Extrait le nom de fichier d'un en-tête `Content-Disposition` (ex:
+/// `attachment; filename="foo.zip"; filename*=UTF-8''foo.zip`) -- s'arrête
+/// au premier `filename=` classique, jamais à la variante `filename*=`
+/// encodée RFC 5987 (même valeur en pratique ici, pas la peine de la
+/// décoder). GitLab (`package_files/<id>/download`, voir `download`) sert le
+/// fichier directement à cette URL, sans redirection ET sans extension dans
+/// le chemin -- seul cet en-tête porte le vrai nom.
+fn content_disposition_filename(header: &str) -> Option<String> {
+    let after = header.split("filename=").nth(1)?.trim_start();
+    match after.strip_prefix('"') {
+        Some(rest) => rest.split('"').next().map(str::to_string),
+        None => after.split(';').next().map(|s| s.trim().to_string()),
+    }
+}
+
 /// Télécharge `url` vers `dest` et renvoie le chemin RÉELLEMENT écrit.
-/// Deux stratégies de résolution du vrai nom de fichier, dans l'ordre où
+/// Quatre stratégies de résolution du vrai nom de fichier, dans l'ordre où
 /// l'information devient disponible :
 /// 1. AVANT la requête -- cas pixeldrain (voir `pixeldrain_file_id`), dont
 ///    l'URL de partage est réécrite vers son point de téléchargement direct,
 ///    avec le nom obtenu via son API d'info.
-/// 2. APRÈS la requête -- cas générique (mirror qui redirige, ModDB entre
-///    autres) : le nom ne diffère de celui déjà connu que si l'URL FINALE
-///    après redirection (`ResponseExt::get_uri`, voir ureq) porte un nom
-///    différent avec une extension, jamais si elle retombe sur le même
+/// 2. AVANT la requête aussi -- `dest` vient du libellé "name" de l'asset
+///    (voir `download_release_asset`), un simple texte d'affichage qui peut
+///    ne porter aucune extension même quand l'URL de téléchargement, elle,
+///    en a une : sans ce repli, `extract()` (qui se fie à l'extension du
+///    fichier écrit sur disque) ne reconnaît jamais l'archive et la laisse
+///    telle quelle, jamais décompressée.
+/// 3. APRÈS la requête -- l'en-tête `Content-Disposition` de la réponse (voir
+///    `content_disposition_filename`) : le cas GitLab (`package_files/<id>/
+///    download`) ne redirige jamais ET son chemin ne porte aucune extension
+///    -- ni la stratégie 2 ni la 4 ne peuvent la trouver, seul cet en-tête le
+///    peut.
+/// 4. APRÈS la requête aussi -- cas générique (mirror qui redirige, ModDB
+///    entre autres) : le nom ne diffère de celui déjà connu que si l'URL
+///    FINALE après redirection (`ResponseExt::get_uri`, voir ureq) porte un
+///    nom différent avec une extension, jamais si elle retombe sur le même
 ///    chemin (rien à gagner).
 fn download(url: &str, dest: &Path, on_progress: &mut ProgressCallback) -> Result<PathBuf, InstallError> {
     let mut url = url.to_string();
@@ -161,6 +200,9 @@ fn download(url: &str, dest: &Path, on_progress: &mut ProgressCallback) -> Resul
     }
 
     let name = url.rsplit('/').next().unwrap_or(&url).to_string();
+    if !has_known_archive_extension(&dest.to_string_lossy()) && has_known_archive_extension(&name) {
+        dest = rename_dest(&dest, &name);
+    }
     notify(on_progress, &format!("Downloading {name}..."));
 
     // 30 minutes, pas 30s (comme les appels d'API) : `timeout_global` couvre
@@ -169,7 +211,20 @@ fn download(url: &str, dest: &Path, on_progress: &mut ProgressCallback) -> Resul
     // suffit que sur une connexion très rapide.
     let agent = super::http::agent(Duration::from_secs(30 * 60));
     let mut resp = agent.get(&url).call().install_err()?;
-    if let Some(final_name) = ureq::ResponseExt::get_uri(&resp).path().rsplit('/').next().filter(|n| n.contains('.') && *n != name) {
+    if !has_known_archive_extension(&dest.to_string_lossy()) {
+        if let Some(cd_name) = resp
+            .headers()
+            .get("content-disposition")
+            .and_then(|v| v.to_str().ok())
+            .and_then(content_disposition_filename)
+            .filter(|n| has_known_archive_extension(n))
+        {
+            dest = rename_dest(&dest, &cd_name);
+        }
+    }
+    if let Some(final_name) =
+        ureq::ResponseExt::get_uri(&resp).path().rsplit('/').next().filter(|n| has_known_archive_extension(n) && *n != name)
+    {
         dest = rename_dest(&dest, final_name);
     }
     let mut file = fs::File::create(&dest).install_err()?;
@@ -441,10 +496,11 @@ fn extract(archive: &Path, dest_dir: &Path, library_dir: &Path, exe_is_archive: 
 
 /// Champ `extra` de `Port` -- télécharge `url` et fusionne (voir
 /// `merge_into`, écrase les fichiers de même nom) son contenu dans le
-/// dossier déjà installé, APRÈS l'install principale. Appelée depuis
-/// `install_port`, qui ignore silencieusement toute erreur ici (lien mort,
-/// hors-ligne...) -- ne doit jamais faire échouer une install par ailleurs
-/// réussie.
+/// dossier déjà installé du port. Déclenché à la demande par
+/// `install_extra_only` (bouton "Install extras" d'InfoDialog) : ces ajouts
+/// (options de lancement, configurations prédéfinies) sont souvent des
+/// choix arbitraires, laissés au gré de l'utilisateur plutôt que posés
+/// d'office à l'installation.
 fn install_extra(url: &str, dest_dir: &Path, library_dir: &Path, on_progress: &mut ProgressCallback) -> Result<(), InstallError> {
     notify(on_progress, "Downloading extra files...");
     let tmp = tempfile::Builder::new().prefix("_extra_download_").tempdir_in(library_dir).install_err()?;
@@ -459,6 +515,26 @@ fn install_extra(url: &str, dest_dir: &Path, library_dir: &Path, on_progress: &m
     let merge_root = extract_to_staging(&archive_path, staging, None)?;
     merge_into(&merge_root, dest_dir).install_err()?;
     Ok(())
+}
+
+/// Installe à la demande les fichiers `extra` d'un port -- bouton "Install
+/// extras" d'InfoDialog (voir `jobs::run_extra_install` /
+/// `app::install_launch::start_extra_install`). Vérifie que le port déclare
+/// bien un `extra` et qu'il est installé (aucun dossier où fusionner sinon),
+/// puis délègue à `install_extra` (qui décompresse automatiquement une
+/// archive et écrase les fichiers de même nom déjà présents). `Err`
+/// seulement sur un vrai problème (pas de champ `extra`, port pas installé,
+/// lien injoignable, archive illisible) -- dans ce cas rien n'a été touché
+/// dans le dossier du port.
+pub fn install_extra_only(port: &Port, library_dir: &Path, mut on_progress: ProgressCallback) -> Result<(), InstallError> {
+    let Some(url) = port.extra.as_deref() else {
+        return Err(InstallError::Message("This port has no \"extra\" files to install.".to_string()));
+    };
+    let dest_dir = safe_join(library_dir, &port.folder).map_err(InstallError::Message)?;
+    if !dest_dir.exists() {
+        return Err(InstallError::Message("Install this port first, then add its extra files.".to_string()));
+    }
+    install_extra(url, &dest_dir, library_dir, &mut on_progress)
 }
 
 /// `library_dir`/`cache_dir`/`saves_backup_dir` voyagent toujours ensemble
@@ -619,13 +695,6 @@ pub fn install_port(
         }
     }
 
-    // Best-effort, jamais fatal (voir install_extra) -- un lien mort ou une
-    // panne réseau sur ce fichier annexe ne doit jamais faire échouer une
-    // install par ailleurs réussie.
-    if let Some(url) = &port.extra {
-        let _ = install_extra(url, &dest_dir, library_dir, &mut on_progress);
-    }
-
     notify(&mut on_progress, "Done.");
     Ok(installed_tag)
 }
@@ -680,8 +749,11 @@ mod tests {
     fn pixeldrain_file_id_extrait_un_lien_de_partage() {
         assert_eq!(pixeldrain_file_id("https://pixeldrain.com/u/XQjoRAjJ"), Some("XQjoRAjJ"));
         assert_eq!(pixeldrain_file_id("http://pixeldrain.com/u/XQjoRAjJ"), Some("XQjoRAjJ"));
-        // Suffixe (page de commentaires, query string...) écarté, seul l'id compte.
+        // Suffixe (page de commentaires, query string, ancre) écarté, seul
+        // l'id compte -- les trois délimiteurs gérés par le `split` interne.
         assert_eq!(pixeldrain_file_id("https://pixeldrain.com/u/XQjoRAjJ?x=1"), Some("XQjoRAjJ"));
+        assert_eq!(pixeldrain_file_id("https://pixeldrain.com/u/XQjoRAjJ/comments"), Some("XQjoRAjJ"));
+        assert_eq!(pixeldrain_file_id("https://pixeldrain.com/u/XQjoRAjJ#preview"), Some("XQjoRAjJ"));
     }
 
     #[test]
@@ -689,6 +761,36 @@ mod tests {
         assert_eq!(pixeldrain_file_id("https://pixeldrain.com/api/file/XQjoRAjJ"), None);
         assert_eq!(pixeldrain_file_id("https://example.com/u/XQjoRAjJ"), None);
         assert_eq!(pixeldrain_file_id("https://github.com/foo/bar/releases/download/v1/a.zip"), None);
+    }
+
+    #[test]
+    fn content_disposition_filename_extrait_le_nom_quote() {
+        // Cas réel GitLab (package_files/<id>/download) : les deux variantes
+        // classique et RFC 5987 coexistent, seule la première nous intéresse.
+        assert_eq!(
+            content_disposition_filename("attachment; filename=\"ExtremeGRecompiled-v1.0.0-Windows-RelWithDebInfo.zip\"; filename*=UTF-8''ExtremeGRecompiled-v1.0.0-Windows-RelWithDebInfo.zip"),
+            Some("ExtremeGRecompiled-v1.0.0-Windows-RelWithDebInfo.zip".to_string())
+        );
+    }
+
+    #[test]
+    fn content_disposition_filename_gere_le_nom_sans_guillemets() {
+        assert_eq!(content_disposition_filename("attachment; filename=a.zip"), Some("a.zip".to_string()));
+    }
+
+    #[test]
+    fn content_disposition_filename_none_si_absent() {
+        assert_eq!(content_disposition_filename("attachment"), None);
+    }
+
+    #[test]
+    fn has_known_archive_extension_ignore_les_points_dun_numero_de_version() {
+        // Cas réel (asset GitLab ExtremeGRecomp) : Path::extension() prendrait
+        // à tort "0-windows-relwithdebinfo" pour une extension à cause du
+        // "v1.0.0", ce qui empêchait `download` de jamais corriger ce nom.
+        assert!(!has_known_archive_extension("ExtremeGRecompiled-v1.0.0-Windows-RelWithDebInfo"));
+        assert!(has_known_archive_extension("ExtremeGRecompiled-v1.0.0-Windows-RelWithDebInfo.zip"));
+        assert!(has_known_archive_extension("Foo.Bar.v2.5.TAR.GZ"));
     }
 
     /// Fabrique une archive de test via `7z.exe a` : écrit chaque fichier

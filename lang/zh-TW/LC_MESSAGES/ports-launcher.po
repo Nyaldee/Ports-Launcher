@@ -42,8 +42,8 @@ msgstr "開啟資訊"
 msgid "Favorite executable"
 msgstr "常用執行檔"
 
-msgid "Change version"
-msgstr "變更版本"
+msgid "Select version"
+msgstr "選擇版本"
 
 msgid "Copy"
 msgstr "複製"
@@ -224,3 +224,24 @@ msgstr "檢查更新：關"
 
 msgid "Type to search..."
 msgstr "輸入以搜尋..."
+
+msgid "Extras"
+msgstr "額外檔案"
+
+msgid "Install extras"
+msgstr "安裝額外檔案"
+
+msgid "Install extras - {}"
+msgstr "安裝額外檔案 - {}"
+
+msgid "Download and install the extra files for \"{}\"? These add optional play options or preset configurations (often an arbitrary pick) and overwrite any existing copies in the port's folder."
+msgstr "下載並安裝 {} 的額外檔案？它們會加入選用的啟動選項或預設設定（通常是隨意的選擇），並覆蓋移植檔案夾中既有的同名檔案。"
+
+msgid "Downloading extras for {}..."
+msgstr "正在下載 {} 的額外檔案..."
+
+msgid "Extra files installed."
+msgstr "額外檔案已安裝。"
+
+msgid "Couldn't download the extra files ({}). Nothing was changed."
+msgstr "無法下載額外檔案（{}）。未變更任何內容。"

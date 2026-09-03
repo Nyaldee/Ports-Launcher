@@ -25,13 +25,28 @@ pub(crate) fn open_path_if_exists(path: &Path) {
     }
 }
 
+/// Réserve le "slot d'opération" d'un port -- au plus UNE install/update/
+/// fetch de versions/extra à la fois par port, et jamais pendant qu'une
+/// partie tourne. `Some(key)` = réservé, à libérer par le handler de l'event
+/// de fin correspondant (`installing.remove(&key)`, voir `events.rs`) ;
+/// `None` = déjà occupé, l'appelant abandonne en silence (double-clic ou
+/// activation manette répétée sur le même bouton).
+fn try_claim_op_slot(app: &Rc<AppState>, port: &Port) -> Option<String> {
+    let key = port.key().to_string();
+    if app.install_runtime.installing.borrow().contains(&key) || is_port_running(app, &key) {
+        return None;
+    }
+    app.install_runtime.installing.borrow_mut().insert(key.clone());
+    Some(key)
+}
+
 /// Lance une install en tâche de fond -- ignore les activations répétées
 /// pendant qu'une install pour CE port tourne déjà (`installing`).
 ///
 /// `asset_override` : fichier choisi manuellement après une erreur
 /// `Ambiguous`, contourne l'heuristique automatique pour cette tentative.
 /// `release_override` : release choisie via `open_version_picker` (bouton
-/// "Change version" dans Info), contourne "toujours la dernière" pour cette
+/// "Select version" dans Info), contourne "toujours la dernière" pour cette
 /// tentative -- voir installer::install_port.
 pub(crate) fn start_install(
     app: &Rc<AppState>,
@@ -40,14 +55,10 @@ pub(crate) fn start_install(
     asset_override: Option<Value>,
     release_override: Option<Value>,
 ) {
-    let key = port.key().to_string();
     // Ne jamais écraser les fichiers d'un port en cours d'exécution -- vaut
     // pour un premier install comme pour une mise à jour, les deux passant
-    // par ici.
-    if app.install_runtime.installing.borrow().contains(&key) || is_port_running(app, &key) {
-        return;
-    }
-    app.install_runtime.installing.borrow_mut().insert(key.clone());
+    // par ici (voir `try_claim_op_slot`).
+    let Some(key) = try_claim_op_slot(app, &port) else { return };
 
     let window = app.window();
     let tr = window.global::<crate::Tr>();
@@ -64,7 +75,7 @@ pub(crate) fn start_install(
         return;
     }
 
-    // Un release_override vient forcément de "Change version" (voir
+    // Un release_override vient forcément de "Select version" (voir
     // open_version_picker) -- calculé ici, avant que le thread ci-dessous
     // n'en prenne possession, pour que le handler d'InstallDone sache
     // désactiver l'auto-MAJ de ce port SANS avoir à distinguer les appelants
@@ -90,27 +101,24 @@ pub(crate) fn start_install(
         let outcome = crate::core::jobs::run_install(&port, paths, github_token.as_deref(), gitlab_token.as_deref(), overrides, &mut on_progress);
         let event = match outcome {
             InstallOutcome::Done { tag } => AppEvent::InstallDone { key: progress_key, tag, pin_version },
-            InstallOutcome::AssetAmbiguous { assets } => AppEvent::InstallAssetAmbiguous { key: progress_key, assets },
+            InstallOutcome::AssetAmbiguous { assets } => AppEvent::InstallAssetAmbiguous { key: progress_key, assets, release_override },
             InstallOutcome::Error(message) => AppEvent::InstallError { key: progress_key, message },
         };
         lock(&events).push(event);
     });
 }
 
-/// Bouton "Change version" de l'InfoDialog -- récupère en arrière-plan les
+/// Bouton "Select version" de l'InfoDialog -- récupère en arrière-plan les
 /// 3 dernières releases GitHub/GitLab de `port`, puis ouvre un
 /// `ListPickerDialog` (voir `AppEvent::VersionsFetched`) pour choisir
 /// laquelle installer. Même chemin que le choix d'asset ambigu, avec
 /// `release_override` au lieu d'`asset_override`.
 pub(crate) fn open_version_picker(app: &Rc<AppState>, router: &Rc<RefCell<GamepadRouter>>, port: Port) {
-    let key = port.key().to_string();
-    if app.install_runtime.installing.borrow().contains(&key) || is_port_running(app, &key) {
-        return;
-    }
-    // Réserve la clé comme start_install -- le ProgressDialog ouvert juste
-    // après masque déjà le bouton, mais ça protège d'un double-fetch si un
-    // futur appelant atteint ce chemin autrement.
-    app.install_runtime.installing.borrow_mut().insert(key.clone());
+    // Réserve la clé comme un install (voir `try_claim_op_slot`) -- le
+    // ProgressDialog ouvert juste après masque déjà le bouton, mais ça
+    // protège d'un double-fetch si un futur appelant atteint ce chemin
+    // autrement.
+    let Some(key) = try_claim_op_slot(app, &port) else { return };
     let window = app.window();
     let tr = window.global::<crate::Tr>();
     open_progress_dialog(app, router, &tr.invoke_dialog_title_loading(), &tr.invoke_progress_fetching_versions(port.name.clone().into()));
@@ -134,6 +142,38 @@ pub(crate) fn open_version_picker(app: &Rc<AppState>, router: &Rc<RefCell<Gamepa
             Err(message) => AppEvent::VersionsFetchError { key, message },
         };
         lock(&events).push(event);
+    });
+}
+
+/// Bouton "Install extras" de l'InfoDialog (précédé du dialogue de
+/// confirmation `app::dialogs::open_extra_install_confirm_dialog`) --
+/// télécharge en tâche de fond le fichier/l'archive `Port::extra` et le
+/// fusionne dans le dossier déjà installé du port (voir
+/// `installer::install_extra_only` : une archive est décompressée
+/// automatiquement, les fichiers de même nom sont écrasés, le reste du
+/// dossier est laissé intact). Même garde que `start_install` : jamais
+/// pendant qu'une install ou une partie de CE port tourne. Le résultat
+/// (succès, ou lien injoignable/vide) est annoncé par un MessageDialog (voir
+/// `AppEvent::ExtraInstallDone`).
+pub(crate) fn start_extra_install(app: &Rc<AppState>, router: &Rc<RefCell<GamepadRouter>>, port: Port) {
+    // Même garde qu'un install -- jamais pendant une install ou une partie
+    // de ce port (voir `try_claim_op_slot`).
+    let Some(key) = try_claim_op_slot(app, &port) else { return };
+
+    let window = app.window();
+    let tr = window.global::<crate::Tr>();
+    open_progress_dialog(app, router, &tr.invoke_dialog_title_extras(), &tr.invoke_progress_installing_extras(port.name.clone().into()));
+
+    let library_dir = app.paths.library_dir.clone();
+    let events = app.events.clone();
+
+    std::thread::spawn(move || {
+        let events_progress = events.clone();
+        let mut on_progress = move |message: &str| {
+            lock(&events_progress).push(AppEvent::InstallProgress { message: message.to_string() });
+        };
+        let result = crate::core::jobs::run_extra_install(&port, &library_dir, &mut on_progress);
+        lock(&events).push(AppEvent::ExtraInstallDone { key, result });
     });
 }
 
@@ -376,7 +416,7 @@ pub(crate) fn launch_with_update_check(app: &Rc<AppState>, router: &Rc<RefCell<G
     std::thread::spawn(move || {
         let available = crate::core::jobs::run_update_check(&port_owned, tag.as_deref(), &installed_at, github_token.as_deref(), gitlab_token.as_deref())
             .unwrap_or(false);
-        lock(&events).push(AppEvent::PlayUpdateChecked { port: port_owned, available });
+        lock(&events).push(AppEvent::PlayUpdateChecked { port: Box::new(port_owned), available });
     });
 }
 

@@ -44,8 +44,8 @@ msgstr "Ouvrir les infos"
 msgid "Favorite executable"
 msgstr "Exécutable favori"
 
-msgid "Change version"
-msgstr "Changer de version"
+msgid "Select version"
+msgstr "Sélectionner une version"
 
 msgid "Copy"
 msgstr "Copier"
@@ -231,3 +231,25 @@ msgstr "Vérifier les mises à jour : désactivé"
 
 msgid "Type to search..."
 msgstr "Rechercher..."
+
+# -- Bouton "Install extras" d'InfoDialog --
+msgid "Extras"
+msgstr "Extras"
+
+msgid "Install extras"
+msgstr "Installer les extras"
+
+msgid "Install extras - {}"
+msgstr "Installer les extras - {}"
+
+msgid "Download and install the extra files for \"{}\"? These add optional play options or preset configurations (often an arbitrary pick) and overwrite any existing copies in the port's folder."
+msgstr "Télécharger et installer les fichiers extra de {} ? Ils ajoutent des options de lancement facultatives ou des configurations prédéfinies (souvent un choix arbitraire) et écrasent les copies déjà présentes dans le dossier du port."
+
+msgid "Downloading extras for {}..."
+msgstr "Téléchargement des extras de {}..."
+
+msgid "Extra files installed."
+msgstr "Fichiers extra installés."
+
+msgid "Couldn't download the extra files ({}). Nothing was changed."
+msgstr "Impossible de télécharger les fichiers extra ({}). Rien n'a été modifié."

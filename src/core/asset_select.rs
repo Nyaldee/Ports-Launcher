@@ -14,7 +14,7 @@ use serde_json::Value;
 /// Vrai si `name_lower` (déjà en minuscules) semble correspondre à
 /// `platform_key`. Pas d'ancrage sur un mot entier : "win" doit matcher
 /// "win32"/"win64"/"windows", et un faux positif isolé est de toute façon
-/// départagé par `is_bad_hint`/`has_archive_extension` juste après.
+/// départagé par `is_bad_hint`/`has_non_archive_extension` juste après.
 fn os_hint_matches(platform_key: &str, name_lower: &str) -> bool {
     match platform_key {
         "windows" => name_lower.contains("win"),
@@ -39,8 +39,21 @@ fn is_bad_hint(name_lower: &str) -> bool {
         || name_lower.ends_with(".rpm")
 }
 
-fn has_archive_extension(name_lower: &str) -> bool {
-    [".zip", ".7z", ".rar", ".exe", ".tar.gz", ".appimage"].iter().any(|ext| name_lower.ends_with(ext))
+/// Extension qui signale presque toujours un fichier annexe (checksum,
+/// changelog, notes) plutôt qu'un vrai binaire téléchargeable, MÊME si le nom
+/// matche l'OS demandé. Volontairement une liste d'EXCLUSION plutôt qu'une
+/// liste d'inclusion (l'ancienne version de cette fonction exigeait un
+/// suffixe archive connu) : le champ `"name"` d'un lien GitLab
+/// (`package_files/<id>/download`, voir `installer::download`) n'a JAMAIS
+/// d'extension -- ce n'est qu'un libellé d'affichage -- alors que GitHub y met
+/// le vrai nom de fichier. Exiger `has_archive_extension` en positif rendait
+/// donc TOUJOURS ambigu un port GitLab à plusieurs plateformes (aucun de ses
+/// assets ne pouvait jamais matcher), perdant au passage le pin de version
+/// choisi via "Select version" (voir AppEvent::InstallAssetAmbiguous).
+fn has_non_archive_extension(name_lower: &str) -> bool {
+    [".txt", ".md", ".sha256", ".sha1", ".sha512", ".md5", ".sig", ".asc", ".json", ".yml", ".yaml", ".pdf", ".log"]
+        .iter()
+        .any(|ext| name_lower.ends_with(ext))
 }
 
 /// Plusieurs mentions possibles pour "architecture 64-bit" selon la
@@ -96,7 +109,7 @@ pub fn pick_asset(assets: &[Value], preferred: Option<&str>) -> Result<Value, As
         .iter()
         .filter(|a| {
             let name = asset_name(a).to_lowercase();
-            os_hint_matches(platform_key, &name) && !is_bad_hint(&name) && has_archive_extension(&name)
+            os_hint_matches(platform_key, &name) && !is_bad_hint(&name) && !has_non_archive_extension(&name)
         })
         .collect();
     if candidates.len() == 1 {
@@ -182,6 +195,27 @@ mod tests {
             Err(AssetSelectionError::Ambiguous(_, a)) => assert_eq!(a.len(), 2),
             other => panic!("attendu Ambiguous, obtenu {other:?}"),
         }
+    }
+
+    #[test]
+    fn accepte_un_nom_sans_extension_comme_un_lien_gitlab() {
+        // Cas réel (ExtremeGRecomp sur GitLab) : le champ "name" d'un lien
+        // GitLab n'a jamais d'extension, contrairement à GitHub -- exiger un
+        // suffixe archive connu rendait ce genre de port TOUJOURS ambigu.
+        let assets = vec![
+            asset("ExtremeGRecompiled-v1.0.0-Windows-RelWithDebInfo"),
+            asset("ExtremeGRecompiled-v1.0.0-macOS-Release"),
+            asset("ExtremeGRecompiled-v1.0.0-Linux-X64-Release"),
+        ];
+        let picked = pick_asset(&assets, None).unwrap();
+        assert_eq!(asset_name(&picked), "ExtremeGRecompiled-v1.0.0-Windows-RelWithDebInfo");
+    }
+
+    #[test]
+    fn rejette_toujours_un_checksum_meme_matchant_los() {
+        let assets = vec![asset("port-windows.zip"), asset("port-windows.sha256")];
+        let picked = pick_asset(&assets, None).unwrap();
+        assert_eq!(asset_name(&picked), "port-windows.zip");
     }
 
     #[test]

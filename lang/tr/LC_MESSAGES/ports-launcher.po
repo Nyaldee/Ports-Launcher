@@ -42,8 +42,8 @@ msgstr "Bilgiyi aç"
 msgid "Favorite executable"
 msgstr "Favori çalıştırılabilir dosya"
 
-msgid "Change version"
-msgstr "Sürümü değiştir"
+msgid "Select version"
+msgstr "Sürüm seç"
 
 msgid "Copy"
 msgstr "Kopyala"
@@ -224,3 +224,24 @@ msgstr "Güncelleme kontrolü: Kapalı"
 
 msgid "Type to search..."
 msgstr "Ara..."
+
+msgid "Extras"
+msgstr "Ekstralar"
+
+msgid "Install extras"
+msgstr "Ekstraları yükle"
+
+msgid "Install extras - {}"
+msgstr "Ekstraları yükle - {}"
+
+msgid "Download and install the extra files for \"{}\"? These add optional play options or preset configurations (often an arbitrary pick) and overwrite any existing copies in the port's folder."
+msgstr "{} için ekstra dosyalar indirilip yüklensin mi? İsteğe bağlı çalıştırma seçenekleri veya hazır yapılandırmalar ekler (çoğu zaman gelişigüzel bir seçimdir) ve portun klasöründeki mevcut kopyaların üzerine yazar."
+
+msgid "Downloading extras for {}..."
+msgstr "{} için ekstralar indiriliyor..."
+
+msgid "Extra files installed."
+msgstr "Ekstra dosyalar yüklendi."
+
+msgid "Couldn't download the extra files ({}). Nothing was changed."
+msgstr "Ekstra dosyalar ({}) indirilemedi. Hiçbir şey değiştirilmedi."

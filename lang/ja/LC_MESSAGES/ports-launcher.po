@@ -42,8 +42,8 @@ msgstr "情報を開く"
 msgid "Favorite executable"
 msgstr "お気に入りの実行ファイル"
 
-msgid "Change version"
-msgstr "バージョンを変更"
+msgid "Select version"
+msgstr "バージョンを選択"
 
 msgid "Copy"
 msgstr "コピー"
@@ -224,3 +224,24 @@ msgstr "更新チェック：オフ"
 
 msgid "Type to search..."
 msgstr "検索..."
+
+msgid "Extras"
+msgstr "追加ファイル"
+
+msgid "Install extras"
+msgstr "追加ファイルをインストール"
+
+msgid "Install extras - {}"
+msgstr "追加ファイルをインストール - {}"
+
+msgid "Download and install the extra files for \"{}\"? These add optional play options or preset configurations (often an arbitrary pick) and overwrite any existing copies in the port's folder."
+msgstr "{} の追加ファイルをダウンロードしてインストールしますか？起動オプションやプリセット設定（多くは任意の選択）を追加し、ポートのフォルダー内にある既存のコピーを上書きします。"
+
+msgid "Downloading extras for {}..."
+msgstr "{} の追加ファイルをダウンロード中..."
+
+msgid "Extra files installed."
+msgstr "追加ファイルをインストールしました。"
+
+msgid "Couldn't download the extra files ({}). Nothing was changed."
+msgstr "追加ファイル（{}）をダウンロードできませんでした。何も変更されていません。"

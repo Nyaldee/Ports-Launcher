@@ -42,8 +42,8 @@ msgstr "打开信息"
 msgid "Favorite executable"
 msgstr "常用可执行文件"
 
-msgid "Change version"
-msgstr "更改版本"
+msgid "Select version"
+msgstr "选择版本"
 
 msgid "Copy"
 msgstr "复制"
@@ -224,3 +224,24 @@ msgstr "检查更新：关"
 
 msgid "Type to search..."
 msgstr "输入以搜索..."
+
+msgid "Extras"
+msgstr "额外文件"
+
+msgid "Install extras"
+msgstr "安装额外文件"
+
+msgid "Install extras - {}"
+msgstr "安装额外文件 - {}"
+
+msgid "Download and install the extra files for \"{}\"? These add optional play options or preset configurations (often an arbitrary pick) and overwrite any existing copies in the port's folder."
+msgstr "下载并安装 {} 的额外文件？它们会添加可选的启动选项或预设配置（通常是随意的选择），并覆盖端口文件夹中已有的同名文件。"
+
+msgid "Downloading extras for {}..."
+msgstr "正在下载 {} 的额外文件..."
+
+msgid "Extra files installed."
+msgstr "额外文件已安装。"
+
+msgid "Couldn't download the extra files ({}). Nothing was changed."
+msgstr "无法下载额外文件（{}）。未做任何更改。"

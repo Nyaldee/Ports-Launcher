@@ -101,6 +101,23 @@ export global Tr {
     }
     public pure function confirm-reset() -> string { @tr("Reset") }
 
+    // Bouton "Install extras" d'InfoDialog -- ConfirmDialog, puis
+    // ProgressDialog pendant le téléchargement du fichier/de l'archive
+    // `extra` du port dans son dossier, puis MessageDialog pour le résultat
+    // (voir app::dialogs::open_extra_install_confirm_dialog /
+    // app::install_launch::start_extra_install).
+    public pure function dialog-title-extras() -> string { @tr("Extras") }
+    public pure function dialog-title-install-extras(name: string) -> string { @tr("Install extras - {}", name) }
+    public pure function message-install-extras-confirm(name: string) -> string {
+        @tr("Download and install the extra files for \"{}\"? These add optional play options or preset configurations (often an arbitrary pick) and overwrite any existing copies in the port's folder.", name)
+    }
+    public pure function confirm-install() -> string { @tr("Install") }
+    public pure function progress-installing-extras(name: string) -> string { @tr("Downloading extras for {}...", name) }
+    public pure function message-extras-installed() -> string { @tr("Extra files installed.") }
+    public pure function message-extras-failed(error: string) -> string {
+        @tr("Couldn't download the extra files ({}). Nothing was changed.", error)
+    }
+
     // -- Entrée de liste --
     public pure function picker-ask-every-time() -> string { @tr("Ask every time (default)") }
     // Nom des langues elles-mêmes ("Français", "日本語"...) volontairement

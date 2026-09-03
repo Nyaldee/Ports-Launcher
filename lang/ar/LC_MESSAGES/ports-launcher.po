@@ -42,8 +42,8 @@ msgstr "فتح المعلومات"
 msgid "Favorite executable"
 msgstr "الملف التنفيذي المفضل"
 
-msgid "Change version"
-msgstr "تغيير الإصدار"
+msgid "Select version"
+msgstr "اختيار الإصدار"
 
 msgid "Copy"
 msgstr "نسخ"
@@ -224,3 +224,24 @@ msgstr "التحقق من التحديثات: معطّل"
 
 msgid "Type to search..."
 msgstr "ابحث..."
+
+msgid "Extras"
+msgstr "ملفات إضافية"
+
+msgid "Install extras"
+msgstr "تثبيت الملفات الإضافية"
+
+msgid "Install extras - {}"
+msgstr "تثبيت الملفات الإضافية - {}"
+
+msgid "Download and install the extra files for \"{}\"? These add optional play options or preset configurations (often an arbitrary pick) and overwrite any existing copies in the port's folder."
+msgstr "هل تريد تنزيل وتثبيت الملفات الإضافية لـ {}؟ تضيف خيارات تشغيل اختيارية أو إعدادات جاهزة (غالبًا اختيار اعتباطي) وتستبدل النسخ الموجودة في مجلد المنفذ."
+
+msgid "Downloading extras for {}..."
+msgstr "جارٍ تنزيل الملفات الإضافية لـ {}..."
+
+msgid "Extra files installed."
+msgstr "تم تثبيت الملفات الإضافية."
+
+msgid "Couldn't download the extra files ({}). Nothing was changed."
+msgstr "تعذّر تنزيل الملفات الإضافية ({}). لم يتغيّر أي شيء."

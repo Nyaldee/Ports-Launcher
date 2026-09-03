@@ -167,7 +167,7 @@ pub(crate) struct InstallRuntime {
     /// `AppEvent::InstallDone` reçu -- alimenté uniquement par
     /// `launch_with_update_check` (auto-install déclenché par Play, voir
     /// `AppEvent::PlayUpdateChecked`), jamais par un install/update "normal"
-    /// (bouton Install, Change version), qui ne doit jamais lancer le jeu
+    /// (bouton Install, Select version), qui ne doit jamais lancer le jeu
     /// tout seul.
     pub(crate) pending_launch_after_install: RefCell<HashSet<String>>,
     /// Vrai entre la minimisation faite par `launch_executable` au lancement
@@ -186,9 +186,9 @@ pub(crate) struct DialogNav {
     pub(crate) picker_index: Cell<i32>,
     /// Bouton actuellement en surbrillance manette dans un InfoDialog ouvert
     /// (Website=0/Mods=1/Game folder=2/Save folder=3/Save folder 2=4/Change
-    /// version=5/Favorite executable=6/Update=7/Reset Game Time=8, voir
-    /// InfoDialog.selected-index) -- sans objet tant qu'aucun InfoDialog
-    /// n'est affiché.
+    /// version=5/Favorite executable=6/Update=7/Reset Game Time=8/Install
+    /// extras=9, voir InfoDialog.selected-index) -- sans objet tant qu'aucun
+    /// InfoDialog n'est affiché.
     pub(crate) info_nav_index: Cell<i32>,
     /// Bouton en surbrillance manette/clavier dans un ConfirmDialog ouvert
     /// (0 = confirmer, 1 = annuler, voir ConfirmDialog.selected-index) --

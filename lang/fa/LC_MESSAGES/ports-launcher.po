@@ -42,8 +42,8 @@ msgstr "نمایش اطلاعات"
 msgid "Favorite executable"
 msgstr "فایل اجرایی منتخب"
 
-msgid "Change version"
-msgstr "تغییر نسخه"
+msgid "Select version"
+msgstr "انتخاب نسخه"
 
 msgid "Copy"
 msgstr "کپی"
@@ -224,3 +224,24 @@ msgstr "بررسی به‌روزرسانی‌ها: خاموش"
 
 msgid "Type to search..."
 msgstr "جستجو..."
+
+msgid "Extras"
+msgstr "فایل‌های اضافی"
+
+msgid "Install extras"
+msgstr "نصب فایل‌های اضافی"
+
+msgid "Install extras - {}"
+msgstr "نصب فایل‌های اضافی - {}"
+
+msgid "Download and install the extra files for \"{}\"? These add optional play options or preset configurations (often an arbitrary pick) and overwrite any existing copies in the port's folder."
+msgstr "فایل‌های اضافیِ {} دانلود و نصب شوند؟ گزینه‌های اجرای اختیاری یا پیکربندی‌های آماده (اغلب انتخابی دلخواه) را اضافه می‌کنند و نسخه‌های موجود در پوشهٔ پورت را بازنویسی می‌کنند."
+
+msgid "Downloading extras for {}..."
+msgstr "در حال دانلود فایل‌های اضافی برای {}..."
+
+msgid "Extra files installed."
+msgstr "فایل‌های اضافی نصب شد."
+
+msgid "Couldn't download the extra files ({}). Nothing was changed."
+msgstr "دانلود فایل‌های اضافی ({}) ممکن نشد. چیزی تغییر نکرد."

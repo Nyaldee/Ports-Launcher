@@ -42,8 +42,8 @@ msgstr "Abrir informações"
 msgid "Favorite executable"
 msgstr "Executável favorito"
 
-msgid "Change version"
-msgstr "Alterar versão"
+msgid "Select version"
+msgstr "Selecionar versão"
 
 msgid "Copy"
 msgstr "Copiar"
@@ -224,3 +224,24 @@ msgstr "Verificar atualizações: Desativado"
 
 msgid "Type to search..."
 msgstr "Pesquisar..."
+
+msgid "Extras"
+msgstr "Extras"
+
+msgid "Install extras"
+msgstr "Instalar extras"
+
+msgid "Install extras - {}"
+msgstr "Instalar extras - {}"
+
+msgid "Download and install the extra files for \"{}\"? These add optional play options or preset configurations (often an arbitrary pick) and overwrite any existing copies in the port's folder."
+msgstr "Baixar e instalar os arquivos extras de {}? Eles adicionam opções de execução opcionais ou configurações predefinidas (muitas vezes uma escolha arbitrária) e substituem as cópias já existentes na pasta do port."
+
+msgid "Downloading extras for {}..."
+msgstr "Baixando extras de {}..."
+
+msgid "Extra files installed."
+msgstr "Arquivos extras instalados."
+
+msgid "Couldn't download the extra files ({}). Nothing was changed."
+msgstr "Não foi possível baixar os arquivos extras ({}). Nada foi alterado."

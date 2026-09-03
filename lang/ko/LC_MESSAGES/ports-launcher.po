@@ -42,8 +42,8 @@ msgstr "정보 열기"
 msgid "Favorite executable"
 msgstr "즐겨찾는 실행 파일"
 
-msgid "Change version"
-msgstr "버전 변경"
+msgid "Select version"
+msgstr "버전 선택"
 
 msgid "Copy"
 msgstr "복사"
@@ -224,3 +224,24 @@ msgstr "업데이트 확인: 꺼짐"
 
 msgid "Type to search..."
 msgstr "검색..."
+
+msgid "Extras"
+msgstr "추가 파일"
+
+msgid "Install extras"
+msgstr "추가 파일 설치"
+
+msgid "Install extras - {}"
+msgstr "추가 파일 설치 - {}"
+
+msgid "Download and install the extra files for \"{}\"? These add optional play options or preset configurations (often an arbitrary pick) and overwrite any existing copies in the port's folder."
+msgstr "{}의 추가 파일을 다운로드하여 설치할까요? 선택적인 실행 옵션이나 미리 설정된 구성(대개 임의로 고른 것)을 추가하며, 포트 폴더에 이미 있는 사본을 덮어씁니다."
+
+msgid "Downloading extras for {}..."
+msgstr "{}의 추가 파일 다운로드 중..."
+
+msgid "Extra files installed."
+msgstr "추가 파일을 설치했습니다."
+
+msgid "Couldn't download the extra files ({}). Nothing was changed."
+msgstr "추가 파일({})을 다운로드하지 못했습니다. 변경된 내용이 없습니다."

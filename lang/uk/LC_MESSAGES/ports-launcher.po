@@ -42,8 +42,8 @@ msgstr "Відкрити інформацію"
 msgid "Favorite executable"
 msgstr "Улюблений виконуваний файл"
 
-msgid "Change version"
-msgstr "Змінити версію"
+msgid "Select version"
+msgstr "Вибрати версію"
 
 msgid "Copy"
 msgstr "Копіювати"
@@ -224,3 +224,24 @@ msgstr "Перевірка оновлень: вимк."
 
 msgid "Type to search..."
 msgstr "Пошук..."
+
+msgid "Extras"
+msgstr "Додатки"
+
+msgid "Install extras"
+msgstr "Встановити додатки"
+
+msgid "Install extras - {}"
+msgstr "Встановити додатки - {}"
+
+msgid "Download and install the extra files for \"{}\"? These add optional play options or preset configurations (often an arbitrary pick) and overwrite any existing copies in the port's folder."
+msgstr "Завантажити та встановити додаткові файли для {}? Вони додають необовʼязкові параметри запуску або готові конфігурації (часто довільний вибір) і перезаписують наявні копії в теці порту."
+
+msgid "Downloading extras for {}..."
+msgstr "Завантаження додатків для {}..."
+
+msgid "Extra files installed."
+msgstr "Додаткові файли встановлено."
+
+msgid "Couldn't download the extra files ({}). Nothing was changed."
+msgstr "Не вдалося завантажити додаткові файли ({}). Нічого не змінено."

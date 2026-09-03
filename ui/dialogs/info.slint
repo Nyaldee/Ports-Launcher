@@ -49,11 +49,16 @@ export component InfoDialog inherits Window {
     // Même condition que favorite-exe-enabled -- rien à réinitialiser pour
     // un port qui n'est même pas installé.
     in property <bool> reset-playtime-enabled: false;
+    // Le port déclare un champ "extra" dans ports.json ET est installé (voir
+    // app::dialogs::open_info_dialog) -- télécharge à la demande le
+    // fichier/l'archive `extra` dans le dossier du port.
+    in property <bool> extra-enabled: false;
     // Surbrillance de navigation manette (voir
     // app::gamepad_target::DialogGamepadTarget) -- Website=0, Mods
     // website=1, Game folder=2, Save folder=3, Save folder 2=4, Change
-    // version=5, Favorite executable=6, Update=7, Reset Game Time=8. -1 =
-    // aucune (souris seule) -- même convention que ListPickerDialog.selected-index.
+    // version=5, Favorite executable=6, Update=7, Reset Game Time=8, Install
+    // extras=9. -1 = aucune (souris seule) -- même convention que
+    // ListPickerDialog.selected-index.
     in property <int> selected-index: -1;
     callback website-requested();
     callback mods-requested();
@@ -64,6 +69,7 @@ export component InfoDialog inherits Window {
     callback favorite-exe-requested();
     callback update-toggle-requested();
     callback reset-playtime-requested();
+    callback extra-requested();
     callback instructions-link-requested();
     callback close-requested();
     // Survol souris d'un bouton -- voir DialogButton.hovered, fait suivre la
@@ -246,17 +252,18 @@ export component InfoDialog inherits Window {
             }
 
             // Même ButtonRow que la rangée de raccourcis plus bas (voir son
-            // commentaire), count: 4. Ordre visuel (version, update, favori,
-            // reset) PAS séquentiel avec les selected-index globaux (5-8,
-            // hérités du reste de la navigation clavier/manette
-            // d'InfoDialog -- 5=version, 6=favori, 7=update, 8=reset) :
-            // selected-index/clicked/hovered traduisent donc entre position
-            // LOCALE (0-3, dans items) et index GLOBAL, plutôt que de
-            // renuméroter tout le reste de la navigation d'InfoDialog pour
-            // un simple changement d'ordre d'affichage. Sous les statuts
-            // (favorite-exe-status/update-status/playtime-status ci-dessus),
-            // pas au-dessus : les boutons agissent sur ce que ces lignes
-            // affichent, plus lisible juste en dessous d'elles.
+            // commentaire), count: 5. Ordre visuel (version, update, favori,
+            // extras, reset) PAS séquentiel avec les selected-index globaux
+            // (5-9, hérités du reste de la navigation clavier/manette
+            // d'InfoDialog -- 5=version, 6=favori, 7=update, 8=reset,
+            // 9=extras) : selected-index/clicked/hovered traduisent donc
+            // entre position LOCALE (0-4, dans items) et index GLOBAL,
+            // plutôt que de renuméroter tout le reste de la navigation
+            // d'InfoDialog pour un simple changement d'ordre d'affichage.
+            // Sous les statuts (favorite-exe-status/update-status/
+            // playtime-status ci-dessus), pas au-dessus : les boutons
+            // agissent sur ce que ces lignes affichent, plus lisible juste
+            // en dessous d'elles.
             context-button-row := ButtonRow {
                 x: root.gutter;
                 y: playtime-status.y + playtime-status.height + row-spacing;
@@ -266,26 +273,29 @@ export component InfoDialog inherits Window {
                 button-height: big-button-height;
                 item-font-px: root.item-font-px;
                 border-px: root.border-px;
-                count: 4;
+                count: 5;
                 selected-index:
                     root.selected-index == 5 ? 0 :
                     root.selected-index == 7 ? 1 :
                     root.selected-index == 6 ? 2 :
-                    root.selected-index == 8 ? 3 : -1;
+                    root.selected-index == 9 ? 3 :
+                    root.selected-index == 8 ? 4 : -1;
                 items: [
-                    { text: @tr("Change version"), enabled: root.change-version-enabled },
+                    { text: @tr("Select version"), enabled: root.change-version-enabled },
                     { text: @tr("Update"), enabled: root.update-toggle-enabled },
                     { text: @tr("Favorite executable"), enabled: root.favorite-exe-enabled },
+                    { text: @tr("Install extras"), enabled: root.extra-enabled },
                     { text: @tr("Reset game time"), enabled: root.reset-playtime-enabled },
                 ];
                 clicked(index) => {
                     if (index == 0) { root.change-version-requested(); }
                     else if (index == 1) { root.update-toggle-requested(); }
                     else if (index == 2) { root.favorite-exe-requested(); }
+                    else if (index == 3) { root.extra-requested(); }
                     else { root.reset-playtime-requested(); }
                 }
                 hovered(index) => {
-                    root.nav-hovered(index == 0 ? 5 : index == 1 ? 7 : index == 2 ? 6 : 8);
+                    root.nav-hovered(index == 0 ? 5 : index == 1 ? 7 : index == 2 ? 6 : index == 3 ? 9 : 8);
                 }
             }
 

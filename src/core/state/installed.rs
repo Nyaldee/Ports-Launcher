@@ -63,7 +63,7 @@ impl StateManager {
     }
 
     /// Fixe/efface (`None`) l'exécutable favori de `key` -- voir le bouton
-    /// sous "Change version" dans InfoDialog et son usage dans `launch_flow`.
+    /// sous "Select version" dans InfoDialog et son usage dans `launch_flow`.
     /// Mute l'entrée existante en place pour ne pas écraser ses autres
     /// champs ; si elle n'existe pas encore (le bouton n'est accessible que
     /// pour un port installé), en crée une minimale plutôt que d'ignorer
@@ -180,7 +180,7 @@ mod tests {
         state.mark_installed("owner/repo", Some("v1.0".to_string()));
         state.set_port_update("owner/repo", false);
 
-        // Change version (voir app::install_launch::open_version_picker)
+        // Select version (voir app::install_launch::open_version_picker)
         // réinstalle en pinnant explicitement update=false APRÈS
         // mark_installed -- ce test couvre juste mark_installed seule, qui
         // ne doit dans tous les cas jamais réactiver un auto-update déjà

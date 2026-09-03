@@ -42,14 +42,30 @@ pub(crate) enum AppEvent {
     /// désactive alors l'auto-MAJ de ce port (voir `set_port_update`), pour
     /// ne pas se faire silencieusement écraser le pin au Play suivant.
     InstallDone { key: String, tag: Option<String>, pin_version: bool },
-    InstallAssetAmbiguous { key: String, assets: Vec<Value> },
+    /// `release_override` -- la release choisie via "Select version" qui a
+    /// mené à cette ambiguïté, à repasser telle quelle une fois l'asset
+    /// choisi manuellement (voir son handler) : sans ça, le pin de version
+    /// (voir `InstallDone::pin_version`) se perdait silencieusement dès
+    /// qu'un port avait plusieurs assets pour la même release -- notamment
+    /// tout port GitLab à plusieurs plateformes (voir
+    /// `asset_select::pick_asset`, dont le nom d'asset GitLab n'a jamais
+    /// d'extension et tombait donc toujours en Ambiguous).
+    InstallAssetAmbiguous { key: String, assets: Vec<Value>, release_override: Option<Value> },
     InstallError { key: String, message: String },
+    /// Voir `app::install_launch::start_extra_install` -- installation à la
+    /// demande des fichiers `extra` d'un port (bouton "Install extras"
+    /// d'InfoDialog) terminée. `Ok` = fusionnés dans le dossier du port ;
+    /// `Err(message)` = lien injoignable / archive illisible, rien n'a été
+    /// touché. Un MessageDialog l'annonce dans les deux cas (voir son handler).
+    ExtraInstallDone { key: String, result: Result<(), String> },
     /// Résultat du check déclenché par un clic sur Play (voir
     /// `launch_with_update_check`) -- porte le `Port` complet, pas juste sa
     /// clé : le handler doit soit lancer un install (`start_install` le veut
     /// par valeur) soit lancer le jeu directement, dans les deux cas sans
-    /// second lookup dans `app.catalog`.
-    PlayUpdateChecked { port: Port, available: bool },
+    /// second lookup dans `app.catalog`. `Box` : `Port` fait ~650 octets et
+    /// gonflerait chaque variante de la file (`clippy::large_enum_variant`) --
+    /// une seule indirection, dans le seul handler qui déballe cette variante.
+    PlayUpdateChecked { port: Box<Port>, available: bool },
     SelfUpdateAvailable,
     /// Voir `open_version_picker` -- liste des releases disponibles pour
     /// `key` récupérée en arrière-plan, prête à peupler un `ListPickerDialog`.
@@ -149,7 +165,7 @@ pub(crate) fn poll_app_events(app: &Rc<AppState>, router: &Rc<RefCell<GamepadRou
                 // Lancement automatique après un auto-install déclenché par
                 // Play (voir launch_with_update_check/AppEvent::PlayUpdateChecked)
                 // -- absent de la file pour un install/update "normal"
-                // (bouton Install, Change version), qui ne doit jamais
+                // (bouton Install, Select version), qui ne doit jamais
                 // lancer le jeu tout seul.
                 if app.install_runtime.pending_launch_after_install.borrow_mut().remove(&key) {
                     if let Some(port) = port {
@@ -157,14 +173,14 @@ pub(crate) fn poll_app_events(app: &Rc<AppState>, router: &Rc<RefCell<GamepadRou
                     }
                 }
             }
-            AppEvent::InstallAssetAmbiguous { key, assets } => {
+            AppEvent::InstallAssetAmbiguous { key, assets, release_override } => {
                 app.install_runtime.installing.borrow_mut().remove(&key);
                 close_current_dialog(app, router);
                 if let Some(port) = app.catalog.borrow().iter().find(|p| p.key() == key).cloned() {
                     let labels = json_field_labels(&assets, "name");
                     open_picker_dialog(app, router, &tr!(app).invoke_dialog_title_choose_file(), labels, move |app, router, idx| {
                         if let Some(chosen) = assets.get(idx) {
-                            start_install(app, router, port.clone(), Some(chosen.clone()), None);
+                            start_install(app, router, port.clone(), Some(chosen.clone()), release_override.clone());
                         }
                     });
                 }
@@ -191,13 +207,27 @@ pub(crate) fn poll_app_events(app: &Rc<AppState>, router: &Rc<RefCell<GamepadRou
                 close_current_dialog(app, router);
                 open_message_dialog(app, router, &tr!(app).invoke_dialog_title_installation_error(), &message);
             }
+            // `Err` couvre aussi un lien mort/vide (voir download) : message
+            // informatif, pas une erreur d'install -- le dossier du port n'a
+            // pas été touché dans ce cas (voir installer::install_extra_only).
+            AppEvent::ExtraInstallDone { key, result } => {
+                app.install_runtime.installing.borrow_mut().remove(&key);
+                close_current_dialog(app, router);
+                let window = app.window();
+                let tr = window.global::<Tr>();
+                let message = match result {
+                    Ok(()) => tr.invoke_message_extras_installed(),
+                    Err(e) => tr.invoke_message_extras_failed(e.into()),
+                };
+                open_message_dialog(app, router, &tr.invoke_dialog_title_extras(), &message);
+            }
             // `available == false` couvre AUSSI une erreur réseau/API (voir
             // launch_with_update_check) -- jamais bloquant, le Play doit
             // toujours aboutir sur la version déjà installée dans ce cas.
             AppEvent::PlayUpdateChecked { port, available } => {
                 if available {
                     app.install_runtime.pending_launch_after_install.borrow_mut().insert(port.key().to_string());
-                    start_install(app, router, port, None, None);
+                    start_install(app, router, *port, None, None);
                 } else {
                     launch_flow(app, router, &port);
                 }

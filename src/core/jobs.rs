@@ -9,6 +9,7 @@ use super::installer::{self, InstallError, InstallPaths};
 use super::models::{Port, SourceType};
 use super::{github_api, gitlab_api};
 use serde_json::Value;
+use std::path::Path;
 
 pub enum InstallOutcome {
     Done { tag: Option<String> },
@@ -56,4 +57,19 @@ pub fn run_update_check(
             .map_err(|e| format!("{}: {}", port.name, e.message())),
         SourceType::DirectUrl | SourceType::Local => Ok(false),
     }
+}
+
+/// Corps du thread du bouton "Install extras" d'InfoDialog (voir
+/// `app::install_launch::start_extra_install`) -- même principe que
+/// `run_install`/`run_update_check` : aucune dépendance Slint, que des
+/// données `Send`, `on_progress` appelé sur CE thread. `Err(message)` = lien
+/// injoignable/vide ou archive illisible ; rien n'a alors été touché dans le
+/// dossier du port (voir `installer::install_extra_only`).
+pub fn run_extra_install(port: &Port, library_dir: &Path, on_progress: &mut dyn FnMut(&str)) -> Result<(), String> {
+    installer::install_extra_only(port, library_dir, Some(on_progress)).map_err(|e| match e {
+        InstallError::Message(m) => m,
+        // `install_extra` extrait toujours sans ancre (voir `extract_to_staging`)
+        // -- il ne peut jamais remonter d'ambiguïté d'asset.
+        InstallError::Ambiguous(..) => "This \"extra\" archive has an unexpected layout.".to_string(),
+    })
 }

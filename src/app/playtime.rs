@@ -99,7 +99,7 @@ pub(crate) fn checkpoint_playtime(app: &AppState) {
 
 /// Rafraîchit "Playtime: {}" de l'InfoDialog actuellement ouvert PENDANT
 /// qu'une partie tourne pour ce port -- purement en mémoire (temps persisté
-/// + écart depuis le lancement/dernier checkpoint), jamais d'écriture
+/// plus l'écart depuis le lancement/dernier checkpoint), jamais d'écriture
 /// disque ici (voir `checkpoint_playtime` pour ça). No-op si aucun
 /// InfoDialog n'est ouvert, ou s'il ne correspond à aucune partie en cours
 /// (voir `info_dialog_port_key`).

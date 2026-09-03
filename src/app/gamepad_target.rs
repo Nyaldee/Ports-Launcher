@@ -37,9 +37,9 @@ fn cloned_dialog(app: &AppState) -> Option<DialogSlot> {
 }
 
 /// [Website, Mods website, Game folder, Save folder, Save folder 2, Change
-/// version, Favorite executable, Update, Reset Game Time] activés -- même
-/// ordre que InfoDialog.selected-index (voir dialogs.slint).
-fn info_nav_enabled(d: &InfoDialog) -> [bool; 9] {
+/// version, Favorite executable, Update, Reset Game Time, Install extras]
+/// activés -- même ordre que InfoDialog.selected-index (voir dialogs.slint).
+fn info_nav_enabled(d: &InfoDialog) -> [bool; 10] {
     [
         d.get_website_enabled(),
         d.get_mods_enabled(),
@@ -50,6 +50,7 @@ fn info_nav_enabled(d: &InfoDialog) -> [bool; 9] {
         d.get_favorite_exe_enabled(),
         d.get_update_toggle_enabled(),
         d.get_reset_playtime_enabled(),
+        d.get_extra_enabled(),
     ]
 }
 
@@ -118,7 +119,8 @@ impl GamepadTarget for DialogGamepadTarget {
                     5 => d.invoke_change_version_requested(),
                     6 => d.invoke_favorite_exe_requested(),
                     7 => d.invoke_update_toggle_requested(),
-                    _ => d.invoke_reset_playtime_requested(),
+                    8 => d.invoke_reset_playtime_requested(),
+                    _ => d.invoke_extra_requested(),
                 }
             }
             _ => {}
@@ -178,7 +180,7 @@ impl GamepadTarget for DialogGamepadTarget {
                 }
                 if dx != 0 {
                     let enabled = info_nav_enabled(d);
-                    let candidates: Vec<i32> = (0..9).filter(|&i| enabled[i as usize]).collect();
+                    let candidates: Vec<i32> = (0..10).filter(|&i| enabled[i as usize]).collect();
                     if !candidates.is_empty() {
                         let current = self.app.dialog_nav.info_nav_index.get();
                         let pos = candidates.iter().position(|&i| i == current).unwrap_or(0) as i32;
@@ -199,14 +201,12 @@ impl GamepadTarget for DialogGamepadTarget {
             // le même comportement (aperçu de thème en direct, ou simple
             // surbrillance pour la langue -- voir open_theme_picker/
             // open_language_picker, chacun câble item-hovered différemment).
-            DialogSlot::SearchList(d) => {
-                if dy != 0 {
-                    let count = d.get_items().row_count() as i32;
-                    if count != 0 {
-                        let next = (self.app.dialog_nav.picker_index.get() + dy).clamp(0, count - 1);
-                        d.set_scroll_trigger(!d.get_scroll_trigger());
-                        d.invoke_item_hovered(next);
-                    }
+            DialogSlot::SearchList(d) if dy != 0 => {
+                let count = d.get_items().row_count() as i32;
+                if count != 0 {
+                    let next = (self.app.dialog_nav.picker_index.get() + dy).clamp(0, count - 1);
+                    d.set_scroll_trigger(!d.get_scroll_trigger());
+                    d.invoke_item_hovered(next);
                 }
             }
             _ => {}
