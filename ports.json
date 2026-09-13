@@ -41,6 +41,17 @@
       "instructions": "Required files: Ace Combat 6 - Fires of Liberation (USA, Japan) (En,Fr,De,Es,It).iso (CRC32: 314CFB1B)\n\nLanguages: Multilingual.",
       "image": "https://cdn2.steamgriddb.com/grid/4d3939e078927ce83662958dd1eb11f0.png"
     },{
+      "name": "AeroGauge (aerogauge-recomp)",
+      "tags": ["n64", "racing"],
+      "source": "https://github.com/alondero/aerogauge-recomp",
+      "folder": "aerogauge-recomp",
+      "instructions": "Required files: AeroGauge (USA).z64 (CRC32: 198B9E0E)\n\nPut the required file in the port folder.",
+      "image": "https://cdn2.steamgriddb.com/grid/bd7fb1f8bf0567760641b6d7a29c1609.png",
+      "save": {
+        "windows": "%LOCALAPPDATA%\\AeroGaugeRecomp",
+        "linux": "~/.config/AeroGaugeRecomp"
+      }
+    },{
       "name": "Alien Resurrection (alien-resurrection-recomp)",
       "tags": ["ps1", "alexbeav"],
       "source": "https://github.com/Alexbeav/alien-resurrection-recomp",

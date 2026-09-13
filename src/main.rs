@@ -636,18 +636,50 @@ fn main() {
         let _ = slint::quit_event_loop();
     });
 
-    // Déplacement de la fenêtre à la souris (no-frame, l'OS ne le fait pas
-    // tout seul -- voir drag-area dans app-window.slint). Recalculer la
-    // position à la main sur chaque évènement "moved" de Slint donne un
-    // déplacement nettement plus lent que le curseur, chaque évènement
-    // traversant la boucle Slint et winit -- voir chrome::begin_window_drag,
-    // qui délègue le glissé ENTIER au système (Windows, ou au gestionnaire
-    // de fenêtres via EWMH sous Linux).
+    // Déplacement de la fenêtre à la souris (no-frame -- voir drag-area
+    // dans app-window.slint). Le système délègue le glissé ENTIER quand il
+    // le peut (Windows, ou un WM Linux qui honore l'EWMH -- voir
+    // chrome::begin_window_drag) ; `on_window_drag_moved` ci-dessous n'est
+    // qu'un repli, sans conflit avec le chemin natif : celui-ci bloque
+    // (Windows) ou grabbe le pointeur lui-même (WM coopératif), ce qui
+    // arrête déjà ces évènements.
+    //
+    // Position au press + delta RACINE du curseur (voir
+    // chrome::cursor_position, jamais mouse-x/mouse-y de Slint qui bougent
+    // avec la fenêtre), appliqué à une origine FIXE -- jamais de façon
+    // incrémentale, qui dériverait avec l'arrondi.
+    let drag_origin: Rc<Cell<Option<slint::PhysicalPosition>>> = Rc::new(Cell::new(None));
+    #[cfg(target_os = "linux")]
+    let drag_press_cursor: Rc<Cell<Option<(i32, i32)>>> = Rc::new(Cell::new(None));
     {
         let app = app.clone();
+        let drag_origin = drag_origin.clone();
+        #[cfg(target_os = "linux")]
+        let drag_press_cursor = drag_press_cursor.clone();
         window.on_window_drag_requested(move || {
+            drag_origin.set(Some(app.window().window().position()));
+            #[cfg(target_os = "linux")]
+            drag_press_cursor.set(chrome::cursor_position());
             let Some(native) = chrome::native_window(app.window().window()) else { return };
             chrome::begin_window_drag(native);
+        });
+    }
+    {
+        #[cfg(target_os = "linux")]
+        let app = app.clone();
+        #[cfg(target_os = "linux")]
+        let drag_origin = drag_origin.clone();
+        #[cfg(target_os = "linux")]
+        let drag_press_cursor = drag_press_cursor.clone();
+        window.on_window_drag_moved(move || {
+            #[cfg(target_os = "linux")]
+            {
+                let Some(origin) = drag_origin.get() else { return };
+                let Some((press_x, press_y)) = drag_press_cursor.get() else { return };
+                let Some((cur_x, cur_y)) = chrome::cursor_position() else { return };
+                let position = slint::PhysicalPosition { x: origin.x + (cur_x - press_x), y: origin.y + (cur_y - press_y) };
+                app.window().window().set_position(slint::WindowPosition::Physical(position));
+            }
         });
     }
 

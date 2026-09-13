@@ -178,6 +178,13 @@ export component AppWindow inherits Window {
     // son commentaire (délègue tout le glissé au déplacement de fenêtre
     // natif de Windows, jamais un recalcul de position par pixel).
     callback window-drag-requested();
+    // Repli manuel pour X11 (voir drag-area et ui::chrome::begin_window_drag)
+    // -- _NET_WM_MOVERESIZE ne fonctionne pas de façon fiable sur tous les WM
+    // (xfwm4 notamment). Simple signal "la souris a bougé pendant l'appui" :
+    // le delta est recalculé côté Rust depuis la position RACINE du curseur
+    // (voir chrome::cursor_position), jamais depuis mouse-x/mouse-y d'ici,
+    // relatifs à la fenêtre et donc à un repère qui bouge avec elle.
+    callback window-drag-moved();
 
     // Mode "Big Picture" (grille plein écran, ports installés uniquement) --
     // Rust reconstruit card-rows et redimensionne/repositionne la fenêtre à
@@ -475,14 +482,17 @@ export component AppWindow inherits Window {
                             // fois, au clic, et délègue tout le glissé au
                             // déplacement de fenêtre natif de Windows (voir
                             // windows_chrome::begin_window_drag : ReleaseCapture +
-                            // WM_NCLBUTTONDOWN/HTCAPTION). Recalculer
-                            // set_position() à chaque `moved` fonctionne mais
-                            // est visiblement saccadé : chaque déplacement
-                            // repasse par la boucle d'évènements Slint et un
-                            // aller-retour avec l'OS avant de redessiner.
+                            // WM_NCLBUTTONDOWN/HTCAPTION) -- toujours le chemin
+                            // pris sous Windows, jamais saccadé (voir
+                            // window-drag-moved ci-dessous pour le repli X11).
                             if (event.kind == PointerEventKind.down) {
                                 root.window-drag-requested();
                             }
+                        }
+                        // `moved` ne se déclenche que pendant un appui (voir
+                        // window-drag-moved plus haut pour le repli X11).
+                        moved => {
+                            root.window-drag-moved();
                         }
                     }
 

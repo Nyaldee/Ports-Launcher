@@ -2,6 +2,12 @@
 printf '\033]0;Ports Launcher Updater\007'
 cd "$(dirname "$(readlink -f "$0")")" || exit 1
 
+if ! command -v curl >/dev/null 2>&1; then
+    echo "curl is required but not installed -- install it (e.g. \"sudo apt install curl\") and try again."
+    read -r _
+    exit 1
+fi
+
 pkill -x ports_launcher
 sleep 2
 

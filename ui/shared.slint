@@ -94,11 +94,15 @@ export component TitleBarIconButton inherits Rectangle {
         }
     }
     Path {
-        // Bug Slint : rendu décalé vers le coin haut-gauche par rapport à
-        // un Rectangle aux mêmes coordonnées -- décalage compensatoire.
+        // Bug de rendu Slint (femtovg) : draw_rectangle met à l'échelle
+        // position ET taille par scale-factor d'un bloc, alors que
+        // draw_path applique l'origine du tracé via un translate() jamais
+        // multiplié par scale-factor -- seuls les points le sont. L'écart
+        // qui en résulte est proportionnel à (scale-factor - 1) : nul à
+        // 100%, croissant au-delà.
         // https://github.com/slint-ui/slint/issues/3991
-        x: 0.5px / Theme.scale-factor;
-        y: 0.5px / Theme.scale-factor;
+        x: 0.5px * (1 - 1 / Theme.scale-factor);
+        y: 0.5px * (1 - 1 / Theme.scale-factor);
         width: 100%;
         height: 100%;
         stroke: area.has-hover && enabled ? hover-stroke-color : Theme.list-text;

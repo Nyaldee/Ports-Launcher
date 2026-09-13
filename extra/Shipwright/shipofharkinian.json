@@ -404,6 +404,10 @@
                 "InvertShieldAimingYAxis": 0,
                 "RightStickAim": 1
             },
+            "CustomOcarina": {
+                "Dpad": 1,
+                "RightStick": 1
+            },
             "FreeLook": {
                 "Enabled": 1,
                 "InvertXAxis": 0,
