@@ -1,0 +1,440 @@
+{
+    "CVars": {
+        "gCosmetics": {
+            "HUD": {
+                "CDownButton": {
+                    "PosType": 4
+                }
+            }
+        },
+        "gEnhancements": {
+            "AssignableTunicsAndBoots": 1,
+            "Autosave": 1,
+            "BetterOwl": 1,
+            "CreditsFix": 1,
+            "CustomizeFrogsOcarinaGame": 1,
+            "DekuNutUpgradeFix": 1,
+            "DisableFixedCamera": 0,
+            "DisableLOD": 1,
+            "DpadEquips": 1,
+            "DpadNoDropOcarinaInput": 1,
+            "DynamicWalletIcon": 1,
+            "EnemySpawnsOverWaterboxes": 1,
+            "FasterRupeeAccumulator": 1,
+            "FixBrokenGiantsKnife": 1,
+            "FixDampeGoingBackwards": 1,
+            "FixDaruniaDanceSpeed": 1,
+            "FixDungeonMinimapIcon": 1,
+            "FixEyesOpenWhileSleeping": 1,
+            "FixFloorSwitches": 1,
+            "FixHammerHand": 1,
+            "FixKokiriForestQuestStage": 1,
+            "FixMenuLR": 1,
+            "FixSawSoftlock": 1,
+            "FixTexturesOOB": 1,
+            "FixVineFall": 1,
+            "FixZoraHintDialogue": 1,
+            "FrogsModifyFailTime": 2,
+            "GerudoWarriorClothingFix": 1,
+            "GravediggingTourFix": 1,
+            "InjectItemCounts": {
+                "GoldSkulltula": 1,
+                "HeartContainer": 1,
+                "HeartPiece": 1
+            },
+            "NaviTextFix": 1,
+            "PulsateBossIcon": 1,
+            "RedGanonBlood": 1,
+            "RememberMapToggleState": 1,
+            "SceneSpecificDirtPathFix": 1,
+            "SilverRupeeJingleExtend": 1,
+            "SkipSaveConfirmation": 1,
+            "SkipText": 1,
+            "TextSpeed": 5,
+            "TimeFlowFileSelect": 1,
+            "TwoHandedIdle": 1,
+            "VisualAgony": 1,
+            "WidescreenActorCulling": 1
+        },
+        "gGeneral": {
+            "PauseMenuAnimatedLinkTriforce": 0,
+            "SpoilerLog": ""
+        },
+        "gOpenWindows": {
+            "ModalWindow": 1,
+            "Notifications": 1
+        },
+        "gRandoSettings": {
+            "40GSHint": 1,
+            "50GSHint": 1,
+            "BigPoeTargetCount": 1,
+            "BlueFireArrows": 1,
+            "BombchuBag": 1,
+            "BossKeysanity": 5,
+            "ClosedForest": 2,
+            "CompleteMaskQuest": 1,
+            "CuccosToReturn": 1,
+            "DampeHint": 1,
+            "DoorOfTime": 2,
+            "EnableBombchuDrops": 1,
+            "FortressCarpenters": 1,
+            "FrogsHint": 1,
+            "FullWallets": 1,
+            "GanonTrial": 0,
+            "GerudoKeys": 3,
+            "GregHint": 1,
+            "HBAHint": 1,
+            "IncludeTycoonWallet": 1,
+            "KakarikoGate": 1,
+            "Keysanity": 5,
+            "LacsRewardCount": 8,
+            "MalonHint": 1,
+            "MerchantText": 1,
+            "RainbowBridge": 7,
+            "SariaHint": 1,
+            "ScrubsFixedPrice": 2,
+            "ScrubsPrices": 3,
+            "SheikLAHint": 0,
+            "Shopsanity": 1,
+            "ShopsanityCount": 7,
+            "ShopsanityPrices": 2,
+            "ShuffleAdultTrade": 1,
+            "ShuffleBossEntrances": 2,
+            "ShuffleCows": 1,
+            "ShuffleDekuNutBag": 1,
+            "ShuffleDekuStickBag": 1,
+            "ShuffleDungeonsEntrances": 2,
+            "ShuffleFrogSongRupees": 1,
+            "ShuffleGanonBossKey": 9,
+            "ShuffleGerudoToken": 1,
+            "ShuffleKeyRings": 2,
+            "ShuffleKeyRingsRandomCount": 4,
+            "ShuffleKokiriSword": 1,
+            "ShuffleMasterSword": 1,
+            "ShuffleMerchants": 3,
+            "ShuffleOcarinas": 1,
+            "ShuffleOverworldSpawns": 1,
+            "ShuffleScrubs": 2,
+            "ShuffleSongs": 2,
+            "ShuffleSwim": 1,
+            "ShuffleTokens": 3,
+            "SkipChildZelda": 1,
+            "SkipEponaRace": 1,
+            "SkipScarecrowsSong": 1,
+            "StartingAge": 2,
+            "StartingMapsCompasses": 0,
+            "SunlightArrows": 1
+        },
+        "gSettings": {
+            "AdvancedResolution": {
+                "Enabled": 0
+            },
+            "Controllers": {
+                "AxisDirectionMappings": {
+                    "P0-S0-D0-KB30": {
+                        "AxisDirectionMappingClass": "KeyboardKeyToAxisDirectionMapping",
+                        "Direction": 0,
+                        "KeyboardScancode": 30,
+                        "Stick": 0
+                    },
+                    "P0-S0-D0-SDLA0-ADN": {
+                        "AxisDirection": -1,
+                        "AxisDirectionMappingClass": "SDLAxisDirectionToAxisDirectionMapping",
+                        "Direction": 0,
+                        "SDLControllerAxis": 0,
+                        "Stick": 0
+                    },
+                    "P0-S0-D1-KB32": {
+                        "AxisDirectionMappingClass": "KeyboardKeyToAxisDirectionMapping",
+                        "Direction": 1,
+                        "KeyboardScancode": 32,
+                        "Stick": 0
+                    },
+                    "P0-S0-D1-SDLA0-ADP": {
+                        "AxisDirection": 1,
+                        "AxisDirectionMappingClass": "SDLAxisDirectionToAxisDirectionMapping",
+                        "Direction": 1,
+                        "SDLControllerAxis": 0,
+                        "Stick": 0
+                    },
+                    "P0-S0-D2-KB17": {
+                        "AxisDirectionMappingClass": "KeyboardKeyToAxisDirectionMapping",
+                        "Direction": 2,
+                        "KeyboardScancode": 17,
+                        "Stick": 0
+                    },
+                    "P0-S0-D2-SDLA1-ADN": {
+                        "AxisDirection": -1,
+                        "AxisDirectionMappingClass": "SDLAxisDirectionToAxisDirectionMapping",
+                        "Direction": 2,
+                        "SDLControllerAxis": 1,
+                        "Stick": 0
+                    },
+                    "P0-S0-D3-KB31": {
+                        "AxisDirectionMappingClass": "KeyboardKeyToAxisDirectionMapping",
+                        "Direction": 3,
+                        "KeyboardScancode": 31,
+                        "Stick": 0
+                    },
+                    "P0-S0-D3-SDLA1-ADP": {
+                        "AxisDirection": 1,
+                        "AxisDirectionMappingClass": "SDLAxisDirectionToAxisDirectionMapping",
+                        "Direction": 3,
+                        "SDLControllerAxis": 1,
+                        "Stick": 0
+                    },
+                    "P0-S1-D0-SDLA2-ADN": {
+                        "AxisDirection": -1,
+                        "AxisDirectionMappingClass": "SDLAxisDirectionToAxisDirectionMapping",
+                        "Direction": 0,
+                        "SDLControllerAxis": 2,
+                        "Stick": 1
+                    },
+                    "P0-S1-D1-SDLA2-ADP": {
+                        "AxisDirection": 1,
+                        "AxisDirectionMappingClass": "SDLAxisDirectionToAxisDirectionMapping",
+                        "Direction": 1,
+                        "SDLControllerAxis": 2,
+                        "Stick": 1
+                    },
+                    "P0-S1-D2-SDLA3-ADN": {
+                        "AxisDirection": -1,
+                        "AxisDirectionMappingClass": "SDLAxisDirectionToAxisDirectionMapping",
+                        "Direction": 2,
+                        "SDLControllerAxis": 3,
+                        "Stick": 1
+                    },
+                    "P0-S1-D3-SDLA3-ADP": {
+                        "AxisDirection": 1,
+                        "AxisDirectionMappingClass": "SDLAxisDirectionToAxisDirectionMapping",
+                        "Direction": 3,
+                        "SDLControllerAxis": 3,
+                        "Stick": 1
+                    }
+                },
+                "ButtonMappings": {
+                    "P0-B1-KB333": {
+                        "Bitmask": 1,
+                        "ButtonMappingClass": "KeyboardKeyToButtonMapping",
+                        "KeyboardScancode": 333
+                    },
+                    "P0-B1-SDLB10": {
+                        "Bitmask": 1,
+                        "ButtonMappingClass": "SDLButtonToButtonMapping",
+                        "SDLControllerButton": 10
+                    },
+                    "P0-B1024-KB34": {
+                        "Bitmask": 1024,
+                        "ButtonMappingClass": "KeyboardKeyToButtonMapping",
+                        "KeyboardScancode": 34
+                    },
+                    "P0-B1024-SDLB12": {
+                        "Bitmask": 1024,
+                        "ButtonMappingClass": "SDLButtonToButtonMapping",
+                        "SDLControllerButton": 12
+                    },
+                    "P0-B16-KB19": {
+                        "Bitmask": 16,
+                        "ButtonMappingClass": "KeyboardKeyToButtonMapping",
+                        "KeyboardScancode": 19
+                    },
+                    "P0-B16-SDLA5-ADP": {
+                        "AxisDirection": 1,
+                        "Bitmask": 16,
+                        "ButtonMappingClass": "SDLAxisDirectionToButtonMapping",
+                        "SDLControllerAxis": 5
+                    },
+                    "P0-B16384-KB46": {
+                        "Bitmask": 16384,
+                        "ButtonMappingClass": "KeyboardKeyToButtonMapping",
+                        "KeyboardScancode": 46
+                    },
+                    "P0-B16384-SDLB1": {
+                        "Bitmask": 16384,
+                        "ButtonMappingClass": "SDLButtonToButtonMapping",
+                        "SDLControllerButton": 1
+                    },
+                    "P0-B2-KB331": {
+                        "Bitmask": 2,
+                        "ButtonMappingClass": "KeyboardKeyToButtonMapping",
+                        "KeyboardScancode": 331
+                    },
+                    "P0-B2-SDLB9": {
+                        "Bitmask": 2,
+                        "ButtonMappingClass": "SDLButtonToButtonMapping",
+                        "SDLControllerButton": 9
+                    },
+                    "P0-B2048-KB20": {
+                        "Bitmask": 2048,
+                        "ButtonMappingClass": "KeyboardKeyToButtonMapping",
+                        "KeyboardScancode": 20
+                    },
+                    "P0-B2048-SDLB11": {
+                        "Bitmask": 2048,
+                        "ButtonMappingClass": "SDLButtonToButtonMapping",
+                        "SDLControllerButton": 11
+                    },
+                    "P0-B256-KB35": {
+                        "Bitmask": 256,
+                        "ButtonMappingClass": "KeyboardKeyToButtonMapping",
+                        "KeyboardScancode": 35
+                    },
+                    "P0-B256-SDLB14": {
+                        "Bitmask": 256,
+                        "ButtonMappingClass": "SDLButtonToButtonMapping",
+                        "SDLControllerButton": 14
+                    },
+                    "P0-B32-KB18": {
+                        "Bitmask": 32,
+                        "ButtonMappingClass": "KeyboardKeyToButtonMapping",
+                        "KeyboardScancode": 18
+                    },
+                    "P0-B32-SDLB4": {
+                        "Bitmask": 32,
+                        "ButtonMappingClass": "SDLButtonToButtonMapping",
+                        "SDLControllerButton": 4
+                    },
+                    "P0-B32768-KB45": {
+                        "Bitmask": 32768,
+                        "ButtonMappingClass": "KeyboardKeyToButtonMapping",
+                        "KeyboardScancode": 45
+                    },
+                    "P0-B32768-SDLB0": {
+                        "Bitmask": 32768,
+                        "ButtonMappingClass": "SDLButtonToButtonMapping",
+                        "SDLControllerButton": 0
+                    },
+                    "P0-B4-KB336": {
+                        "Bitmask": 4,
+                        "ButtonMappingClass": "KeyboardKeyToButtonMapping",
+                        "KeyboardScancode": 336
+                    },
+                    "P0-B4096-KB57": {
+                        "Bitmask": 4096,
+                        "ButtonMappingClass": "KeyboardKeyToButtonMapping",
+                        "KeyboardScancode": 57
+                    },
+                    "P0-B4096-SDLB6": {
+                        "Bitmask": 4096,
+                        "ButtonMappingClass": "SDLButtonToButtonMapping",
+                        "SDLControllerButton": 6
+                    },
+                    "P0-B512-KB33": {
+                        "Bitmask": 512,
+                        "ButtonMappingClass": "KeyboardKeyToButtonMapping",
+                        "KeyboardScancode": 33
+                    },
+                    "P0-B512-SDLB13": {
+                        "Bitmask": 512,
+                        "ButtonMappingClass": "SDLButtonToButtonMapping",
+                        "SDLControllerButton": 13
+                    },
+                    "P0-B8-KB328": {
+                        "Bitmask": 8,
+                        "ButtonMappingClass": "KeyboardKeyToButtonMapping",
+                        "KeyboardScancode": 328
+                    },
+                    "P0-B8-SDLB8": {
+                        "Bitmask": 8,
+                        "ButtonMappingClass": "SDLButtonToButtonMapping",
+                        "SDLControllerButton": 8
+                    },
+                    "P0-B8192-KB44": {
+                        "Bitmask": 8192,
+                        "ButtonMappingClass": "KeyboardKeyToButtonMapping",
+                        "KeyboardScancode": 44
+                    },
+                    "P0-B8192-SDLA4-ADP": {
+                        "AxisDirection": 1,
+                        "Bitmask": 8192,
+                        "ButtonMappingClass": "SDLAxisDirectionToButtonMapping",
+                        "SDLControllerAxis": 4
+                    }
+                },
+                "Port1": {
+                    "Buttons": {
+                        "1024ButtonMappingIds": "P0-B1024-SDLB12,P0-B1024-KB34,",
+                        "16384ButtonMappingIds": "P0-B16384-KB46,P0-B16384-SDLB1,",
+                        "16ButtonMappingIds": "P0-B16-KB19,P0-B16-SDLA5-ADP,",
+                        "1ButtonMappingIds": "P0-B1-KB333,P0-B1-SDLB10,",
+                        "2048ButtonMappingIds": "P0-B2048-SDLB11,P0-B2048-KB20,",
+                        "256ButtonMappingIds": "P0-B256-KB35,P0-B256-SDLB14,",
+                        "2ButtonMappingIds": "P0-B2-KB331,P0-B2-SDLB9,",
+                        "32768ButtonMappingIds": "P0-B32768-KB45,P0-B32768-SDLB0,",
+                        "32ButtonMappingIds": "P0-B32-KB18,P0-B32-SDLB4,",
+                        "4096ButtonMappingIds": "P0-B4096-KB57,P0-B4096-SDLB6,",
+                        "4ButtonMappingIds": "P0-B4-KB336,",
+                        "512ButtonMappingIds": "P0-B512-KB33,P0-B512-SDLB13,",
+                        "8192ButtonMappingIds": "P0-B8192-KB44,P0-B8192-SDLA4-ADP,",
+                        "8ButtonMappingIds": "P0-B8-KB328,P0-B8-SDLB8,"
+                    },
+                    "HasConfig": 1,
+                    "LeftStick": {
+                        "DeadzonePercentage": 20,
+                        "DownAxisDirectionMappingIds": "P0-S0-D3-KB31,P0-S0-D3-SDLA1-ADP,",
+                        "LeftAxisDirectionMappingIds": "P0-S0-D0-KB30,P0-S0-D0-SDLA0-ADN,",
+                        "NotchSnapAngle": 0,
+                        "RightAxisDirectionMappingIds": "P0-S0-D1-KB32,P0-S0-D1-SDLA0-ADP,",
+                        "SensitivityPercentage": 100,
+                        "UpAxisDirectionMappingIds": "P0-S0-D2-KB17,P0-S0-D2-SDLA1-ADN,"
+                    },
+                    "RightStick": {
+                        "DeadzonePercentage": 20,
+                        "DownAxisDirectionMappingIds": "P0-S1-D3-SDLA3-ADP,",
+                        "LeftAxisDirectionMappingIds": "P0-S1-D0-SDLA2-ADN,",
+                        "NotchSnapAngle": 0,
+                        "RightAxisDirectionMappingIds": "P0-S1-D1-SDLA2-ADP,",
+                        "SensitivityPercentage": 100,
+                        "UpAxisDirectionMappingIds": "P0-S1-D2-SDLA3-ADN,"
+                    },
+                    "RumbleMappingIds": "P0,"
+                },
+                "RumbleMappings": {
+                    "P0": {
+                        "HighFrequencyIntensity": 50,
+                        "LowFrequencyIntensity": 50,
+                        "RumbleMappingClass": "SDLRumbleMapping"
+                    }
+                }
+            },
+            "Controls": {
+                "InvertAimingXAxis": 0,
+                "InvertAimingYAxis": 0,
+                "InvertShieldAimingXAxis": 0,
+                "InvertShieldAimingYAxis": 0,
+                "RightStickAim": 1
+            },
+            "FreeLook": {
+                "Enabled": 1,
+                "InvertXAxis": 0,
+                "InvertYAxis": 0
+            },
+            "InterpolationFPS": 60,
+            "MatchRefreshRate": 1,
+            "Menu": {
+                "ActiveHeader": "Settings",
+                "EnhancementsSidebarSection": "Cosmetics Editor",
+                "NetworkSidebarSection": "Anchor",
+                "SettingsSidebarSection": "Controls"
+            },
+            "MoveInFirstPerson": 1,
+            "OverlayFont": "Press Start 2P",
+            "ZFightingMode": 1
+        }
+    },
+    "ConfigVersion": 6,
+    "Window": {
+        "AudioBackend": "wasapi",
+        "Backend": {
+            "Id": 0,
+            "Name": "DirectX 11"
+        },
+        "Fullscreen": {
+            "Enabled": false
+        },
+        "Height": 2115,
+        "PositionX": 0,
+        "PositionY": 45,
+        "Width": 3840
+    }
+}

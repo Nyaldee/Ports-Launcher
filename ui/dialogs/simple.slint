@@ -1,0 +1,434 @@
+import { Theme } from "../shared.slint";
+import { DialogButton, DialogChrome, DialogNavKeyHandler } from "chrome.slint";
+
+// Toutes les tailles/positions des fenêtres de dialogue sont calculées côté
+// Rust (voir src/ui/dialog_geometry.rs) et poussées via
+// initial-width/initial-height, exactement comme AppWindow (voir son
+// commentaire sur ce même sujet) -- jamais un Window::set_size() impératif
+// après coup. Aucun *Layout dans ce fichier -- voir chrome.slint pour
+// pourquoi.
+export component MessageDialog inherits Window {
+    no-frame: true;
+    // Titre natif -- sans lui, Windows retombe sur "Slint Window" dans
+    // Alt+Tab (le texte affiché par DialogTitleBar n'est qu'un élément
+    // dessiné, jamais poussé au niveau natif de la fenêtre). Même texte que
+    // la barre de titre custom, pour rester cohérent.
+    title: root.dialog-title;
+    background: Theme.list-background;
+    in property <length> initial-width: 400px;
+    in property <length> initial-height: 200px;
+    width: initial-width;
+    height: initial-height;
+
+    // Famille de police de themes.json -- même mécanisme que AppWindow (voir
+    // son commentaire sur font-family/default-font-family) : sans elle, ce
+    // dialogue (comme les autres de ce dossier) gardait la police par
+    // défaut de Slint quel que soit "font_family" dans themes.json, alors
+    // que apply_dialog_theme!/apply_dialog_chrome! (voir app::dialogs)
+    // poussent déjà couleurs/tailles/scale-factor -- seule la police manquait.
+    in property <string> font-family: "Segoe UI";
+    default-font-family: root.font-family;
+
+    in property <string> dialog-title: "";
+    in property <string> message-text: "";
+    callback close-requested();
+
+    // Poussées par Rust depuis app.normal_mode/fullscreen_mode.fonts (voir
+    // app::dialogs::open_message_dialog) -- EXACTEMENT les mêmes valeurs
+    // que la fenêtre principale/InfoDialog/ListPickerDialog, jamais une
+    // fraction recalculée à partir de la hauteur de CE dialogue.
+    in property <length> item-font-px-physical: 14px;
+    in property <length> title-font-px-physical: 13px;
+    in property <length> row-height-physical: 48px;
+    in property <length> title-bar-height-physical: 34px;
+
+    // SANS division par Theme.scale-factor : root.width/height sont déjà en
+    // pixels LOGIQUES (Rust pousse initial-width/height déjà divisés par le
+    // facteur d'échelle avant de les pousser). Moins deux fois border-px --
+    // la bordure de la Rectangle englobante (voir DialogChrome) est peinte
+    // SOUS ses enfants, qui la recouvrent entièrement faute de retrait.
+    property <length> logical-w: root.width - border-px * 2;
+    property <length> logical-h: root.height - border-px * 2;
+    property <length> border-px: Theme.border-width * 1px / Theme.scale-factor;
+    property <length> item-font-px: item-font-px-physical / Theme.scale-factor;
+    property <length> title-font-px: title-font-px-physical / Theme.scale-factor;
+    property <length> bar-height: title-bar-height-physical / Theme.scale-factor;
+    // MÊME marge FIXE que content-margin dans app-window.slint -- "UN SEUL
+    // modèle, UNE SEULE marge" pour tout ce qui touche un bord.
+    property <length> gutter: 12px / Theme.scale-factor;
+
+    forward-focus: key-handler;
+
+    // Seule croix pour fermer -- pas de bouton OK séparé (rien à confirmer,
+    // juste un message à acquitter), Échap fait de même (voir key-handler
+    // ci-dessous) -- même convention que la fenêtre principale, où Échap
+    // ferme déjà l'appli.
+    key-handler := FocusScope {
+        key-pressed(event) => {
+            if (event.text == Key.Escape) {
+                root.close-requested();
+                accept
+            } else {
+                reject
+            }
+        }
+
+        chrome := DialogChrome {
+            dialog-title: root.dialog-title;
+            bar-height: root.bar-height;
+            title-font-px: root.title-font-px;
+            border-px: root.border-px;
+            logical-w: root.logical-w;
+            logical-h: root.logical-h;
+            close-requested => { root.close-requested(); }
+
+            Text {
+                text: root.message-text;
+                color: Theme.list-text;
+                font-size: root.item-font-px;
+                wrap: word-wrap;
+                x: root.gutter;
+                y: root.gutter;
+                // chrome.content-width/height (PAS parent.width/height) --
+                // @children résout `parent` sur l'élément DialogChrome
+                // TEL QU'ÉCRIT ici (le composant instancié), pas sur
+                // content-area où ces enfants sont réellement greffés à
+                // l'affichage -- une taille bien plus grande que prévu
+                // sinon. content-width/height, exposées par DialogChrome
+                // pour exactement ce cas, donnent la vraie taille de la
+                // zone de contenu.
+                width: chrome.content-width - root.gutter * 2;
+                height: chrome.content-height - root.gutter * 2;
+            }
+        }
+    }
+}
+
+// Demande une confirmation avant une action destructive (ex: désinstaller un
+// port) -- même structure qu'ErrorDialog (message + deux boutons empilés),
+// voir son commentaire pour le détail des propriétés partagées.
+export component ConfirmDialog inherits Window {
+    no-frame: true;
+    // Voir le commentaire équivalent dans MessageDialog.
+    title: root.dialog-title;
+    background: Theme.list-background;
+    in property <length> initial-width: 400px;
+    in property <length> initial-height: 220px;
+    width: initial-width;
+    height: initial-height;
+
+    // Voir le commentaire équivalent dans MessageDialog.
+    in property <string> font-family: "Segoe UI";
+    default-font-family: root.font-family;
+
+    in property <string> dialog-title: "";
+    in property <string> message-text: "";
+    // Libellé du bouton principal -- explicite plutôt qu'un "OK" générique,
+    // pour que l'action confirmée reste claire même sans relire le message.
+    // Défaut "Uninstall" pour l'unique appelant historique
+    // (open_uninstall_confirm_dialog) ; les autres appelants (voir
+    // app::dialogs::open_confirm_dialog) le remplacent par un libellé
+    // adapté -- toujours une chaîne DÉJÀ traduite via Tr, jamais un
+    // littéral poussé en dur depuis Rust.
+    in property <string> confirm-text: @tr("Uninstall");
+    callback confirmed();
+    callback close-requested();
+    // Bouton en surbrillance (0 = confirmer, 1 = annuler) -- souris ET
+    // clavier/manette convergent vers ce même indicateur, voir
+    // DialogButton.hovered et son commentaire.
+    in property <int> selected-index: 0;
+    callback nav-hovered(int);
+    // Haut/bas + Entrée -- voir key-handler plus bas ; réutilise la même
+    // logique que la manette (DialogGamepadTarget::move_selection/
+    // activate_selection côté Rust).
+    callback move-selection-requested(int);
+    callback activate-selection-requested();
+    forward-focus: key-handler;
+
+    // Voir le commentaire équivalent dans MessageDialog.
+    in property <length> item-font-px-physical: 14px;
+    in property <length> title-font-px-physical: 13px;
+    in property <length> row-height-physical: 48px;
+    in property <length> title-bar-height-physical: 34px;
+
+    property <length> logical-w: root.width - border-px * 2;
+    property <length> logical-h: root.height - border-px * 2;
+    property <length> border-px: Theme.border-width * 1px / Theme.scale-factor;
+    property <length> item-font-px: item-font-px-physical / Theme.scale-factor;
+    property <length> title-font-px: title-font-px-physical / Theme.scale-factor;
+    property <length> bar-height: title-bar-height-physical / Theme.scale-factor;
+    property <length> gutter: 12px / Theme.scale-factor;
+    // Largeur utile de la zone de contenu -- une seule propriété nommée
+    // plutôt que "chrome.content-width - root.gutter * 2" répété à chaque
+    // élément, même principe que InfoDialog.content-width.
+    property <length> content-width: chrome.content-width - root.gutter * 2;
+
+    key-handler := DialogNavKeyHandler {
+        close-requested => { root.close-requested(); }
+        move-selection-requested(delta) => { root.move-selection-requested(delta); }
+        activate-selection-requested => { root.activate-selection-requested(); }
+
+        chrome := DialogChrome {
+            dialog-title: root.dialog-title;
+            bar-height: root.bar-height;
+            title-font-px: root.title-font-px;
+            border-px: root.border-px;
+            logical-w: root.logical-w;
+            logical-h: root.logical-h;
+            close-requested => { root.close-requested(); }
+
+            // chrome.content-width/height (PAS parent.width/height) -- voir
+            // le commentaire équivalent dans MessageDialog.
+            Text {
+                text: root.message-text;
+                color: Theme.list-text;
+                font-size: root.item-font-px;
+                wrap: word-wrap;
+                x: root.gutter;
+                y: root.gutter;
+                width: root.content-width;
+                height: chrome.content-height - root.gutter * 4 - root.bar-height * 2;
+            }
+
+            DialogButton {
+                text: root.confirm-text;
+                selected: root.selected-index == 0;
+                font-size: root.item-font-px;
+                x: root.gutter;
+                y: chrome.content-height - root.gutter * 2 - root.bar-height * 2;
+                width: root.content-width;
+                height: root.bar-height;
+                border-px: root.border-px;
+                clicked => { root.confirmed(); }
+                hovered => { root.nav-hovered(0); }
+            }
+
+            DialogButton {
+                text: @tr("Cancel");
+                selected: root.selected-index == 1;
+                font-size: root.item-font-px;
+                x: root.gutter;
+                y: chrome.content-height - root.gutter - root.bar-height;
+                width: root.content-width;
+                height: root.bar-height;
+                border-px: root.border-px;
+                clicked => { root.close-requested(); }
+                hovered => { root.nav-hovered(1); }
+            }
+        }
+    }
+}
+
+export component ErrorDialog inherits Window {
+    no-frame: true;
+    // Voir le commentaire équivalent dans MessageDialog.
+    title: root.dialog-title;
+    background: Theme.list-background;
+    in property <length> initial-width: 400px;
+    in property <length> initial-height: 260px;
+    width: initial-width;
+    height: initial-height;
+
+    // Voir le commentaire équivalent dans MessageDialog.
+    in property <string> font-family: "Segoe UI";
+    default-font-family: root.font-family;
+
+    in property <string> dialog-title: "";
+    in property <string> message-text: "";
+    callback reinstall-requested();
+    callback info-requested();
+    callback close-requested();
+    // Bouton en surbrillance (0 = réinstaller, 1 = infos) -- même pattern
+    // que ConfirmDialog, voir son commentaire.
+    in property <int> selected-index: 0;
+    callback nav-hovered(int);
+    callback move-selection-requested(int);
+    callback activate-selection-requested();
+    forward-focus: key-handler;
+
+    // Voir le commentaire équivalent dans MessageDialog.
+    in property <length> item-font-px-physical: 14px;
+    in property <length> title-font-px-physical: 13px;
+    in property <length> row-height-physical: 48px;
+    in property <length> title-bar-height-physical: 34px;
+
+    property <length> logical-w: root.width - border-px * 2;
+    property <length> logical-h: root.height - border-px * 2;
+    property <length> border-px: Theme.border-width * 1px / Theme.scale-factor;
+    property <length> item-font-px: item-font-px-physical / Theme.scale-factor;
+    property <length> title-font-px: title-font-px-physical / Theme.scale-factor;
+    property <length> bar-height: title-bar-height-physical / Theme.scale-factor;
+    property <length> gutter: 12px / Theme.scale-factor;
+    // Largeur utile de la zone de contenu -- une seule propriété nommée
+    // plutôt que "chrome.content-width - root.gutter * 2" répété à chaque
+    // élément, même principe que InfoDialog.content-width.
+    property <length> content-width: chrome.content-width - root.gutter * 2;
+
+    key-handler := DialogNavKeyHandler {
+        close-requested => { root.close-requested(); }
+        move-selection-requested(delta) => { root.move-selection-requested(delta); }
+        activate-selection-requested => { root.activate-selection-requested(); }
+
+        chrome := DialogChrome {
+            dialog-title: root.dialog-title;
+            bar-height: root.bar-height;
+            title-font-px: root.title-font-px;
+            border-px: root.border-px;
+            logical-w: root.logical-w;
+            logical-h: root.logical-h;
+            close-requested => { root.close-requested(); }
+
+            // chrome.content-width/height (PAS parent.width/height) -- voir
+            // le commentaire équivalent dans MessageDialog.
+            Text {
+                text: root.message-text;
+                color: Theme.list-text;
+                font-size: root.item-font-px;
+                wrap: word-wrap;
+                x: root.gutter;
+                y: root.gutter;
+                width: root.content-width;
+                height: chrome.content-height - root.gutter * 4 - root.bar-height * 2;
+            }
+
+            DialogButton {
+                text: @tr("Reinstall");
+                selected: root.selected-index == 0;
+                font-size: root.item-font-px;
+                x: root.gutter;
+                y: chrome.content-height - root.gutter * 2 - root.bar-height * 2;
+                width: root.content-width;
+                height: root.bar-height;
+                border-px: root.border-px;
+                clicked => { root.reinstall-requested(); }
+                hovered => { root.nav-hovered(0); }
+            }
+
+            DialogButton {
+                text: @tr("Open info");
+                selected: root.selected-index == 1;
+                font-size: root.item-font-px;
+                x: root.gutter;
+                y: chrome.content-height - root.gutter - root.bar-height;
+                width: root.content-width;
+                height: root.bar-height;
+                border-px: root.border-px;
+                clicked => { root.info-requested(); }
+                hovered => { root.nav-hovered(1); }
+            }
+        }
+    }
+}
+
+// Pas de bouton fermer fonctionnel (closable: false) -- une install en
+// cours ne peut pas être interrompue : fermer pendant qu'un worker tourne
+// en fond laissait le port bloqué "en cours d'installation" tout le reste
+// de la session.
+export component ProgressDialog inherits Window {
+    no-frame: true;
+    // Voir le commentaire équivalent dans MessageDialog.
+    title: root.dialog-title;
+    background: Theme.list-background;
+    in property <length> initial-width: 400px;
+    in property <length> initial-height: 180px;
+    width: initial-width;
+    height: initial-height;
+
+    // Voir le commentaire équivalent dans MessageDialog.
+    in property <string> font-family: "Segoe UI";
+    default-font-family: root.font-family;
+
+    in property <string> dialog-title: "";
+    in property <string> status-text: "";
+    // Couleur sémantique fixe (voir ui/theme.rs::SemanticColors), poussée
+    // depuis Rust -- jamais un littéral hexa figé côté .slint.
+    in property <color> progress-fill-color: #78b159;
+
+    // Voir le commentaire équivalent dans MessageDialog.
+    in property <length> item-font-px-physical: 14px;
+    in property <length> title-font-px-physical: 13px;
+    in property <length> row-height-physical: 48px;
+    in property <length> title-bar-height-physical: 34px;
+
+    property <length> logical-w: root.width - border-px * 2;
+    property <length> logical-h: root.height - border-px * 2;
+    property <length> border-px: Theme.border-width * 1px / Theme.scale-factor;
+    property <length> item-font-px: item-font-px-physical / Theme.scale-factor;
+    property <length> title-font-px: title-font-px-physical / Theme.scale-factor;
+    property <length> bar-height: title-bar-height-physical / Theme.scale-factor;
+    property <length> gutter: 12px / Theme.scale-factor;
+
+    chrome := DialogChrome {
+        dialog-title: root.dialog-title;
+        bar-height: root.bar-height;
+        title-font-px: root.title-font-px;
+        border-px: root.border-px;
+        logical-w: root.logical-w;
+        logical-h: root.logical-h;
+        closable: false;
+
+        // chrome.content-width/height (PAS parent.width/height) -- voir le
+        // commentaire équivalent dans MessageDialog.
+        Text {
+            text: root.status-text;
+            color: Theme.list-text;
+            font-size: root.item-font-px;
+            wrap: word-wrap;
+            x: root.gutter;
+            y: root.gutter;
+            width: chrome.content-width - root.gutter * 2;
+            height: chrome.content-height - root.gutter * 4;
+        }
+
+        // Barre indéterminée -- aucun pourcentage réel côté Rust (voir
+        // core::installer::ProgressCallback, qui ne transmet que du texte de
+        // statut), donc un segment qui va-et-vient plutôt qu'un remplissage
+        // qui grandirait sans jamais correspondre à une vraie mesure.
+        progress-track := Rectangle {
+            x: root.gutter;
+            y: chrome.content-height - root.gutter * 2;
+            width: chrome.content-width - root.gutter * 2;
+            height: root.gutter;
+            background: Theme.search-background;
+            border-width: root.border-px;
+            border-color: Theme.border-color;
+
+            segment := Rectangle {
+                // Retrait de root.border-px de chaque côté -- SANS ça, ce
+                // remplissage (posé à 0,0 sur 100%x100%) recouvre
+                // entièrement la bordure de progress-track : un Rectangle
+                // ne rogne pas ses enfants par défaut et sa propre
+                // bordure est peinte SOUS eux -- même contrainte que la
+                // bordure de la fenêtre principale (voir
+                // logical-width/height dans app-window.slint).
+                property <length> travel: progress-track.width - root.border-px * 2 - self.width;
+                property <bool> bounce: false;
+                x: root.border-px + (self.bounce ? self.travel : 0px);
+                y: root.border-px;
+                width: (progress-track.width - root.border-px * 2) * 0.35;
+                height: progress-track.height - root.border-px * 2;
+                background: root.progress-fill-color;
+
+                animate x {
+                    duration: 900ms;
+                    easing: ease-in-out;
+                }
+
+                // Bascule sur une horloge (pas juste "une fois puis
+                // iteration-count -1 + alternate") -- resize_progress_dialog
+                // change la largeur de la fenêtre à CHAQUE mise à jour du
+                // texte de statut ("Downloading...", "Extracting..."...),
+                // ce qui fait varier `travel` et interrompt une boucle
+                // déclenchée une seule fois, la figeant là où elle en était.
+                // Un Timer qui rebascule périodiquement se remet en marche
+                // de lui-même après une telle interruption, plutôt que de
+                // rester figée jusqu'à la prochaine mise à jour de texte.
+                Timer {
+                    interval: 900ms;
+                    running: true;
+                    triggered => { segment.bounce = !segment.bounce; }
+                }
+            }
+        }
+    }
+}

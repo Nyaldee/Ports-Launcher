@@ -1,0 +1,411 @@
+import { Theme, ThemedScrollbar } from "../shared.slint";
+import { DialogButton, DialogChrome, DialogNavKeyHandler } from "chrome.slint";
+
+export struct PickerItem {
+    label: string,
+}
+
+// Aucun *Layout dans ce fichier -- voir chrome.slint pour pourquoi.
+export component ListPickerDialog inherits Window {
+    no-frame: true;
+    // Voir le commentaire équivalent dans simple.slint::MessageDialog.
+    title: root.dialog-title;
+    background: Theme.list-background;
+    in property <length> initial-width: 400px;
+    in property <length> initial-height: 300px;
+    width: initial-width;
+    height: initial-height;
+
+    // Voir le commentaire équivalent dans simple.slint::MessageDialog.
+    in property <string> font-family: "Segoe UI";
+    default-font-family: root.font-family;
+
+    in property <string> dialog-title: "";
+    in property <[PickerItem]> items: [];
+    // Hauteur d'une option -- calculée côté Rust (voir dialog_geometry.rs),
+    // pas en fraction de root.height ici : le nombre d'options est
+    // variable, contrairement aux autres dialogues à contenu fixe. Fournie
+    // en pixels PHYSIQUES par Rust (comme initial-width/height) -- divisée
+    // ici pour rester dans la même unité "logique" que le reste.
+    in property <length> item-height-physical: 40px;
+    // Option actuellement mise en avant par la navigation manette (voir
+    // app::gamepad_target::DialogGamepadTarget) -- `-1` = aucune (souris
+    // seule).
+    in property <int> selected-index: -1;
+    callback item-selected(int);
+    // Survol souris -- voir DialogButton.hovered, fait suivre la sélection
+    // manette/clavier sous la souris, un seul indicateur pour les deux au
+    // lieu de deux indépendants (même correctif que InfoDialog.nav-hovered).
+    callback item-hovered(int);
+    callback close-requested();
+    // Haut/bas + Entrée -- voir key-handler plus bas ; réutilise la même
+    // logique que la manette (DialogGamepadTarget::move_selection/
+    // activate_selection côté Rust), jamais une seconde implémentation à
+    // maintenir en synchronisation.
+    callback move-selection-requested(int);
+    callback activate-selection-requested();
+    // Fait défiler la liste pour garder l'option sélectionnée visible,
+    // UNIQUEMENT depuis la navigation clavier/manette -- même mécanisme que
+    // SearchListDialog.scroll-trigger.
+    in property <bool> scroll-trigger: false;
+    forward-focus: key-handler;
+
+    // Voir le commentaire équivalent dans simple.slint::MessageDialog.
+    in property <length> item-font-px-physical: 14px;
+    in property <length> title-font-px-physical: 13px;
+    in property <length> row-height-physical: 48px;
+    in property <length> title-bar-height-physical: 34px;
+
+    property <length> logical-w: root.width - border-px * 2;
+    property <length> logical-h: root.height - border-px * 2;
+    property <length> border-px: Theme.border-width * 1px / Theme.scale-factor;
+    property <length> item-font-px: item-font-px-physical / Theme.scale-factor;
+    property <length> title-font-px: title-font-px-physical / Theme.scale-factor;
+    property <length> bar-height: title-bar-height-physical / Theme.scale-factor;
+    property <length> gutter: 12px / Theme.scale-factor;
+    property <length> item-height: item-height-physical / Theme.scale-factor;
+    property <length> spacing: root.gutter * 0.5;
+    // Même formule que list-width/scrollbar dans SearchListDialog : la
+    // scrollbar vit dans la marge droite (root.gutter), jamais superposée aux
+    // options.
+    property <length> scrollbar-width: 6px / Theme.scale-factor;
+    // chrome.content-width (pas content-area.width) -- voir le commentaire
+    // équivalent dans InfoDialog.content-width.
+    property <length> list-width: chrome.content-width - root.gutter * 2;
+
+    key-handler := DialogNavKeyHandler {
+        close-requested => { root.close-requested(); }
+        move-selection-requested(delta) => { root.move-selection-requested(delta); }
+        activate-selection-requested => { root.activate-selection-requested(); }
+
+        chrome := DialogChrome {
+            dialog-title: root.dialog-title;
+            bar-height: root.bar-height;
+            title-font-px: root.title-font-px;
+            border-px: root.border-px;
+            logical-w: root.logical-w;
+            logical-h: root.logical-h;
+            content-clip: true;
+            close-requested => { root.close-requested(); }
+
+            // Défilante -- un dossier avec beaucoup de fichiers (choix
+            // d'exécutable/asset) dépasse la hauteur du dialogue, qu'aucun
+            // clip ni scrollbar ne signalerait autrement.
+            picker-list := Flickable {
+                x: root.gutter;
+                y: root.gutter;
+                width: list-width;
+                // chrome.content-height (PAS parent.height) -- voir le
+                // commentaire équivalent dans simple.slint::MessageDialog.
+                height: chrome.content-height - root.gutter * 2;
+                viewport-width: self.width;
+                viewport-height: max(self.height, items.length * (item-height + spacing) - spacing);
+
+                property <bool> scroll-trigger-local: root.scroll-trigger;
+                property <length> selected-top: root.selected-index * (item-height + spacing);
+                property <length> selected-bottom: self.selected-top + item-height;
+                changed scroll-trigger-local => {
+                    if (root.selected-index < 0) {
+                        return;
+                    }
+                    if (self.selected-top + self.viewport-y < 0px) {
+                        self.viewport-y = -self.selected-top;
+                    } else if (self.selected-bottom + self.viewport-y > self.height) {
+                        self.viewport-y = self.height - self.selected-bottom;
+                    }
+                }
+
+                for item[index] in items: DialogButton {
+                    text: item.label;
+                    border-px: root.border-px;
+                    left-align: true;
+                    font-size: root.item-font-px;
+                    selected: index == root.selected-index;
+                    x: 0px;
+                    y: index * (item-height + spacing);
+                    width: picker-list.width;
+                    height: item-height;
+                    clicked => { root.item-selected(index); }
+                    hovered => { root.item-hovered(index); }
+                }
+            }
+            ThemedScrollbar {
+                x: root.gutter + list-width + (root.gutter - scrollbar-width) / 2;
+                y: picker-list.y;
+                height: picker-list.height;
+                viewport-height: picker-list.viewport-height;
+                visible-height: picker-list.height;
+                viewport-y <=> picker-list.viewport-y;
+            }
+        }
+    }
+}
+
+// Liste recherchable générique (barre "Type to search..." + liste
+// défilante, navigation clavier/manette) -- squelette de ListPickerDialog
+// (liste d'options, navigation clavier/manette) SANS rangée de boutons fixe
+// en bas. Réutilisée pour le choix de thème ET de langue (voir
+// app::dialogs::open_theme_picker/open_language_picker) -- listes assez
+// longues pour qu'une recherche ait du sens (themes.json dépasse la
+// centaine d'entrées). Composant séparé de ListPickerDialog pour ne pas
+// l'alourdir avec la recherche, dont elle n'a pas besoin (choix d'asset/
+// exécutable, listes courtes).
+export component SearchListDialog inherits Window {
+    no-frame: true;
+    // Voir le commentaire équivalent dans simple.slint::MessageDialog.
+    title: root.dialog-title;
+    background: Theme.list-background;
+    in property <length> initial-width: 400px;
+    in property <length> initial-height: 300px;
+    width: initial-width;
+    height: initial-height;
+
+    // Voir le commentaire équivalent dans simple.slint::MessageDialog.
+    in property <string> font-family: "Segoe UI";
+    default-font-family: root.font-family;
+
+    in property <string> dialog-title: "";
+    in property <[PickerItem]> items: [];
+    // Même défaut que search-bar-height-physical dans app-window.slint --
+    // poussée séparément par Rust (voir app::dialogs::open_theme_picker),
+    // pas via apply_dialog_chrome! (partagée par des dialogues sans barre
+    // de recherche) : root.row-height-physical n'est qu'un repli avant ce
+    // push.
+    in property <length> search-bar-height-physical: root.row-height-physical;
+    in property <int> selected-index: -1;
+    // Fait défiler la liste pour garder l'option sélectionnée visible,
+    // UNIQUEMENT depuis la navigation clavier/manette -- un survol souris
+    // change aussi selected-index (voir item-hovered) mais ne doit jamais
+    // interrompre un défilement manuel à la molette.
+    in property <bool> scroll-trigger: false;
+
+    // Placeholder configurable (themes.json: "placeholder_text"), même
+    // champ que la barre de recherche principale.
+    in property <string> placeholder-text: "Type to search...";
+    // Horloge optionnelle (themes.json: "show_clock") -- même champ que la
+    // fenêtre principale (voir app-window.slint), fixée à l'ouverture du
+    // dialogue plutôt que rafraîchie en continu : ce dialogue reste
+    // rarement ouvert assez longtemps pour qu'un décalage d'une minute se
+    // voie.
+    in property <bool> show-clock: true;
+    in property <string> clock-text: "";
+
+    callback item-selected(int);
+    callback item-hovered(int);
+    callback close-requested();
+    callback move-selection-requested(int);
+    callback activate-selection-requested();
+    callback search-changed(string);
+    // Focus initial -- même mécanisme que search-input dans
+    // app-window.slint (init, pas de forward-focus).
+    init => { search-input.focus(); }
+
+    // Voir le commentaire équivalent dans simple.slint::MessageDialog.
+    in property <length> item-font-px-physical: 14px;
+    in property <length> title-font-px-physical: 13px;
+    in property <length> row-height-physical: 48px;
+    in property <length> title-bar-height-physical: 34px;
+
+    property <length> logical-w: root.width - border-px * 2;
+    property <length> logical-h: root.height - border-px * 2;
+    property <length> border-px: Theme.border-width * 1px / Theme.scale-factor;
+    property <length> item-font-px: item-font-px-physical / Theme.scale-factor;
+    property <length> title-font-px: title-font-px-physical / Theme.scale-factor;
+    property <length> bar-height: title-bar-height-physical / Theme.scale-factor;
+    property <length> gutter: 12px / Theme.scale-factor;
+
+    // Même échelle que search-font-px dans app-window.slint -- la barre de
+    // recherche y affiche son texte 20% plus grand que le reste de la
+    // liste, jamais root.item-font-px directement.
+    property <length> search-font-px: root.item-font-px * 1.2;
+    property <length> row-height: root.row-height-physical / Theme.scale-factor;
+    // Même retrait géométrique que le texte de la barre de recherche/des
+    // lignes de la fenêtre principale (voir son commentaire dans
+    // app-window.slint) -- PAS root.gutter, une valeur différente qui
+    // désalignait le texte entre les deux fenêtres.
+    property <length> text-margin: row-height * 0.3;
+    // Barre de recherche fixe en haut, jamais défilante -- même formule
+    // EXACTE que search-bar-height dans app-window.slint (search-bar-
+    // height-physical / scale-factor), poussée par Rust avec la VRAIE
+    // valeur (fenêtré ET plein écran ont des formules différentes côté
+    // Rust, voir app::dialogs::open_theme_picker) plutôt que reconstruite
+    // ici.
+    property <length> search-height: search-bar-height-physical / Theme.scale-factor;
+    // Même formule que content-width/scrollbar dans app-window.slint : la
+    // scrollbar vit dans la marge droite (root.gutter), jamais superposée au
+    // contenu -- list-width réserve root.gutter des deux côtés, recherche/liste/
+    // boutons l'utilisent tous. chrome.content-width (pas content-area.
+    // width) -- voir le commentaire équivalent dans InfoDialog.content-width.
+    property <length> scrollbar-width: 6px / Theme.scale-factor;
+    property <length> list-width: chrome.content-width - root.gutter * 2;
+
+    chrome := DialogChrome {
+        dialog-title: root.dialog-title;
+        bar-height: root.bar-height;
+        title-font-px: root.title-font-px;
+        border-px: root.border-px;
+        logical-w: root.logical-w;
+        logical-h: root.logical-h;
+        content-clip: true;
+        close-requested => { root.close-requested(); }
+
+        // Barre de recherche -- filtre la liste (themes.json dépasse
+        // les 100 thèmes). Même construction "maison" que search-input
+        // dans app-window.slint (pas de LineEdit standard, dont le
+        // style Fluent ignore le thème actif).
+        search-box := Rectangle {
+            x: root.gutter;
+            // Même marge que padding-top: content-margin sur le
+            // VerticalLayout de la barre de recherche principale.
+            y: root.gutter;
+            width: list-width;
+            height: search-height;
+            background: Theme.search-background;
+            border-width: 1px / Theme.scale-factor;
+            border-color: Theme.border-color;
+
+            if search-input.text == "": Text {
+                text: root.placeholder-text;
+                color: Theme.search-text;
+                font-size: search-font-px;
+                vertical-alignment: center;
+                x: text-margin;
+                width: parent.width - text-margin * 2;
+                height: parent.height;
+            }
+
+            // Superposée à la zone de texte, alignée à droite -- même
+            // construction que la fenêtre principale (voir son
+            // commentaire dans app-window.slint).
+            if root.show-clock: Text {
+                text: root.clock-text;
+                color: Theme.search-text;
+                font-size: search-font-px;
+                vertical-alignment: center;
+                horizontal-alignment: right;
+                x: 0px;
+                width: parent.width - text-margin;
+                height: parent.height;
+            }
+
+            search-input := TextInput {
+                text: "";
+                color: Theme.search-text;
+                font-size: search-font-px;
+                vertical-alignment: center;
+                single-line: true;
+                x: text-margin;
+                y: 0px;
+                width: parent.width - text-margin * 2;
+                height: parent.height;
+                edited => { root.search-changed(self.text); }
+                // Flèches/Entrée/Échap interceptées ici (seul endroit
+                // qui garde le focus en permanence, voir root.init) au
+                // lieu d'un FocusScope séparé ; `accept` les empêche
+                // d'atteindre le comportement par défaut de TextInput.
+                key-pressed(event) => {
+                    if (event.text == Key.Escape) {
+                        root.close-requested();
+                        accept
+                    // Ctrl+WS -- même alias que dans app-window.slint
+                    // (voir son commentaire), pour les claviers/
+                    // dispositions sans flèches dédiées.
+                    } else if (event.text == Key.UpArrow || (event.modifiers.control && event.text == "w")) {
+                        root.move-selection-requested(-1);
+                        accept
+                    } else if (event.text == Key.DownArrow || (event.modifiers.control && event.text == "s")) {
+                        root.move-selection-requested(1);
+                        accept
+                    } else if (event.text == Key.Return) {
+                        root.activate-selection-requested();
+                        accept
+                    } else {
+                        reject
+                    }
+                }
+            }
+        }
+
+        // Liste défilante (themes.json dépasse les 100 entrées). Laisse
+        // search-height de côté en haut pour la recherche, jamais
+        // recouverte par le contenu défilant.
+        item-list := Flickable {
+            x: root.gutter;
+            // Un root.gutter pour la marge au-dessus de la recherche, un
+            // second pour l'écart entre recherche et liste.
+            y: search-height + root.gutter * 2;
+            width: list-width;
+            // chrome.content-height (PAS parent.height) -- voir le
+            // commentaire équivalent dans simple.slint::MessageDialog. Un
+            // seul root.gutter retiré en bas (marge avec le bord du
+            // dialogue) -- ce composant n'a pas de rangée de boutons fixe
+            // à réserver en plus.
+            height: chrome.content-height - search-height - root.gutter * 3;
+            viewport-width: self.width;
+            // row-height, PAS item-height (une métrique séparée, calculée
+            // différemment pour les autres pickers) -- même hauteur de
+            // ligne EXACTE que la liste de ports de la fenêtre
+            // principale (voir son commentaire ci-dessous).
+            viewport-height: max(self.height, items.length * row-height);
+
+            property <bool> scroll-trigger-local: root.scroll-trigger;
+            property <length> selected-top: root.selected-index * row-height;
+            property <length> selected-bottom: self.selected-top + row-height;
+            changed scroll-trigger-local => {
+                if (root.selected-index < 0) {
+                    return;
+                }
+                if (self.selected-top + self.viewport-y < 0px) {
+                    self.viewport-y = -self.selected-top;
+                } else if (self.selected-bottom + self.viewport-y > self.height) {
+                    self.viewport-y = self.height - self.selected-bottom;
+                }
+            }
+
+            // Lignes de texte simples, sans bordure ni fond de bouton
+            // -- même rendu ET même hauteur (row-height, pas
+            // item-height) que la liste de ports de la fenêtre
+            // principale (fond selected-background si sélectionnée,
+            // sinon list-background), pas DialogButton.
+            for item[index] in items: Rectangle {
+                background: index == root.selected-index ? Theme.selected-background : Theme.list-background;
+                x: 0px;
+                y: index * row-height;
+                width: item-list.width;
+                height: row-height;
+
+                Text {
+                    text: item.label;
+                    color: index == root.selected-index ? Theme.selected-text : Theme.list-text;
+                    font-size: root.item-font-px;
+                    vertical-alignment: center;
+                    // Même décalage que le texte à l'intérieur de
+                    // search-box (search-input), pour que les deux
+                    // textes restent alignés verticalement.
+                    x: text-margin;
+                    width: parent.width - text-margin;
+                    height: 100%;
+                }
+                row-touch := TouchArea {
+                    clicked => { root.item-selected(index); }
+                    changed has-hover => {
+                        if (self.has-hover) {
+                            root.item-hovered(index);
+                        }
+                    }
+                }
+            }
+        }
+        ThemedScrollbar {
+            // MÊME formule que la scrollbar principale dans
+            // app-window.slint : centrée dans la marge droite (root.gutter),
+            // jamais superposée à list-width.
+            x: root.gutter + list-width + (root.gutter - scrollbar-width) / 2;
+            y: item-list.y;
+            height: item-list.height;
+            viewport-height: item-list.viewport-height;
+            visible-height: item-list.height;
+            viewport-y <=> item-list.viewport-y;
+        }
+    }
+}

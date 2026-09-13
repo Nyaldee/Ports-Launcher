@@ -1,0 +1,57 @@
+[package]
+name = "ports-launcher"
+version = "1.0.0"
+edition = "2021"
+description = "Ports Launcher — library manager and installer for native PC ports and recomps"
+license = "GPL-3.0-or-later"
+
+[[bin]]
+name = "ports_launcher"
+path = "src/main.rs"
+
+[dependencies]
+# default-features = false : retire "system-tray" (inutilisé) et le moteur
+# de rendu logiciel -- seul renderer-femtovg (OpenGL) sert à l'exécution.
+slint = { version = "1", default-features = false, features = ["raw-window-handle-06", "std", "backend-default", "renderer-femtovg", "accessibility", "compat-1-2"] }
+raw-window-handle = "0.6"
+# Tout le JSON du projet est un serde_json::Value non typé, jamais de struct
+# #[derive(Serialize/Deserialize)].
+serde_json = { version = "1", features = ["preserve_order"] }  # preserve_order: resolve_per_platform retombe sur la 1ère clé par ordre d'insertion
+ureq = { version = "3", features = ["json"] }  # HTTP synchrone (API GitHub/GitLab + téléchargements)
+# Toute extraction d'archive shelle vers 7z.exe/7zzs (voir
+# installer::extract_archive_via_7z) -- aucune crate d'extraction Rust ici.
+# default-features = false : retire rayon (inutilisé, une seule jaquette
+# décodée à la fois) et les formats jamais rencontrés en pratique pour une
+# jaquette de jeu (avif, exr, tiff, dds, hdr, pnm, qoi, tga, gif, bmp, ico --
+# Icon.ico est géré séparément par apply_taskbar_icon dans main.rs).
+image = { version = "0.25", default-features = false, features = ["png", "jpeg", "webp"] }
+chrono = "0.4"                       # dates ISO 8601 (state.json, throttle de MAJ, dates de release)
+tempfile = "3"                       # dossier temporaire auto-nettoyé (téléchargement/extraction)
+
+# `windows`/`gilrs` sont spécifiques à chaque OS -- voir les deux tables
+# `[target...]` ci-dessous.
+
+[target.'cfg(target_os = "windows")'.dependencies]
+# default-features = false + "xinput" : le backend par défaut ("wgi") rate
+# certaines manettes/émulateurs (DS4Windows, Steam Input...) que XInput capte.
+gilrs = { version = "0.11", default-features = false, features = ["xinput"] }
+windows = { version = "0", features = ["Win32_UI_WindowsAndMessaging", "Win32_UI_HiDpi", "Win32_UI_Input_KeyboardAndMouse", "Win32_System_SystemInformation", "Win32_System_Threading", "Win32_Globalization", "Win32_Foundation", "Win32_UI_Shell", "Win32_Graphics_Gdi", "Win32_System_Registry", "Win32_System_Com"] }
+
+# Linux-only : équivalent EWMH (X11) du crate `windows` ci-dessus, voir
+# src/ui/linux_chrome.rs.
+[target.'cfg(target_os = "linux")'.dependencies]
+x11rb = "0.13"
+gilrs = "0.11"    # backend udev par défaut, pas de "xinput" (propre à Windows)
+fontdue = "0.9"   # mesure de texte (voir src/ui/font_metrics.rs), avec fc-match du système
+
+[build-dependencies]
+slint-build = "1"
+winresource = "0.1"  # embarque Icon.ico comme ressource Windows, build-only
+chrono = "0.4"       # calcule APP_BUILD_DATE (voir core::version)
+
+[profile.release]
+opt-level = "z"
+lto = true
+codegen-units = 1
+strip = true
+panic = "abort"  # aucun catch_unwind dans le projet -- retire les tables de déroulement, gagne quelques centaines de Ko

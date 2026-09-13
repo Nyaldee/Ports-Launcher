@@ -1,0 +1,287 @@
+// Primitives partagées sans dépendance -- feuille de l'arbre d'imports
+// (n'importe rien elle-même) pour que dialogs.slint et app-window.slint
+// puissent toutes deux l'importer sans créer de cycle (dialogs.slint est
+// déjà importé PAR app-window.slint).
+
+// Couleurs du thème actif (voir src/ui/theme.rs) -- partagé entre
+// AppWindow et tous les dialogues (fenêtres Slint séparées, voir
+// ui/dialogs/*.slint) pour qu'ils restent visuellement synchronisés avec
+// le thème courant sans dupliquer cet état. Valeurs par défaut ici
+// seulement au cas où Rust ne les pousse pas avant le premier rendu.
+export global Theme {
+    in-out property <color> search-background: #404552;
+    in-out property <color> search-text: #7c818c;
+    in-out property <color> list-background: #383c4a;
+    in-out property <color> list-text: #d3dae3;
+    in-out property <color> selected-background: #5294e2;
+    in-out property <color> selected-text: #ffffff;
+    in-out property <color> border-color: #4b5162;
+    // Épaisseur de bordure -- valeur "border" de themes.json (en pixels
+    // logiques), jamais une constante codée en dur dans le .slint.
+    in-out property <int> border-width: 3;
+    // Facteur d'échelle DPI de l'écran (1.0 = 100%, 2.0 = 200%...), poussé
+    // depuis Rust (ui::geometry::scale_factor_under_cursor). Le rendu de TOUT
+    // élément de l'arbre (hors la taille de la fenêtre elle-même, cas
+    // spécial) est repassé par ce facteur au moment de la peinture : sans
+    // compensation explicite, une géométrie dérivée de root.width/height
+    // (déjà en pixels physiques) est rendue scale-factor fois trop grande.
+    in-out property <float> scale-factor: 1.0;
+    // Marge (haut ET droite) du bouton fermer -- partagée par la barre de
+    // titre de la fenêtre principale (app-window.slint) et celle des
+    // dialogues (DialogTitleBar dans dialogs.slint) : une seule constante,
+    // jamais deux valeurs choisies indépendamment qui finissent par diverger.
+    out property <length> title-button-padding: 10px / scale-factor;
+}
+
+// Couleurs sémantiques fixes (non éditables via themes.json), poussées
+// depuis Rust (voir ui/theme.rs::SemanticColors) -- valeurs de secours ici
+// seulement au cas où Rust ne les pousse pas avant le premier rendu. Portée
+// bien au-delà de la grille malgré son nom historique : boutons d'action de
+// la liste fenêtrée, chrome des dialogues (croix de fermeture), footer
+// GitHub/Discord -- pas seulement CardGrid.
+export global SemanticColors {
+    in-out property <color> selection-border: #ffffff;
+    in-out property <color> fallback-text: #d3dae3;
+    in-out property <color> card-background: #383c4a;
+    // Boutons d'action colorés de la liste fenêtrée (Jouer/Installer/MAJ/
+    // Désinstaller/Info) -- couleurs sémantiques fixes elles aussi, jamais
+    // éditables via themes.json.
+    in-out property <color> success: #78b159;
+    in-out property <color> success-hover: #93c17a;
+    in-out property <color> warning: #f4900c;
+    in-out property <color> warning-hover: #f6a63d;
+    in-out property <color> danger: #dd2e44;
+    in-out property <color> danger-hover: #e45869;
+    in-out property <color> info: #55acee;
+    in-out property <color> info-hover: #77bdf1;
+    in-out property <color> text-on-accent: #ffffff;
+    // Boutons GitHub/Discord du pied de page -- couleurs imposées par les
+    // chartes de ces marques, jamais éditables via themes.json, comme le
+    // reste de ce global.
+    in-out property <color> brand-github: #24292f;
+    in-out property <color> brand-github-hover: #32383f;
+    in-out property <color> brand-discord: #5865f2;
+    in-out property <color> brand-discord-hover: #6b76f5;
+}
+
+// Bouton carré d'icône de barre de titre -- partagé par la barre de titre de
+// la fenêtre principale (app-window.slint : fermer/plein écran/réglages) et
+// DialogTitleBar (dialogs.slint : fermer) -- une seule implémentation,
+// jamais deux copies à corriger séparément.
+export component TitleBarIconButton inherits Rectangle {
+    in property <length> size;
+    in property <color> hover-color;
+    // Couleur du tracé quand survolé (contraste avec hover-color) -- pas de
+    // dépendance directe à SemanticColors, qui vit dans ce même fichier mais
+    // reste passée explicitement par l'appelant plutôt que lue ici : ce
+    // composant n'a besoin de connaître AUCUNE couleur au-delà de celles
+    // qu'on lui donne.
+    in property <color> hover-stroke-color;
+    in property <string> icon-commands;
+    // Grisé et non cliquable quand faux -- voir DialogTitleBar.closable.
+    in property <bool> enabled: true;
+    callback clicked();
+
+    width: size;
+    height: size;
+    opacity: enabled ? 1.0 : 0.4;
+    background: area.has-hover && enabled ? hover-color : transparent;
+    area := TouchArea {
+        clicked => {
+            if (enabled) {
+                root.clicked();
+            }
+        }
+    }
+    Path {
+        // Bug Slint : rendu décalé vers le coin haut-gauche par rapport à
+        // un Rectangle aux mêmes coordonnées -- décalage compensatoire.
+        // https://github.com/slint-ui/slint/issues/3991
+        x: 0.5px / Theme.scale-factor;
+        y: 0.5px / Theme.scale-factor;
+        width: 100%;
+        height: 100%;
+        stroke: area.has-hover && enabled ? hover-stroke-color : Theme.list-text;
+        stroke-width: size * 0.1;
+        // Cap arrondi -- sans effet sur les tracés fermés (cercle/carré,
+        // terminés par Z), nécessaire pour la croix de fermeture (deux
+        // segments ouverts, voir son commentaire plus bas).
+        stroke-line-cap: round;
+        viewbox-width: 100;
+        viewbox-height: 100;
+        commands: icon-commands;
+    }
+}
+
+// Inertie du clic-glissé -- composant invisible (0x0, aucun rendu propre)
+// PARTAGÉ par port-list (app-window.slint) et card-list (card-grid.slint),
+// les deux seules vues qui réimplémentent leur défilement À LA MAIN (une
+// TouchArea, pas de Flickable natif -- voir leurs commentaires respectifs)
+// et qui n'ont donc pas l'inertie que Flickable fournit gratuitement
+// ailleurs (menu de thème, liste de choix, texte d'instructions).
+//
+// Usage : `viewport-y <=> <ma-vue>.viewport-y;`, `min-viewport-y: <borne
+// basse, toujours <= 0>;`. L'appelant continue d'écrire
+// <ma-vue>.viewport-y en 1:1 PENDANT le drag (la liaison bidirectionnelle
+// garde ce composant synchronisé) et appelle `begin-drag(y)` au press,
+// `record-sample(y)` à chaque `moved`/`changed mouse-y`, `release()` au
+// relâchement pour que l'inertie prenne le relais.
+export component InertialScroller {
+    width: 0px;
+    height: 0px;
+
+    in property <length> min-viewport-y: 0px;
+    in-out property <length> viewport-y: 0px;
+
+    // px/s -- vélocité INSTANTANÉE du dernier segment de mouvement observé
+    // (pas une moyenne sur tout le geste : reste réactif, colle au dernier
+    // mouvement réel juste avant le relâchement plutôt qu'à la vitesse
+    // moyenne d'un geste qui aurait pu commencer vite et finir lentement).
+    property <length> velocity: 0px;
+    property <length> last-sample-y: 0px;
+    property <duration> last-sample-time: 0ms;
+
+    // Borne un candidat de viewport-y calculé PENDANT un glissé (jamais
+    // au-delà de 0px en haut, ni au-delà de "tout en bas" -- visible-height
+    // moins viewport-height -- quand le contenu dépasse déjà le cadre)
+    // -- même formule utilisée par grid-touch (card-grid.slint) et row-area
+    // (app-window.slint), qui ne diffèrent que par la façon dont ILS
+    // calculent `candidate` (l'un suit `mouse-y` relatif, l'autre la
+    // position écran absolue -- voir leurs commentaires respectifs pour
+    // pourquoi), jamais par cette borne.
+    public pure function clamp-viewport-y(candidate: length, visible-height: length, viewport-height: length) -> length {
+        return Math.clamp(candidate, Math.min(0px, visible-height - viewport-height), 0px);
+    }
+
+    // À appeler par l'appelant au moment du PRESS (avant tout `moved`) --
+    // réinitialise l'échantillonnage, sinon le premier `record-sample` du
+    // geste calculerait une vélocité absurde à partir du point de
+    // relâchement du geste PRÉCÉDENT.
+    public function begin-drag(current-y: length) {
+        self.velocity = 0px;
+        self.last-sample-y = current-y;
+        self.last-sample-time = animation-tick();
+    }
+
+    // À appeler à chaque `moved`/`changed mouse-y` PENDANT le drag, en plus
+    // (pas à la place) du déplacement 1:1 habituel que l'appelant continue
+    // de faire lui-même sur sa propre vue. Pas de variable locale (Slint
+    // n'autorise pas de déclaration `property` à l'intérieur d'un corps de
+    // fonction) -- `animation-tick()` rappelé plusieurs fois renvoie la
+    // même valeur au sein d'un même passage d'évaluation, donc sans risque
+    // d'incohérence entre les deux appels ci-dessous.
+    public function record-sample(current-y: length) {
+        if (animation-tick() > self.last-sample-time) {
+            self.velocity = (current-y - self.last-sample-y) / ((animation-tick() - self.last-sample-time) / 1s);
+        }
+        self.last-sample-y = current-y;
+        self.last-sample-time = animation-tick();
+    }
+
+    // À appeler au relâchement (up/cancel) -- démarre la décélération si le
+    // dernier segment de mouvement était assez rapide pour ressembler à un
+    // vrai "fling" plutôt qu'un simple arrêt volontaire du glissé.
+    public function release() {
+        if (Math.abs(self.velocity) > min-fling-velocity) {
+            decay-timer.running = true;
+        }
+    }
+
+    property <length> min-fling-velocity: 40px;
+    // Fraction de la vélocité conservée à CHAQUE tick (voir decay-timer.
+    // interval) -- un frottement PROPORTIONNEL à la vitesse courante plutôt
+    // qu'une décélération à taux constant, pour un ralentissement qui
+    // ressemble à un vrai geste physique (rapide au début, qui s'adoucit),
+    // pas un freinage linéaire brusque.
+    property <float> friction: 0.92;
+
+    decay-timer := Timer {
+        interval: 16ms;
+        running: false;
+        triggered => {
+            self.running = false; // réévalué plus bas si le mouvement continue
+            root.velocity *= root.friction;
+            root.viewport-y = Math.clamp(root.viewport-y + root.velocity * (16ms / 1s), root.min-viewport-y, 0px);
+            if (Math.abs(root.velocity) >= root.min-fling-velocity
+                && root.viewport-y > root.min-viewport-y
+                && root.viewport-y < 0px) {
+                self.running = true;
+            } else {
+                root.velocity = 0px;
+            }
+        }
+    }
+}
+
+// Barre de défilement custom, colorée depuis `Theme` -- remplace la
+// scrollbar native de `ListView` (voir son usage dans app-window.slint et
+// card-grid.slint), dont le style "fluent" (choisi par défaut par Slint sur
+// Windows en l'absence de Qt) peint sa poignée avec sa PROPRE palette
+// figée, jamais avec nos couleurs -- concrètement un second thème visible
+// par-dessus le nôtre, surtout criant avec un thème inhabituel comme
+// "nier_yorha" (beige) pendant qu'une poignée grise "fluent" apparaît au
+// survol/défilement.
+//
+// Clic-glissé façon "aller à la position cliquée" (pas un delta relatif au
+// pointeur) -- plus simple à exprimer sans état intermédiaire, et cohérent
+// que ce soit un simple clic sur le rail ou un vrai glissé.
+export component ThemedScrollbar inherits Rectangle {
+    // Propriétés du composant hôte (ListView/ScrollView) à relier par
+    // l'appelant -- voir son usage : `viewport-y <=> some-list.viewport-y;`.
+    in property <length> viewport-height: 1px;
+    in property <length> visible-height: 1px;
+    in-out property <length> viewport-y: 0px;
+    // Défaut = couleur de bordure du thème actif, valeur attendue par tous
+    // les appelants ; redéfinissable au cas par cas si besoin.
+    in property <color> thumb-color: Theme.border-color;
+    // Éclaircie d'environ 20% vers le blanc au survol -- `.brighter()` EST
+    // disponible côté .slint (contrairement à un mélange de couleurs
+    // arbitraire), donc pas besoin que Rust la précalcule.
+    in property <color> thumb-hover-color: thumb-color.brighter(0.2);
+
+    // Cible physique 6px -- vit DANS la marge générale plutôt que dans le
+    // contenu (voir scrollbar-width dans app-window.slint, à synchroniser
+    // avec CETTE valeur). `/ Theme.scale-factor` -- MÊME principe que
+    // content-margin (voir son commentaire dans app-window.slint) : sans
+    // cette division, l'épaisseur réellement rendue double sur un écran à
+    // 200% alors que la marge qui lui est réservée (content-margin =
+    // 12px/scale) rétrécit -- la scrollbar finit par toucher le fond
+    // survolé/sélectionné.
+    width: 6px / Theme.scale-factor;
+    // Rien à faire défiler -- pas de barre du tout (comportement
+    // équivalent à ScrollBarPolicy.as-needed de la version qu'elle
+    // remplace), et pas seulement invisible : `visible: false` désactive
+    // aussi le survol/clic, pas de zone morte à l'endroit où elle aurait
+    // été.
+    visible: root.viewport-height > root.visible-height;
+
+    property <length> max-scroll: max(1px, root.viewport-height - root.visible-height);
+    property <length> thumb-height: max(24px, root.height * root.visible-height / max(root.visible-height, root.viewport-height));
+    property <length> thumb-travel: root.height - root.thumb-height;
+
+    thumb := Rectangle {
+        // Jamais d'arrondi -- règle appliquée à toute l'UI.
+        background: track-area.has-hover ? root.thumb-hover-color : root.thumb-color;
+        width: root.width;
+        height: root.thumb-height;
+        y: root.thumb-travel * (-root.viewport-y / root.max-scroll);
+    }
+
+    // Couvre tout le rail (pas juste la poignée) -- un clic n'importe où
+    // saute directement à cette position, la poignée suit ensuite.
+    track-area := TouchArea {
+        width: root.width;
+        height: root.height;
+
+        pointer-event(event) => {
+            if (event.kind == PointerEventKind.down) {
+                root.viewport-y = -max(0px, min(root.max-scroll, (self.mouse-y - root.thumb-height / 2) * root.max-scroll / root.thumb-travel));
+            }
+        }
+        moved => {
+            if (self.pressed) {
+                root.viewport-y = -max(0px, min(root.max-scroll, (self.mouse-y - root.thumb-height / 2) * root.max-scroll / root.thumb-travel));
+            }
+        }
+    }
+}
