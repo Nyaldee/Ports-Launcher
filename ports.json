@@ -1867,10 +1867,10 @@
       "icon": "https://cdn2.steamgriddb.com/icon/5807a685d1a9ab3b599035bc566ce2b9.png",
       "save": "%APPDATA%\\BattleShip"
     },{
-      "-name": "Super Smash Bros. Melee",
-      "tags": ["gc", "fighting", "multiplayer"],
-      "source": "",
-      "folder": "",
+      "name": "Super Smash Bros. Melee (melee-pc)",
+      "tags": ["online", "gc", "fighting", "multiplayer"],
+      "source": "https://github.com/999sian/melee-pc",
+      "folder": "melee-pc",
       "instructions": "",
       "image": "https://cdn2.steamgriddb.com/grid/0635bf265fc80d691fb83ae1e1a22fdb.png",
       "icon": "https://cdn2.steamgriddb.com/icon/e0688d13958a19e087e123148555e4b4.png"
