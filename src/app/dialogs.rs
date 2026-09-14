@@ -7,7 +7,7 @@ use super::gamepad_target::DialogGamepadTarget;
 use super::install_launch::{
     delete_port, open_favorite_exe_picker, open_path_if_exists, open_version_picker, start_extra_install, start_install,
 };
-use super::playtime::format_playtime;
+use super::playtime::{format_last_played, format_playtime, LastPlayed};
 use super::state::AppState;
 use crate::core::models::{Port, SourceType};
 use crate::ui::font_sizing::FontSizes;
@@ -644,8 +644,24 @@ pub(crate) fn open_info_dialog(app: &Rc<AppState>, router: &Rc<RefCell<GamepadRo
     dialog.set_favorite_exe_status_text(favorite_exe_status);
     let update_on = app.state.borrow().get(port.key()).map(|i| i.update).unwrap_or(true);
     dialog.set_update_status_text(if update_on { tr.invoke_update_status_on() } else { tr.invoke_update_status_off() });
+    // Avant playtime-status -- une info de statut/actualité se lit avant une
+    // statistique cumulative (voir l'ordre visuel dans dialogs/info.slint).
+    let last_played = app.state.borrow().get(port.key()).map(|i| format_last_played(&i.last_played_at)).unwrap_or(LastPlayed::Never);
+    let last_played_status = match last_played {
+        LastPlayed::Never => tr.invoke_last_played_status_never(),
+        LastPlayed::Today => tr.invoke_last_played_status_today(),
+        LastPlayed::Date(date) => tr.invoke_last_played_status(date.into()),
+    };
+    dialog.set_last_played_status_text(last_played_status);
     let playtime_seconds = app.state.borrow().get(port.key()).map(|i| i.playtime_seconds).unwrap_or(0);
-    dialog.set_playtime_status_text(tr.invoke_playtime_status(format_playtime(playtime_seconds).into()));
+    // "0.0 hours" pour un port jamais lancé n'apporte rien de plus que
+    // "Never" (voir Tr.playtime-status-never).
+    let playtime_status = if playtime_seconds == 0 {
+        tr.invoke_playtime_status_never()
+    } else {
+        tr.invoke_playtime_status(format_playtime(playtime_seconds).into())
+    };
+    dialog.set_playtime_status_text(playtime_status);
 
     // Premier bouton ACTIVÉ -- 0 si aucun ne l'est, auquel cas
     // activate_selection reste de toute façon un no-op. Même ordre que
@@ -832,15 +848,18 @@ pub(crate) fn open_picker_dialog(
     finish_dialog_open(app, router, DialogSlot::Picker(dialog));
 }
 
-/// menu Settings -- 5 boutons (Themes/Language/Files/Library/Backup Saves),
-/// réutilise le picker générique (même mécanisme que "Select version",
-/// voir open_picker_dialog) plutôt qu'un composant dédié. Chaque sous-écran
+/// menu Settings -- boutons Themes/Language/Files/Library/Backup Saves plus
+/// deux interrupteurs (Check for Updates, Discord Rich Presence), réutilise
+/// le picker générique (même mécanisme que "Select version", voir
+/// open_picker_dialog) plutôt qu'un composant dédié. Chaque sous-écran
 /// (thèmes, langue, fichiers) vit dans sa propre fonction ci-dessous.
 pub(crate) fn open_settings_dialog(app: &Rc<AppState>, router: &Rc<RefCell<GamepadRouter>>) {
     let window = app.window();
     let tr = window.global::<Tr>();
     let check_updates_label =
         if app.state.borrow().release_sync { tr.invoke_label_check_updates_on() } else { tr.invoke_label_check_updates_off() };
+    let discord_rpc_label =
+        if app.state.borrow().discord_rpc_enabled { tr.invoke_label_discord_rpc_on() } else { tr.invoke_label_discord_rpc_off() };
     let labels = vec![
         tr.invoke_label_themes().to_string(),
         tr.invoke_label_language().to_string(),
@@ -848,6 +867,7 @@ pub(crate) fn open_settings_dialog(app: &Rc<AppState>, router: &Rc<RefCell<Gamep
         tr.invoke_label_library().to_string(),
         tr.invoke_label_backup_saves().to_string(),
         check_updates_label.to_string(),
+        discord_rpc_label.to_string(),
     ];
     let title = tr.invoke_dialog_title_settings();
     open_picker_dialog(app, router, &title, labels, move |app, router, idx| match idx {
@@ -856,7 +876,8 @@ pub(crate) fn open_settings_dialog(app: &Rc<AppState>, router: &Rc<RefCell<Gamep
         2 => open_files_picker(app, router),
         3 => open_path_if_exists(&app.paths.library_dir),
         4 => start_save_backup(app, router),
-        _ => toggle_release_sync(app, router),
+        5 => toggle_release_sync(app, router),
+        _ => toggle_discord_rpc(app, router),
     });
 }
 
@@ -869,6 +890,17 @@ pub(crate) fn open_settings_dialog(app: &Rc<AppState>, router: &Rc<RefCell<Gamep
 pub(crate) fn toggle_release_sync(app: &Rc<AppState>, router: &Rc<RefCell<GamepadRouter>>) {
     let new_value = !app.state.borrow().release_sync;
     app.state.borrow_mut().set_release_sync(new_value);
+    open_settings_dialog(app, router);
+}
+
+/// Bouton "Discord Rich Presence: On/Off" du menu Settings -- désactivé par
+/// défaut (voir `StateManager::discord_rpc_enabled`). Ne coupe qu'une future
+/// présence : une partie déjà lancée avec la présence active la garde
+/// jusqu'à sa fermeture (voir `launch_executable`/`record_playtime`),
+/// jamais interrompue en plein milieu par un changement de réglage.
+pub(crate) fn toggle_discord_rpc(app: &Rc<AppState>, router: &Rc<RefCell<GamepadRouter>>) {
+    let new_value = !app.state.borrow().discord_rpc_enabled;
+    app.state.borrow_mut().set_discord_rpc_enabled(new_value);
     open_settings_dialog(app, router);
 }
 

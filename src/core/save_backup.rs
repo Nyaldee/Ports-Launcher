@@ -207,6 +207,7 @@ mod tests {
             instructions: String::new(),
             mods: None,
             image: None,
+            icon: None,
             save: save_folder.map(|s| Value::String(s.into())),
             save2: save_folder2.map(|s| Value::String(s.into())),
             source_type: SourceType::DirectUrl,

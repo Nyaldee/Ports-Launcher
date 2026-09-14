@@ -19,7 +19,8 @@ Une bibliothèque/installateur léger pour les builds « recomp » et source-por
 - Mise à jour automatique par défaut — appuyer sur **Play** sur un port GitHub/GitLab installé vérifie d'abord silencieusement s'il existe une release plus récente (basé à la fois sur le tag de la release *et* sur sa date de publication/asset, donc un projet qui recycle toujours le même tag « latest » est quand même détecté) et l'installe avant de lancer. Désactivable port par port depuis le bouton **Update** du panneau Info si tu préfères rester figé sur une version précise
 - Ports Launcher vérifie aussi ses propres releases GitHub : le bouton **GitHub** du pied de page devient **Update** quand une nouvelle version du launcher lui-même est sortie. Le clic lance `ports_launcher_updater.bat` (télécharge le dernier build, remplace les fichiers actuels, et relance)
 - Interrupteur **Check for Updates** dans Réglages — un seul bouton pour couper toutes les vérifications de mise à jour d'un coup (celles du launcher ET de chaque port), pour qui préfère tout mettre à jour à la main
-- Suivi du temps de jeu — le temps cumulé de chaque port apparaît dans son panneau Info, avec un bouton **Reset Game Time** pour remettre le compteur à zéro si besoin
+- Interrupteur **Discord Rich Presence** dans Réglages (désactivé par défaut) — affiche le jeu auquel tu joues sur ton profil Discord tant qu'il tourne
+- Suivi du temps de jeu — le temps cumulé et la date de dernière partie de chaque port apparaissent dans son panneau Info, avec un bouton **Reset Game Time** pour remettre le compteur à zéro si besoin ; le catalogue lui-même liste tes ports les plus récemment joués en premier
 - Désinstallation en un clic, en préservant ta sauvegarde si elle vit dans le dossier même du port ; le visuel de la boîte est téléchargé une fois puis mis en cache localement
 - Bouton **Backup Saves** dans Réglages pour exporter en un clic les sauvegardes de tout le catalogue vers un dossier daté (voir [Sauvegardes de jeux](#sauvegardes-de-jeux) pour les deux mécanismes)
 - Panneau Info par port : version/tag installé, instructions d'installation (texte sélectionnable/copiable), et liens en un clic vers le site, la page de mods, le dossier d'installation et le(s) dossier(s) de sauvegarde
@@ -69,7 +70,7 @@ Sélectionne un port et ouvre son panneau **Info** (bouton, ou `X` à la manette
 
 À côté du texte de version, un bouton **Select version** (ports GitHub/GitLab uniquement) récupère les dernières releases disponibles et permet d'en installer une autre que la dernière — pratique quand la version la plus récente n'a pas de build pour ta plateforme, ou pour simplement revenir en arrière. Il va toujours chercher les infos fraîches sur GitHub/GitLab, donc choisir la plus récente dans la liste permet aussi de forcer une mise à jour immédiatement ; installer une version précise de cette façon désactive aussi l'auto-MAJ pour ce port, pour ne pas se la faire silencieusement remplacer par la dernière release au prochain Play.
 
-Pour un port installé, la ligne affiche aussi **Auto-update: On/Off**, **Favorite executable**, et le temps de jeu, chacun avec son propre bouton juste sous le texte de version/statut — active ou désactive l'auto-MAJ port par port, choisis quel exécutable Play lance directement sans redemander à chaque fois, ou réinitialise le temps de jeu suivi pour ce port. Un port dont l'auto-MAJ est désactivée affiche un bouton **Update** jaune barré à côté de **Play** dans la liste principale, comme rappel qu'il ne se mettra pas à jour tout seul.
+Pour un port installé, la ligne affiche aussi **Auto-update: On/Off**, **Favorite executable**, la dernière partie et le temps de jeu, chacun avec son propre bouton juste sous le texte de version/statut — active ou désactive l'auto-MAJ port par port, choisis quel exécutable Play lance directement sans redemander à chaque fois, ou réinitialise le temps de jeu suivi pour ce port. Un port dont l'auto-MAJ est désactivée affiche un bouton **Update** jaune barré à côté de **Play** dans la liste principale, comme rappel qu'il ne se mettra pas à jour tout seul.
 
 À côté, un bouton **Install extras** n'est actif que si l'entrée `ports.json` du port porte un lien `extra` *et* que le port est installé. **Play/Install n'installe jamais que le jeu lui-même** — les extras sont à part, et toujours à activer explicitement depuis ici. Un clic (après une demande de confirmation) télécharge ce fichier ou cette archive directement dans le dossier du port, en écrasant tout fichier de même nom. Une archive (`.zip`, `.7z`, `.tar.gz`, `.rar`) est décompressée dans le dossier ; tout le reste — un `.exe` seul, un `.json`, un fichier de config — est simplement déposé tel quel, jamais décompressé. Prévu pour des ajouts optionnels qui ne font pas partie des releases du port lui-même : des façons supplémentaires de jouer, ou des fichiers de configuration prédéfinis — souvent un choix arbitraire, à prendre comme un confort plutôt que comme une recommandation. Si le lien est mort ou vide, il ne se passe rien et rien n'est touché dans le dossier.
 
@@ -83,13 +84,14 @@ Ports Launcher gère deux mécanismes de sauvegarde séparés, tous deux basés 
 
 ## Réglages
 
-Ouvre-le depuis le bouton **◯** de la barre de titre — un menu avec six boutons : **Themes**, **Language**, **Files**, **Library**, **Backup Saves**, et **Check for Updates**.
+Ouvre-le depuis le bouton **◯** de la barre de titre — un menu avec **Themes**, **Language**, **Files**, **Library**, **Backup Saves**, **Check for Updates**, et **Discord Rich Presence**.
 
 - **Themes** et **Language** ouvrent tous les deux le même type de sélecteur cherchable de façon floue et en direct. Pour Themes, déplacer la sélection (survol souris, ou `↑`/`↓`/le stick de la manette) prévisualise instantanément sur toute l'appli ; valider réécrit directement dans `themes.json`, et fermer sans valider (`Échap`) revient au thème actif avant l'ouverture. Language change la langue de l'interface immédiatement à la sélection, sans redémarrage.
 - **Files** ouvre des raccourcis vers `ports.json`, `ports.local.json`, `state.json` et `themes.json`, grisés si un fichier n'existe pas encore.
 - **Library** ouvre directement ce dossier dans l'Explorateur.
 - **Backup Saves** lance un export complet des sauvegardes de tout le catalogue vers un dossier daté (voir [Sauvegardes de jeux](#sauvegardes-de-jeux) plus haut), avec une fenêtre de progression pendant la copie.
 - **Check for Updates** bascule On/Off directement dans le menu — coupe toutes les vérifications de mise à jour d'un coup (celles du launcher ET de chaque port installé au moment du Play), pour qui préfère tout mettre à jour à la main.
+- **Discord Rich Presence** bascule On/Off directement dans le menu, désactivé par défaut — affiche le jeu auquel tu joues sur ton statut Discord tant qu'il tourne, et s'efface dès sa fermeture.
 
 ## Outils utiles
 

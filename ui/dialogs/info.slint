@@ -25,6 +25,9 @@ export component InfoDialog inherits Window {
     in property <string> favorite-exe-status-text: "";
     in property <string> update-status-text: "";
     in property <string> playtime-status-text: "";
+    // Même condition de visibilité que playtime-status-text (voir
+    // reset-playtime-enabled) -- pas de sens sans temps de jeu suivi.
+    in property <string> last-played-status-text: "";
     in property <string> instructions-text: "";
     // Première URL trouvée dans instructions-text (voir
     // Port::instructions_link côté Rust) -- vide si aucune, auquel cas le
@@ -239,6 +242,20 @@ export component InfoDialog inherits Window {
                 height: root.update-toggle-enabled ? status-line-height : 0px;
             }
 
+            // Avant playtime-status (pas après) : une info de statut/actualité
+            // se lit avant une statistique cumulative qu'on consulte ensuite.
+            last-played-status := Text {
+                text: root.last-played-status-text;
+                visible: root.reset-playtime-enabled;
+                color: Theme.list-text;
+                font-size: root.item-font-px;
+                vertical-alignment: center;
+                x: root.gutter;
+                y: update-status.y + update-status.height;
+                width: content-width;
+                height: root.reset-playtime-enabled ? status-line-height : 0px;
+            }
+
             playtime-status := Text {
                 text: root.playtime-status-text;
                 visible: root.reset-playtime-enabled;
@@ -246,7 +263,7 @@ export component InfoDialog inherits Window {
                 font-size: root.item-font-px;
                 vertical-alignment: center;
                 x: root.gutter;
-                y: update-status.y + update-status.height;
+                y: last-played-status.y + last-played-status.height;
                 width: content-width;
                 height: root.reset-playtime-enabled ? status-line-height : 0px;
             }

@@ -45,4 +45,10 @@ impl StateManager {
         self.language = value;
         self.save();
     }
+
+    /// Bouton Rich Presence Discord du menu Settings.
+    pub fn set_discord_rpc_enabled(&mut self, value: bool) {
+        self.discord_rpc_enabled = value;
+        self.save();
+    }
 }

@@ -34,6 +34,23 @@ fn parse_gitlab_source(s: &str) -> Option<String> {
     }
 }
 
+/// "Titre (repo-slug)" -> "Titre" -- retire le suffixe technique entre
+/// parenthèses que le catalogue ajoute à `name` pour désambiguïser plusieurs
+/// ports d'un même jeu (voir `scripts/steamgriddb_fill.js`, `cleanTitle`,
+/// même règle appliquée côté catalogue). Ne retire qu'un unique groupe SANS
+/// parenthèses imbriquées en toute fin de chaîne, jamais un sous-titre
+/// légitime ("Special Edition") suivi lui-même du vrai suffixe technique.
+fn strip_trailing_annotation(name: &str) -> &str {
+    let trimmed = name.trim_end();
+    if !trimmed.ends_with(')') {
+        return trimmed;
+    }
+    match trimmed.rfind('(') {
+        Some(open) if !trimmed[open + 1..trimmed.len() - 1].contains(['(', ')']) => trimmed[..open].trim_end(),
+        _ => trimmed,
+    }
+}
+
 /// Première URL http(s) trouvée dans un texte libre (voir `instructions_link`)
 /// -- délimitée par les espaces ; la ponctuation de fin de phrase la plus
 /// courante collée juste après (`.,;:!?)]}'"`) est retirée pour ne pas
@@ -109,6 +126,11 @@ pub struct Port {
     pub instructions: String,
     pub mods: Option<String>,
     pub image: Option<String>,
+    /// Icône carrée SteamGridDB (voir `scripts/steamgriddb_fill.js`) --
+    /// distincte de `image` (jaquette verticale) : sert de `large_image` au
+    /// Rich Presence Discord (voir `core::discord_presence`), jamais affichée
+    /// ailleurs dans l'UI.
+    pub icon: Option<String>,
     pub save: Option<Value>,
     /// Second emplacement de sauvegarde optionnel -- pour un jeu dont la
     /// version portable ET la version "normale" ont chacune leur propre
@@ -176,6 +198,14 @@ impl Port {
     pub fn instructions_link(&self) -> Option<&str> {
         find_first_url(&self.instructions)
     }
+
+    /// `name` sans son suffixe technique entre parenthèses -- pour tout
+    /// affichage destiné à un public externe au catalogue (actuellement le
+    /// Rich Presence Discord, voir `core::discord_presence`), jamais utilisé
+    /// pour la recherche/le tri, qui gardent `name`/`name_lower` intacts.
+    pub fn display_name(&self) -> &str {
+        strip_trailing_annotation(&self.name)
+    }
 }
 
 /// `config::load_config` ignore silencieusement toute entrée qui échoue ici
@@ -227,6 +257,7 @@ pub fn port_from_value(d: &Value) -> Result<Port, PortParseError> {
     let instructions = obj.get("instructions").and_then(Value::as_str).unwrap_or("").to_string();
     let mods = obj.get("mods").and_then(Value::as_str).map(str::to_string);
     let image = obj.get("image").and_then(Value::as_str).map(str::to_string);
+    let icon = obj.get("icon").and_then(Value::as_str).map(str::to_string);
     let executable = obj.get("executable").cloned();
     let save = obj.get("save").cloned();
     let save2 = obj.get("save2").cloned();
@@ -257,6 +288,7 @@ pub fn port_from_value(d: &Value) -> Result<Port, PortParseError> {
         instructions,
         mods,
         image,
+        icon,
         save,
         save2,
         source_type,
@@ -294,13 +326,23 @@ pub struct InstalledInfo {
     /// PortItem.auto-update-off côté main.rs::to_port_items, purement l'état
     /// de ce bouton, aucune requête réseau derrière).
     pub update: bool,
-    /// Temps de jeu cumulé, en secondes -- voir main.rs::record_playtime,
+    /// Temps de jeu cumulé, en secondes -- voir app::playtime::record_playtime,
     /// alimenté à chaque fois qu'un process lancé pour ce port est détecté
     /// terminé. Préservé par `mark_installed` comme `favorite_exe`/`update`
     /// (une MAJ ne doit jamais remettre ce compteur à zéro) ; seul le
     /// bouton "Reset Game Time" d'InfoDialog le fait repartir de zéro (voir
     /// `StateManager::reset_playtime`).
     pub playtime_seconds: u64,
+    /// Horodatage RFC3339 de la fin de la dernière partie (voir
+    /// `StateManager::mark_played`, appelée depuis
+    /// `app::playtime::record_playtime` au même moment que
+    /// `playtime_seconds` ci-dessus) -- vide si jamais joué, trie toujours
+    /// après toute date réelle en comparaison textuelle, même convention que
+    /// `installed_at`. Sert à faire remonter les ports récemment joués en
+    /// tête du catalogue (voir `AppState::sort_by_recency`, appliqué à
+    /// requête vide dans `rebuild_windowed`/`rebuild_grid`), et à afficher
+    /// "Last played" dans InfoDialog (voir `app::playtime::format_last_played`).
+    pub last_played_at: String,
 }
 
 impl Default for InstalledInfo {
@@ -311,6 +353,7 @@ impl Default for InstalledInfo {
             favorite_exe: None,
             update: true,
             playtime_seconds: 0,
+            last_played_at: String::new(),
         }
     }
 }

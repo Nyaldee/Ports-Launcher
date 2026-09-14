@@ -201,8 +201,20 @@ msgstr "Cập nhật: Bật"
 msgid "Update: Off"
 msgstr "Cập nhật: Tắt"
 
-msgid "Playtime: {}"
-msgstr "Thời gian chơi: {}"
+msgid "Play time: {} hours"
+msgstr "Thời gian chơi: {} giờ"
+
+msgid "Play time: Never"
+msgstr "Thời gian chơi: Chưa từng"
+
+msgid "Last played: {}"
+msgstr "Chơi lần cuối: {}"
+
+msgid "Last played: Today"
+msgstr "Chơi lần cuối: Hôm nay"
+
+msgid "Last played: Never"
+msgstr "Chơi lần cuối: Chưa từng"
 
 msgid "Reset Game Time - {}"
 msgstr "Đặt lại thời gian chơi - {}"

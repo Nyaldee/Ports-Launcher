@@ -1,26 +1,39 @@
 //! État par-port installé : tag/date d'installation, exécutable favori,
-//! préférence d'auto-MAJ, temps de jeu cumulé.
+//! préférence d'auto-MAJ, temps de jeu cumulé, date de dernière partie.
 
 use super::{installed_at_now, StateManager};
 use crate::core::models::InstalledInfo;
 
 impl StateManager {
     pub fn mark_installed(&mut self, key: &str, tag: Option<String>) {
-        // Préserve favorite_exe, update (préférence d'auto-MAJ) ET
-        // playtime_seconds de l'entrée existante -- une (ré)install/MAJ ne
-        // doit pas effacer un choix explicite de l'utilisateur ni remettre
-        // son temps de jeu à zéro (voir set_favorite_exe/set_port_update/
-        // add_playtime). Un chemin devenu invalide après un changement de
-        // version est de toute façon revalidé (existence sur disque) au
-        // moment du Play, pas ici.
+        // Préserve favorite_exe, update (préférence d'auto-MAJ),
+        // playtime_seconds ET last_played_at de l'entrée existante -- une
+        // (ré)install/MAJ ne doit pas effacer un choix explicite de
+        // l'utilisateur, ni remettre son temps de jeu à zéro, ni lui faire
+        // perdre son rang dans le classement "récemment joué" (voir
+        // set_favorite_exe/set_port_update/add_playtime/mark_played). Un
+        // chemin devenu invalide après un changement de version est de toute
+        // façon revalidé (existence sur disque) au moment du Play, pas ici.
         let existing = self.installed.get(key);
         let favorite_exe = existing.and_then(|i| i.favorite_exe.clone());
         let update = existing.map(|i| i.update).unwrap_or(true);
         let playtime_seconds = existing.map(|i| i.playtime_seconds).unwrap_or(0);
+        let last_played_at = existing.map(|i| i.last_played_at.clone()).unwrap_or_default();
         self.installed.insert(
             key.to_string(),
-            InstalledInfo { installed_tag: tag, installed_at: installed_at_now(), favorite_exe, update, playtime_seconds },
+            InstalledInfo { installed_tag: tag, installed_at: installed_at_now(), favorite_exe, update, playtime_seconds, last_played_at },
         );
+        self.save();
+    }
+
+    /// Horodatage de la FIN de la dernière partie -- appelée depuis
+    /// `app::playtime::record_playtime`, au même moment que `add_playtime`.
+    /// Même convention de création minimale que `set_favorite_exe`/
+    /// `set_port_update`, bien qu'en pratique cette fonction ne soit jamais
+    /// atteinte pour un port pas encore installé.
+    pub fn mark_played(&mut self, key: &str) {
+        self.installed.entry(key.to_string()).or_insert_with(|| InstalledInfo { installed_at: installed_at_now(), ..Default::default() }).last_played_at =
+            installed_at_now();
         self.save();
     }
 

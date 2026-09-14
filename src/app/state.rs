@@ -164,6 +164,12 @@ pub(crate) struct InstallRuntime {
     /// l'affichage en direct du temps de jeu dans InfoDialog (lecture seule,
     /// voir `AppState::info_dialog_port_key`).
     pub(crate) launch_started_at: RefCell<HashMap<String, Instant>>,
+    /// Présence Discord active pour chaque entrée de `running_processes`
+    /// (voir `core::discord_presence`) -- absente si le réglage est
+    /// désactivé ou si la connexion Discord a échoué. `record_playtime`
+    /// retire l'entrée et appelle `stop()` dessus à la détection de la fin
+    /// de partie, symétriquement à son insertion dans `launch_executable`.
+    pub(crate) discord_presence: RefCell<HashMap<String, crate::core::discord_presence::PresenceHandle>>,
     /// Clés en attente d'un lancement automatique une fois leur
     /// `AppEvent::InstallDone` reçu -- alimenté uniquement par
     /// `launch_with_update_check` (auto-install déclenché par Play, voir
@@ -254,6 +260,27 @@ impl AppState {
         }
     }
 
+    /// Fait remonter les ports les plus récemment joués en tête de `ports`
+    /// (voir `InstalledInfo::last_played_at`) -- appelée par
+    /// `rebuild_windowed`/`rebuild_grid` UNIQUEMENT à requête vide : dès
+    /// qu'une recherche est tapée, `filter_and_sort` a déjà un avis de
+    /// pertinence à faire respecter, jamais mélangé à la récence. Tri
+    /// STABLE -- les ports jamais joués (`last_played_at` vide, trie
+    /// toujours en dernier en comparaison textuelle) gardent entre eux
+    /// l'ordre de sortie de `filter_and_sort` (donc l'ordre de
+    /// `ports.json`). Recalculée à CHAQUE rebuild plutôt qu'une fois au
+    /// démarrage : un Play modifie `last_played_at` en cours de session, et
+    /// la liste doit en tenir compte au prochain rafraîchissement (retour
+    /// d'une recherche, install/désinstall, bascule plein écran) sans
+    /// exiger un redémarrage pour le voir.
+    fn sort_by_recency(state: &crate::core::state::StateManager, ports: &mut [&Port]) {
+        ports.sort_by(|a, b| {
+            let a_played = state.get(a.key()).map(|i| i.last_played_at.as_str()).unwrap_or("");
+            let b_played = state.get(b.key()).map(|i| i.last_played_at.as_str()).unwrap_or("");
+            b_played.cmp(a_played)
+        });
+    }
+
     /// Reconstruit la liste filtrée/triée pour `query` -- conserve la
     /// sélection sur le MÊME port (par `Port::key`) s'il est toujours
     /// affiché après filtrage, sinon repart du premier élément.
@@ -263,7 +290,10 @@ impl AppState {
             self.windowed_nav.displayed_windowed.borrow().get(self.windowed_nav.windowed_selected.get()).map(|p| p.key().to_string());
         let catalog = self.catalog.borrow();
         let pool: Vec<&Port> = catalog.iter().collect();
-        let filtered = crate::core::search::filter_and_sort(&pool, query);
+        let mut filtered = crate::core::search::filter_and_sort(&pool, query);
+        if query.trim().is_empty() {
+            Self::sort_by_recency(&self.state.borrow(), &mut filtered);
+        }
         let displayed: Vec<Port> = filtered.iter().map(|p| (*p).clone()).collect();
         let new_index = previously_selected_key.and_then(|k| displayed.iter().position(|p| p.key() == k)).unwrap_or(0);
         *self.windowed_nav.displayed_windowed.borrow_mut() = displayed;
@@ -332,8 +362,11 @@ impl AppState {
         let catalog = self.catalog.borrow();
         let installed_refs: Vec<&Port> =
             catalog.iter().filter(|p| crate::core::installer::is_installed(p, &self.paths.library_dir)).collect();
-        let installed: Vec<Port> =
-            crate::core::search::filter_and_sort(&installed_refs, &query).iter().map(|p| (*p).clone()).collect();
+        let mut ranked = crate::core::search::filter_and_sort(&installed_refs, &query);
+        if query.trim().is_empty() {
+            Self::sort_by_recency(&self.state.borrow(), &mut ranked);
+        }
+        let installed: Vec<Port> = ranked.iter().map(|p| (*p).clone()).collect();
         let columns = self.grid_nav.grid_columns.get().max(1);
         let previously_selected_key = if preserve_selection {
             let (row, col) = self.grid_nav.grid_selected.get();

@@ -39,6 +39,12 @@ export global Tr {
     public pure function label-check-updates-on() -> string { @tr("Check for Updates: On") }
     public pure function label-check-updates-off() -> string { @tr("Check for Updates: Off") }
 
+    // Bouton bascule du menu Settings (voir app::dialogs::toggle_discord_rpc)
+    // -- reflète l'état ACTUEL de discord_rpc_enabled, même mécanisme que
+    // label-check-updates-on/off ci-dessus.
+    public pure function label-discord-rpc-on() -> string { @tr("Discord Rich Presence: On") }
+    public pure function label-discord-rpc-off() -> string { @tr("Discord Rich Presence: Off") }
+
     // -- Titres de dialogue avec le nom du port --
     public pure function dialog-title-error-port(name: string) -> string { @tr("Error - {}", name) }
     public pure function dialog-title-uninstall-port(name: string) -> string { @tr("Uninstall - {}", name) }
@@ -89,9 +95,18 @@ export global Tr {
     public pure function favorite-exe-status-named(name: string) -> string { @tr("Favorite executable: {}", name) }
     public pure function update-status-on() -> string { @tr("Update: On") }
     public pure function update-status-off() -> string { @tr("Update: Off") }
-    // `formatted` déjà mis en forme côté Rust ("3h 42m", "45m"...) -- voir
-    // app::playtime::format_playtime.
-    public pure function playtime-status(formatted: string) -> string { @tr("Playtime: {}", formatted) }
+    // `formatted` déjà mis en forme côté Rust (une décimale, "165.5",
+    // "0.0"...) -- voir app::playtime::format_playtime. "hours" fait partie
+    // du gabarit traduit (pas concaténé côté Rust) pour rester localisable.
+    public pure function playtime-status(formatted: string) -> string { @tr("Play time: {} hours", formatted) }
+    // Choisi côté Rust quand playtime_seconds vaut 0 -- "0.0 hours" pour un
+    // port jamais lancé n'apporte rien de plus que "Never".
+    public pure function playtime-status-never() -> string { @tr("Play time: Never") }
+    // `value` -- date courte déjà mise en forme côté Rust selon le format
+    // local (voir core::clock::format_date) -- voir app::playtime::format_last_played.
+    public pure function last-played-status(value: string) -> string { @tr("Last played: {}", value) }
+    public pure function last-played-status-today() -> string { @tr("Last played: Today") }
+    public pure function last-played-status-never() -> string { @tr("Last played: Never") }
 
     // Bouton "Reset Game Time" d'InfoDialog -- même dialogue yes/no que le
     // basculement d'auto-MAJ (ConfirmDialog réutilisé tel quel).

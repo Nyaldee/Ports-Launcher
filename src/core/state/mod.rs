@@ -110,6 +110,13 @@ pub struct StateManager {
     /// Une valeur explicite ("fr", "ja"...) force cette langue peu importe
     /// celle de Windows, choisie depuis Settings.
     pub language: String,
+    /// Rich Presence Discord (voir `core::discord_presence`) -- false par
+    /// défaut : contrairement à `release_sync`/`catalog_sync` (vrais par
+    /// défaut, désactivables), cette fonctionnalité s'active volontairement.
+    /// Pas de réglage par port (voir la discussion de conception) : si un
+    /// port a son propre Rich Presence avec invitation, l'utilisateur
+    /// désactive simplement ce réglage le temps d'y jouer.
+    pub discord_rpc_enabled: bool,
 }
 
 /// Lit les anciennes clés racine de `themes.json` (`theme`/`font_family`/
@@ -169,6 +176,7 @@ impl StateManager {
             last_catalog_check: String::new(),
             last_catalog_etag: String::new(),
             language: String::new(),
+            discord_rpc_enabled: false,
         };
 
         let Ok(text) = fs::read_to_string(&state.path) else {
@@ -244,6 +252,7 @@ impl StateManager {
         state.last_catalog_check = obj.get("last_catalog_check").and_then(Value::as_str).unwrap_or("").to_string();
         state.last_catalog_etag = obj.get("last_catalog_etag").and_then(Value::as_str).unwrap_or("").to_string();
         state.language = obj.get("language").and_then(Value::as_str).unwrap_or("").to_string();
+        state.discord_rpc_enabled = obj.get("discord_rpc_enabled").and_then(Value::as_bool).unwrap_or(false);
 
         if let Some(installed) = obj.get("installed").and_then(Value::as_object) {
             for (key, info) in installed {
@@ -255,9 +264,10 @@ impl StateManager {
                 let favorite_exe = info.get("favorite_exe").and_then(Value::as_str).map(str::to_string);
                 let update = info.get("update").and_then(Value::as_bool).unwrap_or(true);
                 let playtime_seconds = info.get("playtime_seconds").and_then(Value::as_u64).unwrap_or(0);
+                let last_played_at = info.get("last_played_at").and_then(Value::as_str).unwrap_or("").to_string();
                 state.installed.insert(
                     key.clone(),
-                    InstalledInfo { installed_tag, installed_at, favorite_exe, update, playtime_seconds },
+                    InstalledInfo { installed_tag, installed_at, favorite_exe, update, playtime_seconds, last_played_at },
                 );
             }
         }
@@ -278,6 +288,7 @@ impl StateManager {
                         "favorite_exe": info.favorite_exe,
                         "update": info.update,
                         "playtime_seconds": info.playtime_seconds,
+                        "last_played_at": info.last_played_at,
                     }),
                 )
             })
@@ -295,6 +306,7 @@ impl StateManager {
                 "border": self.border_width,
             },
             "language": self.language,
+            "discord_rpc_enabled": self.discord_rpc_enabled,
             "github_token": self.github_token,
             "gitlab_token": self.gitlab_token,
             "release_sync": self.release_sync,

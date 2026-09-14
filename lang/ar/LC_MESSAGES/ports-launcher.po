@@ -201,8 +201,20 @@ msgstr "تحديث: مفعّل"
 msgid "Update: Off"
 msgstr "تحديث: معطّل"
 
-msgid "Playtime: {}"
-msgstr "وقت اللعب: {}"
+msgid "Play time: {} hours"
+msgstr "وقت اللعب: {} ساعة"
+
+msgid "Play time: Never"
+msgstr "وقت اللعب: أبدًا"
+
+msgid "Last played: {}"
+msgstr "آخر لعبة: {}"
+
+msgid "Last played: Today"
+msgstr "آخر لعبة: اليوم"
+
+msgid "Last played: Never"
+msgstr "آخر لعبة: أبدًا"
 
 msgid "Reset Game Time - {}"
 msgstr "إعادة تعيين وقت اللعب - {}"

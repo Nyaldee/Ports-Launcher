@@ -201,8 +201,20 @@ msgstr "Обновление: вкл."
 msgid "Update: Off"
 msgstr "Обновление: выкл."
 
-msgid "Playtime: {}"
-msgstr "Время в игре: {}"
+msgid "Play time: {} hours"
+msgstr "Время в игре: {} ч."
+
+msgid "Play time: Never"
+msgstr "Время в игре: Никогда"
+
+msgid "Last played: {}"
+msgstr "Последний раз играли: {}"
+
+msgid "Last played: Today"
+msgstr "Последний раз играли: Сегодня"
+
+msgid "Last played: Never"
+msgstr "Последний раз играли: Никогда"
 
 msgid "Reset Game Time - {}"
 msgstr "Сбросить время в игре - {}"

@@ -201,8 +201,20 @@ msgstr "Güncelleme: Açık"
 msgid "Update: Off"
 msgstr "Güncelleme: Kapalı"
 
-msgid "Playtime: {}"
-msgstr "Oynama süresi: {}"
+msgid "Play time: {} hours"
+msgstr "Oynama süresi: {} saat"
+
+msgid "Play time: Never"
+msgstr "Oynama süresi: Hiç"
+
+msgid "Last played: {}"
+msgstr "Son oynama: {}"
+
+msgid "Last played: Today"
+msgstr "Son oynama: Bugün"
+
+msgid "Last played: Never"
+msgstr "Son oynama: Hiç"
 
 msgid "Reset Game Time - {}"
 msgstr "Oynama süresini sıfırla - {}"

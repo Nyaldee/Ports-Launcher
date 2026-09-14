@@ -201,8 +201,20 @@ msgstr "به‌روزرسانی: روشن"
 msgid "Update: Off"
 msgstr "به‌روزرسانی: خاموش"
 
-msgid "Playtime: {}"
-msgstr "زمان بازی: {}"
+msgid "Play time: {} hours"
+msgstr "زمان بازی: {} ساعت"
+
+msgid "Play time: Never"
+msgstr "زمان بازی: هرگز"
+
+msgid "Last played: {}"
+msgstr "آخرین بازی: {}"
+
+msgid "Last played: Today"
+msgstr "آخرین بازی: امروز"
+
+msgid "Last played: Never"
+msgstr "آخرین بازی: هرگز"
 
 msgid "Reset Game Time - {}"
 msgstr "بازنشانی زمان بازی - {}"

@@ -1,5 +1,6 @@
 //! Temps de jeu : accumulation à la sortie d'un process, checkpoint
-//! périodique anti-crash, et affichage en direct dans l'InfoDialog ouvert.
+//! périodique anti-crash, affichage en direct dans l'InfoDialog ouvert, et
+//! horodatage "dernière partie" (voir `record_playtime`).
 
 use super::dialogs::DialogSlot;
 use super::state::AppState;
@@ -7,12 +8,39 @@ use crate::Tr;
 use slint::ComponentHandle;
 use std::time::Instant;
 
-/// "3h 42m" (heures omises si zéro, ex: "45m") -- suffixes h/m délibérément
-/// non traduits (voir Tr.playtime-status, qui ne fait qu'entourer CE texte).
+/// Décimale façon Steam ("165.5", "0.0") -- insérée dans le gabarit traduit
+/// "{} hours" côté .slint (voir Tr.playtime-status), jamais de suffixe
+/// concaténé ici pour rester localisable. Une seule valeur décimale se
+/// compare d'un coup d'œil entre deux jeux.
 pub(crate) fn format_playtime(seconds: u64) -> String {
-    let hours = seconds / 3600;
-    let minutes = (seconds % 3600) / 60;
-    if hours > 0 { format!("{hours}h {minutes:02}m") } else { format!("{minutes}m") }
+    format!("{:.1}", seconds as f64 / 3600.0)
+}
+
+/// Trois façons d'afficher "Last played" (voir `Tr.last-played-status*`) --
+/// un simple `Option<String>` ne suffit plus dès qu'"aujourd'hui" mérite son
+/// propre gabarit plutôt qu'une date répétant ce qu'on sait déjà.
+pub(crate) enum LastPlayed {
+    Never,
+    Today,
+    Date(String),
+}
+
+/// Décide comment afficher `last_played_at` (voir
+/// `InstalledInfo::last_played_at`/`StateManager::mark_played`) --
+/// `LastPlayed::Never` si jamais joué (champ vide) ou si le format ne parse
+/// pas (`state.json` corrompu/édité à la main), `Today` si la date locale
+/// coïncide avec celle du jour, sinon la date formatée (voir
+/// `core::clock::format_date`).
+pub(crate) fn format_last_played(last_played_at: &str) -> LastPlayed {
+    if last_played_at.is_empty() {
+        return LastPlayed::Never;
+    }
+    let Ok(played) = chrono::DateTime::parse_from_rfc3339(last_played_at) else { return LastPlayed::Never };
+    let played_local = played.with_timezone(&chrono::Local);
+    if played_local.date_naive() == chrono::Local::now().date_naive() {
+        return LastPlayed::Today;
+    }
+    LastPlayed::Date(crate::core::clock::format_date(played_local))
 }
 
 /// Ajoute au temps de jeu persisté (voir `StateManager::add_playtime`) la
@@ -24,10 +52,29 @@ pub(crate) fn format_playtime(seconds: u64) -> String {
 /// jamais toucher au disque). No-op silencieux si aucun horodatage n'est
 /// connu pour `key` (ne devrait pas arriver, chaque entrée de
 /// `running_processes` a la sienne, voir `launch_executable`).
+///
+/// Pose aussi `last_played_at` à MAINTENANT et rafraîchit la vue affichée --
+/// à la FIN de la partie, jamais au lancement : "dernière fois joué" désigne
+/// le dernier instant réellement joué, pas le premier. Un crash du launcher/
+/// PC en cours de partie laisse au pire cette date sur l'avant-dernière
+/// session -- sans conséquence pour `playtime_seconds` (une vraie donnée,
+/// jamais en jeu ici), ce n'est qu'un ordre d'affichage qui met un tour de
+/// plus à se rafraîchir. Même point de convergence que l'arrêt de la
+/// présence Discord juste en dessous : tout ce qui doit se passer "cette
+/// session vient de se terminer" vit ici.
+///
+/// Arrête aussi la présence Discord de cette partie si elle en avait une
+/// (voir `core::discord_presence`), symétriquement à son démarrage dans
+/// `launch_executable`.
 pub(crate) fn record_playtime(app: &AppState, key: &str) {
     if let Some(started_at) = app.install_runtime.launch_started_at.borrow_mut().remove(key) {
         app.state.borrow_mut().add_playtime(key, started_at.elapsed().as_secs());
     }
+    if let Some(handle) = app.install_runtime.discord_presence.borrow_mut().remove(key) {
+        handle.stop();
+    }
+    app.state.borrow_mut().mark_played(key);
+    app.refresh_current_view();
 }
 
 /// Vrai si un process lancé pour `key` tourne ENCORE -- vérifié
@@ -96,12 +143,12 @@ pub(crate) fn checkpoint_playtime(app: &AppState) {
     }
 }
 
-/// Rafraîchit "Playtime: {}" de l'InfoDialog actuellement ouvert PENDANT
-/// qu'une partie tourne pour ce port -- purement en mémoire (temps persisté
-/// plus l'écart depuis le lancement/dernier checkpoint), jamais d'écriture
-/// disque ici (voir `checkpoint_playtime` pour ça). No-op si aucun
-/// InfoDialog n'est ouvert, ou s'il ne correspond à aucune partie en cours
-/// (voir `info_dialog_port_key`).
+/// Rafraîchit "Play time: {} hours" de l'InfoDialog actuellement ouvert
+/// PENDANT qu'une partie tourne pour ce port -- purement en mémoire (temps
+/// persisté plus l'écart depuis le lancement/dernier checkpoint), jamais
+/// d'écriture disque ici (voir `checkpoint_playtime` pour ça). No-op si
+/// aucun InfoDialog n'est ouvert, ou s'il ne correspond à aucune partie en
+/// cours (voir `info_dialog_port_key`).
 pub(crate) fn refresh_live_playtime_display(app: &AppState) {
     let Some(key) = app.dialog_nav.info_dialog_port_key.borrow().clone() else { return };
     let Some(started) = app.install_runtime.launch_started_at.borrow().get(&key).copied() else { return };
@@ -110,9 +157,9 @@ pub(crate) fn refresh_live_playtime_display(app: &AppState) {
     let base = app.state.borrow().get(&key).map(|i| i.playtime_seconds).unwrap_or(0);
     let live_seconds = base + started.elapsed().as_secs();
     let text = dialog.global::<Tr>().invoke_playtime_status(format_playtime(live_seconds).into());
-    // format_playtime n'a que la granularité de la minute -- comparer avant
-    // d'écrire évite de déclencher un repaint à chaque tick de 100ms pour
-    // rien.
+    // format_playtime n'a qu'une décimale d'heure (~6 minutes) de
+    // granularité -- comparer avant d'écrire évite de déclencher un repaint
+    // à chaque tick de 100ms pour rien.
     if dialog.get_playtime_status_text() != text {
         dialog.set_playtime_status_text(text);
     }
@@ -123,15 +170,32 @@ mod tests {
     use super::*;
 
     #[test]
-    fn format_playtime_omet_les_heures_si_zero() {
-        assert_eq!(format_playtime(0), "0m");
-        assert_eq!(format_playtime(45 * 60), "45m");
-        assert_eq!(format_playtime(59 * 60 + 59), "59m");
+    fn format_playtime_une_decimale() {
+        assert_eq!(format_playtime(0), "0.0");
+        assert_eq!(format_playtime(3600), "1.0");
+        assert_eq!(format_playtime(3600 + 1800), "1.5");
+        assert_eq!(format_playtime(595_800), "165.5"); // 165.5 * 3600
     }
 
     #[test]
-    fn format_playtime_avec_heures() {
-        assert_eq!(format_playtime(3600), "1h 00m");
-        assert_eq!(format_playtime(3 * 3600 + 42 * 60), "3h 42m");
+    fn format_last_played_vide_est_never() {
+        assert!(matches!(format_last_played(""), LastPlayed::Never));
+    }
+
+    #[test]
+    fn format_last_played_invalide_est_never() {
+        assert!(matches!(format_last_played("not a date"), LastPlayed::Never));
+    }
+
+    #[test]
+    fn format_last_played_maintenant_est_today() {
+        let now = chrono::Utc::now().to_rfc3339();
+        assert!(matches!(format_last_played(&now), LastPlayed::Today));
+    }
+
+    #[test]
+    fn format_last_played_hier_est_une_date() {
+        let yesterday = (chrono::Utc::now() - chrono::Duration::days(1)).to_rfc3339();
+        assert!(matches!(format_last_played(&yesterday), LastPlayed::Date(_)));
     }
 }

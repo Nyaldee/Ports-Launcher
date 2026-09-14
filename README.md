@@ -19,7 +19,8 @@ A lightweight library/installer for native "recomp" and source-port builds of co
 - Auto-updates by default — pressing **Play** on an installed GitHub/GitLab port silently checks for a newer release first (based on the release tag *and* its publish/asset date, so a project that keeps recycling the same "latest" tag for every build is still caught) and installs it before launching. Turn it off per port from the Info panel's **Update** button if you'd rather stay pinned to a specific version
 - Ports Launcher checks its own GitHub releases too: the **GitHub** button in the footer turns into **Update** when a newer build of the launcher itself is out. Clicking it runs `ports_launcher_updater.bat` (downloads the latest build, replaces the current files, and relaunches)
 - **Check for Updates** switch in Settings — one master toggle to turn off every update check at once (the launcher's own, and every port's), for anyone who'd rather update everything by hand
-- Playtime tracking — every port's cumulated play time shows up in its Info panel, with a **Reset Game Time** button if you want to start the counter over
+- **Discord Rich Presence** switch in Settings (off by default) — shows the game you're playing on your Discord profile while it's running
+- Playtime tracking — every port's cumulated play time and last-played date show up in its Info panel, with a **Reset Game Time** button if you want to start the counter over; the catalog itself lists your most recently played ports first
 - Uninstall in one click, with your save data preserved if it lives inside the port's own folder; box art is downloaded once and cached locally afterward
 - **Backup Saves** button in Settings to export every port's saves into a dated folder in one click (see [Game Saves](#game-saves) for both mechanisms)
 - Info panel per port: installed version/tag, setup instructions, and one-click links to the website, mods page, install folder, and save folder(s) — with fully selectable/copyable instructions text
@@ -69,7 +70,7 @@ Select a port and open its **Info** panel (button, or `X` on a controller) for i
 
 Next to the version text, a **Select version** button (GitHub/GitLab ports only) fetches the last few releases and lets you install any of them instead of always the latest — handy when the newest release doesn't have a build for your platform, or you just want to roll back. It also always fetches fresh from GitHub/GitLab, so picking the latest one from the list is a way to force an update right away; installing a specific version this way also turns off auto-update for that port, so it isn't silently swapped for the latest release on the next Play.
 
-For an installed port, the row also shows **Auto-update: On/Off**, **Favorite executable**, and **Playtime**, each with its own button right below the version/status text — turn auto-update off (and back on) per port, pick which executable Play launches directly without asking every time, or reset that port's tracked playtime. A port with auto-update turned off shows a crossed-out yellow **Update** button next to **Play** in the main list as a reminder that it won't update itself.
+For an installed port, the row also shows **Auto-update: On/Off**, **Favorite executable**, **Last played**, and **Play time**, each with its own button right below the version/status text — turn auto-update off (and back on) per port, pick which executable Play launches directly without asking every time, or reset that port's tracked playtime. A port with auto-update turned off shows a crossed-out yellow **Update** button next to **Play** in the main list as a reminder that it won't update itself.
 
 Next to those, an **Install extras** button is enabled only when the port's `ports.json` entry carries an `extra` link *and* the port is installed. **Play/Install only ever installs the game itself** — the extras are separate and always opt-in from here. Clicking it (after a confirmation prompt) downloads that file or archive straight into the port's folder, overwriting any file of the same name. An archive (`.zip`, `.7z`, `.tar.gz`, `.rar`) is unpacked into the folder; anything else — a loose `.exe`, a `.json`, a config file — is dropped in as-is, never unpacked. It's for optional add-ons that aren't part of the port's own releases: extra ways to play, or preset configuration files — which are often an arbitrary pick, so treat them as a convenience rather than a recommendation. If the link is dead or empty, nothing happens and nothing in the folder is touched.
 
@@ -83,13 +84,14 @@ Ports Launcher handles two separate save mechanisms, both based on `ports.json`'
 
 ## Settings
 
-Open it from the **◯** button in the title bar — a menu with six buttons: **Themes**, **Language**, **Files**, **Library**, **Backup Saves**, and **Check for Updates**.
+Open it from the **◯** button in the title bar — a menu with **Themes**, **Language**, **Files**, **Library**, **Backup Saves**, **Check for Updates**, and **Discord Rich Presence**.
 
 - **Themes** and **Language** both open the same kind of live, fuzzy-searchable picker. For Themes, moving the selection (mouse hover, or `↑`/`↓`/the controller stick) previews it instantly across the whole app; confirming writes straight back to `themes.json`, and closing without confirming (`Escape`) reverts to whichever theme was active before. Language switches the UI immediately on selection, no restart needed.
 - **Files** opens shortcuts to `ports.json`, `ports.local.json`, `state.json`, and `themes.json`, greyed out if a file doesn't exist yet.
 - **Library** jumps straight to that folder in Explorer.
 - **Backup Saves** kicks off a full save export for the whole catalog into a dated folder (see [Game Saves](#game-saves) above), with a progress window while it copies.
 - **Check for Updates** toggles On/Off right in the menu — turns every update check off at once (the launcher's own, and every installed port's at Play), for anyone who'd rather update everything by hand instead.
+- **Discord Rich Presence** toggles On/Off right in the menu, off by default — shows the game you're playing on your Discord status while it's running, and clears itself the moment you close it.
 
 ## Useful tools
 

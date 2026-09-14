@@ -27,6 +27,9 @@ ureq = { version = "3", features = ["json"] }  # HTTP synchrone (API GitHub/GitL
 image = { version = "0.25", default-features = false, features = ["png", "jpeg", "webp"] }
 chrono = "0.4"                       # dates ISO 8601 (state.json, throttle de MAJ, dates de release)
 tempfile = "3"                       # dossier temporaire auto-nettoyé (téléchargement/extraction)
+# Rich Presence Discord (voir core::discord_presence) -- IPC locale, jamais
+# d'appel réseau direct par le launcher lui-même.
+discord-rich-presence = "1"
 
 # `windows`/`gilrs` sont spécifiques à chaque OS -- voir les deux tables
 # `[target...]` ci-dessous.
@@ -35,7 +38,19 @@ tempfile = "3"                       # dossier temporaire auto-nettoyé (téléc
 # default-features = false + "xinput" : le backend par défaut ("wgi") rate
 # certaines manettes/émulateurs (DS4Windows, Steam Input...) que XInput capte.
 gilrs = { version = "0.11", default-features = false, features = ["xinput"] }
-windows = { version = "0", features = ["Win32_UI_WindowsAndMessaging", "Win32_UI_HiDpi", "Win32_UI_Input_KeyboardAndMouse", "Win32_System_SystemInformation", "Win32_System_Threading", "Win32_Globalization", "Win32_Foundation", "Win32_UI_Shell", "Win32_Graphics_Gdi", "Win32_System_Registry", "Win32_System_Com"] }
+windows = { version = "0.62.2", features = [
+    "Win32_UI_WindowsAndMessaging",
+    "Win32_UI_HiDpi",
+    "Win32_UI_Input_KeyboardAndMouse",
+    "Win32_System_SystemInformation",
+    "Win32_System_Threading",
+    "Win32_Globalization",
+    "Win32_Foundation",
+    "Win32_UI_Shell",
+    "Win32_Graphics_Gdi",
+    "Win32_System_Registry",
+    "Win32_System_Com",
+] }
 
 # Linux-only : équivalent EWMH (X11) du crate `windows` ci-dessus, voir
 # src/ui/linux_chrome.rs.
@@ -54,4 +69,7 @@ opt-level = "z"
 lto = true
 codegen-units = 1
 strip = true
-panic = "abort"  # aucun catch_unwind dans le projet -- retire les tables de déroulement, gagne quelques centaines de Ko
+# panic = "unwind" (défaut) : un panic sur le thread Discord Rich Presence
+# (voir core::discord_presence) ne doit tuer que ce thread, jamais tout le
+# process -- propriété native des threads Rust sous unwind, perdue avec
+# "abort".

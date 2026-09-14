@@ -201,8 +201,20 @@ msgstr "업데이트: 켜짐"
 msgid "Update: Off"
 msgstr "업데이트: 꺼짐"
 
-msgid "Playtime: {}"
-msgstr "플레이 시간: {}"
+msgid "Play time: {} hours"
+msgstr "플레이 시간: {}시간"
+
+msgid "Play time: Never"
+msgstr "플레이 시간: 없음"
+
+msgid "Last played: {}"
+msgstr "마지막 플레이: {}"
+
+msgid "Last played: Today"
+msgstr "마지막 플레이: 오늘"
+
+msgid "Last played: Never"
+msgstr "마지막 플레이: 없음"
 
 msgid "Reset Game Time - {}"
 msgstr "플레이 시간 초기화 - {}"

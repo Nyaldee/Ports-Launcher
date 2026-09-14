@@ -201,8 +201,20 @@ msgstr "Pembaruan: Aktif"
 msgid "Update: Off"
 msgstr "Pembaruan: Nonaktif"
 
-msgid "Playtime: {}"
-msgstr "Waktu bermain: {}"
+msgid "Play time: {} hours"
+msgstr "Waktu bermain: {} jam"
+
+msgid "Play time: Never"
+msgstr "Waktu bermain: Belum pernah"
+
+msgid "Last played: {}"
+msgstr "Terakhir dimainkan: {}"
+
+msgid "Last played: Today"
+msgstr "Terakhir dimainkan: Hari ini"
+
+msgid "Last played: Never"
+msgstr "Terakhir dimainkan: Belum pernah"
 
 msgid "Reset Game Time - {}"
 msgstr "Atur ulang waktu bermain - {}"

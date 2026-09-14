@@ -256,6 +256,11 @@ pub(crate) fn launch_executable(app: &Rc<AppState>, router: &Rc<RefCell<GamepadR
     if let Ok(child) = crate::core::launch::launch(exe) {
         app.install_runtime.running_processes.borrow_mut().insert(port.key().to_string(), child);
         app.install_runtime.launch_started_at.borrow_mut().insert(port.key().to_string(), Instant::now());
+        if app.state.borrow().discord_rpc_enabled {
+            let large_image = port.icon.clone().or_else(|| port.image.clone());
+            let handle = crate::core::discord_presence::start(port.display_name().to_string(), port.folder.clone(), large_image);
+            app.install_runtime.discord_presence.borrow_mut().insert(port.key().to_string(), handle);
+        }
         repair_missing_cached_image(app, port);
         // Se minimiser en plein écran : notre fenêtre couvre tout l'écran
         // sans être un mode exclusif OS, et Windows ne redonne pas toujours

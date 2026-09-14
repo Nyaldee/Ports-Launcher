@@ -2,6 +2,7 @@ pub mod asset_select;
 pub mod catalog_sync;
 pub mod clock;
 pub mod config;
+pub mod discord_presence;
 pub mod executable_detect;
 pub mod gamepad;
 pub mod github_api;

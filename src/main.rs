@@ -322,13 +322,24 @@ fn main() {
     // `ComponentHandle::run()` n'est qu'un raccourci pour show() +
     // slint::run_event_loop() + hide().
     window.show().expect("échec de l'affichage de la fenêtre");
-    // Icône (voir apply_window_icon) et éligibilité Alt+Tab, DIFFÉRÉES :
-    // `chrome::native_window()` renvoie None juste après show(), la fenêtre
-    // native n'étant pas encore complètement associée. `single_shot` laisse
-    // la boucle d'évènements tourner une fois avant de réessayer.
+    // Icône (voir apply_window_icon) et éligibilité Alt+Tab, posées sur
+    // `RenderingState::RenderingSetup` -- le seul moment garanti où la
+    // fenêtre native existe (contexte graphique initialisé), plutôt qu'un
+    // délai deviné après show() : `chrome::native_window()` renvoie encore
+    // None juste après, la fenêtre native n'étant associée qu'après au moins
+    // un passage de la boucle d'évènements, et rien ne garantit qu'un délai
+    // fixe suffise (une fenêtre plus lourde à composer, ex. plein écran au
+    // démarrage, peut rater cette fenêtre de tir). RenderingSetup ne se
+    // déclenche qu'une fois par fenêtre -- `applied` reste un garde-fou
+    // défensif, pas un besoin réel.
     {
         let weak = window.as_weak();
-        slint::Timer::single_shot(std::time::Duration::from_millis(50), move || {
+        let applied = std::cell::Cell::new(false);
+        let _ = window.window().set_rendering_notifier(move |state, _| {
+            if applied.get() || !matches!(state, slint::RenderingState::RenderingSetup) {
+                return;
+            }
+            applied.set(true);
             let Some(window) = weak.upgrade() else { return };
             if let Some(native) = chrome::native_window(window.window()) {
                 chrome::apply_window_icon(native);
@@ -395,6 +406,7 @@ fn main() {
             installing: RefCell::new(HashSet::new()),
             running_processes: RefCell::new(HashMap::new()),
             launch_started_at: RefCell::new(HashMap::new()),
+            discord_presence: RefCell::new(HashMap::new()),
             pending_launch_after_install: RefCell::new(HashSet::new()),
             minimized_for_game: Cell::new(false),
         },
