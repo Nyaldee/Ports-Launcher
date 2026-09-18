@@ -181,7 +181,7 @@
       "android_source": "https://github.com/AurelioB/BanjoRecomp-Android",
       "android_package": "com.aure.banjorecomp",
       "folder": "BanjoRecomp",
-      "instructions": "Required files: Banjo-Kazooie (USA).z64 (CRC32: AD429961)\n\nLanguages: Multilingual with mod.\n\nPortable saves : portable.txt in root folder.",
+      "instructions": "Required files: Banjo-Kazooie (USA).z64 (CRC32: AD429961)\n\nLanguages: Multilingual with mod.\n\nWindows:\nPortable saves : portable.txt in root folder.",
       "mods": "https://thunderstore.io/c/banjo-recompiled/",
       "image": "https://cdn2.steamgriddb.com/grid/a154a70f923c579313aa9c47ed7c34e2.png",
       "icon": "https://cdn2.steamgriddb.com/icon/7c220a2091c26a7f5e9f1cfb099511e3.png",
@@ -266,7 +266,7 @@
       "tags": ["n64", "platformer", "multiplayer"],
       "source": "https://github.com/RevoSucks/BM64Recomp",
       "folder": "BM64Recomp",
-      "instructions": "Required files: Bomberman 64 (USA).z64 (CRC32: 3ED0E0DC)\n\nPortable saves : portable.txt in root folder.",
+      "instructions": "Required files: Bomberman 64 (USA).z64 (CRC32: 3ED0E0DC)\n\nWindows:\nPortable saves : portable.txt in root folder.",
       "image": "https://cdn2.steamgriddb.com/grid/c5b781ce025e8217c23f95f9569a0b96.png",
       "save": {
         "windows": "%LOCALAPPDATA%\\BM64Recompiled",
@@ -587,7 +587,7 @@
       "tags": ["star fox", "n64", "action-adventure"],
       "source": "https://github.com/DinosaurPlanetRecomp/dino-recomp",
       "folder": "dino-recomp",
-      "instructions": "Required files: Dinosaur Planet (USA) (Proto) (2000-12-01).z64 (CRC32: A7DAF9FA)\n\nPortable saves : portable.txt in root folder.",
+      "instructions": "Required files: Dinosaur Planet (USA) (Proto) (2000-12-01).z64 (CRC32: A7DAF9FA)\n\nWindows:\nPortable saves : portable.txt in root folder.",
       "image": "https://cdn2.steamgriddb.com/grid/11738c383581f80d010ca13ac005d763.png",
       "icon": "https://cdn2.steamgriddb.com/icon/1134604ead16f77309235aa3d327bb59.png",
       "save": {
@@ -769,7 +769,7 @@
         "windows": "DNZHRecompiled.exe",
         "linux": "DNZHRecompiled"
       },
-      "instructions": "Required files: Duke Nukem - Zero Hour (USA).z64 (CRC32: 9A3258D7)\n\nCheck for updates manually at https://dnzh-overclocked.com/\n\nPortable saves : portable.txt in root folder.",
+      "instructions": "Required files: Duke Nukem - Zero Hour (USA).z64 (CRC32: 9A3258D7)\n\nCheck for updates manually at https://dnzh-overclocked.com/\n\nWindows:\nPortable saves : portable.txt in root folder.",
       "image": "https://cdn2.steamgriddb.com/grid/867b40a424378bfa56d7800e23f93070.png",
       "icon": "https://cdn2.steamgriddb.com/icon/5ddddfa620c792571675a330752735b0.png",
       "save": {
@@ -809,7 +809,7 @@
       "tags": ["n64", "racing", "multiplayer"],
       "source": "https://gitlab.com/sonicdcer/ExtremeGRecomp",
       "folder": "ExtremeGRecomp",
-      "instructions": "Required files: Extreme-G (USA).z64 (CRC32: 04CB74EC)\n\nPortable saves : portable.txt in root folder.",
+      "instructions": "Required files: Extreme-G (USA).z64 (CRC32: 04CB74EC)\n\nWindows:\nPortable saves : portable.txt in root folder.",
       "image": "https://cdn2.steamgriddb.com/grid/4959d55019f706533ddc9eb4497a8a3a.png",
       "icon": "https://cdn2.steamgriddb.com/icon/acc85fcea72cd0e4032763ed0c565dbc.png",
       "save": {
@@ -970,7 +970,7 @@
       "tags": ["n64", "platformer"],
       "source": "https://github.com/klorfmorf/Goemon64Recomp",
       "folder": "Goemon64Recomp",
-      "instructions": "Required files: Goemon's Great Adventure (USA).z64 (CRC32: 52D418E1)\n\nPortable saves : portable.txt in root folder.",
+      "instructions": "Required files: Goemon's Great Adventure (USA).z64 (CRC32: 52D418E1)\n\nWindows:\nPortable saves : portable.txt in root folder.",
       "mods": "https://gamebanana.com/games/24290",
       "image": "https://cdn2.steamgriddb.com/grid/7363d3772d8fa8d638fedddde16e4437.png",
       "icon": "https://cdn2.steamgriddb.com/icon/7624c43931e8ccf280b8fc7374e89412.png",
@@ -1031,7 +1031,7 @@
       "android_source": "https://github.com/igawa6/HarvestMoon64Recomp",
       "android_package": "io.github.hm64recomp",
       "folder": "HarvestMoon64Recomp",
-      "instructions": "Required files: Harvest Moon 64 (USA).z64 (CRC32: DECDC0AD)\n\nPortable saves : portable.txt in root folder.",
+      "instructions": "Required files: Harvest Moon 64 (USA).z64 (CRC32: DECDC0AD)\n\nWindows:\nPortable saves : portable.txt in root folder.",
       "image": "https://cdn2.steamgriddb.com/grid/cab8fb3904dfe2e30a8579bc38e74ada.png",
       "icon": "https://cdn2.steamgriddb.com/icon/d093b4a150384ffc0b1bb5d5042c0df4.png",
       "save": {
@@ -1248,7 +1248,7 @@
       "tags": ["n64", "racing"],
       "source": "https://gitlab.com/sonicdcer/MarioKart64Recomp",
       "folder": "MarioKart64Recomp",
-      "instructions": "Required files: Mario Kart 64 (USA).z64 (CRC32: 434389C1)\n\nPortable saves : portable.txt in root folder.",
+      "instructions": "Required files: Mario Kart 64 (USA).z64 (CRC32: 434389C1)\n\nWindows:\nPortable saves : portable.txt in root folder.",
       "image": "https://cdn2.steamgriddb.com/grid/bc11db020cb9418782afa3d1e0a1209b.png",
       "icon": "https://cdn2.steamgriddb.com/icon/2b7d7ea550d05a1386ce3aef76f041f4/32/768x768.png",
       "save": {
@@ -1913,7 +1913,7 @@
       "tags": ["sk2", "n64", "racing", "multiplayer"],
       "source": "https://github.com/cdlewis/snowboardkids2-recomp",
       "folder": "snowboardkids2-recomp",
-      "instructions": "Required files: Snowboard Kids 2 (USA).z64 (CRC32: D0DC8A8E)\n\nPortable saves : portable.txt in root folder.",
+      "instructions": "Required files: Snowboard Kids 2 (USA).z64 (CRC32: D0DC8A8E)\n\nWindows:\nPortable saves : portable.txt in root folder.",
       "image": "https://cdn2.steamgriddb.com/grid/120f6c07fc3ec6295d01f6e11c59d8fc.png",
       "icon": "https://cdn2.steamgriddb.com/icon/25780194564b89eb52c5689daa6f3ee9.png",
       "save": {
@@ -2066,7 +2066,7 @@
       "tags": ["lylat wars", "n64", "shooter"],
       "source": "https://gitlab.com/sonicdcer/Starfox64Recomp",
       "folder": "Starfox64Recomp",
-      "instructions": "Required files: Star Fox 64 (USA) (Rev 1).z64 (CRC32: B1B5FC46)\n\nLanguages: English.\n\nPortable saves : portable.txt in root folder.",
+      "instructions": "Required files: Star Fox 64 (USA) (Rev 1).z64 (CRC32: B1B5FC46)\n\nLanguages: English.\n\nWindows:\nPortable saves : portable.txt in root folder.",
       "image": "https://cdn2.steamgriddb.com/grid/9122b7acc2588eff1d20211ce8fb8798.png",
       "icon": "https://cdn2.steamgriddb.com/icon/9fbcbcb41e52efd7dbcb96e8a5c4cb63/32/256x256.png",
       "save": {
@@ -2233,7 +2233,7 @@
       "android_source": "https://github.com/mircowuffwuff/super-mario-bros.-remastered-android",
       "android_package": "com.mircowuffwuff.smb1r",
       "folder": "Super-Mario-Bros.-Remastered-Public",
-      "instructions": "Required files: Super Mario Bros. (World).nes (CRC32: 3337EC46)\n\nPortable saves : portable.txt in root folder.",
+      "instructions": "Required files: Super Mario Bros. (World).nes (CRC32: 3337EC46)\n\nWindows:\nPortable saves : portable.txt in root folder.",
       "mods": "https://gamebanana.com/games/22798",
       "image": "https://cdn2.steamgriddb.com/grid/46c5aac38809435b12ece6f71de65c1e.png",
       "icon": "https://cdn2.steamgriddb.com/icon/a621efaaba2ded5a8727db161094fe88.png",
@@ -2242,6 +2242,18 @@
         "android": "/data/data/com.mircowuffwuff.smb1r/files"
       },
       "save2": "config"
+    },{
+      "name": "Super Mario Bros. X (thextech)",
+      "tags": ["platformer", "android_only"],
+      "android_source": "https://github.com/TheXTech/TheXTech",
+      "android_package": "ru.wohlsoft.thextech",
+      "instructions": "TheXTech is a runtime engine only: it needs the SMBX 1.3 game assets downloaded separately (see the mods link below).\n\nOn Android, create a folder named \"TheXTech Games\" at the root of your internal storage, then extract the assets into a subfolder named EXACTLY \"Super Mario Bros. X\" inside it (\"TheXTech Games/Super Mario Bros. X/\") -- the Save folder button assumes this exact name. A different subfolder name still works in-game, but Save folder won't find it. Gamesaves and settings will appear alongside the assets in that same subfolder.",
+      "mods": "https://smbxarchive.wohlsoft.ru/SMBX%201.3/",
+      "image": "https://cdn2.steamgriddb.com/grid/5dcd8f765b02f503057e6087dec1c71c.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/1841038227852628f1d604c0211494a6.png",
+      "save": {
+        "android": "TheXTech Games/Super Mario Bros. X/settings/gamesaves"
+      }
     },{
       "-name": "Super Mario Strikers (strikers)",
       "tags": ["gc", "mario smash football", "sport", "multiplayer"],
@@ -2459,7 +2471,7 @@
       "android_source": "https://github.com/linkzenic/Zelda64Recomp-Android",
       "android_package": "io.github.zelda64recomp",
       "folder": "Zelda64Recomp",
-      "instructions": "Required files: Legend of Zelda, The - Majora's Mask (USA).z64 (CRC32: B428D8A7)\n\nPortable saves : portable.txt in root folder.",
+      "instructions": "Required files: Legend of Zelda, The - Majora's Mask (USA).z64 (CRC32: B428D8A7)\n\nWindows:\nPortable saves : portable.txt in root folder.",
       "mods": "https://thunderstore.io/c/zelda-64-recompiled/",
       "image": "https://cdn2.steamgriddb.com/grid/592954b9c7445a8007d638eecc863362.jpg",
       "icon": "https://cdn2.steamgriddb.com/icon/4e0928de075538c593fbdabb0c5ef2c3.png",
@@ -2831,7 +2843,15 @@
       "image": "https://cdn2.steamgriddb.com/grid/fb3fb416095812f23a22302e9efe50b6.png",
       "icon": "https://cdn2.steamgriddb.com/icon/efe937780e95574250dabe07151bdc23.png"
     },{
-      "-name": "Zemplate",
+      "-name": "Zoids Legacy (ZoidsLegacyDecomp)",
+      "tags": ["gba", "rpg"],
+      "source": "https://github.com/jmacato/ZoidsLegacyDecomp",
+      "folder": "ZoidsLegacyDecomp",
+      "instructions": "Required files: Zoids - Legacy (USA).gba (CRC32: 302E75F3)",
+      "image": "https://cdn2.steamgriddb.com/grid/0278edddd8a644613430170b1e9ad893.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/d6d55f44bcc66e447930150826e5a931.png"
+    },{
+      "-name": "ZZemplate",
       "tags": ["platform-tag (pc/n64/ps1/ps2/gc/360/etc)", "genre-tag"],
       "source": "https://github.com/owner/repo -- or https://gitlab.com/owner/repo, or a direct download URL (DirectUrl, no update tracking), or {\"windows\": \"...\", \"linux\": \"...\"} for per-platform, or omit \"source\" entirely for a Local/manually-managed port",
       "folder": "FolderNameUnderLibrary",
@@ -2846,14 +2866,6 @@
       "exe_is_archive": "optional -- anchor filename (any extension, not necessarily .exe) to locate inside the extracted archive when it isn't a plain top-level game folder (e.g. an NSIS installer, a zip-disguised-as-exe)",
       "preferred_asset": "optional -- substring to prefer when picking a GitHub/GitLab release asset, string or per-platform object like \"executable\"/\"save\"",
       "extra": "optional -- URL of a supplementary file/archive downloaded and merged into the folder AFTER the main install; silently ignored on failure"
-    },{
-      "-name": "Zoids Legacy (ZoidsLegacyDecomp)",
-      "tags": ["gba", "rpg"],
-      "source": "https://github.com/jmacato/ZoidsLegacyDecomp",
-      "folder": "ZoidsLegacyDecomp",
-      "instructions": "Required files: Zoids - Legacy (USA).gba (CRC32: 302E75F3/81977335)",
-      "image": "https://cdn2.steamgriddb.com/grid/0278edddd8a644613430170b1e9ad893.png",
-      "icon": "https://cdn2.steamgriddb.com/icon/d6d55f44bcc66e447930150826e5a931.png"
     }
   ]
 }
