@@ -1,0 +1,2758 @@
+{
+  "ports": [
+    {
+      "name": "3D Pinball for Windows: Space Cadet (SpaceCadetPinball)",
+      "tags": ["pc", "pinball"],
+      "source": "https://github.com/k4zmu2a/SpaceCadetPinball",
+      "folder": "SpaceCadetPinball",
+      "instructions": "Required files: 3d-pinball-space-cadet_multi.zip (CRC32: 3DBD6B2C)\n\nMove the pinball.dat file to the port's root folder.",
+      "image": "https://cdn2.steamgriddb.com/grid/c06fea7bbaf463d21ae0cb8ca11a79f7.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/291806ebb9de8fe92dc92a02a2b46b5a.png"
+    },{
+      "name": "Abuse (Abuse_2025)",
+      "tags": ["free", "macos", "shooter, multilingual"],
+      "source": "https://github.com/apancik/Abuse_2025",
+      "folder": "Abuse_2025",
+      "instructions": "Languages: Multilingual.\n\nEdit the data\\config.txt file at the save location with your settings.\nfullscreen=1\nborderless=1\nvirtual_width=480\nscreen_width=3840\nscreen_height=2160\nhires=1\nbig_font=1\nlanguage=french",
+      "image": "https://cdn2.steamgriddb.com/grid/044357042a997da5ca2f9f6e451dc364.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/19db33a7920e55ba3a32ab69d87f65b8.png",
+      "save": "%APPDATA%\\abuse"
+    },{
+      "name": "Ace Combat 3: Electrosphere (Japan) (ace-combat-3-electrosphere-recomp)",
+      "tags": ["ps1", "alexbeav"],
+      "source": "https://github.com/Alexbeav/ace-combat-3-electrosphere-recomp",
+      "website": "https://alexbeav.github.io/psxrecomp-ports/",
+      "folder": "ace-combat-3-electrosphere-recomp",
+      "instructions": "Required files: SLPS-02020 · SLPS-02021. BIOS: Regional SCPH",
+      "image": "https://cdn2.steamgriddb.com/grid/62f9f7fc3d63ba0aa1a05dcef8d39521.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/d12292308a295921b64f33b72329d157.png",
+      "save": "saves"
+    },{
+      "name": "Ace Combat 3: Electrosphere (USA) (ace-combat-3-electrosphere-usa-recomp)",
+      "tags": ["ps1", "alexbeav"],
+      "source": "https://github.com/Alexbeav/ace-combat-3-electrosphere-usa-recomp",
+      "website": "https://alexbeav.github.io/psxrecomp-ports/",
+      "folder": "ace-combat-3-electrosphere-usa-recomp",
+      "instructions": "Required files: SLUS-00972. BIOS: Regional SCPH",
+      "image": "https://cdn2.steamgriddb.com/grid/62f9f7fc3d63ba0aa1a05dcef8d39521.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/d12292308a295921b64f33b72329d157.png",
+      "save": "saves"
+    },{
+      "name": "Ace Combat 6: Fires of Liberation (AC6_recomp)",
+      "tags": ["360", "simulation", "multilingual"],
+      "source": "https://github.com/sal063/AC6_recomp",
+      "folder": "AC6_recomp",
+      "instructions": "Required files: Ace Combat 6 - Fires of Liberation (USA, Japan) (En,Fr,De,Es,It).iso (CRC32: 314CFB1B)\n\nLanguages: Multilingual.",
+      "image": "https://cdn2.steamgriddb.com/grid/4d3939e078927ce83662958dd1eb11f0.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/630b572e79b8d37e7dc70a16bd4abaea.png"
+    },{
+      "name": "AeroGauge (aerogauge-recomp)",
+      "tags": ["n64", "racing"],
+      "source": "https://github.com/alondero/aerogauge-recomp",
+      "folder": "aerogauge-recomp",
+      "instructions": "Required files: AeroGauge (USA).z64 (CRC32: 198B9E0E)\n\nPut the required file in the port folder.",
+      "image": "https://cdn2.steamgriddb.com/grid/bd7fb1f8bf0567760641b6d7a29c1609.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/dc898d5e41b3565e59bf91133acbd85e.png",
+      "save": {
+        "windows": "%LOCALAPPDATA%\\AeroGaugeRecomp",
+        "linux": "~/.config/AeroGaugeRecomp"
+      }
+    },{
+      "name": "Alien Resurrection (alien-resurrection-recomp)",
+      "tags": ["ps1", "alexbeav"],
+      "source": "https://github.com/Alexbeav/alien-resurrection-recomp",
+      "website": "https://alexbeav.github.io/psxrecomp-ports/",
+      "folder": "alien-resurrection-recomp",
+      "instructions": "Required files: SLES-02913. BIOS: SCPH-5552",
+      "image": "https://cdn2.steamgriddb.com/grid/c598926732a1e7d7faad46a9fe133e01.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/98edc70f240d534b2f7c016ab67dfd66.png",
+      "save": "saves"
+    },{
+      "name": "Alone in the Dark: The New Nightmare (alone-in-the-dark-the-new-nightmare-recomp)",
+      "tags": ["ps1", "alexbeav"],
+      "source": "https://github.com/Alexbeav/alone-in-the-dark-the-new-nightmare-recomp",
+      "website": "https://alexbeav.github.io/psxrecomp-ports/",
+      "folder": "alone-in-the-dark-the-new-nightmare-recomp",
+      "instructions": "Required files: SLES-02801 · SLES-12801. BIOS: SCPH-5552. Known issues: Natural connected disc change is pending manual gameplay.",
+      "image": "https://cdn2.steamgriddb.com/grid/375414dbbfd4a32040300559e7961ecd.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/90a5da808b7409c044aac94d490e7f0d.png",
+      "save": "saves"
+    },{
+      "name": "Alundra (alundra-recomp)",
+      "tags": ["ps1", "alexbeav"],
+      "source": "https://github.com/Alexbeav/alundra-recomp",
+      "website": "https://alexbeav.github.io/psxrecomp-ports/",
+      "folder": "alundra-recomp",
+      "instructions": "Required files: SLES-01135. BIOS: Regional SCPH",
+      "image": "https://cdn2.steamgriddb.com/grid/62369392c675ab68a37e5f5e5a819506.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/68fc266c3090819707d3c4c6cdcc1ed5.png",
+      "save": "saves"
+    },{
+      "name": "Animal Crossing (ACGC-PC-Port)",
+      "tags": ["gc", "simulation"],
+      "source": "https://github.com/flyngmt/ACGC-PC-Port",
+      "folder": "ACGC-PC-Port",
+      "instructions": "Required files: Animal Crossing (USA).iso (CRC32: 7BE72542)\n\nLanguages: English.",
+      "image": "https://cdn2.steamgriddb.com/grid/d9e16849e6c8440f27574666b9e9735a.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/162c8a1cc0a8f18f8120a829f749e37f.png",
+      "save": "save"
+    },{
+      "name": "Ape Escape (ape-escape-recomp)",
+      "tags": ["saru", "ps1", "alexbeav", "platformer"],
+      "source": "https://github.com/Alexbeav/ape-escape-recomp",
+      "website": "https://alexbeav.github.io/psxrecomp-ports/",
+      "folder": "ape-escape-recomp",
+      "instructions": "Required files: SCUS-94423. BIOS: Regional SCPH",
+      "image": "https://cdn2.steamgriddb.com/grid/41653fbde31f556e57a71ea6edf1efaa.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/979a659fe9f4cc5f2dfef047b5da50ab.png",
+      "save": "saves"
+    },{
+      "name": "Ape Escape (ApeEscapeRecomp)",
+      "tags": ["saru", "ps1", "platformer"],
+      "source": "https://github.com/mstan/ApeEscapeRecomp",
+      "folder": "ApeEscapeRecomp",
+      "instructions": "Required files: Ape Escape (USA).bin (CRC32: C6F455BC) + PSX - SCPH1001.BIN\n\nLanguages: English.",
+      "image": "https://cdn2.steamgriddb.com/grid/dce0cff3ad30897876b169eb066662dd.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/979a659fe9f4cc5f2dfef047b5da50ab.png",
+      "save": "saves"
+    },{
+      "name": "Apocalypse (apocalypse-recomp)",
+      "tags": ["ps1", "alexbeav", "shooter"],
+      "source": "https://github.com/Alexbeav/apocalypse-recomp",
+      "website": "https://alexbeav.github.io/psxrecomp-ports/",
+      "folder": "apocalypse-recomp",
+      "instructions": "Required files: SLES-00460. BIOS: SCPH-5552. Known issues: Wave 3 validation limits apply. Use the complete matching Redump CUE/BIN set and the required SCPH-5552 BIOS.",
+      "image": "https://cdn2.steamgriddb.com/grid/8d2bb3e3e38aecce130899813a042108.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/ab231e07089cc084c3a4d0a81e732ac5.png",
+      "save": "saves"
+    },{
+      "name": "Armored Core (armored-core-recomp)",
+      "tags": ["ps1", "alexbeav"],
+      "source": "https://github.com/Alexbeav/armored-core-recomp",
+      "website": "https://alexbeav.github.io/psxrecomp-ports/",
+      "folder": "armored-core-recomp",
+      "instructions": "Required files: SCES-00842. BIOS: Regional SCPH",
+      "image": "https://cdn2.steamgriddb.com/grid/fe239dc20857d3b957d45116c7dd486b.jpg",
+      "icon": "https://cdn2.steamgriddb.com/icon/21d35e82a5c98554a8f5afc37b6d40cd.png",
+      "save": "saves"
+    },{
+      "name": "Armored Core: Master of Arena (armored-core-master-of-arena-recomp)",
+      "tags": ["ps1", "alexbeav"],
+      "source": "https://github.com/Alexbeav/armored-core-master-of-arena-recomp",
+      "website": "https://alexbeav.github.io/psxrecomp-ports/",
+      "folder": "armored-core-master-of-arena-recomp",
+      "instructions": "Required files: SLUS-01030 · SLUS-01081. BIOS: SCPH-1001. Known issues: Wave 4 validation limits apply: Windows setup verified on the exact package; gameplay on the public packages and native Linux/macOS setup are unverified. Use the complete matching Redump CUE/BIN set (or a CHD of it) and the required SCPH-1001 BIOS. Disc changes during play are not qualified. A seam artifact reported in play testing is under separate investigation.",
+      "image": "https://cdn2.steamgriddb.com/grid/ad427b2cdc4fa9d272eb09348a9fbc92.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/dd4da5c7a142b0bd99706d4f2aea61c9.png",
+      "save": "saves"
+    },{
+      "name": "Armored Core: Project Phantasma (armored-core-project-phantasma-recomp)",
+      "tags": ["ps1", "alexbeav"],
+      "source": "https://github.com/Alexbeav/armored-core-project-phantasma-recomp",
+      "website": "https://alexbeav.github.io/psxrecomp-ports/",
+      "folder": "armored-core-project-phantasma-recomp",
+      "instructions": "Required files: SLUS-00670. BIOS: SCPH-1001. Known issues: Wave 4 validation limits apply: Windows setup verified on the exact package; gameplay on the public packages and native Linux/macOS setup are unverified. Use the complete matching Redump CUE/BIN set (or a CHD of it) and the required SCPH-1001 BIOS.",
+      "image": "https://cdn2.steamgriddb.com/grid/1358e4831cf1f088a7f700f43ad446a1.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/5e6ff78d8ffefe5f71bfa7d5574614d6.png",
+      "save": "saves"
+    },{
+      "name": "Automobili Lamborghini (automobililamborghini-recomp)",
+      "tags": ["n64", "racing"],
+      "source": "https://github.com/alondero/automobililamborghini-recomp",
+      "folder": "automobililamborghini-recomp",
+      "instructions": "Required files: Automobili Lamborghini (USA).z64 (CRC32: A4374EAC)\n\nPut the required file in the port folder.",
+      "image": "https://cdn2.steamgriddb.com/grid/1c7e02e71df12a6cdae7888b9785b38f.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/26d404c73d5e70cee25a4a8fc917b5fb.png",
+      "save": "%LOCALAPPDATA%\\LamborghiniRecomp"
+    },{
+      "name": "Azure Dreams (azure-dreams-recomp)",
+      "tags": ["ps1", "alexbeav"],
+      "source": "https://github.com/Alexbeav/azure-dreams-recomp",
+      "website": "https://alexbeav.github.io/psxrecomp-ports/",
+      "folder": "azure-dreams-recomp",
+      "instructions": "Required files: SLUS-00614. BIOS: SCPH-1001. Known issues: Wave 4 validation limits apply: Windows setup verified on the exact package; gameplay on the public packages and native Linux/macOS setup are unverified. Use the complete matching Redump CUE/BIN set (or a CHD of it) and the required SCPH-1001 BIOS.",
+      "image": "https://cdn2.steamgriddb.com/grid/a0be20c42f7633926792393d248ddadc.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/8ca33d44648cc9feecef21e5a7123291.png",
+      "save": "saves"
+    },{
+      "name": "Banjo-Kazooie (BanjoRecomp)",
+      "tags": ["n64", "platformer", "multilingual"],
+      "source": "https://github.com/BanjoRecomp/BanjoRecomp",
+      "android_source": "https://github.com/AurelioB/BanjoRecomp-Android",
+      "android_package": "com.aure.banjorecomp",
+      "folder": "BanjoRecomp",
+      "instructions": "Required files: Banjo-Kazooie (USA).z64 (CRC32: AD429961)\n\nLanguages: Multilingual with mod.\n\nPortable saves : portable.txt in root folder.",
+      "mods": "https://thunderstore.io/c/banjo-recompiled/",
+      "image": "https://cdn2.steamgriddb.com/grid/a154a70f923c579313aa9c47ed7c34e2.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/7c220a2091c26a7f5e9f1cfb099511e3.png",
+      "save": {
+        "windows": "%LOCALAPPDATA%\\BanjoRecompiled",
+        "linux": "~/.config/BanjoRecompiled"
+      },
+      "save2": "saves"
+    },{
+      "name": "Banjo-Kazooie (Lighthouse)",
+      "tags": ["n64", "platformer", "multilingual"],
+      "source": "https://github.com/HarbourMasters/Lighthouse",
+      "folder": "Lighthouse",
+      "instructions": "Required files: Banjo-Kazooie (USA).z64 (CRC32: AD429961)\n\nLanguages: Multilingual with mod.\n\nDiscord server: https://discord.com/invite/shipofharkinian",
+      "image": "https://cdn2.steamgriddb.com/grid/a154a70f923c579313aa9c47ed7c34e2.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/7c220a2091c26a7f5e9f1cfb099511e3.png",
+      "save": "Save"
+    },{
+      "name": "Banjo-Kazooie: Nuts & Bolts (reNut)",
+      "tags": ["360", "platformer", "multilingual"],
+      "source": "https://github.com/masterspike52/reNut",
+      "folder": "reNut",
+      "instructions": "Required files: Banjo-Kazooie - Nuts & Bolts (USA) (En,Ja,Fr,De,Es,It,Nl,Sv,No,Zh,Ko,Pl,Ru,Cs).iso (CRC32: 32FE9EF7)\n\nLanguages: Multilingual.\n\nUse extract-xiso.exe to extract the assets and place the files in the assets folder at the root of the port folder.",
+      "image": "https://cdn2.steamgriddb.com/grid/17faa600670ae46a32ff83f76e83806a.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/f88920d4589dae7abec2eb05fca153e3.png",
+      "save": "%USERPROFILE%\\Documents\\renut"
+    },{
+      "name": "Battle Arena Toshinden (BATRecomp)",
+      "tags": ["ps1", "njh-1001", "fighting"],
+      "source": "https://github.com/NJH-1001/BATRecomp",
+      "folder": "BATRecomp",
+      "instructions": "Required files: USA Redump-style CUE plus all 14 BIN tracks\n\nLanguages: English",
+      "image": "https://cdn2.steamgriddb.com/grid/1a76edd068d12643e9b14ceb670fd427.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/367e1c293a8ac7f017483bed97b20265.png"
+    },{
+      "name": "Beetle Adventure Racing (beetle-adventure-racing-recomp)",
+      "tags": ["n64", "racing"],
+      "source": "https://github.com/danielgomesvieira2000/beetle-adventure-racing-recomp",
+      "folder": "beetle-adventure-racing-recomp",
+      "instructions": "Required files: Beetle Adventure Racing! (USA) (En,Fr,De).z64 (CRC32: F4A97C73)\n\nPut the required file in the port folder.",
+      "image": "https://cdn2.steamgriddb.com/grid/a53eaf73493994af66b20f4596410adc.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/b43c598f809aceed313c0188dcfd6efb.png"
+    },{
+      "name": "Blood Omen: Legacy of Kain (blood-omen-legacy-of-kain-recomp)",
+      "tags": ["ps1", "alexbeav"],
+      "source": "https://github.com/Alexbeav/blood-omen-legacy-of-kain-recomp",
+      "website": "https://alexbeav.github.io/psxrecomp-ports/",
+      "folder": "blood-omen-legacy-of-kain-recomp",
+      "instructions": "Required files: SLUS-00027. BIOS: Regional SCPH",
+      "image": "https://cdn2.steamgriddb.com/grid/acb750a8d55ac0f804fca52bf05c1ddb.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/56ab46df1ed0575bf712b1a39978a133.png",
+      "save": "saves"
+    },{
+      "name": "Bloody Roar 2: Bringer of the New Age (BloodyRoar2Recomp)",
+      "tags": ["ps1", "fighting"],
+      "source": "https://github.com/novapowers0/BloodyRoar2Recomp",
+      "folder": "BloodyRoar2Recomp",
+      "instructions": "Required files: Bloody Roar II (USA).bin/cue (CRC32: F5EC130A/5679034E)\n\nLanguages: English.",
+      "image": "https://cdn2.steamgriddb.com/grid/8b840ab8671c2a17b7b49fb9169df960.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/563dc6cc0586f6fe22c71fac9b8783ae.png",
+      "save": "saves"
+    },{
+      "name": "Bloody Roar II (bloody-roar-ii-recomp)",
+      "tags": ["ps1", "alexbeav", "multiplayer"],
+      "source": "https://github.com/Alexbeav/bloody-roar-ii-recomp",
+      "website": "https://alexbeav.github.io/psxrecomp-ports/",
+      "folder": "bloody-roar-ii-recomp",
+      "instructions": "Required files: SCUS-94424. BIOS: SCPH-1001",
+      "image": "https://cdn2.steamgriddb.com/grid/b7a39d954b0f57f9bdd6aa85a223091b.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/563dc6cc0586f6fe22c71fac9b8783ae.png",
+      "save": "saves"
+    },{
+      "name": "Blue Dragon (reblue-XenosRecomp)",
+      "tags": ["360", "rpg"],
+      "source": "https://github.com/zolaware/reblue-XenosRecomp",
+      "folder": "reblue-XenosRecomp",
+      "instructions": "Required files: Blue Dragon (USA, Europe) (En,Fr)\n\nLanguages: English, French.\n\nPlace the .bin file in the assets folder at the root of the port folder.",
+      "image": "https://cdn2.steamgriddb.com/grid/28e3bed162f123fc16f3084bbe61d98c.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/0373773367d222af429a7e5ab573a42d.png"
+    },{
+      "name": "Bomberman 64 (BM64Recomp)",
+      "tags": ["n64", "platformer", "multiplayer"],
+      "source": "https://github.com/RevoSucks/BM64Recomp",
+      "folder": "BM64Recomp",
+      "instructions": "Required files: Bomberman 64 (USA).z64 (CRC32: 3ED0E0DC)\n\nPortable saves : portable.txt in root folder.",
+      "image": "https://cdn2.steamgriddb.com/grid/c5b781ce025e8217c23f95f9569a0b96.png",
+      "save": {
+        "windows": "%LOCALAPPDATA%\\BM64Recompiled",
+        "linux": "~/.config/BM64Recompiled"
+      },
+      "save2": "saves"
+    },{
+      "name": "Bomberman Hero (BMHeroRecomp)",
+      "tags": ["n64", "platformer"],
+      "source": "https://github.com/RevoSucks/BMHeroRecomp",
+      "folder": "BMHeroRecomp",
+      "instructions": "Required files: Bomberman Hero (USA).z64 (CRC32: 2CC2E634)",
+      "image": "https://cdn2.steamgriddb.com/grid/c066a90d58918e9b6bd5073037966adc.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/baaedcdb844cfad4d960c9df351fd807.png"
+    },{
+      "name": "Brave Fencer Musashi (brave-fencer-musashi-recomp)",
+      "tags": ["ps1", "alexbeav"],
+      "source": "https://github.com/Alexbeav/brave-fencer-musashi-recomp",
+      "website": "https://alexbeav.github.io/psxrecomp-ports/",
+      "folder": "brave-fencer-musashi-recomp",
+      "instructions": "Required files: SLUS-00726. BIOS: SCPH-1001",
+      "image": "https://cdn2.steamgriddb.com/grid/efbe9ba7be226c38215c564351322490.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/d33c628333c8ccf97697dd944d8e5a2d.png",
+      "save": "saves"
+    },{
+      "name": "Bushido Blade 2 (bushido-blade-2-recomp)",
+      "tags": ["ps1", "alexbeav"],
+      "source": "https://github.com/Alexbeav/bushido-blade-2-recomp",
+      "website": "https://alexbeav.github.io/psxrecomp-ports/",
+      "folder": "bushido-blade-2-recomp",
+      "instructions": "Required files: SLUS-00663. BIOS: SCPH-1001. Known issues: Wave 4 validation limits apply: Windows setup verified on the exact package; gameplay on the public packages and native Linux/macOS setup are unverified. Use the complete matching Redump CUE/BIN set (or a CHD of it) and the required SCPH-1001 BIOS.",
+      "image": "https://cdn2.steamgriddb.com/grid/9e30406afccf16ae8fce4865dd865063.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/148c2ad42607c372038edd48cad30120.png",
+      "save": "saves"
+    },{
+      "name": "Castlevania: Legacy of Darkness (cvlod_recomp)",
+      "tags": ["n64", "action-adventure"],
+      "source": "https://github.com/fliperama86/cvlod_recomp",
+      "folder": "cvlod_recomp",
+      "instructions": "Required files: Castlevania - Legacy of Darkness (USA).z64 (CRC32: AB13028C)",
+      "mods": "https://thunderstore.io/c/banjo-recompiled/",
+      "image": "https://cdn2.steamgriddb.com/grid/363ed890155b2eeda0aa492cc52e3d34.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/419d2439f2540b883c361010cc19e4b8.png",
+      "save": "%APPDATA%\\LodRecomp"
+    },{
+      "name": "Castlevania: Symphony of the Night (NocturneRecomp)",
+      "tags": ["360", "metroidvania", "multilingual"],
+      "source": "https://github.com/birabittoh/NocturneRecomp",
+      "folder": "NocturneRecomp",
+      "instructions": "Required files: 9F2DAA064D494AA82B43B65362C59E9B89A88F8F58 (CRC32: CBC68CD8)\n\nLanguages: Multilingual, edit the nocturnerecomp.toml file at the line user_language : 1 = english, 2 = japanese, 3 = german, 4 = french, 5 = spanish, 6 = italian.\n\nUse Goopie or Python to extract the assets and place the files in the assets folder at the root of the port folder.",
+      "image": "https://cdn2.steamgriddb.com/grid/14c31b2ebc49eaf271d65ff4522eae4e.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/39f28409dd43f3a7248ceb0cdf3d46c6/32/512x512.png",
+      "save": "%USERPROFILE%\\Documents\\nocturnerecomp"
+    },{
+      "name": "Castlevania: Symphony of the Night (SymphonyRecomp)",
+      "tags": ["ps1", "metroidvania"],
+      "source": "https://github.com/BlackLabelHQ/SymphonyRecomp",
+      "android_source": "https://github.com/sergiomanzur/SymphonyRecomp",
+      "android_package": "com.blacklabelhq.sotn",
+      "folder": "SymphonyRecomp",
+      "instructions": "Required files: Castlevania - Symphony of the Night (USA) (Track 1/2).bin/.cue (CRC32: 05BE47B2/70EFB5C6/8B07C1CC)\n\nThe .bin and .cue files must be in the same folder; provide the .cue file to the port.",
+      "image": "https://cdn2.steamgriddb.com/grid/14c31b2ebc49eaf271d65ff4522eae4e.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/39f28409dd43f3a7248ceb0cdf3d46c6/32/512x512.png"
+    },{
+      "name": "Chameleon Twist (ChameleonTwist1-JP-Recomp)",
+      "tags": ["n64", "platformer"],
+      "source": "https://github.com/Rainchus/ChameleonTwist1-JP-Recomp",
+      "folder": "ChameleonTwist1-JP-Recomp",
+      "instructions": "Required files: Chameleon Twist (Japan).z64 (CRC32: 6395C475)",
+      "image": "https://cdn2.steamgriddb.com/grid/78ec3e9ba98d856873f1bdb01194eef9.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/c1f22f4c38899f51f1ed3ce20120bbd9.png",
+      "save": "%LOCALAPPDATA%\\ChameleonTwistRecompiled"
+    },{
+      "name": "Colin McRae Rally 2.0 (colin-mcrae-rally-2-0-recomp)",
+      "tags": ["ps1", "alexbeav"],
+      "source": "https://github.com/Alexbeav/colin-mcrae-rally-2-0-recomp",
+      "website": "https://alexbeav.github.io/psxrecomp-ports/",
+      "folder": "colin-mcrae-rally-2-0-recomp",
+      "instructions": "Required files: SLUS-01222. BIOS: Regional SCPH",
+      "image": "https://cdn2.steamgriddb.com/grid/7a8b4fa11fb36025971a7fa8661563e9.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/689015a79b8cc0455971e7b1ec66252c.png",
+      "save": "saves"
+    },{
+      "name": "Colony Wars (colony-wars-recomp)",
+      "tags": ["ps1", "alexbeav"],
+      "source": "https://github.com/Alexbeav/colony-wars-recomp",
+      "website": "https://alexbeav.github.io/psxrecomp-ports/",
+      "folder": "colony-wars-recomp",
+      "instructions": "Required files: SLUS-00543 · SLUS-00554. BIOS: SCPH-5552. Known issues: Wave 3 validation limits apply. Use the complete matching Redump CUE/BIN set and the required SCPH-5552 BIOS. Later-disc gameplay and disc transitions are not qualified on the final packages.",
+      "image": "https://cdn2.steamgriddb.com/grid/951e6609e77cd8d3d8511d5964cfb1ce.jpg",
+      "icon": "https://cdn2.steamgriddb.com/icon/c790787d9a7c4289410e43ee1cc27373.png",
+      "save": "saves"
+    },{
+      "name": "Colony Wars: Red Sun (colony-wars-red-sun-recomp)",
+      "tags": ["ps1", "alexbeav"],
+      "source": "https://github.com/Alexbeav/colony-wars-red-sun-recomp",
+      "website": "https://alexbeav.github.io/psxrecomp-ports/",
+      "folder": "colony-wars-red-sun-recomp",
+      "instructions": "Required files: SLUS-00866. BIOS: SCPH-1001. Known issues: Wave 4 validation limits apply: Windows setup verified on the exact package; gameplay on the public packages and native Linux/macOS setup are unverified. Use the complete matching Redump CUE/BIN set (or a CHD of it) and the required SCPH-1001 BIOS. Movie centering is applied through the bundled accepted mod.",
+      "image": "https://cdn2.steamgriddb.com/grid/cec62899874a8f4f0dc32ec33b8498ff.jpg",
+      "save": "saves"
+    },{
+      "name": "Command & Conquer (CNC3D_Source)",
+      "tags": ["n64", "strategy"],
+      "website": "https://cnc3dgame.com/#live",
+      "folder": "CNC3D_Source",
+      "instructions": "Download the file from the site and unzip it into the Library/CNC3D_Source folder.",
+      "image": "https://cdn2.steamgriddb.com/grid/9cf6243f1d57f49fdfb52985f16eb9d0.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/0559109a26611411de7acdb477d63f10/32/256x256.png"
+    },{
+      "name": "Condemned 2: Bloodshot (Condemned2Recomp)",
+      "tags": ["360", "survival horror", "multilingual"],
+      "source": "https://github.com/psxrestore/Condemned2Recomp",
+      "folder": "Condemned2Recomp",
+      "instructions": "Required files: Condemned 2 - Bloodshot (USA, Europe) (En,Fr,Es,It).iso (CRC32: 68F0A111)\n\nUse extract-xiso.exe to extract the assets and place the files in the assets folder at the root of the port folder.",
+      "image": "https://cdn2.steamgriddb.com/grid/2ac8f1d97ea8fe3c911b0f0395312583.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/52836c76fd8dedb1337663e14148fbf8.png"
+    },{
+      "-name": "Conker's Bad Fur Day (ConkerRecomp)",
+      "tags": ["n64", "platformer"],
+      "source": "https://github.com/ConkerRecomp/ConkerRecomp",
+      "folder": "ConkerRecomp",
+      "instructions": "Required files: Conker's Bad Fur Day (USA).z64 (CRC32: CE8CC172).",
+      "image": "https://cdn2.steamgriddb.com/grid/29badebfcb56e531b4e38f81fff9dd20.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/7cfe973cfd3353ecacc3ec1e53a1c5ea.png"
+    },{
+      "name": "Crash Bandicoot (CrashBandicoot-Launcher)",
+      "tags": ["ps1", "platformer"],
+      "source": "https://github.com/Matteo842/CrashBandicoot-Launcher",
+      "folder": "CrashBandicoot-Launcher",
+      "instructions": "Required files: Crash Bandicoot (USA).bin/cue (CRC32: 41B5F211/7420271E)\n\nLanguages: English",
+      "image": "https://cdn2.steamgriddb.com/grid/8282b546dda9ec05515966ba0fe3e5d1.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/8c97612c3a3f6f599b47dce13298f48a.png"
+    },{
+      "name": "Crash Bandicoot 2: Cortex Strikes Back (Crash2Recomp)",
+      "tags": ["ps1", "platformer"],
+      "source": "https://github.com/Zumbo06/Crash2Recomp",
+      "folder": "Crash2Recomp",
+      "instructions": "Required files: Crash Bandicoot 2 - Cortex Strikes Back (USA).bin/cue (CRC32: 395C0916/70106695)\n\nLanguages: English",
+      "image": "https://cdn2.steamgriddb.com/grid/17dddefe8de5448105e58ca6e033a792.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/fc8fdb29501a6289b7bc8b0bdd8155df.png"
+    },{
+      "name": "Crash Bandicoot 3: Warped (crash-bandicoot-3-warped-recomp)",
+      "tags": ["ps1", "alexbeav"],
+      "source": "https://github.com/Alexbeav/crash-bandicoot-3-warped-recomp",
+      "website": "https://alexbeav.github.io/psxrecomp-ports/",
+      "folder": "crash-bandicoot-3-warped-recomp",
+      "instructions": "Required files: SCUS-94244. BIOS: SCPH-5552. Known issues: Wave 3 validation limits apply. Use the complete matching Redump CUE/BIN set and the required SCPH-5552 BIOS.",
+      "image": "https://cdn2.steamgriddb.com/grid/04514b9893dd1719269aea025015ebe9.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/533fd1de4dd281c9d10ab362a0d4f0f6.png",
+      "save": "saves"
+    },{
+      "name": "Crash Team Racing (ctr-native)",
+      "tags": ["ps1", "racing", "multiplayer"],
+      "source": "https://github.com/CTR-tools/ctr-native",
+      "folder": "ctr-native",
+      "instructions": "Required files: CTR - Crash Team Racing (USA).bin (CRC32: 9A742438)\n\nLanguages: English.\n\nPlace the .bin file in the assets folder at the root of the port folder.",
+      "mods": "https://github.com/CTR-tools/CTR-ModSDK",
+      "image": "https://cdn2.steamgriddb.com/grid/9ab753f52cc2010c347f05159edb9bd6.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/de0d969fa05ce77bb4f5d11b23f0c2fd.png"
+    },{
+      "name": "Dante's Inferno (hells-gate-recomp)",
+      "tags": ["360", "beat them all"],
+      "source": "https://github.com/florinp93/hells-gate-recomp",
+      "folder": "hells-gate-recomp",
+      "instructions": "Required files: ",
+      "image": "https://cdn2.steamgriddb.com/grid/4b16f49bdb6b891e01276afbaed1d675.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/2f2b265625d76a6704b08093c652fd79.png"
+    },{
+      "name": "Dead or Alive Xtreme Beach Volleyball (doaxbv-re)",
+      "tags": ["xbox", "sport"],
+      "source": "https://github.com/NoRain211/doaxbv-re",
+      "folder": "doaxbv-re",
+      "instructions": "Required files: USA game ISO",
+      "image": "https://cdn2.steamgriddb.com/grid/3323561254636cb8416efd2ca44c4b67.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/f54fd264edeb6c5043be90f1570d4ea3.png"
+    },{
+      "name": "Dead Rising 2 : Case Zero (Dead_Rising_2_Case_Zero_Xenon_Recomp)",
+      "tags": ["360", "action-adventure"],
+      "source": "https://github.com/wivi514/Dead_Rising_2_Case_Zero_Xenon_Recomp",
+      "folder": "Dead_Rising_2_Case_Zero_Xenon_Recomp",
+      "instructions": "Required files: USA ?\n\nUse extract-xiso.exe to extract the contents of the ISO.\nInside the newly created folder, rename the DBZ1 folder to assets.\nMove the assets folder to the root of the port folder.\nInside the assets folder, rename yae1_xenon.xex to default.xex.\n\nLanguages: English.",
+      "image": "https://cdn2.steamgriddb.com/grid/9ba0ccf0a69ae15c85d1b289baa4d494.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/75814c64e85b3353a7a71fcf0d3c4a2f.png"
+    },{
+      "name": "Deadly Premonition (DPRecomp)",
+      "tags": ["360", "survival horror", "multilingual"],
+      "source": "https://github.com/LittleBitUA/DPRecomp",
+      "folder": "DPRecomp",
+      "instructions": "Required files: Deadly Premonition (Europe) (En,Fr,De,Es,It).iso (CRC32: 7F7CCA9B)\n\nUse extract-xiso.exe to extract the assets and place the files in the assets folder at the root of the port folder.",
+      "image": "https://cdn2.steamgriddb.com/grid/cd25d94f494c9aad155c867922594c01.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/3d77a08e1ebeed6c152242a2cb616d6f.png",
+      "save": "%USERPROFILE%\\Documents\\deadlyprem"
+    },{
+      "name": "Destruction Derby 2 (destruction-derby-2-recomp)",
+      "tags": ["ps1", "alexbeav"],
+      "source": "https://github.com/Alexbeav/destruction-derby-2-recomp",
+      "website": "https://alexbeav.github.io/psxrecomp-ports/",
+      "folder": "destruction-derby-2-recomp",
+      "instructions": "Required files: SCUS-94350. BIOS: Regional SCPH",
+      "image": "https://cdn2.steamgriddb.com/grid/8e58a7f518666795c722850a89fd15bb.jpg",
+      "save": "saves"
+    },{
+      "name": "Destruction Derby Raw (destruction-derby-raw-recomp)",
+      "tags": ["ps1", "alexbeav"],
+      "source": "https://github.com/Alexbeav/destruction-derby-raw-recomp",
+      "website": "https://alexbeav.github.io/psxrecomp-ports/",
+      "folder": "destruction-derby-raw-recomp",
+      "instructions": "Required files: SLUS-00912. BIOS: SCPH-1001. Known issues: Wave 4 validation limits apply: Windows setup verified on the exact package; gameplay on the public packages and native Linux/macOS setup are unverified. Use the complete matching Redump CUE/BIN set (or a CHD of it) and the required SCPH-1001 BIOS.",
+      "image": "https://cdn2.steamgriddb.com/grid/ab0968130013b9573e9a648fce2df5a0.png",
+      "save": "saves"
+    },{
+      "name": "Devil Dice (devil-dice-recomp)",
+      "tags": ["ps1", "alexbeav"],
+      "source": "https://github.com/Alexbeav/devil-dice-recomp",
+      "website": "https://alexbeav.github.io/psxrecomp-ports/",
+      "folder": "devil-dice-recomp",
+      "instructions": "Required files: SCES-01312. BIOS: SCPH-5552. Known issues: Wave 4 validation limits apply: Windows setup verified on the exact package; gameplay on the public packages and native Linux/macOS setup are unverified. Use the complete matching Redump CUE/BIN set (or a CHD of it) and the required SCPH-5552 BIOS.",
+      "image": "https://cdn2.steamgriddb.com/grid/c6159fcfaab5c2750a417ec3de3255d2.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/3792d187df6547ac7114f041a6dc4bba.png",
+      "save": "saves"
+    },{
+      "name": "Diablo (diablo-recomp)",
+      "tags": ["ps1", "alexbeav", "multiplayer"],
+      "source": "https://github.com/Alexbeav/diablo-recomp",
+      "website": "https://alexbeav.github.io/psxrecomp-ports/",
+      "folder": "diablo-recomp",
+      "instructions": "Required files: SLUS-00619. BIOS: SCPH-1001",
+      "image": "https://cdn2.steamgriddb.com/grid/cced2922f69c1c789ba9d1c9c4210b1c.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/65793916d10b56afcf7a343e521b89df.png",
+      "save": "saves"
+    },{
+      "name": "Diablo + Hellfire (DevilutionX)",
+      "tags": ["pc", "hack and slash"],
+      "source": "https://github.com/diasurgical/DevilutionX",
+      "folder": "DevilutionX",
+      "instructions": "Required files: Diablo + Hellfire on GOG.",
+      "image": "https://cdn2.steamgriddb.com/grid/d0ae205c142c0aa84e1f7a7c20c0c7e5.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/2e2c4bf7ceaa4712a72dd5ee136dc9a8.png"
+    },{
+      "name": "Diddy Kong Racing (DKR-R)",
+      "tags": ["online", "n64", "racing", "multiplayer", "multilingual"],
+      "source": "https://github.com/ThatGuyMcd/DKR-R",
+      "folder": "DKR-R",
+      "instructions": "Required files: Diddy Kong Racing (USA) (En,Fr)/(En,Fr,De) (Rev 1).z64 (CRC32: 5ACCA298/B1E87639)\n\nLanguages: English, French, German.",
+      "image": "https://cdn2.steamgriddb.com/grid/4c38b84197c2e1a8444814d95c2487a8.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/a607946dc79f1013740366224ff2b175.png",
+      "save": "%APPDATA%\\DKRPort"
+    },{
+      "name": "Diddy Kong Racing (goldenballoon)",
+      "tags": ["n64", "racing", "multiplayer", "multilingual"],
+      "source": "https://github.com/akratch/goldenballoon",
+      "folder": "goldenballoon",
+      "instructions": "Required files: Diddy Kong Racing (USA) (En,Fr)/(En,Fr,De) (Rev 1).z64 (CRC32: 5ACCA298/B1E87639)\n\nLanguages: English, French, German.",
+      "image": "https://cdn2.steamgriddb.com/grid/4c38b84197c2e1a8444814d95c2487a8.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/a607946dc79f1013740366224ff2b175.png",
+      "save": "save"
+    },{
+      "name": "Die Hard Trilogy (die-hard-trilogy-recomp)",
+      "tags": ["ps1", "alexbeav"],
+      "source": "https://github.com/Alexbeav/die-hard-trilogy-recomp",
+      "website": "https://alexbeav.github.io/psxrecomp-ports/",
+      "folder": "die-hard-trilogy-recomp",
+      "instructions": "Required files: SLUS-00119. BIOS: Regional SCPH",
+      "image": "https://cdn2.steamgriddb.com/grid/77436531532db0c84d1c3b773de5314c.png",
+      "save": "saves"
+    },{
+      "-name": "Digimon World (??)",
+      "tags": ["ps1", "rpg"],
+      "source": "??",
+      "folder": "??",
+      "instructions": "",
+      "image": "https://cdn2.steamgriddb.com/grid/a390cc25cb3fe73e3a4ce9fbc03f73a5.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/08931d765d99d3e849c9674cc289baf7.png",
+      "save": "saves"
+    },{
+      "name": "Digimon World 2 (digimon-world-2-recomp)",
+      "tags": ["ps1", "alexbeav"],
+      "source": "https://github.com/Alexbeav/digimon-world-2-recomp",
+      "website": "https://alexbeav.github.io/psxrecomp-ports/",
+      "folder": "digimon-world-2-recomp",
+      "instructions": "Required files: SLUS-01193. BIOS: SCPH-1001. Known issues: Wave 4 validation limits apply: Windows setup verified on the exact package; gameplay on the public packages and native Linux/macOS setup are unverified. Use the complete matching Redump CUE/BIN set (or a CHD of it) and the required SCPH-1001 BIOS.",
+      "image": "https://cdn2.steamgriddb.com/grid/73a3320fa46a5e4fad268056af61cd42.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/0407daa784ca04a4767a2be7ffd141e9.png",
+      "save": "saves"
+    },{
+      "name": "Digimon World 2003 (digimon-world-2003-recomp)",
+      "tags": ["ps1", "alexbeav"],
+      "source": "https://github.com/Alexbeav/digimon-world-2003-recomp",
+      "website": "https://alexbeav.github.io/psxrecomp-ports/",
+      "folder": "digimon-world-2003-recomp",
+      "instructions": "Required files: SLES-03936. BIOS: Regional SCPH",
+      "image": "https://cdn2.steamgriddb.com/grid/0cfba54f0df8cbcf1820d4e8b6e24d65.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/08931d765d99d3e849c9674cc289baf7.png",
+      "save": "saves"
+    },{
+      "name": "Dino Crisis (dino-crisis-recomp)",
+      "tags": ["ps1", "alexbeav"],
+      "source": "https://github.com/Alexbeav/dino-crisis-recomp",
+      "website": "https://alexbeav.github.io/psxrecomp-ports/",
+      "folder": "dino-crisis-recomp",
+      "instructions": "Required files: SLUS-00922. BIOS: SCPH-5552. Known issues: Wave 3 validation limits apply. Use the complete matching Redump CUE/BIN set and the required SCPH-5552 BIOS. This kit requires the Rev 1 disc revision.",
+      "image": "https://cdn2.steamgriddb.com/grid/67674b5cb1d114a1786c5c3fbe1e224b.jpg",
+      "icon": "https://cdn2.steamgriddb.com/icon/7876acb66640bad41f1e1371ef30c180/32/256x256.png",
+      "save": "saves"
+    },{
+      "name": "Dino Crisis 2 (dino-crisis-2-recomp)",
+      "tags": ["ps1", "alexbeav"],
+      "source": "https://github.com/Alexbeav/dino-crisis-2-recomp",
+      "website": "https://alexbeav.github.io/psxrecomp-ports/",
+      "folder": "dino-crisis-2-recomp",
+      "instructions": "Required files: SLUS-01279. BIOS: SCPH-5552. Known issues: Wave 3 validation limits apply. Use the complete matching Redump CUE/BIN set and the required SCPH-5552 BIOS.",
+      "image": "https://cdn2.steamgriddb.com/grid/760b6b32a48664b8cf7f57254102184d.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/37d0f121db69fd09f364df89e4405e31.png",
+      "save": "saves"
+    },{
+      "name": "Dinosaur Planet (dino-recomp)",
+      "tags": ["star fox", "n64", "action-adventure"],
+      "source": "https://github.com/DinosaurPlanetRecomp/dino-recomp",
+      "folder": "dino-recomp",
+      "instructions": "Required files: Dinosaur Planet (USA) (Proto) (2000-12-01).z64 (CRC32: A7DAF9FA)\n\nPortable saves : portable.txt in root folder.",
+      "image": "https://cdn2.steamgriddb.com/grid/11738c383581f80d010ca13ac005d763.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/1134604ead16f77309235aa3d327bb59.png",
+      "save": {
+        "windows": "%LOCALAPPDATA%\\DinoPlanetRecompiled",
+        "linux": "~/.config/DinoPlanetRecompiled"
+      },
+      "save2": "saves"
+    },{
+      "name": "DoDonPachi SaiDaiOuJou (SDOJ-Recomp)",
+      "tags": ["360", "shmup", "danmaku", "multiplayer"],
+      "source": "https://github.com/eandis/SDOJ-Recomp",
+      "folder": "SDOJ-Recomp",
+      "instructions": "Required files: DoDonPachi Saidaioujou (Japan).iso + Title Update 1.01 from microsoft_xbox360_title-updates (CRC32: B1B392D3/6D68D98D)\n\nPut the two required files in the port folder and run launch.bat. You can delete the required files after the first start of the game. Use launch.bat to start the game.",
+      "image": "https://cdn2.steamgriddb.com/grid/5bde181ef9b6510a35508dc44a31c920.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/364ea0738097afe1735a46bb1cb962e6.png"
+    },{
+      "-name": "Donkey Kong 64 (dk64)",
+      "tags": ["n64", "dk", "platformer"],
+      "source": "https://gitlab.com/dk64_decomp/dk64",
+      "folder": "dk64",
+      "instructions": "Required files: Donkey Kong 64 (USA).z64 (CRC32: D44B4FC6)",
+      "image": "https://cdn2.steamgriddb.com/grid/86f7d456aa5848c284f7940bdecdef5d.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/bd46c557fbdb2e0f92a082793598803d/32/1024x1024.png"
+    },{
+      "name": "Donkey Kong 64 (Donkey-Kong-64-Recompiled)",
+      "tags": ["n64", "dk", "platformer", "android"],
+      "source": "https://github.com/Rainchus/Donkey-Kong-64-Recompiled",
+      "android_source": "https://github.com/deivid22srk/dk64-recomp-android",
+      "android_package": "com.deivid22srk.dk64recomp",
+      "website": "https://dk64recomp.com/",
+      "folder": "Donkey-Kong-64-Recompiled",
+      "instructions": "Required files: Donkey Kong 64 (USA).z64 (CRC32: D44B4FC6)",
+      "mods": "https://dk64recomp.com/mods.html",
+      "image": "https://cdn2.steamgriddb.com/grid/86f7d456aa5848c284f7940bdecdef5d.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/bd46c557fbdb2e0f92a082793598803d/32/1024x1024.png"
+    },{
+      "name": "Donkey Kong Country (DKC1Recomp)",
+      "tags": ["snes", "platformer"],
+      "source": "https://github.com/elliotttate/DKC1Recomp/",
+      "folder": "DKC1Recomp",
+      "instructions": "Required files: Donkey Kong Country (USA).sfc (CRC32: C946DCA0)",
+      "image": "https://cdn2.steamgriddb.com/grid/befa1d1faf9bc95c1a29d30ea9a751a2.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/ab9d867904cd28aa15dad078d8672de4.png"
+    },{
+      "name": "Donkey Kong Country 2: Diddy's Kong Quest (DKC2Recomp)",
+      "tags": ["snes", "platformer"],
+      "source": "https://github.com/elliotttate/DKC2Recomp",
+      "folder": "DKC2Recomp",
+      "instructions": "Required files: Donkey Kong Country 2 - Diddy's Kong Quest (USA) (En,Fr).sfc (CRC32: 006364DB)",
+      "image": "https://cdn2.steamgriddb.com/grid/5815383dbef0d664c7420eecc4303ae9.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/cb2b01a7f6fb5da3ed42be4fcf80e4be.png"
+    },{
+      "name": "Donkey Kong Country 3: Dixie Kong's Double Trouble! (DKC3Recomp)",
+      "tags": ["snes", "platformer"],
+      "source": "https://github.com/elliotttate/DKC3Recomp",
+      "folder": "DKC3Recomp",
+      "instructions": "Required files: Donkey Kong Country 3 - Dixie Kong's Double Trouble! (USA) (En,Fr).sfc (CRC32: 448EEC19)",
+      "image": "https://cdn2.steamgriddb.com/grid/3acf3ca403eefd71d9820f4a3910284f.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/418c7ad085b6351c0722fc254bd6fd93.png"
+    },{
+      "name": "Doom (uzdoom)",
+      "tags": ["pc", "fps"],
+      "source": "https://github.com/UZDoom/uzdoom",
+      "folder": "uzdoom",
+      "instructions": "Required files: Doom/2.wad (CRC32: BF0EAAC0/EC8725DB)\n\nPut the two required files in the port folder.",
+      "mods": "https://www.moddb.com/games/doom",
+      "image": "https://cdn2.steamgriddb.com/grid/ef58f7ffe086514aa0164c7fc4f6cea8.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/c98399cf427813fcbe9bd5ad68d18f56.png",
+      "save": "%USERPROFILE%\\Documents\\My Games\\UZDoom"
+    },{
+      "name": "Dr. Mario 64 (drmario64_recomp_plus)",
+      "tags": ["n64", "puzzle", "multiplayer"],
+      "source": "https://github.com/theboy181/drmario64_recomp_plus",
+      "folder": "drmario64_recomp_plus",
+      "instructions": "Required files: Dr. Mario 64 (USA).z64 (CRC32: A4701927)",
+      "image": "https://cdn2.steamgriddb.com/grid/55b8547448d21dd203768b4873194667.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/f665651bcc641391820b462874c05e16.png",
+      "save": "%LOCALAPPDATA%\\drmario64_recomp"
+    },{
+      "name": "Dr. Robotnik's Ring Racers (RingRacers)",
+      "tags": ["pc", "racing", "multiplayer", "online"],
+      "source": "https://github.com/KartKrewDev/RingRacers",
+      "folder": "RingRacers",
+      "instructions": "If you have a 2160p monitor, the F11 key on your keyboard will help.\n\nhttps://kartkrew.org/",
+      "mods": "https://mb.srb2.org/addons/categories/dr-robotniks-ring-racers-v2-x.23/",
+      "image": "https://cdn2.steamgriddb.com/grid/79455e981b40f5af04ca6570c59099c8.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/0b8d18d86645462aca0b635fa12e3d7a.png",
+      "exe_is_archive": "ringracers.exe",
+      "preferred_asset": ".exe"
+    },{
+      "name": "Dragon Ball Z: Budokai (DBZ1)",
+      "tags": ["360", "fighting", "multiplayer"],
+      "source": "https://github.com/WistfulHopes/DBZ1",
+      "folder": "DBZ1",
+      "instructions": "Required files: Dragon Ball Z - Budokai HD Collection (USA).iso (CRC32: 63DEBD61) for Xbox 360\n\nUse extract-xiso.exe to extract the contents of the ISO.\nInside the newly created folder, rename the DBZ1 folder to assets.\nMove the assets folder to the root of the port folder.\nInside the assets folder, rename yae1_xenon.xex to default.xex.\n\nLanguages: English.",
+      "image": "https://cdn2.steamgriddb.com/grid/fc5d2ffcd6a10b1863e56d5ec5859bab.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/e4167ecc39403a361d445849dc87bfc4/32/256x256.png"
+    },{
+      "-name": "Dragon Ball Z: Budokai 3 (DBZ-Budokai-3-HD-Collection)",
+      "tags": ["360", "fighting", "multiplayer", "android"],
+      "source": "https://github.com/novapowers0/DBZ-Budokai-3-HD-Collection",
+      "android_source": "https://github.com/Nahalewski/DBZ3-N",
+      "android_package": "com.rexglue.dbz3",
+      "folder": "DBZ-Budokai-3-HD-Collection",
+      "instructions": "Required files: Dragon Ball Z Budokai 3 HD (USA/EU) for Xbox 360\n\nWindows :\nUse extract-xiso.exe to extract the contents of the ISO. to assets.\nMove the assets folder to the root of the port folder.\n\nAndroid:\n- Create Internal storage → DBZ3 (/storage/emulated/0/DBZ3).\n- Copy your own US/NA Xbox 360 game ISO into that folder. Keep it as .iso, not inside a ZIP.\n- Open DBZ3, grant All files access, and return to the app.\n- Tap Choose ISO, browse to Internal storage → DBZ3, select the ISO, then continue to the launcher and tap Play.\n\nLanguages: Multilingual.",
+      "image": "https://cdn2.steamgriddb.com/grid/eef54151a72ee0c2d5d7f0931e16fe2d.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/4ed0bf4797275056399e7725ed8d0937.png"
+    },{
+      "name": "Dragon Ball Z: Ultimate Battle 22 (dragon-ball-z-ultimate-battle-22-recomp)",
+      "tags": ["ps1", "alexbeav"],
+      "source": "https://github.com/Alexbeav/dragon-ball-z-ultimate-battle-22-recomp",
+      "website": "https://alexbeav.github.io/psxrecomp-ports/",
+      "folder": "dragon-ball-z-ultimate-battle-22-recomp",
+      "instructions": "Required files: SLES-03736. BIOS: SCPH-5552. Known issues: Wave 4 validation limits apply: Windows setup verified on the exact package; gameplay on the public packages and native Linux/macOS setup are unverified. Use the complete matching Redump CUE/BIN set (or a CHD of it) and the required SCPH-5552 BIOS.",
+      "image": "https://cdn2.steamgriddb.com/grid/ab851f118195044683ada736d009ea6e.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/590cb2d85e88de9793e89b7209370c72.png",
+      "save": "saves"
+    },{
+      "name": "Driver (driver-recomp)",
+      "tags": ["ps1", "alexbeav"],
+      "source": "https://github.com/Alexbeav/driver-recomp",
+      "website": "https://alexbeav.github.io/psxrecomp-ports/",
+      "folder": "driver-recomp",
+      "instructions": "Required files: SLUS-00842. BIOS: Regional SCPH",
+      "image": "https://cdn2.steamgriddb.com/grid/c5222c186054fa9b75b8596f21040e5d.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/0f8409da923cef50541f7df4e6f8450d.png",
+      "save": "saves"
+    },{
+      "name": "Driver 2 (REDRIVER2)",
+      "tags": ["ps1", "racing", "multiplayer", "multilingual"],
+      "source": "https://github.com/OpenDriver2/REDRIVER2",
+      "folder": "REDRIVER2",
+      "instructions": "Required files: Driver 2 (USA) (Disc 1) (Rev 1).bin (CRC32: ADA7217B)\n\nLanguages: Multilingual.\n\nOpen the port folder, run Launcher.exe, and enter the path to the ISO in the Configure section. In the install folder, there is a .bat script that can extract and convert videos from other versions of the game to retrieve the voiceover language.",
+      "image": "https://cdn2.steamgriddb.com/grid/eb101d7eef150524b3cd895d08e4f673.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/f3a3cc4e1b8b4b0438505c0a38efad9f.png",
+      "save": "%USERPROFILE%\\.driver2"
+    },{
+      "name": "Duck Game (DuckGameRebuilt)",
+      "tags": ["free", "pc", "shooter", "multiplayer", "online"],
+      "source": "https://github.com/TheFlyingFoool/DuckGameRebuilt",
+      "folder": "DuckGameRebuilt",
+      "instructions": "",
+      "image": "https://cdn2.steamgriddb.com/grid/3b589ac96f1627eab36fe02d9bec41ce.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/5fb4b3aec6d1fe7ac39d72fc3fbb2175.png",
+      "save": "%APPDATA%\\DuckGame"
+    },{
+      "name": "Duke Nukem: Land of the Babes (duke-nukem-land-of-the-babes-recomp)",
+      "tags": ["ps1", "alexbeav"],
+      "source": "https://github.com/Alexbeav/duke-nukem-land-of-the-babes-recomp",
+      "website": "https://alexbeav.github.io/psxrecomp-ports/",
+      "folder": "duke-nukem-land-of-the-babes-recomp",
+      "instructions": "Required files: SLUS-01002. BIOS: Regional SCPH",
+      "image": "https://cdn2.steamgriddb.com/grid/21554b11c0c2fa70aa2529024a599f40.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/91c694833b01b70e414bd13a0b14a574.png",
+      "save": "saves"
+    },{
+      "name": "Duke Nukem: Time to Kill (duke-nukem-time-to-kill-recomp)",
+      "tags": ["ps1", "alexbeav"],
+      "source": "https://github.com/Alexbeav/duke-nukem-time-to-kill-recomp",
+      "website": "https://alexbeav.github.io/psxrecomp-ports/",
+      "folder": "duke-nukem-time-to-kill-recomp",
+      "instructions": "Required files: SLUS-00583. BIOS: Regional SCPH",
+      "image": "https://cdn2.steamgriddb.com/grid/f7dcef5e0ce632bd23e63109b3ebfdaa.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/b4f1013b4a92d53a20b4492ca202ff2b.png",
+      "save": "saves"
+    },{
+      "name": "Duke Nukem: Zero Hour (dnzh-overclocked)",
+      "tags": ["n64", "fps", "multiplayer"],
+      "source": {
+        "windows": "https://dnzh-overclocked.com/assets/files/dnzh-windows-x64-full-1.0.0.zip",
+        "linux": "https://dnzh-overclocked.com/assets/files/dnzh-linux-x64-full-1.0.1.zip"
+      },
+      "website": "https://dnzh-overclocked.com/",
+      "folder": "dnzh-overclocked",
+      "executable": {
+        "windows": "DNZHRecompiled.exe",
+        "linux": "DNZHRecompiled"
+      },
+      "instructions": "Required files: Duke Nukem - Zero Hour (USA).z64 (CRC32: 9A3258D7)\n\nCheck for updates manually at https://dnzh-overclocked.com/\n\nPortable saves : portable.txt in root folder.",
+      "image": "https://cdn2.steamgriddb.com/grid/867b40a424378bfa56d7800e23f93070.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/5ddddfa620c792571675a330752735b0.png",
+      "save": {
+        "windows": "%LOCALAPPDATA%\\DNZHRecompiled",
+        "linux": "~/.config/DNZHRecompiled"
+      },
+      "save2": {
+        "windows": "overclocked\\saves",
+        "linux": "overclocked/saves"
+      }
+    },{
+      "name": "Dungeon Keeper (keeperfx)",
+      "tags": ["pc", "strategy"],
+      "source": "https://github.com/dkfans/keeperfx",
+      "folder": "keeperfx",
+      "instructions": "Required files: Dungeon Keeper Gold on GOG or Steam.",
+      "image": "https://cdn2.steamgriddb.com/grid/a28c68b703d699cafd78487d951c63ca.png"
+    },{
+      "name": "Einhänder (Einhander-Recompiled)",
+      "tags": ["ps1", "shmup"],
+      "source": "https://github.com/strider973/Einhander-Recompiled",
+      "folder": "Einhander-Recompiled",
+      "instructions": "Required files: Einhaender (USA).bin/cue (CRC32: 7DD11499/94EA5E7B)\n\nLanguages: English.",
+      "image": "https://cdn2.steamgriddb.com/grid/3f0a0342bb2d3754e3ecc229e65613fa.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/15869308eb7795a355e6ef565a2c6d53.png",
+      "save": "saves"
+    },{
+      "name": "Eternal Sonata (EternalSonataReprise)",
+      "tags": ["trusty bell", "360", "rpg", "multilingual"],
+      "source": "https://github.com/birabittoh/EternalSonataReprise",
+      "folder": "EternalSonataReprise",
+      "instructions": "Required files: Eternal Sonata (Europe) (En,Fr,De,Es,It).iso (CRC32: 2CEC7D69)\n\nLanguages: Multilingual.\n\nManual Installation: Use extract-xiso.exe to extract the assets and place the files in the assets folder at the root of the port folder.",
+      "image": "https://cdn2.steamgriddb.com/grid/8eebd21cc10fece20a43e9b1cc05e4a9.jpg",
+      "save": "%USERPROFILE%\\Documents\\eternalsonata"
+    },{
+      "name": "Extreme-G (ExtremeGRecomp)",
+      "tags": ["n64", "racing", "multiplayer"],
+      "source": "https://gitlab.com/sonicdcer/ExtremeGRecomp",
+      "folder": "ExtremeGRecomp",
+      "instructions": "Required files: Extreme-G (USA).z64 (CRC32: 04CB74EC)\n\nPortable saves : portable.txt in root folder.",
+      "image": "https://cdn2.steamgriddb.com/grid/4959d55019f706533ddc9eb4497a8a3a.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/acc85fcea72cd0e4032763ed0c565dbc.png",
+      "save": {
+        "windows": "%LOCALAPPDATA%\\ExtremeGRecompiled",
+        "linux": "~/.config/ExtremeGRecompiled"
+      },
+      "save2": "saves"
+    },{
+      "name": "F-Zero X (G-Diffuser)",
+      "tags": ["n64", "racing", "multiplayer"],
+      "source": "https://github.com/Zorkats/G-Diffuser",
+      "folder": "G-Diffuser",
+      "instructions": "Required files: F-Zero X (USA)/[BIOS] Nintendo 64DD IPL (Japan) (v1.2).z64/NUD-EFZE-USA_2.ndd (CRC32: 0B561FBA/7F933CE2/EBDFBD2B)\n\nLanguages: English",
+      "image": "https://cdn2.steamgriddb.com/grid/652e2fd3b2fa943f2b4ff310e419d7f2.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/45f71a702b70bc7415bcd9fcc790e551/32/256x256.png",
+      "save": "saves",
+      "extra": "https://raw.githubusercontent.com/Nyaldee/Ports-Launcher/main/extra/G-Diffuser"
+    },{
+      "name": "Fade to Black (fade-to-black-recomp)",
+      "tags": ["ps1", "alexbeav"],
+      "source": "https://github.com/Alexbeav/fade-to-black-recomp",
+      "website": "https://alexbeav.github.io/psxrecomp-ports/",
+      "folder": "fade-to-black-recomp",
+      "instructions": "Required files: SLUS-00236. BIOS: Regional SCPH",
+      "image": "https://cdn2.steamgriddb.com/grid/c1d30254ba63b82a89fb9e8f3bdeafdf.jpg",
+      "icon": "https://cdn2.steamgriddb.com/icon/1a7da998ded68c09b6fb68853539e59a.png",
+      "save": "saves"
+    },{
+      "-name": "Fatal Frame (MikuPan)",
+      "tags": ["project zero", "ps2", "survival horror", "multilingual"],
+      "source": "https://github.com/Mikompilation/MikuPan",
+      "folder": "MikuPan",
+      "instructions": "Required files: NTSC-U and PAL/EU\n\nLanguages: Multilingual.\n\nYou need to copy the files IMG_HD.BIN and IMG_BD.BIN from the matching Fatal Frame ISO to the folder containing the MikuPan executable.",
+      "image": "https://cdn2.steamgriddb.com/grid/830c8e7e327466f868edbc4d3071118e.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/0d2cf688695b43e2b42d77b481f71222.png"
+    },{
+      "name": "Fear Effect (fear-effect-recomp)",
+      "tags": ["ps1", "alexbeav"],
+      "source": "https://github.com/Alexbeav/fear-effect-recomp",
+      "website": "https://alexbeav.github.io/psxrecomp-ports/",
+      "folder": "fear-effect-recomp",
+      "instructions": "Required files: SLUS-00920 · SLUS-01056 · SLUS-01057 · SLUS-01058. BIOS: SCPH-5552. Known issues: Wave 3 validation limits apply. Use the complete matching Redump CUE/BIN set and the required SCPH-5552 BIOS. Later-disc gameplay and disc transitions are not qualified on the final packages.",
+      "image": "https://cdn2.steamgriddb.com/grid/2727a2469eecb0215b3ed62b3bbb14ec.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/d9ee56d47bdcadd39f2ec0d61f571cf3.png",
+      "save": "saves"
+    },{
+      "name": "Fear Effect 2: Retro Helix (fear-effect-2-retro-helix-recomp)",
+      "tags": ["ps1", "alexbeav"],
+      "source": "https://github.com/Alexbeav/fear-effect-2-retro-helix-recomp",
+      "website": "https://alexbeav.github.io/psxrecomp-ports/",
+      "folder": "fear-effect-2-retro-helix-recomp",
+      "instructions": "Required files: SLUS-01266 · SLUS-01275 · SLUS-01276 · SLUS-01277. BIOS: SCPH-1001. Known issues: Wave 4 validation limits apply: Windows setup verified on the exact package; gameplay on the public packages and native Linux/macOS setup are unverified. Use the complete matching Redump CUE/BIN set (or a CHD of it) and the required SCPH-1001 BIOS. Disc changes during play are not qualified.",
+      "image": "",
+      "save": "saves"
+    },{
+      "name": "Fighting Force (fighting-force-recomp)",
+      "tags": ["ps1", "alexbeav", "multiplayer"],
+      "source": "https://github.com/Alexbeav/fighting-force-recomp",
+      "website": "https://alexbeav.github.io/psxrecomp-ports/",
+      "folder": "fighting-force-recomp",
+      "instructions": "Required files: SLUS-00433. BIOS: SCPH-1001",
+      "image": "https://cdn2.steamgriddb.com/grid/47e6b2756d146c48266aead5ccf03909.png",
+      "save": "saves"
+    },{
+      "name": "Final Fantasy IX (final-fantasy-ix-recomp)",
+      "tags": ["ps1", "alexbeav"],
+      "source": "https://github.com/Alexbeav/final-fantasy-ix-recomp",
+      "website": "https://alexbeav.github.io/psxrecomp-ports/",
+      "folder": "final-fantasy-ix-recomp",
+      "instructions": "Required files: SLUS-01251 · SLUS-01295 · SLUS-01296 · SLUS-01297. BIOS: SCPH-5552. Known issues: Wave 3 validation limits apply. Use the complete matching Redump CUE/BIN set and the required SCPH-5552 BIOS. This kit requires the Rev 1 disc revision. Later-disc gameplay and disc transitions are not qualified on the final packages.",
+      "image": "https://cdn2.steamgriddb.com/grid/afd61904eb25c8efcf646d0b04c521f9.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/f6c2a0c4b566bc99d596e58638e342b0/32/256x256.png",
+      "save": "saves"
+    },{
+      "name": "Final Fantasy Tactics (FinFanTacRecomp)",
+      "tags": ["ps1", "njh-1001", "tactical"],
+      "source": "https://github.com/NJH-1001/FinFanTacRecomp",
+      "folder": "FinFanTacRecomp",
+      "instructions": "Required files: Final Fantasy Tactics (USA), SCUS-94221\n\nLanguages: English",
+      "image": "https://cdn2.steamgriddb.com/grid/69e3858f218bceb1a7875574075005b3.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/87a7f631aba283357925824464be7f74.png"
+    },{
+      "name": "Final Fantasy VIII (final-fantasy-viii-recomp)",
+      "tags": ["ps1", "alexbeav"],
+      "source": "https://github.com/Alexbeav/final-fantasy-viii-recomp",
+      "website": "https://alexbeav.github.io/psxrecomp-ports/",
+      "folder": "final-fantasy-viii-recomp",
+      "instructions": "Required files: SLUS-00892 · SLUS-00908 · SLUS-00909 · SLUS-00910. BIOS: SCPH-5552. Known issues: Wave 3 validation limits apply. Use the complete matching Redump CUE/BIN set and the required SCPH-5552 BIOS. Later-disc gameplay and disc transitions are not qualified on the final packages.",
+      "image": "https://cdn2.steamgriddb.com/grid/6a8df01cf0d21e57333bbaa108877383.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/c02d43de36933d4d467dab644d02e6c6.png",
+      "save": "saves"
+    },{
+      "-name": "Forza Horizon (pinyon-shift)",
+      "tags": ["360", "racing"],
+      "source": "https://github.com/arcanite24/pinyon-shift",
+      "folder": "pinyon-shift",
+      "instructions": "",
+      "image": "https://cdn2.steamgriddb.com/grid/c43043335d711ee1590cfcba87ed0009.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/c554942ee622a853af81e6448a2833a6.png"
+    },{
+      "name": "Future Cop: L.A.P.D. (future-cop-lapd-recomp)",
+      "tags": ["ps1", "alexbeav"],
+      "source": "https://github.com/Alexbeav/future-cop-lapd-recomp",
+      "website": "https://alexbeav.github.io/psxrecomp-ports/",
+      "folder": "future-cop-lapd-recomp",
+      "instructions": "Required files: SLES-01449. BIOS: SCPH-5552. Known issues: Wave 4 validation limits apply: Windows setup verified on the exact package; gameplay on the public packages and native Linux/macOS setup are unverified. Use the complete matching Redump CUE/BIN set (or a CHD of it) and the required SCPH-5552 BIOS.",
+      "image": "https://cdn2.steamgriddb.com/grid/1c06fe3a577f0985d39a737caeda6df5.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/24699bced4aeb7cf8d33b0319c4a5c98.png",
+      "save": "saves"
+    },{
+      "name": "G-Police (g-police-recomp)",
+      "tags": ["ps1", "alexbeav"],
+      "source": "https://github.com/Alexbeav/g-police-recomp",
+      "website": "https://alexbeav.github.io/psxrecomp-ports/",
+      "folder": "g-police-recomp",
+      "instructions": "Required files: SLUS-00544 · SLUS-00556. BIOS: SCPH-5552. Known issues: Wave 3 validation limits apply. Use the complete matching Redump CUE/BIN set and the required SCPH-5552 BIOS. Later-disc gameplay and disc transitions are not qualified on the final packages.",
+      "image": "https://cdn2.steamgriddb.com/grid/aa52eba9af93ea26d5270c5a38e21b9a.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/320962619d5a31307176f820ce93067f.png",
+      "save": "saves"
+    },{
+      "name": "G-Police: Weapons of Justice (g-police-weapons-of-justice-recomp)",
+      "tags": ["ps1", "alexbeav"],
+      "source": "https://github.com/Alexbeav/g-police-weapons-of-justice-recomp",
+      "website": "https://alexbeav.github.io/psxrecomp-ports/",
+      "folder": "g-police-weapons-of-justice-recomp",
+      "instructions": "Required files: SLUS-00798. BIOS: SCPH-1001. Known issues: Wave 4 validation limits apply: Windows setup verified on the exact package; gameplay on the public packages and native Linux/macOS setup are unverified. Use the complete matching Redump CUE/BIN set (or a CHD of it) and the required SCPH-1001 BIOS.",
+      "image": "https://cdn2.steamgriddb.com/grid/ac55a25f041641d0ba10b559ad5a78d0.jpg",
+      "save": "saves"
+    },{
+      "name": "Galerians (galerians-recomp)",
+      "tags": ["ps1", "alexbeav"],
+      "source": "https://github.com/Alexbeav/galerians-recomp",
+      "website": "https://alexbeav.github.io/psxrecomp-ports/",
+      "folder": "galerians-recomp",
+      "instructions": "Required files: SLES-02328 · SLES-12328 · SLES-22328. BIOS: SCPH-5552. Known issues: Wave 4 validation limits apply: Windows setup verified on the exact package; gameplay on the public packages and native Linux/macOS setup are unverified. Use the complete matching Redump CUE/BIN set (or a CHD of it) and the required SCPH-5552 BIOS. Disc changes during play are not qualified.",
+      "image": "https://cdn2.steamgriddb.com/grid/966ba328b62a88bcbb7b81810924b0cf.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/f31b90991086fb0698d581ee130a6c0b.png",
+      "save": "saves"
+    },{
+      "-name": "Gears of War 2 (??)",
+      "tags": ["360", "shooter"],
+      "source": "",
+      "folder": "",
+      "instructions": "Required files: Gears of War 2 (USA) (En,Fr,De,Es,It,Zh,Ko,Pl,Ru,Cs,Hu).iso (CRC32: 40AA5253)\n\nLanguages: Multilingual.",
+      "image": "https://cdn2.steamgriddb.com/grid/647b062fed2e696fdfa6825ea0ac9192.jpg",
+      "icon": "https://cdn2.steamgriddb.com/icon/e43739bba7cdb577e9e3e4e42447f5a5.png"
+    },{
+      "-name": "Ghost in the Shell (ghost-in-the-shell-recomp)",
+      "tags": ["ps1", "alexbeav"],
+      "source": "https://github.com/Alexbeav/ghost-in-the-shell-recomp",
+      "website": "https://alexbeav.github.io/psxrecomp-ports/",
+      "folder": "ghost-in-the-shell-recomp",
+      "instructions": "Required files: SCES-01050. BIOS: SCPH-5552. Known issues: Wave 3 validation limits apply. Use the complete matching Redump CUE/BIN set and the required SCPH-5552 BIOS.",
+      "image": "https://cdn2.steamgriddb.com/grid/20bc9c1cba852406a058a4eb94aa2db4.png",
+      "save": "saves"
+    },{
+      "name": "Goemon's Great Adventure (Goemon64Recomp)",
+      "tags": ["n64", "platformer"],
+      "source": "https://github.com/klorfmorf/Goemon64Recomp",
+      "folder": "Goemon64Recomp",
+      "instructions": "Required files: Goemon's Great Adventure (USA).z64 (CRC32: 52D418E1)\n\nPortable saves : portable.txt in root folder.",
+      "mods": "https://gamebanana.com/games/24290",
+      "image": "https://cdn2.steamgriddb.com/grid/7363d3772d8fa8d638fedddde16e4437.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/7624c43931e8ccf280b8fc7374e89412.png",
+      "save": {
+        "windows": "%LOCALAPPDATA%\\Goemon64Recompiled",
+        "linux": "~/.config/Goemon64Recompiled"
+      },
+      "save2": "saves"
+    },{
+      "name": "GoldenEye 007 (goldeneye-pc-port)",
+      "tags": ["n64", "fps", "multiplayer"],
+      "source": "https://github.com/jkdansereau/goldeneye-pc-port",
+      "folder": "goldeneye-pc-port",
+      "instructions": "Required files: GoldenEye 007 (USA).z64 (CRC32: B6330846)\n\nLanguages: English.",
+      "image": "https://cdn2.steamgriddb.com/grid/f0971d67a49ade9bab406f7664e8129d.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/cfdc91383056740a28a0eb1a8b8740ac.png"
+    },{
+      "name": "GoldenEye 007 (GoldenEye-Recomp)",
+      "tags": ["360", "fps", "multiplayer"],
+      "source": "https://github.com/SunJaycy/GoldenEye-Recomp",
+      "folder": "GoldenEye-Recomp",
+      "instructions": "Required files: 30BA92710985645EF623D4A6BA9E8EFFAEC62617 (CRC32: 2DFBEE46)\n\nUse Python to extract the assets and place the files in the assets folder at the root of the port folder.",
+      "image": "https://cdn2.steamgriddb.com/grid/8b984267df4e0dd976e818f727e19e94.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/cfdc91383056740a28a0eb1a8b8740ac.png",
+      "save": "%USERPROFILE%\\Documents\\ge"
+    },{
+      "name": "Gran Turismo 2 (OpenGTPS1)",
+      "tags": ["ps1", "simulation"],
+      "source": "https://github.com/GTTeancum/OpenGTPS1",
+      "folder": "OpenGTPS1",
+      "instructions": "Required files: SCUS-94488, NTSC-U revision 2\n\nLanguages: English.",
+      "image": "https://cdn2.steamgriddb.com/grid/47cd68598781647f7bd34ebb8428d5a0.jpg",
+      "icon": "https://cdn2.steamgriddb.com/icon/48b109f9bb69ce94aaddec5e574787eb.png",
+      "save": "saves"
+    },{
+      "-name": "Grand Theft Auto: Vice City Stories (PSPRecomp_vcs)",
+      "tags": ["gta", "psp", "action-adventure"],
+      "source": "https://github.com/jessicanataliagta/PSPRecomp/tree/main/profiles/vcs",
+      "folder": "PSPRecomp_vcs",
+      "instructions": "Required files: Vice City",
+      "image": "https://cdn2.steamgriddb.com/grid/c8aa48a3667e7a29486f3f978b0e0279.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/1a68e5f4ade56ed1d4bf273e55510750.png"
+    },{
+      "name": "Half Life (xash3d-fwgs)",
+      "tags": ["fps", "android_only"],
+      "android_source": "https://github.com/FWGS/xash3d-fwgs",
+      "android_package": "su.xash.engine.test",
+      "instructions": "Copy valve directory to a folder named xash in the Internal storage.\n\nLanguages: Multilingual.",
+      "image": "https://cdn2.steamgriddb.com/grid/79c9b8bb1e04c2b1aaa4e28092959b6a.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/7f6ffaa6bb0b408017b62254211691b5/32/256x256.png"
+    },{
+      "name": "Harvest Moon 64 (HarvestMoon64Recomp)",
+      "tags": ["hm", "n64", "simulation"],
+      "source": "https://github.com/HarvestMoon64Recomp/HarvestMoon64Recomp",
+      "android_source": "https://github.com/igawa6/HarvestMoon64Recomp",
+      "android_package": "io.github.hm64recomp",
+      "folder": "HarvestMoon64Recomp",
+      "instructions": "Required files: Harvest Moon 64 (USA).z64 (CRC32: DECDC0AD)\n\nPortable saves : portable.txt in root folder.",
+      "image": "https://cdn2.steamgriddb.com/grid/cab8fb3904dfe2e30a8579bc38e74ada.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/d093b4a150384ffc0b1bb5d5042c0df4.png",
+      "save": {
+        "windows": "%LOCALAPPDATA%\\HarvestMoon64Recompiled",
+        "linux": "~/.config/HarvestMoon64Recompiled"
+      },
+      "save2": "saves"
+    },{
+      "name": "Hollow Knight: Silksong (SilksongAndroid)",
+      "tags": ["metroidvania", "android_only"],
+      "android_source": "https://github.com/jakobkhansen/SilksongAndroid",
+      "android_package": "com.jakobkhansen.silksong",
+      "instructions": "If you'd rather not sign in, download the game's Linux depot on a PC with DepotDownloader. The Linux files are the ones the port is built from; the Windows (1030301) and macOS (1030302) depots will not do, and the app rejects them: DepotDownloader -app 1030300 -depot 1030303 -username <your account> -password <your password> -dir silksong\n\nLanguages: Multilingual.",
+      "image": "https://cdn2.steamgriddb.com/grid/48b505846f30602aaff7e2d336720e6d.jpg",
+      "icon": "https://cdn2.steamgriddb.com/icon/8c0809620eb335d49fee9522540183cb/32/256x256.png"
+    },{
+      "name": "Ikemen GO",
+      "tags": ["pc", "mugen", "fighting", "multiplayer"],
+      "source": "https://github.com/ikemen-engine/Ikemen-GO/",
+      "folder": "Ikemen-GO",
+      "instructions": "https://ikemen-engine.github.io/\n\nDiscord server: https://discord.com/invite/QWxxwjE",
+      "mods": "https://google.com/search?q=Ikemen%20GO%20mods",
+      "image": "https://cdn2.steamgriddb.com/grid/b3044296f44c3e1e9f8a4f6b53c1c3cb.jpg",
+      "icon": "https://cdn2.steamgriddb.com/icon/ea498e82579e76f2b96a4edc7a42ce05.png",
+      "save": "save"
+    },{
+      "-name": "Import Tuner Challenge (??)",
+      "tags": ["360", "racing"],
+      "source": "??",
+      "folder": "??",
+      "instructions": "Required files: Import Tuner Challenge\n\nUse extract-xiso.exe to extract the contents of the ISO.\nInside the newly created folder, rename the DBZ1 folder to assets.\nMove the assets folder to the root of the port folder.\nInside the assets folder, rename yae1_xenon.xex to default.xex.\n\nLanguages: English.",
+      "image": "https://cdn2.steamgriddb.com/grid/4bad3409d1e4f54ee568ab1997ec4a7d.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/7bc39d4937be0ebfc5f1b917c62a458b.png"
+    },{
+      "name": "In Cold Blood (in-cold-blood-recomp)",
+      "tags": ["ps1", "alexbeav"],
+      "source": "https://github.com/Alexbeav/in-cold-blood-recomp",
+      "website": "https://alexbeav.github.io/psxrecomp-ports/",
+      "folder": "in-cold-blood-recomp",
+      "instructions": "Required files: SLUS-01294 · SLUS-01314. BIOS: Regional SCPH",
+      "image": "https://cdn2.steamgriddb.com/grid/792e3e4ce8552ed3d0dd92f54e7344a0.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/d227309c6d46920e9bff16ba334e3487.png",
+      "save": "saves"
+    },{
+      "name": "Incredible Crisis (incredible-crisis-recomp)",
+      "tags": ["ps1", "alexbeav"],
+      "source": "https://github.com/Alexbeav/incredible-crisis-recomp",
+      "website": "https://alexbeav.github.io/psxrecomp-ports/",
+      "folder": "incredible-crisis-recomp",
+      "instructions": "Required files: SLUS-01225. BIOS: SCPH-1001. Known issues: Wave 4 validation limits apply: Windows setup verified on the exact package; gameplay on the public packages and native Linux/macOS setup are unverified. Use the complete matching Redump CUE/BIN set (or a CHD of it) and the required SCPH-1001 BIOS.",
+      "image": "https://cdn2.steamgriddb.com/grid/165aa211e74644a617f3e6d8d896f683.png",
+      "save": "saves"
+    },{
+      "name": "Infinite Mario 64 Ever (infinite-mario-64-ever)",
+      "tags": ["n64", "platformer"],
+      "source": "https://github.com/Brawmario/infinite-mario-64-ever",
+      "folder": "infinite-mario-64-ever",
+      "instructions": "Required files: Super Mario 64 (USA).z64 (CRC32: 3CE60709)",
+      "image": "https://cdn2.steamgriddb.com/grid/2af7ac10b0b96eb5757defbb65e21b99.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/856b909fc5eb9119e36a007b4ebeb72b.png",
+      "save": "%APPDATA%\\Godot"
+    },{
+      "name": "Initial D Arcade Stage Ver. 3 (Initial-D-Arcade-Stage-3-Native-SH-4-Recompilation-WIP-)",
+      "tags": ["naomi", "arcade", "racing"],
+      "source": "https://github.com/distilledorion-sketch/Initial-D-Arcade-Stage-3-Native-SH-4-Recompilation-WIP-",
+      "folder": "Initial-D-Arcade-Stage-3-Native-SH-4-Recompilation-WIP-",
+      "instructions": "",
+      "image": "https://cdn2.steamgriddb.com/grid/f04b4053b5b1c5fabd05ca595aedf1c9.png"
+    },{
+      "name": "Jackie Chan Stuntmaster (jackie-chan-stuntmaster-recomp)",
+      "tags": ["ps1", "alexbeav"],
+      "source": "https://github.com/Alexbeav/jackie-chan-stuntmaster-recomp",
+      "website": "https://alexbeav.github.io/psxrecomp-ports/",
+      "folder": "jackie-chan-stuntmaster-recomp",
+      "instructions": "Required files: SLUS-00684. BIOS: SCPH-1001",
+      "image": "https://cdn2.steamgriddb.com/grid/4370a09825ce603a74e42ef6eca56ef9.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/2533522657a530845c07f2496211d415.png",
+      "save": "saves"
+    },{
+      "name": "Jade Cocoon: Story of the Tamamayu (jade-cocoon-recomp)",
+      "tags": ["ps1", "alexbeav"],
+      "source": "https://github.com/Alexbeav/jade-cocoon-recomp",
+      "website": "https://alexbeav.github.io/psxrecomp-ports/",
+      "folder": "jade-cocoon-recomp",
+      "instructions": "Required files: SLUS-00854. BIOS: SCPH-1001. Known issues: Wave 4 validation limits apply: Windows setup verified on the exact package; gameplay on the public packages and native Linux/macOS setup are unverified. Use the complete matching Redump CUE/BIN set (or a CHD of it) and the required SCPH-1001 BIOS.",
+      "image": "https://cdn2.steamgriddb.com/grid/d175eeb42e10f666b53d627660450288.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/7fe61f156a674de0eb34eee36d98f68e.png",
+      "save": "saves"
+    },{
+      "name": "Jak and Daxter / Jak II / Jak 3 (jak-project)",
+      "tags": ["ps2", "platformer", "multilingual"],
+      "source": "https://github.com/open-goal/jak-project",
+      "folder": "jak-project",
+      "instructions": "Required files: Jak and Daxter / Jak II / Jak 3 USA\n\nLanguages: Multilingual.\n\nStart OpenGOAL_Launcher.bat.",
+      "image": "https://cdn2.steamgriddb.com/grid/ad7bd21ea211a539896e40e449cdfd14.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/7a20fd764fa23d34b52bd85bf5cb49a6.png",
+      "save": "%APPDATA%\\OpenGOAL",
+      "extra": "https://raw.githubusercontent.com/Nyaldee/Ports-Launcher/main/extra/jak-project/OpenGOAL_Launcher.bat"
+    },{
+      "name": "Jet Moto / 2 / 3 (Jet-Moto-Anthology)",
+      "tags": ["ps1", "racing"],
+      "source": "https://github.com/GTTeancum/Jet-Moto-Anthology",
+      "folder": "Jet-Moto-Anthology",
+      "instructions": "Required files: Jet Moto (SCUS-94309), Jet Moto 2: Championship Edition (SCUS-94167) and Jet Moto 3 (SCUS-94555)",
+      "image": "https://cdn2.steamgriddb.com/grid/483e11b323ba61276926679ff49f2ee7.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/867ced24bf60f5ace40b3854fce67d84.png",
+      "save": ""
+    },{
+      "name": "Kartia: The Word of Fate (kartia-recomp)",
+      "tags": ["ps1", "alexbeav"],
+      "source": "https://github.com/Alexbeav/kartia-recomp",
+      "website": "https://alexbeav.github.io/psxrecomp-ports/",
+      "folder": "kartia-recomp",
+      "instructions": "Required files: SLUS-00631. BIOS: SCPH-1001. Known issues: Wave 4 validation limits apply: Windows setup verified on the exact package; gameplay on the public packages and native Linux/macOS setup are unverified. Use the complete matching Redump CUE/BIN set (or a CHD of it) and the required SCPH-1001 BIOS.",
+      "image": "https://cdn2.steamgriddb.com/grid/eedad495d6af63b2a3e13cfd104f252e.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/7b70922c241d472a0c2124a71b2d36cc.png",
+      "save": "saves"
+    },{
+      "name": "King's Field (kings-field-recomp)",
+      "tags": ["ps1", "alexbeav"],
+      "source": "https://github.com/Alexbeav/kings-field-recomp",
+      "website": "https://alexbeav.github.io/psxrecomp-ports/",
+      "folder": "kings-field-recomp",
+      "instructions": "Required files: SLPS-00017. BIOS: Regional SCPH",
+      "image": "https://cdn2.steamgriddb.com/grid/b47071610ab585bc8d0db86cbe8d25dc.jpg",
+      "icon": "https://cdn2.steamgriddb.com/icon/4539658bacb9ea1373a0731af4fe2de2.png",
+      "save": "saves"
+    },{
+      "name": "Kirby's Return to Dream Land (ModernGekko)",
+      "tags": ["wii", "platformer", "co-op", "multilingual"],
+      "source": "https://github.com/ExpansionPak/ModernGekko",
+      "folder": "ModernGekko",
+      "instructions": "Languages: Multilingual.",
+      "image": "https://cdn2.steamgriddb.com/grid/4a71f15b68d8a684643e2d899020ac2a.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/f69210c902654f653a42e963bf9d657e.png"
+    },{
+      "name": "Klonoa: Door to Phantomile (Klonoa-Door-to-Phantomile)",
+      "tags": ["ps1", "platformer"],
+      "source": "https://github.com/TechnicallyComputers/Klonoa-Door-to-Phantomile",
+      "folder": "Klonoa-Door-to-Phantomile",
+      "instructions": "Required files: Klonoa - Door to Phantomile (USA).bin (CRC32: 77E279E8)\n\nLanguages: English.",
+      "image": "https://cdn2.steamgriddb.com/grid/a009159372c66a3c5756b06e0d2237ab.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/a4d41b834ea903526373a9a1ae2ac66e.png",
+      "save": "saves"
+    },{
+      "name": "Koudelka (koudelka-recomp)",
+      "tags": ["ps1", "alexbeav"],
+      "source": "https://github.com/Alexbeav/koudelka-recomp",
+      "website": "https://alexbeav.github.io/psxrecomp-ports/",
+      "folder": "koudelka-recomp",
+      "instructions": "Required files: SLES-02897 · SLES-12897 · SLES-22897 · SLES-32897. BIOS: Regional SCPH",
+      "image": "https://cdn2.steamgriddb.com/grid/be952b283978b1775bf8daf79034be1a.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/d927d23c930781800eaefa38f667b2a2.png",
+      "save": "saves"
+    },{
+      "name": "Kula World (kula-world-recomp)",
+      "tags": ["ps1", "alexbeav"],
+      "source": "https://github.com/Alexbeav/kula-world-recomp",
+      "website": "https://alexbeav.github.io/psxrecomp-ports/",
+      "folder": "kula-world-recomp",
+      "instructions": "Required files: SCES-01000. BIOS: Regional SCPH",
+      "image": "https://cdn2.steamgriddb.com/grid/386910e3a03dc1da634b45423b23985c.jpg",
+      "icon": "https://cdn2.steamgriddb.com/icon/e76ad700d7fa440fff021c166effab3b.png",
+      "save": "saves"
+    },{
+      "name": "Legacy of Kain: Soul Reaver (legacy-of-kain-soul-reaver-recomp)",
+      "tags": ["ps1", "alexbeav"],
+      "source": "https://github.com/Alexbeav/legacy-of-kain-soul-reaver-recomp",
+      "website": "https://alexbeav.github.io/psxrecomp-ports/",
+      "folder": "legacy-of-kain-soul-reaver-recomp",
+      "instructions": "Required files: SLES-01301. BIOS: SCPH-5552",
+      "image": "https://cdn2.steamgriddb.com/grid/4ef81cfbbfcabdabfb8388a0514b5a32.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/49ecdefc6bc4a0afbe59cbf51212146c.png",
+      "save": "saves"
+    },{
+      "-name": "Lost Odyssey (LostOdysseyRecomp)",
+      "tags": ["360", "rpg"],
+      "source": "https://github.com/freefrank/LostOdysseyRecomp/",
+      "folder": "LostOdysseyRecomp",
+      "instructions": "Required files: Audited Europe, Asia or USA, Europe edition; Disc 1 is required to start",
+      "image": "https://cdn2.steamgriddb.com/grid/cc45afd64609c369cc7ac4e8d70fbdc8.jpg",
+      "icon": "https://cdn2.steamgriddb.com/icon/5162c8e2f5e54609e7f32ae984efe16a/32/64x64.png"
+    },{
+      "name": "Luanti",
+      "tags": ["free", "pc", "minecraft", "multiplayer"],
+      "source": "https://github.com/luanti-org/luanti",
+      "folder": "luanti",
+      "instructions": "https://luanti.org/",
+      "mods": "https://content.luanti.org/packages/?type=mod",
+      "image": "https://cdn2.steamgriddb.com/grid/88612c6b1238c067e266c39ad5e09668.jpg",
+      "icon": "https://cdn2.steamgriddb.com/icon/fbff3e430b33ac364ed26e294730583f.png",
+      "save": "worlds"
+    },{
+      "name": "Marble Blast Gold (OpenMBG)",
+      "tags": ["free", "pc", "platformer", "multiplayer"],
+      "source": "https://github.com/The-New-Platinum-Team/OpenMBG",
+      "folder": "OpenMBG",
+      "instructions": "",
+      "image": "https://cdn2.steamgriddb.com/grid/f810cd5fce2258332616ad1d501f1029.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/a8bd1df9197b78a2423b00a4e575f244.png"
+    },{
+      "name": "Marble Blast Ultra (OpenMBU)",
+      "tags": ["free", "360", "platformer", "multiplayer"],
+      "source": "https://github.com/MBU-Team/OpenMBU",
+      "folder": "OpenMBU",
+      "instructions": "",
+      "image": "https://cdn2.steamgriddb.com/grid/6a14ada8ce6fbfebedc2154db173d2f7.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/f0e52b27a7a5d6a1a87373dffa53dbe5.png"
+    },{
+      "name": "Mario Kart 64 (MarioKart64Recomp)",
+      "tags": ["n64", "racing"],
+      "source": "https://gitlab.com/sonicdcer/MarioKart64Recomp",
+      "folder": "MarioKart64Recomp",
+      "instructions": "Required files: Mario Kart 64 (USA).z64 (CRC32: 434389C1)\n\nPortable saves : portable.txt in root folder.",
+      "image": "https://cdn2.steamgriddb.com/grid/bc11db020cb9418782afa3d1e0a1209b.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/2b7d7ea550d05a1386ce3aef76f041f4/32/768x768.png",
+      "save": {
+        "windows": "%LOCALAPPDATA%\\MarioKart64Recompiled",
+        "linux": "~/.config/MarioKart64Recompiled"
+      },
+      "save2": "saves"
+    },{
+      "name": "Mario Kart 64 (SpaghettiKart)",
+      "tags": ["n64", "racing"],
+      "source": "https://github.com/HarbourMasters/SpaghettiKart",
+      "android_source": "https://github.com/izzy2lost/SpaghettiKart",
+      "android_package": "com.izzy.kart",
+      "folder": "SpaghettiKart",
+      "instructions": "Required files: Mario Kart 64 (USA).z64 (CRC32: 434389C1)",
+      "mods": "https://gamebanana.com/games/6558",
+      "image": "https://cdn2.steamgriddb.com/grid/bc11db020cb9418782afa3d1e0a1209b.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/2b7d7ea550d05a1386ce3aef76f041f4/32/768x768.png"
+    },{
+      "name": "Mario Kart Wii (Wiicompiled)",
+      "tags": ["wii", "racing"],
+      "source": "https://github.com/patchzyy/Wiicompiled",
+      "folder": "Wiicompiled",
+      "instructions": "Required files: Mario Kart Wii (USA) (En,Fr,Es).rvz (CRC32: 79BD58C0)\n\nLanguages: Multilingual.\n\nMod manager: https://github.com/TeamWheelWizard/WheelWizard",
+      "image": "https://cdn2.steamgriddb.com/grid/3e619c4f412f6fe1a79243f7e3217f00.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/e0501dd4a84df989ef1664ea7eb22adb.png"
+    },{
+      "name": "Mario Kart: Super Circuit (MarioKartSuperCircuitRecomp)",
+      "tags": ["gba", "racing"],
+      "source": "https://github.com/mstan/MarioKartSuperCircuitRecomp",
+      "folder": "MarioKartSuperCircuitRecomp",
+      "instructions": "Required files: Mario Kart - Super Circuit (USA).gba + GBA BIOS (CRC32: ED316E37/81977335)",
+      "image": "https://cdn2.steamgriddb.com/grid/83d788e65786046542c9354d17b92450.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/43d0193b623ae62359f03ad342298498.png"
+    },{
+      "name": "Mario Party 4 (marioparty4)",
+      "tags": ["gc", "party", "multiplayer"],
+      "source": "https://github.com/mariopartyrd/marioparty4",
+      "folder": "marioparty4",
+      "instructions": "",
+      "image": "https://cdn2.steamgriddb.com/grid/34ee49ced5744eeb86d6e8e9661634aa.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/3e60e09c222f206c725385f53d7e567c.png"
+    },{
+      "name": "Martian Gothic (martian-gothic-recomp)",
+      "tags": ["ps1", "alexbeav"],
+      "source": "https://github.com/Alexbeav/martian-gothic-recomp",
+      "website": "https://alexbeav.github.io/psxrecomp-ports/",
+      "folder": "martian-gothic-recomp",
+      "instructions": "Required files: SLES-01350. BIOS: SCPH-5552. Known issues: Wave 3 validation limits apply. Use the complete matching Redump CUE/BIN set and the required SCPH-5552 BIOS.",
+      "image": "https://cdn2.steamgriddb.com/grid/1225650dad27ba2a49505f1ab4365cee.jpg",
+      "icon": "https://cdn2.steamgriddb.com/icon/5cc28164edf9a64c2939ab5d8effa7c0.png",
+      "save": "saves"
+    },{
+      "name": "MDK (mdk-recomp)",
+      "tags": ["ps1", "alexbeav"],
+      "source": "https://github.com/Alexbeav/mdk-recomp",
+      "website": "https://alexbeav.github.io/psxrecomp-ports/",
+      "folder": "mdk-recomp",
+      "instructions": "Required files: SLES-00599. BIOS: SCPH-5552",
+      "image": "https://cdn2.steamgriddb.com/grid/3aca62adf17c838f9c55c3e61d1cb88c.png",
+      "save": "saves"
+    },{
+      "name": "MediEvil (medievil-recomp)",
+      "tags": ["ps1", "alexbeav"],
+      "source": "https://github.com/Alexbeav/medievil-recomp",
+      "website": "https://alexbeav.github.io/psxrecomp-ports/",
+      "folder": "medievil-recomp",
+      "instructions": "Required files: SCUS-94227. BIOS: SCPH-1001",
+      "image": "https://cdn2.steamgriddb.com/grid/b8b0e9685190772ecdb089f0b4a0369f.png",
+      "save": "saves"
+    },{
+      "name": "MediEvil II (medievil-ii-recomp)",
+      "tags": ["ps1", "alexbeav"],
+      "source": "https://github.com/Alexbeav/medievil-ii-recomp",
+      "website": "https://alexbeav.github.io/psxrecomp-ports/",
+      "folder": "medievil-ii-recomp",
+      "instructions": "Required files: SCUS-94564. BIOS: SCPH-1001",
+      "image": "https://cdn2.steamgriddb.com/grid/9c953d23c6ae4d05c88728e328ddb386.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/f3904a73094a38c26de78d122d639ab1.png",
+      "save": "saves"
+    },{
+      "name": "Mega Man 64 (MegaMan64Recompiled)",
+      "tags": ["n64", "action-adventure"],
+      "source": "https://github.com/MegaMan64Recomp/MegaMan64Recompiled",
+      "folder": "MegaMan64Recompiled",
+      "instructions": "Required files: Mega Man 64 (USA).z64 (CRC32: 1BFC71F0)",
+      "image": "https://cdn2.steamgriddb.com/grid/922fe63760ee36d06e26a0d6776974b0.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/850618e22f83f152773d2a3e51168812.png"
+    },{
+      "name": "Mega Man Legends (mega-man-legends-recomp)",
+      "tags": ["ps1", "alexbeav"],
+      "source": "https://github.com/Alexbeav/mega-man-legends-recomp",
+      "website": "https://alexbeav.github.io/psxrecomp-ports/",
+      "folder": "mega-man-legends-recomp",
+      "instructions": "Required files: SLES-01485. BIOS: Regional SCPH",
+      "image": "https://cdn2.steamgriddb.com/grid/de46b308829039baf89d3f4aee7e22a9.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/230b28a6218d432fec819aaefbdbed34.png",
+      "save": "saves"
+    },{
+      "name": "Mega Man Legends 2 (mega-man-legends-2-recomp)",
+      "tags": ["ps1", "alexbeav"],
+      "source": "https://github.com/Alexbeav/mega-man-legends-2-recomp",
+      "website": "https://alexbeav.github.io/psxrecomp-ports/",
+      "folder": "mega-man-legends-2-recomp",
+      "instructions": "Required files: SLES-03556. BIOS: SCPH-5552. Known issues: Wave 4 validation limits apply: Windows setup verified on the exact package; gameplay on the public packages and native Linux/macOS setup are unverified. Use the complete matching Redump CUE/BIN set (or a CHD of it) and the required SCPH-5552 BIOS.",
+      "image": "https://cdn2.steamgriddb.com/grid/6e96ec6235fbccedab167841eeaafcfb.jpg",
+      "icon": "https://cdn2.steamgriddb.com/icon/cb41662fe265cad3ff1baab4df37b9fa.png",
+      "save": "saves"
+    },{
+      "name": "Mega Man X (MegaManXSNESRecomp)",
+      "tags": ["snes", "platformer"],
+      "source": "https://github.com/mstan/MegaManXSNESRecomp",
+      "folder": "MegaManXSNESRecomp",
+      "instructions": "Required files: Mega Man X (USA) (Rev 1).sfc (CRC32: DED53C64)",
+      "image": "https://cdn2.steamgriddb.com/grid/3f92b9e6169016db21873da9cd07b0c8.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/9860553f175be4eaca7990688da2eb6b/32/256x256.png",
+      "save": "saves"
+    },{
+      "name": "Mega Man X2 (MegaManX2Recomp)",
+      "tags": ["snes", "platformer"],
+      "source": "https://github.com/mstan/MegaManX2Recomp",
+      "folder": "MegaManX2Recomp",
+      "instructions": "Required files: Mega Man X2 (USA).sfc (CRC32: 947B0355)",
+      "image": "https://cdn2.steamgriddb.com/grid/ef63fc56f0cfaf26d14f72370b87e0cb.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/55f2cad795eba35becb202877f4f7616/32/256x256.png",
+      "save": "saves"
+    },{
+      "-name": "Mega Man X3 (MegaManX3Recomp)",
+      "tags": ["snes", "platformer"],
+      "source": "https://github.com/mstan/MegaManX3Recomp",
+      "folder": "MegaManX3Recomp",
+      "instructions": "Required files: Mega Man X3 (USA).sfc (CRC32: FA0FE671)",
+      "image": "https://cdn2.steamgriddb.com/grid/5ae425ce40914db48f393b608b35af62.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/0fadfa80b239d5b355229895b7d606ba/32/256x256.png",
+      "save": "saves"
+    },{
+      "name": "Mega Man X4 (MegaManX4Recomp)",
+      "tags": ["ps1", "platformer"],
+      "source": "https://github.com/mstan/MegaManX4Recomp",
+      "folder": "MegaManX4Recomp",
+      "instructions": "Required files: Mega Man X4 (USA).bin (CRC32: 84774766) + PSX - SCPH1001.BIN",
+      "image": "https://cdn2.steamgriddb.com/grid/1a8e3803ba73d4c2d88022c00c79cef7.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/9a190b2d3a7c7fae28cef4c7bf821b12/32/256x256.png",
+      "save": "saves"
+    },{
+      "name": "Mega Man X5 (MegaManX5Recomp)",
+      "tags": ["ps1", "platformer"],
+      "source": "https://github.com/mstan/MegaManX5Recomp",
+      "folder": "MegaManX5Recomp",
+      "instructions": "Required files: Mega Man X5 (USA).bin (CRC32: 0D0CE609) + PSX - SCPH1001.BIN",
+      "image": "https://cdn2.steamgriddb.com/grid/cb9f3d03afd517931f8bc5993ebef7ad.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/38c695d7d15ad15667ad265d3a1a2243/32/256x256.png",
+      "save": "saves"
+    },{
+      "name": "Mega Man X6 (MegaManX6Recomp)",
+      "tags": ["ps1", "platformer"],
+      "source": "https://github.com/mstan/MegaManX6Recomp",
+      "folder": "MegaManX6Recomp",
+      "instructions": "Required files: Mega Man X6 (USA).bin (CRC32: 031BE0E9) + PSX - SCPH1001.BIN",
+      "image": "https://cdn2.steamgriddb.com/grid/6f90a39149bbc12678d138263d5a4575.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/7d121f98230108ee12396bdb00dd2eab/32/256x256.png",
+      "save": "saves"
+    },{
+      "name": "Men in Black: The Game (men-in-black-the-game-recomp)",
+      "tags": ["ps1", "alexbeav"],
+      "source": "https://github.com/Alexbeav/men-in-black-the-game-recomp",
+      "website": "https://alexbeav.github.io/psxrecomp-ports/",
+      "folder": "men-in-black-the-game-recomp",
+      "instructions": "Required files: SLES-01047. BIOS: Regional SCPH",
+      "image": "https://cdn2.steamgriddb.com/grid/e8069ba9fc839c924b01aaa508b88b00.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/e6b3ce424cdbae54b1188ce7601940df.png",
+      "save": "saves"
+    },{
+      "-name": "Metal Gear Solid (metal-gear-solid-recomp)",
+      "tags": ["ps1", "alexbeav"],
+      "source": "https://github.com/Alexbeav/metal-gear-solid-recomp",
+      "website": "https://alexbeav.github.io/psxrecomp-ports/",
+      "folder": "metal-gear-solid-recomp",
+      "instructions": "Required files: SLES-01370 · SLES-11370. BIOS: SCPH-5552. Known issues: Wave 3 validation limits apply. Use the complete matching Redump CUE/BIN set and the required SCPH-5552 BIOS. Later-disc gameplay and disc transitions are not qualified on the final packages.",
+      "image": "https://cdn2.steamgriddb.com/grid/eba12c8977cdf8a9b7351c33f03d205c.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/cdd96eedd7f695f4d61802f8105ba2b0.png",
+      "save": "saves"
+    },{
+      "name": "Metal Slug X (metal-slug-x-recomp)",
+      "tags": ["ps1", "alexbeav", "multiplayer"],
+      "source": "https://github.com/Alexbeav/metal-slug-x-recomp",
+      "website": "https://alexbeav.github.io/psxrecomp-ports/",
+      "folder": "metal-slug-x-recomp",
+      "instructions": "Required files: SLUS-01212. BIOS: SCPH-1001",
+      "image": "https://cdn2.steamgriddb.com/grid/575e02cb6f0a3a6cf7064dd5a053c33e.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/eaf72c29ea749db9d115947ff9caa86f/32/256x256.png",
+      "save": "saves"
+    },{
+      "name": "Metroid Prime Hunters (MetroidPrimeHuntersRecomp)",
+      "tags": ["ds", "platformer"],
+      "source": "https://github.com/mstan/MetroidPrimeHuntersRecomp",
+      "folder": "MetroidPrimeHuntersRecomp",
+      "instructions": "Required files: Metroid Prime - Hunters (USA, Australia).nds (CRC32: 7FE4554A)\n\nLanguages: English.",
+      "image": "https://cdn2.steamgriddb.com/grid/5df556f9abb947b5d17d3d67a67029e3.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/73c415581357651d534a25384d9315d3.png",
+      "save": "%APPDATA%\\MetroidPrimeHuntersRecomp"
+    },{
+      "name": "Mischief Makers (trouble-makers-pc-recomp)",
+      "tags": ["trouble makers", "n64", "platformer"],
+      "source": "https://github.com/ThiagoLira/trouble-makers-pc-recomp",
+      "folder": "trouble-makers-pc-recomp",
+      "instructions": "Required files: Mischief Makers (USA) (Rev 1).z64 (CRC32: C3300CEF)\n\nLanguages: English.",
+      "image": "https://cdn2.steamgriddb.com/grid/9f393794277e9179468aad98ce4eb57f.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/480af385c4ccec6d0580b4dcc7dad45a/32/96x96.png",
+      "save": "%LOCALAPPDATA%\\troublemakers-recomp"
+    },{
+      "name": "Monster Rancher (monster-rancher-recomp)",
+      "tags": ["ps1", "alexbeav"],
+      "source": "https://github.com/Alexbeav/monster-rancher-recomp",
+      "website": "https://alexbeav.github.io/psxrecomp-ports/",
+      "folder": "monster-rancher-recomp",
+      "instructions": "Required files: SLUS-00568. BIOS: SCPH-5552. Known issues: Wave 3 validation limits apply. Use the complete matching Redump CUE/BIN set and the required SCPH-5552 BIOS. The optional other-disc monster-generation route is not qualified.",
+      "image": "https://cdn2.steamgriddb.com/grid/472fe908a3db6b748e2145f0841286e3.png",
+      "save": "saves"
+    },{
+      "name": "Monster Rancher 2 (monster-rancher-2-recomp)",
+      "tags": ["ps1", "alexbeav", "multiplayer"],
+      "source": "https://github.com/Alexbeav/monster-rancher-2-recomp",
+      "website": "https://alexbeav.github.io/psxrecomp-ports/",
+      "folder": "monster-rancher-2-recomp",
+      "instructions": "Required files: SLUS-00917. BIOS: SCPH-1001. Known issues: The optional other-CD monster-generation flow is not fully qualified.",
+      "image": "https://cdn2.steamgriddb.com/grid/7892fb663869dfd034d7a0f928cfd08f.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/1a5d21d74f96f53e6c08ed25a32915b6.png",
+      "save": "saves"
+    },{
+      "name": "Mortal Kombat 4 (mortal-kombat-4-recomp)",
+      "tags": ["ps1", "alexbeav", "multiplayer"],
+      "source": "https://github.com/Alexbeav/mortal-kombat-4-recomp",
+      "website": "https://alexbeav.github.io/psxrecomp-ports/",
+      "folder": "mortal-kombat-4-recomp",
+      "instructions": "Required files: SLUS-00605. BIOS: SCPH-1001",
+      "image": "https://cdn2.steamgriddb.com/grid/69c5e3c92c2d769ec3be402398685c58.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/90551a457c685bb0d48caa99a9ec698f.png",
+      "save": "saves"
+    },{
+      "name": "Mortal Kombat Trilogy (mortal-kombat-trilogy-recomp)",
+      "tags": ["ps1", "alexbeav"],
+      "source": "https://github.com/Alexbeav/mortal-kombat-trilogy-recomp",
+      "website": "https://alexbeav.github.io/psxrecomp-ports/",
+      "folder": "mortal-kombat-trilogy-recomp",
+      "instructions": "Required files: SLUS-00330. BIOS: SCPH-5552. Known issues: Wave 3 validation limits apply. Use the complete matching Redump CUE/BIN set and the required SCPH-5552 BIOS. This kit requires the Rev 1 disc revision.",
+      "image": "https://cdn2.steamgriddb.com/grid/6852aa253d45b3902baff6a8c08d0c1c.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/76d90b75c6cfb51ac5f82f265b06a6d7.png",
+      "save": "saves"
+    },{
+      "name": "Nanosaur",
+      "tags": ["free", "msdos", "shooter"],
+      "source": "https://github.com/jorio/Nanosaur",
+      "folder": "Nanosaur",
+      "instructions": "Languages: English.",
+      "image": "https://cdn2.steamgriddb.com/grid/c3c7fdcce42b0fc408695e1fba02b1a5.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/fadfdf637107815db80af769d997a32d.png",
+      "save": "%APPDATA%\\Nanosaur"
+    },{
+      "name": "Nanosaur2",
+      "tags": ["free", "macos", "shooter"],
+      "source": "https://github.com/jorio/Nanosaur2",
+      "folder": "Nanosaur2",
+      "instructions": "Languages: English.",
+      "image": "https://cdn2.steamgriddb.com/grid/e46821a28446c5a2b91908a2c6d82313.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/3fb77fe6d3475af64b1ad0b30ca96709.png",
+      "save": "%APPDATA%\\Nanosaur2"
+    },{
+      "name": "Nightmare Creatures (nightmare-creatures-recomp)",
+      "tags": ["ps1", "alexbeav"],
+      "source": "https://github.com/Alexbeav/nightmare-creatures-recomp",
+      "website": "https://alexbeav.github.io/psxrecomp-ports/",
+      "folder": "nightmare-creatures-recomp",
+      "instructions": "Required files: SLUS-00582. BIOS: SCPH-1001",
+      "image": "https://cdn2.steamgriddb.com/grid/195efe4ca371a6562d63bf8c6ce41601.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/3109dd8dc44194832b1013bb0766c895.png",
+      "save": "saves"
+    },{
+      "name": "Nightmare Creatures II (nightmare-creatures-ii-recomp)",
+      "tags": ["ps1", "alexbeav"],
+      "source": "https://github.com/Alexbeav/nightmare-creatures-ii-recomp",
+      "website": "https://alexbeav.github.io/psxrecomp-ports/",
+      "folder": "nightmare-creatures-ii-recomp",
+      "instructions": "Required files: SLUS-01112. BIOS: SCPH-1001. Known issues: Wave 4 validation limits apply: Windows setup verified on the exact package; gameplay on the public packages and native Linux/macOS setup are unverified. Use the complete matching Redump CUE/BIN set (or a CHD of it) and the required SCPH-1001 BIOS. Builds from a title-specific framework override (accepted movie presentation policy); startup is slower than other titles.",
+      "image": "https://cdn2.steamgriddb.com/grid/41e6c09ff1681db649fb3619fcac9c65.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/80b684a68f08b78f660352dd6437b60b.png",
+      "save": "saves"
+    },{
+      "-name": "Ninja Gaiden 2 (Ninja-s-Dawn---A-Ninja-Gaiden-2-Recompilation-Project)",
+      "tags": ["360", "beat them all", "multilingual"],
+      "source": "https://github.com/TheSaltTrader/Ninja-s-Dawn---A-Ninja-Gaiden-2-Recompilation-Project",
+      "folder": "Ninja-s-Dawn---A-Ninja-Gaiden-2-Recompilation-Project",
+      "instructions": "Required files: \n\nLanguages: Multilingual.\n\nPlace the .bin file in the assets folder at the root of the port folder.",
+      "image": "https://cdn2.steamgriddb.com/grid/952316a1c27f03d5b6cd9d6d530d1ee2.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/a952ddeda0b7e2c20744e52e728e5594.png"
+    },{
+      "name": "Oddworld: Abe's Oddysee (oddworld-abe-s-oddysee-recomp)",
+      "tags": ["ps1", "alexbeav"],
+      "source": "https://github.com/Alexbeav/oddworld-abe-s-oddysee-recomp",
+      "website": "https://alexbeav.github.io/psxrecomp-ports/",
+      "folder": "oddworld-abe-s-oddysee-recomp",
+      "instructions": "Required files: SLUS-00190. BIOS: SCPH-1001",
+      "image": "https://cdn2.steamgriddb.com/grid/80c1f602065ea6c3e6db56273de523cb.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/67f3893de9bc096e128498653fbcbb22.png",
+      "save": "saves"
+    },{
+      "name": "osu!",
+      "tags": ["free", "pc", "rhythm", "multiplayer", "online"],
+      "source": "https://github.com/ppy/osu",
+      "folder": "osu",
+      "instructions": "https://osu.ppy.sh/\n\nDiscord server: https://discord.com/invite/osu",
+      "mods": "https://osu.ppy.sh/beatmapsets",
+      "image": "https://cdn2.steamgriddb.com/grid/79bd2e9fd8400fb610d59e4f0e1019f3.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/fe9fc289c3ff0af142b6d3bead98a923/32/256x256.png",
+      "save": "%APPDATA%\\osu",
+      "exe_is_archive": "osu!.exe",
+      "preferred_asset": {
+        "windows": ".exe",
+        "linux": ".AppImage"
+      }
+    },{
+      "name": "OutRun (cannonball)",
+      "tags": ["arcade", "racing"],
+      "source": "https://github.com/djyt/cannonball",
+      "folder": "cannonball",
+      "instructions": "Required files: outrun.zip (CRC32: 87CC12C6)\n\nUnzip the outrun.zip files into the port's roms folder.",
+      "image": "https://cdn2.steamgriddb.com/grid/6c13d0dc13c70776478a77704df67b28.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/5898493fbdf4a44a24084021b2215f85.png"
+    },{
+      "name": "OutRun (cannonball-dx)",
+      "tags": ["arcade", "racing"],
+      "source": "https://github.com/Endprodukt/cannonball-dx",
+      "folder": "cannonball-dx",
+      "instructions": "Required files: outrun.zip (CRC32: 87CC12C6)\n\nUnzip the outrun.zip files into the port's roms folder.",
+      "image": "https://cdn2.steamgriddb.com/grid/6c13d0dc13c70776478a77704df67b28.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/5898493fbdf4a44a24084021b2215f85.png"
+    },{
+      "name": "Paper Mario (Paper-Mario-ReCut)",
+      "tags": ["n64", "rpg"],
+      "source": "https://github.com/SMCGames/Paper-Mario-ReCut",
+      "folder": "Paper-Mario-ReCut",
+      "instructions": "Required files: Paper Mario (USA).z64 (CRC32: A7F5CD7E)\n\nLanguages: English.",
+      "image": "https://cdn2.steamgriddb.com/grid/f98e8082f2b3924b8a137d1cfc12e08b.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/fe51510c80bfd6e5d78a164cd5b1f688.png",
+      "save": "user"
+    },{
+      "name": "Paper Mario (PaperBoat)",
+      "tags": ["n64", "rpg"],
+      "source": "https://github.com/HarbourMasters/PaperBoat",
+      "folder": "PaperBoat",
+      "instructions": "Required files: Paper Mario (USA).z64 (CRC32: A7F5CD7E)\n\nLanguages: English.\n\nDiscord server: https://discord.com/invite/shipofharkinian",
+      "image": "https://cdn2.steamgriddb.com/grid/f98e8082f2b3924b8a137d1cfc12e08b.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/f9028faec74be6ec9b852b0a542e2f39/32/256x256.png",
+      "save": "Save"
+    },{
+      "-name": "Parasite Eve (khasinski-parasite-eve-decomp)",
+      "tags": ["ps1", "rpg", "squaresoft"],
+      "source": "https://github.com/khasinski/parasite-eve-decomp",
+      "folder": "khasinski-parasite-eve-decomp",
+      "instructions": "Required files: Parasite Eve (USA) (Disc 1/2).bin (CRC32: 488641E0/226EE2EE)\n\nLanguages: English.",
+      "image": "https://cdn2.steamgriddb.com/grid/0bdda950546ab40f55cb84fbc3f5f3c7.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/5803f670f46d8225b3962e0a69793951.png"
+    },{
+      "name": "Parasite Eve (parasite-eve-recomp)",
+      "tags": ["ps1", "alexbeav"],
+      "source": "https://github.com/Alexbeav/parasite-eve-recomp",
+      "website": "https://alexbeav.github.io/psxrecomp-ports/",
+      "folder": "parasite-eve-recomp",
+      "instructions": "Required files: SLUS-00662 · SLUS-00668. BIOS: SCPH-1001. Known issues: Natural connected disc change is pending manual gameplay.",
+      "image": "https://cdn2.steamgriddb.com/grid/0bdda950546ab40f55cb84fbc3f5f3c7.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/5803f670f46d8225b3962e0a69793951.png",
+      "save": "saves"
+    },{
+      "-name": "Parasite Eve 2 (Parasite-Eve-2-HD-Remaster)",
+      "tags": ["ps1", "rpg", "squaresoft"],
+      "source": "https://github.com/faligame/Parasite-Eve-2-HD-Remaster",
+      "folder": "Parasite-Eve-2-HD-Remaster",
+      "instructions": "Required files: \n\nLanguages: English.",
+      "image": "https://cdn2.steamgriddb.com/grid/9b365fc974033bf672cdec24386948e3.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/5751ce8b300664a121eebf21256de271.png"
+    },{
+      "name": "Perfect Dark (perfect-dark-dabs-mod)",
+      "tags": ["n64", "fps", "multiplayer", "multilingual"],
+      "source": "https://github.com/DabDavis/perfect-dark-dabs-mod",
+      "folder": "perfect-dark-dabs-mod",
+      "instructions": "Required files: Perfect Dark (USA) (Rev 1), also called ntsc-final or US V1.1\n\nLanguages: English.",
+      "image": "https://cdn2.steamgriddb.com/grid/f2eaa301f9c53bb10fb8e5b9d3d0ea9c.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/df3cdfd672004f1a0058d81c56e7270a.png"
+    },{
+      "name": "Perfect Dark (perfect_dark)",
+      "tags": ["n64", "fps", "multiplayer", "multilingual"],
+      "source": "https://github.com/perfect-dark-pc-port/perfect_dark",
+      "android_source": "https://github.com/izzy2lost/perfect_dark",
+      "android_package": "com.perfectdark.port",
+      "folder": "perfect_dark",
+      "instructions": "Required files: Perfect Dark (USA)/(Japan)/(Europe) (En,Fr,De,Es,It).z64 (CRC32: 68446AD4/639C0DA9/7718A714)\n\nLanguages: Multilingual.",
+      "image": "https://cdn2.steamgriddb.com/grid/f2eaa301f9c53bb10fb8e5b9d3d0ea9c.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/df3cdfd672004f1a0058d81c56e7270a.png",
+      "save": "%APPDATA%\\perfectdark"
+    },{
+      "name": "Pikmin (Open-Nectar---Pikmin-Native-PC-Port)",
+      "tags": ["gc", "strategy"],
+      "source": "https://github.com/SSunnKing/Open-Nectar---Pikmin-Native-PC-Port",
+      "folder": "Open-Nectar---Pikmin-Native-PC-Port",
+      "instructions": "Required files: Pikmin USA Rev. 1 (GPIE01) ISO/GCM",
+      "image": "https://cdn2.steamgriddb.com/grid/fbb12b97a88a081cf8528b62df955103.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/c746c52c4c3f89696680731b2f46e563.png"
+    },{
+      "-name": "Pikmin (pikmin)",
+      "tags": ["gc", "strategy"],
+      "source": "https://github.com/projectPiki/pikmin",
+      "folder": "pikmin",
+      "instructions": "Required files: USA or EU",
+      "image": "https://cdn2.steamgriddb.com/grid/fbb12b97a88a081cf8528b62df955103.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/ad2b3af37972326a75715f36a2ca9614.png"
+    },{
+      "-name": "Pikmin 2 (pikmin2)",
+      "tags": ["gc", "strategy"],
+      "source": "https://github.com/projectPiki/pikmin2",
+      "folder": "pikmin2",
+      "instructions": "Required files: USA or EU",
+      "image": "https://cdn2.steamgriddb.com/grid/85f5d7b15ca87ecbd27c3d17b9578a55.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/475820c2296dc914143683e9edbce43b.png"
+    },{
+      "-name": "Pilotwings 64 (Pilotwings64Recomp)",
+      "tags": ["n64", "simulation"],
+      "source": "https://github.com/gcsmith/Pilotwings64Recomp",
+      "folder": "Pilotwings64Recomp",
+      "instructions": "Required files: Pilotwings 64 (USA).z64 (CRC32: 728807E7)",
+      "image": "https://cdn2.steamgriddb.com/grid/b349a212c3e61e124ae04244eecde663.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/c6d1db3b8c9c598d7c810afee405b57c.png"
+    },{
+      "name": "Pokémon Gen 1 (pokemon-gen1-recomp-project)",
+      "tags": ["gb", "rpg", "multilingual", "android"],
+      "source": "https://github.com/bryanthaboi/pokemon-gen1-recomp-project",
+      "android_package": "com.theboisclub.pokemonred",
+      "folder": "pokemon-gen1-recomp-project",
+      "instructions": "Required files:\n\n• Pokemon - Blue Version (USA, Europe) (SGB Enhanced).gb (CRC32: D6DA8A1A)\n• Pokemon - Red Version (USA, Europe) (SGB Enhanced).gb (CRC32: 9F7FDD53)\n• Pokemon - Yellow Version - Special Pikachu Edition (USA, Europe) (CGB+SGB Enhanced).gb (CRC32: 7D527D62)\n• Pokemon - Gold Version (USA, Europe) (SGB Enhanced) (GB Compatible).gbc (CRC32: 6BDE3C3E)\n• Pokemon - Silver Version (USA, Europe) (SGB Enhanced) (GB Compatible).gbc (CRC32: 8AD48636)\n• Pokemon - Crystal Version (USA, Europe) (Rev 1).gbc (CRC32: 3358E30A)\n\nLanguages: Multilingual with this mod: https://github.com/thibautbus/gen1recomp-translation-mod-generator",
+      "image": "https://cdn2.steamgriddb.com/grid/4d53e7e87772a51972bc942a99de63c9.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/e64860da9a6248363a016357d47bd65f.png",
+      "save": "%APPDATA%\\pokemon-love2d"
+    },{
+      "-name": "Pokémon Platinum (pokeplatinum)",
+      "tags": ["ds", "rpg"],
+      "source": "https://github.com/pret/pokeplatinum",
+      "folder": "pokeplatinum",
+      "instructions": "Required files: Pokemon - Platinum Version (USA).nds (CRC32: 9253921D)\n\nLanguages: English.",
+      "image": "https://cdn2.steamgriddb.com/grid/293d4b3062d071218312a5eb322a3a47.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/691f73fdf1c5edeb3f600c515715a358.png"
+    },{
+      "name": "Pokémon Snap (Snap64Recomp)",
+      "tags": ["n64", "simulation"],
+      "source": "https://github.com/JackandBeans/Snap64Recomp",
+      "folder": "Snap64Recomp",
+      "instructions": "Required files: Pokemon Snap (USA).z64 (CRC32: 86A69756)\n\nLanguages: English.",
+      "image": "https://cdn2.steamgriddb.com/grid/a8212c1322865245870da5fa070350db.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/46673d49b30de9f06adfcdd257a7556b.png",
+      "save": "saves"
+    },{
+      "name": "Pokémon Stadium (PokemonStadiumRecomp)",
+      "tags": ["n64", "strategy", "multiplayer"],
+      "source": "https://github.com/mstan/PokemonStadiumRecomp",
+      "folder": "PokemonStadiumRecomp",
+      "instructions": "Required files: Pokemon Stadium (USA).z64 (CRC32: 72F66F05)\n\nLanguages: English.",
+      "image": "https://cdn2.steamgriddb.com/grid/a53188698d5edf6d2bbe471f7ec7ce5b.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/17657dbabfc95adb4878bce40ab53089.png",
+      "save": "saves"
+    },{
+      "name": "Pro Pinball: Timeshock! (pro-pinball-timeshock-recomp)",
+      "tags": ["ps1", "alexbeav"],
+      "source": "https://github.com/Alexbeav/pro-pinball-timeshock-recomp",
+      "website": "https://alexbeav.github.io/psxrecomp-ports/",
+      "folder": "pro-pinball-timeshock-recomp",
+      "instructions": "Required files: SLUS-00639. BIOS: SCPH-5552. Known issues: Wave 3 validation limits apply. Use the complete matching Redump CUE/BIN set and the required SCPH-5552 BIOS. This kit uses OpenGL at 4x internal resolution and digital controls.",
+      "image": "https://cdn2.steamgriddb.com/grid/9bdbd106b7445e53241aa6acf53883a0.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/4c0be76313fda10284f62fd13ce43f40/8/64x64.png",
+      "save": "saves"
+    },{
+      "-name": "Project Gotham Racing 4 (PGR4-Recomp)",
+      "tags": ["360", "racing", "multiplayer"],
+      "source": "https://github.com/beatrixzy/PGR4-Recomp",
+      "folder": "PGR4-Recomp",
+      "instructions": "Required files: Project Gotham Racing 4 (World) (En,Ja,Fr,De,Es,It,Zh,Ko,Pl,Ru,Cs,Hu).iso (CRC32: 8DED8ED7)\n\nLanguages: Multilingual.\n\nUse extract-xiso.exe to extract the assets and place the files in the assets folder at the root of the port folder. Edit run.bat: --game_data_root \"assets\"",
+      "image": "https://cdn2.steamgriddb.com/grid/90e6b40f3728f30b437e6b71ccda6d0b.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/fd52865dec24ba68bd106c7aa29afa9b/32/64x64.png",
+      "save": "%USERPROFILE%\\Documents\\pgr4_recomp"
+    },{
+      "name": "Quake II (quake-ii-recomp)",
+      "tags": ["ps1", "alexbeav", "multiplayer"],
+      "source": "https://github.com/Alexbeav/quake-ii-recomp",
+      "website": "https://alexbeav.github.io/psxrecomp-ports/",
+      "folder": "quake-ii-recomp",
+      "instructions": "Required files: SLUS-00757. BIOS: SCPH-1001. Known issues: The four-seat multitap path remains experimental. Representative Player 2 testing also remains unqualified.",
+      "image": "https://cdn2.steamgriddb.com/grid/5e26badb3867ac7f26d3624ca39a9df4.jpg",
+      "icon": "https://cdn2.steamgriddb.com/icon/436db71e03605b5aea1e08078f29f7f2.png",
+      "save": "saves"
+    },{
+      "name": "Quest 64 (Quest64-Recomp)",
+      "tags": ["n64", "rpg"],
+      "source": "https://github.com/Rainchus/Quest64-Recomp",
+      "folder": "Quest64-Recomp",
+      "instructions": "Required files: Quest 64 (USA).z64 (CRC32: D75B45C6)",
+      "image": "https://cdn2.steamgriddb.com/grid/59e6bb2bb03821bb51050ea6d0a23bb8.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/cb11a12474e34b83e38e06d2ef1b2830.png"
+    },{
+      "name": "R-Type Delta (r-type-delta-recomp)",
+      "tags": ["ps1", "alexbeav"],
+      "source": "https://github.com/Alexbeav/r-type-delta-recomp",
+      "website": "https://alexbeav.github.io/psxrecomp-ports/",
+      "folder": "r-type-delta-recomp",
+      "instructions": "Required files: SLUS-00877. BIOS: SCPH-5552. Known issues: Wave 3 validation limits apply. Use the complete matching Redump CUE/BIN set and the required SCPH-5552 BIOS.",
+      "image": "https://cdn2.steamgriddb.com/grid/4c01b0e5597b0887e9bf374d6429fe67.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/a64f23737e72f85b8fc0eb8ad5b36458.png",
+      "save": "saves"
+    },{
+      "name": "Re-Volt (RVGL Launcher/Re-Volt)",
+      "tags": ["pc", "racing", "multiplayer", "online"],
+      "source": {
+        "windows": "https://rvgl.org/downloads/rvgl_launcher_win64.zip",
+        "linux": "https://rvgl.org/downloads/rvgl_launcher_linux.zip"
+      },
+      "website": "https://re-volt.gitlab.io/",
+      "folder": "Re-Volt",
+      "instructions": "",
+      "image": "https://cdn2.steamgriddb.com/grid/fb28d8ab066e9745db1b24d392a6d38a.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/f9e817650f505b7c38f29416dfd0ba69/32/256x256.png"
+    },{
+      "name": "Resident Evil 3: Nemesis (resident-evil-3-recomp)",
+      "tags": ["ps1", "alexbeav"],
+      "source": "https://github.com/Alexbeav/resident-evil-3-recomp",
+      "website": "https://alexbeav.github.io/psxrecomp-ports/",
+      "folder": "resident-evil-3-recomp",
+      "instructions": "Required files: SLES-02529. BIOS: SCPH-5552. Known issues: Wave 3 validation limits apply. Use the complete matching Redump CUE/BIN set and the required SCPH-5552 BIOS. Supply the matching owned SBI file for this protected European disc.",
+      "image": "https://cdn2.steamgriddb.com/grid/39e1dd25e194367c68f7d040750f184b.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/1844bd1b6d59ab61b41e110f72b4ef61.png",
+      "save": "saves"
+    },{
+      "name": "Resident Evil Gaiden (regaiden-recomp)",
+      "tags": ["gbc", "survival horror"],
+      "source": "https://github.com/sergiomanzur/regaiden-recomp",
+      "folder": "regaiden-recomp",
+      "instructions": "Required files: Resident Evil Gaiden (USA).gbc (CRC32: F8C5021B)\n\nLanguages: English.",
+      "image": "https://cdn2.steamgriddb.com/grid/ee53170806b5ded86ff5ad2083ae556f.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/eaf76caaba574ebf8e825f321c14ba29.png"
+    },{
+      "name": "Ridge Racer (rage-racer-pc)",
+      "tags": ["ps1", "racing"],
+      "source": "https://github.com/khasinski/rage-racer-pc",
+      "folder": "rage-racer-pc",
+      "instructions": "Required files: Ridge Racer (Europe).bin/cue",
+      "image": "https://cdn2.steamgriddb.com/grid/7fccaf0a51b9cbbcbcca2a4e5cefe7c8.png"
+    },{
+      "name": "Rival Schools: Evolution Disc (rival-schools-evolution-recomp)",
+      "tags": ["ps1", "alexbeav"],
+      "source": "https://github.com/Alexbeav/rival-schools-evolution-recomp",
+      "website": "https://alexbeav.github.io/psxrecomp-ports/",
+      "folder": "rival-schools-evolution-recomp",
+      "instructions": "Required files: SLUS-00771. BIOS: SCPH-1001. Known issues: Wave 4 validation limits apply: Windows setup verified on the exact package; gameplay on the public packages and native Linux/macOS setup are unverified. Use the complete matching Redump CUE/BIN set (or a CHD of it) and the required SCPH-1001 BIOS. Evolution Disc program; the Arcade Disc is its own kit. Save carry-over between the two is untested.",
+      "image": "https://cdn2.steamgriddb.com/grid/ce90824b355436ea948cd73a579f4648.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/7a3971a4d33f7daa4ed021e150c6ecc7.png",
+      "save": "saves"
+    },{
+      "name": "Rival Schools: United by Fate (rival-schools-recomp)",
+      "tags": ["ps1", "alexbeav"],
+      "source": "https://github.com/Alexbeav/rival-schools-recomp",
+      "website": "https://alexbeav.github.io/psxrecomp-ports/",
+      "folder": "rival-schools-recomp",
+      "instructions": "Required files: SLUS-00681. BIOS: SCPH-1001. Known issues: Wave 4 validation limits apply: Windows setup verified on the exact package; gameplay on the public packages and native Linux/macOS setup are unverified. Use the complete matching Redump CUE/BIN set (or a CHD of it) and the required SCPH-1001 BIOS. Arcade Disc program; the Evolution Disc is its own kit. Save carry-over between the two is untested.",
+      "image": "https://cdn2.steamgriddb.com/grid/ce90824b355436ea948cd73a579f4648.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/7a3971a4d33f7daa4ed021e150c6ecc7.png",
+      "save": "saves"
+    },{
+      "name": "Rollcage Stage II (rollcage-stage-ii-recomp)",
+      "tags": ["ps1", "alexbeav"],
+      "source": "https://github.com/Alexbeav/rollcage-stage-ii-recomp",
+      "website": "https://alexbeav.github.io/psxrecomp-ports/",
+      "folder": "rollcage-stage-ii-recomp",
+      "instructions": "Required files: SLUS-00867. BIOS: SCPH-1001. Known issues: Wave 4 validation limits apply: Windows setup verified on the exact package; gameplay on the public packages and native Linux/macOS setup are unverified. Use the complete matching Redump CUE/BIN set (or a CHD of it) and the required SCPH-1001 BIOS.",
+      "image": "https://cdn2.steamgriddb.com/grid/3a7677cd86c61092a7aba73f544f82b2.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/1abdd1363896305b867bff7bbd5b9efd.png",
+      "save": "saves"
+    },{
+      "name": "Sega Superstars Tennis (Sega-Superstars-Tennis-ReMatch)",
+      "tags": ["360", "sport", "multiplayer"],
+      "source": "https://github.com/m1ndcrap/Sega-Superstars-Tennis-ReMatch",
+      "folder": "Sega-Superstars-Tennis-ReMatch",
+      "instructions": "Required files: Sega Superstars Tennis .iso\n\nLanguages: English.\n\nPlace the .bin file in the assets folder at the root of the port folder.",
+      "image": "https://cdn2.steamgriddb.com/grid/cc4e7c9bb2d268a78876927c0343ac5c.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/ef5495c586679c353c85c0595e23239b.png"
+    },{
+      "name": "Sexy Parodius (SexyParoRecomp)",
+      "tags": ["ps1", "njh-1001", "shmup"],
+      "source": "https://github.com/NJH-1001/SexyParoRecomp",
+      "folder": "SexyParoRecomp",
+      "instructions": "Required files: Sexy Parodius (Japan), SLPM-86009\n\nLanguages: Japanese",
+      "image": "https://cdn2.steamgriddb.com/grid/fce9aab4452e8fea5143174d1208b107.jpg",
+      "icon": "https://cdn2.steamgriddb.com/icon/6dcfff8e663175895d6f2bf3a6d848b3.png"
+    },{
+      "name": "Silent Bomber (silent-bomber-recomp)",
+      "tags": ["ps1", "alexbeav"],
+      "source": "https://github.com/Alexbeav/silent-bomber-recomp",
+      "website": "https://alexbeav.github.io/psxrecomp-ports/",
+      "folder": "silent-bomber-recomp",
+      "instructions": "Required files: SLES-02792. BIOS: SCPH-5552. Known issues: Wave 3 validation limits apply. Use the complete matching Redump CUE/BIN set and the required SCPH-5552 BIOS.",
+      "image": "https://cdn2.steamgriddb.com/grid/442e78efdca66e3b66067efbf8a55872.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/67076f7df46efd28b0bb319c42c64550.png",
+      "save": "saves"
+    },{
+      "-name": "Silent Hill (silent-hill-decomp)",
+      "tags": ["ps1", "survival horror"],
+      "source": "https://github.com/SlickAmogus/silent-hill-decomp",
+      "folder": "silent-hill-decomp",
+      "instructions": "",
+      "image": "https://cdn2.steamgriddb.com/grid/1aed88b7fdc56b77d7971de724e7c6d0.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/4734ba6f3de83d861c3176a6273cac6d.png"
+    },{
+      "name": "Skate 3 (Skate3-Mobile)",
+      "tags": ["360", "sport", "multilingual", "android_only"],
+      "android_source": "https://github.com/Buku313/Skate3-Mobile",
+      "android_package": "chat.buku.skate3",
+      "instructions": "Tap Select My Skate 3 ISO and choose an ISO dumped from your own copy.",
+      "image": "https://cdn2.steamgriddb.com/grid/cb5afcadcac972f1c6d743c96936ebe3.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/f8dfa1bc1dfc7fe4bbd53f1aeb099deb.png"
+    },{
+      "name": "Skate 3 (skate3recomp)",
+      "tags": ["360", "sport", "multilingual"],
+      "source": "https://github.com/mchughalex/skate3recomp",
+      "folder": "skate3recomp",
+      "instructions": "Use extract-xiso.exe to extract the assets and place the files in the assets folder at the root of the port folder.",
+      "image": "https://cdn2.steamgriddb.com/grid/cb5afcadcac972f1c6d743c96936ebe3.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/f8dfa1bc1dfc7fe4bbd53f1aeb099deb.png"
+    },{
+      "name": "Snowboard Kids 2 (snowboardkids2-recomp)",
+      "tags": ["sk2", "n64", "racing", "multiplayer"],
+      "source": "https://github.com/cdlewis/snowboardkids2-recomp",
+      "folder": "snowboardkids2-recomp",
+      "instructions": "Required files: Snowboard Kids 2 (USA).z64 (CRC32: D0DC8A8E)\n\nPortable saves : portable.txt in root folder.",
+      "image": "https://cdn2.steamgriddb.com/grid/120f6c07fc3ec6295d01f6e11c59d8fc.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/25780194564b89eb52c5689daa6f3ee9.png",
+      "save": {
+        "windows": "%LOCALAPPDATA%\\SnowboardKids2Recompiled",
+        "linux": "~/.config/SnowboardKids2Recompiled"
+      },
+      "save2": "saves"
+    },{
+      "name": "Sonic 3 & Knuckles (sonic3air)",
+      "tags": ["smd", "genesis", "platformer", "android"],
+      "source": "https://github.com/Eukaryot/sonic3air",
+      "android_package": "org.eukaryot.sonic3air",
+      "folder": "sonic3air",
+      "instructions": "Required files: Sonic_Knuckles_wSonic3.bin (CRC32: 0C06AA82)",
+      "mods": "https://gamebanana.com/games/6878",
+      "image": "https://cdn2.steamgriddb.com/grid/8d5c814bc831f35be11c5b95b26a534f.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/b9542ac23ea233b42a46d4fa6b305b23.png",
+      "save": "%APPDATA%\\Sonic3AIR"
+    },{
+      "-name": "Sonic Advance 2 (sa2)",
+      "tags": ["gba", "platformer", "multilingual"],
+      "source": "https://github.com/SAT-R/sa2",
+      "folder": "sa2",
+      "instructions": "Required files: Sonic Advance 2 (Japan) (En,Ja,Fr,De,Es,It) (Virtual Console).gba (CRC32: 6C6C65A3)",
+      "image": "https://cdn2.steamgriddb.com/grid/98178e2c5d08c023bf55d71236cd07f2.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/8b4f5b5b0f8ad3f9608c60b4415f9fcd/32/256x256.png"
+    },{
+      "-name": "Sonic Heroes",
+      "tags": ["gc", "platformer"],
+      "source": "",
+      "folder": "",
+      "instructions": "",
+      "image": "https://cdn2.steamgriddb.com/grid/769ce6d68c27f76ad77cbe1405ee181e.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/ad3019b856147c17e82a5bead782d2a8.png"
+    },{
+      "name": "Sonic R (sonic-r)",
+      "tags": ["saturn", "racing"],
+      "source": "https://github.com/jnmartin84/sonic-r",
+      "folder": "sonic-r",
+      "instructions": "",
+      "image": "https://cdn2.steamgriddb.com/grid/99cfac1de7eb731e619a1abcd690eada.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/5aa69473df6673476b7fbcbdf4455955.png"
+    },{
+      "name": "Sonic Robo Blast 2 (srb2)",
+      "tags": ["pc", "platformer"],
+      "source": "https://github.com/stjr/srb2",
+      "android_source": "https://github.com/SRB2-Mobile/SRB2-Android",
+      "android_package": "org.stjr.srb2",
+      "folder": "srb2",
+      "instructions": "If you have a 2160p monitor, the F11 key on your keyboard will help.\n\nhttps://srb2.org/",
+      "mods": "https://srb2.org/addons/",
+      "image": "https://cdn2.steamgriddb.com/grid/f655d686ece627fa58304aa1b6bf8b39.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/314e6ef5dee5ca3a61707d40a0e08d76.png",
+      "preferred_asset": "Full.zip"
+    },{
+      "name": "Sonic Robo Blast 2 Kart (Kart-Public)",
+      "tags": ["pc", "racing", "multiplayer", "online"],
+      "source": "https://github.com/STJr/Kart-Public",
+      "folder": "Kart-Public",
+      "instructions": "If you have a 2160p monitor, the F11 key on your keyboard will help.\n\nhttps://srb2.org/",
+      "mods": "https://mb.srb2.org/addons/categories/download-srb2kart.20/",
+      "image": "https://cdn2.steamgriddb.com/grid/e1337663bad9b826bde21203e72aa145.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/3e942baaad68101e102e6f91355f5600.png",
+      "exe_is_archive": "srb2kart.exe",
+      "preferred_asset": ".exe"
+    },{
+      "name": "Sonic Unleashed (UnleashedRecomp)",
+      "tags": ["360", "platformer"],
+      "source": "https://github.com/hedge-dev/UnleashedRecomp",
+      "android_source": "https://github.com/SansNope/UnleashedRecomp-Android",
+      "android_package": "com.sega.sonicunr",
+      "folder": "UnleashedRecomp",
+      "instructions": "Required files: Sonic Unleashed (Xbox 360)",
+      "mods": "https://gamebanana.com/games/21975",
+      "image": "https://cdn2.steamgriddb.com/grid/b80c0932cb6f7be27c8d37b4c847a8bd.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/2f60d946251d2dfd719925f3fa1fed01.png"
+    },{
+      "-name": "SoulCalibur II (RingOut)",
+      "tags": ["gc", "fighting", "soul edge"],
+      "source": "https://github.com/jackpoison-prog/RingOut/",
+      "folder": "RingOut",
+      "instructions": "",
+      "image": "https://cdn2.steamgriddb.com/grid/73751fa59c3cfa96c7d3330adb106066.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/26dd0dbc6e3f4c8043749885523d6a25.png"
+    },{
+      "name": "Space Channel 5 (Space-Channel-5)",
+      "tags": ["dc", "rhythm"],
+      "source": "https://github.com/ZoomiesZaggy/Space-Channel-5/",
+      "folder": "Space-Channel-5",
+      "instructions": "Required files: USA Dreamcast GDI and all its track files\n\nLanguages: English",
+      "image": "https://cdn2.steamgriddb.com/grid/df2284943cc77e7e1a5fa6a0da8ca265.jpg",
+      "icon": "https://cdn2.steamgriddb.com/icon/850af92f8d9903e7a4e0559a98ecc857.png",
+      "save": "userdata"
+    },{
+      "name": "Spider-Man (spider-man-recomp)",
+      "tags": ["ps1", "alexbeav"],
+      "source": "https://github.com/Alexbeav/spider-man-recomp",
+      "website": "https://alexbeav.github.io/psxrecomp-ports/",
+      "folder": "spider-man-recomp",
+      "instructions": "Required files: SLUS-00875. BIOS: SCPH-5552. Known issues: Wave 3 validation limits apply. Use the complete matching Redump CUE/BIN set and the required SCPH-5552 BIOS.",
+      "image": "https://cdn2.steamgriddb.com/grid/a5a05cfb6a67ef504abc480cea798fec.png",
+      "save": "saves"
+    },{
+      "name": "Spider-Man 2: Enter Electro (spider-man-2-enter-electro-recomp)",
+      "tags": ["ps1", "alexbeav"],
+      "source": "https://github.com/Alexbeav/spider-man-2-enter-electro-recomp",
+      "website": "https://alexbeav.github.io/psxrecomp-ports/",
+      "folder": "spider-man-2-enter-electro-recomp",
+      "instructions": "Required files: SLUS-01378. BIOS: SCPH-1001. Known issues: Wave 4 validation limits apply: Windows setup verified on the exact package; gameplay on the public packages and native Linux/macOS setup are unverified. Use the complete matching Redump CUE/BIN set (or a CHD of it) and the required SCPH-1001 BIOS.",
+      "image": "https://cdn2.steamgriddb.com/grid/54596ec88311f02af7ff1d9506707524.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/512b457d9340db7aadcdeda99e7ca2b1.png",
+      "save": "saves"
+    },{
+      "-name": "Spyro the Dragon (openpete)",
+      "tags": ["ps1", "platformer"],
+      "source": "https://openpete.com/",
+      "folder": "openpete",
+      "instructions": "Required files: Spyro the Dragon (USA).bin/cue (CRC32: D5E11056/639D58E5)",
+      "image": "https://cdn2.steamgriddb.com/grid/a99316b58bd2d4539e9153e24f616e6f.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/c93fd94c6c44b2674f4e5c16e5a223eb.png"
+    },{
+      "name": "Spyro the Dragon (spyro-the-dragon-recomp)",
+      "tags": ["ps1", "alexbeav", "platformer"],
+      "source": "https://github.com/Alexbeav/spyro-the-dragon-recomp",
+      "website": "https://alexbeav.github.io/psxrecomp-ports/",
+      "folder": "spyro-the-dragon-recomp",
+      "instructions": "Required files: SCES-01438. BIOS: SCPH-5552",
+      "image": "https://cdn2.steamgriddb.com/grid/a99316b58bd2d4539e9153e24f616e6f.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/c93fd94c6c44b2674f4e5c16e5a223eb.png",
+      "save": "saves"
+    },{
+      "name": "Star Fox (starfox-enhanced)",
+      "tags": ["snes", "shooter"],
+      "source": "https://github.com/kandowontu/starfox-enhanced",
+      "folder": "starfox-enhanced",
+      "instructions": "Required files: Star Fox (USA) (Rev 2).sfc (CRC32: 8FC4E6D0)\n\nLanguages: English.",
+      "image": "https://cdn2.steamgriddb.com/grid/081b26a8bdc5222518e51ecdbcc2021c.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/6c19e0a6da12dc02239312f151072ddd.png"
+    },{
+      "name": "Star Fox 64 (Starfox64Recomp)",
+      "tags": ["lylat wars", "n64", "shooter"],
+      "source": "https://gitlab.com/sonicdcer/Starfox64Recomp",
+      "folder": "Starfox64Recomp",
+      "instructions": "Required files: Star Fox 64 (USA) (Rev 1).z64 (CRC32: B1B5FC46)\n\nLanguages: English.\n\nPortable saves : portable.txt in root folder.",
+      "image": "https://cdn2.steamgriddb.com/grid/9122b7acc2588eff1d20211ce8fb8798.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/9fbcbcb41e52efd7dbcb96e8a5c4cb63/32/256x256.png",
+      "save": {
+        "windows": "%LOCALAPPDATA%\\Starfox64Recompiled",
+        "linux": "~/.config/Starfox64Recompiled"
+      },
+      "save2": "saves"
+    },{
+      "name": "Star Fox 64 (starship)",
+      "tags": ["lylat wars", "n64", "shooter"],
+      "source": "https://github.com/harbourmasters/starship",
+      "android_source": "https://github.com/izzy2lost/Starship",
+      "android_package": "com.starship.android",
+      "folder": "starship",
+      "instructions": "Required files: Star Fox 64 (USA) (Rev 1).z64 (CRC32: B1B5FC46)\n\nLanguages: English.",
+      "mods": "https://gamebanana.com/games/21612",
+      "image": "https://cdn2.steamgriddb.com/grid/9122b7acc2588eff1d20211ce8fb8798.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/9fbcbcb41e52efd7dbcb96e8a5c4cb63/32/256x256.png",
+      "save": "Save"
+    },{
+      "name": "Star Wars Episode I: The Phantom Menace (star-wars-episode-i-the-phantom-menace-recomp)",
+      "tags": ["ps1", "alexbeav"],
+      "source": "https://github.com/Alexbeav/star-wars-episode-i-the-phantom-menace-recomp",
+      "website": "https://alexbeav.github.io/psxrecomp-ports/",
+      "folder": "star-wars-episode-i-the-phantom-menace-recomp",
+      "instructions": "Required files: SLES-02034. BIOS: SCPH-5552. Known issues: Wave 3 validation limits apply. Use the complete matching Redump CUE/BIN set and the required SCPH-5552 BIOS.",
+      "image": "https://cdn2.steamgriddb.com/grid/9bc5bad143de3456ed306c6fba62d39c.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/a4f32d3183be54c56a76dbfc8b992eb3.png",
+      "save": "saves"
+    },{
+      "name": "Star Wars: Shadows of the Empire (SotE-Recomp)",
+      "tags": ["n64", "action-adventure"],
+      "source": "https://github.com/GTTeancum/SotE-Recomp",
+      "folder": "SotE-Recomp",
+      "instructions": "Required files: Star Wars - Shadows of the Empire (USA) (Rev 2).z64 (CRC32: E8727549)",
+      "image": "https://cdn2.steamgriddb.com/grid/9be1ae9822607260b323b0bb2ad60d09.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/dfa457fea69475c95ecfc01a23489cb7.png",
+      "save": "saves"
+    },{
+      "name": "Star Wars: TIE Fighter (OpenTIE)",
+      "tags": ["pc", "simulation"],
+      "source": "https://github.com/elyosh/OpenTIE/",
+      "folder": "xmen-mutant-academy-2-pc",
+      "instructions": "Required files: Star Wars: TIE Fighter on GOG\n\nLanguages: English.",
+      "image": "https://cdn2.steamgriddb.com/grid/2197d705fea3a6f01b7f20fd444d803d.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/6107eb48aa5ee13a438f2c0e903de38a.png"
+    },{
+      "name": "Street Fighter Alpha 3 (Street-Fighter-Alpha-3-Recomp)",
+      "tags": ["sf", "ps1", "fighting", "multiplayer"],
+      "source": "https://github.com/TechnicallyComputers/Street-Fighter-Alpha-3-Recomp",
+      "folder": "Street-Fighter-Alpha-3-Recomp",
+      "instructions": "Required files: Street Fighter Alpha 3 (USA) (Track 1/2).bin/cue (CRC32: D5E20D47/E0078F93/1DB7CAA6)",
+      "image": "https://cdn2.steamgriddb.com/grid/b05aa5ae598aff32ec94a1156bd7132b.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/e7a5e745eac1b6b904cff9aff773e4b7.png"
+    },{
+      "name": "Street Fighter EX 2 Plus (Street-Fighter-EX2-Plus-Recompiled)",
+      "tags": ["sf", "ps1", "fighting", "multiplayer"],
+      "source": "https://github.com/strider973/Street-Fighter-EX2-Plus-Recompiled",
+      "folder": "Street-Fighter-EX2-Plus-Recompiled",
+      "instructions": "Required files: ",
+      "image": "https://cdn2.steamgriddb.com/grid/3e6d5b741830bd34fe1caade8d15df60.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/66f39f3da53367bdf7c865f00d8c2d85.png"
+    },{
+      "name": "Street Fighter EX Plus Alpha (plusalpha-recomp)",
+      "tags": ["sf", "ps1", "fighting", "multiplayer"],
+      "source": "https://github.com/guimaraf/plusalpha-recomp",
+      "folder": "plusalpha-recomp",
+      "instructions": "Required files: Street Fighter EX Plus Alpha (USA).bin/cue (CRC32: C7F78B70/7030F8E1)",
+      "image": "https://cdn2.steamgriddb.com/grid/245142a8282a24362c6a1762f55dab27.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/979173d983868ebd65ee530ee8177413.png"
+    },{
+      "name": "Street Fighter III: 3rd Strike (3sx)",
+      "tags": ["sf", "ps2", "fighting", "multiplayer"],
+      "source": "https://github.com/crowded-street/3sx",
+      "folder": "3sx",
+      "instructions": "Required files: Street Fighter III - 3rd Strike - Fight for the Future (Japan).iso (CRC32: 83D3A28C)",
+      "image": "https://cdn2.steamgriddb.com/grid/5c8ba7cea22ea2704b5389dabaa266ee.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/51cabf7cb19df57c46a747971bd9db37.png",
+      "save": "%APPDATA%\\CrowdedStreet"
+    },{
+      "name": "Strider 2 (STRIDER-2-Recompiled)",
+      "tags": ["ps1", "platformer"],
+      "source": "https://github.com/strider973/STRIDER-2-Recompiled",
+      "folder": "STRIDER-2-Recompiled",
+      "instructions": "Required files: Strider 2 (USA).bin/cue (CRC32: 606BDC0B/54FDB3E0)\n\nLanguages: English.",
+      "image": "https://cdn2.steamgriddb.com/grid/bbbbe1ade7fc26bb848062806c908d15.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/1c21b0912f1088c26479be9299203f2b.png",
+      "save": "saves"
+    },{
+      "name": "Suikoden (suikoden-recomp)",
+      "tags": ["ps1", "alexbeav"],
+      "source": "https://github.com/Alexbeav/suikoden-recomp",
+      "website": "https://alexbeav.github.io/psxrecomp-ports/",
+      "folder": "suikoden-recomp",
+      "instructions": "Required files: SLUS-00292. BIOS: SCPH-5552. Known issues: Wave 3 validation limits apply. Use the complete matching Redump CUE/BIN set and the required SCPH-5552 BIOS. This kit requires the Rev 1 disc revision.",
+      "image": "https://cdn2.steamgriddb.com/grid/6ba0fce53a8ea6f8738c9a301e4bf3a4.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/8a0039a0e1ca776edabd4e4be1dd109f.png",
+      "save": "saves"
+    },{
+      "name": "Suikoden II (suikoden-ii-recomp)",
+      "tags": ["ps1", "alexbeav"],
+      "source": "https://github.com/Alexbeav/suikoden-ii-recomp",
+      "website": "https://alexbeav.github.io/psxrecomp-ports/",
+      "folder": "suikoden-ii-recomp",
+      "instructions": "Required files: SLUS-00958. BIOS: SCPH-1001. Known issues: Wave 4 validation limits apply: Windows setup verified on the exact package; gameplay on the public packages and native Linux/macOS setup are unverified. Use the complete matching Redump CUE/BIN set (or a CHD of it) and the required SCPH-1001 BIOS.",
+      "image": "https://cdn2.steamgriddb.com/grid/ef4b2655b2f620f88c103bf168722663.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/4324e8d0d37b110ee1a4f1633ac52df5.png",
+      "save": "saves"
+    },{
+      "name": "Super Mario 64 (Ghostship)",
+      "tags": ["n64", "platformer"],
+      "source": "https://github.com/HarbourMasters/Ghostship",
+      "android_source": "https://github.com/izzy2lost/Ghostship",
+      "android_package": "com.ghostship.android",
+      "folder": "Ghostship",
+      "instructions": "Required files: Super Mario 64 (USA).z64 (CRC32: 3CE60709)",
+      "mods": "https://gamebanana.com/games/24131",
+      "image": "https://cdn2.steamgriddb.com/grid/ea98cb4ef75b56acda616e5166438fb6.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/f2201f5191c4e92cc5af043eebfd0946.png"
+    },{
+      "name": "Super Mario 64 (sm64coopdx)",
+      "tags": ["online", "n64", "platformer", "co-op"],
+      "source": "https://github.com/coop-deluxe/sm64coopdx",
+      "android_source": "https://github.com/ManIsCat2/sm64coopdx",
+      "android_package": "com.maniscat2.sm64coopdx",
+      "folder": "sm64coopdx",
+      "instructions": "Required files: Super Mario 64 (USA).z64 (CRC32: 3CE60709)\n\nWindows:\n\nPortable saves: install extra or create a shortcut of sm64coopdx with this arguments  --savepath .\\saves\n\nENGLISH\n\nLaunch sm64coopdx. Alt + Enter switches the game to fullscreen. Choose your preferred language, then press Esc to close a menu. If the game has no sound, select \"Quit\" → \"Yes\", then relaunch the game.\n\nGo to \"Options\" → \"Player\" to change the nickname displayed in-game. You will probably be playing with custom characters, so there is no need to edit the palette.\n\nStill in \"Options\", go to \"DynOS Packs\". I recommend enabling \"3D Kaze Coins\", \"3D Trees\" and \"Fixed Smoke\".\n\nIn \"Camera\", you can enable \"Invert X\" if you prefer to invert the horizontal camera axis. Then enable \"Free Camera\", \"Analog Camera\", \"L Centering\" and \"Camera Collision\". Leave all other options disabled.\n\nSet \"X/Y Sensitivity\" to 20. This value works well with an XInput controller.\n\nFRANÇAIS\n\nLancer sm64coopdx. Alt + Entrée permet de passer le jeu en plein écran. Choisir la langue souhaitée, puis appuyer sur Échap pour quitter un menu. Si le jeu n’a pas de son, sélectionner « Quit » → « Yes », puis relancer le jeu.\n\nAller dans « Options » → « Player » pour modifier le pseudo affiché en jeu. Vous jouerez probablement avec des personnages inédits, il n’est donc pas nécessaire de modifier la palette.\n\nToujours dans « Options », aller dans « DynOS Packs ». Je recommande d’activer « 3D Kaze Coins », « 3D Trees » et « Fixed Smoke ».\n\nDans « Camera », vous pouvez activer « Invert X » si vous préférez inverser l’axe horizontal. Activer ensuite « Free Camera », « Analog Camera », « L Centering » et « Camera Collision ». Toutes les autres options doivent rester désactivées.\n\nRégler « X/Y Sensitivity » sur 20. Cette valeur convient bien à une manette XInput.",
+      "mods": "https://mods.sm64coopdx.com/mods/",
+      "image": "https://cdn2.steamgriddb.com/grid/ec5b75bbd6d1a33e507d666a49dddf95.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/f2201f5191c4e92cc5af043eebfd0946.png",
+      "save": "%APPDATA%\\sm64coopdx",
+      "save2": "saves",
+      "extra": "https://raw.githubusercontent.com/Nyaldee/Ports-Launcher/main/extra/sm64coopdx"
+    },{
+      "-name": "Super Mario 64 DS (sm64ds-decomp)",
+      "tags": ["ds", "platformer"],
+      "source": "https://github.com/tangosdev/sm64ds-decomp",
+      "folder": "sm64ds-decomp",
+      "instructions": "Required files: Super Mario 64 DS (USA).nds (CRC32: E6321562)",
+      "mods": "https://mods.sm64coopdx.com/mods/",
+      "image": "https://cdn2.steamgriddb.com/grid/16311c87e5635893abd76815d276cbdf.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/ac02b39ab2952a9d41752cb1f350d9e1/24/1024x1024.png"
+    },{
+      "name": "Super Mario Bros. (Super-Mario-Bros.-Remastered-Public)",
+      "tags": ["smb", "nes", "platformer"],
+      "source": "https://github.com/JHDev2006/Super-Mario-Bros.-Remastered-Public",
+      "folder": "Super-Mario-Bros.-Remastered-Public",
+      "instructions": "Required files: Super Mario Bros. (World).nes (CRC32: 3337EC46)\n\nPortable saves : portable.txt in root folder.",
+      "mods": "https://gamebanana.com/games/22798",
+      "image": "https://cdn2.steamgriddb.com/grid/46c5aac38809435b12ece6f71de65c1e.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/a621efaaba2ded5a8727db161094fe88.png",
+      "save": "%APPDATA%\\SMB1R",
+      "save2": "config"
+    },{
+      "-name": "Super Mario Strikers (strikers)",
+      "tags": ["gc", "mario smash football", "sport", "multiplayer"],
+      "source": "https://github.com/new-coke/strikers",
+      "folder": "strikers",
+      "instructions": "",
+      "image": "https://cdn2.steamgriddb.com/grid/a85d58f89d4a5e8f8f9a6336b3dd18f7.jpg",
+      "icon": "https://cdn2.steamgriddb.com/icon/ea86ccbb57d32f5889139224411436df.png"
+    },{
+      "-name": "Super Mario Sunshine (??)",
+      "tags": ["gc", "platformer"],
+      "source": "??",
+      "folder": "??",
+      "instructions": "Required files: \n\nLanguages: English.",
+      "image": "https://cdn2.steamgriddb.com/grid/f5e97c0193978d636807084bf658fc1c.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/7989edad14ebcd3adfacc7344dc6b739/32/256x256.png"
+    },{
+      "name": "Super Mario World (smw)",
+      "tags": ["snes", "platformer"],
+      "source": "https://github.com/snesrev/smw",
+      "folder": "smw",
+      "instructions": "Required files: Super Mario World (USA).sfc (CRC32: B19ED489)\n\nRename the ROM to smw.sfc and place it in the root of the port folder.",
+      "image": "https://cdn2.steamgriddb.com/grid/65bc947e5802af99f2c98229b618cfed.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/fe1bae53109cfed95c4a25beb1e0da4b.png",
+      "save": "saves"
+    },{
+      "name": "Super Metroid (Super-Metroid-Launcher)",
+      "tags": ["snes", "metroidvania", "multilingual"],
+      "source": "https://github.com/RadzPrower/Super-Metroid-Launcher",
+      "folder": "Super-Metroid-Launcher",
+      "instructions": "Required files: Super Metroid (Japan, USA) (En,Ja).sfc (CRC32: D63ED5F8)",
+      "image": "https://cdn2.steamgriddb.com/grid/167248f62dbaf61aff4b7d1be9439282.jpg",
+      "icon": "https://cdn2.steamgriddb.com/icon/30ef30b64204a3088a26bc2e6ecf7602.png",
+      "save": "saves"
+    },{
+      "name": "Super Smash Bros. (BattleShip)",
+      "tags": ["n64", "fighting", "multiplayer", "multilingual", "android"],
+      "source": "https://github.com/JRickey/BattleShip",
+      "android_package": "com.jrickey.battleship",
+      "folder": "BattleShip",
+      "instructions": "Required files: Super Smash Bros. (USA).z64 (CRC32: EB97929E) or Nintendo All-Star! Dairantou Smash Brothers (Japan).z64 (CRC32: 04C9D3B1)\n\nLanguages: English, Japanese.",
+      "image": "https://cdn2.steamgriddb.com/grid/841c7673350b87929092101876156f09.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/5807a685d1a9ab3b599035bc566ce2b9.png",
+      "save": "%APPDATA%\\BattleShip"
+    },{
+      "name": "Super Smash Bros. Melee (melee-pc)",
+      "tags": ["online", "gc", "fighting", "multiplayer"],
+      "source": "https://github.com/999sian/melee-pc",
+      "folder": "melee-pc",
+      "instructions": "Required files: Super Smash Bros. Melee (USA) (En,Ja) (Rev 2).rvz (CRC32: 6C6823F8)",
+      "image": "https://cdn2.steamgriddb.com/grid/0635bf265fc80d691fb83ae1e1a22fdb.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/e0688d13958a19e087e123148555e4b4.png",
+      "save": "%APPDATA%\\melee-pc"
+    },{
+      "name": "Syphon Filter (SF-pc-port)",
+      "tags": ["ps1", "shooter"],
+      "source": "https://github.com/Madxbio97/SF-pc-port",
+      "folder": "SF-pc-port",
+      "instructions": "Required files: Syphon Filter (USA) (Rev 1)bin/cue (CRC32: 3E270096/8E1EE69A)",
+      "image": "https://cdn2.steamgriddb.com/grid/dd3915f642b3304770608bf2d36a1346.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/8287ab1732631d0908d6ec134bd2592b.png",
+      "save": "%LOCALAPPDATA%\\SyphonFilterPC"
+    },{
+      "name": "Syphon Filter 3 (syphon-filter-3-recomp)",
+      "tags": ["ps1", "alexbeav", "multiplayer"],
+      "source": "https://github.com/Alexbeav/syphon-filter-3-recomp",
+      "website": "https://alexbeav.github.io/psxrecomp-ports/",
+      "folder": "syphon-filter-3-recomp",
+      "instructions": "Required files: SCUS-94640. BIOS: SCPH-1001",
+      "image": "https://cdn2.steamgriddb.com/grid/514bf02a1d22890607708eb42b778a4c.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/e3e8b4a227bbef7d84573b2635f799b4.png",
+      "save": "saves"
+    },{
+      "name": "Tail Concerto (tail-concerto-recomp)",
+      "tags": ["ps1", "alexbeav"],
+      "source": "https://github.com/Alexbeav/tail-concerto-recomp",
+      "website": "https://alexbeav.github.io/psxrecomp-ports/",
+      "folder": "tail-concerto-recomp",
+      "instructions": "Required files: SLUS-00660. BIOS: SCPH-1001. Known issues: Wave 4 validation limits apply: Windows setup verified on the exact package; gameplay on the public packages and native Linux/macOS setup are unverified. Use the complete matching Redump CUE/BIN set (or a CHD of it) and the required SCPH-1001 BIOS.",
+      "image": "https://cdn2.steamgriddb.com/grid/da445cae1a1343368196d9c3a46e1f92.jpg",
+      "icon": "https://cdn2.steamgriddb.com/icon/93733d5b8881e172258bf6806941c0ae.png",
+      "save": "saves"
+    },{
+      "name": "Team Buddies (team-buddies-recomp)",
+      "tags": ["ps1", "alexbeav"],
+      "source": "https://github.com/Alexbeav/team-buddies-recomp",
+      "website": "https://alexbeav.github.io/psxrecomp-ports/",
+      "folder": "team-buddies-recomp",
+      "instructions": "Required files: SCES-02986. BIOS: SCPH-5552. Known issues: Wave 4 validation limits apply: Windows setup verified on the exact package; gameplay on the public packages and native Linux/macOS setup are unverified. Use the complete matching Redump CUE/BIN set (or a CHD of it) and the required SCPH-5552 BIOS. The BATTLE HILL loading after the story movie and gameplay beyond the menus are unqualified.",
+      "image": "",
+      "save": "saves"
+    },{
+      "name": "Tekken 3 (Tekken3Recomp)",
+      "tags": ["ps1", "fighting", "multiplayer"],
+      "source": "https://github.com/fabioap-cpu/Tekken3Recomp",
+      "folder": "Tekken3Recomp",
+      "instructions": "Required files: Tekken 3 (USA) (Track 1/2/3).bin/cue (CRC32: 8131AF42/28D8F221/662FEA9F/7B45FAE0)\n\nLanguages: English.",
+      "image": "https://cdn2.steamgriddb.com/grid/a85032c0a15f3c7048a8077595f2ee66.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/f7067925a46041c26a630572b02b4b28.png",
+      "save": "saves"
+    },{
+      "name": "Tenchu: Stealth Assassins (tenchu-stealth-assassins-recomp)",
+      "tags": ["ps1", "alexbeav"],
+      "source": "https://github.com/Alexbeav/tenchu-stealth-assassins-recomp",
+      "website": "https://alexbeav.github.io/psxrecomp-ports/",
+      "folder": "tenchu-stealth-assassins-recomp",
+      "instructions": "Required files: SLUS-00706. BIOS: SCPH-1001",
+      "image": "https://cdn2.steamgriddb.com/grid/3c8dbcce469db55683e8a7e5abe34a30.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/346401548fda241720bfad6c7f671255.png",
+      "save": "saves"
+    },{
+      "-name": "Terranigma (??)",
+      "tags": ["snes", "rpg"],
+      "source": "??",
+      "folder": "??",
+      "instructions": "",
+      "image": "https://cdn2.steamgriddb.com/grid/f1acce1a7c0c90baa15962d61b7ba048.png",
+      "save": "saves"
+    },{
+      "name": "The Elder Scrolls II: Daggerfall (daggerfall-unity-android)",
+      "tags": ["fps", "android_only"],
+      "android_source": "https://github.com/Vwing/daggerfall-unity-android",
+      "android_package": "net.dfworkshop.dfu",
+      "instructions": "You can get a free copy of DOS Daggerfall from Steam https://store.steampowered.com/app/1812390/The_Elder_Scrolls_II_Daggerfall/ and a free copy of Daggerfall Unity from the Releases https://github.com/Interkarma/daggerfall-unity/releases page. Then simply unzip the latest version of Daggerfall Unity to its own folder and point it to the DOS version. Daggerfall Unity will take care of everything else.\n\nLanguages: Multilingual.",
+      "image": "https://cdn2.steamgriddb.com/grid/a2d13ad880e087a989a8fc07c87d7272.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/5bb352aa0983fe81d1ab84a49b7a902f/32/256x256.png"
+    },{
+      "name": "The Elder Scrolls III: Morrowind (openmw)",
+      "tags": ["pc", "rpg"],
+      "source": "https://github.com/OpenMW/openmw",
+      "android_source": "https://github.com/xyzz/openmw-android",
+      "android_package": "is.xyz.omw",
+      "folder": "openmw",
+      "instructions": "Required files: The Elder Scrolls III: Morrowind GOTY Edition on GOG\nExecute openmw-wizard.exe first.\n\nLanguages: Multilingual with mod.",
+      "mods": "https://modding-openmw.com/lists/",
+      "image": "https://cdn2.steamgriddb.com/grid/0236be6e04a4916f04215374f9c83ac5.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/4a3fd911279cd8bc597fa13222ef83be.png",
+      "save": "%USERPROFILE%\\Documents\\My Games\\OpenMW",
+      "exe_is_archive": "openmw.exe"
+    },{
+      "name": "The Fifth Element (the-fifth-element-recomp)",
+      "tags": ["ps1", "alexbeav"],
+      "source": "https://github.com/Alexbeav/the-fifth-element-recomp",
+      "website": "https://alexbeav.github.io/psxrecomp-ports/",
+      "folder": "the-fifth-element-recomp",
+      "instructions": "Required files: SCES-01285. BIOS: SCPH-5552. Known issues: Wave 3 validation limits apply. Use the complete matching Redump CUE/BIN set and the required SCPH-5552 BIOS.",
+      "image": "https://cdn2.steamgriddb.com/grid/f129fad9beb3eec4999ce5c5e725fe24.png",
+      "save": "saves"
+    },{
+      "-name": "The Legend of Dragoon (Severed-Chains)",
+      "tags": ["ps1", "rpg"],
+      "source": "https://github.com/Legend-of-Dragoon-Modding/Severed-Chains",
+      "folder": "Severed-Chains",
+      "instructions": "Required files: The Legend of Dragoon .iso\n\nLanguages: English.",
+      "image": "https://cdn2.steamgriddb.com/grid/307c27aeb32c02e2561f228b0e758196.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/d2fd2442ea1065e9f10ef41766dbd0ec.png"
+    },{
+      "name": "The Legend of Zelda: A Link to the Past (zelda3-PL)",
+      "tags": ["snes", "action-adventure"],
+      "source": "https://raw.githubusercontent.com/Nyaldee/Ports-Launcher/main/extra/zelda3-PL/zelda3-PL.zip",
+      "folder": "zelda3-PL",
+      "instructions": "Required files: Legend of Zelda, The - A Link to the Past (USA).sfc (CRC32: 777AAC2F)\n\nTo change the game's language, use the RIP patch in the extra, or extract the text from your game with Zelda3_Launcher.bat and modify the zelda3.ini. You can change Link's sprite, create your own and put the music in CD quality (msu).",
+      "image": "https://cdn2.steamgriddb.com/grid/7edaadde50012f0860952123564eb1ba.jpg",
+      "icon": "https://cdn2.steamgriddb.com/icon/1b39a10cc39ee53e5b2fdc1eda1eb5da.png",
+      "save": "saves",
+      "extra": "https://raw.githubusercontent.com/Nyaldee/Ports-Launcher/main/extra/zelda3-PL/zelda3-redux-ja-zh-pt-ga-pl-fr-zelda3_assets.dat.rip"
+    },{
+      "name": "The Legend of Zelda: Link's Awakening DX (LADXHD)",
+      "tags": ["gb", "action-adventure", "multilingual"],
+      "source": "https://gitlab.com/bighead.0/ladxhd_updated",
+      "folder": "LADXHD Updated",
+      "executable": "Link's Awakening DX HD.exe",
+      "instructions": "Required files: Links Awakening DX HD v1.0.0.zip\n\nLanguages: Multilingual.\n\nMove the Content and Data folders, along with the Link's Awakening DX HD.exe file, into the port folder, then run LADXHD.patcher to update the game.",
+      "image": "https://cdn2.steamgriddb.com/grid/367b97a382e0663f8428d80219d44fcd.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/ca9e2abfc4b54221804d727d207accb1.png",
+      "save": "%LOCALAPPDATA%\\Zelda_LA"
+    },{
+      "name": "The Legend of Zelda: Majora's Mask (2ship2harkinian)",
+      "tags": ["n64", "action-adventure"],
+      "source": "https://github.com/HarbourMasters/2ship2harkinian",
+      "android_source": "https://github.com/Waterdish/2ship2harkinian-Android",
+      "android_package": "com.dishii.mm",
+      "folder": "2ship2harkinian",
+      "instructions": "Required files: Legend of Zelda, The - Majora's Mask (USA).z64 (CRC32: B428D8A7)",
+      "mods": "https://gamebanana.com/games/20371",
+      "image": "https://cdn2.steamgriddb.com/grid/592954b9c7445a8007d638eecc863362.jpg",
+      "icon": "https://cdn2.steamgriddb.com/icon/4e0928de075538c593fbdabb0c5ef2c3.png",
+      "save": "Save"
+    },{
+      "name": "The Legend of Zelda: Majora's Mask (Zelda64Recomp)",
+      "tags": ["n64", "action-adventure"],
+      "source": "https://github.com/Zelda64Recomp/Zelda64Recomp",
+      "android_source": "https://github.com/linkzenic/Zelda64Recomp-Android",
+      "android_package": "io.github.zelda64recomp",
+      "folder": "Zelda64Recomp",
+      "instructions": "Required files: Legend of Zelda, The - Majora's Mask (USA).z64 (CRC32: B428D8A7)\n\nPortable saves : portable.txt in root folder.",
+      "mods": "https://thunderstore.io/c/zelda-64-recompiled/",
+      "image": "https://cdn2.steamgriddb.com/grid/592954b9c7445a8007d638eecc863362.jpg",
+      "icon": "https://cdn2.steamgriddb.com/icon/4e0928de075538c593fbdabb0c5ef2c3.png",
+      "save": {
+        "windows": "%LOCALAPPDATA%\\Zelda64Recompiled",
+        "linux": "~/.config/Zelda64Recompiled"
+      },
+      "save2": "saves"
+    },{
+      "name": "The Legend of Zelda: Ocarina of Time (Shipwright)",
+      "tags": ["online", "n64", "action-adventure", "multilingual"],
+      "source": "https://github.com/HarbourMasters/Shipwright",
+      "android_source": "https://github.com/Waterdish/Shipwright-Android",
+      "android_package": "com.dishii.soh",
+      "folder": "Shipwright",
+      "instructions": "Required files: Legend of Zelda, The - Ocarina of Time (USA) (GameCube)/Master Quest (Europe) (GameCube).z64 (CRC32: 346DE3AE/832D6449) for all language.\n\nDiscord server: https://discord.com/invite/shipofharkinian",
+      "mods": "https://gamebanana.com/games/16121",
+      "image": "https://cdn2.steamgriddb.com/grid/f711cc70dbdab88f32389ec84e56a242.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/a896144046a1b5bd6e3e034d00b4f73a.png",
+      "save": "Save",
+      "extra": "https://raw.githubusercontent.com/Nyaldee/Ports-Launcher/main/extra/Shipwright/"
+    },{
+      "name": "The Legend of Zelda: Ocarina of Time 3D (TriAevum)",
+      "tags": ["3ds", "action-adventure", "multilingual"],
+      "source": "https://github.com/coccofresco/TriAevum/",
+      "folder": "TriAevum",
+      "instructions": "Required files: Legend of Zelda, The - Ocarina of Time 3D (Europe) (En,Fr,De,Es,It) Record 0004\n\nRun TriAevumForge.exe to select the ROM and change language.",
+      "image": "https://cdn2.steamgriddb.com/grid/ab6fe89d793b5a3c4153692779cb0680.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/d800c6cf5d304e013ec4f95ab772d62e.png",
+      "save": "Save"
+    },{
+      "name": "The Legend of Zelda: The Minish Cap (tmc)",
+      "tags": ["gba", "action-adventure"],
+      "source": "https://github.com/zeldaret/tmc",
+      "android_source": "https://github.com/samyost1/tmc-android",
+      "folder": "tmc",
+      "instructions": "Required files: Legend of Zelda, The - The Minish Cap (USA).gba (CRC32: ABCEBBB1)",
+      "image": "https://cdn2.steamgriddb.com/grid/722ddf840508c083992ea795c2bda28f.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/004e34995df78f6f34f7a819fb426343.png"
+    },{
+      "-name": "The Legend of Zelda: The Wind Waker",
+      "tags": ["gc", "action-adventure", "multilingual"],
+      "source": "",
+      "folder": "",
+      "instructions": "Languages: Multilingual.",
+      "image": "https://cdn2.steamgriddb.com/grid/304678bd2a45713cc7bfcb1a9e19c8e4.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/186c9b923fc7eb4df8e7b4cfbeb234b7.png"
+    },{
+      "name": "The Legend of Zelda: Twilight Princess (dusklight)",
+      "tags": ["gc", "action-adventure", "multilingual", "android"],
+      "source": "https://github.com/TwilitRealm/dusklight",
+      "android_package": "dev.twilitrealm.dusk",
+      "folder": "dusklight",
+      "instructions": "Required files: Legend of Zelda, The - Twilight Princess PAL or NTSC\n\nLanguages: Multilingual.",
+      "image": "https://cdn2.steamgriddb.com/grid/f131cd3852b7f0b100cd0255b077e948.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/d5f047af6f250b7b437567f9c03e0137.png",
+      "save": "%APPDATA%\\TwilitRealm"
+    },{
+      "name": "The Lost World: Jurassic Park Special Edition (the-lost-world-jurassic-park-special-edition-recomp)",
+      "tags": ["ps1", "alexbeav"],
+      "source": "https://github.com/Alexbeav/the-lost-world-jurassic-park-special-edition-recomp",
+      "website": "https://alexbeav.github.io/psxrecomp-ports/",
+      "folder": "the-lost-world-jurassic-park-special-edition-recomp",
+      "instructions": "Required files: SLUS-00515. BIOS: Regional SCPH",
+      "image": "https://cdn2.steamgriddb.com/grid/97f4662485e3ae1eafba5359c5637a9f.png",
+      "save": "saves"
+    },{
+      "name": "The Misadventures of Tron Bonne (misadventures-of-tron-bonne-recomp)",
+      "tags": ["ps1", "alexbeav"],
+      "source": "https://github.com/Alexbeav/misadventures-of-tron-bonne-recomp",
+      "website": "https://alexbeav.github.io/psxrecomp-ports/",
+      "folder": "misadventures-of-tron-bonne-recomp",
+      "instructions": "Required files: SLES-02795. BIOS: SCPH-5552. Known issues: Wave 4 validation limits apply: Windows setup verified on the exact package; gameplay on the public packages and native Linux/macOS setup are unverified. Use the complete matching Redump CUE/BIN set (or a CHD of it) and the required SCPH-5552 BIOS.",
+      "image": "https://cdn2.steamgriddb.com/grid/a3dea493bbe0e9e246702717cf41c5ad.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/8ed16b12adc574bb06ec2cb2f5479952.png",
+      "save": "saves"
+    },{
+      "name": "The Mummy (the-mummy-recomp)",
+      "tags": ["ps1", "alexbeav"],
+      "source": "https://github.com/Alexbeav/the-mummy-recomp",
+      "website": "https://alexbeav.github.io/psxrecomp-ports/",
+      "folder": "the-mummy-recomp",
+      "instructions": "Required files: SLUS-01187. BIOS: Regional SCPH",
+      "image": "https://cdn2.steamgriddb.com/grid/487374288ed67097b2b86be2a9b1f0c0.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/76eac68b8d2923713428270133e03d3f.png",
+      "save": "saves"
+    },{
+      "name": "The Simpsons: Hit and Run (The-Simpsons-Hit-and-Run-Android)",
+      "tags": ["gta-like", "android_only"],
+      "android_source": "https://github.com/Carlox33/The-Simpsons-Hit-and-Run-Android",
+      "android_package": "com.c4rlox.simpsons",
+      "instructions": "Android 7.0 or higher\n\nLanguages: Multilingual.",
+      "image": "https://cdn2.steamgriddb.com/grid/8869d32a8ef425af3b064ed17c0e909a.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/701d804549a4a23d3cae801dac6c2c75.png"
+    },{
+      "name": "Threads of Fate (threads-of-fate-recomp)",
+      "tags": ["ps1", "alexbeav"],
+      "source": "https://github.com/Alexbeav/threads-of-fate-recomp",
+      "website": "https://alexbeav.github.io/psxrecomp-ports/",
+      "folder": "threads-of-fate-recomp",
+      "instructions": "Required files: SLUS-01019. BIOS: SCPH-5552. Known issues: Wave 3 validation limits apply. Use the complete matching Redump CUE/BIN set and the required SCPH-5552 BIOS.",
+      "image": "https://cdn2.steamgriddb.com/grid/5d0dee08adf4c0c3e73f694a6baab0e3.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/66b7256ab017bc5e752d934416b7fa98.png",
+      "save": "saves"
+    },{
+      "name": "Tiny Toon Adventures: Buster's Hidden Treasure (busters-hidden-treasure-pc)",
+      "tags": ["smd", "platformer"],
+      "source": "https://github.com/Darhkfox/busters-hidden-treasure-pc",
+      "folder": "busters-hidden-treasure-pc",
+      "instructions": "Required files: Tiny Toon Adventures - Buster's Hidden Treasure (USA).md (CRC32: A26D3AE0)",
+      "image": "https://cdn2.steamgriddb.com/grid/ada1538d267b5b0b9d68a3222c8c8bb5.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/7f169e8ba2553717e869803364c15ee7.png"
+    },{
+      "name": "Tokyo Highway Battle (tokyo-highway-battle-recomp)",
+      "tags": ["ps1", "alexbeav"],
+      "source": "https://github.com/Alexbeav/tokyo-highway-battle-recomp",
+      "website": "https://alexbeav.github.io/psxrecomp-ports/",
+      "folder": "tokyo-highway-battle-recomp",
+      "instructions": "Required files: SLUS-00229. BIOS: SCPH-5552. Known issues: Wave 3 validation limits apply. Use the complete matching Redump CUE/BIN set and the required SCPH-5552 BIOS.",
+      "image": "https://cdn2.steamgriddb.com/grid/b5e0deef6c2a87a87e19f30538d32980.png",
+      "save": "saves"
+    },{
+      "name": "Tomba (tombarecomp)",
+      "tags": ["ps1", "platformer"],
+      "source": "https://github.com/mstan/tombarecomp",
+      "folder": "tombarecomp",
+      "instructions": "Required files: Tomba! (USA).bin (CRC32: B00ECB0D) + PSX - SCPH1001.BIN",
+      "image": "https://cdn2.steamgriddb.com/grid/b5b03b0b1f713cd2fffdb28d09adff6e.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/752d2c9ecfe079e5e5f3539f4d750e5c.png"
+    },{
+      "name": "Tony Hawk's Pro Skater (tony-hawk-s-pro-skater-recomp)",
+      "tags": ["ps1", "alexbeav", "multiplayer"],
+      "source": "https://github.com/Alexbeav/tony-hawk-s-pro-skater-recomp",
+      "website": "https://alexbeav.github.io/psxrecomp-ports/",
+      "folder": "tony-hawk-s-pro-skater-recomp",
+      "instructions": "Required files: SLUS-00860. BIOS: SCPH-1001. Known issues: Music sometimes failed to start in one Tony Hawk title during operator testing. The exact title is not known. Skipping one track starts the next.",
+      "image": "https://cdn2.steamgriddb.com/grid/d483c1937e7a464a1b64ef9c4c67c67e.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/ea5250104950beb07a8d2381d98560f1.png",
+      "save": "saves"
+    },{
+      "name": "Tony Hawk's Pro Skater 2 (tony-hawk-s-pro-skater-2-recomp)",
+      "tags": ["ps1", "alexbeav", "multiplayer"],
+      "source": "https://github.com/Alexbeav/tony-hawk-s-pro-skater-2-recomp",
+      "website": "https://alexbeav.github.io/psxrecomp-ports/",
+      "folder": "tony-hawk-s-pro-skater-2-recomp",
+      "instructions": "Required files: SLUS-01066. BIOS: SCPH-1001. Known issues: Music sometimes failed to start in one Tony Hawk title during operator testing. The exact title is not known. Skipping one track starts the next.",
+      "image": "https://cdn2.steamgriddb.com/grid/835f33f22a524e6cc0f59d23b1cb4dc3.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/258e130476290221f597c56d351224b6.png",
+      "save": "saves"
+    },{
+      "name": "Tony Hawk's Pro Skater 3 (tony-hawk-s-pro-skater-3-recomp)",
+      "tags": ["ps1", "alexbeav", "multiplayer"],
+      "source": "https://github.com/Alexbeav/tony-hawk-s-pro-skater-3-recomp",
+      "website": "https://alexbeav.github.io/psxrecomp-ports/",
+      "folder": "tony-hawk-s-pro-skater-3-recomp",
+      "instructions": "Required files: SLUS-01419. BIOS: SCPH-1001. Known issues: Music sometimes failed to start in one Tony Hawk title during operator testing. The exact title is not known. Skipping one track starts the next.",
+      "image": "https://cdn2.steamgriddb.com/grid/bcc3bc4b265dd4f13ba2296293cec2d9.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/e8d66338fab3727e34a9179ed8804f64.png",
+      "save": "saves"
+    },{
+      "name": "Tony Hawk's Pro Skater 4 (tony-hawk-s-pro-skater-4-recomp)",
+      "tags": ["ps1", "alexbeav", "multiplayer"],
+      "source": "https://github.com/Alexbeav/tony-hawk-s-pro-skater-4-recomp",
+      "website": "https://alexbeav.github.io/psxrecomp-ports/",
+      "folder": "tony-hawk-s-pro-skater-4-recomp",
+      "instructions": "Required files: SLUS-01485. BIOS: SCPH-1001. Known issues: Music sometimes failed to start in one Tony Hawk title during operator testing. The exact title is not known. Skipping one track starts the next.",
+      "image": "https://cdn2.steamgriddb.com/grid/13dfa6fbe064e0a113525c6c15c78489.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/cca92d417984799a0b4b41a7e3da47b7.png",
+      "save": "saves"
+    },{
+      "-name": "Tony Hawk's Project 8 (Project8Recomp)",
+      "tags": ["360", "sport", "multilingual"],
+      "source": "https://github.com/theokyr/Project8Recomp",
+      "folder": "Project8Recomp",
+      "instructions": "Required files: (CRC32: )\n\nUse extract-xiso.exe to extract the assets and place the files in the assets folder at the root of the port folder.",
+      "image": "https://cdn2.steamgriddb.com/grid/f4916a3556ed7cd820b7d66f984bdc9f.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/b1cc074da618ac7d0807bf126726fda3.png"
+    },{
+      "name": "Valkyrie Profile (valkyrie-profile-recomp)",
+      "tags": ["ps1", "alexbeav"],
+      "source": "https://github.com/Alexbeav/valkyrie-profile-recomp",
+      "website": "https://alexbeav.github.io/psxrecomp-ports/",
+      "folder": "valkyrie-profile-recomp",
+      "instructions": "Required files: SLUS-01156. BIOS: SCPH-1001. Known issues: The later campaign disc transition is not fully qualified.",
+      "image": "https://cdn2.steamgriddb.com/grid/6f1e903e8fca6d5649f73e37364d7c26.jpg",
+      "icon": "https://cdn2.steamgriddb.com/icon/99be9f83741d1275639df2c1e4d0072f.png",
+      "save": "saves"
+    },{
+      "name": "Valkyrie Profile (ValkyrieRecomp)",
+      "tags": ["ps1", "rpg"],
+      "source": "https://github.com/Ed1z19/ValkyrieRecomp",
+      "folder": "ValkyrieRecomp",
+      "instructions": "Required files: Valkyrie Profile (PlayStation, USA)\n\nLanguages: English.",
+      "image": "https://cdn2.steamgriddb.com/grid/0f11e78099153ac5d86d578bc71777a9.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/99be9f83741d1275639df2c1e4d0072f.png",
+      "save": "saves"
+    },{
+      "name": "Vampire Hunter D (vampire-hunter-d-recomp)",
+      "tags": ["ps1", "alexbeav"],
+      "source": "https://github.com/Alexbeav/vampire-hunter-d-recomp",
+      "website": "https://alexbeav.github.io/psxrecomp-ports/",
+      "folder": "vampire-hunter-d-recomp",
+      "instructions": "Required files: SLUS-01138. BIOS: Regional SCPH",
+      "image": "https://cdn2.steamgriddb.com/grid/0c1290d2e2dfd75c12e4c2f139d4d856.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/a51d33efc990731cb31eb6e9bcf79670.png",
+      "save": "saves"
+    },{
+      "name": "Vandal Hearts (VandalHearts-PcPort)",
+      "tags": ["ps1", "rpg"],
+      "source": "https://github.com/HalmyLyseas/VandalHearts-PcPort",
+      "folder": "VandalHearts-PcPort",
+      "instructions": "Required files: Vandal Hearts (USA).bin (CRC32: C7622112)\n\nPut the required file in the port folder.",
+      "image": "https://cdn2.steamgriddb.com/grid/3afe7eae0504b08cd09bd4474ef4dcf1.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/c9333c74368d71bf49b83b69967039e2.png",
+      "save": "saves"
+    },{
+      "name": "Vib-Ribbon (vib-ribbon-recomp)",
+      "tags": ["ps1", "alexbeav"],
+      "source": "https://github.com/Alexbeav/vib-ribbon-recomp",
+      "website": "https://alexbeav.github.io/psxrecomp-ports/",
+      "folder": "vib-ribbon-recomp",
+      "instructions": "Required files: SCES-02873. BIOS: SCPH-5552. Known issues: Wave 3 validation limits apply. Use the complete matching Redump CUE/BIN set and the required SCPH-5552 BIOS. Keep all 8 game-disc tracks. Final-package music-disc selection and transitions remain unperformed.",
+      "image": "https://cdn2.steamgriddb.com/grid/5be3bea579f9573b558382aa434128e5.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/018dc3f666ecfe1f2b2ebdb3fed21295.png",
+      "save": "saves"
+    },{
+      "name": "Vigilante 8 (vigilante-8-recomp)",
+      "tags": ["ps1", "alexbeav"],
+      "source": "https://github.com/Alexbeav/vigilante-8-recomp",
+      "website": "https://alexbeav.github.io/psxrecomp-ports/",
+      "folder": "vigilante-8-recomp",
+      "instructions": "Required files: SLES-01212. BIOS: Regional SCPH",
+      "image": "https://cdn2.steamgriddb.com/grid/7787d075c5e5c3a1558086e46052bde8.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/5c189c8af264bcf258bf18cd0a8328eb.png",
+      "save": "saves"
+    },{
+      "name": "Virtua Racing (Virtua-Racing---XBOXONE-Windows)",
+      "tags": ["xone", "vr", "racing", "multiplayer"],
+      "source": "https://github.com/wanszai/Virtua-Racing---XBOXONE-Windows",
+      "folder": "Virtua-Racing---XBOXONE-Windows",
+      "instructions": "Required files: vr.zip (CRC32: 200649A9)",
+      "image": "https://cdn2.steamgriddb.com/grid/4ca729e39627cf59fbc4478a9a1d7385.jpg",
+      "icon": "https://cdn2.steamgriddb.com/icon/9b01ea73aa4de36440a527d52e63870a.png",
+      "save": "VirtuaRacing"
+    },{
+      "name": "Viva Piñata: Trouble in Paradise (TiP-Recomp)",
+      "tags": ["360", "simulation", "multilingual"],
+      "source": "https://github.com/SolarCookies/TiP-Recomp",
+      "folder": "TiP-Recomp",
+      "instructions": "Required files: Viva Piñata\n\nLanguages: Multilingual.",
+      "image": "https://cdn2.steamgriddb.com/grid/e9437348054c27c0951c7d9d59bac04f.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/b41785e01b7f3ae10e9cbdb6dc452ed0.png",
+      "save": "saves"
+    },{
+      "name": "Wave Race 64 (wave-race-64-recomp)",
+      "tags": ["n64", "racing"],
+      "source": "https://github.com/elliotttate/wave-race-64-recomp/",
+      "folder": "wave-race-64-recomp",
+      "instructions": "Required files: Wave Race 64 (USA) (Rev A)",
+      "image": "https://cdn2.steamgriddb.com/grid/8865522a87f300bac8a03a4ddcbc784b.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/65c2dd61d53e765e7c7363dbfe10cdd9.png",
+      "save": "%LOCALAPPDATA%\\WaveRace64Recomp"
+    },{
+      "name": "Wild Arms (wild-arms-recomp)",
+      "tags": ["ps1", "alexbeav"],
+      "source": "https://github.com/Alexbeav/wild-arms-recomp",
+      "website": "https://alexbeav.github.io/psxrecomp-ports/",
+      "folder": "wild-arms-recomp",
+      "instructions": "Required files: SCUS-94608. BIOS: SCPH-1001. Known issues: Wave 4 validation limits apply: Windows setup verified on the exact package; gameplay on the public packages and native Linux/macOS setup are unverified. Use the complete matching Redump CUE/BIN set (or a CHD of it) and the required SCPH-1001 BIOS.",
+      "image": "https://cdn2.steamgriddb.com/grid/a2b0b37517febefb5411c35df71f589c.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/ca851e9f71b25d2d588b7e0d4de3d627.png",
+      "save": "saves"
+    },{
+      "-name": "Wing Commander (wc1-re)",
+      "tags": ["msdos", "simulation"],
+      "source": "https://github.com/neuromancer/wc1-re",
+      "folder": "wc1-re",
+      "instructions": "Required files: Wing Commander: The Kilrathi Saga",
+      "image": "https://cdn2.steamgriddb.com/grid/a9dbd10526ac1d8b5786a9e991d29c3e.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/0415740eaa4d9decbc8da001d3fd805f.png"
+    },{
+      "name": "WipeOut (wipeout-phantom-edition)",
+      "tags": ["ps1", "racing", "multiplayer"],
+      "source": "https://github.com/wipeout-phantom-edition/wipeout-phantom-edition",
+      "folder": "wipeout-phantom-edition",
+      "instructions": "Required files: Wipeout (USA)",
+      "image": "https://cdn2.steamgriddb.com/grid/641d7c29f6e6d7dbc3f543df1612bd76.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/9fcb5252180dc29b22976c5c63b322e7.png",
+      "save": "saves"
+    },{
+      "name": "WipEout (wipeout-recomp)",
+      "tags": ["ps1", "alexbeav"],
+      "source": "https://github.com/Alexbeav/wipeout-recomp",
+      "website": "https://alexbeav.github.io/psxrecomp-ports/",
+      "folder": "wipeout-recomp",
+      "instructions": "Required files: SCES-00010. BIOS: SCPH-5552. Known issues: Minor visible geometry gaps remain.",
+      "image": "https://cdn2.steamgriddb.com/grid/dd34ba7dd11b2b939681fbb68f36c868.jpg",
+      "icon": "https://cdn2.steamgriddb.com/icon/9fcb5252180dc29b22976c5c63b322e7.png",
+      "save": "saves"
+    },{
+      "name": "wipEout 2097 (Wipeout2K97XL)",
+      "tags": ["ps1", "njh-1001", "racing"],
+      "source": "https://github.com/NJH-1001/Wipeout2K97XL",
+      "folder": "Wipeout2K97XL",
+      "instructions": "Required files: Wipeout XL (USA), SCUS-94351\n\nLanguages: English",
+      "image": "https://cdn2.steamgriddb.com/grid/3870e23479b42ad046256d65834e987f.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/b2b956df266aa7b5e4f9f0aa4f27afa4.png"
+    },{
+      "-name": "Wipeout XL (wipeout-xl-recomp)",
+      "tags": ["ps1", "alexbeav"],
+      "source": "https://github.com/Alexbeav/wipeout-xl-recomp",
+      "website": "https://alexbeav.github.io/psxrecomp-ports/",
+      "folder": "wipeout-xl-recomp",
+      "instructions": "Required files: SCUS-94351. BIOS: SCPH-5552. Known issues: Wave 3 validation limits apply. Use the complete matching Redump CUE/BIN set and the required SCPH-5552 BIOS. Keep all 12 tracks. Final-package music and later-stage checks remain unperformed.",
+      "image": "https://cdn2.steamgriddb.com/grid/6b48303c0ebaa7191a4df1e07d1a5147.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/6944d4d43c2ec200647b67e58153a123.png",
+      "save": "saves"
+    },{
+      "-name": "X-Men: Destiny (xmd-recompiled)",
+      "tags": ["360", "action-adventure", "multilingual"],
+      "source": "https://github.com/florinp93/xmd-recompiled",
+      "folder": "xmd-recompiled",
+      "instructions": "Required files: \n\nLanguages: Multilingual.",
+      "image": "https://cdn2.steamgriddb.com/grid/3636d84dd596dd83dc16a81270036aeb.jpg",
+      "icon": "https://cdn2.steamgriddb.com/icon/6822951732be44edf818dc5a97d32ca6.png"
+    },{
+      "name": "X-Men: Mutant Academy 2 (xmen-mutant-academy-2-pc)",
+      "tags": ["ps1", "fighting"],
+      "source": "https://github.com/GTTeancum/xmen-mutant-academy-2-pc",
+      "folder": "xmen-mutant-academy-2-pc",
+      "instructions": "Required files: X-Men: Mutant Academy 2 (SLUS-01382)\n\nLanguages: English.",
+      "image": "https://cdn2.steamgriddb.com/grid/abac2e160023bcce4ff4ed0ed446138f.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/4aa2bbac27f1625907a53d2933a16e04.png",
+      "save": "saves"
+    },{
+      "name": "Xena: Warrior Princess (xena-warrior-princess-recomp)",
+      "tags": ["ps1", "alexbeav"],
+      "source": "https://github.com/Alexbeav/xena-warrior-princess-recomp",
+      "website": "https://alexbeav.github.io/psxrecomp-ports/",
+      "folder": "xena-warrior-princess-recomp",
+      "instructions": "Required files: SLUS-00977. BIOS: SCPH-1001",
+      "image": "https://cdn2.steamgriddb.com/grid/d40e99b21daf51db5a0fed99de2b25e7.png",
+      "save": "saves"
+    },{
+      "name": "Xonotic",
+      "tags": ["free", "pc", "fps", "multiplayer", "online"],
+      "source": "https://dl.xonotic.org/xonotic-0.8.6.zip",
+      "folder": "xonotic",
+      "instructions": "https://xonotic.org/\n\nLanguages: English.",
+      "image": "https://cdn2.steamgriddb.com/grid/3a78cc37cec7abf6057c0a5ab20cff72.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/6ea1301c76a2752155f93ff51443ad01.png"
+    },{
+      "name": "Yu-Gi-Oh! Forbidden Memories (YuGiOhForbiddenMemoriesRecomp)",
+      "tags": ["ps1", "tcg", "rpg"],
+      "source": "https://github.com/Unchiga/YuGiOhForbiddenMemoriesRecomp",
+      "folder": "YuGiOhForbiddenMemoriesRecomp",
+      "instructions": "Required files: Yu-Gi-Oh! Forbidden Memories (USA).bin/cue (CRC32: 73E4C771/BCEED6FA)\n\nLanguages: English\n\nDiscord server: https://discord.com/invite/SR8qWG9Ve",
+      "image": "https://cdn2.steamgriddb.com/grid/fb3fb416095812f23a22302e9efe50b6.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/efe937780e95574250dabe07151bdc23.png"
+    },{
+      "-name": "Zemplate",
+      "tags": ["platform-tag (pc/n64/ps1/ps2/gc/360/etc)", "genre-tag"],
+      "source": "https://github.com/owner/repo -- or https://gitlab.com/owner/repo, or a direct download URL (DirectUrl, no update tracking), or {\"windows\": \"...\", \"linux\": \"...\"} for per-platform, or omit \"source\" entirely for a Local/manually-managed port",
+      "folder": "FolderNameUnderLibrary",
+      "executable": "optional -- relative path launched by Play, or {\"windows\": \"...\", \"linux\": \"...\"}; omit entirely to auto-detect the only .exe in the folder (or ask if several)",
+      "website": "optional -- overrides the auto-derived GitHub/GitLab page as the Info panel's website link; has no effect for a DirectUrl source (nothing to derive)",
+      "mods": "optional -- URL to a mods page for this port, shown as its own Info panel button",
+      "image": "https://cdn2.steamgriddb.com/grid/... -- box art URL, downloaded once and cached locally",
+      "icon": "https://cdn2.steamgriddb.com/icon/... -- icon art URL, for Discord Rich Presence (RPC)",
+      "instructions": "Free text shown in the Info panel, selectable/copyable. Required files/CRC32, supported languages, setup notes... any URL inside is auto-detected and shown as a clickable link too.",
+      "save": "optional -- string path (supports %ENV_VARS%, relative to the game folder otherwise) or {\"windows\": \"...\", \"linux\": \"...\"}",
+      "save2": "optional -- second, independent save location, same format as \"save\"",
+      "exe_is_archive": "optional -- anchor filename (any extension, not necessarily .exe) to locate inside the extracted archive when it isn't a plain top-level game folder (e.g. an NSIS installer, a zip-disguised-as-exe)",
+      "preferred_asset": "optional -- substring to prefer when picking a GitHub/GitLab release asset, string or per-platform object like \"executable\"/\"save\"",
+      "extra": "optional -- URL of a supplementary file/archive downloaded and merged into the folder AFTER the main install; silently ignored on failure"
+    },{
+      "-name": "Zoids Legacy (ZoidsLegacyDecomp)",
+      "tags": ["gba", "rpg"],
+      "source": "https://github.com/jmacato/ZoidsLegacyDecomp",
+      "folder": "ZoidsLegacyDecomp",
+      "instructions": "Required files: Zoids - Legacy (USA).gba (CRC32: 302E75F3/81977335)",
+      "image": "https://cdn2.steamgriddb.com/grid/0278edddd8a644613430170b1e9ad893.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/d6d55f44bcc66e447930150826e5a931.png"
+    }
+  ]
+}

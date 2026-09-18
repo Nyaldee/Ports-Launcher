@@ -1,0 +1,318 @@
+import { Theme, ThemedScrollbar } from "../shared.slint";
+import { ButtonRow, ButtonRowItem, DialogChrome } from "chrome.slint";
+
+export component InfoDialog inherits Window {
+    no-frame: true;
+    title: root.dialog-title;
+    background: Theme.list-background;
+    in property <length> initial-width: 500px;
+    in property <length> initial-height: 400px;
+    width: initial-width;
+    height: initial-height;
+
+    in property <string> font-family: "Segoe UI";
+    default-font-family: root.font-family;
+
+    in property <string> dialog-title: "";
+    in property <string> version-text: "";
+    in property <string> favorite-exe-status-text: "";
+    in property <string> update-status-text: "";
+    in property <string> playtime-status-text: "";
+    in property <string> last-played-status-text: "";
+    in property <string> instructions-text: "";
+    in property <string> instructions-link: "";
+    in property <bool> website-enabled: false;
+    in property <bool> mods-enabled: false;
+    in property <bool> game-folder-enabled: false;
+    in property <bool> save-folder-enabled: false;
+    in property <bool> save-folder2-enabled: false;
+    in property <bool> change-version-enabled: false;
+    in property <bool> favorite-exe-enabled: false;
+    in property <bool> update-toggle-enabled: false;
+    in property <bool> reset-playtime-enabled: false;
+    in property <bool> extra-enabled: false;
+    in property <int> selected-index: -1;
+    callback website-requested();
+    callback mods-requested();
+    callback game-folder-requested();
+    callback save-folder-requested();
+    callback save-folder2-requested();
+    callback change-version-requested();
+    callback favorite-exe-requested();
+    callback update-toggle-requested();
+    callback reset-playtime-requested();
+    callback extra-requested();
+    callback instructions-link-requested();
+    callback close-requested();
+    callback nav-hovered(int);
+    callback move-selection-requested(int);
+    callback activate-selection-requested();
+    callback scroll-instructions(int);
+    scroll-instructions(direction) => {
+        instructions-flick.content-y = Math.clamp(
+            instructions-flick.content-y - direction * row-height,
+            min(0px, instructions-flick.height - instructions-flick.content-height),
+            0px,
+        );
+    }
+    forward-focus: key-handler;
+
+    function handle-nav-key(event: KeyEvent) -> EventResult {
+        if (event.text == Key.Escape) {
+            root.close-requested();
+            return accept;
+        } else if (event.text == Key.LeftArrow || (event.modifiers.control && event.text == "a")) {
+            root.move-selection-requested(-1);
+            return accept;
+        } else if (event.text == Key.RightArrow || (event.modifiers.control && event.text == "d")) {
+            root.move-selection-requested(1);
+            return accept;
+        } else if (event.text == Key.UpArrow || (event.modifiers.control && event.text == "w")) {
+            root.scroll-instructions(-1);
+            return accept;
+        } else if (event.text == Key.DownArrow || (event.modifiers.control && event.text == "s")) {
+            root.scroll-instructions(1);
+            return accept;
+        } else if (event.text == Key.Return) {
+            root.activate-selection-requested();
+            return accept;
+        } else {
+            return reject;
+        }
+    }
+
+    in property <length> item-font-px-physical: 14px;
+    in property <length> title-font-px-physical: 13px;
+    in property <length> row-height-physical: 48px;
+    in property <length> title-bar-height-physical: 34px;
+
+    property <length> logical-w: root.width - border-px * 2;
+    property <length> logical-h: root.height - border-px * 2;
+    property <length> border-px: Theme.border-width * 1px / Theme.scale-factor;
+    property <length> item-font-px: item-font-px-physical / Theme.scale-factor;
+    property <length> title-font-px: title-font-px-physical / Theme.scale-factor;
+    property <length> bar-height: title-bar-height-physical / Theme.scale-factor;
+    property <length> gutter: 12px / Theme.scale-factor;
+    property <length> row-height: root.row-height-physical / Theme.scale-factor;
+    property <length> button-padding: 10px / Theme.scale-factor;
+    property <length> row-spacing: 6px / Theme.scale-factor;
+    property <length> content-width: chrome.content-width - root.gutter * 2;
+    property <length> big-button-height: row-height;
+    property <length> scrollbar-width: 6px / Theme.scale-factor;
+
+    key-handler := FocusScope {
+        key-pressed(event) => { return root.handle-nav-key(event); }
+
+        chrome := DialogChrome {
+            dialog-title: root.dialog-title;
+            bar-height: root.bar-height;
+            title-font-px: root.title-font-px;
+            border-px: root.border-px;
+            logical-w: root.logical-w;
+            logical-h: root.logical-h;
+            close-requested => { root.close-requested(); }
+
+            version-text-label := Text {
+                text: root.version-text;
+                color: Theme.list-text;
+                font-size: root.item-font-px;
+                vertical-alignment: center;
+                x: root.gutter;
+                y: root.gutter;
+                width: content-width;
+                height: status-line-height;
+            }
+
+            property <length> status-line-height: item-font-px * 1.3;
+
+            favorite-exe-status := Text {
+                text: root.favorite-exe-status-text;
+                visible: root.favorite-exe-enabled;
+                color: Theme.list-text;
+                font-size: root.item-font-px;
+                vertical-alignment: center;
+                x: root.gutter;
+                y: version-text-label.y + version-text-label.height;
+                width: content-width;
+                height: root.favorite-exe-enabled ? status-line-height : 0px;
+            }
+
+            update-status := Text {
+                text: root.update-status-text;
+                visible: root.update-toggle-enabled;
+                color: Theme.list-text;
+                font-size: root.item-font-px;
+                vertical-alignment: center;
+                x: root.gutter;
+                y: favorite-exe-status.y + favorite-exe-status.height;
+                width: content-width;
+                height: root.update-toggle-enabled ? status-line-height : 0px;
+            }
+
+            last-played-status := Text {
+                text: root.last-played-status-text;
+                visible: root.reset-playtime-enabled;
+                color: Theme.list-text;
+                font-size: root.item-font-px;
+                vertical-alignment: center;
+                x: root.gutter;
+                y: update-status.y + update-status.height;
+                width: content-width;
+                height: root.reset-playtime-enabled ? status-line-height : 0px;
+            }
+
+            playtime-status := Text {
+                text: root.playtime-status-text;
+                visible: root.reset-playtime-enabled;
+                color: Theme.list-text;
+                font-size: root.item-font-px;
+                vertical-alignment: center;
+                x: root.gutter;
+                y: last-played-status.y + last-played-status.height;
+                width: content-width;
+                height: root.reset-playtime-enabled ? status-line-height : 0px;
+            }
+
+            context-button-row := ButtonRow {
+                x: root.gutter;
+                y: playtime-status.y + playtime-status.height + row-spacing;
+                content-width: content-width;
+                button-padding: button-padding;
+                row-spacing: row-spacing;
+                button-height: big-button-height;
+                item-font-px: root.item-font-px;
+                border-px: root.border-px;
+                selected-index:
+                    root.selected-index == 5 ? 0 :
+                    root.selected-index == 7 ? 1 :
+                    root.selected-index == 6 ? 2 :
+                    root.selected-index == 9 ? 3 :
+                    root.selected-index == 8 ? 4 : -1;
+                items: [
+                    { text: @tr("Select version"), enabled: root.change-version-enabled },
+                    { text: @tr("Update"), enabled: root.update-toggle-enabled },
+                    { text: @tr("Favorite executable"), enabled: root.favorite-exe-enabled },
+                    { text: @tr("Install extras"), enabled: root.extra-enabled },
+                    { text: @tr("Reset game time"), enabled: root.reset-playtime-enabled },
+                ];
+                clicked(index) => {
+                    if (index == 0) { root.change-version-requested(); }
+                    else if (index == 1) { root.update-toggle-requested(); }
+                    else if (index == 2) { root.favorite-exe-requested(); }
+                    else if (index == 3) { root.extra-requested(); }
+                    else { root.reset-playtime-requested(); }
+                }
+                hovered(index) => {
+                    root.nav-hovered(index == 0 ? 5 : index == 1 ? 7 : index == 2 ? 6 : index == 3 ? 9 : 8);
+                }
+            }
+
+            instructions-box := Rectangle {
+                background: Theme.search-background;
+                border-width: root.border-px;
+                border-color: Theme.border-color;
+                x: root.gutter;
+                y: context-button-row.y + context-button-row.height + root.gutter;
+                width: content-width;
+                height: chrome.content-height - self.y - root.gutter * 2 - button-row.height;
+
+                ContextMenuArea {
+                    Menu {
+                        MenuItem {
+                            title: @tr("Copy");
+                            enabled: !root.instructions-text.is-empty;
+                            activated => { instructions-input.copy(); }
+                        }
+                    }
+
+                instructions-flick := Flickable {
+                    x: root.gutter * 0.5;
+                    y: root.gutter * 0.5;
+                    width: instructions-box.width - root.gutter - scrollbar-width;
+                    height: instructions-box.height - root.gutter;
+                    content-width: self.width;
+                    content-height: max(self.height, link-row.height + instructions-input.preferred-height);
+                    interactive: false;
+
+                    link-row := TouchArea {
+                        x: 0px;
+                        y: 0px;
+                        width: instructions-flick.width;
+                        height: root.instructions-link == "" ? 0px : row-height;
+                        mouse-cursor: pointer;
+                        clicked => { root.instructions-link-requested(); }
+
+                        Text {
+                            visible: root.instructions-link != "";
+                            text: "🔗 " + root.instructions-link;
+                            color: Theme.selected-background;
+                            font-size: root.item-font-px;
+                            vertical-alignment: center;
+                            overflow: elide;
+                            width: parent.width;
+                            height: 100%;
+                        }
+                    }
+
+                    instructions-input := TextInput {
+                        y: link-row.height;
+                        text: root.instructions-text;
+                        color: Theme.list-text;
+                        font-size: root.item-font-px;
+                        read-only: true;
+                        single-line: false;
+                        wrap: word-wrap;
+                        selection-background-color: Theme.selected-background;
+                        selection-foreground-color: Theme.selected-text;
+                        width: instructions-flick.width;
+                        key-pressed(event) => { return root.handle-nav-key(event); }
+                    }
+                }
+                }
+
+                ThemedScrollbar {
+                    x: instructions-flick.x + instructions-flick.width + (root.gutter * 0.5 - scrollbar-width) / 2;
+                    y: instructions-flick.y;
+                    height: instructions-flick.height;
+                    viewport-height: instructions-flick.content-height;
+                    visible-height: instructions-flick.height;
+                    viewport-y <=> instructions-flick.content-y;
+                }
+            }
+
+            button-row := ButtonRow {
+                x: root.gutter;
+                y: chrome.content-height - root.gutter - self.height;
+                content-width: content-width;
+                button-padding: button-padding;
+                row-spacing: row-spacing;
+                button-height: big-button-height;
+                item-font-px: root.item-font-px;
+                border-px: root.border-px;
+                selected-index:
+                    root.selected-index == 2 ? 0 :
+                    root.selected-index == 3 ? 1 :
+                    root.selected-index == 4 ? 2 :
+                    root.selected-index == 1 ? 3 :
+                    root.selected-index == 0 ? 4 : -1;
+                items: [
+                    { text: @tr("Game folder"), enabled: root.game-folder-enabled },
+                    { text: @tr("Save folder"), enabled: root.save-folder-enabled },
+                    { text: @tr("Save folder 2"), enabled: root.save-folder2-enabled },
+                    { text: @tr("Mods website"), enabled: root.mods-enabled },
+                    { text: @tr("Game website"), enabled: root.website-enabled },
+                ];
+                clicked(index) => {
+                    if (index == 0) { root.game-folder-requested(); }
+                    else if (index == 1) { root.save-folder-requested(); }
+                    else if (index == 2) { root.save-folder2-requested(); }
+                    else if (index == 3) { root.mods-requested(); }
+                    else { root.website-requested(); }
+                }
+                hovered(index) => {
+                    root.nav-hovered(index == 0 ? 2 : index == 1 ? 3 : index == 2 ? 4 : index == 3 ? 1 : 0);
+                }
+            }
+        }
+    }
+}

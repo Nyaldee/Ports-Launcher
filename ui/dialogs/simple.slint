@@ -1,0 +1,330 @@
+import { Theme } from "../shared.slint";
+import { DialogButton, DialogChrome, DialogNavKeyHandler } from "chrome.slint";
+
+export component MessageDialog inherits Window {
+    no-frame: true;
+    title: root.dialog-title;
+    background: Theme.list-background;
+    in property <length> initial-width: 400px;
+    in property <length> initial-height: 200px;
+    width: initial-width;
+    height: initial-height;
+
+    in property <string> font-family: "Segoe UI";
+    default-font-family: root.font-family;
+
+    in property <string> dialog-title: "";
+    in property <string> message-text: "";
+    callback close-requested();
+
+    in property <length> item-font-px-physical: 14px;
+    in property <length> title-font-px-physical: 13px;
+    in property <length> row-height-physical: 48px;
+    in property <length> title-bar-height-physical: 34px;
+
+    property <length> logical-w: root.width - border-px * 2;
+    property <length> logical-h: root.height - border-px * 2;
+    property <length> border-px: Theme.border-width * 1px / Theme.scale-factor;
+    property <length> item-font-px: item-font-px-physical / Theme.scale-factor;
+    property <length> title-font-px: title-font-px-physical / Theme.scale-factor;
+    property <length> bar-height: title-bar-height-physical / Theme.scale-factor;
+    property <length> gutter: 12px / Theme.scale-factor;
+
+    forward-focus: key-handler;
+
+    key-handler := FocusScope {
+        key-pressed(event) => {
+            if (event.text == Key.Escape) {
+                root.close-requested();
+                accept
+            } else {
+                reject
+            }
+        }
+
+        chrome := DialogChrome {
+            dialog-title: root.dialog-title;
+            bar-height: root.bar-height;
+            title-font-px: root.title-font-px;
+            border-px: root.border-px;
+            logical-w: root.logical-w;
+            logical-h: root.logical-h;
+            close-requested => { root.close-requested(); }
+
+            Text {
+                text: root.message-text;
+                color: Theme.list-text;
+                font-size: root.item-font-px;
+                wrap: word-wrap;
+                x: root.gutter;
+                y: root.gutter;
+                width: chrome.content-width - root.gutter * 2;
+                height: chrome.content-height - root.gutter * 2;
+            }
+        }
+    }
+}
+
+export component ConfirmDialog inherits Window {
+    no-frame: true;
+    title: root.dialog-title;
+    background: Theme.list-background;
+    in property <length> initial-width: 400px;
+    in property <length> initial-height: 220px;
+    width: initial-width;
+    height: initial-height;
+
+    in property <string> font-family: "Segoe UI";
+    default-font-family: root.font-family;
+
+    in property <string> dialog-title: "";
+    in property <string> message-text: "";
+    in property <string> confirm-text: @tr("Uninstall");
+    callback confirmed();
+    callback close-requested();
+    in property <int> selected-index: 0;
+    callback nav-hovered(int);
+    callback move-selection-requested(int);
+    callback activate-selection-requested();
+    forward-focus: key-handler;
+
+    in property <length> item-font-px-physical: 14px;
+    in property <length> title-font-px-physical: 13px;
+    in property <length> row-height-physical: 48px;
+    in property <length> title-bar-height-physical: 34px;
+
+    property <length> logical-w: root.width - border-px * 2;
+    property <length> logical-h: root.height - border-px * 2;
+    property <length> border-px: Theme.border-width * 1px / Theme.scale-factor;
+    property <length> item-font-px: item-font-px-physical / Theme.scale-factor;
+    property <length> title-font-px: title-font-px-physical / Theme.scale-factor;
+    property <length> bar-height: title-bar-height-physical / Theme.scale-factor;
+    property <length> gutter: 12px / Theme.scale-factor;
+    property <length> content-width: chrome.content-width - root.gutter * 2;
+
+    key-handler := DialogNavKeyHandler {
+        close-requested => { root.close-requested(); }
+        move-selection-requested(delta) => { root.move-selection-requested(delta); }
+        activate-selection-requested => { root.activate-selection-requested(); }
+
+        chrome := DialogChrome {
+            dialog-title: root.dialog-title;
+            bar-height: root.bar-height;
+            title-font-px: root.title-font-px;
+            border-px: root.border-px;
+            logical-w: root.logical-w;
+            logical-h: root.logical-h;
+            close-requested => { root.close-requested(); }
+
+            Text {
+                text: root.message-text;
+                color: Theme.list-text;
+                font-size: root.item-font-px;
+                wrap: word-wrap;
+                x: root.gutter;
+                y: root.gutter;
+                width: root.content-width;
+                height: chrome.content-height - root.gutter * 4 - root.bar-height * 2;
+            }
+
+            DialogButton {
+                text: root.confirm-text;
+                selected: root.selected-index == 0;
+                font-size: root.item-font-px;
+                x: root.gutter;
+                y: chrome.content-height - root.gutter * 2 - root.bar-height * 2;
+                width: root.content-width;
+                height: root.bar-height;
+                border-px: root.border-px;
+                clicked => { root.confirmed(); }
+                hovered => { root.nav-hovered(0); }
+            }
+
+            DialogButton {
+                text: @tr("Cancel");
+                selected: root.selected-index == 1;
+                font-size: root.item-font-px;
+                x: root.gutter;
+                y: chrome.content-height - root.gutter - root.bar-height;
+                width: root.content-width;
+                height: root.bar-height;
+                border-px: root.border-px;
+                clicked => { root.close-requested(); }
+                hovered => { root.nav-hovered(1); }
+            }
+        }
+    }
+}
+
+export component ErrorDialog inherits Window {
+    no-frame: true;
+    title: root.dialog-title;
+    background: Theme.list-background;
+    in property <length> initial-width: 400px;
+    in property <length> initial-height: 260px;
+    width: initial-width;
+    height: initial-height;
+
+    in property <string> font-family: "Segoe UI";
+    default-font-family: root.font-family;
+
+    in property <string> dialog-title: "";
+    in property <string> message-text: "";
+    callback reinstall-requested();
+    callback info-requested();
+    callback close-requested();
+    in property <int> selected-index: 0;
+    callback nav-hovered(int);
+    callback move-selection-requested(int);
+    callback activate-selection-requested();
+    forward-focus: key-handler;
+
+    in property <length> item-font-px-physical: 14px;
+    in property <length> title-font-px-physical: 13px;
+    in property <length> row-height-physical: 48px;
+    in property <length> title-bar-height-physical: 34px;
+
+    property <length> logical-w: root.width - border-px * 2;
+    property <length> logical-h: root.height - border-px * 2;
+    property <length> border-px: Theme.border-width * 1px / Theme.scale-factor;
+    property <length> item-font-px: item-font-px-physical / Theme.scale-factor;
+    property <length> title-font-px: title-font-px-physical / Theme.scale-factor;
+    property <length> bar-height: title-bar-height-physical / Theme.scale-factor;
+    property <length> gutter: 12px / Theme.scale-factor;
+    property <length> content-width: chrome.content-width - root.gutter * 2;
+
+    key-handler := DialogNavKeyHandler {
+        close-requested => { root.close-requested(); }
+        move-selection-requested(delta) => { root.move-selection-requested(delta); }
+        activate-selection-requested => { root.activate-selection-requested(); }
+
+        chrome := DialogChrome {
+            dialog-title: root.dialog-title;
+            bar-height: root.bar-height;
+            title-font-px: root.title-font-px;
+            border-px: root.border-px;
+            logical-w: root.logical-w;
+            logical-h: root.logical-h;
+            close-requested => { root.close-requested(); }
+
+            Text {
+                text: root.message-text;
+                color: Theme.list-text;
+                font-size: root.item-font-px;
+                wrap: word-wrap;
+                x: root.gutter;
+                y: root.gutter;
+                width: root.content-width;
+                height: chrome.content-height - root.gutter * 4 - root.bar-height * 2;
+            }
+
+            DialogButton {
+                text: @tr("Reinstall");
+                selected: root.selected-index == 0;
+                font-size: root.item-font-px;
+                x: root.gutter;
+                y: chrome.content-height - root.gutter * 2 - root.bar-height * 2;
+                width: root.content-width;
+                height: root.bar-height;
+                border-px: root.border-px;
+                clicked => { root.reinstall-requested(); }
+                hovered => { root.nav-hovered(0); }
+            }
+
+            DialogButton {
+                text: @tr("Open info");
+                selected: root.selected-index == 1;
+                font-size: root.item-font-px;
+                x: root.gutter;
+                y: chrome.content-height - root.gutter - root.bar-height;
+                width: root.content-width;
+                height: root.bar-height;
+                border-px: root.border-px;
+                clicked => { root.info-requested(); }
+                hovered => { root.nav-hovered(1); }
+            }
+        }
+    }
+}
+
+export component ProgressDialog inherits Window {
+    no-frame: true;
+    title: root.dialog-title;
+    background: Theme.list-background;
+    in property <length> initial-width: 400px;
+    in property <length> initial-height: 180px;
+    width: initial-width;
+    height: initial-height;
+
+    in property <string> font-family: "Segoe UI";
+    default-font-family: root.font-family;
+
+    in property <string> dialog-title: "";
+    in property <string> status-text: "";
+    in property <color> progress-fill-color: #78b159;
+
+    in property <length> item-font-px-physical: 14px;
+    in property <length> title-font-px-physical: 13px;
+    in property <length> row-height-physical: 48px;
+    in property <length> title-bar-height-physical: 34px;
+
+    property <length> logical-w: root.width - border-px * 2;
+    property <length> logical-h: root.height - border-px * 2;
+    property <length> border-px: Theme.border-width * 1px / Theme.scale-factor;
+    property <length> item-font-px: item-font-px-physical / Theme.scale-factor;
+    property <length> title-font-px: title-font-px-physical / Theme.scale-factor;
+    property <length> bar-height: title-bar-height-physical / Theme.scale-factor;
+    property <length> gutter: 12px / Theme.scale-factor;
+
+    chrome := DialogChrome {
+        dialog-title: root.dialog-title;
+        bar-height: root.bar-height;
+        title-font-px: root.title-font-px;
+        border-px: root.border-px;
+        logical-w: root.logical-w;
+        logical-h: root.logical-h;
+        closable: false;
+
+        Text {
+            text: root.status-text;
+            color: Theme.list-text;
+            font-size: root.item-font-px;
+            wrap: word-wrap;
+            x: root.gutter;
+            y: root.gutter;
+            width: chrome.content-width - root.gutter * 2;
+            height: chrome.content-height - root.gutter * 4;
+        }
+
+        progress-track := Rectangle {
+            x: root.gutter;
+            y: chrome.content-height - root.gutter * 2;
+            width: chrome.content-width - root.gutter * 2;
+            height: root.gutter;
+            background: Theme.search-background;
+            border-width: root.border-px;
+            border-color: Theme.border-color;
+
+            segment := Rectangle {
+                property <length> travel: progress-track.width - root.border-px * 2 - self.width;
+                property <bool> bounce: false;
+                x: root.border-px + (self.bounce ? self.travel : 0px);
+                y: root.border-px;
+                width: (progress-track.width - root.border-px * 2) * 0.35;
+                height: progress-track.height - root.border-px * 2;
+                background: root.progress-fill-color;
+
+                animate x {
+                    duration: 900ms;
+                    easing: ease-in-out;
+                }
+
+                Timer {
+                    interval: 900ms;
+                    running: true;
+                    triggered => { segment.bounce = !segment.bounce; }
+                }
+            }
+        }
+    }
+}
