@@ -2255,11 +2255,11 @@
         "android": "TheXTech Games/Super Mario Bros. X/settings/gamesaves"
       }
     },{
-      "-name": "Super Mario Strikers (strikers)",
+      "name": "Super Mario Strikers (strikers)",
       "tags": ["gc", "mario smash football", "sport", "multiplayer"],
       "source": "https://github.com/new-coke/strikers",
       "folder": "strikers",
-      "instructions": "",
+      "instructions": "Required files: Super Mario Strikers (USA/JP)/Mario Smash Football (Europe) \n\nLanguages: Multilingual.",
       "image": "https://cdn2.steamgriddb.com/grid/a85d58f89d4a5e8f8f9a6336b3dd18f7.jpg",
       "icon": "https://cdn2.steamgriddb.com/icon/ea86ccbb57d32f5889139224411436df.png"
     },{
