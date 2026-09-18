@@ -613,7 +613,7 @@
       "icon": "https://cdn2.steamgriddb.com/icon/bd46c557fbdb2e0f92a082793598803d/32/1024x1024.png"
     },{
       "name": "Donkey Kong 64 (Donkey-Kong-64-Recompiled)",
-      "tags": ["n64", "dk", "platformer", "android"],
+      "tags": ["n64", "dk", "platformer"],
       "source": "https://github.com/Rainchus/Donkey-Kong-64-Recompiled",
       "android_source": "https://github.com/deivid22srk/dk64-recomp-android",
       "android_package": "com.deivid22srk.dk64recomp",
@@ -622,7 +622,10 @@
       "instructions": "Required files: Donkey Kong 64 (USA).z64 (CRC32: D44B4FC6)",
       "mods": "https://dk64recomp.com/mods.html",
       "image": "https://cdn2.steamgriddb.com/grid/86f7d456aa5848c284f7940bdecdef5d.png",
-      "icon": "https://cdn2.steamgriddb.com/icon/bd46c557fbdb2e0f92a082793598803d/32/1024x1024.png"
+      "icon": "https://cdn2.steamgriddb.com/icon/bd46c557fbdb2e0f92a082793598803d/32/1024x1024.png",
+      "save": {
+        "android": "Android/data/com.deivid22srk.dk64recomp/files"
+      }
     },{
       "name": "Donkey Kong Country (DKC1Recomp)",
       "tags": ["snes", "platformer"],
@@ -687,7 +690,7 @@
       "icon": "https://cdn2.steamgriddb.com/icon/e4167ecc39403a361d445849dc87bfc4/32/256x256.png"
     },{
       "-name": "Dragon Ball Z: Budokai 3 (DBZ-Budokai-3-HD-Collection)",
-      "tags": ["360", "fighting", "multiplayer", "android"],
+      "tags": ["360", "fighting", "multiplayer"],
       "source": "https://github.com/novapowers0/DBZ-Budokai-3-HD-Collection",
       "android_source": "https://github.com/Nahalewski/DBZ3-N",
       "android_package": "com.rexglue.dbz3",
@@ -1017,7 +1020,10 @@
       "android_package": "su.xash.engine.test",
       "instructions": "Copy valve directory to a folder named xash in the Internal storage.\n\nLanguages: Multilingual.",
       "image": "https://cdn2.steamgriddb.com/grid/79c9b8bb1e04c2b1aaa4e28092959b6a.png",
-      "icon": "https://cdn2.steamgriddb.com/icon/7f6ffaa6bb0b408017b62254211691b5/32/256x256.png"
+      "icon": "https://cdn2.steamgriddb.com/icon/7f6ffaa6bb0b408017b62254211691b5/32/256x256.png",
+      "save": {
+        "android": "/sdcard/xash/valve/save"
+      }
     },{
       "name": "Harvest Moon 64 (HarvestMoon64Recomp)",
       "tags": ["hm", "n64", "simulation"],
@@ -1040,7 +1046,10 @@
       "android_package": "com.jakobkhansen.silksong",
       "instructions": "If you'd rather not sign in, download the game's Linux depot on a PC with DepotDownloader. The Linux files are the ones the port is built from; the Windows (1030301) and macOS (1030302) depots will not do, and the app rejects them: DepotDownloader -app 1030300 -depot 1030303 -username <your account> -password <your password> -dir silksong\n\nLanguages: Multilingual.",
       "image": "https://cdn2.steamgriddb.com/grid/48b505846f30602aaff7e2d336720e6d.jpg",
-      "icon": "https://cdn2.steamgriddb.com/icon/8c0809620eb335d49fee9522540183cb/32/256x256.png"
+      "icon": "https://cdn2.steamgriddb.com/icon/8c0809620eb335d49fee9522540183cb/32/256x256.png",
+      "save": {
+        "android": "Android/data/com.jakobkhansen.silksong/files"
+      }
     },{
       "name": "Ikemen GO",
       "tags": ["pc", "mugen", "fighting", "multiplayer"],
@@ -1257,7 +1266,10 @@
       "instructions": "Required files: Mario Kart 64 (USA).z64 (CRC32: 434389C1)",
       "mods": "https://gamebanana.com/games/6558",
       "image": "https://cdn2.steamgriddb.com/grid/bc11db020cb9418782afa3d1e0a1209b.png",
-      "icon": "https://cdn2.steamgriddb.com/icon/2b7d7ea550d05a1386ce3aef76f041f4/32/768x768.png"
+      "icon": "https://cdn2.steamgriddb.com/icon/2b7d7ea550d05a1386ce3aef76f041f4/32/768x768.png",
+      "save": {
+        "android": "Android/data/com.izzy.kart/files"
+      }
     },{
       "name": "Mario Kart Wii (Wiicompiled)",
       "tags": ["wii", "racing"],
@@ -1441,6 +1453,17 @@
       "image": "https://cdn2.steamgriddb.com/grid/5df556f9abb947b5d17d3d67a67029e3.png",
       "icon": "https://cdn2.steamgriddb.com/icon/73c415581357651d534a25384d9315d3.png",
       "save": "%APPDATA%\\MetroidPrimeHuntersRecomp"
+    },{
+      "name": "Minecraft Java (Amethyst-Android)",
+      "tags": ["fps", "android_only"],
+      "android_source": "https://github.com/AngelAuraMC/Amethyst-Android",
+      "android_package": "org.angelauramc.amethyst",
+      "instructions": "Languages: Multilingual.",
+      "image": "https://cdn2.steamgriddb.com/grid/ee897a8699b37568c5c8dd72f78c2bf1.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/add7a048049671970976f3e18f21ade3/32/256x256.png",
+      "save": {
+        "android": "Android/data/org.angelauramc.amethyst/files"
+      }
     },{
       "name": "Mischief Makers (trouble-makers-pc-recomp)",
       "tags": ["trouble makers", "n64", "platformer"],
@@ -1638,7 +1661,10 @@
       "instructions": "Required files: Perfect Dark (USA)/(Japan)/(Europe) (En,Fr,De,Es,It).z64 (CRC32: 68446AD4/639C0DA9/7718A714)\n\nLanguages: Multilingual.",
       "image": "https://cdn2.steamgriddb.com/grid/f2eaa301f9c53bb10fb8e5b9d3d0ea9c.png",
       "icon": "https://cdn2.steamgriddb.com/icon/df3cdfd672004f1a0058d81c56e7270a.png",
-      "save": "%APPDATA%\\perfectdark"
+      "save": {
+        "windows": "%APPDATA%\\perfectdark",
+        "android": "Android/data/com.perfectdark.port/files"
+      }
     },{
       "name": "Pikmin (Open-Nectar---Pikmin-Native-PC-Port)",
       "tags": ["gc", "strategy"],
@@ -1673,7 +1699,7 @@
       "icon": "https://cdn2.steamgriddb.com/icon/c6d1db3b8c9c598d7c810afee405b57c.png"
     },{
       "name": "Pokémon Gen 1 (pokemon-gen1-recomp-project)",
-      "tags": ["gb", "rpg", "multilingual", "android"],
+      "tags": ["gb", "rpg", "multilingual"],
       "source": "https://github.com/bryanthaboi/pokemon-gen1-recomp-project",
       "android_package": "com.theboisclub.pokemonred",
       "folder": "pokemon-gen1-recomp-project",
@@ -1862,7 +1888,10 @@
       "android_package": "chat.buku.skate3",
       "instructions": "Tap Select My Skate 3 ISO and choose an ISO dumped from your own copy.",
       "image": "https://cdn2.steamgriddb.com/grid/cb5afcadcac972f1c6d743c96936ebe3.png",
-      "icon": "https://cdn2.steamgriddb.com/icon/f8dfa1bc1dfc7fe4bbd53f1aeb099deb.png"
+      "icon": "https://cdn2.steamgriddb.com/icon/f8dfa1bc1dfc7fe4bbd53f1aeb099deb.png",
+      "save": {
+        "android": "/storage/emulated/0/Android/data/chat.buku.skate3/files/game"
+      }
     },{
       "name": "Skate 3 (skate3recomp)",
       "tags": ["360", "sport", "multilingual"],
@@ -1871,6 +1900,14 @@
       "instructions": "Use extract-xiso.exe to extract the assets and place the files in the assets folder at the root of the port folder.",
       "image": "https://cdn2.steamgriddb.com/grid/cb5afcadcac972f1c6d743c96936ebe3.png",
       "icon": "https://cdn2.steamgriddb.com/icon/f8dfa1bc1dfc7fe4bbd53f1aeb099deb.png"
+    },{
+      "name": "Slay the Spire 2 (StS2-Launcher)",
+      "tags": ["strategy", "android_only"],
+      "android_source": "https://github.com/Ekyso/StS2-Launcher",
+      "android_package": "com.game.sts2launcher",
+      "instructions": "Languages: Multilingual.",
+      "image": "https://cdn2.steamgriddb.com/grid/3b8a2395c9d71ba8fd80df1c4e02d4d4.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/2924f5cb1c62f02d7181e3c45a80f8dc/32/256x256.png"
     },{
       "name": "Snowboard Kids 2 (snowboardkids2-recomp)",
       "tags": ["sk2", "n64", "racing", "multiplayer"],
@@ -1886,7 +1923,7 @@
       "save2": "saves"
     },{
       "name": "Sonic 3 & Knuckles (sonic3air)",
-      "tags": ["smd", "genesis", "platformer", "android"],
+      "tags": ["smd", "genesis", "platformer"],
       "source": "https://github.com/Eukaryot/sonic3air",
       "android_package": "org.eukaryot.sonic3air",
       "folder": "sonic3air",
@@ -1894,7 +1931,10 @@
       "mods": "https://gamebanana.com/games/6878",
       "image": "https://cdn2.steamgriddb.com/grid/8d5c814bc831f35be11c5b95b26a534f.png",
       "icon": "https://cdn2.steamgriddb.com/icon/b9542ac23ea233b42a46d4fa6b305b23.png",
-      "save": "%APPDATA%\\Sonic3AIR"
+      "save": {
+        "windows": "%APPDATA%\\Sonic3AIR",
+        "android": "Android/data/org.eukaryot.sonic3air/files"
+      }
     },{
       "-name": "Sonic Advance 2 (sa2)",
       "tags": ["gba", "platformer", "multilingual"],
@@ -1930,7 +1970,10 @@
       "mods": "https://srb2.org/addons/",
       "image": "https://cdn2.steamgriddb.com/grid/f655d686ece627fa58304aa1b6bf8b39.png",
       "icon": "https://cdn2.steamgriddb.com/icon/314e6ef5dee5ca3a61707d40a0e08d76.png",
-      "preferred_asset": "Full.zip"
+      "preferred_asset": "Full.zip",
+      "save": {
+        "android": "Android/data/org.stjr.srb2/files"
+      }
     },{
       "name": "Sonic Robo Blast 2 Kart (Kart-Public)",
       "tags": ["pc", "racing", "multiplayer", "online"],
@@ -1952,7 +1995,10 @@
       "instructions": "Required files: Sonic Unleashed (Xbox 360)",
       "mods": "https://gamebanana.com/games/21975",
       "image": "https://cdn2.steamgriddb.com/grid/b80c0932cb6f7be27c8d37b4c847a8bd.png",
-      "icon": "https://cdn2.steamgriddb.com/icon/2f60d946251d2dfd719925f3fa1fed01.png"
+      "icon": "https://cdn2.steamgriddb.com/icon/2f60d946251d2dfd719925f3fa1fed01.png",
+      "save": {
+        "android": "Android/data/com.sega.sonicunr/UnleashedRecomp"
+      }
     },{
       "-name": "SoulCalibur II (RingOut)",
       "tags": ["gc", "fighting", "soul edge"],
@@ -2039,7 +2085,10 @@
       "mods": "https://gamebanana.com/games/21612",
       "image": "https://cdn2.steamgriddb.com/grid/9122b7acc2588eff1d20211ce8fb8798.png",
       "icon": "https://cdn2.steamgriddb.com/icon/9fbcbcb41e52efd7dbcb96e8a5c4cb63/32/256x256.png",
-      "save": "Save"
+      "save": {
+        "windows": "Save",
+        "android": "Android/data/com.starship.android/files"
+      }
     },{
       "name": "Star Wars Episode I: The Phantom Menace (star-wars-episode-i-the-phantom-menace-recomp)",
       "tags": ["ps1", "alexbeav"],
@@ -2067,6 +2116,14 @@
       "instructions": "Required files: Star Wars: TIE Fighter on GOG\n\nLanguages: English.",
       "image": "https://cdn2.steamgriddb.com/grid/2197d705fea3a6f01b7f20fd444d803d.png",
       "icon": "https://cdn2.steamgriddb.com/icon/6107eb48aa5ee13a438f2c0e903de38a.png"
+    },{
+      "name": "Stardew Valley (Cinderbox)",
+      "tags": ["strategy", "android_only"],
+      "android_source": "https://github.com/Ekyso/Cinderbox",
+      "android_package": "com.game.cinderbox",
+      "instructions": "A legitimate copy of Stardew Valley is required.\n\nLanguages: Multilingual.",
+      "image": "https://cdn2.steamgriddb.com/grid/996e24639b91722571c81723760023e0.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/2119b8d43eafcf353e07d7cb5554170b/32/256x256.png"
     },{
       "name": "Street Fighter Alpha 3 (Street-Fighter-Alpha-3-Recomp)",
       "tags": ["sf", "ps1", "fighting", "multiplayer"],
@@ -2139,7 +2196,10 @@
       "instructions": "Required files: Super Mario 64 (USA).z64 (CRC32: 3CE60709)",
       "mods": "https://gamebanana.com/games/24131",
       "image": "https://cdn2.steamgriddb.com/grid/ea98cb4ef75b56acda616e5166438fb6.png",
-      "icon": "https://cdn2.steamgriddb.com/icon/f2201f5191c4e92cc5af043eebfd0946.png"
+      "icon": "https://cdn2.steamgriddb.com/icon/f2201f5191c4e92cc5af043eebfd0946.png",
+      "save": {
+        "android": "Android/data/com.ghostship.android/files"
+      }
     },{
       "name": "Super Mario 64 (sm64coopdx)",
       "tags": ["online", "n64", "platformer", "co-op"],
@@ -2151,7 +2211,10 @@
       "mods": "https://mods.sm64coopdx.com/mods/",
       "image": "https://cdn2.steamgriddb.com/grid/ec5b75bbd6d1a33e507d666a49dddf95.png",
       "icon": "https://cdn2.steamgriddb.com/icon/f2201f5191c4e92cc5af043eebfd0946.png",
-      "save": "%APPDATA%\\sm64coopdx",
+      "save": {
+        "windows": "%APPDATA%\\sm64coopdx",
+        "android": "Android/data/com.maniscat2.sm64coopdx/files"
+      },
       "save2": "saves",
       "extra": "https://raw.githubusercontent.com/Nyaldee/Ports-Launcher/main/extra/sm64coopdx"
     },{
@@ -2167,12 +2230,17 @@
       "name": "Super Mario Bros. (Super-Mario-Bros.-Remastered-Public)",
       "tags": ["smb", "nes", "platformer"],
       "source": "https://github.com/JHDev2006/Super-Mario-Bros.-Remastered-Public",
+      "android_source": "https://github.com/mircowuffwuff/super-mario-bros.-remastered-android",
+      "android_package": "com.mircowuffwuff.smb1r",
       "folder": "Super-Mario-Bros.-Remastered-Public",
       "instructions": "Required files: Super Mario Bros. (World).nes (CRC32: 3337EC46)\n\nPortable saves : portable.txt in root folder.",
       "mods": "https://gamebanana.com/games/22798",
       "image": "https://cdn2.steamgriddb.com/grid/46c5aac38809435b12ece6f71de65c1e.png",
       "icon": "https://cdn2.steamgriddb.com/icon/a621efaaba2ded5a8727db161094fe88.png",
-      "save": "%APPDATA%\\SMB1R",
+      "save": {
+        "windows": "%APPDATA%\\SMB1R",
+        "android": "/data/data/com.mircowuffwuff.smb1r/files"
+      },
       "save2": "config"
     },{
       "-name": "Super Mario Strikers (strikers)",
@@ -2210,14 +2278,17 @@
       "save": "saves"
     },{
       "name": "Super Smash Bros. (BattleShip)",
-      "tags": ["n64", "fighting", "multiplayer", "multilingual", "android"],
+      "tags": ["n64", "fighting", "multiplayer", "multilingual"],
       "source": "https://github.com/JRickey/BattleShip",
       "android_package": "com.jrickey.battleship",
       "folder": "BattleShip",
       "instructions": "Required files: Super Smash Bros. (USA).z64 (CRC32: EB97929E) or Nintendo All-Star! Dairantou Smash Brothers (Japan).z64 (CRC32: 04C9D3B1)\n\nLanguages: English, Japanese.",
       "image": "https://cdn2.steamgriddb.com/grid/841c7673350b87929092101876156f09.png",
       "icon": "https://cdn2.steamgriddb.com/icon/5807a685d1a9ab3b599035bc566ce2b9.png",
-      "save": "%APPDATA%\\BattleShip"
+      "save": {
+        "windows": "%APPDATA%\\BattleShip",
+        "android": "/storage/emulated/0/Android/data/com.jrickey.battleship/files"
+      }
     },{
       "name": "Super Smash Bros. Melee (melee-pc)",
       "tags": ["online", "gc", "fighting", "multiplayer"],
@@ -2299,7 +2370,10 @@
       "android_package": "net.dfworkshop.dfu",
       "instructions": "You can get a free copy of DOS Daggerfall from Steam https://store.steampowered.com/app/1812390/The_Elder_Scrolls_II_Daggerfall/ and a free copy of Daggerfall Unity from the Releases https://github.com/Interkarma/daggerfall-unity/releases page. Then simply unzip the latest version of Daggerfall Unity to its own folder and point it to the DOS version. Daggerfall Unity will take care of everything else.\n\nLanguages: Multilingual.",
       "image": "https://cdn2.steamgriddb.com/grid/a2d13ad880e087a989a8fc07c87d7272.png",
-      "icon": "https://cdn2.steamgriddb.com/icon/5bb352aa0983fe81d1ab84a49b7a902f/32/256x256.png"
+      "icon": "https://cdn2.steamgriddb.com/icon/5bb352aa0983fe81d1ab84a49b7a902f/32/256x256.png",
+      "save": {
+        "android": "Android/data/net.dfworkshop.dfu/files"
+      }
     },{
       "name": "The Elder Scrolls III: Morrowind (openmw)",
       "tags": ["pc", "rpg"],
@@ -2311,7 +2385,10 @@
       "mods": "https://modding-openmw.com/lists/",
       "image": "https://cdn2.steamgriddb.com/grid/0236be6e04a4916f04215374f9c83ac5.png",
       "icon": "https://cdn2.steamgriddb.com/icon/4a3fd911279cd8bc597fa13222ef83be.png",
-      "save": "%USERPROFILE%\\Documents\\My Games\\OpenMW",
+      "save": {
+        "windows": "%USERPROFILE%\\Documents\\My Games\\OpenMW",
+        "android": "Android/data/is.xyz.omw/files"
+      },
       "exe_is_archive": "openmw.exe"
     },{
       "name": "The Fifth Element (the-fifth-element-recomp)",
@@ -2334,22 +2411,32 @@
       "name": "The Legend of Zelda: A Link to the Past (zelda3-PL)",
       "tags": ["snes", "action-adventure"],
       "source": "https://raw.githubusercontent.com/Nyaldee/Ports-Launcher/main/extra/zelda3-PL/zelda3-PL.zip",
+      "android_source": "https://github.com/Waterdish/zelda3-android",
+      "android_package": "com.dishii.zelda3",
       "folder": "zelda3-PL",
-      "instructions": "Required files: Legend of Zelda, The - A Link to the Past (USA).sfc (CRC32: 777AAC2F)\n\nTo change the game's language, use the RIP patch in the extra, or extract the text from your game with Zelda3_Launcher.bat and modify the zelda3.ini. You can change Link's sprite, create your own and put the music in CD quality (msu).",
+      "instructions": "Required files: Legend of Zelda, The - A Link to the Past (USA).sfc (CRC32: 777AAC2F)\n\nWindows:\nTo change the game's language, use the RIP patch in the extra, or extract the text from your game with Zelda3_Launcher.bat and modify the zelda3.ini. You can change Link's sprite, create your own and put the music in CD quality (msu).",
       "image": "https://cdn2.steamgriddb.com/grid/7edaadde50012f0860952123564eb1ba.jpg",
       "icon": "https://cdn2.steamgriddb.com/icon/1b39a10cc39ee53e5b2fdc1eda1eb5da.png",
-      "save": "saves",
+      "save": {
+        "windows": "saves",
+        "android": "Android/data/com.dishii.zelda3/files"
+      },
       "extra": "https://raw.githubusercontent.com/Nyaldee/Ports-Launcher/main/extra/zelda3-PL/zelda3-redux-ja-zh-pt-ga-pl-fr-zelda3_assets.dat.rip"
     },{
       "name": "The Legend of Zelda: Link's Awakening DX (LADXHD)",
-      "tags": ["gb", "action-adventure", "multilingual"],
+      "tags": ["gb", "action-adventure", "multilingual", "android"],
       "source": "https://gitlab.com/bighead.0/ladxhd_updated",
+      "website": "https://gitlab.com/bighead.0/ladxhd_updated/-/blob/main/ANDROID.md",
+      "android_package": "com.zelda.ladxhd",
       "folder": "LADXHD Updated",
       "executable": "Link's Awakening DX HD.exe",
-      "instructions": "Required files: Links Awakening DX HD v1.0.0.zip\n\nLanguages: Multilingual.\n\nMove the Content and Data folders, along with the Link's Awakening DX HD.exe file, into the port folder, then run LADXHD.patcher to update the game.",
+      "instructions": "Required files: Links Awakening DX HD v1.0.0.zip\n\nLanguages: Multilingual.\n\nMove the Content and Data folders, along with the Link's Awakening DX HD.exe file, into the port folder, then run LADXHD.patcher to update the game.\n\nAndroid: no ready-made APK -- run the desktop Patcher yourself against your own copy of the game, it produces the Android build.",
       "image": "https://cdn2.steamgriddb.com/grid/367b97a382e0663f8428d80219d44fcd.png",
       "icon": "https://cdn2.steamgriddb.com/icon/ca9e2abfc4b54221804d727d207accb1.png",
-      "save": "%LOCALAPPDATA%\\Zelda_LA"
+      "save": {
+        "windows": "%LOCALAPPDATA%\\Zelda_LA",
+        "android": "Android/data/com.zelda.ladxhd/files"
+      }
     },{
       "name": "The Legend of Zelda: Majora's Mask (2ship2harkinian)",
       "tags": ["n64", "action-adventure"],
@@ -2361,7 +2448,10 @@
       "mods": "https://gamebanana.com/games/20371",
       "image": "https://cdn2.steamgriddb.com/grid/592954b9c7445a8007d638eecc863362.jpg",
       "icon": "https://cdn2.steamgriddb.com/icon/4e0928de075538c593fbdabb0c5ef2c3.png",
-      "save": "Save"
+      "save": {
+        "windows": "Save",
+        "android": "/sdcard/2S2H"
+      }
     },{
       "name": "The Legend of Zelda: Majora's Mask (Zelda64Recomp)",
       "tags": ["n64", "action-adventure"],
@@ -2375,7 +2465,8 @@
       "icon": "https://cdn2.steamgriddb.com/icon/4e0928de075538c593fbdabb0c5ef2c3.png",
       "save": {
         "windows": "%LOCALAPPDATA%\\Zelda64Recompiled",
-        "linux": "~/.config/Zelda64Recompiled"
+        "linux": "~/.config/Zelda64Recompiled",
+        "android": "/Zelda64/saves"
       },
       "save2": "saves"
     },{
@@ -2389,7 +2480,10 @@
       "mods": "https://gamebanana.com/games/16121",
       "image": "https://cdn2.steamgriddb.com/grid/f711cc70dbdab88f32389ec84e56a242.png",
       "icon": "https://cdn2.steamgriddb.com/icon/a896144046a1b5bd6e3e034d00b4f73a.png",
-      "save": "Save",
+      "save": {
+        "windows": "Save",
+        "android": "/sdcard/SOH"
+      },
       "extra": "https://raw.githubusercontent.com/Nyaldee/Ports-Launcher/main/extra/Shipwright/"
     },{
       "name": "The Legend of Zelda: Ocarina of Time 3D (TriAevum)",
@@ -2405,10 +2499,14 @@
       "tags": ["gba", "action-adventure"],
       "source": "https://github.com/zeldaret/tmc",
       "android_source": "https://github.com/samyost1/tmc-android",
+      "android_package": "dev.picori.tmc",
       "folder": "tmc",
       "instructions": "Required files: Legend of Zelda, The - The Minish Cap (USA).gba (CRC32: ABCEBBB1)",
       "image": "https://cdn2.steamgriddb.com/grid/722ddf840508c083992ea795c2bda28f.png",
-      "icon": "https://cdn2.steamgriddb.com/icon/004e34995df78f6f34f7a819fb426343.png"
+      "icon": "https://cdn2.steamgriddb.com/icon/004e34995df78f6f34f7a819fb426343.png",
+      "save": {
+        "android": "Android/data/dev.picori.tmc/files"
+      }
     },{
       "-name": "The Legend of Zelda: The Wind Waker",
       "tags": ["gc", "action-adventure", "multilingual"],
@@ -2419,7 +2517,7 @@
       "icon": "https://cdn2.steamgriddb.com/icon/186c9b923fc7eb4df8e7b4cfbeb234b7.png"
     },{
       "name": "The Legend of Zelda: Twilight Princess (dusklight)",
-      "tags": ["gc", "action-adventure", "multilingual", "android"],
+      "tags": ["gc", "action-adventure", "multilingual"],
       "source": "https://github.com/TwilitRealm/dusklight",
       "android_package": "dev.twilitrealm.dusk",
       "folder": "dusklight",
@@ -2463,7 +2561,10 @@
       "android_package": "com.c4rlox.simpsons",
       "instructions": "Android 7.0 or higher\n\nLanguages: Multilingual.",
       "image": "https://cdn2.steamgriddb.com/grid/8869d32a8ef425af3b064ed17c0e909a.png",
-      "icon": "https://cdn2.steamgriddb.com/icon/701d804549a4a23d3cae801dac6c2c75.png"
+      "icon": "https://cdn2.steamgriddb.com/icon/701d804549a4a23d3cae801dac6c2c75.png",
+      "save": {
+        "android": "/sdcard/Android/data/com.c4rlox.simpsons/files"
+      }
     },{
       "name": "Threads of Fate (threads-of-fate-recomp)",
       "tags": ["ps1", "alexbeav"],
