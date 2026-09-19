@@ -71,19 +71,6 @@ macro_rules! wire_dialog_close {
     }};
 }
 
-macro_rules! wire_dialog_nav_hovered {
-    ($dialog:expr, $app:expr, $group:ident.$field:ident) => {{
-        let app2 = $app.clone();
-        let dialog_weak = $dialog.as_weak();
-        $dialog.on_nav_hovered(move |index| {
-            app2.$group.$field.set(index);
-            if let Some(d) = dialog_weak.upgrade() {
-                d.set_selected_index(index);
-            }
-        });
-    }};
-}
-
 macro_rules! wire_dialog_selection_nav {
     ($dialog:expr, $app:expr, horizontal) => {{
         let app2 = $app.clone();
@@ -103,6 +90,19 @@ macro_rules! wire_dialog_selection_nav {
         let app3 = $app.clone();
         $dialog.on_activate_selection_requested(move || {
             DialogGamepadTarget { app: app3.clone() }.activate_selection();
+        });
+    }};
+}
+
+macro_rules! wire_dialog_nav_hovered {
+    ($dialog:expr, $app:expr, $group:ident.$field:ident) => {{
+        let app2 = $app.clone();
+        let dialog_weak = $dialog.as_weak();
+        $dialog.on_nav_hovered(move |index| {
+            app2.$group.$field.set(index);
+            if let Some(d) = dialog_weak.upgrade() {
+                d.set_selected_index(index);
+            }
         });
     }};
 }
@@ -460,13 +460,14 @@ pub(crate) fn open_info_dialog(app: &Rc<AppState>, router: &Rc<RefCell<GamepadRo
     let change_version_ok = matches!(port.source_type, SourceType::Github | SourceType::Gitlab) && port.repo.is_some();
     dialog.set_change_version_enabled(change_version_ok);
 
-    let favorite_exe_ok = game_folder_ok;
+    let favorite_exe_ok =
+        game_folder_ok && game_folder.as_deref().map(|dir| std::fs::read_dir(dir).is_ok_and(|mut it| it.next().is_some())).unwrap_or(false);
     dialog.set_favorite_exe_enabled(favorite_exe_ok);
 
     let update_toggle_ok = change_version_ok && game_folder_ok;
     dialog.set_update_toggle_enabled(update_toggle_ok);
 
-    let reset_playtime_ok = game_folder_ok;
+    let reset_playtime_ok = game_folder_ok && app.state.borrow().get(port.key()).map(|i| i.playtime_seconds).unwrap_or(0) > 0;
     dialog.set_reset_playtime_enabled(reset_playtime_ok);
 
     let extra_ok = port.extra.is_some() && game_folder_ok;
@@ -680,6 +681,9 @@ fn settings_labels(app: &AppState) -> Vec<String> {
 }
 
 pub(crate) fn open_settings_dialog(app: &Rc<AppState>, router: &Rc<RefCell<GamepadRouter>>) {
+    if dialog_is_open(app) {
+        return;
+    }
     let labels = settings_labels(app);
     let title = tr!(app).invoke_dialog_title_settings();
     let Some(dialog) = build_picker_dialog(app, router, &title, &labels) else { return };
@@ -866,6 +870,7 @@ pub(crate) fn open_files_picker(app: &Rc<AppState>, router: &Rc<RefCell<GamepadR
 
 const LANGUAGES: &[(&str, &str)] = &[
     ("", ""),
+    ("en", "English"),
     ("fr", "Français"),
     ("ja", "日本語"),
     ("zh-CN", "简体中文"),

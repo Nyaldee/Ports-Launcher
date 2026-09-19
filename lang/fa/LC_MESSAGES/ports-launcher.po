@@ -99,9 +99,6 @@ msgstr "در حال نصب"
 msgid "Loading"
 msgstr "در حال بارگذاری"
 
-msgid "No Executable Found"
-msgstr "فایل اجرایی پیدا نشد"
-
 msgid "Choose favorite executable"
 msgstr "فایل اجرایی منتخب را انتخاب کنید"
 
@@ -110,9 +107,6 @@ msgstr "پورت نامعتبر"
 
 msgid "Choose an executable"
 msgstr "یک فایل اجرایی انتخاب کنید"
-
-msgid "Executable Not Found"
-msgstr "فایل اجرایی پیدا نشد"
 
 msgid "Uninstall Error"
 msgstr "خطا در حذف نصب"

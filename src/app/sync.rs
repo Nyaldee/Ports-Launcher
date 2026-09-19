@@ -39,7 +39,7 @@ pub(crate) fn start_self_update_check(app: &Rc<AppState>) {
     std::thread::spawn(move || {
         let result = crate::core::github_api::fetch_latest_tag_and_date(crate::SELF_REPO, github_token.as_deref());
         match result {
-            Ok((latest_tag, _)) if crate::core::version::tag_is_newer(&latest_tag, crate::core::version::APP_VERSION) => {
+            Ok((_, Some(latest_date))) if crate::core::version::is_newer_date(&latest_date, crate::core::version::APP_VERSION) => {
                 lock(&events).push(AppEvent::SelfUpdateAvailable)
             }
             Ok(_) => {}

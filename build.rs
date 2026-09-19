@@ -4,7 +4,7 @@ fn main() {
         .with_default_translation_context(slint_build::DefaultTranslationContext::None);
     slint_build::compile_with_config("ui/app-window.slint", config).expect("échec de la compilation Slint");
 
-    let build_date = chrono::Utc::now().format("%m/%d/%y").to_string();
+    let build_date = chrono::Utc::now().format("%Y-%m-%d").to_string();
     println!("cargo:rustc-env=APP_BUILD_DATE={build_date}");
 
     let is_windows_target = std::env::var("CARGO_CFG_TARGET_OS").as_deref() == Ok("windows");

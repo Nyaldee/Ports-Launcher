@@ -33,14 +33,14 @@ fn is_arch64_hint(name_lower: &str) -> bool {
 #[derive(Debug)]
 pub enum AssetSelectionError {
     Message(String),
-    Ambiguous(String, Vec<Value>),
+    Ambiguous(Vec<Value>),
 }
 
 impl AssetSelectionError {
     pub fn message(&self) -> &str {
         match self {
             AssetSelectionError::Message(m) => m,
-            AssetSelectionError::Ambiguous(m, _) => m,
+            AssetSelectionError::Ambiguous(_) => "Multiple files match -- please choose one manually.",
         }
     }
 }
@@ -60,10 +60,7 @@ pub fn pick_asset(assets: &[Value], preferred: Option<&str>) -> Result<Value, As
         return match matches.len() {
             0 => Err(AssetSelectionError::Message(format!("No release file matches \"{preferred}\" (see \"preferred_asset\" for this port)."))),
             1 => Ok(matches[0].clone()),
-            _ => Err(AssetSelectionError::Ambiguous(
-                format!("Multiple release files match \"{preferred}\" -- please choose one manually."),
-                matches.into_iter().cloned().collect(),
-            )),
+            _ => Err(AssetSelectionError::Ambiguous(matches.into_iter().cloned().collect())),
         };
     }
 
@@ -91,10 +88,7 @@ pub fn pick_asset(assets: &[Value], preferred: Option<&str>) -> Result<Value, As
         }
     }
 
-    Err(AssetSelectionError::Ambiguous(
-        "Couldn't automatically determine which file to download. Please choose one manually.".to_string(),
-        assets.to_vec(),
-    ))
+    Err(AssetSelectionError::Ambiguous(assets.to_vec()))
 }
 
 #[cfg(test)]
@@ -135,14 +129,14 @@ mod tests {
     #[test]
     fn win32_win64_restent_ambigus_car_aucun_ne_matche_arch64_hint() {
         let assets = vec![asset("port-win32.zip"), asset("port-win64.zip")];
-        assert!(matches!(pick_asset(&assets, None), Err(AssetSelectionError::Ambiguous(_, _))));
+        assert!(matches!(pick_asset(&assets, None), Err(AssetSelectionError::Ambiguous(_))));
     }
 
     #[test]
     fn erreur_ambigue_si_toujours_plusieurs_candidats() {
         let assets = vec![asset("port-windows-a.zip"), asset("port-windows-b.zip")];
         match pick_asset(&assets, None) {
-            Err(AssetSelectionError::Ambiguous(_, a)) => assert_eq!(a.len(), 2),
+            Err(AssetSelectionError::Ambiguous(a)) => assert_eq!(a.len(), 2),
             other => panic!("attendu Ambiguous, obtenu {other:?}"),
         }
     }
@@ -208,7 +202,7 @@ mod tests {
     fn preferred_asset_avec_plusieurs_correspondances_reste_ambigu() {
         let assets = vec![asset("Game-Full-x86.zip"), asset("Game-Full-x64.zip")];
         match pick_asset(&assets, Some("Full")) {
-            Err(AssetSelectionError::Ambiguous(_, a)) => assert_eq!(a.len(), 2),
+            Err(AssetSelectionError::Ambiguous(a)) => assert_eq!(a.len(), 2),
             other => panic!("attendu Ambiguous, obtenu {other:?}"),
         }
     }

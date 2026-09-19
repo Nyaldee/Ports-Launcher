@@ -211,6 +211,7 @@ fn main() {
             if let Some(native) = chrome::native_window(window.window()) {
                 chrome::apply_window_icon(native);
                 chrome::force_normal_window_visibility(native);
+                chrome::force_foreground_window(native);
             }
         });
     }

@@ -23,8 +23,12 @@ pub struct FontSizes {
     pub content_body_height_px: i32,
 }
 
+fn title_font_px_for(item_font_px: i32) -> i32 {
+    ((item_font_px as f32) * TITLE_FONT_RATIO).round().max(8.0) as i32
+}
+
 fn font_sizes_from_item_font(family: &str, item_font_px: i32, item_linespace: i32, search_padding_px: i32) -> FontSizes {
-    let title_font_px = ((item_font_px as f32) * TITLE_FONT_RATIO).round().max(8.0) as i32;
+    let title_font_px = title_font_px_for(item_font_px);
     let title_linespace = super::font_metrics::linespace_for_size(family, title_font_px);
     let search_font_px = ((item_font_px as f32) * SEARCH_FONT_RATIO).round().max(8.0) as i32;
     let search_linespace = super::font_metrics::linespace_for_size(family, search_font_px);
@@ -64,7 +68,7 @@ pub fn windowed_font_sizes(family: &str, window_height_px: i32, border_width_px:
     if item_font_px < MIN_ITEM_FONT_PX {
         item_font_px = MIN_ITEM_FONT_PX;
     }
-    let title_font_px = ((item_font_px as f32) * TITLE_FONT_RATIO).round().max(8.0) as i32;
+    let title_font_px = title_font_px_for(item_font_px);
 
     let content_body_height_px =
         (unit_h_px * rows).min((available_px - unit_h_px * (SEARCH_BAR_UNITS + TITLE_BAR_UNITS + FOOTER_UNITS)).max(unit_h_px));

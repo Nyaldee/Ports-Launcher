@@ -3,7 +3,8 @@
         "gCosmetics": {
             "HUD": {
                 "CDownButton": {
-                    "PosType": 4
+                    "PosType": 4,
+                    "UseMargins": 0
                 }
             }
         },
@@ -11,20 +12,27 @@
             "AdultMasks": 1,
             "AssignableTunicsAndBoots": 1,
             "Autosave": 1,
+            "AutosaveNotification": 0,
+            "BetterAmmoRendering": 0,
             "BetterOwl": 1,
+            "ClimbSpeed": 12,
+            "CrawlSpeed": 5,
             "CreditsFix": 1,
             "CustomizeFrogsOcarinaGame": 1,
             "DekuNutUpgradeFix": 1,
+            "DisableDrawDistance": 1,
             "DisableFixedCamera": 0,
+            "DisableKokiriDrawDistance": 0,
             "DisableLOD": 1,
             "DpadEquips": 1,
             "DpadNoDropOcarinaInput": 1,
             "DynamicWalletIcon": 1,
             "EnemySpawnsOverWaterboxes": 1,
+            "FasterBlockPush": 5,
             "FasterBottleEmpty": 1,
-            "FasterHeavyBlockLift": 1,
             "FasterPauseMenu": 1,
             "FasterRupeeAccumulator": 1,
+            "FileSelectMoreInfo": 1,
             "FixBrokenGiantsKnife": 1,
             "FixDampeGoingBackwards": 1,
             "FixDaruniaDanceSpeed": 1,
@@ -40,6 +48,7 @@
             "FixZoraHintDialogue": 1,
             "FrogsModifyFailTime": 2,
             "GerudoWarriorClothingFix": 1,
+            "GlitchAidingCrawlspaces": 1,
             "GravediggingTourFix": 1,
             "InjectItemCounts": {
                 "GoldSkulltula": 1,
@@ -48,7 +57,9 @@
             },
             "MMBunnyHood": 1,
             "MaskSelect": 1,
+            "MinimalUI": 0,
             "NaviTextFix": 1,
+            "PauseMenuAnimatedLink": 1,
             "PersistentMasks": 1,
             "PulsateBossIcon": 1,
             "RedGanonBlood": 1,
@@ -60,6 +71,7 @@
             "SkulltulaFreeze": 1,
             "TextSpeed": 5,
             "TimeFlowFileSelect": 1,
+            "TimeTravel": 2,
             "TwoHandedIdle": 1,
             "VisualAgony": 1,
             "WidescreenActorCulling": 1
@@ -72,71 +84,7 @@
             "ModalWindow": 1,
             "Notifications": 1
         },
-        "gRandoSettings": {
-            "40GSHint": 1,
-            "50GSHint": 1,
-            "BigPoeTargetCount": 1,
-            "BlueFireArrows": 1,
-            "BombchuBag": 1,
-            "BossKeysanity": 5,
-            "ClosedForest": 2,
-            "CompleteMaskQuest": 1,
-            "CuccosToReturn": 1,
-            "DampeHint": 1,
-            "DoorOfTime": 2,
-            "EnableBombchuDrops": 1,
-            "FortressCarpenters": 1,
-            "FrogsHint": 1,
-            "FullWallets": 1,
-            "GanonTrial": 0,
-            "GerudoKeys": 3,
-            "GregHint": 1,
-            "HBAHint": 1,
-            "IncludeTycoonWallet": 1,
-            "KakarikoGate": 1,
-            "Keysanity": 5,
-            "LacsRewardCount": 8,
-            "MalonHint": 1,
-            "MerchantText": 1,
-            "RainbowBridge": 7,
-            "SariaHint": 1,
-            "ScrubsFixedPrice": 2,
-            "ScrubsPrices": 3,
-            "SheikLAHint": 0,
-            "Shopsanity": 1,
-            "ShopsanityCount": 7,
-            "ShopsanityPrices": 2,
-            "ShuffleAdultTrade": 1,
-            "ShuffleBossEntrances": 2,
-            "ShuffleCows": 1,
-            "ShuffleDekuNutBag": 1,
-            "ShuffleDekuStickBag": 1,
-            "ShuffleDungeonsEntrances": 2,
-            "ShuffleFrogSongRupees": 1,
-            "ShuffleGanonBossKey": 9,
-            "ShuffleGerudoToken": 1,
-            "ShuffleKeyRings": 2,
-            "ShuffleKeyRingsRandomCount": 4,
-            "ShuffleKokiriSword": 1,
-            "ShuffleMasterSword": 1,
-            "ShuffleMerchants": 3,
-            "ShuffleOcarinas": 1,
-            "ShuffleOverworldSpawns": 1,
-            "ShuffleScrubs": 2,
-            "ShuffleSongs": 2,
-            "ShuffleSwim": 1,
-            "ShuffleTokens": 3,
-            "SkipChildZelda": 1,
-            "SkipEponaRace": 1,
-            "SkipScarecrowsSong": 1,
-            "StartingAge": 2,
-            "StartingMapsCompasses": 0,
-            "SunlightArrows": 1
-        },
         "gSettings": {
-            "AdvancedResolution": {
-                "Enabled": 0
-            },
             "Controllers": {
                 "AxisDirectionMappings": {
                     "P0-S0-D0-KB30": {
@@ -406,10 +354,7 @@
                 }
             },
             "Controls": {
-                "InvertAimingXAxis": 0,
                 "InvertAimingYAxis": 0,
-                "InvertShieldAimingXAxis": 0,
-                "InvertShieldAimingYAxis": 0,
                 "RightStickAim": 1
             },
             "CustomOcarina": {
@@ -418,16 +363,14 @@
             },
             "FreeLook": {
                 "Enabled": 1,
-                "InvertXAxis": 0,
                 "InvertYAxis": 0
             },
-            "InterpolationFPS": 60,
             "MatchRefreshRate": 1,
             "Menu": {
                 "ActiveHeader": "Settings",
-                "EnhancementsSidebarSection": "Fixes",
-                "NetworkSidebarSection": "Anchor",
-                "SettingsSidebarSection": "General"
+                "EnhancementsSidebarSection": "Quality of Life",
+                "SettingsSidebarSection": "General",
+                "Theme": 4
             },
             "MoveInFirstPerson": 1,
             "OverlayFont": "Press Start 2P",

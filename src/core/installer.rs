@@ -18,14 +18,14 @@ pub type ProgressCallback<'a> = Option<&'a mut dyn FnMut(&str)>;
 #[derive(Debug)]
 pub enum InstallError {
     Message(String),
-    Ambiguous(#[allow(dead_code)] String, Vec<Value>),
+    Ambiguous(Vec<Value>),
 }
 
 impl From<AssetSelectionError> for InstallError {
     fn from(e: AssetSelectionError) -> Self {
         match e {
             AssetSelectionError::Message(m) => InstallError::Message(m),
-            AssetSelectionError::Ambiguous(m, a) => InstallError::Ambiguous(m, a),
+            AssetSelectionError::Ambiguous(a) => InstallError::Ambiguous(a),
         }
     }
 }
@@ -38,6 +38,22 @@ impl<T, E: std::fmt::Display> InstallErrorExt<T> for Result<T, E> {
     fn install_err(self) -> Result<T, InstallError> {
         self.map_err(|e| InstallError::Message(e.to_string()))
     }
+}
+
+fn with_path<T>(result: io::Result<T>, path: &Path) -> io::Result<T> {
+    result.map_err(|e| io::Error::new(e.kind(), format!("{e} -- {}", path.display())))
+}
+
+fn retry_transient<T>(mut op: impl FnMut() -> io::Result<T>) -> io::Result<T> {
+    let mut last_err = None;
+    for attempt in 0..5u32 {
+        match op() {
+            Ok(v) => return Ok(v),
+            Err(e) => last_err = Some(e),
+        }
+        std::thread::sleep(Duration::from_millis(100 * (attempt + 1) as u64));
+    }
+    Err(last_err.unwrap())
 }
 
 fn notify(on_progress: &mut ProgressCallback, message: &str) {
@@ -121,9 +137,9 @@ fn download(url: &str, dest: &Path, on_progress: &mut ProgressCallback) -> Resul
     {
         dest = rename_dest(&dest, final_name);
     }
-    let mut file = fs::File::create(&dest).install_err()?;
+    let mut file = with_path(fs::File::create(&dest), &dest).install_err()?;
     let mut reader = resp.body_mut().as_reader();
-    io::copy(&mut reader, &mut file).install_err()?;
+    with_path(io::copy(&mut reader, &mut file), &dest).install_err()?;
     Ok(dest)
 }
 
@@ -146,32 +162,32 @@ fn flatten_single_wrapper_folder(dir: &Path) -> io::Result<()> {
         let wrapper = &entries[0];
         let wrapper_name = wrapper.file_name().unwrap().to_owned();
         let staging = dir.join(format!(".flatten-{}", wrapper_name.to_string_lossy()));
-        fs::rename(wrapper, &staging)?;
+        with_path(retry_transient(|| fs::rename(wrapper, &staging)), &staging)?;
         for item in fs::read_dir(&staging)?.filter_map(|e| e.ok()) {
             let target = dir.join(item.file_name());
-            fs::rename(item.path(), target)?;
+            with_path(retry_transient(|| fs::rename(item.path(), &target)), &target)?;
         }
-        fs::remove_dir(&staging)?;
+        with_path(retry_transient(|| fs::remove_dir(&staging)), &staging)?;
     }
 }
 
 fn merge_into(src: &Path, dest: &Path) -> io::Result<()> {
-    fs::create_dir_all(dest)?;
+    with_path(fs::create_dir_all(dest), dest)?;
     for entry in fs::read_dir(src)?.filter_map(|e| e.ok()) {
         let item = entry.path();
         let target = dest.join(entry.file_name());
         if item.is_dir() {
             if target.exists() && !target.is_dir() {
-                fs::remove_file(&target)?;
+                with_path(retry_transient(|| fs::remove_file(&target)), &target)?;
             }
             merge_into(&item, &target)?;
         } else {
             if target.is_dir() {
-                fs::remove_dir_all(&target)?;
+                with_path(retry_transient(|| fs::remove_dir_all(&target)), &target)?;
             } else if target.exists() {
-                fs::remove_file(&target)?;
+                with_path(retry_transient(|| fs::remove_file(&target)), &target)?;
             }
-            fs::rename(&item, &target)?;
+            with_path(retry_transient(|| fs::rename(&item, &target)), &target)?;
         }
     }
     Ok(())
@@ -259,7 +275,7 @@ fn extract_archive_via_7z(archive: &Path, staging: &Path, max_uncompressed_size:
     if kind.eq_ignore_ascii_case("gzip") {
         if let Some(inner) = fs::read_dir(staging).install_err()?.filter_map(|e| e.ok()).map(|e| e.path()).next() {
             run_7z(&tool, &[OsStr::new("x"), inner.as_os_str(), OsStr::new(&out_arg), OsStr::new("-y"), OsStr::new("-bd")], "extract")?;
-            fs::remove_file(&inner).install_err()?;
+            with_path(retry_transient(|| fs::remove_file(&inner)), &inner).install_err()?;
         }
     }
     Ok(kind)
@@ -278,6 +294,40 @@ fn find_exe_folder(staging: &Path, target: &str) -> Result<PathBuf, InstallError
     }
 }
 
+#[cfg(target_os = "windows")]
+fn clear_readonly_recursive(path: &Path) -> io::Result<()> {
+    let metadata = fs::symlink_metadata(path)?;
+    let mut perms = metadata.permissions();
+    if perms.readonly() {
+        #[allow(clippy::permissions_set_readonly_false)]
+        perms.set_readonly(false);
+        fs::set_permissions(path, perms)?;
+    }
+    if metadata.is_dir() {
+        for entry in fs::read_dir(path)?.filter_map(|e| e.ok()) {
+            clear_readonly_recursive(&entry.path())?;
+        }
+    }
+    Ok(())
+}
+
+#[cfg(target_os = "linux")]
+fn clear_readonly_recursive(path: &Path) -> io::Result<()> {
+    use std::os::unix::fs::PermissionsExt;
+    let metadata = fs::symlink_metadata(path)?;
+    let mut perms = metadata.permissions();
+    if perms.readonly() {
+        perms.set_mode(perms.mode() | 0o200);
+        fs::set_permissions(path, perms)?;
+    }
+    if metadata.is_dir() {
+        for entry in fs::read_dir(path)?.filter_map(|e| e.ok()) {
+            clear_readonly_recursive(&entry.path())?;
+        }
+    }
+    Ok(())
+}
+
 fn extract_to_staging(archive: &Path, staging: &Path, exe_is_archive: Option<&str>) -> Result<PathBuf, InstallError> {
     let name_lower = archive.to_string_lossy().to_lowercase();
     let is_exe_archive = name_lower.ends_with(".exe") && exe_is_archive.is_some();
@@ -291,6 +341,7 @@ fn extract_to_staging(archive: &Path, staging: &Path, exe_is_archive: Option<&st
 
     if is_known_archive {
         extract_archive_via_7z(archive, staging, MAX_UNCOMPRESSED_SIZE)?;
+        with_path(clear_readonly_recursive(staging), staging).install_err()?;
         if let Some(target) = exe_is_archive {
             find_exe_folder(staging, target)
         } else {
@@ -299,14 +350,14 @@ fn extract_to_staging(archive: &Path, staging: &Path, exe_is_archive: Option<&st
         }
     } else {
         let dest = staging.join(archive.file_name().unwrap_or_default());
-        fs::copy(archive, &dest).install_err()?;
+        with_path(retry_transient(|| fs::copy(archive, &dest)), &dest).install_err()?;
         Ok(staging.to_path_buf())
     }
 }
 
 fn extract(archive: &Path, dest_dir: &Path, library_dir: &Path, exe_is_archive: Option<&str>, on_progress: &mut ProgressCallback) -> Result<(), InstallError> {
     notify(on_progress, "Extracting...");
-    let staging_holder = tempfile::Builder::new().prefix("_staging_").tempdir_in(library_dir).install_err()?;
+    let staging_holder = with_path(tempfile::Builder::new().prefix("_staging_").tempdir_in(library_dir), library_dir).install_err()?;
     let staging = staging_holder.path();
     let merge_root = extract_to_staging(archive, staging, exe_is_archive)?;
     merge_into(&merge_root, dest_dir).install_err()?;
@@ -315,12 +366,12 @@ fn extract(archive: &Path, dest_dir: &Path, library_dir: &Path, exe_is_archive: 
 
 fn install_extra(url: &str, dest_dir: &Path, library_dir: &Path, on_progress: &mut ProgressCallback) -> Result<(), InstallError> {
     notify(on_progress, "Downloading extra files...");
-    let tmp = tempfile::Builder::new().prefix("_extra_download_").tempdir_in(library_dir).install_err()?;
+    let tmp = with_path(tempfile::Builder::new().prefix("_extra_download_").tempdir_in(library_dir), library_dir).install_err()?;
     let filename = url.rsplit('/').next().unwrap_or("extra");
     let dest = tmp.path().join(safe_download_name(filename));
     let archive_path = download(url, &dest, on_progress)?;
 
-    let staging_holder = tempfile::Builder::new().prefix("_extra_staging_").tempdir_in(library_dir).install_err()?;
+    let staging_holder = with_path(tempfile::Builder::new().prefix("_extra_staging_").tempdir_in(library_dir), library_dir).install_err()?;
     let staging = staging_holder.path();
     let merge_root = extract_to_staging(&archive_path, staging, None)?;
     merge_into(&merge_root, dest_dir).install_err()?;
@@ -381,23 +432,6 @@ fn download_release_asset(
     Ok((archive_path, installed_tag))
 }
 
-#[cfg(target_os = "windows")]
-fn write_website_shortcut(dest_dir: &Path, url: &str) -> io::Result<()> {
-    let url = url.replace(['\r', '\n'], "");
-    fs::create_dir_all(dest_dir)?;
-    fs::write(dest_dir.join("Website.url"), format!("[InternetShortcut]\r\nURL={url}\r\n"))
-}
-
-#[cfg(target_os = "linux")]
-fn write_website_shortcut(dest_dir: &Path, url: &str) -> io::Result<()> {
-    use std::os::unix::fs::PermissionsExt;
-    let quoted_url = format!("'{}'", url.replace('\'', "'\\''"));
-    fs::create_dir_all(dest_dir)?;
-    let path = dest_dir.join("website.sh");
-    fs::write(&path, format!("#!/bin/sh\nexec xdg-open {quoted_url}\n"))?;
-    fs::set_permissions(&path, fs::Permissions::from_mode(0o755))
-}
-
 pub fn install_port(
     port: &Port,
     paths: InstallPaths,
@@ -409,18 +443,11 @@ pub fn install_port(
     let InstallPaths { library_dir, cache_dir, saves_backup_dir } = paths;
     let dest_dir = safe_join(library_dir, &port.folder).map_err(InstallError::Message)?;
     if port.source_type == SourceType::Local {
-        if let Some(url) = port.website_url() {
-            write_website_shortcut(&dest_dir, url).map_err(|e| InstallError::Message(e.to_string()))?;
-            return Ok(None);
-        }
-        return Err(InstallError::Message(format!(
-            "This port has no download source -- place the game files yourself in \"{}\".",
-            dest_dir.display()
-        )));
+        return Err(InstallError::Message("SourceType::Local should never reach install_port (internal bug).".to_string()));
     }
     let mut installed_tag = None;
 
-    let tmp = tempfile::Builder::new().prefix("_download_").tempdir_in(library_dir).install_err()?;
+    let tmp = with_path(tempfile::Builder::new().prefix("_download_").tempdir_in(library_dir), library_dir).install_err()?;
     let tmp_path = tmp.path();
     let preferred_asset = port.preferred_asset.as_ref().and_then(resolve_preferred_asset);
 
@@ -465,7 +492,7 @@ pub fn install_port(
             let dest = tmp_path.join(safe_download_name(filename));
             download(url, &dest, &mut on_progress)?
         }
-        SourceType::Local => unreachable!("SourceType::Local exclu avant ce match"),
+        SourceType::Local => unreachable!("SourceType::Local exclu avant d'appeler install_port"),
     };
 
     extract(&archive_path, &dest_dir, library_dir, port.exe_is_archive.as_deref(), &mut on_progress)?;
@@ -750,6 +777,47 @@ mod tests {
         flatten_single_wrapper_folder(&dir).unwrap();
         assert!(dir.join("a.exe").exists());
         assert!(dir.join("b.exe").exists());
+    }
+
+    #[test]
+    fn clear_readonly_recursive_leve_l_attribut_sur_tout_l_arbre() {
+        let dir = temp_dir("readonly_clear");
+        fs::create_dir_all(dir.join("sub")).unwrap();
+        fs::write(dir.join("sub").join("file.txt"), b"x").unwrap();
+        for p in [dir.join("sub"), dir.clone()] {
+            let mut perms = fs::metadata(&p).unwrap().permissions();
+            perms.set_readonly(true);
+            fs::set_permissions(&p, perms).unwrap();
+        }
+
+        clear_readonly_recursive(&dir).unwrap();
+
+        assert!(!fs::metadata(&dir).unwrap().permissions().readonly());
+        assert!(!fs::metadata(dir.join("sub")).unwrap().permissions().readonly());
+        let renamed = dir.with_file_name("readonly_clear_renamed");
+        let _ = fs::remove_dir_all(&renamed);
+        fs::rename(&dir, &renamed).unwrap();
+    }
+
+    #[test]
+    fn extract_leve_l_attribut_lecture_seule_herite_de_l_archive() {
+        let dir = temp_dir("readonly_archive");
+        let src = dir.join("_src");
+        fs::create_dir_all(src.join("Wrapper")).unwrap();
+        fs::write(src.join("Wrapper").join("game.exe"), b"fake-exe").unwrap();
+        let mut perms = fs::metadata(src.join("Wrapper")).unwrap().permissions();
+        perms.set_readonly(true);
+        fs::set_permissions(src.join("Wrapper"), perms).unwrap();
+
+        let archive_path = dir.join("readonly.zip");
+        let tool = sevenzip_exe_path().expect("7z.exe introuvable -- requis pour fabriquer les archives de test");
+        let output = std::process::Command::new(&tool).current_dir(&src).arg("a").arg("-tzip").arg(&archive_path).arg(".").output().unwrap();
+        assert!(output.status.success());
+
+        let dest_dir = dir.join("dest");
+        let mut on_progress: ProgressCallback = None;
+        extract(&archive_path, &dest_dir, &dir, None, &mut on_progress).unwrap();
+        assert_eq!(fs::read_to_string(dest_dir.join("game.exe")).unwrap(), "fake-exe");
     }
 
     #[test]

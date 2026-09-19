@@ -99,9 +99,6 @@ msgstr "설치 중"
 msgid "Loading"
 msgstr "불러오는 중"
 
-msgid "No Executable Found"
-msgstr "실행 파일을 찾을 수 없음"
-
 msgid "Choose favorite executable"
 msgstr "즐겨찾는 실행 파일 선택"
 
@@ -110,9 +107,6 @@ msgstr "잘못된 포트"
 
 msgid "Choose an executable"
 msgstr "실행 파일 선택"
-
-msgid "Executable Not Found"
-msgstr "실행 파일을 찾을 수 없음"
 
 msgid "Uninstall Error"
 msgstr "제거 오류"

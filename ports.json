@@ -19,7 +19,7 @@
       "save": "%APPDATA%\\abuse"
     },{
       "name": "Ace Combat 3: Electrosphere (Japan) (ace-combat-3-electrosphere-recomp)",
-      "tags": ["ps1", "alexbeav"],
+      "tags": ["ps1", "alexbeav", "simulation"],
       "source": "https://github.com/Alexbeav/ace-combat-3-electrosphere-recomp",
       "website": "https://alexbeav.github.io/psxrecomp-ports/",
       "folder": "ace-combat-3-electrosphere-recomp",
@@ -29,13 +29,22 @@
       "save": "saves"
     },{
       "name": "Ace Combat 3: Electrosphere (USA) (ace-combat-3-electrosphere-usa-recomp)",
-      "tags": ["ps1", "alexbeav"],
+      "tags": ["ps1", "alexbeav", "simulation"],
       "source": "https://github.com/Alexbeav/ace-combat-3-electrosphere-usa-recomp",
       "website": "https://alexbeav.github.io/psxrecomp-ports/",
       "folder": "ace-combat-3-electrosphere-usa-recomp",
       "instructions": "Required files: SLUS-00972. BIOS: Regional SCPH",
       "image": "https://cdn2.steamgriddb.com/grid/62f9f7fc3d63ba0aa1a05dcef8d39521.png",
       "icon": "https://cdn2.steamgriddb.com/icon/d12292308a295921b64f33b72329d157.png",
+      "save": "saves"
+    },{
+      "name": "Ace Combat 5: The Unsung War (Ace-Combat-5-Static-recompilation)",
+      "tags": ["ps2", "simulation"],
+      "source": "https://github.com/sal063/Ace-Combat-5-Static-recompilation",
+      "folder": "Ace-Combat-5-Static-recompilation",
+      "instructions": "Required files: Ace Combat 5 - The Unsung War (USA) (En,Ja).iso",
+      "image": "https://cdn2.steamgriddb.com/grid/3ca8453a4c1fcc2e7c3e1d8697b1d7c6.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/2d7df4fba70c721f6fc8a6aa6665a78c.png",
       "save": "saves"
     },{
       "name": "Ace Combat 6: Fires of Liberation (AC6_recomp)",
@@ -373,7 +382,7 @@
       "tags": ["n64", "strategy"],
       "website": "https://cnc3dgame.com/#live",
       "folder": "CNC3D_Source",
-      "instructions": "Download the file from the site and unzip it into the Library/CNC3D_Source folder.",
+      "instructions": "Download the file from the Game website and unzip it into the Game folder.",
       "image": "https://cdn2.steamgriddb.com/grid/9cf6243f1d57f49fdfb52985f16eb9d0.png",
       "icon": "https://cdn2.steamgriddb.com/icon/0559109a26611411de7acdb477d63f10/32/256x256.png"
     },{
@@ -1163,6 +1172,15 @@
       "icon": "https://cdn2.steamgriddb.com/icon/4539658bacb9ea1373a0731af4fe2de2.png",
       "save": "saves"
     },{
+      "-name": "Kingdom Hearts: Chain of Memories (khcom)",
+      "tags": ["gba", "rpg"],
+      "source": "https://github.com/Pheenoh/khcom",
+      "folder": "khcom",
+      "instructions": "Required files: Kingdom Hearts - Chain of Memories (Japan/USA/Europe).gba (CRC32: 8D5A0D84/D031CE67/772D97FB)",
+      "image": "https://cdn2.steamgriddb.com/grid/674872a8edd6d08ff2b1ac2a4ae164b7.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/60315f2e8a5b4904cf2972fa3d2a3c19.png",
+      "save": "saves"
+    },{
       "name": "Kirby's Return to Dream Land (ModernGekko)",
       "tags": ["wii", "platformer", "co-op", "multilingual"],
       "source": "https://github.com/ExpansionPak/ModernGekko",
@@ -1838,6 +1856,19 @@
       "icon": "https://cdn2.steamgriddb.com/icon/7a3971a4d33f7daa4ed021e150c6ecc7.png",
       "save": "saves"
     },{
+      "name": "Road Rash 64 (RoadRash64Recompiled)",
+      "tags": ["n64", "racing"],
+      "source": "https://github.com/linkssy2/RoadRash64Recompiled",
+      "folder": "RoadRash64Recompiled",
+      "instructions": "Required files: Road Rash 64 (USA).z64 (CRC32: 600B3988)\n\nPut the required file in the port folder.",
+      "image": "https://cdn2.steamgriddb.com/grid/c7dfe95373bfe4bca2cfa4a1f7383fda.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/84fc80be70d6ffd85f3f172f1f8ea150.png",
+      "save": {
+        "windows": "%LOCALAPPDATA%\\RoadRash64Recompiled",
+        "linux": "~/.config/RoadRash64Recompiled"
+      },
+      "save2": "saves"
+    },{
       "name": "Rollcage Stage II (rollcage-stage-ii-recomp)",
       "tags": ["ps1", "alexbeav"],
       "source": "https://github.com/Alexbeav/rollcage-stage-ii-recomp",
@@ -2305,11 +2336,15 @@
       "name": "Super Smash Bros. Melee (melee-pc)",
       "tags": ["online", "gc", "fighting", "multiplayer"],
       "source": "https://github.com/999sian/melee-pc",
+      "android_package": "dev.melee.game",
       "folder": "melee-pc",
       "instructions": "Required files: Super Smash Bros. Melee (USA) (En,Ja) (Rev 2).rvz (CRC32: 6C6823F8)",
       "image": "https://cdn2.steamgriddb.com/grid/0635bf265fc80d691fb83ae1e1a22fdb.png",
       "icon": "https://cdn2.steamgriddb.com/icon/e0688d13958a19e087e123148555e4b4.png",
-      "save": "%APPDATA%\\melee-pc"
+      "save": {
+        "windows": "%APPDATA%\\melee-pc",
+        "android": "/storage/emulated/0/Android/data/dev.melee.game/files/.dolphin-emu/GC"
+      }
     },{
       "name": "Syphon Filter (SF-pc-port)",
       "tags": ["ps1", "shooter"],
@@ -2438,11 +2473,10 @@
       "name": "The Legend of Zelda: Link's Awakening DX (LADXHD)",
       "tags": ["gb", "action-adventure", "multilingual", "android"],
       "source": "https://gitlab.com/bighead.0/ladxhd_updated",
-      "website": "https://gitlab.com/bighead.0/ladxhd_updated/-/blob/main/ANDROID.md",
       "android_package": "com.zelda.ladxhd",
       "folder": "LADXHD Updated",
       "executable": "Link's Awakening DX HD.exe",
-      "instructions": "Required files: Links Awakening DX HD v1.0.0.zip\n\nLanguages: Multilingual.\n\nMove the Content and Data folders, along with the Link's Awakening DX HD.exe file, into the port folder, then run LADXHD.patcher to update the game.\n\nAndroid: no ready-made APK -- run the desktop Patcher yourself against your own copy of the game, it produces the Android build.",
+      "instructions": "Required files: Links Awakening DX HD v1.0.0.zip\n\nLanguages: Multilingual.\n\nMove the Content and Data folders, along with the Link's Awakening DX HD.exe file, into the port folder, then run LADXHD.patcher to update the game.\n\nAndroid: no ready-made APK -- run the desktop Patcher yourself against your own copy of the game, it produces the Android build. https://gitlab.com/bighead.0/ladxhd_updated/-/blob/main/ANDROID.md",
       "image": "https://cdn2.steamgriddb.com/grid/367b97a382e0663f8428d80219d44fcd.png",
       "icon": "https://cdn2.steamgriddb.com/icon/ca9e2abfc4b54221804d727d207accb1.png",
       "save": {
@@ -2736,6 +2770,14 @@
       "image": "https://cdn2.steamgriddb.com/grid/e9437348054c27c0951c7d9d59bac04f.png",
       "icon": "https://cdn2.steamgriddb.com/icon/b41785e01b7f3ae10e9cbdb6dc452ed0.png",
       "save": "saves"
+    },{
+      "name": "Wave Race 64 (RaceWave46)",
+      "tags": ["n64", "racing"],
+      "source": "https://github.com/DomazinUS/RaceWave46",
+      "folder": "RaceWave46",
+      "instructions": "Required files: Wave Race 64 (USA) (Rev A)",
+      "image": "https://cdn2.steamgriddb.com/grid/8865522a87f300bac8a03a4ddcbc784b.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/65c2dd61d53e765e7c7363dbfe10cdd9.png"
     },{
       "name": "Wave Race 64 (wave-race-64-recomp)",
       "tags": ["n64", "racing"],

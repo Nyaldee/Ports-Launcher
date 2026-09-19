@@ -120,10 +120,10 @@ impl Port {
 }
 
 #[derive(Debug)]
-pub struct PortParseError(#[allow(dead_code)] pub String);
+pub struct PortParseError;
 
 pub fn port_from_value(d: &Value) -> Result<Port, PortParseError> {
-    let obj = d.as_object().ok_or_else(|| PortParseError("entry is not an object".to_string()))?;
+    let obj = d.as_object().ok_or(PortParseError)?;
 
     let tags: Vec<String> = obj
         .get("tags")
@@ -131,20 +131,12 @@ pub fn port_from_value(d: &Value) -> Result<Port, PortParseError> {
         .map(|arr| arr.iter().filter_map(|v| v.as_str().map(str::to_string)).collect())
         .unwrap_or_default();
 
-    let name = obj
-        .get("name")
-        .and_then(Value::as_str)
-        .ok_or_else(|| PortParseError("\"name\" missing or invalid".to_string()))?
-        .to_string();
-    let folder = obj
-        .get("folder")
-        .and_then(Value::as_str)
-        .ok_or_else(|| PortParseError("\"folder\" missing or invalid".to_string()))?
-        .to_string();
+    let name = obj.get("name").and_then(Value::as_str).ok_or(PortParseError)?.to_string();
+    let folder = obj.get("folder").and_then(Value::as_str).ok_or(PortParseError)?.to_string();
     let source = match obj.get("source") {
         None => None,
         Some(v) if v.is_string() || v.is_object() => Some(v.clone()),
-        Some(_) => return Err(PortParseError("\"source\" must be a string or an object".to_string())),
+        Some(_) => return Err(PortParseError),
     };
 
     let website = obj.get("website").and_then(Value::as_str).map(str::to_string);

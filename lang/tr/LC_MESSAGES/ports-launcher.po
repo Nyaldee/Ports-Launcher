@@ -99,9 +99,6 @@ msgstr "Kuruluyor"
 msgid "Loading"
 msgstr "Yükleniyor"
 
-msgid "No Executable Found"
-msgstr "Çalıştırılabilir dosya bulunamadı"
-
 msgid "Choose favorite executable"
 msgstr "Favori çalıştırılabilir dosyayı seç"
 
@@ -110,9 +107,6 @@ msgstr "Geçersiz port"
 
 msgid "Choose an executable"
 msgstr "Bir çalıştırılabilir dosya seç"
-
-msgid "Executable Not Found"
-msgstr "Çalıştırılabilir dosya bulunamadı"
 
 msgid "Uninstall Error"
 msgstr "Kaldırma hatası"

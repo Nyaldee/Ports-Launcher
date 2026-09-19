@@ -10,8 +10,8 @@ fn is_uninstaller_name(name_lower: &str) -> bool {
 
 #[derive(Debug)]
 pub enum ExecutableSelectionError {
-    Message(String),
-    Ambiguous(#[allow(dead_code)] String, Vec<PathBuf>),
+    Message,
+    Ambiguous(Vec<PathBuf>),
 }
 
 #[cfg(target_os = "windows")]
@@ -52,20 +52,12 @@ pub fn autodetect_executable(game_dir: &Path) -> Result<PathBuf, ExecutableSelec
     let mut candidates = Vec::new();
     collect_files_recursive(game_dir, &mut candidates);
 
-    let dir_name = game_dir.file_name().and_then(|n| n.to_str()).unwrap_or("");
     match candidates.len() {
         1 => Ok(candidates.remove(0)),
-        0 => Err(ExecutableSelectionError::Message(format!(
-            "No executable found automatically in \"{dir_name}\". Add the \"executable\" key in ports.json for this port."
-        ))),
+        0 => Err(ExecutableSelectionError::Message),
         _ => {
             candidates.sort_by(|a, b| a.file_name().cmp(&b.file_name()));
-            let names: Vec<&str> =
-                candidates.iter().map(|p| p.file_name().and_then(|n| n.to_str()).unwrap_or("")).collect();
-            Err(ExecutableSelectionError::Ambiguous(
-                format!("Multiple possible executables in \"{dir_name}\": {}. Please choose one.", names.join(", ")),
-                candidates,
-            ))
+            Err(ExecutableSelectionError::Ambiguous(candidates))
         }
     }
 }
@@ -75,10 +67,8 @@ pub fn resolve_executable(executable: Option<&Value>, game_dir: &Path) -> Result
         if is_truthy(exe) {
             let resolved = resolve_per_platform(exe);
             return match resolved.as_ref().and_then(Value::as_str) {
-                Some(s) => safe_join(game_dir, s).map_err(ExecutableSelectionError::Message),
-                None => Err(ExecutableSelectionError::Message(
-                    "\"executable\" n'est pas un chemin exploitable pour ce port".to_string(),
-                )),
+                Some(s) => safe_join(game_dir, s).map_err(|_| ExecutableSelectionError::Message),
+                None => Err(ExecutableSelectionError::Message),
             };
         }
     }
@@ -146,7 +136,7 @@ mod tests {
         std::fs::write(dir.join("game.exe"), b"").unwrap();
         std::fs::write(dir.join("game.lnk"), b"").unwrap();
         match autodetect_executable(&dir) {
-            Err(ExecutableSelectionError::Ambiguous(_, candidates)) => assert_eq!(candidates.len(), 2),
+            Err(ExecutableSelectionError::Ambiguous(candidates)) => assert_eq!(candidates.len(), 2),
             other => panic!("attendu Ambiguous, obtenu {other:?}"),
         }
     }
@@ -168,7 +158,7 @@ mod tests {
         write_candidate(&dir, "game");
         std::fs::write(dir.join("launch.sh"), b"").unwrap();
         match autodetect_executable(&dir) {
-            Err(ExecutableSelectionError::Ambiguous(_, candidates)) => assert_eq!(candidates.len(), 2),
+            Err(ExecutableSelectionError::Ambiguous(candidates)) => assert_eq!(candidates.len(), 2),
             other => panic!("attendu Ambiguous, obtenu {other:?}"),
         }
     }
@@ -176,7 +166,7 @@ mod tests {
     #[test]
     fn autodetect_zero_candidat_est_une_erreur() {
         let dir = temp_dir("autodetect_zero");
-        assert!(matches!(autodetect_executable(&dir), Err(ExecutableSelectionError::Message(_))));
+        assert!(matches!(autodetect_executable(&dir), Err(ExecutableSelectionError::Message)));
     }
 
     #[test]
@@ -185,7 +175,7 @@ mod tests {
         write_candidate(&dir, "a");
         write_candidate(&dir, "b");
         match autodetect_executable(&dir) {
-            Err(ExecutableSelectionError::Ambiguous(_, candidates)) => assert_eq!(candidates.len(), 2),
+            Err(ExecutableSelectionError::Ambiguous(candidates)) => assert_eq!(candidates.len(), 2),
             other => panic!("attendu Ambiguous, obtenu {other:?}"),
         }
     }

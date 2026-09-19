@@ -99,9 +99,6 @@ msgstr "Установка"
 msgid "Loading"
 msgstr "Загрузка"
 
-msgid "No Executable Found"
-msgstr "Исполняемый файл не найден"
-
 msgid "Choose favorite executable"
 msgstr "Выбрать избранный исполняемый файл"
 
@@ -110,9 +107,6 @@ msgstr "Недопустимый порт"
 
 msgid "Choose an executable"
 msgstr "Выбрать исполняемый файл"
-
-msgid "Executable Not Found"
-msgstr "Исполняемый файл не найден"
 
 msgid "Uninstall Error"
 msgstr "Ошибка удаления"

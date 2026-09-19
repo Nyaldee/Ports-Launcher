@@ -99,9 +99,6 @@ msgstr "Memasang"
 msgid "Loading"
 msgstr "Memuat"
 
-msgid "No Executable Found"
-msgstr "Executable tidak ditemukan"
-
 msgid "Choose favorite executable"
 msgstr "Pilih executable favorit"
 
@@ -110,9 +107,6 @@ msgstr "Port tidak valid"
 
 msgid "Choose an executable"
 msgstr "Pilih sebuah executable"
-
-msgid "Executable Not Found"
-msgstr "Executable tidak ditemukan"
 
 msgid "Uninstall Error"
 msgstr "Kesalahan saat menghapus"

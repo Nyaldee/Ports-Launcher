@@ -23,7 +23,7 @@ fn get_image_bytes(url: &str) -> Result<Vec<u8>, String> {
     Ok(bytes)
 }
 
-pub fn release_image_bytes(url: &str) {
+fn release_image_bytes(url: &str) {
     lock().remove(url);
 }
 

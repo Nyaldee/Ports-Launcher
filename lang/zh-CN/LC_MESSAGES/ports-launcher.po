@@ -99,9 +99,6 @@ msgstr "正在安装"
 msgid "Loading"
 msgstr "正在加载"
 
-msgid "No Executable Found"
-msgstr "未找到可执行文件"
-
 msgid "Choose favorite executable"
 msgstr "选择常用可执行文件"
 
@@ -110,9 +107,6 @@ msgstr "无效的移植版"
 
 msgid "Choose an executable"
 msgstr "选择可执行文件"
-
-msgid "Executable Not Found"
-msgstr "未找到可执行文件"
 
 msgid "Uninstall Error"
 msgstr "卸载错误"

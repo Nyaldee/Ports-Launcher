@@ -99,9 +99,6 @@ msgstr "Instalowanie"
 msgid "Loading"
 msgstr "Wczytywanie"
 
-msgid "No Executable Found"
-msgstr "Nie znaleziono pliku wykonywalnego"
-
 msgid "Choose favorite executable"
 msgstr "Wybierz ulubiony plik wykonywalny"
 
@@ -110,9 +107,6 @@ msgstr "Nieprawidłowy port"
 
 msgid "Choose an executable"
 msgstr "Wybierz plik wykonywalny"
-
-msgid "Executable Not Found"
-msgstr "Nie znaleziono pliku wykonywalnego"
 
 msgid "Uninstall Error"
 msgstr "Błąd odinstalowywania"

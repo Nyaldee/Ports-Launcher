@@ -39,6 +39,17 @@ pub(crate) fn start_install(
     asset_override: Option<Value>,
     release_override: Option<Value>,
 ) {
+    if port.source_type == SourceType::Local {
+        if let Ok(dest_dir) = crate::core::path_safety::safe_join(&app.paths.library_dir, &port.folder) {
+            if std::fs::create_dir_all(&dest_dir).is_ok() {
+                app.state.borrow_mut().mark_installed(port.key(), None);
+                app.refresh_current_view();
+            }
+        }
+        super::dialogs::open_info_dialog(app, router, &port);
+        return;
+    }
+
     let Some(key) = try_claim_op_slot(app, &port) else { return };
 
     let window = app.window();
@@ -130,9 +141,9 @@ pub(crate) fn open_favorite_exe_picker(app: &Rc<AppState>, router: &Rc<RefCell<G
     }
     let candidates: Vec<PathBuf> = match crate::core::executable_detect::autodetect_executable(&game_dir) {
         Ok(single) => vec![single],
-        Err(ExecutableSelectionError::Ambiguous(_, candidates)) => candidates,
-        Err(ExecutableSelectionError::Message(message)) => {
-            open_message_dialog(app, router, &tr!(app).invoke_dialog_title_no_executable_found(), &message);
+        Err(ExecutableSelectionError::Ambiguous(candidates)) => candidates,
+        Err(ExecutableSelectionError::Message) => {
+            super::dialogs::open_info_dialog(app, router, &port);
             return;
         }
     };
@@ -215,7 +226,7 @@ pub(crate) fn launch_flow(app: &Rc<AppState>, router: &Rc<RefCell<GamepadRouter>
     }
     match crate::core::executable_detect::resolve_executable(port.executable.as_ref(), &game_dir) {
         Ok(exe) => launch_executable(app, router, port, &exe),
-        Err(ExecutableSelectionError::Ambiguous(_, candidates)) => {
+        Err(ExecutableSelectionError::Ambiguous(candidates)) => {
             let labels: Vec<String> =
                 candidates.iter().map(|p| p.file_name().and_then(|n| n.to_str()).unwrap_or("?").to_string()).collect();
             let port2 = port.clone();
@@ -225,9 +236,7 @@ pub(crate) fn launch_flow(app: &Rc<AppState>, router: &Rc<RefCell<GamepadRouter>
                 }
             });
         }
-        Err(ExecutableSelectionError::Message(message)) => {
-            open_message_dialog(app, router, &tr!(app).invoke_dialog_title_executable_not_found(), &message)
-        }
+        Err(ExecutableSelectionError::Message) => super::dialogs::open_info_dialog(app, router, port),
     }
 }
 

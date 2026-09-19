@@ -21,7 +21,7 @@ pub fn run_install(
 ) -> InstallOutcome {
     match installer::install_port(port, paths, github_token, gitlab_token, overrides, Some(on_progress)) {
         Ok(tag) => InstallOutcome::Done { tag },
-        Err(InstallError::Ambiguous(_, assets)) => InstallOutcome::AssetAmbiguous { assets },
+        Err(InstallError::Ambiguous(assets)) => InstallOutcome::AssetAmbiguous { assets },
         Err(InstallError::Message(message)) => InstallOutcome::Error(message),
     }
 }
@@ -48,6 +48,6 @@ pub fn run_update_check(
 pub fn run_extra_install(port: &Port, library_dir: &Path, on_progress: &mut dyn FnMut(&str)) -> Result<(), String> {
     installer::install_extra_only(port, library_dir, Some(on_progress)).map_err(|e| match e {
         InstallError::Message(m) => m,
-        InstallError::Ambiguous(..) => "This \"extra\" archive has an unexpected layout.".to_string(),
+        InstallError::Ambiguous(_) => "This \"extra\" archive has an unexpected layout.".to_string(),
     })
 }

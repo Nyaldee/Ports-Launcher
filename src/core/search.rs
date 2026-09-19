@@ -2,15 +2,13 @@
 use super::models::Port;
 
 fn fuzzy_span(text: &str, query: &str) -> Option<usize> {
-    let chars: Vec<char> = text.chars().collect();
+    let mut chars = text.chars().enumerate();
     let mut first: Option<usize> = None;
     let mut last = 0usize;
-    let mut start = 0usize;
     for c in query.chars() {
-        let idx = chars[start..].iter().position(|&t| t == c)? + start;
+        let (idx, _) = chars.by_ref().find(|&(_, t)| t == c)?;
         first.get_or_insert(idx);
         last = idx;
-        start = idx + 1;
     }
     Some(last - first?)
 }

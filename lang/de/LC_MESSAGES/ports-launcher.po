@@ -99,9 +99,6 @@ msgstr "Wird installiert"
 msgid "Loading"
 msgstr "Wird geladen"
 
-msgid "No Executable Found"
-msgstr "Keine ausführbare Datei gefunden"
-
 msgid "Choose favorite executable"
 msgstr "Bevorzugte ausführbare Datei wählen"
 
@@ -110,9 +107,6 @@ msgstr "Ungültiger Port"
 
 msgid "Choose an executable"
 msgstr "Eine ausführbare Datei wählen"
-
-msgid "Executable Not Found"
-msgstr "Ausführbare Datei nicht gefunden"
 
 msgid "Uninstall Error"
 msgstr "Fehler beim Deinstallieren"

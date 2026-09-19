@@ -99,9 +99,6 @@ msgstr "Se instalează"
 msgid "Loading"
 msgstr "Se încarcă"
 
-msgid "No Executable Found"
-msgstr "Niciun executabil găsit"
-
 msgid "Choose favorite executable"
 msgstr "Alege executabilul favorit"
 
@@ -110,9 +107,6 @@ msgstr "Port invalid"
 
 msgid "Choose an executable"
 msgstr "Alege un executabil"
-
-msgid "Executable Not Found"
-msgstr "Executabil negăsit"
 
 msgid "Uninstall Error"
 msgstr "Eroare la dezinstalare"

@@ -1,4 +1,5 @@
 
+use std::cell::OnceCell;
 use windows::core::{PCSTR, PCWSTR};
 use windows::Win32::Foundation::{HWND, LPARAM, POINT, WPARAM};
 use windows::Win32::System::LibraryLoader::{GetProcAddress, LoadLibraryA};
@@ -136,15 +137,28 @@ fn exe_path_wide() -> Option<Vec<u16>> {
     Some(exe_path.to_string_lossy().encode_utf16().chain(std::iter::once(0)).collect())
 }
 
-pub fn apply_window_icon(hwnd: HWND) {
-    let Some(wide) = exe_path_wide() else { return };
-    unsafe {
-        let mut large_icon = HICON::default();
-        let mut small_icon = HICON::default();
-        let extracted = ExtractIconExW(PCWSTR(wide.as_ptr()), 0, Some(&mut large_icon), Some(&mut small_icon), 1);
-        if extracted == 0 {
-            return;
+fn cached_window_icons() -> Option<(HICON, HICON)> {
+    thread_local! {
+        static ICONS: OnceCell<Option<(HICON, HICON)>> = const { OnceCell::new() };
+    }
+    fn load() -> Option<(HICON, HICON)> {
+        let wide = exe_path_wide()?;
+        unsafe {
+            let mut large_icon = HICON::default();
+            let mut small_icon = HICON::default();
+            let extracted = ExtractIconExW(PCWSTR(wide.as_ptr()), 0, Some(&mut large_icon), Some(&mut small_icon), 1);
+            if extracted == 0 {
+                return None;
+            }
+            Some((large_icon, small_icon))
         }
+    }
+    ICONS.with(|cell| *cell.get_or_init(load))
+}
+
+pub fn apply_window_icon(hwnd: HWND) {
+    let Some((large_icon, small_icon)) = cached_window_icons() else { return };
+    unsafe {
         if !large_icon.is_invalid() {
             let _ = SendMessageW(hwnd, WM_SETICON, Some(WPARAM(ICON_BIG as usize)), Some(LPARAM(large_icon.0 as isize)));
         }

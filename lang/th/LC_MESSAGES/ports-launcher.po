@@ -99,9 +99,6 @@ msgstr "กำลังติดตั้ง"
 msgid "Loading"
 msgstr "กำลังโหลด"
 
-msgid "No Executable Found"
-msgstr "ไม่พบไฟล์ปฏิบัติการ"
-
 msgid "Choose favorite executable"
 msgstr "เลือกไฟล์ปฏิบัติการที่ชื่นชอบ"
 
@@ -110,9 +107,6 @@ msgstr "พอร์ตไม่ถูกต้อง"
 
 msgid "Choose an executable"
 msgstr "เลือกไฟล์ปฏิบัติการ"
-
-msgid "Executable Not Found"
-msgstr "ไม่พบไฟล์ปฏิบัติการ"
 
 msgid "Uninstall Error"
 msgstr "ข้อผิดพลาดในการถอนการติดตั้ง"

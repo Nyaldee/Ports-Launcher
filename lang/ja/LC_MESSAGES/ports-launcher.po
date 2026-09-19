@@ -99,9 +99,6 @@ msgstr "インストール中"
 msgid "Loading"
 msgstr "読み込み中"
 
-msgid "No Executable Found"
-msgstr "実行ファイルが見つかりません"
-
 msgid "Choose favorite executable"
 msgstr "お気に入りの実行ファイルを選択"
 
@@ -110,9 +107,6 @@ msgstr "無効なポート"
 
 msgid "Choose an executable"
 msgstr "実行ファイルを選択"
-
-msgid "Executable Not Found"
-msgstr "実行ファイルが見つかりません"
 
 msgid "Uninstall Error"
 msgstr "アンインストールエラー"
