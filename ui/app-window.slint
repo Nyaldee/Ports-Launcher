@@ -1,0 +1,543 @@
+import { ListView } from "std-widgets.slint";
+import { CardGrid, CardItem, CardRow } from "card-grid.slint";
+import { SemanticColors, Theme, ThemedScrollbar, InertialScroller, TitleBarIconButton } from "shared.slint";
+import { MessageDialog, ConfirmDialog, ErrorDialog, InfoDialog, ProgressDialog, ListPickerDialog, SearchListDialog, PickerItem, Tr } from "dialogs.slint";
+export { AppTray } from "tray.slint";
+
+export struct PortItem {
+    name: string,
+    auto-update-off: bool,
+    installed: bool,
+    is-local: bool,
+}
+
+export { CardItem, CardRow, SemanticColors, Theme, MessageDialog, ConfirmDialog, ErrorDialog, InfoDialog, ProgressDialog, ListPickerDialog, SearchListDialog, PickerItem, Tr }
+
+component ActionButton inherits Rectangle {
+    in property <string> text: "";
+    in property <color> fill-color: SemanticColors.info;
+    in property <color> fill-hover-color: SemanticColors.info-hover;
+    in property <length> font-size;
+    out property <length> text-preferred-width: label.preferred-width;
+    callback clicked();
+
+    background: area.has-hover ? fill-hover-color : fill-color;
+    area := TouchArea {
+        clicked => { root.clicked(); }
+    }
+    label := Text {
+        text: root.text;
+        color: SemanticColors.text-on-accent;
+        font-size: root.font-size;
+        overflow: elide;
+        horizontal-alignment: center;
+        vertical-alignment: center;
+        width: 100%;
+        height: 100%;
+    }
+}
+
+export component AppWindow inherits Window {
+    title: "Ports Launcher";
+    no-frame: true;
+    background: Theme.list-background;
+
+    in property <string> font-family;
+    default-font-family: root.font-family;
+
+    in property <length> initial-width: 800px;
+    in property <length> initial-height: 600px;
+    width: initial-width;
+    height: initial-height;
+
+    in property <length> item-font-px-physical: 14px;
+    in property <length> title-font-px-physical: 13px;
+    in property <length> row-height-physical: 48px;
+    in property <length> search-bar-height-physical: row-height-physical;
+    in property <length> title-bar-height-physical: 34px;
+    in property <length> content-body-height-physical: 1000px;
+
+    in property <[PortItem]> ports: [];
+    in property <int> selected-index: -1;
+    in property <string> placeholder-text: "Type to search...";
+    in property <bool> show-clock: true;
+    in property <string> clock-text: "";
+    in property <bool> self-update-available: false;
+
+    in property <bool> big-mode: false;
+    in property <[CardRow]> card-rows: [];
+    in property <length> card-width: 200px;
+    in property <length> card-height: 300px;
+    in property <length> card-spacing: 14px;
+    in property <int> grid-columns: 1;
+    in property <int> grid-selected-row: -1;
+
+    in property <bool> refocus-trigger: false;
+    changed refocus-trigger => { search-input.focus(); }
+    in property <bool> scroll-trigger: false;
+
+    init => { search-input.focus(); }
+
+    callback search-changed(string);
+    callback close-requested();
+    callback minimize-requested();
+    callback settings-requested();
+    callback fullscreen-toggle-requested();
+    callback window-drag-requested();
+    callback window-drag-moved();
+    callback move-requested(int, int);
+    callback activate-requested();
+    callback reveal-folder-requested();
+    callback window-size-requested(int);
+    callback border-adjust-requested(int);
+    callback card-activated(int, int);
+    callback card-hovered(int, int);
+    callback card-unhovered();
+    callback list-row-activated(int);
+    callback list-row-hovered(int);
+    callback list-row-play-requested(int);
+    callback list-row-install-requested(int);
+    callback list-row-update-requested(int);
+    callback list-row-uninstall-requested(int);
+    callback list-row-open-folder-requested(int);
+    callback list-row-info-requested(int);
+    callback github-requested();
+    callback discord-requested();
+    callback key-intercepted(text: string, modified: bool, repeat: bool) -> bool;
+
+    property <length> border-px: root.big-mode ? 0px : Theme.border-width * 1px / Theme.scale-factor;
+    property <length> logical-width: root.width - border-px * 2;
+    property <length> content-margin: 12px / Theme.scale-factor;
+    property <length> content-width: logical-width - content-margin * 2;
+    property <length> item-font-px: item-font-px-physical / Theme.scale-factor;
+    property <length> title-font-px: title-font-px-physical / Theme.scale-factor;
+    property <length> search-font-px: item-font-px * 1.2;
+    property <length> row-height: row-height-physical / Theme.scale-factor;
+    property <length> search-bar-height: search-bar-height-physical / Theme.scale-factor;
+    property <length> title-bar-height: title-bar-height-physical / Theme.scale-factor;
+    property <length> content-body-height: content-body-height-physical / Theme.scale-factor;
+    property <length> text-margin: row-height * 0.3;
+    property <length> title-padding: Theme.title-button-padding;
+    property <length> title-button-size: title-bar-height - title-padding * 2;
+    property <length> button-padding: 10px / Theme.scale-factor;
+    property <length> row-spacing: 6px / Theme.scale-factor;
+    property <length> action-button-height: row-height - row-spacing * 2;
+    property <length> scrollbar-width: 6px / Theme.scale-factor;
+
+    FocusScope {
+        focus-on-click: false;
+
+        Rectangle {
+            background: Theme.list-background;
+            border-width: border-px;
+            border-color: Theme.border-color;
+
+            VerticalLayout {
+                spacing: 0px;
+                padding: border-px;
+
+                title-bar := Rectangle {
+                    height: title-bar-height;
+                    vertical-stretch: 0;
+                    background: Theme.search-background;
+
+                    property <length> close-x: logical-width - title-padding - title-button-size;
+                    property <length> fullscreen-x: self.close-x - row-spacing - title-button-size;
+                    property <length> minimize-x: self.fullscreen-x - row-spacing - title-button-size;
+                    property <length> settings-x: self.minimize-x - row-spacing - title-button-size;
+
+                    TouchArea {
+                        width: 100%;
+                        height: 100%;
+                        pointer-event(event) => {
+                            if (event.kind == PointerEventKind.down) {
+                                root.window-drag-requested();
+                            }
+                        }
+                        moved => { root.window-drag-moved(); }
+                    }
+
+                    Text {
+                        text: "Ports Launcher";
+                        color: Theme.list-text;
+                        vertical-alignment: center;
+                        font-weight: 700;
+                        font-size: title-font-px;
+                        overflow: elide;
+                        x: title-padding;
+                        width: title-bar.settings-x - title-padding - row-spacing;
+                        height: 100%;
+                    }
+
+                    TitleBarIconButton {
+                        x: title-bar.settings-x;
+                        y: title-padding;
+                        size: title-button-size;
+                        hover-color: #AA8ED6;
+                        hover-stroke-color: SemanticColors.text-on-accent;
+                        icon-commands: "M 22 50 A 28 28 0 1 1 78 50 A 28 28 0 1 1 22 50 Z";
+                        clicked => { root.settings-requested(); }
+                    }
+
+                    TitleBarIconButton {
+                        x: title-bar.minimize-x;
+                        y: title-padding;
+                        size: title-button-size;
+                        hover-color: #55ACEE;
+                        hover-stroke-color: SemanticColors.text-on-accent;
+                        icon-commands: "M 25 32 L 75 32 L 50 70 Z";
+                        clicked => { root.minimize-requested(); }
+                    }
+
+                    TitleBarIconButton {
+                        x: title-bar.fullscreen-x;
+                        y: title-padding;
+                        size: title-button-size;
+                        hover-color: #78B159;
+                        hover-stroke-color: SemanticColors.text-on-accent;
+                        icon-commands: "M 22 22 L 78 22 L 78 78 L 22 78 Z";
+                        clicked => { root.fullscreen-toggle-requested(); }
+                    }
+
+                    TitleBarIconButton {
+                        x: title-bar.close-x;
+                        y: title-padding;
+                        size: title-button-size;
+                        hover-color: #DD2E44;
+                        hover-stroke-color: SemanticColors.text-on-accent;
+                        icon-commands: "M 22 22 L 78 78 M 78 22 L 22 78";
+                        clicked => { root.close-requested(); }
+                    }
+                }
+
+                VerticalLayout {
+                    padding: content-margin;
+                    spacing: content-margin;
+
+                    Rectangle {
+                        vertical-stretch: 0;
+                        height: search-bar-height;
+
+                        search-bar := Rectangle {
+                            width: root.big-mode ? content-width * 0.5 : content-width;
+                            height: 100%;
+                            x: root.big-mode ? (content-width - self.width) / 2 : 0px;
+                            clip: true;
+                            background: Theme.search-background;
+                            border-width: 1px / Theme.scale-factor;
+                            border-color: Theme.border-color;
+
+                            HorizontalLayout {
+                                padding-left: text-margin;
+                                padding-right: text-margin;
+
+                                search-input := TextInput {
+                                    color: Theme.search-text;
+                                    font-size: search-font-px;
+                                    vertical-alignment: center;
+                                    single-line: true;
+                                    horizontal-stretch: 1;
+                                    edited => { root.search-changed(self.text); }
+                                    key-pressed(event) => {
+                                        if (root.key-intercepted(event.text, event.modifiers.control || event.modifiers.alt || event.modifiers.meta || event.modifiers.shift, event.repeat)) {
+                                            accept
+                                        } else if (event.text == Key.Escape) {
+                                            if (root.big-mode) {
+                                                root.fullscreen-toggle-requested();
+                                            } else {
+                                                root.close-requested();
+                                            }
+                                            accept
+                                        } else if (event.modifiers.alt && event.text == Key.Return) {
+                                            root.fullscreen-toggle-requested();
+                                            accept
+                                        } else if (event.modifiers.shift && event.text == Key.Return) {
+                                            root.reveal-folder-requested();
+                                            accept
+                                        } else if (!root.big-mode && event.modifiers.control && event.text.is-float()) {
+                                            root.window-size-requested(event.text == "0" ? 100 : Math.round(event.text.to-float() * 10));
+                                            accept
+                                        } else if (!root.big-mode && event.modifiers.control && event.text == "-") {
+                                            root.border-adjust-requested(-1);
+                                            accept
+                                        } else if (!root.big-mode && event.modifiers.control && event.text == "=") {
+                                            root.border-adjust-requested(1);
+                                            accept
+                                        } else if (event.text == Key.UpArrow || (event.modifiers.control && event.text == "w")) {
+                                            root.move-requested(0, -1);
+                                            accept
+                                        } else if (event.text == Key.DownArrow || (event.modifiers.control && event.text == "s")) {
+                                            root.move-requested(0, 1);
+                                            accept
+                                        } else if (event.text == Key.LeftArrow || (event.modifiers.control && event.text == "a")) {
+                                            root.move-requested(-1, 0);
+                                            accept
+                                        } else if (event.text == Key.RightArrow || (event.modifiers.control && event.text == "d")) {
+                                            root.move-requested(1, 0);
+                                            accept
+                                        } else if (event.text == Key.Return) {
+                                            root.activate-requested();
+                                            accept
+                                        } else {
+                                            reject
+                                        }
+                                    }
+                                }
+                            }
+
+                            if root.show-clock: Text {
+                                text: root.clock-text;
+                                color: Theme.search-text;
+                                font-size: search-font-px;
+                                vertical-alignment: center;
+                                horizontal-alignment: right;
+                                x: 0px;
+                                width: search-bar.width - text-margin;
+                                height: 100%;
+                            }
+
+                            if search-input.text.is-empty: Text {
+                                text: root.placeholder-text;
+                                color: Theme.search-text;
+                                font-size: search-font-px;
+                                vertical-alignment: center;
+                                x: search-input.x;
+                            }
+                        }
+                    }
+
+                    content-body := Rectangle {
+                        vertical-stretch: root.big-mode ? 1 : 0;
+                        preferred-height: root.big-mode ? 0px : content-body-height;
+
+                        if root.big-mode: CardGrid {
+                            width: 100%;
+                            height: 100%;
+                            rows: root.card-rows;
+                            card-width: root.card-width;
+                            card-height: root.card-height;
+                            card-spacing: root.card-spacing;
+                            columns: root.grid-columns;
+                            selected-row-index: root.grid-selected-row;
+                            scroll-trigger: root.scroll-trigger;
+                            card-activated(r, c) => { root.card-activated(r, c); }
+                            card-hovered(r, c) => { root.card-hovered(r, c); }
+                            card-unhovered() => { root.card-unhovered(); }
+                        }
+
+                        if !root.big-mode: list-container := Rectangle {
+                            width: 100%;
+                            height: 100%;
+
+                            list-inertia := InertialScroller {
+                                min-viewport-y: Math.min(0px, port-list.visible-height - port-list.content-height);
+                                viewport-y <=> port-list.content-y;
+                            }
+
+                            port-list := ListView {
+                                width: content-width;
+                                height: 100%;
+                                vertical-scrollbar-policy: always-off;
+                                horizontal-scrollbar-policy: always-off;
+
+                                property <bool> dragging: false;
+
+                                property <bool> scroll-trigger-local: root.scroll-trigger;
+                                property <length> selected-row-top: root.selected-index * row-height;
+                                property <length> selected-row-bottom: self.selected-row-top + row-height;
+                                changed scroll-trigger-local => {
+                                    if (root.selected-index < 0) {
+                                        return;
+                                    }
+                                    if (self.selected-row-top + self.content-y < 0px) {
+                                        self.content-y = -self.selected-row-top;
+                                    } else if (self.selected-row-bottom + self.content-y > self.visible-height) {
+                                        self.content-y = self.visible-height - self.selected-row-bottom;
+                                    }
+                                }
+
+                                for item[index] in ports: row := Rectangle {
+                                    height: row-height;
+                                    background: index == root.selected-index ? Theme.selected-background : Theme.list-background;
+
+                                    property <length> info-w: info-btn.text-preferred-width + button-padding * 2;
+                                    property <length> install-w: install-btn.text-preferred-width + button-padding * 2;
+                                    property <length> uninstall-w: uninstall-btn.text-preferred-width + button-padding * 2;
+                                    property <length> update-w: update-btn.text-preferred-width + button-padding * 2;
+                                    property <length> play-w: play-btn.text-preferred-width + button-padding * 2;
+                                    property <length> info-x: content-width - row-spacing - self.info-w;
+                                    property <length> slot1-width: item.installed ? self.uninstall-w : self.install-w;
+                                    property <length> slot1-x: self.info-x - row-spacing - self.slot1-width;
+                                    property <length> update-x: self.slot1-x - row-spacing - self.update-w;
+                                    property <length> play-x: (item.auto-update-off ? self.update-x : self.slot1-x) - row-spacing - self.play-w;
+                                    property <length> leftmost-x: item.installed ? self.play-x : self.slot1-x;
+
+                                    TouchArea {
+                                        property <length> drag-start-cursor-y;
+                                        property <length> drag-start-viewport-y;
+                                        clicked => { root.list-row-activated(index); }
+                                        changed has-hover => {
+                                            if (self.has-hover && !port-list.dragging) {
+                                                root.list-row-hovered(index);
+                                            }
+                                        }
+                                        pointer-event(event) => {
+                                            if (event.kind == PointerEventKind.down) {
+                                                self.drag-start-cursor-y = self.absolute-position.y + self.mouse-y;
+                                                self.drag-start-viewport-y = port-list.content-y;
+                                                port-list.dragging = true;
+                                                list-inertia.begin-drag(self.drag-start-cursor-y);
+                                            } else if (event.kind == PointerEventKind.up || event.kind == PointerEventKind.cancel) {
+                                                port-list.dragging = false;
+                                                list-inertia.release();
+                                            }
+                                        }
+                                        moved => {
+                                            if (self.pressed) {
+                                                port-list.content-y = list-inertia.clamp-viewport-y(
+                                                    self.drag-start-viewport-y + ((self.absolute-position.y + self.mouse-y) - self.drag-start-cursor-y),
+                                                    port-list.visible-height,
+                                                    port-list.content-height,
+                                                );
+                                                list-inertia.record-sample(self.absolute-position.y + self.mouse-y);
+                                            }
+                                        }
+                                    }
+
+                                    Text {
+                                        text: item.name;
+                                        overflow: elide;
+                                        color: index == root.selected-index ? Theme.selected-text : Theme.list-text;
+                                        font-size: item-font-px;
+                                        vertical-alignment: center;
+                                        x: text-margin;
+                                        width: row.leftmost-x - text-margin - row-spacing;
+                                    }
+
+                                    info-btn := ActionButton {
+                                        text: @tr("Info");
+                                        fill-color: SemanticColors.info;
+                                        fill-hover-color: SemanticColors.info-hover;
+                                        font-size: item-font-px;
+                                        x: row.info-x;
+                                        y: row-spacing;
+                                        width: row.info-w;
+                                        height: action-button-height;
+                                        clicked => { root.list-row-info-requested(index); }
+                                    }
+
+                                    install-btn := ActionButton {
+                                        visible: !item.installed;
+                                        text: @tr("Install");
+                                        fill-color: SemanticColors.success;
+                                        fill-hover-color: SemanticColors.success-hover;
+                                        font-size: item-font-px;
+                                        x: row.slot1-x;
+                                        y: row-spacing;
+                                        width: row.slot1-width;
+                                        height: action-button-height;
+                                        clicked => { root.list-row-install-requested(index); }
+                                    }
+
+                                    uninstall-btn := ActionButton {
+                                        visible: item.installed;
+                                        text: item.is-local ? @tr("Open folder") : @tr("Uninstall");
+                                        fill-color: item.is-local ? SemanticColors.info : SemanticColors.danger;
+                                        fill-hover-color: item.is-local ? SemanticColors.info-hover : SemanticColors.danger-hover;
+                                        font-size: item-font-px;
+                                        x: row.slot1-x;
+                                        y: row-spacing;
+                                        width: row.slot1-width;
+                                        height: action-button-height;
+                                        clicked => {
+                                            if (item.is-local) {
+                                                root.list-row-open-folder-requested(index);
+                                            } else {
+                                                root.list-row-uninstall-requested(index);
+                                            }
+                                        }
+                                    }
+
+                                    update-btn := ActionButton {
+                                        visible: item.installed && item.auto-update-off;
+                                        text: @tr("Update");
+                                        fill-color: SemanticColors.warning;
+                                        fill-hover-color: SemanticColors.warning-hover;
+                                        font-size: item-font-px;
+                                        x: row.update-x;
+                                        y: row-spacing;
+                                        width: row.update-w;
+                                        height: action-button-height;
+                                        clicked => { root.list-row-update-requested(index); }
+
+                                        Rectangle {
+                                            background: SemanticColors.text-on-accent;
+                                            x: 4px / Theme.scale-factor;
+                                            width: parent.width - 8px / Theme.scale-factor;
+                                            y: parent.height / 2 - 1px / Theme.scale-factor;
+                                            height: 1px / Theme.scale-factor;
+                                        }
+                                    }
+
+                                    play-btn := ActionButton {
+                                        visible: item.installed;
+                                        text: @tr("Play");
+                                        fill-color: SemanticColors.success;
+                                        fill-hover-color: SemanticColors.success-hover;
+                                        font-size: item-font-px;
+                                        x: row.play-x;
+                                        y: row-spacing;
+                                        width: row.play-w;
+                                        height: action-button-height;
+                                        clicked => { root.list-row-play-requested(index); }
+                                    }
+                                }
+                            }
+
+                            ThemedScrollbar {
+                                x: content-width + (content-margin - scrollbar-width) / 2;
+                                y: 0px;
+                                height: list-container.height;
+                                viewport-height: port-list.content-height;
+                                visible-height: port-list.visible-height;
+                                viewport-y <=> port-list.content-y;
+                            }
+                        }
+                    }
+
+                    Rectangle {
+                        vertical-stretch: 0;
+                        height: root.big-mode ? 0px : row-height;
+
+                        if !root.big-mode: HorizontalLayout {
+                            width: 100%;
+                            height: 100%;
+                            spacing: row-spacing;
+                            alignment: end;
+
+                            ActionButton {
+                                text: root.self-update-available ? @tr("Update") : @tr("GitHub");
+                                fill-color: root.self-update-available ? SemanticColors.warning : SemanticColors.brand-github;
+                                fill-hover-color: root.self-update-available ? SemanticColors.warning-hover : SemanticColors.brand-github-hover;
+                                font-size: item-font-px;
+                                width: self.text-preferred-width + button-padding * 2;
+                                height: 100%;
+                                clicked => { root.github-requested(); }
+                            }
+
+                            ActionButton {
+                                text: @tr("Discord");
+                                fill-color: SemanticColors.brand-discord;
+                                fill-hover-color: SemanticColors.brand-discord-hover;
+                                font-size: item-font-px;
+                                width: self.text-preferred-width + button-padding * 2;
+                                height: 100%;
+                                clicked => { root.discord-requested(); }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

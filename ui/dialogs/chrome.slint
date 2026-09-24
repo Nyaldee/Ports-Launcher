@@ -1,0 +1,253 @@
+import { SemanticColors, Theme, TitleBarIconButton } from "../shared.slint";
+
+
+export component DialogNavKeyHandler inherits FocusScope {
+    callback close-requested();
+    callback move-selection-requested(int);
+    callback activate-selection-requested();
+
+    key-pressed(event) => {
+        if (event.text == Key.Escape) {
+            root.close-requested();
+            return accept;
+        } else if (event.text == Key.UpArrow || (event.modifiers.control && event.text == "w")) {
+            root.move-selection-requested(-1);
+            return accept;
+        } else if (event.text == Key.DownArrow || (event.modifiers.control && event.text == "s")) {
+            root.move-selection-requested(1);
+            return accept;
+        } else if (event.text == Key.Return) {
+            root.activate-selection-requested();
+            return accept;
+        }
+        return reject;
+    }
+}
+
+component DialogTitleBar inherits Rectangle {
+    in property <string> title: "";
+    in property <length> bar-height: 40px;
+    in property <length> title-font-px: bar-height * 0.4;
+    in property <bool> closable: true;
+    callback close-requested();
+
+    property <length> close-padding: Theme.title-button-padding;
+    property <length> close-size: bar-height - close-padding * 2;
+
+    height: bar-height;
+    background: Theme.search-background;
+
+    Text {
+        text: root.title;
+        color: Theme.list-text;
+        vertical-alignment: center;
+        font-weight: 700;
+        font-size: root.title-font-px;
+        x: Theme.title-button-padding;
+        y: 0px;
+        width: root.width - Theme.title-button-padding - bar-height;
+        height: 100%;
+    }
+
+    TitleBarIconButton {
+        x: root.width - close-padding - close-size;
+        y: close-padding;
+        size: close-size;
+        enabled: root.closable;
+        hover-color: SemanticColors.danger;
+        hover-stroke-color: SemanticColors.text-on-accent;
+        icon-commands: "M 22 22 L 78 78 M 78 22 L 22 78";
+        clicked => { root.close-requested(); }
+    }
+}
+
+export component DialogButton inherits Rectangle {
+    in property <string> text: "";
+    in property <bool> enabled: true;
+    in property <length> border-px: 1px;
+    in property <length> font-size: 14px;
+    in property <bool> selected: false;
+    in property <bool> left-align: false;
+    out property <length> text-preferred-width: label.preferred-width;
+    callback clicked();
+    callback hovered();
+
+    background: root.selected && root.enabled ? Theme.selected-background : Theme.list-background;
+    border-width: border-px;
+    border-color: Theme.border-color;
+    opacity: root.enabled ? 1.0 : 0.4;
+
+    TouchArea {
+        clicked => {
+            if (root.enabled) {
+                root.clicked();
+            }
+        }
+        changed has-hover => {
+            if (self.has-hover && root.enabled) {
+                root.hovered();
+            }
+        }
+    }
+    label := Text {
+        text: root.text;
+        color: root.selected && root.enabled ? Theme.selected-text : Theme.list-text;
+        font-size: root.font-size;
+        horizontal-alignment: root.left-align ? left : center;
+        vertical-alignment: center;
+        x: root.left-align ? 12px : 0px;
+        y: 0px;
+        width: root.left-align ? root.width - 24px : root.width;
+        height: 100%;
+    }
+}
+
+export struct ButtonRowItem {
+    text: string,
+    enabled: bool,
+}
+
+export component ButtonRow inherits Rectangle {
+    in property <[ButtonRowItem]> items: [];
+    in property <length> button-padding;
+    in property <length> row-spacing;
+    in property <length> button-height;
+    in property <length> item-font-px;
+    in property <length> border-px;
+    in property <length> content-width;
+    in property <int> selected-index: -1;
+    callback clicked(int);
+    callback hovered(int);
+
+    property <length> w0: btn0.width;
+    property <length> w1: btn1.width;
+    property <length> w2: btn2.width;
+    property <length> w3: btn3.width;
+    property <length> w4: btn4.width;
+    property <length> cum1: w0 + row-spacing + w1;
+    property <length> cum2: cum1 + row-spacing + w2;
+    property <length> cum3: cum2 + row-spacing + w3;
+    property <length> cum4: cum3 + row-spacing + w4;
+    property <int> break-index: cum1 > content-width ? 1 : cum2 > content-width ? 2 : cum3 > content-width ? 3 : cum4 > content-width ? 4 : 5;
+    property <length> row1-width:
+        break-index == 1 ? w0 :
+        break-index == 2 ? cum1 :
+        break-index == 3 ? cum2 :
+        break-index == 4 ? cum3 : cum4;
+    property <length> row2-width: break-index == 5 ? 0px : cum4 - row1-width - row-spacing;
+    property <length> row2-y: button-height + row-spacing;
+
+    height: break-index == 5 ? button-height : button-height * 2 + row-spacing;
+
+    btn0 := DialogButton {
+        text: root.items[0].text;
+        enabled: root.items[0].enabled;
+        selected: root.selected-index == 0;
+        border-px: root.border-px;
+        font-size: root.item-font-px;
+        x: (root.content-width - row1-width) / 2;
+        y: 0;
+        width: self.text-preferred-width + button-padding * 2;
+        height: button-height;
+        clicked => { root.clicked(0); }
+        hovered => { root.hovered(0); }
+    }
+    btn1 := DialogButton {
+        text: root.items[1].text;
+        enabled: root.items[1].enabled;
+        selected: root.selected-index == 1;
+        border-px: root.border-px;
+        font-size: root.item-font-px;
+        property <bool> is-start: break-index == 1;
+        x: self.is-start ? (root.content-width - row2-width) / 2 : btn0.x + btn0.width + row-spacing;
+        y: self.is-start ? row2-y : btn0.y;
+        width: self.text-preferred-width + button-padding * 2;
+        height: button-height;
+        clicked => { root.clicked(1); }
+        hovered => { root.hovered(1); }
+    }
+    btn2 := DialogButton {
+        text: root.items[2].text;
+        enabled: root.items[2].enabled;
+        selected: root.selected-index == 2;
+        border-px: root.border-px;
+        font-size: root.item-font-px;
+        property <bool> is-start: break-index == 2;
+        x: self.is-start ? (root.content-width - row2-width) / 2 : btn1.x + btn1.width + row-spacing;
+        y: self.is-start ? row2-y : btn1.y;
+        width: self.text-preferred-width + button-padding * 2;
+        height: button-height;
+        clicked => { root.clicked(2); }
+        hovered => { root.hovered(2); }
+    }
+    btn3 := DialogButton {
+        text: root.items[3].text;
+        enabled: root.items[3].enabled;
+        selected: root.selected-index == 3;
+        border-px: root.border-px;
+        font-size: root.item-font-px;
+        property <bool> is-start: break-index == 3;
+        x: self.is-start ? (root.content-width - row2-width) / 2 : btn2.x + btn2.width + row-spacing;
+        y: self.is-start ? row2-y : btn2.y;
+        width: self.text-preferred-width + button-padding * 2;
+        height: button-height;
+        clicked => { root.clicked(3); }
+        hovered => { root.hovered(3); }
+    }
+    btn4 := DialogButton {
+        text: root.items[4].text;
+        enabled: root.items[4].enabled;
+        selected: root.selected-index == 4;
+        border-px: root.border-px;
+        font-size: root.item-font-px;
+        property <bool> is-start: break-index == 4;
+        x: self.is-start ? (root.content-width - row2-width) / 2 : btn3.x + btn3.width + row-spacing;
+        y: self.is-start ? row2-y : btn3.y;
+        width: self.text-preferred-width + button-padding * 2;
+        height: button-height;
+        clicked => { root.clicked(4); }
+        hovered => { root.hovered(4); }
+    }
+}
+
+export component DialogChrome inherits Rectangle {
+    in property <string> dialog-title: "";
+    in property <length> bar-height: 40px;
+    in property <length> title-font-px: bar-height * 0.4;
+    in property <length> border-px: 1px;
+    in property <length> logical-w: 400px;
+    in property <length> logical-h: 300px;
+    in property <bool> closable: true;
+    in property <bool> content-clip: false;
+    callback close-requested();
+    out property <length> content-width: content-area.width;
+    out property <length> content-height: content-area.height;
+
+    width: logical-w + border-px * 2;
+    height: logical-h + border-px * 2;
+    background: Theme.list-background;
+    border-width: border-px;
+    border-color: Theme.border-color;
+
+    DialogTitleBar {
+        title: root.dialog-title;
+        bar-height: root.bar-height;
+        title-font-px: root.title-font-px;
+        closable: root.closable;
+        x: border-px;
+        y: border-px;
+        width: logical-w;
+        close-requested => { root.close-requested(); }
+    }
+
+    content-area := Rectangle {
+        x: border-px;
+        y: border-px + bar-height;
+        width: logical-w;
+        height: logical-h - bar-height;
+        background: Theme.list-background;
+        clip: root.content-clip;
+
+        @children
+    }
+}

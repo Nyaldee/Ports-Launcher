@@ -1,0 +1,184 @@
+import { ListView } from "std-widgets.slint";
+import { SemanticColors, Theme, ThemedScrollbar, InertialScroller } from "shared.slint";
+
+export struct CardItem {
+    name: string,
+    image: image,
+    selected: bool,
+}
+
+export struct CardRow {
+    cards: [CardItem],
+}
+
+export component CardGrid {
+    in property <[CardRow]> rows: [];
+    in property <length> card-width: 200px;
+    in property <length> card-height: 300px;
+    in property <length> card-spacing: 14px;
+    in property <int> columns: 1;
+    in property <string> empty-message: @tr("No installed ports yet.");
+    in property <int> selected-row-index: -1;
+    in property <bool> scroll-trigger: false;
+    callback card-activated(int, int);
+    callback card-hovered(int, int);
+    callback card-unhovered();
+
+    if root.rows.length == 0: Text {
+        text: root.empty-message;
+        color: SemanticColors.fallback-text;
+        horizontal-alignment: center;
+        vertical-alignment: center;
+        width: 100%;
+        height: 100%;
+    }
+
+    if root.rows.length > 0: grid-container := Rectangle {
+        width: 100%;
+        height: 100%;
+
+        property <length> row-block-width: root.columns * card-width + (root.columns - 1) * card-spacing;
+        property <length> row-left-margin: max(0px, (self.width - self.row-block-width) / 2);
+        property <length> row-height: card-height + card-spacing;
+
+        card-list := ListView {
+            width: 100%;
+            height: 100%;
+            vertical-scrollbar-policy: always-off;
+            horizontal-scrollbar-policy: always-off;
+
+            property <bool> scroll-trigger-local: root.scroll-trigger;
+            property <length> selected-row-top: root.selected-row-index * grid-container.row-height;
+            property <length> selected-row-bottom: self.selected-row-top + grid-container.row-height;
+            changed scroll-trigger-local => {
+                if (root.selected-row-index < 0) {
+                    return;
+                }
+                if (self.selected-row-top + self.content-y < 0px) {
+                    self.content-y = -self.selected-row-top;
+                } else if (self.selected-row-bottom + self.content-y > self.visible-height) {
+                    self.content-y = self.visible-height - self.selected-row-bottom;
+                }
+            }
+
+            for row in rows: Rectangle {
+                width: 100%;
+                height: grid-container.row-height;
+
+                for card[col-index] in row.cards: Rectangle {
+                    x: grid-container.row-left-margin + col-index * (card-width + card-spacing);
+                    y: card-spacing / 2;
+                    width: card-width;
+                    height: card-height;
+                    background: SemanticColors.card-background;
+                    border-width: card.selected ? 4px : 0px;
+                    border-color: SemanticColors.selection-border;
+                    drop-shadow-color: card.selected ? SemanticColors.success : transparent;
+                    drop-shadow-blur: card.selected ? 28px : 0px;
+
+                    if card.image.width > 0: Image {
+                        source: card.image;
+                        width: 100%;
+                        height: 100%;
+                        image-fit: cover;
+                    }
+
+                    if card.image.width <= 0: Text {
+                        text: card.name;
+                        color: SemanticColors.fallback-text;
+                        wrap: word-wrap;
+                        horizontal-alignment: center;
+                        vertical-alignment: center;
+                        width: 100%;
+                        x: 0px;
+                    }
+
+                    if card.selected: Rectangle {
+                        width: 100%;
+                        height: 100%;
+                        background: SemanticColors.success-hover.with-alpha(0.22);
+                    }
+                }
+            }
+        }
+
+        grid-inertia := InertialScroller {
+            min-viewport-y: Math.min(0px, card-list.visible-height - card-list.content-height);
+            viewport-y <=> card-list.content-y;
+        }
+
+        grid-touch := TouchArea {
+            width: 100%;
+            height: 100%;
+            property <length> content-mouse-y: self.mouse-y - card-list.content-y;
+            property <int> hovered-row: Math.clamp(Math.floor(self.content-mouse-y / grid-container.row-height), 0, root.rows.length - 1);
+            property <int> hovered-column: Math.clamp(Math.floor((self.mouse-x - grid-container.row-left-margin) / (card-width + card-spacing)), 0, root.rows[self.hovered-row].cards.length - 1);
+            property <length> card-top: self.hovered-row * grid-container.row-height + card-spacing / 2;
+            property <length> card-left: grid-container.row-left-margin + self.hovered-column * (card-width + card-spacing);
+            property <bool> pointer-on-card:
+                self.content-mouse-y >= self.card-top && self.content-mouse-y < self.card-top + card-height
+                && self.mouse-x >= self.card-left && self.mouse-x < self.card-left + card-width;
+            property <length> drag-start-mouse-y;
+            property <length> drag-start-viewport-y;
+
+            function report-hover() {
+                if (self.has-hover && self.pointer-on-card) {
+                    root.card-hovered(self.hovered-row, self.hovered-column);
+                } else {
+                    root.card-unhovered();
+                }
+            }
+
+            clicked => {
+                if (self.pointer-on-card) {
+                    root.card-activated(self.hovered-row, self.hovered-column);
+                }
+            }
+            changed pressed => {
+                if (self.pressed) {
+                    self.drag-start-mouse-y = self.mouse-y;
+                    self.drag-start-viewport-y = card-list.content-y;
+                    grid-inertia.begin-drag(self.mouse-y);
+                } else {
+                    grid-inertia.release();
+                    if (self.has-hover && self.pointer-on-card
+                        && Math.abs(self.mouse-x - self.pressed-x) < 8px
+                        && Math.abs(self.mouse-y - self.pressed-y) < 8px) {
+                        root.card-activated(self.hovered-row, self.hovered-column);
+                    }
+                }
+            }
+            changed has-hover => {
+                if (!self.has-hover) {
+                    root.card-unhovered();
+                }
+            }
+            changed mouse-x => {
+                if (!self.pressed) {
+                    self.report-hover();
+                }
+            }
+            changed mouse-y => {
+                if (self.pressed) {
+                    card-list.content-y = grid-inertia.clamp-viewport-y(
+                        self.drag-start-viewport-y + (self.mouse-y - self.drag-start-mouse-y),
+                        card-list.visible-height,
+                        card-list.content-height,
+                    );
+                    grid-inertia.record-sample(self.mouse-y);
+                } else {
+                    self.report-hover();
+                }
+            }
+        }
+
+        ThemedScrollbar {
+            x: grid-container.width - self.width - 4px / Theme.scale-factor;
+            y: 0px;
+            height: grid-container.height;
+            viewport-height: card-list.content-height;
+            visible-height: card-list.visible-height;
+            viewport-y <=> card-list.content-y;
+        }
+    }
+}

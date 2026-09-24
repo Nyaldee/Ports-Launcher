@@ -1,0 +1,34 @@
+import { Tr } from "dialogs.slint";
+
+export struct RecentGame {
+    name: string,
+    key: string,
+}
+
+export component AppTray inherits SystemTrayIcon {
+    in property <image> tray-icon;
+    icon: root.tray-icon;
+
+    in property <[RecentGame]> recent-games;
+    callback game-activated(string);
+    callback settings-requested();
+    callback quit-requested();
+    callback restore-requested();
+    clicked => { root.restore-requested(); }
+
+    Menu {
+        for game in root.recent-games: MenuItem {
+            title: game.name;
+            activated => { root.game-activated(game.key); }
+        }
+        MenuSeparator { }
+        MenuItem {
+            title: Tr.dialog-title-settings();
+            activated => { root.settings-requested(); }
+        }
+        MenuItem {
+            title: Tr.label-quit();
+            activated => { root.quit-requested(); }
+        }
+    }
+}

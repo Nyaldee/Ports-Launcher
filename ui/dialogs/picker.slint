@@ -1,0 +1,288 @@
+import { Theme, ThemedScrollbar } from "../shared.slint";
+import { DialogButton, DialogChrome, DialogNavKeyHandler } from "chrome.slint";
+
+export struct PickerItem {
+    label: string,
+}
+
+export component ListPickerDialog inherits Window {
+    no-frame: true;
+    title: root.dialog-title;
+    background: Theme.list-background;
+    in property <length> initial-width: 400px;
+    in property <length> initial-height: 300px;
+    width: initial-width;
+    height: initial-height;
+    in property <string> font-family;
+    default-font-family: root.font-family;
+
+    in property <string> dialog-title: "";
+    in property <[PickerItem]> items: [];
+    in property <length> item-height-physical: 40px;
+    in property <int> selected-index: -1;
+    in property <bool> scroll-trigger: false;
+    callback item-selected(int);
+    callback item-hovered(int);
+    callback close-requested();
+    callback move-selection-requested(int);
+    callback activate-selection-requested();
+
+    in property <length> item-font-px-physical: 14px;
+    in property <length> title-font-px-physical: 13px;
+    in property <length> row-height-physical: 48px;
+    in property <length> title-bar-height-physical: 34px;
+
+    property <length> border-px: Theme.border-width * 1px / Theme.scale-factor;
+    property <length> logical-w: root.width - border-px * 2;
+    property <length> logical-h: root.height - border-px * 2;
+    property <length> item-font-px: item-font-px-physical / Theme.scale-factor;
+    property <length> title-font-px: title-font-px-physical / Theme.scale-factor;
+    property <length> bar-height: title-bar-height-physical / Theme.scale-factor;
+    property <length> gutter: 12px / Theme.scale-factor;
+    property <length> item-height: item-height-physical / Theme.scale-factor;
+    property <length> spacing: root.gutter * 0.5;
+    property <length> scrollbar-width: 6px / Theme.scale-factor;
+    property <length> list-width: chrome.content-width - root.gutter * 2;
+
+    forward-focus: key-handler;
+
+    key-handler := DialogNavKeyHandler {
+        close-requested => { root.close-requested(); }
+        move-selection-requested(delta) => { root.move-selection-requested(delta); }
+        activate-selection-requested => { root.activate-selection-requested(); }
+
+        chrome := DialogChrome {
+            dialog-title: root.dialog-title;
+            bar-height: root.bar-height;
+            title-font-px: root.title-font-px;
+            border-px: root.border-px;
+            logical-w: root.logical-w;
+            logical-h: root.logical-h;
+            content-clip: true;
+            close-requested => { root.close-requested(); }
+
+            picker-list := Flickable {
+                x: root.gutter;
+                y: root.gutter;
+                width: list-width;
+                height: chrome.content-height - root.gutter * 2;
+                content-width: self.width;
+                content-height: max(self.height, items.length * (item-height + spacing) - spacing);
+
+                property <bool> scroll-trigger-local: root.scroll-trigger;
+                property <length> selected-top: root.selected-index * (item-height + spacing);
+                property <length> selected-bottom: self.selected-top + item-height;
+                changed scroll-trigger-local => {
+                    if (root.selected-index < 0) {
+                        return;
+                    }
+                    if (self.selected-top + self.content-y < 0px) {
+                        self.content-y = -self.selected-top;
+                    } else if (self.selected-bottom + self.content-y > self.height) {
+                        self.content-y = self.height - self.selected-bottom;
+                    }
+                }
+
+                for item[index] in items: DialogButton {
+                    text: item.label;
+                    border-px: root.border-px;
+                    left-align: true;
+                    font-size: root.item-font-px;
+                    selected: index == root.selected-index;
+                    x: 0px;
+                    y: index * (item-height + spacing);
+                    width: picker-list.width;
+                    height: item-height;
+                    clicked => { root.item-selected(index); }
+                    hovered => { root.item-hovered(index); }
+                }
+            }
+
+            ThemedScrollbar {
+                x: root.gutter + list-width + (root.gutter - scrollbar-width) / 2;
+                y: picker-list.y;
+                height: picker-list.height;
+                viewport-height: picker-list.content-height;
+                visible-height: picker-list.height;
+                viewport-y <=> picker-list.content-y;
+            }
+        }
+    }
+}
+
+export component SearchListDialog inherits Window {
+    no-frame: true;
+    title: root.dialog-title;
+    background: Theme.list-background;
+    in property <length> initial-width: 400px;
+    in property <length> initial-height: 300px;
+    width: initial-width;
+    height: initial-height;
+    in property <string> font-family;
+    default-font-family: root.font-family;
+
+    in property <string> dialog-title: "";
+    in property <[PickerItem]> items: [];
+    in property <length> search-bar-height-physical: root.row-height-physical;
+    in property <int> selected-index: -1;
+    in property <bool> scroll-trigger: false;
+    in property <string> placeholder-text: "Type to search...";
+    in property <bool> show-clock: true;
+    in property <string> clock-text: "";
+
+    callback item-selected(int);
+    callback item-hovered(int);
+    callback close-requested();
+    callback move-selection-requested(int);
+    callback activate-selection-requested();
+    callback search-changed(string);
+    init => { search-input.focus(); }
+
+    in property <length> item-font-px-physical: 14px;
+    in property <length> title-font-px-physical: 13px;
+    in property <length> row-height-physical: 48px;
+    in property <length> title-bar-height-physical: 34px;
+
+    property <length> border-px: Theme.border-width * 1px / Theme.scale-factor;
+    property <length> logical-w: root.width - border-px * 2;
+    property <length> logical-h: root.height - border-px * 2;
+    property <length> item-font-px: item-font-px-physical / Theme.scale-factor;
+    property <length> title-font-px: title-font-px-physical / Theme.scale-factor;
+    property <length> bar-height: title-bar-height-physical / Theme.scale-factor;
+    property <length> gutter: 12px / Theme.scale-factor;
+    property <length> search-font-px: root.item-font-px * 1.2;
+    property <length> row-height: root.row-height-physical / Theme.scale-factor;
+    property <length> text-margin: row-height * 0.3;
+    property <length> search-height: search-bar-height-physical / Theme.scale-factor;
+    property <length> scrollbar-width: 6px / Theme.scale-factor;
+    property <length> list-width: chrome.content-width - root.gutter * 2;
+
+    chrome := DialogChrome {
+        dialog-title: root.dialog-title;
+        bar-height: root.bar-height;
+        title-font-px: root.title-font-px;
+        border-px: root.border-px;
+        logical-w: root.logical-w;
+        logical-h: root.logical-h;
+        content-clip: true;
+        close-requested => { root.close-requested(); }
+
+        search-box := Rectangle {
+            x: root.gutter;
+            y: root.gutter;
+            width: list-width;
+            height: search-height;
+            background: Theme.search-background;
+            border-width: 1px / Theme.scale-factor;
+            border-color: Theme.border-color;
+
+            if search-input.text == "": Text {
+                text: root.placeholder-text;
+                color: Theme.search-text;
+                font-size: search-font-px;
+                vertical-alignment: center;
+                x: text-margin;
+                width: parent.width - text-margin * 2;
+                height: parent.height;
+            }
+
+            if root.show-clock: Text {
+                text: root.clock-text;
+                color: Theme.search-text;
+                font-size: search-font-px;
+                vertical-alignment: center;
+                horizontal-alignment: right;
+                x: 0px;
+                width: parent.width - text-margin;
+                height: parent.height;
+            }
+
+            search-input := TextInput {
+                color: Theme.search-text;
+                font-size: search-font-px;
+                vertical-alignment: center;
+                single-line: true;
+                x: text-margin;
+                y: 0px;
+                width: parent.width - text-margin * 2;
+                height: parent.height;
+                edited => { root.search-changed(self.text); }
+                key-pressed(event) => {
+                    if (event.text == Key.Escape) {
+                        root.close-requested();
+                        accept
+                    } else if (event.text == Key.UpArrow || (event.modifiers.control && event.text == "w")) {
+                        root.move-selection-requested(-1);
+                        accept
+                    } else if (event.text == Key.DownArrow || (event.modifiers.control && event.text == "s")) {
+                        root.move-selection-requested(1);
+                        accept
+                    } else if (event.text == Key.Return) {
+                        root.activate-selection-requested();
+                        accept
+                    } else {
+                        reject
+                    }
+                }
+            }
+        }
+
+        item-list := Flickable {
+            x: root.gutter;
+            y: search-height + root.gutter * 2;
+            width: list-width;
+            height: chrome.content-height - search-height - root.gutter * 3;
+            content-width: self.width;
+            content-height: max(self.height, items.length * row-height);
+
+            property <bool> scroll-trigger-local: root.scroll-trigger;
+            property <length> selected-top: root.selected-index * row-height;
+            property <length> selected-bottom: self.selected-top + row-height;
+            changed scroll-trigger-local => {
+                if (root.selected-index < 0) {
+                    return;
+                }
+                if (self.selected-top + self.content-y < 0px) {
+                    self.content-y = -self.selected-top;
+                } else if (self.selected-bottom + self.content-y > self.height) {
+                    self.content-y = self.height - self.selected-bottom;
+                }
+            }
+
+            for item[index] in items: Rectangle {
+                background: index == root.selected-index ? Theme.selected-background : Theme.list-background;
+                x: 0px;
+                y: index * row-height;
+                width: item-list.width;
+                height: row-height;
+
+                Text {
+                    text: item.label;
+                    color: index == root.selected-index ? Theme.selected-text : Theme.list-text;
+                    font-size: root.item-font-px;
+                    vertical-alignment: center;
+                    x: text-margin;
+                    width: parent.width - text-margin;
+                    height: 100%;
+                }
+                TouchArea {
+                    clicked => { root.item-selected(index); }
+                    changed has-hover => {
+                        if (self.has-hover) {
+                            root.item-hovered(index);
+                        }
+                    }
+                }
+            }
+        }
+
+        ThemedScrollbar {
+            x: root.gutter + list-width + (root.gutter - scrollbar-width) / 2;
+            y: item-list.y;
+            height: item-list.height;
+            viewport-height: item-list.content-height;
+            visible-height: item-list.height;
+            viewport-y <=> item-list.content-y;
+        }
+    }
+}

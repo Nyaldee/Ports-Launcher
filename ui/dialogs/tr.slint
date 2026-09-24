@@ -1,0 +1,97 @@
+export global Tr {
+    public pure function dialog-title-settings() -> string { @tr("Settings") }
+    public pure function dialog-title-saves-backup() -> string { @tr("Saves Backup") }
+    public pure function dialog-title-installing() -> string { @tr("Installing") }
+    public pure function dialog-title-loading() -> string { @tr("Loading") }
+    public pure function dialog-title-choose-favorite-executable() -> string { @tr("Choose favorite executable") }
+    public pure function dialog-title-invalid-port() -> string { @tr("Invalid Port") }
+    public pure function dialog-title-choose-executable() -> string { @tr("Choose an executable") }
+    public pure function dialog-title-uninstall-error() -> string { @tr("Uninstall Error") }
+    public pure function dialog-title-choose-file() -> string { @tr("Choose a file") }
+    public pure function dialog-title-choose-version() -> string { @tr("Choose a version") }
+    public pure function dialog-title-error() -> string { @tr("Error") }
+    public pure function dialog-title-installation-error() -> string { @tr("Installation Error") }
+    public pure function dialog-title-update-error() -> string { @tr("Update Error") }
+    public pure function dialog-title-language() -> string { @tr("Language") }
+    public pure function dialog-title-extras() -> string { @tr("Extras") }
+    public pure function dialog-title-error-port(name: string) -> string { @tr("Error - {}", name) }
+    public pure function dialog-title-uninstall-port(name: string) -> string { @tr("Uninstall - {}", name) }
+    public pure function dialog-title-info-port(name: string) -> string { @tr("Info - {}", name) }
+    public pure function dialog-title-toggle-update(name: string) -> string { @tr("Update - {}", name) }
+    public pure function dialog-title-reset-playtime(name: string) -> string { @tr("Reset Game Time - {}", name) }
+    public pure function dialog-title-install-extras(name: string) -> string { @tr("Install extras - {}", name) }
+
+    public pure function label-themes() -> string { @tr("Themes") }
+    public pure function label-files() -> string { @tr("Files") }
+    public pure function label-language() -> string { @tr("Language") }
+    public pure function label-library() -> string { @tr("Library") }
+    public pure function label-backup-saves() -> string { @tr("Save Backup") }
+    public pure function label-check-updates-on() -> string { @tr("Check for Updates: On") }
+    public pure function label-check-updates-off() -> string { @tr("Check for Updates: Off") }
+    public pure function label-force-update() -> string { @tr("Force Update") }
+    public pure function label-discord-rpc-on() -> string { @tr("Discord Rich Presence: On") }
+    public pure function label-discord-rpc-off() -> string { @tr("Discord Rich Presence: Off") }
+
+    public pure function label-quit() -> string { @tr("Exit Ports Launcher") }
+
+    public pure function message-invalid-folder-name() -> string { @tr("This port's folder name is invalid.") }
+    public pure function message-launch-failed(name: string) -> string {
+        @tr("\"{}\" could not be launched. The game files may be missing or incomplete.", name)
+    }
+    public pure function message-uninstall-confirm(name: string) -> string {
+        @tr("Uninstall \"{}\"? All of its files will be deleted.", name)
+    }
+    public pure function message-backup-summary(copied: int, skipped: int, failed: int) -> string {
+        if (failed > 0) {
+            return @tr("{} save folder(s) backed up, {} skipped (empty or missing), {} failed (disk full or permission denied?).", copied, skipped, failed);
+        }
+        return @tr("{} save folder(s) backed up, {} skipped (empty or missing).", copied, skipped);
+    }
+    public pure function message-reset-playtime-confirm(name: string) -> string {
+        @tr("Reset the tracked playtime for \"{}\"? This cannot be undone.", name)
+    }
+    public pure function message-install-extras-confirm(name: string) -> string {
+        @tr("Download and install the extra files for \"{}\"? These add optional play options or preset configurations (often an arbitrary pick) and overwrite any existing copies in the port's folder.", name)
+    }
+    public pure function message-extras-installed() -> string { @tr("Extra files installed.") }
+    public pure function message-extras-failed(error: string) -> string {
+        @tr("Couldn't download the extra files ({}). Nothing was changed.", error)
+    }
+
+    public pure function confirm-uninstall() -> string { @tr("Uninstall") }
+    public pure function confirm-install() -> string { @tr("Install") }
+    public pure function confirm-reset() -> string { @tr("Reset") }
+    public pure function confirm-enable() -> string { @tr("Enable") }
+    public pure function confirm-disable() -> string { @tr("Disable") }
+    public pure function picker-ask-every-time() -> string { @tr("Ask every time (default)") }
+    public pure function language-default-system() -> string { @tr("Default (System)") }
+
+    public pure function progress-backing-up-saves() -> string { @tr("Backing up saves...") }
+    public pure function progress-backing-up-named(name: string) -> string { @tr("Backing up {}...", name) }
+    public pure function progress-installing(name: string) -> string { @tr("Installing {}...", name) }
+    public pure function progress-fetching-versions(name: string) -> string { @tr("Fetching versions for {}...", name) }
+    public pure function progress-installing-extras(name: string) -> string { @tr("Downloading extras for {}...", name) }
+
+    public pure function version-not-installed() -> string { @tr("Version: Not installed") }
+    public pure function version-tag(tag: string) -> string { @tr("Version: {}", tag) }
+    public pure function version-installed-tag-unknown-github() -> string {
+        @tr("Version: Installed (tag unknown -- still checked against GitHub)")
+    }
+    public pure function version-installed-tag-unknown-gitlab() -> string {
+        @tr("Version: Installed (tag unknown -- still checked against GitLab)")
+    }
+    public pure function version-installed-no-tracking() -> string {
+        @tr("Version: Installed (this source has no version tracking)")
+    }
+    public pure function favorite-exe-status-default() -> string { @tr("Favorite executable: Default") }
+    public pure function favorite-exe-status-named(name: string) -> string { @tr("Favorite executable: {}", name) }
+    public pure function update-status-on() -> string { @tr("Update: On") }
+    public pure function update-status-off() -> string { @tr("Update: Off") }
+    public pure function playtime-status(formatted: string) -> string { @tr("Play time: {} hours", formatted) }
+    public pure function playtime-status-never() -> string { @tr("Play time: Never") }
+    public pure function last-played-status(value: string) -> string { @tr("Last played: {}", value) }
+    public pure function last-played-status-today() -> string { @tr("Last played: Today") }
+    public pure function last-played-status-never() -> string { @tr("Last played: Never") }
+
+    public pure function placeholder-default-search() -> string { @tr("Type to search...") }
+}
