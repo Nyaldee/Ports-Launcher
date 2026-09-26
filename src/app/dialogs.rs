@@ -592,9 +592,10 @@ enum SettingsEntry {
     CheckUpdates,
     ForceUpdate,
     DiscordRpc,
+    Version,
 }
 
-const SETTINGS_ENTRIES: [SettingsEntry; 8] = [
+const SETTINGS_ENTRIES: [SettingsEntry; 9] = [
     SettingsEntry::Themes,
     SettingsEntry::Language,
     SettingsEntry::Files,
@@ -603,6 +604,7 @@ const SETTINGS_ENTRIES: [SettingsEntry; 8] = [
     SettingsEntry::CheckUpdates,
     SettingsEntry::ForceUpdate,
     SettingsEntry::DiscordRpc,
+    SettingsEntry::Version,
 ];
 
 fn settings_labels(app: &AppState) -> Vec<String> {
@@ -622,6 +624,7 @@ fn settings_labels(app: &AppState) -> Vec<String> {
             SettingsEntry::ForceUpdate => tr.invoke_label_force_update(),
             SettingsEntry::DiscordRpc if state.discord_rpc_enabled => tr.invoke_label_discord_rpc_on(),
             SettingsEntry::DiscordRpc => tr.invoke_label_discord_rpc_off(),
+            SettingsEntry::Version => tr.invoke_version_tag(crate::core::version::APP_VERSION.replace('-', ".").into()),
         })
         .map(|label| label.to_string())
         .collect()
@@ -655,6 +658,7 @@ pub(crate) fn open_settings_dialog(app: &Rc<AppState>, router: &Router) {
                         SettingsEntry::Files => open_files_picker(&app, &router),
                         SettingsEntry::Library => open_folder(&app.paths.library_dir),
                         SettingsEntry::BackupSaves => start_save_backup(&app, &router),
+                        SettingsEntry::Version => crate::core::launch::open_url(&format!("{}/releases", crate::core::version::PROJECT_URL)),
                         _ => launch_self_update(&app, &router),
                     }
                     return;

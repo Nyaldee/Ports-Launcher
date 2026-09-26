@@ -219,8 +219,6 @@ pub fn double_click_time_ms() -> u32 {
     500
 }
 
-pub fn enable_dpi_awareness() {}
-
 pub fn restore_window(window: &slint::Window) {
     match native_window(window) {
         Some(NativeWindow::X11(win)) => {

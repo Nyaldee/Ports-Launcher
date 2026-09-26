@@ -13,7 +13,6 @@ pub mod http;
 pub mod image_cache;
 pub mod installer;
 pub mod jobs;
-pub mod konami;
 pub mod launch;
 pub mod models;
 pub mod path_safety;

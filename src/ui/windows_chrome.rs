@@ -14,7 +14,7 @@ use windows::Win32::UI::Shell::ExtractIconExW;
 use windows::Win32::UI::WindowsAndMessaging::{
     AllowSetForegroundWindow, BringWindowToTop, DestroyIcon, GetCursorPos, GetForegroundWindow, GetIconInfo, GetWindowLongPtrW,
     GetWindowThreadProcessId, IsIconic, IsWindowVisible, MessageBoxW, PostMessageW, SendMessageW, SetForegroundWindow,
-    SetProcessDPIAware, SetWindowLongPtrW, ShowWindow, ASFW_ANY, GWLP_HWNDPARENT, GWL_EXSTYLE, HICON, HTCAPTION, ICONINFO, ICON_BIG,
+    SetWindowLongPtrW, ShowWindow, ASFW_ANY, GWLP_HWNDPARENT, GWL_EXSTYLE, HICON, HTCAPTION, ICONINFO, ICON_BIG,
     ICON_SMALL, MB_ICONERROR, MB_OK, SW_HIDE, SW_SHOWNA, WM_LBUTTONUP, WM_NCLBUTTONDOWN, WM_SETICON, WS_EX_APPWINDOW, WS_EX_TOOLWINDOW,
 };
 
@@ -41,19 +41,6 @@ pub fn claim_single_instance(on_activate: impl Fn() + Send + 'static) -> bool {
         }
     });
     true
-}
-
-pub fn enable_dpi_awareness() {
-    use windows::Win32::UI::HiDpi::{
-        SetProcessDpiAwareness, SetProcessDpiAwarenessContext, DPI_AWARENESS_CONTEXT_PER_MONITOR_AWARE_V2, PROCESS_PER_MONITOR_DPI_AWARE,
-    };
-    unsafe {
-        if SetProcessDpiAwarenessContext(DPI_AWARENESS_CONTEXT_PER_MONITOR_AWARE_V2).is_err()
-            && SetProcessDpiAwareness(PROCESS_PER_MONITOR_DPI_AWARE).is_err()
-        {
-            let _ = SetProcessDPIAware();
-        }
-    }
 }
 
 fn monitor_under_cursor() -> HMONITOR {

@@ -84,7 +84,7 @@ pub(crate) struct AppState {
     pub(crate) windowed_nav: WindowedNav,
     pub(crate) install_runtime: InstallRuntime,
     pub(crate) dialog_nav: DialogNav,
-    pub(crate) konami: super::konami::Konami,
+    pub(crate) cheats: super::cheats::Cheats,
     pub(crate) events: Arc<Mutex<Vec<AppEvent>>>,
 }
 
