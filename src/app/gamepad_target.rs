@@ -161,8 +161,8 @@ pub(crate) struct AppGamepadTarget {
 }
 
 impl GamepadTarget for AppGamepadTarget {
-    fn intercept(&self, input: Option<crate::core::konami::KonamiInput>) -> bool {
-        super::konami::intercept(&self.app, input)
+    fn intercept(&self, input: Option<super::cheats::CheatInput>) -> bool {
+        super::cheats::intercept(&self.app, input)
     }
 
     fn move_selection(&self, dx: i32, dy: i32) {

@@ -46,7 +46,6 @@ fn main() {
         }
     }
 
-    chrome::enable_dpi_awareness();
     chrome::register_desktop_entry();
 
     let bdir = base_dir();
@@ -199,7 +198,7 @@ fn main() {
             error_nav_index: Cell::new(0),
             info_dialog_port_key: RefCell::new(None),
         },
-        konami: Default::default(),
+        cheats: Default::default(),
         events,
     });
     let router = Rc::new(RefCell::new(GamepadRouter::new()));
@@ -248,6 +247,7 @@ fn wire_main_window(window: &AppWindow, app: &Rc<AppState>, router: &Rc<RefCell<
     }
 
     window.on_search_changed(with!(app => move |query| {
+        let query = if app::cheats::search_changed(&app, &query) { Default::default() } else { query };
         *app.windowed_nav.search_query.borrow_mut() = query.to_string();
         app.refresh_current_view();
     }));
@@ -261,7 +261,7 @@ fn wire_main_window(window: &AppWindow, app: &Rc<AppState>, router: &Rc<RefCell<
     window.on_reveal_folder_requested(with!(app => move || reveal_selected_folder(&app)));
     window.on_discord_requested(|| core::launch::open_url(DISCORD_URL));
     window.on_key_intercepted(with!(app => move |text, modified, repeat| {
-        app::konami::intercept(&app, (!repeat).then(|| app::konami::keyboard_input(&text, modified)))
+        app::cheats::intercept(&app, (!repeat).then(|| app::cheats::keyboard_input(&text, modified)))
     }));
     window.on_github_requested(with!(app, router => move || {
         if app.window().get_self_update_available() {

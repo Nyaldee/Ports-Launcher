@@ -63,6 +63,15 @@
       "selected_text": "#eff6ee",
       "border": "#4c5844"
     },
+    "steam_new": {
+      "search_background": "#292e37",
+      "search_text": "#66c0f4",
+      "list_background": "#171a21",
+      "list_text": "#adadad",
+      "selected_background": "#66c0f4",
+      "selected_text": "#171a21",
+      "border": "#232730"
+    },
     "inazuma": {
       "search_background": "#845ec2",
       "search_text": "#eaeaea",

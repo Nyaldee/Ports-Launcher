@@ -135,6 +135,16 @@
       "icon": "https://cdn2.steamgriddb.com/icon/ab231e07089cc084c3a4d0a81e732ac5.png",
       "save": "saves"
     },{
+      "-name": "Apocalypse (Repocalpype)",
+      "tags": ["ps1", "shooter"],
+      "source": "??",
+      "website": "https://alexbeav.github.io/psxrecomp-ports/",
+      "folder": "Repocalpype",
+      "instructions": "Required files: SLES-00460. BIOS: SCPH-5552. Known issues: Wave 3 validation limits apply. Use the complete matching Redump CUE/BIN set and the required SCPH-5552 BIOS.",
+      "image": "https://cdn2.steamgriddb.com/grid/8d2bb3e3e38aecce130899813a042108.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/ab231e07089cc084c3a4d0a81e732ac5.png",
+      "save": "saves"
+    },{
       "name": "Armored Core (armored-core-recomp)",
       "tags": ["ps1", "alexbeav"],
       "source": "https://github.com/Alexbeav/armored-core-recomp",
@@ -1683,6 +1693,14 @@
       "image": "https://cdn2.steamgriddb.com/grid/ee1a856488fea31e9380d958040040b8.jpg",
       "icon": "https://cdn2.steamgriddb.com/icon/65448ceadc9d24cfb20915c0a610a4ef.png"
     },{
+      "-name": "Need for Speed: Underground 2 (??)",
+      "tags": ["ps2", "racing"],
+      "source": "??",
+      "folder": "??",
+      "instructions": "Required files: ",
+      "image": "https://cdn2.steamgriddb.com/grid/8e4374a54f3a61fa403d8d70c99bca08.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/868a4b62023a2d9d38276152d8c5b8f9.png"
+    },{
       "name": "Nightmare Creatures (nightmare-creatures-recomp)",
       "tags": ["ps1", "alexbeav"],
       "source": "https://github.com/Alexbeav/nightmare-creatures-recomp",
@@ -1951,6 +1969,13 @@
       "icon": "https://cdn2.steamgriddb.com/icon/a64f23737e72f85b8fc0eb8ad5b36458.png",
       "save": "saves"
     },{
+      "name": "Rave Racer (namco22-decompile)",
+      "tags": ["ps1", "alexbeav"],
+      "source": "https://github.com/spacestate1/namco22-decompile",
+      "folder": "namco22-decompile",
+      "instructions": "Required files: https://github.com/spacestate1/namco22-decompile/blob/main/docs/ROM_SETUP.md",
+      "image": "https://cdn2.steamgriddb.com/grid/4530638519a69fd40e9d81aab74d63a1.png"
+    },{
       "name": "Re-Volt (RVGL Launcher/Re-Volt)",
       "tags": ["pc", "racing", "multiplayer", "online"],
       "source": {
@@ -1964,7 +1989,7 @@
       "icon": "https://cdn2.steamgriddb.com/icon/f9e817650f505b7c38f29416dfd0ba69/32/256x256.png"
     },{
       "name": "Resident Evil 3: Nemesis (resident-evil-3-recomp)",
-      "tags": ["ps1", "alexbeav"],
+      "tags": ["ps1", "alexbeav", "survival horror"],
       "source": "https://github.com/Alexbeav/resident-evil-3-recomp",
       "website": "https://alexbeav.github.io/psxrecomp-ports/",
       "folder": "resident-evil-3-recomp",
@@ -1972,6 +1997,14 @@
       "image": "https://cdn2.steamgriddb.com/grid/39e1dd25e194367c68f7d040750f184b.png",
       "icon": "https://cdn2.steamgriddb.com/icon/1844bd1b6d59ab61b41e110f72b4ef61.png",
       "save": "saves"
+    },{
+      "-name": "Resident Evil 5 (??)",
+      "tags": ["pc", "survival horror", "android_only"],
+      "android_source": "??",
+      "android_package": "??",
+      "instructions": "Languages: Multilingual.",
+      "image": "https://cdn2.steamgriddb.com/grid/607648073102cf8ab0ce8ebd3f8148b7.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/6da9003b743b65f4c0ccd295cc484e57.png"
     },{
       "name": "Resident Evil Gaiden (regaiden-recomp)",
       "tags": ["gbc", "survival horror"],
@@ -2139,6 +2172,21 @@
       "instructions": "Required files: Sonic Advance 2 (Japan) (En,Ja,Fr,De,Es,It) (Virtual Console).gba (CRC32: 6C6C65A3)",
       "image": "https://cdn2.steamgriddb.com/grid/98178e2c5d08c023bf55d71236cd07f2.png",
       "icon": "https://cdn2.steamgriddb.com/icon/8b4f5b5b0f8ad3f9608c60b4415f9fcd/32/256x256.png"
+    },{
+      "name": "Sonic Free Riders (Free-Riders-Recompiled)",
+      "tags": ["360", "racing", "multiplayer"],
+      "source": "https://github.com/YuutaTsubasa/Free-Riders-Recompiled",
+      "android_source": "https://github.com/YuutaTsubasa/Free-Riders-Recompiled",
+      "android_package": "com.freeriders.recompiled",
+      "folder": "Free-Riders-Recompiled",
+      "instructions": "Required files: Sonic Free Riders USA/Europe for Xbox 360\n\nUse extract-xiso.exe to extract the contents of the ISO.\nInside the newly created folder, rename the DBZ1 folder to assets.\nMove the assets folder to the root of the port folder.\nInside the assets folder, rename yae1_xenon.xex to default.xex.\n\nThe game plays as a local profile named \"Player\": answer Yes when it asks \"Are you Player?\" and create save data when offered.\n\nLanguages: English.",
+      "image": "https://cdn2.steamgriddb.com/grid/ccc66d981626c1be8f4f49ee64c4a8a8.jpg",
+      "icon": "https://cdn2.steamgriddb.com/icon/f1f110f8c26ef054980368da6c19652e.png",
+      "save": {
+        "windows": "save",
+        "linux": "save",
+        "android": "/storage/emulated/0/Android/data/com.freeriders.recompiled/files/save"
+      }
     },{
       "-name": "Sonic Heroes",
       "tags": ["gc", "platformer"],

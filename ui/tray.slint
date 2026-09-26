@@ -8,6 +8,7 @@ export struct RecentGame {
 export component AppTray inherits SystemTrayIcon {
     in property <image> tray-icon;
     icon: root.tray-icon;
+    tooltip: "Ports Launcher";
 
     in property <[RecentGame]> recent-games;
     callback game-activated(string);

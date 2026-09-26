@@ -123,6 +123,32 @@ export component AppWindow inherits Window {
     property <length> row-spacing: 6px / Theme.scale-factor;
     property <length> action-button-height: row-height - row-spacing * 2;
     property <length> scrollbar-width: 6px / Theme.scale-factor;
+    public function clear-search() { search-input.text = ""; }
+
+    public function barrel-roll() { root.roll-angle += 360deg; }
+    property <angle> roll-angle: 0deg;
+
+    public function askew() { root.tilt-angle = root.tilt-angle == 0deg ? 4deg : 0deg; }
+    property <angle> tilt-angle: 0deg;
+
+    public function big-head() { root.head-ticks = 45; }
+    property <int> head-ticks: 0;
+    property <float> head-scale: 1 + 0.2 * Math.min(root.head-ticks, 30) / 30;
+
+    public function shake() { root.shake-ticks = 45; }
+    property <int> shake-ticks: 0;
+    property <length> shake-amplitude: 12px / Theme.scale-factor * root.shake-ticks / 45;
+    property <length> shake-x: root.shake-amplitude * Math.sin(root.shake-ticks * 137deg);
+    property <length> shake-y: root.shake-amplitude * Math.sin(root.shake-ticks * 211deg);
+
+    Timer {
+        interval: 33ms;
+        running: root.shake-ticks > 0 || root.head-ticks > 0;
+        triggered => {
+            root.shake-ticks = Math.max(0, root.shake-ticks - 1);
+            root.head-ticks = Math.max(0, root.head-ticks - 1);
+        }
+    }
 
     FocusScope {
         focus-on-click: false;
@@ -309,8 +335,14 @@ export component AppWindow inherits Window {
                     content-body := Rectangle {
                         vertical-stretch: root.big-mode ? 1 : 0;
                         preferred-height: root.big-mode ? 0px : content-body-height;
+                        transform-rotation: root.roll-angle + root.tilt-angle;
+                        transform-scale-x: root.head-scale * 100%;
+                        transform-scale-y: root.head-scale * 100%;
+                        animate transform-rotation { duration: 1s; easing: ease-in-out; }
 
                         if root.big-mode: CardGrid {
+                            x: root.shake-x;
+                            y: root.shake-y;
                             width: 100%;
                             height: 100%;
                             rows: root.card-rows;
@@ -326,6 +358,8 @@ export component AppWindow inherits Window {
                         }
 
                         if !root.big-mode: list-container := Rectangle {
+                            x: root.shake-x;
+                            y: root.shake-y;
                             width: 100%;
                             height: 100%;
 

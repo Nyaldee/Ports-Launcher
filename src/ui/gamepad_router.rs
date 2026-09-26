@@ -1,6 +1,6 @@
 
 use crate::core::gamepad::{GamepadPoller, GamepadState};
-use crate::core::konami::KonamiInput;
+use crate::app::cheats::CheatInput;
 use std::rc::Rc;
 use std::time::{Duration, Instant};
 
@@ -9,10 +9,10 @@ const NAV_REPEAT_DELAY: Duration = Duration::from_millis(350);
 pub const POLL_INTERVAL_MS: u64 = 20;
 
 const DIRECTION_DELTAS: [(i32, i32); 4] = [(0, -1), (0, 1), (-1, 0), (1, 0)];
-const DIRECTION_INPUTS: [KonamiInput; 4] = [KonamiInput::Up, KonamiInput::Down, KonamiInput::Left, KonamiInput::Right];
+const DIRECTION_INPUTS: [CheatInput; 4] = [CheatInput::Up, CheatInput::Down, CheatInput::Left, CheatInput::Right];
 
 pub trait GamepadTarget {
-    fn intercept(&self, _input: Option<KonamiInput>) -> bool {
+    fn intercept(&self, _input: Option<CheatInput>) -> bool {
         false
     }
     fn move_selection(&self, _dx: i32, _dy: i32) {}
@@ -56,10 +56,10 @@ const BUTTON_ACTIONS: [GamepadAction; BUTTON_COUNT] = [
     GamepadAction::OpenSettings,
 ];
 
-const BUTTON_INPUTS: [KonamiInput; BUTTON_COUNT] =
-    [KonamiInput::A, KonamiInput::Other, KonamiInput::B, KonamiInput::Other, KonamiInput::Other, KonamiInput::Other];
+const BUTTON_INPUTS: [CheatInput; BUTTON_COUNT] =
+    [CheatInput::A, CheatInput::Other, CheatInput::B, CheatInput::Other, CheatInput::Other, CheatInput::Y];
 
-type Move = ((i32, i32), Option<KonamiInput>);
+type Move = ((i32, i32), Option<CheatInput>);
 
 fn decide_moves(prev: [bool; 4], current: [bool; 4], last_move: &mut [Instant; 4], repeating: &mut [bool; 4], now: Instant) -> Vec<Move> {
     let mut moves = Vec::new();
@@ -78,7 +78,7 @@ fn decide_moves(prev: [bool; 4], current: [bool; 4], last_move: &mut [Instant; 4
     moves
 }
 
-fn decide_button_actions(prev: [bool; BUTTON_COUNT], current: [bool; BUTTON_COUNT]) -> Vec<(GamepadAction, KonamiInput)> {
+fn decide_button_actions(prev: [bool; BUTTON_COUNT], current: [bool; BUTTON_COUNT]) -> Vec<(GamepadAction, CheatInput)> {
     (0..BUTTON_COUNT).filter(|&i| current[i] && !prev[i]).map(|i| (BUTTON_ACTIONS[i], BUTTON_INPUTS[i])).collect()
 }
 
@@ -149,7 +149,7 @@ impl Default for GamepadRouter {
 pub struct PollResult {
     target: Rc<dyn GamepadTarget>,
     moves: Vec<Move>,
-    actions: Vec<(GamepadAction, KonamiInput)>,
+    actions: Vec<(GamepadAction, CheatInput)>,
 }
 
 pub fn dispatch(result: PollResult) {
@@ -183,7 +183,7 @@ mod tests {
         let now = Instant::now();
         let mut last_move = [now; 4];
         let mut repeating = [false; 4];
-        assert_eq!(decide_moves([false; 4], UP, &mut last_move, &mut repeating, now), vec![((0, -1), Some(KonamiInput::Up))]);
+        assert_eq!(decide_moves([false; 4], UP, &mut last_move, &mut repeating, now), vec![((0, -1), Some(CheatInput::Up))]);
     }
 
     #[test]
@@ -212,14 +212,14 @@ mod tests {
         let mut repeating = [true; 4];
         assert!(decide_moves(UP, [false; 4], &mut last_move, &mut repeating, now).is_empty());
         assert!(!repeating[0]);
-        assert_eq!(decide_moves([false; 4], UP, &mut last_move, &mut repeating, now), vec![((0, -1), Some(KonamiInput::Up))]);
+        assert_eq!(decide_moves([false; 4], UP, &mut last_move, &mut repeating, now), vec![((0, -1), Some(CheatInput::Up))]);
     }
 
     #[test]
     fn decide_button_actions_front_montant_uniquement() {
         let a_held = [true, false, false, false, false, false];
         assert!(decide_button_actions(a_held, a_held).is_empty());
-        assert_eq!(decide_button_actions([false; BUTTON_COUNT], a_held), vec![(GamepadAction::ActivateSelection, KonamiInput::A)]);
+        assert_eq!(decide_button_actions([false; BUTTON_COUNT], a_held), vec![(GamepadAction::ActivateSelection, CheatInput::A)]);
     }
 
     #[test]
