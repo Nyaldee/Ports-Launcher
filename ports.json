@@ -1110,6 +1110,14 @@
       "icon": "https://cdn2.steamgriddb.com/icon/48b109f9bb69ce94aaddec5e574787eb.png",
       "save": "saves"
     },{
+      "name": "Grand Theft Auto : Liberty City Stories (lcs-recomp)",
+      "tags": ["gta", "psp", "action-adventure"],
+      "source": "https://github.com/elmasas/lcs-recomp",
+      "folder": "lcs-recomp",
+      "instructions": "Required files: Requires the US v1.05 release (ULUS-10041)",
+      "image": "https://cdn2.steamgriddb.com/grid/6ab9087b03f81617e8ab7ae255986aa7.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/65d2ea03425887a717c435081cfc5dbb/32/256x256.png"
+    },{
       "-name": "Grand Theft Auto: Vice City Stories (PSPRecomp_vcs)",
       "tags": ["gta", "psp", "action-adventure"],
       "source": "https://github.com/jessicanataliagta/PSPRecomp/tree/main/profiles/vcs",
@@ -1667,6 +1675,15 @@
       "icon": "https://cdn2.steamgriddb.com/icon/76d90b75c6cfb51ac5f82f265b06a6d7.png",
       "save": "saves"
     },{
+      "name": "NANACA†CRASH!!",
+      "tags": ["flash", "cross channel", "arcade"],
+      "source": "https://raw.githubusercontent.com/Nyaldee/Ports-Launcher/main/extra/NANACA†CRASH!!.Windows.zip",
+      "folder": "Nanaca-Crash",
+      "instructions": "Required files: nanaca-crash_v110.swf (CRC32: 53A65665)",
+      "image": "https://cdn2.steamgriddb.com/grid/13dd4e9c740391e242cf8b084b43f7e1.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/9b7c8d13e4b2f08895fb7bcead930b46/32/512x512.png",
+      "save": "%USERPROFILE%\\Documents\\Nanaca Crash"
+    },{
       "name": "Nanosaur",
       "tags": ["quality", "free", "msdos", "shooter"],
       "source": "https://github.com/jorio/Nanosaur",
@@ -1975,6 +1992,17 @@
       "folder": "namco22-decompile",
       "instructions": "Required files: https://github.com/spacestate1/namco22-decompile/blob/main/docs/ROM_SETUP.md",
       "image": "https://cdn2.steamgriddb.com/grid/4530638519a69fd40e9d81aab74d63a1.png"
+    },{
+      "name": "Rayman Origins (RaymanOriginsRecomp)",
+      "tags": ["360", "platformer", "android_only"],
+      "android_source": "https://github.com/BelmanteGu/RaymanOriginsRecomp",
+      "android_package": "io.github.belmantegu.raymanrecomp",
+      "instructions": "Required files: Rayman Origins for Xbox 360\n\nIn the app, import the game files as a .zip, or pick the folder that contains default.xex (or bootsequence_X360.ipk).\n\nLanguages: Multilingual.",
+      "image": "https://cdn2.steamgriddb.com/grid/cb1a716a70ad58a2f02792dcc8db2039.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/c56030557e55275663bd45b48cd0223e/32/256x256.png",
+      "save": {
+        "android": "/data/user/0/io.github.belmantegu.raymanrecomp/files/.local/share/rayman"
+      }
     },{
       "name": "Re-Volt (RVGL Launcher/Re-Volt)",
       "tags": ["pc", "racing", "multiplayer", "online"],
