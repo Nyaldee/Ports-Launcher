@@ -325,6 +325,14 @@
       "image": "https://cdn2.steamgriddb.com/grid/8996151753255bb91316417afd0badc3.png",
       "icon": "https://cdn2.steamgriddb.com/icon/9bb9852b78e55603158ed65149db7dd6.png"
     },{
+      "name": "Buffy the Vampire Slayer: Chaos Bleeds (buffy-chaos-bleeds-pc)",
+      "tags": ["xbox", "action-adventure"],
+      "source": "https://github.com/KaikoClanworth1/buffy-chaos-bleeds-pc",
+      "folder": "buffy-chaos-bleeds-pc",
+      "instructions": "Required files: USA game ISO",
+      "image": "https://cdn2.steamgriddb.com/grid/7079ab09f47e175352429b6dab1c0a44.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/e951935d8b53e453adec7a89355be49c.png"
+    },{
       "name": "Bushido Blade 2 (bushido-blade-2-recomp)",
       "tags": ["ps1", "alexbeav"],
       "source": "https://github.com/Alexbeav/bushido-blade-2-recomp",
@@ -428,13 +436,17 @@
       "image": "https://cdn2.steamgriddb.com/grid/2ac8f1d97ea8fe3c911b0f0395312583.png",
       "icon": "https://cdn2.steamgriddb.com/icon/52836c76fd8dedb1337663e14148fbf8.png"
     },{
-      "-name": "Conker's Bad Fur Day (ConkerRecomp)",
+      "name": "Conker's Bad Fur Day (CBFD-Recompiled)",
       "tags": ["n64", "platformer"],
-      "source": "https://github.com/ConkerRecomp/ConkerRecomp",
-      "folder": "ConkerRecomp",
-      "instructions": "Required files: Conker's Bad Fur Day (USA).z64 (CRC32: CE8CC172).",
+      "source": "https://github.com/sciaschi/CBFD-Recompiled",
+      "folder": "CBFD-Recompiled",
+      "instructions": "Required files: Conker's Bad Fur Day (USA).z64 (CRC32: CE8CC172)\nPortable saves : portable.txt in root folder.",
       "image": "https://cdn2.steamgriddb.com/grid/29badebfcb56e531b4e38f81fff9dd20.png",
-      "icon": "https://cdn2.steamgriddb.com/icon/7cfe973cfd3353ecacc3ec1e53a1c5ea.png"
+      "icon": "https://cdn2.steamgriddb.com/icon/7cfe973cfd3353ecacc3ec1e53a1c5ea.png",
+      "save": {
+        "windows": "%APPDATA%\\ConkerRecompiled",
+        "linux": "~/.config/ConkerRecompiled"
+      }
     },{
       "name": "Crash Bandicoot (CrashBandicoot-Launcher)",
       "tags": ["ps1", "platformer"],
@@ -586,7 +598,7 @@
       "tags": ["online", "n64", "racing", "multiplayer", "multilingual"],
       "source": "https://github.com/akratch/goldenballoon",
       "folder": "goldenballoon",
-      "instructions": "Required files: Diddy Kong Racing (USA) (En,Fr)/(En,Fr,De) (Rev 1).z64 (CRC32: 5ACCA298/B1E87639)\n\nLanguages: English, French, German.\nPortable saves : portable.txt in root folder.",
+      "instructions": "Required files: Diddy Kong Racing (USA) (En,Fr)/(En,Fr,De) (Rev 1).z64 (CRC32: 5ACCA298/B1E87639)\n\nLanguages: English, French, German\nPortable saves : portable.txt in root folder.",
       "image": "https://cdn2.steamgriddb.com/grid/4c38b84197c2e1a8444814d95c2487a8.png",
       "icon": "https://cdn2.steamgriddb.com/icon/a607946dc79f1013740366224ff2b175.png",
       "save": {
@@ -1628,13 +1640,21 @@
       "icon": "https://cdn2.steamgriddb.com/icon/480af385c4ccec6d0580b4dcc7dad45a/32/96x96.png",
       "save": "%LOCALAPPDATA%\\troublemakers-recomp"
     },{
-      "-name": "Monster Hunter Portable 3rd HD Ver. (Yakumo)",
+      "name": "Monster Hunter Portable 3rd HD Ver. (Yakumo)",
       "tags": ["psp", "rpg"],
       "source": "https://github.com/TeamGDB/Yakumo",
       "folder": "Yakumo",
-      "instructions": "",
+      "instructions": "Required files: Monster Hunter Portable 3rd HD ver.iso (CRC32: 80874121)\n\nWindows:\nPortable saves : portable.txt or data folder in root folder.",
       "image": "https://cdn2.steamgriddb.com/grid/d2ef1265ea94d3f206bc1e467671423f.png",
-      "icon": "https://cdn2.steamgriddb.com/icon/291ebc13dd6538bae3ec7959b8d770dc.png"
+      "icon": "https://cdn2.steamgriddb.com/icon/291ebc13dd6538bae3ec7959b8d770dc.png",
+      "save": {
+        "windows": "%APPDATA%\\Yakumo",
+        "linux": "~/.local/share/Yakumo/MHP3rd/"
+      },
+      "save2": {
+        "windows": "data",
+        "linux": "~/.var/app/io.github.teamgdb.Yakumo/"
+      }
     },{
       "name": "Monster Rancher (monster-rancher-recomp)",
       "tags": ["ps1", "alexbeav"],
@@ -1676,7 +1696,7 @@
       "save": "saves"
     },{
       "name": "NANACA†CRASH!!",
-      "tags": ["flash", "cross channel", "arcade"],
+      "tags": ["quality", "nyaldee", "flash", "cross channel", "arcade"],
       "source": "https://raw.githubusercontent.com/Nyaldee/Ports-Launcher/main/extra/NANACA†CRASH!!.Windows.zip",
       "folder": "Nanaca-Crash",
       "instructions": "Required files: nanaca-crash_v110.swf (CRC32: 53A65665)",
@@ -1709,6 +1729,14 @@
       "instructions": "Required files: Naughty Bear: Gold Edition for Xbox 360\n\nUse extract-xiso.exe to extract the contents of the ISO.\nInside the newly created folder, rename the DBZ1 folder to assets.\nMove the assets folder to the root of the port folder.\nInside the assets folder, rename yae1_xenon.xex to default.xex.\n\nLanguages: English.",
       "image": "https://cdn2.steamgriddb.com/grid/ee1a856488fea31e9380d958040040b8.jpg",
       "icon": "https://cdn2.steamgriddb.com/icon/65448ceadc9d24cfb20915c0a610a4ef.png"
+    },{
+      "name": "NBA JAM: On Fire Edition (OpenJam)",
+      "tags": ["360", "sport", "multiplayer"],
+      "source": "https://github.com/GTTeancum/OpenJam",
+      "folder": "OpenJam",
+      "instructions": "Required files: OpenJam (USA) for Xbox 360\n\nUse extract-xiso.exe to extract the contents of the ISO.\nInside the newly created folder, rename the DBZ1 folder to assets.\nMove the assets folder to the root of the port folder.\nInside the assets folder, rename yae1_xenon.xex to default.xex.\n\nLanguages: English.",
+      "image": "https://cdn2.steamgriddb.com/grid/0dc1a49c77551455f35a216ed5a7e9fd.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/42d41a654fbc8ae69d5c1b62a0dbf3cb.png"
     },{
       "-name": "Need for Speed: Underground 2 (??)",
       "tags": ["ps2", "racing"],
@@ -2104,6 +2132,15 @@
       "image": "https://cdn2.steamgriddb.com/grid/cc4e7c9bb2d268a78876927c0343ac5c.png",
       "icon": "https://cdn2.steamgriddb.com/icon/ef5495c586679c353c85c0595e23239b.png"
     },{
+      "name": "Serious Sam: Next Encounter (Silly-ReEncounter)",
+      "tags": ["gc", "fps"],
+      "source": "https://github.com/takoshero96/Silly-ReEncounter",
+      "folder": "Silly-ReEncounter",
+      "instructions": "Required files: Serious Sam: Next Encounter (USA) for Nintendo GameCube",
+      "image": "https://cdn2.steamgriddb.com/grid/d27bfd77791a14e36e23b9870f3c7fab.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/e833405930e90a24f1b077fe5da8b214.png",
+      "save": "saves"
+    },{
       "name": "Sexy Parodius (SexyParoRecomp)",
       "tags": ["ps1", "njh-1001", "shmup"],
       "source": "https://github.com/NJH-1001/SexyParoRecomp",
@@ -2483,6 +2520,14 @@
       "icon": "https://cdn2.steamgriddb.com/icon/4324e8d0d37b110ee1a4f1633ac52df5.png",
       "save": "saves"
     },{
+      "-name": "Super Kirby Clash (??)",
+      "tags": ["switch", "platformer"],
+      "source": "??",
+      "folder": "??",
+      "instructions": "Required files: ",
+      "image": "https://cdn2.steamgriddb.com/grid/9693742e95befe78f58a0f06dcaddab5.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/c970de2c22dfd3ada67a83bded4ee91b.png"
+    },{
       "name": "Super Mario 64 (Ghostship)",
       "tags": ["quality", "n64", "platformer"],
       "source": "https://github.com/HarbourMasters/Ghostship",
@@ -2552,6 +2597,14 @@
       "save": {
         "android": "TheXTech Games/Super Mario Bros. X/settings/gamesaves"
       }
+    },{
+      "-name": "Super Mario Galaxy (ace-combat-3-electrosphere-usa-recomp)",
+      "tags": ["wii", "platformer"],
+      "source": "??",
+      "folder": "??",
+      "instructions": "Required files: ",
+      "image": "https://cdn2.steamgriddb.com/grid/6d5dd23060ee14d2adae43bbe4dbebd1.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/f7696a9b362ac5a51c3dc8f098b73923/32/256x256.png"
     },{
       "name": "Super Mario RPG: Legend of the Seven Stars (SuperMarioRPGRecomp)",
       "tags": ["snes", "rpg"],
@@ -2735,7 +2788,7 @@
       "icon": "https://cdn2.steamgriddb.com/icon/ddc2c94d27d2c6d46b33acf21b21a641.png"
     },{
       "name": "The Legend of Zelda: A Link to the Past (zelda3-PL)",
-      "tags": ["snes", "action-adventure"],
+      "tags": ["nyaldee", "snes", "action-adventure"],
       "source": "https://raw.githubusercontent.com/Nyaldee/Ports-Launcher/main/extra/zelda3-PL/zelda3-PL.zip",
       "android_source": "https://github.com/Waterdish/zelda3-android",
       "android_package": "com.dishii.zelda3",
@@ -2766,8 +2819,8 @@
       "name": "The Legend of Zelda: Majora's Mask (2ship2harkinian)",
       "tags": ["quality", "n64", "action-adventure"],
       "source": "https://github.com/HarbourMasters/2ship2harkinian",
-      "android_source": "https://github.com/Waterdish/2ship2harkinian-Android",
-      "android_package": "com.dishii.mm",
+      "android_source": "https://github.com/linkzenic/2ship2harkinian-Android",
+      "android_package": "com.twoshipfork.mm",
       "folder": "2ship2harkinian",
       "instructions": "Required files: Legend of Zelda, The - Majora's Mask (USA).z64 (CRC32: B428D8A7)",
       "mods": "https://gamebanana.com/games/20371",
@@ -2988,6 +3041,19 @@
       "image": "https://cdn2.steamgriddb.com/grid/f4916a3556ed7cd820b7d66f984bdc9f.png",
       "icon": "https://cdn2.steamgriddb.com/icon/b1cc074da618ac7d0807bf126726fda3.png",
       "save": "saves"
+    },{
+      "-name": "Ultra Street Fighter IV (UltraStreetFighterIVRecomp)",
+      "tags": ["360", "fighting"],
+      "source": "https://github.com/BelmanteGu/UltraStreetFighterIVRecomp",
+      "android_package": "",
+      "folder": "UltraStreetFighterIVRecomp",
+      "instructions": "Required files: Ultra Street Fighter IV for Xbox 360\n\nUse extract-xiso.exe to extract the contents of the ISO.\nInside the newly created folder, rename the DBZ1 folder to assets.\nMove the assets folder to the root of the port folder.\nInside the assets folder, rename yae1_xenon.xex to default.xex.",
+      "image": "https://cdn2.steamgriddb.com/grid/7ab1a827bc0171eb24d411be78172e74.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/055aa459f0ba00c9a4554b9128c3aee4/32/256x256.png",
+      "save": {
+        "windows": "",
+        "android": ""
+      }
     },{
       "name": "Valkyrie Profile (valkyrie-profile-recomp)",
       "tags": ["ps1", "alexbeav"],
