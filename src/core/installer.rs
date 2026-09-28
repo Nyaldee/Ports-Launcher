@@ -114,14 +114,14 @@ fn download(url: &str, dest: &Path, on_progress: &mut dyn FnMut(&str)) -> Result
         url = format!("https://pixeldrain.com/api/file/{id}");
     }
 
-    let name = url.rsplit('/').next().unwrap_or(&url).to_string();
+    let name = super::http::decode_url(url.rsplit('/').next().unwrap_or(&url));
     if !has_known_archive_extension(&dest.to_string_lossy()) && has_known_archive_extension(&name) {
         dest = rename_dest(&dest, &name);
     }
     on_progress(&format!("Downloading {name}..."));
 
     let agent = super::http::agent(Duration::from_secs(30 * 60));
-    let mut resp = agent.get(&url).call().install_err()?;
+    let mut resp = agent.get(&super::http::encode_url(&url)).call().install_err()?;
     if !has_known_archive_extension(&dest.to_string_lossy()) {
         let disposition_name = resp
             .headers()
@@ -133,10 +133,9 @@ fn download(url: &str, dest: &Path, on_progress: &mut dyn FnMut(&str)) -> Result
             dest = rename_dest(&dest, &disposition_name);
         }
     }
-    if let Some(final_name) =
-        ureq::ResponseExt::get_uri(&resp).path().rsplit('/').next().filter(|n| has_known_archive_extension(n) && *n != name)
-    {
-        dest = rename_dest(&dest, final_name);
+    let final_name = ureq::ResponseExt::get_uri(&resp).path().rsplit('/').next().map(super::http::decode_url);
+    if let Some(final_name) = final_name.filter(|n| has_known_archive_extension(n) && *n != name) {
+        dest = rename_dest(&dest, &final_name);
     }
     let mut file = with_path(fs::File::create(&dest), &dest).install_err()?;
     with_path(io::copy(&mut resp.body_mut().as_reader(), &mut file), &dest).install_err()?;

@@ -1,7 +1,7 @@
 # Ports Launcher
 
 <p align="center">
-  <img src="Ports Launcher.jpg" alt="Ports Launcher screenshot">
+  <img src="Ports Launcher.webp" alt="Ports Launcher screenshot">
 </p>
 
 *[Lire en français](README.fr.md)*
