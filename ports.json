@@ -794,6 +794,14 @@
       "icon": "https://cdn2.steamgriddb.com/icon/4ed0bf4797275056399e7725ed8d0937.png",
       "save": "."
     },{
+      "name": "Dragon Ball Z: Buu's Fury (DragonBallZBuusFuryRecomp)",
+      "tags": ["gba", "racing"],
+      "source": "https://github.com/mstan/DragonBallZBuusFuryRecomp",
+      "folder": "DragonBallZBuusFuryRecomp",
+      "instructions": "Required files: Dragon Ball Z - Buu's Fury (USA).gba + GBA BIOS (CRC32: 01C1707F/81977335)",
+      "image": "https://cdn2.steamgriddb.com/grid/1dc43796fb1b397a7f2b43180068b580.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/7d4ba7006351436c35e283b0be8ff56c.png"
+    },{
       "name": "Dragon Ball Z: Ultimate Battle 22 (dragon-ball-z-ultimate-battle-22-recomp)",
       "tags": ["ps1", "alexbeav"],
       "source": "https://github.com/Alexbeav/dragon-ball-z-ultimate-battle-22-recomp",
@@ -802,6 +810,15 @@
       "instructions": "Required files: SLES-03736. BIOS: SCPH-5552. Known issues: Wave 4 validation limits apply: Windows setup verified on the exact package; gameplay on the public packages and native Linux/macOS setup are unverified. Use the complete matching Redump CUE/BIN set (or a CHD of it) and the required SCPH-5552 BIOS.",
       "image": "https://cdn2.steamgriddb.com/grid/ab851f118195044683ada736d009ea6e.png",
       "icon": "https://cdn2.steamgriddb.com/icon/590cb2d85e88de9793e89b7209370c72.png",
+      "save": "saves"
+    },{
+      "name": "Dragon Ball: Final Bout (DB-Final-Bout-Recomp)",
+      "tags": ["ps1", "fighting"],
+      "source": "https://github.com/novapowers0/DB-Final-Bout-Recomp",
+      "folder": "DB-Final-Bout-Recomp",
+      "instructions": "Required files: USA version SLUS-00493",
+      "image": "https://cdn2.steamgriddb.com/grid/3ec1585f3300499603b65a8a29846e87.jpg",
+      "icon": "https://cdn2.steamgriddb.com/icon/46d55a927002038e5cd3137272fb6de7.png",
       "save": "saves"
     },{
       "name": "Driver (driver-recomp)",
@@ -1301,6 +1318,14 @@
       "image": "https://cdn2.steamgriddb.com/grid/674872a8edd6d08ff2b1ac2a4ae164b7.png",
       "icon": "https://cdn2.steamgriddb.com/icon/60315f2e8a5b4904cf2972fa3d2a3c19.png",
       "save": "saves"
+    },{
+      "name": "Kirby's Dream Land (Kirby-Dream-Land-Recomp)",
+      "tags": ["gba", "racing"],
+      "source": "https://github.com/omegakatana92/Kirby-Dream-Land-Recomp",
+      "folder": "Kirby-Dream-Land-Recomp",
+      "instructions": "Required files: Kirby's Dream Land (USA, Europe).gb (CRC32: 40F25740)",
+      "image": "https://cdn2.steamgriddb.com/grid/c895dc8a5716d0b0a4a47459e03e89a0.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/b81129068ebeabccd293d31c99d510f4/32/256x256.png"
     },{
       "name": "Kirby's Return to Dream Land (ModernGekko)",
       "tags": ["wii", "platformer", "co-op", "multilingual"],
@@ -1886,22 +1911,18 @@
         "android": "Android/data/com.perfectdark.port/files"
       }
     },{
-      "name": "Pikmin (Open-Nectar---Pikmin-Native-PC-Port)",
+      "name": "Pikmin (Open-Nectar)",
       "tags": ["gc", "strategy"],
-      "source": "https://github.com/SSunnKing/Open-Nectar---Pikmin-Native-PC-Port",
-      "folder": "Open-Nectar---Pikmin-Native-PC-Port",
+      "source": "https://github.com/SSunnKing/Open-Nectar---Pikmin-Native-PC-Mobile-Port",
+      "android_package": "org.opennectar",
+      "folder": "Open-Nectar",
       "instructions": "Required files: Pikmin USA Rev. 1 (GPIE01) ISO/GCM",
       "image": "https://cdn2.steamgriddb.com/grid/fbb12b97a88a081cf8528b62df955103.png",
       "icon": "https://cdn2.steamgriddb.com/icon/c746c52c4c3f89696680731b2f46e563.png",
-      "save": "save/card0"
-    },{
-      "-name": "Pikmin (pikmin)",
-      "tags": ["gc", "strategy"],
-      "source": "https://github.com/projectPiki/pikmin",
-      "folder": "pikmin",
-      "instructions": "Required files: USA or EU",
-      "image": "https://cdn2.steamgriddb.com/grid/fbb12b97a88a081cf8528b62df955103.png",
-      "icon": "https://cdn2.steamgriddb.com/icon/ad2b3af37972326a75715f36a2ca9614.png"
+      "save": {
+        "windows": "save/card0",
+        "android": ""
+      }
     },{
       "-name": "Pikmin 2 (pikmin2)",
       "tags": ["gc", "strategy"],
