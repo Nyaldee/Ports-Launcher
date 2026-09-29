@@ -1301,14 +1301,22 @@
       "save": "saves"
     },{
       "name": "King's Field (kings-field-recomp)",
-      "tags": ["ps1", "alexbeav"],
+      "tags": ["ps1", "alexbeav", "rpg"],
       "source": "https://github.com/Alexbeav/kings-field-recomp",
       "website": "https://alexbeav.github.io/psxrecomp-ports/",
       "folder": "kings-field-recomp",
       "instructions": "Required files: SLPS-00017. BIOS: Regional SCPH",
-      "image": "https://cdn2.steamgriddb.com/grid/b47071610ab585bc8d0db86cbe8d25dc.jpg",
-      "icon": "https://cdn2.steamgriddb.com/icon/4539658bacb9ea1373a0731af4fe2de2.png",
+      "image": "https://cdn2.steamgriddb.com/grid/752e110439d3e84b868e96fdb3ee0a10.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/1fbfa92495d30d20aa39fd57cee4bf0a/24/128x128.png",
       "save": "saves"
+    },{
+      "name": "King's Field (verdite2)",
+      "tags": ["ps1", "rpg"],
+      "source": "https://github.com/Voicedrew11/verdite2",
+      "folder": "verdite2",
+      "instructions": "Required files: King's Field (US) )",
+      "image": "https://cdn2.steamgriddb.com/grid/752e110439d3e84b868e96fdb3ee0a10.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/1fbfa92495d30d20aa39fd57cee4bf0a/24/128x128.png"
     },{
       "-name": "Kingdom Hearts: Chain of Memories (khcom)",
       "tags": ["gba", "rpg"],
@@ -2135,6 +2143,14 @@
       },
       "save2": "saves"
     },{
+      "name": "Rocket: Robot on Wheels (Rocket-R)",
+      "tags": ["n64", "platformer"],
+      "source": "https://github.com/ThatGuyMcd/Rocket-R",
+      "folder": "Rocket-R",
+      "instructions": "Required files: Rocket - Robot on Wheels (USA).z64 (CRC32: E0399F23)",
+      "image": "https://cdn2.steamgriddb.com/grid/a47ad82a7cb232d4fee31c6e66ffe729.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/d5c60496784f8d6c43344eb3bd18574b.png"
+    },{
       "name": "Rollcage Stage II (rollcage-stage-ii-recomp)",
       "tags": ["ps1", "alexbeav"],
       "source": "https://github.com/Alexbeav/rollcage-stage-ii-recomp",
@@ -2429,6 +2445,14 @@
         "linux": "Save",
         "android": "Android/data/com.starship.android/files"
       }
+    },{
+      "name": "Star Fox Adventures (foxhollow)",
+      "tags": ["gc", "action-adventure"],
+      "source": "https://github.com/JackPriceBurns/foxhollow",
+      "folder": "foxhollow",
+      "instructions": "Required files: Star Fox Adventures (USA) (Rev 1).rvz (CRC32: 048A0D3F)",
+      "image": "https://cdn2.steamgriddb.com/grid/e9176bfe821b41775162a9beb913909c.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/abd815286ba1007abfbb8415b83ae2cf.png"
     },{
       "name": "Star Wars Episode I: The Phantom Menace (star-wars-episode-i-the-phantom-menace-recomp)",
       "tags": ["ps1", "alexbeav"],
@@ -2984,6 +3008,15 @@
       "image": "https://cdn2.steamgriddb.com/grid/5d0dee08adf4c0c3e73f694a6baab0e3.png",
       "icon": "https://cdn2.steamgriddb.com/icon/66b7256ab017bc5e752d934416b7fa98.png",
       "save": "saves"
+    },{
+      "name": "Tiny Toon Adventures: Buster Busts Loose! (BusterBustsLoose)",
+      "tags": ["snes", "platformer"],
+      "source": "https://github.com/Darhkfox/BusterBustsLoose",
+      "folder": "BusterBustsLoose",
+      "instructions": "Tiny Toon Adventures - Buster Busts Loose! (USA).sfc (CRC32: AB48D27A)",
+      "image": "https://cdn2.steamgriddb.com/grid/f1e9bf1ba93ec3441c2e83e806c3c5e8.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/14ea0c66c8880377adab0c2c561dbdda.png",
+      "save": "%APPDATA%\\BusterBustsLoosePC"
     },{
       "name": "Tiny Toon Adventures: Buster's Hidden Treasure (busters-hidden-treasure-pc)",
       "tags": ["smd", "platformer"],
