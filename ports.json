@@ -175,6 +175,15 @@
       "icon": "https://cdn2.steamgriddb.com/icon/5e6ff78d8ffefe5f71bfa7d5574614d6.png",
       "save": "saves"
     },{
+      "name": "Asuka 120% (asuka100-recomp)",
+      "tags": ["ps1", "fighting"],
+      "source": "https://github.com/elprogramadorloco-arch/asuka100-recomp",
+      "folder": "asuka100-recomp",
+      "instructions": "Required files: Redump, SLPS-02074",
+      "image": "https://cdn2.steamgriddb.com/grid/b6a7e9543e1012656f095e6673d1b839.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/0a6f33d77565fdab3eeabbeb63e3d8c9.png",
+      "save": "saves"
+    },{
       "name": "Automobili Lamborghini (automobililamborghini-recomp)",
       "tags": ["n64", "racing"],
       "source": "https://github.com/alondero/automobililamborghini-recomp",
@@ -499,6 +508,14 @@
       "instructions": "Required files: ",
       "image": "https://cdn2.steamgriddb.com/grid/4b16f49bdb6b891e01276afbaed1d675.png",
       "icon": "https://cdn2.steamgriddb.com/icon/2f2b265625d76a6704b08093c652fd79.png"
+    },{
+      "name": "Dead or Alive (Jiggle-or-Physics)",
+      "tags": ["ps1", "fighting"],
+      "source": "https://github.com/3dge7161/Jiggle-or-Physics",
+      "folder": "Jiggle-or-Physics",
+      "instructions": "Required files: US PlayStation 1 release of Dead or Alive",
+      "image": "https://cdn2.steamgriddb.com/grid/8b04de80e5f154c94a97a0c234328a5f.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/2e23b644278100ddab0f32d60fc1d078/32/512x512.png"
     },{
       "name": "Dead or Alive Xtreme Beach Volleyball (doaxbv-re)",
       "tags": ["xbox", "sport"],
@@ -1352,6 +1369,15 @@
       "icon": "https://cdn2.steamgriddb.com/icon/a4d41b834ea903526373a9a1ae2ac66e.png",
       "save": "saves"
     },{
+      "name": "KoroKoro Post nin (korokoro-recomp)",
+      "tags": ["ps1", "puzzle"],
+      "source": "https://github.com/elprogramadorloco-arch/korokoro-recomp",
+      "folder": "korokoro-recomp",
+      "instructions": "Required files: KoroKoro Post nin (Japan).bin/cue (CRC32: 3DCEBF02/A779B022)",
+      "image": "https://images.launchbox-app.com//1b68fb1b-5a58-4354-8352-7e24c078ae2a.jpg",
+      "icon": "https://images.launchbox-app.com//4bcb2465-9522-4b4d-b988-40404bc60d45.png",
+      "save": "saves"
+    },{
       "name": "Koudelka (koudelka-recomp)",
       "tags": ["ps1", "alexbeav"],
       "source": "https://github.com/Alexbeav/koudelka-recomp",
@@ -1504,11 +1530,20 @@
       "icon": "https://cdn2.steamgriddb.com/icon/35296a4054db6816185054cbdc02e041/32/256x256.png",
       "save": "saves"
     },{
-      "name": "MediEvil (medievil-recomp)",
-      "tags": ["ps1", "alexbeav"],
+      "-name": "MediEvil (medievil-recomp)",
+      "tags": ["ps1", "alexbeav", "action-adventure"],
       "source": "https://github.com/Alexbeav/medievil-recomp",
       "website": "https://alexbeav.github.io/psxrecomp-ports/",
       "folder": "medievil-recomp",
+      "instructions": "Required files: SCUS-94227. BIOS: SCPH-1001",
+      "image": "https://cdn2.steamgriddb.com/grid/60af5cc43f067e109e9b72b05d574fb9.jpg",
+      "icon": "https://cdn2.steamgriddb.com/icon/849e69cad8d0709021e6a042086e6e97.png",
+      "save": "saves"
+    },{
+      "name": "MediEvil (medievil-recomp)",
+      "tags": ["ps1", "action-adventure"],
+      "source": "https://github.com/BlackLabelHQ/MediEvilRecomp",
+      "folder": "MediEvilRecomp",
       "instructions": "Required files: SCUS-94227. BIOS: SCPH-1001",
       "image": "https://cdn2.steamgriddb.com/grid/60af5cc43f067e109e9b72b05d574fb9.jpg",
       "icon": "https://cdn2.steamgriddb.com/icon/849e69cad8d0709021e6a042086e6e97.png",
@@ -2363,13 +2398,23 @@
       "icon": "https://cdn2.steamgriddb.com/icon/850af92f8d9903e7a4e0559a98ecc857.png",
       "save": "userdata"
     },{
-      "name": "Spider-Man (spider-man-recomp)",
-      "tags": ["ps1", "alexbeav"],
+      "-name": "Spider-Man (spider-man-recomp)",
+      "tags": ["ps1", "alexbeav", "action-adventure"],
       "source": "https://github.com/Alexbeav/spider-man-recomp",
       "website": "https://alexbeav.github.io/psxrecomp-ports/",
       "folder": "spider-man-recomp",
       "instructions": "Required files: SLUS-00875. BIOS: SCPH-5552. Known issues: Wave 3 validation limits apply. Use the complete matching Redump CUE/BIN set and the required SCPH-5552 BIOS.",
       "image": "https://cdn2.steamgriddb.com/grid/a5a05cfb6a67ef504abc480cea798fec.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/b06adb3b28dfa2c9ac6234ee77e09f39.png",
+      "save": "saves"
+    },{
+      "name": "Spider-Man / Spider-Man 2 (OpenSpideyPS1)",
+      "tags": ["ps1", "action-adventure"],
+      "source": "https://github.com/GTTeancum/OpenSpideyPS1",
+      "folder": "OpenSpideyPS1",
+      "instructions": "Required files: Spider-Man (USA).bin/cue (CRC32: BF1C7EFF/5B840D78), Spider-Man 2 - Enter - Electro (USA).bin/cue (CRC32: CBEE4C23/260D5211)\n\nLanguages: English.",
+      "image": "https://cdn2.steamgriddb.com/grid/54596ec88311f02af7ff1d9506707524.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/00fae5fc28cb7bd60be9ab6609b9bbf7.png",
       "save": "saves"
     },{
       "name": "Spider-Man 2: Enter Electro (spider-man-2-enter-electro-recomp)",
@@ -2475,11 +2520,19 @@
     },{
       "name": "Star Wars: TIE Fighter (OpenTIE)",
       "tags": ["pc", "simulation"],
-      "source": "https://github.com/elyosh/OpenTIE/",
+      "source": "https://github.com/elyosh/OpenTIE",
       "folder": "OpenTIE",
       "instructions": "Required files: Star Wars: TIE Fighter on GOG\n\nLanguages: English.",
       "image": "https://cdn2.steamgriddb.com/grid/2197d705fea3a6f01b7f20fd444d803d.png",
       "icon": "https://cdn2.steamgriddb.com/icon/6107eb48aa5ee13a438f2c0e903de38a.png"
+    },{
+      "name": "Star Wars: X-Wing (OpenXW)",
+      "tags": ["pc", "simulation"],
+      "source": "https://github.com/elyosh/OpenXW",
+      "folder": "OpenXW",
+      "instructions": "Required files: Star Wars: X-Wing Special Edition on GOG\n\nLanguages: English.",
+      "image": "https://cdn2.steamgriddb.com/grid/1505e04a5567a8584c7f15331e2e3db2.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/01b89008144733a570aa96ab859bfb09/32/256x256.png"
     },{
       "name": "Stardew Valley (Cinderbox)",
       "tags": ["strategy", "android_only"],
@@ -2787,6 +2840,14 @@
       "image": "https://cdn2.steamgriddb.com/grid/f1acce1a7c0c90baa15962d61b7ba048.png",
       "save": "saves"
     },{
+      "name": "The Darkness (The-Darkness-Recomp)",
+      "tags": ["360", "survival horror", "multilingual"],
+      "source": "https://github.com/portingpete/The-Darkness-Recomp",
+      "folder": "The-Darkness-Recomp",
+      "instructions": "Required files: Title ID 545407EE, Media ID 0F213645, version 0.0.0.1, and All Regions\n\nUse extract-xiso.exe to extract the assets and place the files in the assets folder at the root of the port folder.",
+      "image": "https://cdn2.steamgriddb.com/grid/ddabb3a6be9a019376f7064afd2b2a3e.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/9e50c1d20ed7c0a37a268f2f0044e9ff.png"
+    },{
       "name": "The Elder Scrolls II: Daggerfall (daggerfall-unity-android)",
       "tags": ["fps", "android_only"],
       "android_source": "https://github.com/Vwing/daggerfall-unity-android",
@@ -3010,7 +3071,7 @@
       "save": "saves"
     },{
       "name": "Tiny Toon Adventures: Buster Busts Loose! (BusterBustsLoose)",
-      "tags": ["snes", "platformer"],
+      "tags": ["snes", "platformer", "emucomp"],
       "source": "https://github.com/Darhkfox/BusterBustsLoose",
       "folder": "BusterBustsLoose",
       "instructions": "Tiny Toon Adventures - Buster Busts Loose! (USA).sfc (CRC32: AB48D27A)",
@@ -3019,7 +3080,7 @@
       "save": "%APPDATA%\\BusterBustsLoosePC"
     },{
       "name": "Tiny Toon Adventures: Buster's Hidden Treasure (busters-hidden-treasure-pc)",
-      "tags": ["smd", "platformer"],
+      "tags": ["smd", "platformer", "emucomp"],
       "source": "https://github.com/Darhkfox/busters-hidden-treasure-pc",
       "folder": "busters-hidden-treasure-pc",
       "instructions": "Required files: Tiny Toon Adventures - Buster's Hidden Treasure (USA).md (CRC32: A26D3AE0)",
