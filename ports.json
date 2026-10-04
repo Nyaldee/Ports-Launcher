@@ -811,6 +811,15 @@
       "icon": "https://cdn2.steamgriddb.com/icon/4ed0bf4797275056399e7725ed8d0937.png",
       "save": "."
     },{
+      "name": "Dragon Ball Z: Burst Limit (DBZ-Burst-Limit-Recompiled)",
+      "tags": ["360", "fighting"],
+      "source": "https://github.com/iExplosiveRage/DBZ-Burst-Limit-Recompiled",
+      "folder": "DBZ-Burst-Limit-Recompiled",
+      "instructions": "Required files: Dragon Ball Z: Burst Limit for Xbox 360\n\nUse extract-xiso.exe to extract the contents of the ISO.\nInside the newly created folder, rename the DBZ1 folder to assets.\nMove the assets folder to the root of the port folder.\nInside the assets folder, rename yae1_xenon.xex to default.xex.\n\nLanguages: English.",
+      "image": "https://cdn2.steamgriddb.com/grid/62bc0b1c257153633bc172df411281f6.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/15ba4a985b497db630021097082b4ce2/32/64x64.png",
+      "save": ".\\burstlimit.toml"
+    },{
       "name": "Dragon Ball Z: Buu's Fury (DragonBallZBuusFuryRecomp)",
       "tags": ["gba", "racing"],
       "source": "https://github.com/mstan/DragonBallZBuusFuryRecomp",
@@ -989,7 +998,7 @@
       "tags": ["project zero", "ps2", "survival horror", "multilingual"],
       "source": "https://github.com/Mikompilation/MikuPan",
       "folder": "MikuPan",
-      "instructions": "Required files: NTSC-U and PAL/EU\n\nLanguages: Multilingual.\n\nYou need to copy the files IMG_HD.BIN and IMG_BD.BIN from the matching Fatal Frame ISO to the folder containing the MikuPan executable.",
+      "instructions": "Required files: NTSC-U ISO",
       "image": "https://cdn2.steamgriddb.com/grid/830c8e7e327466f868edbc4d3071118e.png",
       "icon": "https://cdn2.steamgriddb.com/icon/0d2cf688695b43e2b42d77b481f71222.png"
     },{
@@ -2108,6 +2117,15 @@
       "image": "https://cdn2.steamgriddb.com/grid/fb28d8ab066e9745db1b24d392a6d38a.png",
       "icon": "https://cdn2.steamgriddb.com/icon/f9e817650f505b7c38f29416dfd0ba69/32/256x256.png"
     },{
+      "name": "Resident Evil (resident-evil-pc-decomp)",
+      "tags": ["ps1", "survival horror"],
+      "source": "https://github.com/ecruells/resident-evil-pc-decomp",
+      "folder": "resident-evil-pc-decomp",
+      "instructions": "Required files: GOG USA version",
+      "image": "https://cdn2.steamgriddb.com/grid/8e1dada1c500c6111f57857095517a28.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/7a929f4daff7b2f6571944c250232a18.png",
+      "save": "saves"
+    },{
       "name": "Resident Evil 3: Nemesis (resident-evil-3-recomp)",
       "tags": ["ps1", "alexbeav", "survival horror"],
       "source": "https://github.com/Alexbeav/resident-evil-3-recomp",
@@ -2275,6 +2293,14 @@
       "image": "https://cdn2.steamgriddb.com/grid/3b8a2395c9d71ba8fd80df1c4e02d4d4.png",
       "icon": "https://cdn2.steamgriddb.com/icon/2924f5cb1c62f02d7181e3c45a80f8dc/32/256x256.png"
     },{
+      "name": "Sly Cooper (ProjectCane)",
+      "tags": ["ps2", "action-adventure", "platformer"],
+      "source": "https://github.com/theclub654/ProjectCane",
+      "folder": "ProjectCane",
+      "instructions": "Required files: NTSC-U and PAL/EU\n\nLanguages: Multilingual.\n\nYou need to copy the files IMG_HD.BIN and IMG_BD.BIN from the matching Fatal Frame ISO to the folder containing the MikuPan executable.",
+      "image": "https://cdn2.steamgriddb.com/grid/830c8e7e327466f868edbc4d3071118e.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/0d2cf688695b43e2b42d77b481f71222.png"
+    },{
       "name": "Snowboard Kids 2 (snowboardkids2-recomp)",
       "tags": ["quality", "sk2", "n64", "racing", "multiplayer"],
       "source": "https://github.com/cdlewis/snowboardkids2-recomp",
@@ -2427,7 +2453,7 @@
       "icon": "https://cdn2.steamgriddb.com/icon/512b457d9340db7aadcdeda99e7ca2b1.png",
       "save": "saves"
     },{
-      "-name": "Spider-Man: Edge of Time (EdgeOfTimeRecomp)",
+      "name": "Spider-Man: Edge of Time (EdgeOfTimeRecomp)",
       "tags": ["360", "action-adventure"],
       "source": "https://github.com/goliathret/EdgeOfTimeRecomp",
       "folder": "EdgeOfTimeRecomp",
