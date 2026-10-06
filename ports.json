@@ -926,6 +926,18 @@
       "instructions": "Required files: Dungeon Keeper Gold on GOG or Steam.",
       "image": "https://cdn2.steamgriddb.com/grid/a28c68b703d699cafd78487d951c63ca.png"
     },{
+      "name": "EarthBound (Phase-Distorter)",
+      "tags": ["snes", "rpg"],
+      "source": "https://github.com/TheRunaway5/Phase-Distorter",
+      "folder": "Phase-Distorter",
+      "instructions": "Required files: EarthBound (USA).sfc (CRC32: DC9BB451)",
+      "image": "https://cdn2.steamgriddb.com/grid/6fd01250b30177eeee04afa605bc91e7.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/b8ea8617653de916da7aaeec3cf43986.png",
+      "save": {
+        "windows": "%APPDATA%\\ebsrc",
+        "linux": "~/.local/share/Yakumo/ebsrc/"
+      }
+    },{
       "name": "Einhänder (Einhander-Recompiled)",
       "tags": ["ps1", "shmup"],
       "source": "https://github.com/strider973/Einhander-Recompiled",
@@ -1772,6 +1784,14 @@
       "icon": "https://cdn2.steamgriddb.com/icon/76d90b75c6cfb51ac5f82f265b06a6d7.png",
       "save": "saves"
     },{
+      "name": "Namco System 22 (namco22-decompile)",
+      "tags": ["arcade"],
+      "source": "https://github.com/spacestate1/namco22-decompile",
+      "folder": "namco22-decompile",
+      "instructions": "Required files: https://github.com/spacestate1/namco22-decompile/blob/main/docs/ROM_SETUP.md",
+      "image": "https://cdn2.steamgriddb.com/grid/4530638519a69fd40e9d81aab74d63a1.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/5968fcb00017d7ca69fc4d324e273ed5/32/256x256.png"
+    },{
       "name": "NANACA†CRASH!!",
       "tags": ["quality", "nyaldee", "flash", "cross channel", "arcade"],
       "source": "https://raw.githubusercontent.com/Nyaldee/Ports-Launcher/main/extra/NANACA†CRASH!!.Windows.zip",
@@ -2086,13 +2106,6 @@
       "image": "https://cdn2.steamgriddb.com/grid/4c01b0e5597b0887e9bf374d6429fe67.png",
       "icon": "https://cdn2.steamgriddb.com/icon/a64f23737e72f85b8fc0eb8ad5b36458.png",
       "save": "saves"
-    },{
-      "name": "Rave Racer (namco22-decompile)",
-      "tags": ["ps1", "alexbeav"],
-      "source": "https://github.com/spacestate1/namco22-decompile",
-      "folder": "namco22-decompile",
-      "instructions": "Required files: https://github.com/spacestate1/namco22-decompile/blob/main/docs/ROM_SETUP.md",
-      "image": "https://cdn2.steamgriddb.com/grid/4530638519a69fd40e9d81aab74d63a1.png"
     },{
       "name": "Rayman Origins (RaymanOriginsRecomp)",
       "tags": ["360", "platformer", "android_only"],
@@ -2749,10 +2762,10 @@
       "image": "https://cdn2.steamgriddb.com/grid/a85d58f89d4a5e8f8f9a6336b3dd18f7.jpg",
       "icon": "https://cdn2.steamgriddb.com/icon/ea86ccbb57d32f5889139224411436df.png"
     },{
-      "-name": "Super Mario Sunshine (??)",
+      "-name": "Super Mario Sunshine (sms-pc-port)",
       "tags": ["gc", "platformer"],
-      "source": "??",
-      "folder": "??",
+      "source": "https://github.com/TekRantGaming/sms-pc-port",
+      "folder": "sms-pc-port",
       "instructions": "Required files: \n\nLanguages: English.",
       "image": "https://cdn2.steamgriddb.com/grid/f5e97c0193978d636807084bf658fc1c.png",
       "icon": "https://cdn2.steamgriddb.com/icon/7989edad14ebcd3adfacc7344dc6b739/32/256x256.png"
@@ -3015,18 +3028,19 @@
       "folder": "tmc",
       "instructions": "Required files: Legend of Zelda, The - The Minish Cap (USA).gba (CRC32: ABCEBBB1)",
       "image": "https://cdn2.steamgriddb.com/grid/722ddf840508c083992ea795c2bda28f.png",
-      "icon": "https://cdn2.steamgriddb.com/icon/004e34995df78f6f34f7a819fb426343.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/827a1fd7a77a96b4c3a3cd36b431f878.png",
       "save": {
         "android": "Android/data/dev.picori.tmc/files"
       }
     },{
-      "-name": "The Legend of Zelda: The Wind Waker",
+      "name": "The Legend of Zelda: The Wind Waker HD (ZeldaWWHDRecomp)",
       "tags": ["gc", "action-adventure", "multilingual"],
-      "source": "",
-      "folder": "",
+      "source": "https://github.com/ZeldaWWHDRecomp/ZeldaWWHDRecomp",
+      "folder": "ZeldaWWHDRecomp",
       "instructions": "Languages: Multilingual.",
-      "image": "https://cdn2.steamgriddb.com/grid/304678bd2a45713cc7bfcb1a9e19c8e4.png",
-      "icon": "https://cdn2.steamgriddb.com/icon/827a1fd7a77a96b4c3a3cd36b431f878.png"
+      "image": "https://cdn2.steamgriddb.com/grid/8d5c0500d7ec1c04842c4b33673d0f43.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/cfcbb2d417d79731884441ea21044165/32/256x256.png",
+      "save": "."
     },{
       "name": "The Legend of Zelda: Twilight Princess (dusklight)",
       "tags": ["quality", "gc", "action-adventure", "multilingual"],
