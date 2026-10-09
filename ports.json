@@ -264,6 +264,14 @@
       "icon": "https://cdn2.steamgriddb.com/icon/56ab46df1ed0575bf712b1a39978a133.png",
       "save": "saves"
     },{
+      "name": "Bloodborne (bloodborne_pc)",
+      "tags": ["ps4", "action-adventure"],
+      "source": "https://github.com/Supermedo/bloodborne_pc",
+      "folder": "bloodborne_pc",
+      "instructions": "Point it at your dump folder or fake PKG and at a destination folder (the default on Windows is %LocalAppData%\\Programs\\P.T. PC Port). It copies the three game archives it needs (chunk1.psarc, texture.qar, pathid_list_ps4.bin) next to the port and makes a shortcut if you want one. The eboot, modules and system files are not used.",
+      "image": "https://cdn2.steamgriddb.com/grid/021399af062379408df9c358a1a83cdb.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/361403e93afd3ea12b30729831e352ef.png"
+    },{
       "name": "Bloody Roar 2: Bringer of the New Age (BloodyRoar2Recomp)",
       "tags": ["ps1", "fighting"],
       "source": "https://github.com/novapowers0/BloodyRoar2Recomp",
@@ -1231,6 +1239,15 @@
         "android": "Android/data/com.jakobkhansen.silksong/files"
       }
     },{
+      "name": "Ico (ico-pc)",
+      "tags": ["ps2", "action-adventure", "ueda", "multilingual"],
+      "source": "https://github.com/nathanialf/ico-pc",
+      "android_package": "com.defnf.icopc",
+      "folder": "ico-pc",
+      "instructions": "Required files: ICO, PAL version (SCES-50760)",
+      "image": "https://cdn2.steamgriddb.com/grid/44fa7dab2a22dc03b6a1de4a35b7834a.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/e9fa7473252deddc33483ef8b6dbf48c.png"
+    },{
       "name": "Ikemen GO",
       "tags": ["pc", "mugen", "fighting", "multiplayer"],
       "source": "https://github.com/ikemen-engine/Ikemen-GO/",
@@ -1700,6 +1717,14 @@
       "icon": "https://cdn2.steamgriddb.com/icon/eaf72c29ea749db9d115947ff9caa86f/32/256x256.png",
       "save": "saves"
     },{
+      "name": "Metroid Prime (MetroidPrimePort)",
+      "tags": ["gc", "fps"],
+      "source": "https://github.com/Odrannnn/MetroidPrimePort",
+      "folder": "MetroidPrimePort",
+      "instructions": "Required files: Metroid Prime (GameCube, GM8E01_00, USA v1.00)\n\nLanguages: English.",
+      "image": "https://cdn2.steamgriddb.com/grid/0327d825efc9703e56afaa2e9e1cef9e.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/a8573e231edaaedfb49ebfc14f4be808/32/256x256.png"
+    },{
       "name": "Metroid Prime Hunters (MetroidPrimeHuntersRecomp)",
       "tags": ["ds", "platformer"],
       "source": "https://github.com/mstan/MetroidPrimeHuntersRecomp",
@@ -1916,6 +1941,18 @@
       "instructions": "Required files: outrun.zip (CRC32: 87CC12C6)\n\nUnzip the outrun.zip files into the port's roms folder.",
       "image": "https://cdn2.steamgriddb.com/grid/6c13d0dc13c70776478a77704df67b28.png",
       "icon": "https://cdn2.steamgriddb.com/icon/5898493fbdf4a44a24084021b2215f85.png"
+    },{
+      "name": "P.T. (pt-pc)",
+      "tags": ["ps4", "survival horror"],
+      "source": "https://github.com/LoreanXavier/pt-pc",
+      "folder": "pt-pc",
+      "instructions": "Point it at your dump folder or fake PKG and at a destination folder (the default on Windows is %LocalAppData%\\Programs\\P.T. PC Port). It copies the three game archives it needs (chunk1.psarc, texture.qar, pathid_list_ps4.bin) next to the port and makes a shortcut if you want one. The eboot, modules and system files are not used.",
+      "image": "https://cdn2.steamgriddb.com/grid/2b868f86f1031688cb3d742857ad8c24.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/413b3c848ce6956827c9c877d400f18c.png",
+      "save": {
+        "windows": "%APPDATA%\\pt-port",
+        "linux": "~/.local/share/pt-port"
+      }
     },{
       "name": "Paper Mario (Paper-Mario-ReCut)",
       "tags": ["n64", "rpg"],
@@ -2349,6 +2386,14 @@
       "image": "https://cdn2.steamgriddb.com/grid/98178e2c5d08c023bf55d71236cd07f2.png",
       "icon": "https://cdn2.steamgriddb.com/icon/8b4f5b5b0f8ad3f9608c60b4415f9fcd/32/256x256.png"
     },{
+      "name": "Sonic Adventure (SARecomp)",
+      "tags": ["dreamcast", "platformer"],
+      "source": "https://github.com/sonicfreak1337/SARecomp",
+      "folder": "SARecomp",
+      "instructions": "Required files: Sonic Adventure PAL v1.003 (1999), MK-5100050",
+      "image": "https://cdn2.steamgriddb.com/grid/ecab0875389ce64a83f13a947994500c.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/d296c101daa88a51f6ca8cfc1ac79b50.png"
+    },{
       "name": "Sonic Free Riders (Free-Riders-Recompiled)",
       "tags": ["360", "racing", "multiplayer"],
       "source": "https://github.com/YuutaTsubasa/Free-Riders-Recompiled",
@@ -2743,6 +2788,14 @@
       "image": "https://cdn2.steamgriddb.com/grid/6d5dd23060ee14d2adae43bbe4dbebd1.png",
       "icon": "https://cdn2.steamgriddb.com/icon/f7696a9b362ac5a51c3dc8f098b73923/32/256x256.png"
     },{
+      "-name": "Super Mario Odyssey (??)",
+      "tags": ["switch", "platformer"],
+      "source": "??",
+      "folder": "??",
+      "instructions": "Required files: ",
+      "image": "https://cdn2.steamgriddb.com/grid/505870c8848f2d550944bf64008c9472.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/5c1697b2090acdf06d589303b060b78a/32/1024x1024.png"
+    },{
       "name": "Super Mario RPG: Legend of the Seven Stars (SuperMarioRPGRecomp)",
       "tags": ["snes", "rpg"],
       "source": "https://github.com/mstan/SuperMarioRPGRecomp",
@@ -2762,7 +2815,7 @@
       "image": "https://cdn2.steamgriddb.com/grid/a85d58f89d4a5e8f8f9a6336b3dd18f7.jpg",
       "icon": "https://cdn2.steamgriddb.com/icon/ea86ccbb57d32f5889139224411436df.png"
     },{
-      "-name": "Super Mario Sunshine (sms-pc-port)",
+      "name": "Super Mario Sunshine (sms-pc-port)",
       "tags": ["gc", "platformer"],
       "source": "https://github.com/TekRantGaming/sms-pc-port",
       "folder": "sms-pc-port",
@@ -3019,6 +3072,15 @@
       "image": "https://cdn2.steamgriddb.com/grid/ab6fe89d793b5a3c4153692779cb0680.png",
       "icon": "https://cdn2.steamgriddb.com/icon/d800c6cf5d304e013ec4f95ab772d62e.png",
       "save": "Save"
+    },{
+      "name": "The Legend of Zelda: Oracle (oracles-decomp)",
+      "tags": ["gb", "rpg"],
+      "source": "https://github.com/kirby-letsgo/oracles-decomp",
+      "android_package": "org.oracles",
+      "folder": "oracles-decomp",
+      "instructions": "Required files: Legend of Zelda, The - Oracle of Ages/Seasons (USA, Australia).gbc (CRC32: 3800A387/D7E9F5D7) + cgb_boot.bin",
+      "image": "https://cdn2.steamgriddb.com/grid/e66160e598192a253a015cb90ab371dc.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/e622b94cb147f49c7f7d6730764eec6c.png"
     },{
       "name": "The Legend of Zelda: The Minish Cap (tmc)",
       "tags": ["gba", "action-adventure"],
