@@ -819,6 +819,14 @@
       "icon": "https://cdn2.steamgriddb.com/icon/4ed0bf4797275056399e7725ed8d0937.png",
       "save": "."
     },{
+      "name": "Dragon Ball Z: Budokai Tenkaichi 3 (Tenkaichi3Decomp)",
+      "tags": ["ps2", "fighting"],
+      "source": "https://github.com/z3xox/Tenkaichi3Decomp",
+      "folder": "Tenkaichi3Decomp",
+      "instructions": "Required files: unmodified USA release",
+      "image": "https://cdn2.steamgriddb.com/grid/32de8e9f6415224dc9fadc356abd91e4.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/3fde5a9cf31274d0c3b094531120d8b3.png"
+    },{
       "name": "Dragon Ball Z: Burst Limit (DBZ-Burst-Limit-Recompiled)",
       "tags": ["360", "fighting"],
       "source": "https://github.com/iExplosiveRage/DBZ-Burst-Limit-Recompiled",
@@ -1354,6 +1362,15 @@
       "image": "https://cdn2.steamgriddb.com/grid/eedad495d6af63b2a3e13cfd104f252e.png",
       "icon": "https://cdn2.steamgriddb.com/icon/7b70922c241d472a0c2124a71b2d36cc.png",
       "save": "saves"
+    },{
+      "name": "King Kong (king-kong-recompiled)",
+      "tags": ["360", "fps"],
+      "source": "https://github.com/TekRantGaming/king-kong-recompiled",
+      "folder": "king-kong-recompiled",
+      "instructions": "Required files: Xbox 360, USA and Europe",
+      "image": "https://cdn2.steamgriddb.com/grid/95eb83542315080493f9a00e01920fe6.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/9638d91ecb50d03683088611e5e65d9f.png",
+      "save": "%USERPROFILE%\\Documents\\king_kong"
     },{
       "name": "King's Field (kings-field-recomp)",
       "tags": ["ps1", "alexbeav", "rpg"],
@@ -2264,6 +2281,15 @@
       "icon": "https://cdn2.steamgriddb.com/icon/1abdd1363896305b867bff7bbd5b9efd.png",
       "save": "saves"
     },{
+      "name": "Rush 2: Extreme Racing USA (rush2recompiled)",
+      "tags": ["n64", "racing"],
+      "source": "https://github.com/bryantmh/rush2recompiled",
+      "folder": "rush2recompiled",
+      "instructions": "Required files: Rush 2 - Extreme Racing USA (USA).z64 (CRC32: 9EB14EA8)",
+      "image": "https://cdn2.steamgriddb.com/grid/b813f17a5b1769372eb7755d6e7ff9ea.jpg",
+      "icon": "https://cdn2.steamgriddb.com/icon/02c1f06978b821b2996ec257932f2947.png",
+      "save": "%LOCALAPPDATA%\\Rush2Recompiled"
+    },{
       "name": "Sega Superstars Tennis (Sega-Superstars-Tennis-ReMatch)",
       "tags": ["360", "sport", "multiplayer"],
       "source": "https://github.com/m1ndcrap/Sega-Superstars-Tennis-ReMatch",
@@ -3103,6 +3129,14 @@
       "image": "https://cdn2.steamgriddb.com/grid/8d5c0500d7ec1c04842c4b33673d0f43.png",
       "icon": "https://cdn2.steamgriddb.com/icon/cfcbb2d417d79731884441ea21044165/32/256x256.png",
       "save": "."
+    },{
+      "name": "The Legend of Zelda: The Wind Waker HD (ZeldaWWHDRecomp)",
+      "tags": ["gc", "action-adventure", "multilingual", "android_only"],
+      "android_source": "https://github.com/Nycolazs/WindWakerHD-Android-Plus",
+      "android_package": "org.wwhdrecomp.app",
+      "instructions": "Languages: Multilingual.",
+      "image": "https://cdn2.steamgriddb.com/grid/8d5c0500d7ec1c04842c4b33673d0f43.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/cfcbb2d417d79731884441ea21044165/32/256x256.png"
     },{
       "name": "The Legend of Zelda: Twilight Princess (dusklight)",
       "tags": ["quality", "gc", "action-adventure", "multilingual"],
