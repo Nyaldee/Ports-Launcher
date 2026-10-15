@@ -254,6 +254,12 @@
       "image": "https://cdn2.steamgriddb.com/grid/1a76edd068d12643e9b14ceb670fd427.png",
       "icon": "https://cdn2.steamgriddb.com/icon/367e1c293a8ac7f017483bed97b20265.png"
     },{
+      "name": "BattleTanx: Global Assault (BattleTanx-Global-Assault-PC-Port)",
+      "tags": ["n64", "action", "multiplayer", "online"],
+      "source": "https://github.com/TheGh0stShip/BattleTanx-Global-Assault-PC-Port",
+      "folder": "BattleTanx-Global-Assault-PC-Port",
+      "instructions": "Required files: BattleTanx - Global Assault (USA).z64 (SHA-1: 805248FB0A0EE694CAD8D7DC927B631D860DD8CF)\n\nPut the required file in the port folder."
+    },{
       "name": "Beetle Adventure Racing (beetle-adventure-racing-recomp)",
       "tags": ["n64", "racing"],
       "source": "https://github.com/danielgomesvieira2000/beetle-adventure-racing-recomp",
