@@ -99,6 +99,13 @@ export component InfoDialog inherits Window {
     property <length> status-line-height: item-font-px * 1.3;
     property <length> content-width: chrome.content-width - root.gutter * 2;
 
+    property <bool> context-menu-armed: false;
+    Timer {
+        interval: 300ms;
+        running: !root.context-menu-armed;
+        triggered => { root.context-menu-armed = true; }
+    }
+
     key-handler := FocusScope {
         key-pressed(event) => { return root.handle-nav-key(event); }
 
@@ -207,6 +214,7 @@ export component InfoDialog inherits Window {
                 height: chrome.content-height - self.y - root.gutter * 2 - shortcut-row.height;
 
                 ContextMenuArea {
+                    enabled: root.context-menu-armed;
                     Menu {
                         MenuItem {
                             title: @tr("Copy");

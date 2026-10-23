@@ -128,6 +128,19 @@ pub fn latest_installable_release(
     Err(first_error.unwrap_or_else(|| AssetSelectionError::Message("No release found.".to_string())))
 }
 
+pub fn release_for_update_check(
+    releases: Vec<Value>,
+    preferred: Option<&str>,
+    pick_release_asset: impl Fn(&Value, Option<&str>) -> Result<Value, AssetSelectionError>,
+) -> Result<(Value, Option<Value>), AssetSelectionError> {
+    let newest = releases.first().cloned();
+    match latest_installable_release(releases, preferred, pick_release_asset) {
+        Ok((release, asset)) => Ok((release, Some(asset))),
+        Err(e @ AssetSelectionError::Ambiguous(_)) => newest.map(|release| (release, None)).ok_or(e),
+        Err(e) => Err(e),
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -321,6 +334,21 @@ mod tests {
             Err(AssetSelectionError::Ambiguous(a)) => assert_eq!(a.len(), 1),
             other => panic!("attendu Ambiguous, obtenu {other:?}"),
         }
+    }
+
+    #[test]
+    fn release_for_update_check_retombe_sur_la_plus_recente_si_choix_ambigu() {
+        let releases = vec![release_with_assets(&["b-win32.zip", "b-win64.zip"]), release_with_assets(&["a-win32.zip", "a-win64.zip"])];
+        let (release, asset) = release_for_update_check(releases.clone(), None, pick_from_release).unwrap();
+        assert_eq!(release, releases[0]);
+        assert!(asset.is_none());
+    }
+
+    #[test]
+    fn release_for_update_check_respecte_preferred_asset() {
+        let releases = vec![release_with_assets(&["SRB2-v2216-Full.zip", "SRB2-v2216-Installer.exe"])];
+        let (_, asset) = release_for_update_check(releases, Some("Full.zip"), pick_from_release).unwrap();
+        assert_eq!(asset_name(&asset.unwrap()), "SRB2-v2216-Full.zip");
     }
 
     #[test]

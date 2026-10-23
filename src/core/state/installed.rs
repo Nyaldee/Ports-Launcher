@@ -23,6 +23,11 @@ impl StateManager {
         self.save();
     }
 
+    pub fn mark_update_checked(&mut self, key: &str) {
+        self.entry(key).last_update_check = now_timestamp();
+        self.save();
+    }
+
     pub fn mark_played(&mut self, key: &str) {
         self.entry(key).last_played_at = now_timestamp();
         self.save();

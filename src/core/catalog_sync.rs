@@ -18,13 +18,13 @@ fn fetch_if_changed(url: &str, known_etag: &str, validate: impl FnOnce(&str) -> 
         req = req.header("If-None-Match", known_etag);
     }
     match req.call() {
+        Ok(resp) if resp.status() == ureq::http::StatusCode::NOT_MODIFIED => Ok(CatalogUpdate::NotModified),
         Ok(mut resp) => {
             let etag = resp.headers().get("etag").and_then(|v| v.to_str().ok()).unwrap_or("").to_string();
             let text = resp.body_mut().read_to_string().map_err(|e| e.to_string())?;
             validate(&text)?;
             Ok(CatalogUpdate::Updated { text, etag })
         }
-        Err(ureq::Error::StatusCode(304)) => Ok(CatalogUpdate::NotModified),
         Err(e) => Err(e.to_string()),
     }
 }

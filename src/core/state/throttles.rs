@@ -3,7 +3,7 @@ use super::{now_timestamp, StateManager};
 use chrono::{DateTime, Duration, Utc};
 
 const LAUNCHER_UPDATE_CHECK_INTERVAL_HOURS: i64 = 24;
-const PORT_UPDATE_STALE_HOURS: i64 = 24;
+const PORT_UPDATE_CHECK_INTERVAL_HOURS: i64 = 12;
 const CATALOG_CHECK_INTERVAL_HOURS: i64 = 12;
 const THEMES_CHECK_INTERVAL_HOURS: i64 = 12;
 
@@ -11,14 +11,13 @@ fn is_older_than(timestamp: &str, hours: i64) -> bool {
     DateTime::parse_from_rfc3339(timestamp).map_or(true, |last| Utc::now().signed_duration_since(last) >= Duration::hours(hours))
 }
 
-pub fn is_stale_for_update_check(installed_at: &str) -> bool {
-    is_older_than(installed_at, PORT_UPDATE_STALE_HOURS)
+pub fn is_due_for_update_check(last_update_check: &str) -> bool {
+    is_older_than(last_update_check, PORT_UPDATE_CHECK_INTERVAL_HOURS)
 }
 
 impl StateManager {
     pub fn should_check_launcher_update(&self) -> bool {
         self.release_sync
-            && !self.launcher_update_available
             && !self.last_launcher_update_check.is_empty()
             && is_older_than(&self.last_launcher_update_check, LAUNCHER_UPDATE_CHECK_INTERVAL_HOURS)
     }
@@ -31,6 +30,10 @@ impl StateManager {
     pub fn set_launcher_update_available(&mut self, value: bool) {
         self.launcher_update_available = value;
         self.save();
+    }
+
+    pub fn show_launcher_update(&self) -> bool {
+        self.release_sync && self.launcher_update_available
     }
 
     pub fn set_release_sync(&mut self, value: bool) {
@@ -92,7 +95,19 @@ mod tests {
         assert!(!state.should_check_launcher_update());
         state.set_release_sync(true);
         state.set_launcher_update_available(true);
-        assert!(!state.should_check_launcher_update());
+        assert!(state.should_check_launcher_update());
+        let _ = fs::remove_file(&path);
+    }
+
+    #[test]
+    fn bouton_update_masque_si_verification_desactivee() {
+        let path = test_state_path("show_launcher_update");
+        let mut state = StateManager::load(&path);
+        assert!(!state.show_launcher_update());
+        state.set_launcher_update_available(true);
+        assert!(state.show_launcher_update());
+        state.set_release_sync(false);
+        assert!(!state.show_launcher_update());
         let _ = fs::remove_file(&path);
     }
 
@@ -152,9 +167,20 @@ mod tests {
     }
 
     #[test]
-    fn is_stale_for_update_check_vide_ou_ancien() {
-        assert!(is_stale_for_update_check(""));
-        assert!(is_stale_for_update_check(&(Utc::now() - Duration::hours(25)).to_rfc3339()));
-        assert!(!is_stale_for_update_check(&(Utc::now() - Duration::hours(1)).to_rfc3339()));
+    fn is_due_for_update_check_vide_ou_ancien() {
+        assert!(is_due_for_update_check(""));
+        assert!(is_due_for_update_check(&(Utc::now() - Duration::hours(13)).to_rfc3339()));
+        assert!(!is_due_for_update_check(&(Utc::now() - Duration::hours(11)).to_rfc3339()));
+    }
+
+    #[test]
+    fn mark_update_checked_persiste_et_suspend_la_verification() {
+        let path = test_state_path("port_update_check");
+        let mut state = StateManager::load(&path);
+        state.mark_installed("owner/repo", Some("v1.0".to_string()));
+        state.mark_update_checked("owner/repo");
+        let reloaded = StateManager::load(&path);
+        assert!(!is_due_for_update_check(&reloaded.get("owner/repo").unwrap().last_update_check));
+        let _ = fs::remove_file(&path);
     }
 }

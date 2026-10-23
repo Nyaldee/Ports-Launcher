@@ -1,6 +1,6 @@
 
 use super::dialogs::{apply_theme, close_current_dialog, open_message_dialog, open_picker_dialog, tr, update_progress_dialog, DialogSlot};
-use super::install_launch::{launch_flow, start_install};
+use super::install_launch::{finish_play_update_check, play_port, start_install};
 use super::playtime::{any_process_running, checkpoint_playtime, refresh_live_playtime_display};
 use super::state::AppState;
 use crate::core::models::Port;
@@ -24,7 +24,7 @@ pub(crate) enum AppEvent {
     InstallError { key: String, message: String },
     ExtraInstallDone { key: String, result: Result<(), String> },
     PlayUpdateChecked { port: Box<Port>, available: bool },
-    SelfUpdateAvailable,
+    SelfUpdateChecked { available: bool },
     VersionsFetched { key: String, releases: Vec<Value> },
     VersionsFetchError { key: String, message: String },
     ImageCached { folder: String },
@@ -82,7 +82,7 @@ pub(crate) fn poll_app_events(app: &Rc<AppState>, router: &Rc<RefCell<GamepadRou
                 app.refresh_current_view();
                 if app.install_runtime.pending_launch_after_install.borrow_mut().remove(&key) {
                     if let Some(port) = port {
-                        launch_flow(app, router, &port);
+                        play_port(app, router, &port);
                     }
                 }
             }
@@ -126,18 +126,11 @@ pub(crate) fn poll_app_events(app: &Rc<AppState>, router: &Rc<RefCell<GamepadRou
                 };
                 open_message_dialog(app, router, &tr.invoke_dialog_title_extras(), &message);
             }
-            AppEvent::PlayUpdateChecked { port, available } => {
-                app.install_runtime.installing.borrow_mut().remove(port.key());
-                if available {
-                    app.install_runtime.pending_launch_after_install.borrow_mut().insert(port.key().to_string());
-                    start_install(app, router, *port, None, None);
-                } else {
-                    launch_flow(app, router, &port);
-                }
-            }
-            AppEvent::SelfUpdateAvailable => {
-                app.window().set_self_update_available(true);
-                app.state.borrow_mut().set_launcher_update_available(true);
+            AppEvent::PlayUpdateChecked { port, available } => finish_play_update_check(app, router, *port, available),
+            AppEvent::SelfUpdateChecked { available } => {
+                let mut state = app.state.borrow_mut();
+                state.set_launcher_update_available(available);
+                app.window().set_self_update_available(state.show_launcher_update());
             }
             AppEvent::ImageCached { folder } => {
                 app.grid_nav.pending_image_fetches.borrow_mut().remove(&folder);

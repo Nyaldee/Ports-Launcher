@@ -32,6 +32,16 @@ fn copy_non_empty(src: &Path, dst: &Path) -> io::Result<bool> {
     Ok(copied_any)
 }
 
+fn copy_save(src: &Path, dst: &Path) -> io::Result<bool> {
+    if !src.is_file() {
+        return copy_non_empty(src, dst);
+    }
+    let name = src.file_name().ok_or_else(|| io::Error::from(io::ErrorKind::InvalidInput))?;
+    fs::create_dir_all(dst)?;
+    fs::copy(src, dst.join(name))?;
+    Ok(true)
+}
+
 pub(crate) fn pending_restore_dir(saves_backup_dir: &Path, folder_name: &str, field: &str) -> PathBuf {
     saves_backup_dir.join(PENDING_RESTORE_DIR).join(folder_name).join(field)
 }
@@ -47,7 +57,7 @@ fn preserve_before_uninstall(save_folder: Option<&Value>, saves_backup_dir: &Pat
         return false;
     }
     let _ = fs::remove_dir_all(&dst);
-    copy_non_empty(&src, &dst).is_ok()
+    copy_save(&src, &dst).is_ok()
 }
 
 fn restore_after_install(save_folder: Option<&Value>, saves_backup_dir: &Path, dest_dir: &Path, folder_name: &str, field: &str) {
@@ -59,8 +69,15 @@ fn restore_after_install(save_folder: Option<&Value>, saves_backup_dir: &Path, d
         if !is_within(&dst, dest_dir) {
             return;
         }
-        let _ = fs::remove_dir_all(&dst);
-        if copy_non_empty(&src, &dst).is_err() {
+        let saved_file = dst.file_name().map(|name| src.join(name)).filter(|f| f.is_file() && !dst.is_dir());
+        let restored = match saved_file {
+            Some(saved_file) => dst.parent().is_some_and(|parent| fs::create_dir_all(parent).is_ok()) && fs::copy(&saved_file, &dst).is_ok(),
+            None => {
+                let _ = fs::remove_dir_all(&dst);
+                copy_non_empty(&src, &dst).is_ok()
+            }
+        };
+        if !restored {
             return;
         }
     }
@@ -117,7 +134,7 @@ pub fn run_global_backup(
         let Ok(port_staging) = safe_join(staging.path(), &port.folder) else { continue };
         for (save_folder, field) in save_fields(port) {
             match save_folder.and_then(|v| resolve_save_folder(v, &game_dir)).filter(|src| src.exists()) {
-                Some(src) => match copy_non_empty(&src, &port_staging.join(field)) {
+                Some(src) => match copy_save(&src, &port_staging.join(field)) {
                     Ok(true) => summary.copied += 1,
                     Ok(false) => summary.skipped += 1,
                     Err(_) => summary.failed += 1,
@@ -233,6 +250,65 @@ mod tests {
 
         assert_eq!(fs::read_to_string(dest_dir.join("Save").join("slot1.dat")).unwrap(), "precious");
         assert!(!pending_restore_dir(&saves_backup_dir, "MyGame", "save_folder").exists());
+    }
+
+    #[test]
+    fn sauvegarde_fichier_aller_retour_sans_toucher_au_reste_du_jeu() {
+        let dir = temp_dir("file_round_trip");
+        let saves_backup_dir = dir.join("Saves Backup");
+        let port = port_with_save_folders("MyGame", Some("game.sav"), None);
+        let dest_dir = dir.join("MyGame");
+        fs::create_dir_all(&dest_dir).unwrap();
+        fs::write(dest_dir.join("game.sav"), b"precious").unwrap();
+        fs::write(dest_dir.join("game.exe"), b"old").unwrap();
+
+        assert!(preserve_before_uninstall(port.save.as_ref(), &saves_backup_dir, &dest_dir, &port.folder, "save_folder"));
+        assert_eq!(fs::read_to_string(pending_restore_dir(&saves_backup_dir, "MyGame", "save_folder").join("game.sav")).unwrap(), "precious");
+
+        fs::remove_dir_all(&dest_dir).unwrap();
+        fs::create_dir_all(&dest_dir).unwrap();
+        fs::write(dest_dir.join("game.exe"), b"new").unwrap();
+        restore_after_install(port.save.as_ref(), &saves_backup_dir, &dest_dir, &port.folder, "save_folder");
+
+        assert_eq!(fs::read_to_string(dest_dir.join("game.sav")).unwrap(), "precious");
+        assert_eq!(fs::read_to_string(dest_dir.join("game.exe")).unwrap(), "new");
+        assert!(!pending_restore_dir(&saves_backup_dir, "MyGame", "save_folder").exists());
+    }
+
+    #[test]
+    fn sauvegarde_fichier_dans_un_sous_dossier_recree_le_dossier() {
+        let dir = temp_dir("file_in_subdir");
+        let saves_backup_dir = dir.join("Saves Backup");
+        let port = port_with_save_folders("MyGame", Some("data/slot.sav"), None);
+        let dest_dir = dir.join("MyGame");
+        fs::create_dir_all(dest_dir.join("data")).unwrap();
+        fs::write(dest_dir.join("data").join("slot.sav"), b"precious").unwrap();
+
+        assert!(preserve_before_uninstall(port.save.as_ref(), &saves_backup_dir, &dest_dir, &port.folder, "save_folder"));
+        fs::remove_dir_all(&dest_dir).unwrap();
+        fs::create_dir_all(&dest_dir).unwrap();
+        restore_after_install(port.save.as_ref(), &saves_backup_dir, &dest_dir, &port.folder, "save_folder");
+
+        assert_eq!(fs::read_to_string(dest_dir.join("data").join("slot.sav")).unwrap(), "precious");
+    }
+
+    #[test]
+    fn run_global_backup_copie_une_sauvegarde_fichier() {
+        let dir = temp_dir("global_file");
+        let library_dir = dir.join("Library");
+        let saves_backup_dir = dir.join("Saves Backup");
+        let game_dir = library_dir.join("MyGame");
+        fs::create_dir_all(&game_dir).unwrap();
+        fs::write(game_dir.join("game.sav"), b"precious").unwrap();
+        fs::write(game_dir.join("game.exe"), b"exe").unwrap();
+        let port = port_with_save_folders("MyGame", Some("game.sav"), None);
+
+        let summary = run_global_backup(&[port], &library_dir, &saves_backup_dir, "2026-08-23", &mut |_| {});
+
+        assert_eq!(summary, GlobalBackupSummary { copied: 1, skipped: 1, failed: 0 });
+        let zip_path = saves_backup_dir.join(GLOBAL_BACKUPS_DIR).join("2026-08-23.zip");
+        assert_eq!(read_zip_entry(&zip_path, "MyGame/save_folder/game.sav"), "precious");
+        assert!(!zip_path.with_extension("extracted").join("MyGame").join("save_folder").join("game.exe").exists());
     }
 
     #[test]

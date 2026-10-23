@@ -1014,7 +1014,7 @@
       "image": "https://cdn2.steamgriddb.com/grid/fc5d2ffcd6a10b1863e56d5ec5859bab.png",
       "icon": "https://cdn2.steamgriddb.com/icon/e4167ecc39403a361d445849dc87bfc4/32/256x256.png"
     },{
-      "-name": "Dragon Ball Z: Budokai 3 (DBZ-Budokai-3-HD-Collection)",
+      "name": "Dragon Ball Z: Budokai 3 (DBZ-Budokai-3-HD-Collection)",
       "tags": ["360", "fighting", "multiplayer"],
       "source": "https://github.com/novapowers0/DBZ-Budokai-3-HD-Collection",
       "android_source": "https://github.com/Nahalewski/DBZ3-N",
@@ -1022,8 +1022,7 @@
       "folder": "DBZ-Budokai-3-HD-Collection",
       "instructions": "Required files: Dragon Ball Z Budokai 3 HD (USA/EU) for Xbox 360\n\nWindows :\nUse extract-xiso.exe to extract the contents of the ISO. to assets.\nMove the assets folder to the root of the port folder.\n\nAndroid:\n- Create Internal storage → DBZ3 (/storage/emulated/0/DBZ3).\n- Copy your own US/NA Xbox 360 game ISO into that folder. Keep it as .iso, not inside a ZIP.\n- Open DBZ3, grant All files access, and return to the app.\n- Tap Choose ISO, browse to Internal storage → DBZ3, select the ISO, then continue to the launcher and tap Play.\n\nLanguages: Multilingual.",
       "image": "https://cdn2.steamgriddb.com/grid/eef54151a72ee0c2d5d7f0931e16fe2d.png",
-      "icon": "https://cdn2.steamgriddb.com/icon/4ed0bf4797275056399e7725ed8d0937.png",
-      "save": "."
+      "icon": "https://cdn2.steamgriddb.com/icon/4ed0bf4797275056399e7725ed8d0937.png"
     },{
       "name": "Dragon Ball Z: Budokai Tenkaichi 3 (Tenkaichi3Decomp)",
       "tags": ["ps2", "fighting"],
@@ -1096,6 +1095,15 @@
       "image": "https://cdn2.steamgriddb.com/grid/bf46e30b7a16df770b7cfb9a6478a502.png",
       "icon": "https://cdn2.steamgriddb.com/icon/80418728f131ff0a2b48614529fbf9f3.png",
       "save": "user"
+    },{
+      "name": "DriveClub (driveclub-recomp)",
+      "tags": ["ps4", "racing"],
+      "source": "https://github.com/OverkillLabs3/driveclub-recomp",
+      "folder": "driveclub-recomp",
+      "instructions": "Required files: Driveclub (CUSA00093, v1.28)",
+      "image": "https://cdn2.steamgriddb.com/grid/bf46e30b7a16df770b7cfb9a6478a502.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/80418728f131ff0a2b48614529fbf9f3.png",
+      "save": "data\\user"
     },{
       "name": "Driver (driver-recomp)",
       "tags": ["ps1", "alexbeav"],
@@ -1460,6 +1468,14 @@
       "image": "https://cdn2.steamgriddb.com/grid/de53aae1d5d16dbbc5c01e0452d8adce.png",
       "icon": "https://cdn2.steamgriddb.com/icon/9cf4ec561599eaa63879fb29d1fbe40c.png"
     },{
+      "-name": "God Hand (godhand-recomp)",
+      "tags": ["ps2", "beat them all"],
+      "source": "https://github.com/LasVola/godhand-recomp",
+      "folder": "godhand-recomp",
+      "instructions": "Required files: ",
+      "image": "https://cdn2.steamgriddb.com/grid/e6e6538d5e7266e8a6d25bfaf74d5b29.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/a12667f35ff956853a5aae67f35beb76.png"
+    },{
       "-name": "God of War (Tobiichi-Port)",
       "tags": ["ps2", "action-adventure"],
       "source": "https://github.com/YYOzcan/Tobiichi-Port",
@@ -1524,6 +1540,14 @@
       "image": "https://cdn2.steamgriddb.com/grid/47cd68598781647f7bd34ebb8428d5a0.jpg",
       "icon": "https://cdn2.steamgriddb.com/icon/48b109f9bb69ce94aaddec5e574787eb.png",
       "save": "saves"
+    },{
+      "name": "Gran Turismo 4 (gt4-staticrecomp)",
+      "tags": ["ps2", "racing"],
+      "source": "https://github.com/moesuito/gt4-staticrecomp",
+      "folder": "gt4-staticrecomp",
+      "instructions": "Required files: Gran Turismo 4 USA v2.00 (SCUS-97328) as a plain .iso",
+      "image": "https://cdn2.steamgriddb.com/grid/e1fa209ff5f858c81d3259e80e00a4d7.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/80677a46c7411d17a8a88878c0e5db33.png"
     },{
       "name": "Grand Theft Auto : Liberty City Stories (lcs-recomp)",
       "tags": ["gta", "psp", "action-adventure"],
@@ -2138,6 +2162,14 @@
       "icon": "https://cdn2.steamgriddb.com/icon/eaf72c29ea749db9d115947ff9caa86f/32/256x256.png",
       "save": "saves"
     },{
+      "-name": "Metroid Dread (Metroid-Dread-Recomp)",
+      "tags": ["switch", "metroidvania"],
+      "source": "https://github.com/yozander2009-stack/Metroid-Dread-Recomp",
+      "folder": "Metroid-Dread-Recomp",
+      "instructions": "Required files: ",
+      "image": "https://cdn2.steamgriddb.com/grid/63c07e376dcf5799fc02381033f7c121.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/2ff385c6e75c56b7a5a93d9fcd0c82ee/32/1024x1024.png"
+    },{
       "name": "Metroid Prime (MetroidPrimePort)",
       "tags": ["gc", "fps"],
       "source": "https://github.com/Odrannnn/MetroidPrimePort",
@@ -2275,11 +2307,11 @@
       "image": "https://cdn2.steamgriddb.com/grid/4530638519a69fd40e9d81aab74d63a1.png",
       "icon": "https://cdn2.steamgriddb.com/icon/5968fcb00017d7ca69fc4d324e273ed5/32/256x256.png"
     },{
-      "name": "NANACA†CRASH!!",
-      "tags": ["quality", "nyaldee", "flash", "cross channel", "arcade"],
-      "source": "https://github.com/Nyaldee/Nanaca-Crash",
-      "folder": "Nanaca-Crash",
-      "instructions": "Required files: NANACA†CRASH!! v1.10 (Flash, swf) and NANACA†CRASH!! v1.2.0 (Android, apk) (CRC32: 53A65665/BCBAB1C3)",
+      "name": "NANACA†CRASH!! (nanaca-dokuro-ports)",
+      "tags": ["quality", "nyaldee", "flash", "android", "ps2", "cross channel", "dokuro", "arcade"],
+      "source": "https://github.com/Nyaldee/nanaca-dokuro-ports",
+      "folder": "nanaca-dokuro-ports",
+      "instructions": "Required files: NANACA†CRASH!! v1.10 (Flash, swf), NANACA†CRASH!! v1.2.0 (Android, apk), Game ni Natta yo - Dokuro-chan Kenkou Shindan Daisakusen (Japan) (PS2, ISO) (CRC32: 53A65665/BCBAB1C3/B9F5F0C5)",
       "image": "https://cdn2.steamgriddb.com/grid/13dd4e9c740391e242cf8b084b43f7e1.png",
       "icon": "https://cdn2.steamgriddb.com/icon/9b7c8d13e4b2f08895fb7bcead930b46/32/512x512.png",
       "save": {
@@ -2309,8 +2341,17 @@
       "icon": "https://cdn2.steamgriddb.com/icon/3fb77fe6d3475af64b1ad0b30ca96709.png",
       "save": "%APPDATA%\\Nanosaur2"
     },{
+      "name": "Naruto: Rise of a Ninja (naruto-rise-recomp)",
+      "tags": ["360", "action-adventure", "fighting"],
+      "source": "https://github.com/jorjbarbosa/naruto-rise-recomp",
+      "folder": "naruto-rise-recomp",
+      "instructions": "Required files: Naruto: Rise of a Ninja for Xbox 360\n\nManual Installation: Use extract-xiso.exe to extract the assets and place the files in the assets folder at the root of the port folder.",
+      "image": "https://cdn2.steamgriddb.com/grid/f1cab1954b1fc4ff1914fc819d30f3c1.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/947501a196966253d01a63be8a17e8cd/32/64x64.png",
+      "save": "%LOCALAPPDATA%\\NarutoRisePC"
+    },{
       "name": "Naruto: The Broken Bond (Naruto-The-Broken-Bond-PC-Port)",
-      "tags": ["360", "action-adventure"],
+      "tags": ["360", "action-adventure", "fighting"],
       "source": "https://github.com/Auremana666/Naruto-The-Broken-Bond-PC-Port",
       "folder": "Naruto-The-Broken-Bond-PC-Port",
       "instructions": "Required files: Naruto: The Broken Bond for Xbox 360\n\nManual Installation: Use extract-xiso.exe to extract the assets and place the files in the assets folder at the root of the port folder.",
@@ -2574,6 +2615,14 @@
       "image": "https://cdn2.steamgriddb.com/grid/4d53e7e87772a51972bc942a99de63c9.png",
       "icon": "https://cdn2.steamgriddb.com/icon/e64860da9a6248363a016357d47bd65f.png",
       "save": "%APPDATA%\\pokemon-love2d"
+    },{
+      "-name": "Pokémon HeartGold and SoulSilver (pokeheartgold-single-screen)",
+      "tags": ["nds", "rpg"],
+      "source": "https://github.com/ClickingMaster/pokeheartgold-single-screen",
+      "folder": "pokeheartgold-single-screen",
+      "instructions": "Required files: SoulSilver (USA) ROM",
+      "image": "https://cdn2.steamgriddb.com/grid/924386c0f19fd05b90b53a5d4c2e65c5.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/11b4076afd563b2612049c2c77465b32.png"
     },{
       "-name": "Pokémon Platinum (pokeplatinum)",
       "tags": ["ds", "rpg"],
@@ -3112,7 +3161,7 @@
     },{
       "-name": "SoulCalibur II (RingOut)",
       "tags": ["gc", "fighting", "soul edge"],
-      "source": "https://github.com/jackpoison-prog/RingOut/",
+      "source": "https://github.com/jackpoison-prog/RingOut",
       "folder": "RingOut",
       "instructions": "",
       "image": "https://cdn2.steamgriddb.com/grid/73751fa59c3cfa96c7d3330adb106066.png",
@@ -3196,8 +3245,7 @@
       "folder": "starfox-enhanced",
       "instructions": "Required files: Star Fox (USA) (Rev 2).sfc (CRC32: 8FC4E6D0)\n\nLanguages: English.",
       "image": "https://cdn2.steamgriddb.com/grid/081b26a8bdc5222518e51ecdbcc2021c.png",
-      "icon": "https://cdn2.steamgriddb.com/icon/6c19e0a6da12dc02239312f151072ddd.png",
-      "save": "."
+      "icon": "https://cdn2.steamgriddb.com/icon/6c19e0a6da12dc02239312f151072ddd.png"
     },{
       "name": "Star Fox 64 (Starfox64Recomp)",
       "tags": ["lylat wars", "n64", "shooter"],
@@ -3553,6 +3601,14 @@
         "android": "/storage/emulated/0/Android/data/dev.melee.game/files/.dolphin-emu/GC"
       }
     },{
+      "-name": "Super Smash Bros. Ultimate (ssbu-recomp)",
+      "tags": ["switch", "fighting", "multiplayer", "online"],
+      "source": "https://github.com/OpenSmash-Ultimate/ssbu-recomp",
+      "folder": "ssbu-recomp",
+      "instructions": "Required files: Super Smash Bros. Ultimate for Switch",
+      "image": "https://cdn2.steamgriddb.com/grid/2ef85f2ae5e56041ded26f67e18136be.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/2a201ed1dc9a6dd774652bd97b95509c/32/256x256.png"
+    },{
       "-name": "Super Smash Bros. Ultimate (WindowSmash)",
       "tags": ["switch", "fighting", "multiplayer", "online"],
       "source": "https://github.com/SNO2207/WindowSmash",
@@ -3560,6 +3616,15 @@
       "instructions": "Required files: Super Smash Bros. Ultimate for Switch",
       "image": "https://cdn2.steamgriddb.com/grid/2ef85f2ae5e56041ded26f67e18136be.png",
       "icon": "https://cdn2.steamgriddb.com/icon/2a201ed1dc9a6dd774652bd97b95509c/32/256x256.png"
+    },{
+      "name": "Super Street Fighter II Turbo HD Remix (ssf2t-hd-remix-recompiled)",
+      "tags": ["360", "fighting"],
+      "source": "https://github.com/saulob/ssf2t-hd-remix-recompiled",
+      "folder": "ssf2t-hd-remix-recompiled",
+      "instructions": "Required files: Super Street Fighter II Turbo HD Remix, Xbox Live Arcade\nOn the Play page click Install from package... and pick your package. It is one file with a long hexadecimal name and no extension. On an Xbox 360 drive it is in Content\\0000000000000000\\584108A4\\000D0000\\",
+      "image": "https://cdn2.steamgriddb.com/grid/2fc95f92ad623a10ea9cb7e6f2f89caa.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/f26b716a64f4882549823892d727fd78.png",
+      "save": "user_data"
     },{
       "name": "Syphon Filter (SF-pc-port)",
       "tags": ["ps1", "shooter"],
@@ -3607,6 +3672,14 @@
       "image": "https://cdn2.steamgriddb.com/grid/a85032c0a15f3c7048a8077595f2ee66.png",
       "icon": "https://cdn2.steamgriddb.com/icon/f7067925a46041c26a630572b02b4b28.png",
       "save": "saves"
+    },{
+      "name": "Tekken 6 (Tekken6-native-online)",
+      "tags": ["360", "fighting", "online"],
+      "source": "https://github.com/Ekspym/Tekken6-native-online",
+      "folder": "Tekken6-native-online",
+      "instructions": "Required files: Tekken 6 (USA, Europe, Rev 1) for Xbox 360 (.iso, or the extracted disc folder)",
+      "image": "https://cdn2.steamgriddb.com/grid/5ac473a513f5ab85e56d4f4efeb85379.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/0dc67dc9d1ee44efe47ea0b675e37dfe.png"
     },{
       "name": "Tekken Tag Tournament 2 (tekken-tag-tournament-2-pc)",
       "tags": ["360", "fighting"],
@@ -3695,6 +3768,14 @@
       "image": "https://cdn2.steamgriddb.com/grid/307c27aeb32c02e2561f228b0e758196.png",
       "icon": "https://cdn2.steamgriddb.com/icon/ddc2c94d27d2c6d46b33acf21b21a641.png"
     },{
+      "-name": "The Legend of Zelda : Tears of the Kingdom (??)",
+      "tags": ["switch", "action-adventure", "multilingual"],
+      "source": "",
+      "folder": "",
+      "instructions": "Required Files: The Legend of Zelda : Tears of the Kingdom",
+      "image": "https://cdn2.steamgriddb.com/grid/ae758fbcbd5bd841516c53b3c08ebc6f.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/f340c2f9d9a79c6243ea596349704822.png"
+    },{
       "name": "The Legend of Zelda: A Link to the Past (zelda3-PL)",
       "tags": ["nyaldee", "snes", "action-adventure"],
       "source": "https://raw.githubusercontent.com/Nyaldee/Ports-Launcher/main/extra/zelda3-PL/zelda3-PL.zip",
@@ -3711,23 +3792,26 @@
       "extra": "https://raw.githubusercontent.com/Nyaldee/Ports-Launcher/main/extra/zelda3-PL/zelda3-redux-ja-zh-pt-ga-pl-fr-zelda3_assets.dat.rip"
     },{
       "-name": "The Legend of Zelda: Breath of the Wild (SavageWindRecomp)",
-      "tags": ["wiiu", "action-adventure", "multilingual"],
+      "tags": ["switch", "action-adventure", "multilingual"],
       "source": "https://github.com/Revivedx/SavageWindRecomp",
       "folder": "SavageWindRecomp",
-      "instructions": "Required Files: The Legend of Zelda: Breath of the Wild",
+      "instructions": "Required Files: The Legend of Zelda: Breath of the Wild Switch, version 1.8.2",
       "image": "https://cdn2.steamgriddb.com/grid/121b81f7d167ca2c24fdab4f044048f8.png",
       "icon": "https://cdn2.steamgriddb.com/icon/05b8c1d212f60a76cbe14f877d944548.png"
     },{
       "name": "The Legend of Zelda: Link's Awakening (LASRecomp)",
       "tags": ["switch", "action-adventure", "multilingual"],
       "source": "https://github.com/peiikai/LASRecomp",
+      "android_source": "https://github.com/Nycolazs/LASRecomp-Android-Plus",
+      "android_package": "com.lasrecomp.android",
       "folder": "LASRecomp",
       "instructions": "Required files: a dump of Link's Awakening v1.0.0 (XCI or NSP) from your console and your console's prod.keys)",
       "image": "https://cdn2.steamgriddb.com/grid/62e42d5128071bb96fc3a269019e0504.png",
       "icon": "https://cdn2.steamgriddb.com/icon/67c2bd385b570d5cf44ea6f696865ed9.png",
       "save": {
         "windows": ".\\lasrecomp",
-        "linux": "~/.local/share/lasrecomp"
+        "linux": "~/.local/share/lasrecomp",
+        "android": "Android/data/com.lasrecomp.android/files/save"
       }
     },{
       "name": "The Legend of Zelda: Link's Awakening DX (LADXHD)",
@@ -3856,8 +3940,7 @@
       "folder": "ZeldaWWHDRecomp",
       "instructions": "Required Files: The Legend of Zelda: The Wind Waker HD USA or EU\nLanguages: Multilingual.",
       "image": "https://cdn2.steamgriddb.com/grid/8d5c0500d7ec1c04842c4b33673d0f43.png",
-      "icon": "https://cdn2.steamgriddb.com/icon/cfcbb2d417d79731884441ea21044165/32/256x256.png",
-      "save": "."
+      "icon": "https://cdn2.steamgriddb.com/icon/cfcbb2d417d79731884441ea21044165/32/256x256.png"
     },{
       "name": "The Legend of Zelda: Twilight Princess (dusklight)",
       "tags": ["quality", "gc", "action-adventure", "multilingual"],
@@ -3897,6 +3980,14 @@
       "image": "https://cdn2.steamgriddb.com/grid/487374288ed67097b2b86be2a9b1f0c0.png",
       "icon": "https://cdn2.steamgriddb.com/icon/76eac68b8d2923713428270133e03d3f.png",
       "save": "saves"
+    },{
+      "name": "The Nightmare Before Christmas: Oogie's Revenge (OogiesRevengeRecompiled)",
+      "tags": ["xbox", "action-adventure"],
+      "source": "https://github.com/josiahg2502-glitch/OogiesRevengeRecompiled",
+      "folder": "OogiesRevengeRecompiled",
+      "instructions": "Required files: Tim Burton's The Nightmare Before Christmas: Oogie's Revenge (Xbox, USA, title ID 42560004)",
+      "image": "https://cdn2.steamgriddb.com/grid/0386a54233f166874f0e8da3ec431b8c.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/ada1cbb7a1b3d89d7d3dcaa59609b3d6.png"
     },{
       "name": "The Order: 1886 (The-Order-1886_pc)",
       "tags": ["ps4", "action-adventure"],
@@ -4053,6 +4144,14 @@
         "windows": "",
         "android": ""
       }
+    },{
+      "name": "Uncharted: The Nathan Drake Collection (Uncharted_Collection_PC)",
+      "tags": ["ps4", "action-adventure", "multilingual"],
+      "source": "https://github.com/zorde23/Uncharted_Collection_PC",
+      "folder": "Uncharted_Collection_PC",
+      "instructions": "Required files: (PS4, CUSA02343, CUSA02320)",
+      "image": "https://cdn2.steamgriddb.com/grid/6374abaaafb1a4c0832a34ffa29b15b0.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/6798acf8da0458e3299ad2a1f4e7c2bf.png"
     },{
       "name": "Uncharted: The Nathan Drake Collection (uncharted_pc)",
       "tags": ["ps4", "action-adventure", "multilingual"],

@@ -170,6 +170,7 @@ pub fn port_from_value(d: &Value) -> Result<Port, PortParseError> {
 pub struct InstalledInfo {
     pub installed_tag: Option<String>,
     pub installed_at: String,
+    pub last_update_check: String,
     pub favorite_exe: Option<String>,
     pub update: bool,
     pub playtime_seconds: u64,
@@ -181,6 +182,7 @@ impl Default for InstalledInfo {
         InstalledInfo {
             installed_tag: None,
             installed_at: String::new(),
+            last_update_check: String::new(),
             favorite_exe: None,
             update: true,
             playtime_seconds: 0,

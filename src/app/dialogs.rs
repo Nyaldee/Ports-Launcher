@@ -138,11 +138,30 @@ fn horizontal(delta: i32) -> (i32, i32) {
     (delta, 0)
 }
 
-fn dialog_context(app: &AppState) -> (FontSizes, slint::SharedString, i32, i32) {
+struct DialogContext {
+    fonts: FontSizes,
+    family: slint::SharedString,
+    work_w: i32,
+    work_h: i32,
+    big_mode: bool,
+}
+
+fn dialog_context(app: &AppState) -> DialogContext {
     let window = app.window();
-    let fonts = if window.get_big_mode() { app.window_geometry.fullscreen_mode.borrow().fonts } else { app.window_geometry.normal_mode.borrow().fonts };
+    let big_mode = window.get_big_mode();
+    let fonts = if big_mode { app.window_geometry.fullscreen_mode.borrow().fonts } else { app.window_geometry.normal_mode.borrow().fonts };
     let (_, _, work_w, work_h) = chrome::work_area_under_cursor();
-    (fonts, window.get_font_family(), work_w, work_h)
+    DialogContext { fonts, family: window.get_font_family(), work_w, work_h, big_mode }
+}
+
+fn main_sized_dialog_size(app: &AppState, ctx: &DialogContext) -> (i32, i32) {
+    if !ctx.big_mode {
+        return main_window_size(app);
+    }
+    let scale = app.window_geometry.scale.get();
+    let normal = app.window_geometry.normal_mode.borrow();
+    let (w, h) = ((normal.logical_width * scale) as i32, (normal.logical_height * scale) as i32);
+    crate::ui::dialog_geometry::main_sized_dialog_size(w, h, ctx.work_w, ctx.work_h, true)
 }
 
 fn revert_theme_preview(app: &Rc<AppState>) {
@@ -259,13 +278,13 @@ pub(crate) fn dialog_is_open(app: &AppState) -> bool {
 
 pub(crate) fn open_message_dialog(app: &Rc<AppState>, router: &Router, title: &str, message: &str) {
     close_current_dialog(app, router);
-    let (fonts, family, work_w, work_h) = dialog_context(app);
+    let ctx = dialog_context(app);
     let (dw, dh) = crate::ui::dialog_geometry::message_dialog_size(
-        work_w, work_h, &family, fonts.item_font_px, fonts.title_bar_height_px, app.window_geometry.border_width.get(), message,
+        ctx.work_w, ctx.work_h, &ctx.family, ctx.fonts.item_font_px, ctx.fonts.title_bar_height_px, app.window_geometry.border_width.get(), message, ctx.big_mode,
     );
     let (x, y) = centered_position(app, dw, dh);
     let Ok(dialog) = MessageDialog::new() else { return };
-    style_dialog!(dialog, app, fonts);
+    style_dialog!(dialog, app, ctx.fonts);
     dialog.set_dialog_title(title.into());
     dialog.set_message_text(message.into());
     position_dialog!(dialog, app, dw, dh, x, y);
@@ -275,9 +294,9 @@ pub(crate) fn open_message_dialog(app: &Rc<AppState>, router: &Router, title: &s
 }
 
 pub(crate) fn update_progress_dialog(app: &AppState, dialog: &ProgressDialog, status: &str) {
-    let (fonts, family, work_w, work_h) = dialog_context(app);
+    let ctx = dialog_context(app);
     let (dw, dh) = crate::ui::dialog_geometry::progress_dialog_size(
-        work_w, work_h, &family, fonts.item_font_px, fonts.title_bar_height_px, app.window_geometry.border_width.get(), status,
+        ctx.work_w, ctx.work_h, &ctx.family, ctx.fonts.item_font_px, ctx.fonts.title_bar_height_px, app.window_geometry.border_width.get(), status, ctx.big_mode,
     );
     let (x, y) = centered_position(app, dw, dh);
     dialog.set_status_text(status.into());
@@ -286,7 +305,7 @@ pub(crate) fn update_progress_dialog(app: &AppState, dialog: &ProgressDialog, st
 
 pub(crate) fn open_progress_dialog(app: &Rc<AppState>, router: &Router, title: &str, status: &str) {
     close_current_dialog(app, router);
-    let (fonts, ..) = dialog_context(app);
+    let fonts = dialog_context(app).fonts;
     let Ok(dialog) = ProgressDialog::new() else { return };
     style_dialog!(dialog, app, fonts);
     dialog.set_dialog_title(title.into());
@@ -298,14 +317,14 @@ pub(crate) fn open_progress_dialog(app: &Rc<AppState>, router: &Router, title: &
 
 pub(crate) fn open_error_dialog(app: &Rc<AppState>, router: &Router, port: Port) {
     close_current_dialog(app, router);
-    let (fonts, family, work_w, work_h) = dialog_context(app);
+    let ctx = dialog_context(app);
     let message = tr!(app).invoke_message_launch_failed(port.name.clone().into());
     let (dw, dh) = crate::ui::dialog_geometry::error_dialog_size(
-        work_w, work_h, &family, fonts.item_font_px, fonts.title_bar_height_px, app.window_geometry.border_width.get(), &message,
+        ctx.work_w, ctx.work_h, &ctx.family, ctx.fonts.item_font_px, ctx.fonts.title_bar_height_px, app.window_geometry.border_width.get(), &message, ctx.big_mode,
     );
     let (x, y) = centered_position(app, dw, dh);
     let Ok(dialog) = ErrorDialog::new() else { return };
-    style_dialog!(dialog, app, fonts);
+    style_dialog!(dialog, app, ctx.fonts);
     dialog.set_dialog_title(dialog.global::<Tr>().invoke_dialog_title_error_port(port.name.clone().into()));
     dialog.set_message_text(message);
     position_dialog!(dialog, app, dw, dh, x, y);
@@ -338,13 +357,13 @@ fn open_confirm_dialog(
     on_confirmed: impl Fn(&Rc<AppState>, &Router) + 'static,
 ) {
     close_current_dialog(app, router);
-    let (fonts, family, work_w, work_h) = dialog_context(app);
+    let ctx = dialog_context(app);
     let (dw, dh) = crate::ui::dialog_geometry::error_dialog_size(
-        work_w, work_h, &family, fonts.item_font_px, fonts.title_bar_height_px, app.window_geometry.border_width.get(), &message,
+        ctx.work_w, ctx.work_h, &ctx.family, ctx.fonts.item_font_px, ctx.fonts.title_bar_height_px, app.window_geometry.border_width.get(), &message, ctx.big_mode,
     );
     let (x, y) = centered_position(app, dw, dh);
     let Ok(dialog) = ConfirmDialog::new() else { return };
-    style_dialog!(dialog, app, fonts);
+    style_dialog!(dialog, app, ctx.fonts);
     dialog.set_dialog_title(title);
     dialog.set_message_text(message);
     dialog.set_confirm_text(confirm_label);
@@ -409,7 +428,11 @@ fn open_reset_playtime_dialog(app: &Rc<AppState>, router: &Router, port: Port) {
 }
 
 fn existing_save_folder(save: Option<&Value>, game_dir: &Path) -> Option<PathBuf> {
-    crate::core::platform_resolve::resolve_save_folder(save?, game_dir).filter(|p| p.is_dir())
+    let path = crate::core::platform_resolve::resolve_save_folder(save?, game_dir)?;
+    if path.is_file() {
+        return path.parent().map(Path::to_path_buf);
+    }
+    path.is_dir().then_some(path)
 }
 
 fn wire_open<T: 'static>(target: Option<T>, open: fn(&T), register: impl FnOnce(Box<dyn Fn()>)) {
@@ -421,10 +444,11 @@ fn wire_open<T: 'static>(target: Option<T>, open: fn(&T), register: impl FnOnce(
 pub(crate) fn open_info_dialog(app: &Rc<AppState>, router: &Router, port: &Port) {
     close_current_dialog(app, router);
     app.dialog_nav.info_dialog_port_key.replace(Some(port.key().to_string()));
-    let (dw, dh) = main_window_size(app);
+    let ctx = dialog_context(app);
+    let (dw, dh) = main_sized_dialog_size(app, &ctx);
     let (x, y) = centered_position(app, dw, dh);
     let Ok(dialog) = InfoDialog::new() else { return };
-    style_dialog!(dialog, app, app.window_geometry.normal_mode.borrow().fonts);
+    style_dialog!(dialog, app, ctx.fonts);
     let tr = dialog.global::<Tr>();
     dialog.set_dialog_title(tr.invoke_dialog_title_info_port(port.name.clone().into()));
 
@@ -533,15 +557,14 @@ fn set_picker_items<'a>(dialog: &ListPickerDialog, labels: impl IntoIterator<Ite
 
 fn build_picker_dialog(app: &Rc<AppState>, router: &Router, title: &str, labels: &[String]) -> Option<ListPickerDialog> {
     close_current_dialog(app, router);
-    let big_mode = app.window().get_big_mode();
-    let (fonts, family, work_w, work_h) = dialog_context(app);
-    let item_height = crate::ui::dialog_geometry::list_picker_item_height(work_h, big_mode);
+    let ctx = dialog_context(app);
+    let item_height = crate::ui::dialog_geometry::list_picker_item_height(ctx.work_h, ctx.big_mode);
     let (dw, dh) = crate::ui::dialog_geometry::list_picker_dialog_size(
-        work_w, work_h, &family, fonts.item_font_px, labels, big_mode, fonts.title_bar_height_px, app.window_geometry.border_width.get(),
+        ctx.work_w, ctx.work_h, &ctx.family, ctx.fonts.item_font_px, labels, ctx.big_mode, ctx.fonts.title_bar_height_px, app.window_geometry.border_width.get(),
     );
     let (x, y) = centered_position(app, dw, dh);
     let dialog = ListPickerDialog::new().ok()?;
-    style_dialog!(dialog, app, fonts);
+    style_dialog!(dialog, app, ctx.fonts);
     dialog.set_dialog_title(title.into());
     set_picker_items(&dialog, labels);
     dialog.set_item_height_physical(item_height as f32);
@@ -645,6 +668,7 @@ pub(crate) fn open_settings_dialog(app: &Rc<AppState>, router: &Router) {
                 SettingsEntry::CheckUpdates => {
                     let value = !app.state.borrow().release_sync;
                     app.state.borrow_mut().set_release_sync(value);
+                    app.window().set_self_update_available(app.state.borrow().show_launcher_update());
                 }
                 SettingsEntry::DiscordRpc => {
                     let value = !app.state.borrow().discord_rpc_enabled;
@@ -690,8 +714,9 @@ fn open_search_list_dialog(
     on_select: impl Fn(&Rc<AppState>, &str) + 'static,
 ) {
     close_current_dialog(app, router);
-    let (fonts, ..) = dialog_context(app);
-    let (dw, dh) = main_window_size(app);
+    let ctx = dialog_context(app);
+    let fonts = ctx.fonts;
+    let (dw, dh) = main_sized_dialog_size(app, &ctx);
     let (x, y) = centered_position(app, dw, dh);
     let Ok(dialog) = SearchListDialog::new() else { return };
     style_dialog!(dialog, app, fonts);

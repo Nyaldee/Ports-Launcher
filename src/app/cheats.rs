@@ -31,6 +31,15 @@ const POWER_OVERWHELMING: &str = "power overwhelming";
 const IDDQD: &str = "iddqd";
 const IDDQD_MESSAGE: &str = "Degreelessness Mode On";
 const IDDQD_DURATION: Duration = Duration::from_secs(5);
+const ZA_WARUDO: &str = "za warudo";
+const ZA_WARUDO_KATAKANA: &str = "ザワールド";
+const ZA_WARUDO_KANJI: &str = "世界";
+const ZA_WARUDO_MESSAGE: &str = "toki yo tomare";
+const ZA_WARUDO_MESSAGE_JA: &str = "時よ止まれ";
+const ZA_WARUDO_DURATION: Duration = Duration::from_secs(5);
+const PATEMA: &str = "patema";
+const PATEMA_DURATION: Duration = Duration::from_secs(5);
+const SIX_SEVEN: [&str; 3] = ["67", "6 7", "6-7"];
 
 const TICK: Duration = Duration::from_millis(20);
 const COLOR_STEP: Duration = Duration::from_millis(120);
@@ -75,7 +84,8 @@ pub(crate) struct Cheats {
     final_bout: RefCell<SequenceDetector>,
     running: Cell<bool>,
     timer: slint::Timer,
-    iddqd_timer: slint::Timer,
+    colors_timer: slint::Timer,
+    patema_timer: slint::Timer,
 }
 
 impl Default for Cheats {
@@ -85,7 +95,8 @@ impl Default for Cheats {
             final_bout: RefCell::new(SequenceDetector::new(&FINAL_BOUT)),
             running: Cell::default(),
             timer: slint::Timer::default(),
-            iddqd_timer: slint::Timer::default(),
+            colors_timer: slint::Timer::default(),
+            patema_timer: slint::Timer::default(),
         }
     }
 }
@@ -132,7 +143,11 @@ pub(crate) fn search_changed(app: &Rc<AppState>, query: &str) -> bool {
         ASKEW => window.invoke_askew(),
         BIG_HEAD_MODE => window.invoke_big_head(),
         POWER_OVERWHELMING => window.invoke_shake(),
-        IDDQD => start_iddqd(app),
+        IDDQD => start_colors_effect(app, negative_grey, IDDQD_MESSAGE, IDDQD_DURATION),
+        ZA_WARUDO => start_colors_effect(app, negative, ZA_WARUDO_MESSAGE, ZA_WARUDO_DURATION),
+        ZA_WARUDO_KATAKANA | ZA_WARUDO_KANJI => start_colors_effect(app, negative, ZA_WARUDO_MESSAGE_JA, ZA_WARUDO_DURATION),
+        PATEMA => start_patema(app),
+        q if SIX_SEVEN.contains(&q) => window.invoke_six_seven(),
         _ => return false,
     }
     window.invoke_clear_search();
@@ -140,11 +155,18 @@ pub(crate) fn search_changed(app: &Rc<AppState>, query: &str) -> bool {
 }
 
 fn negative_grey(colors: &ThemeColors) -> ThemeColors {
-    let invert = |c: Color| {
+    map_colors(colors, |c| {
         let luma = 0.299 * f32::from(c.red()) + 0.587 * f32::from(c.green()) + 0.114 * f32::from(c.blue());
         let v = 255 - luma.round() as u8;
         Color::from_rgb_u8(v, v, v)
-    };
+    })
+}
+
+fn negative(colors: &ThemeColors) -> ThemeColors {
+    map_colors(colors, |c| Color::from_rgb_u8(255 - c.red(), 255 - c.green(), 255 - c.blue()))
+}
+
+fn map_colors(colors: &ThemeColors, invert: impl Fn(Color) -> Color) -> ThemeColors {
     ThemeColors {
         search_background: invert(colors.search_background),
         search_text: invert(colors.search_text),
@@ -156,17 +178,27 @@ fn negative_grey(colors: &ThemeColors) -> ThemeColors {
     }
 }
 
-fn start_iddqd(app: &Rc<AppState>) {
+fn start_colors_effect(app: &Rc<AppState>, colors: fn(&ThemeColors) -> ThemeColors, message: &str, duration: Duration) {
     let window = app.window();
     let cfg = app.theme.theme_config.borrow();
-    preview_colors(&window, &cfg, &negative_grey(&cfg.current), app.window_geometry.border_width.get());
-    window.set_placeholder_text(IDDQD_MESSAGE.into());
+    preview_colors(&window, &cfg, &colors(&cfg.current), app.window_geometry.border_width.get());
+    window.set_placeholder_text(message.into());
     let weak = Rc::downgrade(app);
-    app.cheats.iddqd_timer.start(slint::TimerMode::SingleShot, IDDQD_DURATION, move || {
+    app.cheats.colors_timer.start(slint::TimerMode::SingleShot, duration, move || {
         let Some(app) = weak.upgrade() else { return };
         let window = app.window();
         apply_theme(&window, &app.theme.theme_config.borrow(), app.window_geometry.border_width.get());
         window.set_placeholder_text(app.state.borrow().placeholder_text.clone().into());
+    });
+}
+
+fn start_patema(app: &Rc<AppState>) {
+    app.window().set_flipped(true);
+    let weak = Rc::downgrade(app);
+    app.cheats.patema_timer.start(slint::TimerMode::SingleShot, PATEMA_DURATION, move || {
+        if let Some(app) = weak.upgrade() {
+            app.window().set_flipped(false);
+        }
     });
 }
 
@@ -348,6 +380,24 @@ mod tests {
         assert_eq!(negative.list_background, white);
         assert_eq!(negative.list_text, black);
         assert_eq!(negative.selected_background, Color::from_rgb_u8(179, 179, 179));
+    }
+
+    #[test]
+    fn negatif_inverse_chaque_canal() {
+        let colors = ThemeColors {
+            search_background: Color::from_rgb_u8(0, 0, 0),
+            search_text: Color::from_rgb_u8(255, 255, 255),
+            list_background: Color::from_rgb_u8(10, 100, 200),
+            list_text: Color::from_rgb_u8(255, 0, 0),
+            selected_background: Color::from_rgb_u8(0, 255, 0),
+            selected_text: Color::from_rgb_u8(0, 0, 255),
+            border: Color::from_rgb_u8(128, 128, 128),
+        };
+        let negative = negative(&colors);
+        assert_eq!(negative.search_background, Color::from_rgb_u8(255, 255, 255));
+        assert_eq!(negative.list_background, Color::from_rgb_u8(245, 155, 55));
+        assert_eq!(negative.list_text, Color::from_rgb_u8(0, 255, 255));
+        assert_eq!(negative.border, Color::from_rgb_u8(127, 127, 127));
     }
 
     #[test]

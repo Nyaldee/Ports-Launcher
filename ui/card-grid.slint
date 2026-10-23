@@ -22,6 +22,7 @@ export component CardGrid {
     in property <bool> scroll-trigger: false;
     callback card-activated(int, int);
     callback card-hovered(int, int);
+    callback card-info-requested(int, int);
     callback card-unhovered();
 
     if root.rows.length == 0: Text {
@@ -132,6 +133,11 @@ export component CardGrid {
             clicked => {
                 if (self.pointer-on-card) {
                     root.card-activated(self.hovered-row, self.hovered-column);
+                }
+            }
+            pointer-event(event) => {
+                if (event.button == PointerEventButton.right && event.kind == PointerEventKind.down && self.pointer-on-card) {
+                    root.card-info-requested(self.hovered-row, self.hovered-column);
                 }
             }
             changed pressed => {

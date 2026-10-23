@@ -3,7 +3,7 @@ mod installed;
 mod throttles;
 mod ui_prefs;
 
-pub use throttles::is_stale_for_update_check;
+pub use throttles::is_due_for_update_check;
 
 use super::models::InstalledInfo;
 use chrono::Utc;
@@ -117,6 +117,7 @@ impl StateManager {
                     InstalledInfo {
                         installed_tag: string(info, "installed_tag"),
                         installed_at: string(info, "installed_at").unwrap_or_default(),
+                        last_update_check: string(info, "last_update_check").unwrap_or_default(),
                         favorite_exe: string(info, "favorite_exe"),
                         update: flag(info, "update", true),
                         playtime_seconds: info.get("playtime_seconds").and_then(Value::as_u64).unwrap_or(0),
@@ -136,6 +137,7 @@ impl StateManager {
                 let entry = json!({
                     "installed_tag": info.installed_tag,
                     "installed_at": info.installed_at,
+                    "last_update_check": info.last_update_check,
                     "favorite_exe": info.favorite_exe,
                     "update": info.update,
                     "playtime_seconds": info.playtime_seconds,

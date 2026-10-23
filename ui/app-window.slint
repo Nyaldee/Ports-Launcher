@@ -92,6 +92,7 @@ export component AppWindow inherits Window {
     callback border-adjust-requested(int);
     callback card-activated(int, int);
     callback card-hovered(int, int);
+    callback card-info-requested(int, int);
     callback card-unhovered();
     callback list-row-activated(int);
     callback list-row-hovered(int);
@@ -141,12 +142,19 @@ export component AppWindow inherits Window {
     property <length> shake-x: root.shake-amplitude * Math.sin(root.shake-ticks * 137deg);
     property <length> shake-y: root.shake-amplitude * Math.sin(root.shake-ticks * 211deg);
 
+    in property <bool> flipped: false;
+
+    public function six-seven() { root.sway-ticks = 60; }
+    property <int> sway-ticks: 0;
+    property <angle> sway-angle: 4deg * Math.min(root.sway-ticks, 15) / 15 * Math.sin(root.sway-ticks * 30deg);
+
     Timer {
         interval: 33ms;
-        running: root.shake-ticks > 0 || root.head-ticks > 0;
+        running: root.shake-ticks > 0 || root.head-ticks > 0 || root.sway-ticks > 0;
         triggered => {
             root.shake-ticks = Math.max(0, root.shake-ticks - 1);
             root.head-ticks = Math.max(0, root.head-ticks - 1);
+            root.sway-ticks = Math.max(0, root.sway-ticks - 1);
         }
     }
 
@@ -335,26 +343,33 @@ export component AppWindow inherits Window {
                     content-body := Rectangle {
                         vertical-stretch: root.big-mode ? 1 : 0;
                         preferred-height: root.big-mode ? 0px : content-body-height;
-                        transform-rotation: root.roll-angle + root.tilt-angle;
+                        transform-rotation: root.roll-angle + root.tilt-angle + (root.flipped ? 180deg : 0deg);
                         transform-scale-x: root.head-scale * 100%;
                         transform-scale-y: root.head-scale * 100%;
                         animate transform-rotation { duration: 1s; easing: ease-in-out; }
 
-                        if root.big-mode: CardGrid {
+                        if root.big-mode: Rectangle {
                             x: root.shake-x;
                             y: root.shake-y;
                             width: 100%;
                             height: 100%;
-                            rows: root.card-rows;
-                            card-width: root.card-width;
-                            card-height: root.card-height;
-                            card-spacing: root.card-spacing;
-                            columns: root.grid-columns;
-                            selected-row-index: root.grid-selected-row;
-                            scroll-trigger: root.scroll-trigger;
-                            card-activated(r, c) => { root.card-activated(r, c); }
-                            card-hovered(r, c) => { root.card-hovered(r, c); }
-                            card-unhovered() => { root.card-unhovered(); }
+                            transform-rotation: root.sway-angle;
+
+                            CardGrid {
+                                width: 100%;
+                                height: 100%;
+                                rows: root.card-rows;
+                                card-width: root.card-width;
+                                card-height: root.card-height;
+                                card-spacing: root.card-spacing;
+                                columns: root.grid-columns;
+                                selected-row-index: root.grid-selected-row;
+                                scroll-trigger: root.scroll-trigger;
+                                card-activated(r, c) => { root.card-activated(r, c); }
+                                card-hovered(r, c) => { root.card-hovered(r, c); }
+                                card-info-requested(r, c) => { root.card-info-requested(r, c); }
+                                card-unhovered() => { root.card-unhovered(); }
+                            }
                         }
 
                         if !root.big-mode: list-container := Rectangle {
@@ -362,6 +377,7 @@ export component AppWindow inherits Window {
                             y: root.shake-y;
                             width: 100%;
                             height: 100%;
+                            transform-rotation: root.sway-angle;
 
                             list-inertia := InertialScroller {
                                 min-viewport-y: Math.min(0px, port-list.visible-height - port-list.content-height);
