@@ -2529,10 +2529,10 @@
         "linux": "~/.local/share/pt-port"
       }
     },{
-      "name": "Panzer Dragoon Saga (yabasanshiro)",
+      "name": "Panzer Dragoon Saga (pds-recompile)",
       "tags": ["saturn", "rpg"],
       "source": "https://www.yabasanshiro.com/api/builder-url",
-      "folder": "yabasanshiro",
+      "folder": "pds-recompile",
       "instructions": "Required files: Saturn discs (Japanese GS-9076 V1.001, or Panzer Dragoon Saga MK-81307 US / Europe) as .cue/.bin, .chd or .iso images.",
       "image": "https://cdn2.steamgriddb.com/grid/3d2ecc4b8f3845dfe8678f333498b3ef.png",
       "icon": "https://cdn2.steamgriddb.com/icon/eba4b31af98c58b7cdb9cc785adc7627.png"
