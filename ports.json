@@ -337,9 +337,10 @@
       "tags": ["ps4", "action-adventure"],
       "source": "https://github.com/Supermedo/bloodborne_pc",
       "folder": "bloodborne_pc",
-      "instructions": "Required files: You need your own decrypted dump of Bloodborne (CUSA03173). Version 1.09 is needed for the community patches (60/90/unlocked FPS, resolution, effects); other versions run at 30 FPS.",
+      "instructions": "Required files:\nBloodborne.Game.of.the.Year.Edition.PS4-PRELUDE.pkg\nCUSA03173-EUR-Update-v1.09-PRELUDE-[PS4ID].pkg\nShadPs4Plus https://github.com/AzaharPlus/shadPS4Plus\n\nDrag and drop the pkg files one by one into pkg_extractor.exe. After extraction, you will have two folders: CUSA03173 and CUSA03173-patch. Move the contents of the CUSA03173-patch folder into CUSA03173, then move the CUSA03173 folder to the root directory next to Bloodborne.exe.",
       "image": "https://cdn2.steamgriddb.com/grid/021399af062379408df9c358a1a83cdb.png",
-      "icon": "https://cdn2.steamgriddb.com/icon/361403e93afd3ea12b30729831e352ef.png"
+      "icon": "https://cdn2.steamgriddb.com/icon/361403e93afd3ea12b30729831e352ef.png",
+      "save": "user\\savedata"
     },{
       "name": "Bloody Roar 2: Bringer of the New Age (BloodyRoar2Recomp)",
       "tags": ["ps1", "fighting"],
@@ -410,14 +411,6 @@
       "instructions": "Download and install the game in Game folder (Library/project-bumble).",
       "image": "https://cdn2.steamgriddb.com/grid/8996151753255bb91316417afd0badc3.png",
       "icon": "https://cdn2.steamgriddb.com/icon/9bb9852b78e55603158ed65149db7dd6.png"
-    },{
-      "name": "Buffy the Vampire Slayer: Chaos Bleeds (buffy-chaos-bleeds-pc)",
-      "tags": ["xbox", "action-adventure"],
-      "source": "https://github.com/KaikoClanworth1/buffy-chaos-bleeds-pc",
-      "folder": "buffy-chaos-bleeds-pc",
-      "instructions": "Required files: USA game ISO",
-      "image": "https://cdn2.steamgriddb.com/grid/7079ab09f47e175352429b6dab1c0a44.png",
-      "icon": "https://cdn2.steamgriddb.com/icon/e951935d8b53e453adec7a89355be49c.png"
     },{
       "name": "Buffy the Vampire Slayer: Chaos Bleeds (buffy-chaos-bleeds-pc)",
       "tags": ["xbox", "action-adventure"],
@@ -1378,6 +1371,14 @@
       "image": "https://cdn2.steamgriddb.com/grid/849460026d42c840faab34d4d3b9fc33.png",
       "icon": "https://cdn2.steamgriddb.com/icon/075a3a646faea7bfa9cd8b86c51a026b.png"
     },{
+      "-name": "Forza Horizon (ForzaHorizon1-ReImagined)",
+      "tags": ["360", "racing"],
+      "source": "https://github.com/Dyotson/ForzaHorizon1-ReImagined",
+      "folder": "ForzaHorizon1-ReImagined",
+      "instructions": "",
+      "image": "https://cdn2.steamgriddb.com/grid/c43043335d711ee1590cfcba87ed0009.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/c554942ee622a853af81e6448a2833a6.png"
+    },{
       "-name": "Forza Horizon (pinyon-shift)",
       "tags": ["360", "racing"],
       "source": "https://github.com/arcanite24/pinyon-shift",
@@ -1565,6 +1566,22 @@
       "image": "https://cdn2.steamgriddb.com/grid/c8aa48a3667e7a29486f3f978b0e0279.png",
       "icon": "https://cdn2.steamgriddb.com/icon/1a68e5f4ade56ed1d4bf273e55510750.png"
     },{
+      "name": "Gravity Rush Remastered (gravityrush_pc)",
+      "tags": ["ps4", "action-adventure"],
+      "source": "https://github.com/LucaPazienza/gravityrush_pc",
+      "folder": "gravityrush_pc",
+      "instructions": "Required files: Gravity Rush Remastered (PS4, CUSA01113, tested with the European release EP9000-CUSA01113_00) to PC as a native port.",
+      "image": "https://cdn2.steamgriddb.com/grid/a5681ddbdf84643ab575935222d497f4.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/5d234349ef54d486d92682ae848d9ca4/32/256x256.png"
+    },{
+      "name": "Gunstar Heroes (gunstars)",
+      "tags": ["smd", "run and gun"],
+      "source": "https://github.com/1nputs/gunstars",
+      "folder": "gunstars",
+      "instructions": "Required files: Gunstar Heroes (USA).md (CRC32: B813CF0D)",
+      "image": "https://cdn2.steamgriddb.com/grid/3ac75b967630b2f1bf15c38eea60e033.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/e09fdffe648a30658a9657bbed7b2388.png"
+    },{
       "name": "Half Life (xash3d-fwgs)",
       "tags": ["fps", "android_only"],
       "android_source": "https://github.com/FWGS/xash3d-fwgs",
@@ -1669,6 +1686,15 @@
       "instructions": "Required files: European release (BCES00220)",
       "image": "https://cdn2.steamgriddb.com/grid/9198689b820fc4a59bdcaa334b8cfbd5.png",
       "icon": "https://cdn2.steamgriddb.com/icon/02c32194f5d8a18f6d4aa773b988462c.png"
+    },{
+      "name": "Infamous: Second Son (iss_pc)",
+      "tags": ["ps4", "action-adventure"],
+      "source": "https://github.com/HayatoG/iss_pc",
+      "folder": "iss_pc",
+      "instructions": "Required files: inFAMOUS Second Son CUSA00223 (US), base game 1.00 with update 1.07",
+      "image": "https://cdn2.steamgriddb.com/grid/5b64cd5af426b00c26031e097fc60bfb.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/2426b5ee5a79e56224aeb798d6c416fb/32/512x512.png",
+      "save": "user\\savedata"
     },{
       "name": "Infinite Mario 64 Ever (infinite-mario-64-ever)",
       "tags": ["quality", "n64", "platformer"],
@@ -2503,6 +2529,14 @@
         "linux": "~/.local/share/pt-port"
       }
     },{
+      "name": "Panzer Dragoon Saga (yabasanshiro)",
+      "tags": ["saturn", "rpg"],
+      "source": "https://www.yabasanshiro.com/api/builder-url",
+      "folder": "yabasanshiro",
+      "instructions": "Required files: Saturn discs (Japanese GS-9076 V1.001, or Panzer Dragoon Saga MK-81307 US / Europe) as .cue/.bin, .chd or .iso images.",
+      "image": "https://cdn2.steamgriddb.com/grid/3d2ecc4b8f3845dfe8678f333498b3ef.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/eba4b31af98c58b7cdb9cc785adc7627.png"
+    },{
       "name": "Paper Mario (Paper-Mario-ReCut)",
       "tags": ["n64", "rpg"],
       "source": "https://github.com/SMCGames/Paper-Mario-ReCut",
@@ -2933,6 +2967,14 @@
       "icon": "https://cdn2.steamgriddb.com/icon/02c1f06978b821b2996ec257932f2947.png",
       "save": "%LOCALAPPDATA%\\Rush2Recompiled"
     },{
+      "-name": "Sakura Wars 2019 (??)",
+      "tags": ["ps4", "action-adventure"],
+      "source": "",
+      "folder": "",
+      "instructions": "Required files: ",
+      "image": "https://cdn2.steamgriddb.com/grid/49a71cf1f087a3bd58c69cd8f3305420.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/c447dec4c6828275655416d3ceebc18f.png"
+    },{
       "name": "Sega Superstars Tennis (Sega-Superstars-Tennis-ReMatch)",
       "tags": ["360", "sport", "multiplayer"],
       "source": "https://github.com/m1ndcrap/Sega-Superstars-Tennis-ReMatch",
@@ -2971,9 +3013,10 @@
       "tags": ["ps4", "action-adventure"],
       "source": "https://github.com/AjncSystem/ShadowOfTheColossus-PC",
       "folder": "ShadowOfTheColossus-PC",
-      "instructions": "Required files: Shadow of the Colossus PS4 (Bluepoint, 2018, CUSA08809",
+      "instructions": "Required files:\nSHADOW OF THE COLOSSUS - [EU] [EN] [1.01].pkg\nsys_modules\nThe 6 DLCs pkg\nThe 1.01 update\nShadPs4Plus https://github.com/AzaharPlus/shadPS4Plus\n\nDrag and drop the pkg files one by one into pkg_extractor.exe. After extraction, you will have two folders: CUSA08809 and CUSA08809-patch. Move the contents of the CUSA08809-patch folder into CUSA08809, then move the CUSA08809 folder to the root directory next to SotC.exe",
       "image": "https://cdn2.steamgriddb.com/grid/c85bd019483ea2c17032bf940015d8c6.png",
-      "icon": "https://cdn2.steamgriddb.com/icon/c13ce2ce7cd12830d03b9d996bc05388.png"
+      "icon": "https://cdn2.steamgriddb.com/icon/c13ce2ce7cd12830d03b9d996bc05388.png",
+      "save": "user\\savedata"
     },{
       "name": "Silent Bomber (silent-bomber-recomp)",
       "tags": ["ps1", "alexbeav"],
@@ -3000,6 +3043,14 @@
       "instructions": "Required files: Silent Hill: Downpour for Xbox 360\n\nManual Installation: Use extract-xiso.exe to extract the assets and place the files in the assets folder at the root of the port folder.",
       "image": "https://cdn2.steamgriddb.com/grid/0595e5860fe9c5eaba82fb617087dbc1.png",
       "icon": "https://cdn2.steamgriddb.com/icon/c48fc5abb46ebba1f4d00a6f951d9273/32/64x64.png"
+    },{
+      "name": "Sin and Punishment: Hoshi no Keishousha (snprecomp)",
+      "tags": ["n64", "rail shooter"],
+      "source": "https://github.com/wootbeer/snprecomp",
+      "folder": "snprecomp",
+      "instructions": "Required files: Tsumi to Batsu - Hoshi no Keishousha (Japan).z64 (CRC32: CA2E5E49) or Sin and Punishment - Successor of the Earth (fantrans)",
+      "image": "https://cdn2.steamgriddb.com/grid/2d5b98050c5dd3843bf05fbbf8a873bc.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/7fe80a4af716a66a48bca24802cd3395/32/128x128.png"
     },{
       "name": "Skate 2 (skate2-recompile-pc)",
       "tags": ["360", "sport", "multilingual"],
@@ -3028,6 +3079,14 @@
       "image": "https://cdn2.steamgriddb.com/grid/cb5afcadcac972f1c6d743c96936ebe3.png",
       "icon": "https://cdn2.steamgriddb.com/icon/f8dfa1bc1dfc7fe4bbd53f1aeb099deb.png",
       "save": "%APPDATA%\\skate3"
+    },{
+      "name": "Skies of Arcadia Legends (SkiesOfArcadiaLegends-Recomp)",
+      "tags": ["gc", "rpg", "multilingual"],
+      "source": "https://github.com/ogdanimal/SkiesOfArcadiaLegends-Recomp",
+      "folder": "SkiesOfArcadiaLegends-Recomp",
+      "instructions": "Required files: The disc is the USA, the European or the Japanese GameCube release (game ID GEAE8P, GEAP8P or GEAJ8P, the original release; the Japanese one is Eternal Arcadia Legends), as RVZ, ISO, GCM, GCZ, WIA or CISO.",
+      "image": "https://cdn2.steamgriddb.com/grid/ae73c1f20b00bc238bb963f499f72a58.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/23c7963ec66989c155759d1ed3a6cbea.png"
     },{
       "name": "Slay the Spire 2 (StS2-Launcher)",
       "tags": ["strategy", "android_only"],
@@ -3212,6 +3271,15 @@
       "instructions": "Required files: : \n\nManual Installation: Use extract-xiso.exe to extract the assets and place the files in the assets folder at the root of the port folder.",
       "image": "https://cdn2.steamgriddb.com/grid/61c6ddc8fa35f40c7eb51fc06d66499a.png",
       "icon": "https://cdn2.steamgriddb.com/icon/49f85a9ed090b20c8bed85a5923c669f.png"
+    },{
+      "name": "Splatterhouse 2010 (splatterhouse-decomp)",
+      "tags": ["360", "action-adventure"],
+      "source": "https://github.com/0c0de/splatterhouse-decomp",
+      "folder": "splatterhouse-decomp",
+      "instructions": "Required files: Drag your Splatterhouse ISO onto install.bat (or run install.bat and paste the path)\nDLC: Drop the STFS packages (files whose first 4 bytes are CON , LIVE or PIRS, often without extension or with .xcp) into a folder named dlc next to splatterhouse.exe. The port creates that folder on startup, logs its path, and installs the packages automatically (extraction + header + license mask); they then appear in the game menu.\n<game folder>\\dlc\\35A606675772B2C90230F20D17FA0F11E55C1B594E\n<game folder>\\dlc\\9E079D75E93C05D42B269A99751474F659AACE954E",
+      "image": "https://cdn2.steamgriddb.com/grid/ae983d01a451c7ac3bd8a9a350e95e75.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/32f58ecbd9d39f50d437876ed9c18ebd/32/256x256.png",
+      "save": "%USERPROFILE%\\Documents\\splatterhouse"
     },{
       "-name": "Spyro the Dragon (openpete)",
       "tags": ["ps1", "platformer"],
@@ -3791,6 +3859,14 @@
       },
       "extra": "https://raw.githubusercontent.com/Nyaldee/Ports-Launcher/main/extra/zelda3-PL/zelda3-redux-ja-zh-pt-ga-pl-fr-zelda3_assets.dat.rip"
     },{
+      "-name": "The Legend of Zelda: Breath of the Wild (BotW-Native)",
+      "tags": ["switch", "action-adventure", "multilingual"],
+      "source": "https://github.com/ryderclanky/BotW-Native",
+      "folder": "BotW-Native",
+      "instructions": "Required Files: The Legend of Zelda: Breath of the Wild Switch, version 1.8.2",
+      "image": "https://cdn2.steamgriddb.com/grid/121b81f7d167ca2c24fdab4f044048f8.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/05b8c1d212f60a76cbe14f877d944548.png"
+    },{
       "-name": "The Legend of Zelda: Breath of the Wild (SavageWindRecomp)",
       "tags": ["switch", "action-adventure", "multilingual"],
       "source": "https://github.com/Revivedx/SavageWindRecomp",
@@ -4244,6 +4320,14 @@
       "instructions": "Required files: Untested",
       "image": "https://cdn2.steamgriddb.com/grid/05d473743a62f7f3bfc3ecad84c1519c.png",
       "icon": "https://cdn2.steamgriddb.com/icon/991c1161618c95bc94d3e7508c0a3d30.png"
+    },{
+      "name": "Wario Land: Shake It! (Wario-Land-Shake-It-Native-PC)",
+      "tags": ["wii", "platformer"],
+      "source": "https://github.com/santiagovalencia109/Wario-Land-Shake-It-Native-PC",
+      "folder": "Wario-Land-Shake-It-Native-PC",
+      "instructions": "Required files: Wario Land: Shake It! (US, RWLE01, unmodified)",
+      "image": "https://cdn2.steamgriddb.com/grid/2ade688b34d8b8adbb769b79e4fee500.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/f8b8026a112f686da62f110898bef520.png"
     },{
       "name": "WarioWare: Twisted! (WarioWareTwistedRecomp)",
       "tags": ["gba", "party"],
