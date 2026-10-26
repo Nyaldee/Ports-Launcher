@@ -135,6 +135,7 @@
       "name": "Ape Escape: Mind Over Monkey (bigmission-recomp)",
       "tags": ["saru", "ps1", "platformer"],
       "source": "https://github.com/jackgllghr/bigmission-recomp",
+      "android_package": "io.github.sarusaru_recomp.SaruSaruRecomp",
       "folder": "bigmission-recomp",
       "instructions": "Required files: Saru Get You: Saru Saru Daisakusen\n\nLanguages: English.",
       "image": "https://cdn2.steamgriddb.com/grid/dce0cff3ad30897876b169eb066662dd.png",
@@ -255,6 +256,8 @@
       "name": "Banjo-Kazooie (Lighthouse)",
       "tags": ["quality", "n64", "platformer", "multilingual"],
       "source": "https://github.com/HarbourMasters/Lighthouse",
+      "android_source": "https://github.com/izzy2lost/Lighthouse",
+      "android_package": "com.lighthouse.android",
       "folder": "Lighthouse",
       "instructions": "Required files: Banjo-Kazooie (USA).z64 (CRC32: AD429961)\n\nLanguages: Multilingual with mod.\n\nDiscord server: https://discord.com/invite/shipofharkinian",
       "image": "https://cdn2.steamgriddb.com/grid/a154a70f923c579313aa9c47ed7c34e2.png",
@@ -415,6 +418,7 @@
       "name": "Buffy the Vampire Slayer: Chaos Bleeds (buffy-chaos-bleeds-pc)",
       "tags": ["xbox", "action-adventure"],
       "source": "https://github.com/KaikoClanworth1/buffy-chaos-bleeds-pc",
+      "android_package": "io.github.kaikoclanworth1.buffy",
       "folder": "buffy-chaos-bleeds-pc",
       "instructions": "Required files: USA game ISO",
       "image": "https://cdn2.steamgriddb.com/grid/7079ab09f47e175352429b6dab1c0a44.png",
@@ -547,6 +551,7 @@
       "-name": "Colin McRae Rally 2.0 (OpenCMR2)",
       "tags": ["pc", "racing"],
       "source": "https://github.com/pablocpas/OpenCMR2",
+      "android_package": "io.github.pablocpas.opencmr2",
       "folder": "OpenCMR2",
       "instructions": "Required files: Original PC version of Colin McRae Rally 2.0",
       "image": "https://cdn2.steamgriddb.com/grid/c36cb3c94d5287e827fbed88960c0c76.png",
@@ -602,6 +607,14 @@
         "windows": "%APPDATA%\\ConkerRecompiled",
         "linux": "~/.config/ConkerRecompiled"
       }
+    },{
+      "name": "Conker's Bad Fur Day (ConkerBFDReloaded)",
+      "tags": ["n64", "platformer"],
+      "source": "https://github.com/DahSidiAbdallah/ConkerBFDReloaded",
+      "folder": "ConkerBFDReloaded",
+      "instructions": "Required files: Conker's Bad Fur Day (USA).z64 (CRC32: CE8CC172)\nPortable saves : portable.txt in root folder.",
+      "image": "https://cdn2.steamgriddb.com/grid/29badebfcb56e531b4e38f81fff9dd20.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/7cfe973cfd3353ecacc3ec1e53a1c5ea.png"
     },{
       "name": "Contre Jour (contrejour-dx)",
       "tags": ["pc", "puzzle"],
@@ -667,6 +680,14 @@
       "tags": ["ps4", "racing", "multiplayer"],
       "source": "https://github.com/GetLostIn/CTR-NitroFueled-PC",
       "folder": "CTR-NitroFueled-PC",
+      "instructions": "Required files: Crash Team Racing: Nitro-Fueled (PS4, CUSA13795 v1.21)",
+      "image": "https://cdn2.steamgriddb.com/grid/a0637e79c5b79afe6dd9bcabdb94040e.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/946fe5c21087bcb5ed3f73eace856a61.png"
+    },{
+      "name": "Crash Team Racing: Nitro-Fueled (OCTR-NitroFueled-PC)",
+      "tags": ["ps4", "racing", "multiplayer"],
+      "source": "https://github.com/Ryu7w7/OCTR-NitroFueled-PC",
+      "folder": "OCTR-NitroFueled-PC",
       "instructions": "Required files: Crash Team Racing: Nitro-Fueled (PS4, CUSA13795 v1.21)",
       "image": "https://cdn2.steamgriddb.com/grid/a0637e79c5b79afe6dd9bcabdb94040e.png",
       "icon": "https://cdn2.steamgriddb.com/icon/946fe5c21087bcb5ed3f73eace856a61.png"
@@ -740,6 +761,14 @@
       "instructions": "Required files: Def Jam: Fight for NY (USA) for Xbox",
       "image": "https://cdn2.steamgriddb.com/grid/d7a5871f8604840909e1f2afae18cb94.jpg",
       "icon": "https://cdn2.steamgriddb.com/icon/aef76e4e1d8adbe2fd95e03f6a126b57.png"
+    },{
+      "-name": "Demon's Souls 2020 (??)",
+      "tags": ["ps5", "action-adventure"],
+      "source": "",
+      "folder": "",
+      "instructions": "Required files: ",
+      "image": "https://cdn2.steamgriddb.com/grid/7f260734198733fb642f90df1d2b580a.jpg",
+      "icon": "https://cdn2.steamgriddb.com/icon/dd6085205f25352232d45c748aaa0d0e/32/512x512.png"
     },{
       "name": "Destruction Derby 2 (destruction-derby-2-recomp)",
       "tags": ["ps1", "alexbeav"],
@@ -1080,6 +1109,14 @@
       "icon": "https://cdn2.steamgriddb.com/icon/65c89f5a9501a04c073b354f03791b1f.png",
       "save": "user"
     },{
+      "name": "Drakengard 3 (dod3-recomp)",
+      "tags": ["ps3", "action-adventure"],
+      "source": "https://github.com/soyjxck/dod3-recomp",
+      "folder": "dod3-recomp",
+      "instructions": "Required files: Drakengard 3 (USA, PS3) + 1.01 update and DLC",
+      "image": "https://cdn2.steamgriddb.com/grid/63a24a588a38679d827e8fcdd8ddff67.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/58749277592511b13a3a994569b9b92e.png"
+    },{
       "name": "DriveClub (Driveclub-pc-wrapper)",
       "tags": ["ps4", "racing"],
       "source": "https://github.com/ondrejeder/Driveclub-pc-wrapper",
@@ -1396,6 +1433,15 @@
       "icon": "https://cdn2.steamgriddb.com/icon/bd6c07a61581fd939a71f0d2c99dd8a8.png",
       "save": "%LOCALAPPDATA%\\RaceOneHub"
     },{
+      "name": "Futurama (futurama-the-game-the-recomp)",
+      "tags": ["xbox", "platformer"],
+      "source": "https://github.com/hiburn8/futurama-the-game-the-recomp",
+      "folder": "futurama-the-game-the-recomp",
+      "instructions": "Required files: NTSC-U Xbox copy of Futurama\n\nLanguages: English.",
+      "image": "https://cdn2.steamgriddb.com/grid/7eff6cd2ac4fe21916d9112687e554b1.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/84562f4374b74baa0907563bccdf1492.png",
+      "save": "%APPDATA%\\FuturamaRecomp"
+    },{
       "name": "Future Cop: L.A.P.D. (future-cop-lapd-recomp)",
       "tags": ["ps1", "alexbeav"],
       "source": "https://github.com/Alexbeav/future-cop-lapd-recomp",
@@ -1542,6 +1588,14 @@
       "icon": "https://cdn2.steamgriddb.com/icon/48b109f9bb69ce94aaddec5e574787eb.png",
       "save": "saves"
     },{
+      "name": "Gran Turismo 3: A-Spec (GT3-revisited)",
+      "tags": ["ps2", "racing"],
+      "source": "https://github.com/matt-pulsipher/GT3-revisited",
+      "folder": "GT3-revisited",
+      "instructions": "Required files: Gran Turismo 3: A-Spec (USA)",
+      "image": "https://cdn2.steamgriddb.com/grid/490d3a9dd72716b3101890d0d8241c51.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/1c596d6658b237e7a2aec3b1ed11dab3.png"
+    },{
       "name": "Gran Turismo 4 (gt4-staticrecomp)",
       "tags": ["ps2", "racing"],
       "source": "https://github.com/moesuito/gt4-staticrecomp",
@@ -1687,6 +1741,14 @@
       "image": "https://cdn2.steamgriddb.com/grid/9198689b820fc4a59bdcaa334b8cfbd5.png",
       "icon": "https://cdn2.steamgriddb.com/icon/02c32194f5d8a18f6d4aa773b988462c.png"
     },{
+      "-name": "inFAMOUS First Light (??)",
+      "tags": ["ps4", "action-adventure"],
+      "source": "",
+      "folder": "",
+      "instructions": "Required files: ",
+      "image": "https://cdn2.steamgriddb.com/grid/d57bfa8b4d3e1c37d73bff20412e176d.jpg",
+      "icon": "https://cdn2.steamgriddb.com/icon/2a990b7eabebde339af419a11576cf8b.png"
+    },{
       "name": "Infamous: Second Son (iss_pc)",
       "tags": ["ps4", "action-adventure"],
       "source": "https://github.com/HayatoG/iss_pc",
@@ -1711,6 +1773,13 @@
       "folder": "Initial-D-Arcade-Stage-3-Native-SH-4-Recompilation-WIP-",
       "instructions": "",
       "image": "https://cdn2.steamgriddb.com/grid/f04b4053b5b1c5fabd05ca595aedf1c9.png"
+    },{
+      "name": "Initial D: Street Stage (initialdpsponpc)",
+      "tags": ["psp", "racing"],
+      "source": "https://github.com/cassnadra/initialdpsponpc",
+      "folder": "initialdpsponpc",
+      "instructions": "Required files: Initial D: Street Stage for PSP",
+      "image": "https://cdn2.steamgriddb.com/grid/22ce6f895fda8e7a1f8d2d77c0854a90.png"
     },{
       "name": "Jackie Chan Stuntmaster (jackie-chan-stuntmaster-recomp)",
       "tags": ["ps1", "alexbeav"],
@@ -1778,6 +1847,15 @@
       "icon": "https://cdn2.steamgriddb.com/icon/7b70922c241d472a0c2124a71b2d36cc.png",
       "save": "saves"
     },{
+      "name": "Katawa Shoujo (ksre)",
+      "tags": ["free", "pc", "visual novel", "multilingual"],
+      "source": "https://github.com/fleetingheart/ksre",
+      "android_package": "sh.fhs.ksre",
+      "folder": "ksre",
+      "instructions": "",
+      "image": "https://cdn2.steamgriddb.com/grid/74d6f5bda24acb755767449631d17282.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/a7be1228195896ae985f9c015fbe7af8.png"
+    },{
       "name": "King Kong (king-kong-recompiled)",
       "tags": ["360", "fps"],
       "source": "https://github.com/TekRantGaming/king-kong-recompiled",
@@ -1838,6 +1916,14 @@
       "image": "https://cdn2.steamgriddb.com/grid/a009159372c66a3c5756b06e0d2237ab.png",
       "icon": "https://cdn2.steamgriddb.com/icon/a4d41b834ea903526373a9a1ae2ac66e.png",
       "save": "saves"
+    },{
+      "name": "Knack II (Knack-II-pc-port)",
+      "tags": ["ps4", "platformer"],
+      "source": "https://github.com/Hyant4/Knack-II-pc-port",
+      "folder": "Knack-II-pc-port",
+      "instructions": "Required files: CUSA08014 (US, version 01.01)",
+      "image": "https://cdn2.steamgriddb.com/grid/5454b1542b505128fa2333eb9a332ddd.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/dfafbe21da3d54cf4d22bcd8ad8cf877.png"
     },{
       "name": "KoroKoro Post nin (korokoro-recomp)",
       "tags": ["ps1", "puzzle"],
@@ -1994,21 +2080,30 @@
       "image": "https://cdn2.steamgriddb.com/grid/83d788e65786046542c9354d17b92450.png",
       "icon": "https://cdn2.steamgriddb.com/icon/43d0193b623ae62359f03ad342298498.png"
     },{
-      "name": "Mario Party 4 (marioparty4)",
+      "name": "Mario Party 4 (mariopartyrd-marioparty4)",
       "tags": ["gc", "multiplayer"],
       "source": "https://github.com/mariopartyrd/marioparty4",
-      "android_source": "https://github.com/mariopartyrd/marioparty4",
       "android_package": "com.mariopartyrd.partyboard",
-      "folder": "marioparty4",
+      "folder": "mariopartyrd-marioparty4",
       "instructions": "Required files: Rev 0 (USA)/Rev 1 (USA)",
       "image": "https://cdn2.steamgriddb.com/grid/34ee49ced5744eeb86d6e8e9661634aa.png",
       "icon": "https://cdn2.steamgriddb.com/icon/3e60e09c222f206c725385f53d7e567c.png"
     },{
-      "-name": "Mario Party 6 (??)",
+      "name": "Mario Party 4 (zeranemesis-Marioparty4)",
       "tags": ["gc", "multiplayer"],
-      "source": "",
-      "folder": "",
-      "instructions": "Required files: ",
+      "source": "https://github.com/zeranemesis/Marioparty4",
+      "android_package": "com.mariopartyrd.partyboard",
+      "folder": "zeranemesis-Marioparty4",
+      "instructions": "Required files: Rev 0 (USA)/Rev 1 (USA)",
+      "image": "https://cdn2.steamgriddb.com/grid/34ee49ced5744eeb86d6e8e9661634aa.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/3e60e09c222f206c725385f53d7e567c.png"
+    },{
+      "name": "Mario Party 6 (mp6-native-port)",
+      "tags": ["gc", "multiplayer"],
+      "source": "https://github.com/iirg4x/mp6-native-port",
+      "android_package": "com.mp6.game",
+      "folder": "mp6-native-port",
+      "instructions": "Required files: Mario Party 6 (GC, USA)",
       "image": "https://cdn2.steamgriddb.com/grid/1a2ba95b9b89cb8d9ce110d93bf3fa77.png",
       "icon": "https://cdn2.steamgriddb.com/icon/1c303b0eed3133200cf715285011b4e4.png"
     },{
@@ -2168,6 +2263,14 @@
       "icon": "https://cdn2.steamgriddb.com/icon/e6b3ce424cdbae54b1188ce7601940df.png",
       "save": "saves"
     },{
+      "name": "Mercenaries: Playground of Destruction (Mercenaries-Recompiled)",
+      "tags": ["xbox", "action-adventure"],
+      "source": "https://github.com/KraftMacAndChee/Mercenaries-Recompiled",
+      "folder": "Mercenaries-Recompiled",
+      "instructions": "Required files: USA retail Xbox Mercenaries ISO",
+      "image": "https://cdn2.steamgriddb.com/grid/8e365b263252b34a78d54daa0553c90d.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/d2ddea18f00665ce8623e36bd4e3c7c5.png"
+    },{
       "-name": "Metal Gear Solid (metal-gear-solid-recomp)",
       "tags": ["ps1", "alexbeav"],
       "source": "https://github.com/Alexbeav/metal-gear-solid-recomp",
@@ -2207,11 +2310,20 @@
       "name": "Metroid Prime Hunters (MetroidPrimeHuntersRecomp)",
       "tags": ["ds", "platformer"],
       "source": "https://github.com/mstan/MetroidPrimeHuntersRecomp",
+      "android_package": "com.secondhunt.app",
       "folder": "MetroidPrimeHuntersRecomp",
       "instructions": "Required files: Metroid Prime - Hunters (USA, Australia).nds (CRC32: 7FE4554A)\n\nLanguages: English.",
       "image": "https://cdn2.steamgriddb.com/grid/5df556f9abb947b5d17d3d67a67029e3.png",
       "icon": "https://cdn2.steamgriddb.com/icon/73c415581357651d534a25384d9315d3.png",
       "save": "%APPDATA%\\MetroidPrimeHuntersRecomp"
+    },{
+      "name": "Metroid Prime Remastered (primerecomp)",
+      "tags": ["switch", "fps"],
+      "source": "https://github.com/gminustwo/primerecomp",
+      "folder": "primerecomp",
+      "instructions": "Required files: Metroid Prime Remastered for Nintendo Switch, version 1.0.0 (no updates)",
+      "image": "https://cdn2.steamgriddb.com/grid/691beaaaf5d82cda2376dc054ad92b3d.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/8c6cbf0b353b05a367327bb8cb1a8f0d.png"
     },{
       "name": "Mickey & Donald Collection (MickeyAndDonaldCollection)",
       "tags": ["smd", "platformer", "emucomp", "illusion", "quackshot"],
@@ -2256,6 +2368,14 @@
       "instructions": "Required files: Monster Hunter Freedom Unite — USA version (ULUS10391)",
       "image": "https://cdn2.steamgriddb.com/grid/cc9ee3b9dd8c82b2f32fbdab8c8946c4.jpg",
       "icon": "https://cdn2.steamgriddb.com/icon/12cda74722ca228f321e38329795ac41.png"
+    },{
+      "name": "Monster Hunter Generations Ultimate (MHGURecomp)",
+      "tags": ["switch", "action-adventure"],
+      "source": "https://github.com/morerokk/MHGURecomp",
+      "folder": "MHGURecomp",
+      "instructions": "Required files: Monster Hunter Generations Ultimate, version 1.4.0",
+      "image": "https://cdn2.steamgriddb.com/grid/7bf071f0838651b1a74f71df5003b3ca.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/7244e80f78fd5664f0f38f37815be3fa.png"
     },{
       "name": "Monster Hunter Portable 3rd HD Ver. (Yakumo)",
       "tags": ["psp", "rpg"],
@@ -2780,6 +2900,15 @@
         "linux": "~/.config/rsc2/"
       }
     },{
+      "name": "Rampage: Total Destruction (RampageRE)",
+      "tags": ["ps2", "action"],
+      "source": "https://github.com/jjmhalew/RampageRE",
+      "android_package": "io.github.jjmhalew.rampagere",
+      "folder": "RampageRE",
+      "instructions": "Required files: the European PS2 disc, Rampage - Total Destruction (Europe) (En,Fr,De,Es,It), SLES-53800, SLES_538.00 version 1.00, and the USA disc, Rampage - Total Destruction (USA), SLUS-21323, SLUS_213.23 version 1.01.",
+      "image": "https://cdn2.steamgriddb.com/grid/ab63243d415513c2307a6ff350832d10.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/ad59725c2849487f72545fa97298bcad.png"
+    },{
       "name": "Ratchet and Clank (rerac-launcher)",
       "tags": ["ps2", "action-adventure"],
       "source": "https://github.com/re-rac/rerac-launcher",
@@ -3013,7 +3142,7 @@
       "tags": ["ps4", "action-adventure"],
       "source": "https://github.com/AjncSystem/ShadowOfTheColossus-PC",
       "folder": "ShadowOfTheColossus-PC",
-      "instructions": "Required files:\nSHADOW OF THE COLOSSUS - [EU] [EN] [1.01].pkg\nsys_modules\nThe 6 DLCs pkg\nThe 1.01 update\nShadPs4Plus https://github.com/AzaharPlus/shadPS4Plus\n\nDrag and drop the pkg files one by one into pkg_extractor.exe. After extraction, you will have two folders: CUSA08809 and CUSA08809-patch. Move the contents of the CUSA08809-patch folder into CUSA08809, then move the CUSA08809 folder to the root directory next to SotC.exe",
+      "instructions": "Required files:\nSHADOW OF THE COLOSSUS - [EU] [EN] [1.01].pkg\nsys_modules\nThe 6 DLCs pkg\nThe 1.01 update\nShadPs4Plus https://github.com/AzaharPlus/shadPS4Plus\n\nDrag and drop the pkg files one by one into pkg_extractor.exe. After extraction, you will have two folders: CUSA08809 and CUSA08809-patch. Move the contents of the CUSA08809-patch folder into CUSA08809, then move the CUSA08809 and sys_modules folders to the root directory next to SotC.exe. You may need to specify the CUSA08809 folder within the launcher's DLC folder, enable the PS4 Pro Mode option and disable Frame generation.",
       "image": "https://cdn2.steamgriddb.com/grid/c85bd019483ea2c17032bf940015d8c6.png",
       "icon": "https://cdn2.steamgriddb.com/icon/c13ce2ce7cd12830d03b9d996bc05388.png",
       "save": "user\\savedata"
@@ -3083,6 +3212,7 @@
       "name": "Skies of Arcadia Legends (SkiesOfArcadiaLegends-Recomp)",
       "tags": ["gc", "rpg", "multilingual"],
       "source": "https://github.com/ogdanimal/SkiesOfArcadiaLegends-Recomp",
+      "android_package": "com.skiesofarcadia.recomp",
       "folder": "SkiesOfArcadiaLegends-Recomp",
       "instructions": "Required files: The disc is the USA, the European or the Japanese GameCube release (game ID GEAE8P, GEAP8P or GEAJ8P, the original release; the Japanese one is Eternal Arcadia Legends), as RVZ, ISO, GCM, GCZ, WIA or CISO.",
       "image": "https://cdn2.steamgriddb.com/grid/ae73c1f20b00bc238bb963f499f72a58.png",
@@ -3554,6 +3684,14 @@
       },
       "save2": "config"
     },{
+      "-name": "Super Mario Bros. 3 (mushroomrecompiled)",
+      "tags": ["nes", "platformer"],
+      "source": "https://github.com/Adoregabriel2005/mushroomrecompiled",
+      "folder": "mushroomrecompiled",
+      "instructions": "Required files: ",
+      "image": "https://cdn2.steamgriddb.com/grid/c5279e07367ef7ba59d6e772bfd9ac5d.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/9a8dc82bf4afcd912b7dcd1c95a28f2c/32/1024x1024.png"
+    },{
       "name": "Super Mario Bros. X (thextech)",
       "tags": ["platformer", "android_only"],
       "android_source": "https://github.com/TheXTech/TheXTech",
@@ -3566,13 +3704,23 @@
         "android": "TheXTech Games/Super Mario Bros. X/settings/gamesaves"
       }
     },{
-      "-name": "Super Mario Galaxy (ace-combat-3-electrosphere-usa-recomp)",
-      "tags": ["wii", "platformer"],
-      "source": "??",
-      "folder": "??",
-      "instructions": "Required files: ",
+      "name": "Super Mario Galaxy (nebula)",
+      "tags": ["wii", "platformer", "multilingual"],
+      "source": "https://github.com/keepvaibin/nebula",
+      "android_source": "https://github.com/OpenPort-Labs/Galaxy-Android",
+      "android_package": "com.openport.galaxyandroid",
+      "folder": "nebula",
+      "instructions": "Required files: Super Mario Galaxy (Wii, USA)",
       "image": "https://cdn2.steamgriddb.com/grid/6d5dd23060ee14d2adae43bbe4dbebd1.png",
       "icon": "https://cdn2.steamgriddb.com/icon/f7696a9b362ac5a51c3dc8f098b73923/32/256x256.png"
+    },{
+      "name": "Super Mario Maker 2 (MushroomMakerRecomp)",
+      "tags": ["switch", "sandbox", "platformer"],
+      "source": "https://github.com/Apolinario-coder/MushroomMakerRecomp",
+      "folder": "MushroomMakerRecomp",
+      "instructions": "Required files: Super Mario Maker 2 files, with update 3.0.3 applied",
+      "image": "https://cdn2.steamgriddb.com/grid/1a3377beff1ae18422f3a8dfe9ef7231.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/bc2ba6731122a2b539616c6929597d18.png"
     },{
       "-name": "Super Mario Odyssey (??)",
       "tags": ["switch", "platformer"],
@@ -3600,6 +3748,14 @@
       "instructions": "Required files: Super Mario Strikers (USA/JP)/Mario Smash Football (Europe) \n\nLanguages: Multilingual.",
       "image": "https://cdn2.steamgriddb.com/grid/a85d58f89d4a5e8f8f9a6336b3dd18f7.jpg",
       "icon": "https://cdn2.steamgriddb.com/icon/ea86ccbb57d32f5889139224411436df.png"
+    },{
+      "name": "Super Mario Sunshine (sms-launcher)",
+      "tags": ["gc", "platformer"],
+      "source": "https://github.com/chasem-dev/sms-launcher",
+      "folder": "sms-launcher",
+      "instructions": "Required files: \n\nLanguages: English.",
+      "image": "https://cdn2.steamgriddb.com/grid/f5e97c0193978d636807084bf658fc1c.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/7989edad14ebcd3adfacc7344dc6b739/32/256x256.png"
     },{
       "name": "Super Mario Sunshine (sms-pc-port)",
       "tags": ["gc", "platformer"],
@@ -3638,6 +3794,7 @@
       "name": "Super Robot Taisen 64 (srw64-recomp)",
       "tags": ["n64", "strategy"],
       "source": "https://github.com/dyzz/srw64-recomp",
+      "android_package": "org.srw64.game",
       "folder": "srw64-recomp",
       "instructions": "Required files: Super Robot Taisen 64 (Japan).z64 (CRC32: 85DF2771)",
       "image": "https://cdn2.steamgriddb.com/grid/c39daf6acaaab596ed4cadc0e045db68.jpg",
@@ -4150,6 +4307,23 @@
         "linux": "~/.local/share/TombaRecomp"
       }
     },{
+      "-name": "Tomodachi Life: Living the Dream (??)",
+      "tags": ["switch", "life simulation"],
+      "source": "",
+      "folder": "",
+      "instructions": "Required files: ",
+      "image": "https://cdn2.steamgriddb.com/grid/e4efc746696d9f37472de81cbad04179.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/c73e7f943839a71a151742af7104a8a2.png"
+    },{
+      "-name": "Tony Hawk's Pro Skater (thps64)",
+      "tags": ["n64", "sport"],
+      "source": "https://github.com/andrewnakas/thps64",
+      "folder": "thps64",
+      "instructions": "Required files: ",
+      "image": "https://cdn2.steamgriddb.com/grid/a320fda9e385f0ee9a4fa2f695600446.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/28dd2c7955ce926456240b2ff0100bde.png",
+      "save": "saves"
+    },{
       "name": "Tony Hawk's Pro Skater (tony-hawk-s-pro-skater-recomp)",
       "tags": ["ps1", "alexbeav", "multiplayer"],
       "source": "https://github.com/Alexbeav/tony-hawk-s-pro-skater-recomp",
@@ -4452,6 +4626,14 @@
       "instructions": "Required files: SLUS-00977. BIOS: SCPH-1001",
       "image": "https://cdn2.steamgriddb.com/grid/d40e99b21daf51db5a0fed99de2b25e7.png",
       "save": "saves"
+    },{
+      "-name": "Xenoblade Chronicles: Definitive Edition (Monado)",
+      "tags": ["switch", "rpg"],
+      "source": "https://github.com/TheMonadoGuy/Monado",
+      "folder": "Monado",
+      "instructions": "Required files: plain extracted folders, not packages. An .nsp, .xci or .nca is refused: those are game packages, not game files.",
+      "image": "https://cdn2.steamgriddb.com/grid/9374ef3d53a00c33de62be93467ec04d.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/ba5451d3c91a0f982f103cdbe249bc78.png"
     },{
       "name": "Xonotic",
       "tags": ["quality", "free", "pc", "fps", "multiplayer", "online"],
