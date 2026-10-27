@@ -1342,6 +1342,19 @@
       "icon": "https://cdn2.steamgriddb.com/icon/2050e03ca119580f74cca14cc6e97462/24/256x256.png",
       "save": "saves"
     },{
+      "name": "F-Zero GX (F-ZERO-GLINUX)",
+      "tags": ["gc", "racing"],
+      "source": "https://github.com/Mabec-games/F-ZERO-GLINUX",
+      "folder": "F-ZERO-GLINUX",
+      "instructions": "Required files: F-ZERO GX USA (GFZE01)",
+      "image": "https://cdn2.steamgriddb.com/grid/c8b79b414976ddca72cb73582ac889d3.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/a2ad21422707bdf0ac074f80b4c67181.png",
+      "save": {
+        "windows": "%LOCALAPPDATA%\\fzero-glinux",
+        "linux": "~/.local/share/fzero-glinux"
+      },
+      "save2": "~/.var/app/io.github.mabecgames.FZeroGLinux/data/fzero-glinux"
+    },{
       "name": "F-Zero X (G-Diffuser)",
       "tags": ["quality", "n64", "racing", "multiplayer"],
       "source": "https://github.com/Zorkats/G-Diffuser",
@@ -2632,6 +2645,14 @@
       "image": "https://cdn2.steamgriddb.com/grid/d9b83a0aed8a57ddc3f361e4b0aa76b2.png",
       "icon": "https://cdn2.steamgriddb.com/icon/b18ab25c55863311d9909ada83379916/32/256x256.png"
     },{
+      "-name": "Need for Speed: Most Wanted (speedbreaker)",
+      "tags": ["360", "racing"],
+      "source": "https://github.com/SpeedBreakerProject/speedbreaker",
+      "folder": "speedbreaker",
+      "instructions": "Required files: Two discs: USA and European (PAL) Spanish. One app plays either; the PAL disc brings its Spanish movies and police radio, and installs beside a USA install, each with its own saves.",
+      "image": "https://cdn2.steamgriddb.com/grid/a86cc0b404ab003e0badb9ed96b55ace.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/85b991ae924d726b0a109024f364c06e.png"
+    },{
       "-name": "Need for Speed: Underground 2 (??)",
       "tags": ["ps2", "racing"],
       "source": "??",
@@ -2913,6 +2934,14 @@
       "instructions": "Required files: Pokemon - Platinum Version (USA).nds (CRC32: 9253921D)\n\nLanguages: English.",
       "image": "https://cdn2.steamgriddb.com/grid/293d4b3062d071218312a5eb322a3a47.png",
       "icon": "https://cdn2.steamgriddb.com/icon/691f73fdf1c5edeb3f600c515715a358.png"
+    },{
+      "name": "Pokémon Rumble (RumbleRecomp)",
+      "tags": ["wii", "beat them all"],
+      "source": "https://github.com/ToShredsYouSay/RumbleRecomp",
+      "folder": "RumbleRecomp",
+      "instructions": "Required files: USA WiiWare release (title WPSE01) as a .wad file",
+      "image": "https://cdn2.steamgriddb.com/grid/2ab150b6eaa1541e1128ee3b055c91b8.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/16a359f1f323bca3b0448e6c8ca5bec5.png"
     },{
       "name": "Pokémon Snap (Snap64Recomp)",
       "tags": ["n64", "simulation"],
@@ -3291,6 +3320,14 @@
       "image": "https://cdn2.steamgriddb.com/grid/c85bd019483ea2c17032bf940015d8c6.png",
       "icon": "https://cdn2.steamgriddb.com/icon/c13ce2ce7cd12830d03b9d996bc05388.png",
       "save": "user\\savedata"
+    },{
+      "name": "Shin Megami Tensei IV (smt4-recomp)",
+      "tags": ["3ds", "rpg"],
+      "source": "https://github.com/Invictus-potens/smt4-recomp",
+      "folder": "smt4-recomp",
+      "instructions": "Required files: ",
+      "image": "https://cdn2.steamgriddb.com/grid/08bedd4580031e9633ef1ca96093868c.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/78ffaaadd841e4c71322637cb77c5693/32/256x256.png"
     },{
       "name": "Silent Bomber (silent-bomber-recomp)",
       "tags": ["ps1", "alexbeav"],
@@ -4110,6 +4147,14 @@
       "image": "https://cdn2.steamgriddb.com/grid/f1acce1a7c0c90baa15962d61b7ba048.png",
       "save": "saves"
     },{
+      "name": "The Binding of Isaac (IsaacRecomp)",
+      "tags": ["pc", "roguelike"],
+      "source": "https://github.com/whylurking/IsaacRecomp",
+      "folder": "IsaacRecomp",
+      "instructions": "Required files: Buy The Binding of Isaac on Steam (and Wrath of the Lamb if you want the expansion).\nhttps://store.steampowered.com/app/113200/The_Binding_of_Isaac/\nhttps://store.steampowered.com/app/113204/Binding_of_Isaac_Wrath_of_the_Lamb/",
+      "image": "https://cdn2.steamgriddb.com/grid/f7c06669703daa12778190344eadc869.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/e1940719f77abe2ef9a5249421ac8492.png"
+    },{
       "name": "The Darkness (The-Darkness-Recomp)",
       "tags": ["360", "survival horror", "multilingual"],
       "source": "https://github.com/portingpete/The-Darkness-Recomp",
@@ -4489,6 +4534,14 @@
       "instructions": "Required files: SLUS-00229. BIOS: SCPH-5552. Known issues: Wave 3 validation limits apply. Use the complete matching Redump CUE/BIN set and the required SCPH-5552 BIOS.",
       "image": "https://cdn2.steamgriddb.com/grid/b5e0deef6c2a87a87e19f30538d32980.png",
       "save": "saves"
+    },{
+      "-name": "Tokyo Mirage Sessions ♯FE Encore (??)",
+      "tags": ["switch", "rpg"],
+      "source": "",
+      "folder": "",
+      "instructions": "Required files: ",
+      "image": "https://cdn2.steamgriddb.com/grid/0ac9d1970d95f33ae871811993c0675c.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/9f067d8d6df2d4b8c64fb4c084d6c208.png"
     },{
       "name": "Tomba (tombarecomp)",
       "tags": ["ps1", "platformer"],
