@@ -1,4 +1,3 @@
-
 mod installed;
 mod throttles;
 mod ui_prefs;
@@ -39,6 +38,9 @@ pub struct StateManager {
     pub border_width: i32,
     pub language: String,
     pub discord_rpc_enabled: bool,
+    pub custom_presence_enabled: bool,
+    pub custom_presence_text: String,
+    pub custom_presence_icon: String,
     pub release_sync: bool,
     pub last_launcher_update_check: String,
     pub launcher_update_available: bool,
@@ -65,6 +67,9 @@ impl StateManager {
             border_width: DEFAULT_BORDER,
             language: String::new(),
             discord_rpc_enabled: false,
+            custom_presence_enabled: false,
+            custom_presence_text: String::new(),
+            custom_presence_icon: String::new(),
             release_sync: true,
             last_launcher_update_check: String::new(),
             launcher_update_available: false,
@@ -98,6 +103,11 @@ impl StateManager {
         }
         state.language = string(&obj, "language").unwrap_or_default();
         state.discord_rpc_enabled = flag(&obj, "discord_rpc_enabled", false);
+        if let Some(custom) = obj.get("custom_presence").and_then(Value::as_object) {
+            state.custom_presence_enabled = flag(custom, "enabled", false);
+            state.custom_presence_text = string(custom, "text").unwrap_or_default();
+            state.custom_presence_icon = string(custom, "icon").unwrap_or_default();
+        }
         state.github_token = string(&obj, "github_token");
         state.gitlab_token = string(&obj, "gitlab_token");
         state.release_sync = flag(&obj, "release_sync", true);
@@ -159,6 +169,11 @@ impl StateManager {
             },
             "language": self.language,
             "discord_rpc_enabled": self.discord_rpc_enabled,
+            "custom_presence": {
+                "enabled": self.custom_presence_enabled,
+                "text": self.custom_presence_text,
+                "icon": self.custom_presence_icon,
+            },
             "github_token": self.github_token,
             "gitlab_token": self.gitlab_token,
             "release_sync": self.release_sync,

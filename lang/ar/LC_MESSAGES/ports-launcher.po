@@ -75,6 +75,9 @@ msgstr "اللغة"
 msgid "Themes"
 msgstr "السمات"
 
+msgid "Tools"
+msgstr "الأدوات"
+
 msgid "Files"
 msgstr "الملفات"
 

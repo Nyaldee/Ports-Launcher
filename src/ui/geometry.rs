@@ -1,4 +1,3 @@
-
 pub const WINDOW_ASPECT_RATIO: f64 = 3.0 / 4.0;
 pub const WINDOW_MIN_WIDTH: i32 = 380;
 

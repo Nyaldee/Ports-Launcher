@@ -75,6 +75,9 @@ msgstr "زبان"
 msgid "Themes"
 msgstr "پوسته‌ها"
 
+msgid "Tools"
+msgstr "ابزارها"
+
 msgid "Files"
 msgstr "فایل‌ها"
 

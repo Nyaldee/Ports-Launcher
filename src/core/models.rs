@@ -1,4 +1,3 @@
-
 use serde_json::Value;
 
 fn find_ascii_ci(haystack: &str, needle: &str) -> Option<usize> {
@@ -120,6 +119,32 @@ impl Port {
     }
 }
 
+#[derive(Debug, Clone)]
+pub struct Tool {
+    pub name: String,
+    pub tags_lower: Vec<String>,
+    pub source: String,
+}
+
+impl Tool {
+    pub fn from_value(d: &Value) -> Option<Tool> {
+        let obj = d.as_object()?;
+        let string = |key: &str| obj.get(key).and_then(Value::as_str).map(str::to_string);
+        Some(Tool {
+            name: string("name")?,
+            tags_lower: tags_lower(obj),
+            source: string("source")?,
+        })
+    }
+}
+
+fn tags_lower(obj: &serde_json::Map<String, Value>) -> Vec<String> {
+    obj.get("tags")
+        .and_then(Value::as_array)
+        .map(|arr| arr.iter().filter_map(Value::as_str).map(super::search::normalize).collect())
+        .unwrap_or_default()
+}
+
 #[derive(Debug)]
 pub struct PortParseError;
 
@@ -137,14 +162,10 @@ pub fn port_from_value(d: &Value) -> Result<Port, PortParseError> {
         }
         Some(_) => return Err(PortParseError),
     };
-    let tags_lower = obj
-        .get("tags")
-        .and_then(Value::as_array)
-        .map(|arr| arr.iter().filter_map(Value::as_str).map(str::to_lowercase).collect())
-        .unwrap_or_default();
+    let tags_lower = tags_lower(obj);
 
     Ok(Port {
-        name_lower: name.to_lowercase(),
+        name_lower: super::search::normalize(&name),
         name,
         tags_lower,
         source,

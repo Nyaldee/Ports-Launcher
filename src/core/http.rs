@@ -1,4 +1,3 @@
-
 use std::time::Duration;
 
 const USER_AGENT: &str = concat!("Ports-Launcher/", env!("APP_BUILD_DATE"));

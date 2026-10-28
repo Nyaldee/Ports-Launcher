@@ -74,22 +74,27 @@ Ports Launcher gère deux mécanismes de sauvegarde séparés, tous deux basés 
 
 ## Réglages
 
-Ouvre-le depuis le bouton **◯** de la barre de titre — un menu avec **Thèmes**, **Langue**, **Fichiers**, **Bibliothèque**, **Copie de sauvegardes**, **Vérifier les mises à jour**, **Forcer la mise à jour**, et **Discord Rich Presence**.
+Ouvre-le depuis le bouton **◯** de la barre de titre — un menu avec **Thèmes**, **Langue**, **Outils**, **Fichiers**, **Bibliothèque**, **Copie de sauvegardes**, **Vérifier les mises à jour**, **Forcer la mise à jour**, **Discord Rich Presence**, et **Custom Rich Presence**.
 
-- **Thèmes** et **Langue** ouvrent tous les deux le même type de sélecteur cherchable de façon floue et en direct. Pour Thèmes, déplacer la sélection (survol souris, ou `↑`/`↓`/le stick de la manette) prévisualise instantanément sur toute l'appli ; valider réécrit directement dans `themes.json`, et fermer sans valider (`Échap`) revient au thème actif avant l'ouverture. Langue change la langue de l'interface immédiatement à la sélection, sans redémarrage.
+- **Thèmes**, **Langue** et **Outils** ouvrent tous le même type de sélecteur cherchable de façon floue et en direct. Pour Thèmes, déplacer la sélection (survol souris, ou `↑`/`↓`/le stick de la manette) prévisualise instantanément sur toute l'appli ; valider réécrit directement dans `themes.json`, et fermer sans valider (`Échap`) revient au thème actif avant l'ouverture. Langue change la langue de l'interface immédiatement à la sélection, sans redémarrage.
+- **Outils** liste des outils externes pratiques pour préparer les fichiers demandés par les ports (archiveurs, patcheurs, extracteurs de disques, convertisseurs...), cherchables par nom ou par tag (`patcher`, `psp`, `360`...). En choisir un ouvre sa page dans le navigateur — tu le télécharges et l'installes toi-même. La liste vient de la section `"tools"` de `ports.json`, elle suit donc les mises à jour du catalogue.
 - **Fichiers** ouvre des raccourcis vers `ports.json`, `ports.local.json`, `state.json` et `themes.json`, sans effet si le fichier n'existe pas encore.
 - **Bibliothèque** ouvre directement ce dossier dans l'Explorateur.
 - **Copie de sauvegardes** lance un export complet des sauvegardes de tout le catalogue vers un `.zip` daté (voir [Sauvegardes de jeux](#sauvegardes-de-jeux) plus haut), avec une fenêtre de progression pendant la copie.
 - **Vérifier les mises à jour** bascule activé/désactivé directement dans le menu — coupe toutes les vérifications de mise à jour d'un coup (celles du launcher ET de chaque port installé au moment du **Jouer**), pour qui préfère tout mettre à jour à la main.
 - **Forcer la mise à jour** relance l'updater du launcher tout de suite, sans vérifier au préalable qu'une nouvelle version existe réellement — pour qui ne veut pas attendre la vérification périodique (ou l'a désactivée juste au-dessus).
 - **Discord Rich Presence** bascule On/Off directement dans le menu, désactivé par défaut — affiche le jeu auquel tu joues sur ton statut Discord tant qu'il tourne, et s'efface dès sa fermeture.
+- **Custom Rich Presence** bascule On/Off directement dans le menu, désactivé par défaut — affiche ton propre statut à la place, tant que Ports Launcher tourne, avec le temps écoulé et le bouton **Ports Launcher** ; les jeux n'affichent plus leur propre présence tant qu'il est activé. Son texte et son icône se règlent dans `state.json` (Ports Launcher fermé, sinon ta modification est écrasée) :
 
-## Outils utiles
+  ```json
+  "custom_presence": {
+    "enabled": true,
+    "text": "Ton texte",
+    "icon": "https://... (adresse d'image publique, facultative)"
+  }
+  ```
 
-Deux outils externes reviennent régulièrement dans les instructions **Required files** de `ports.json`, pour préparer tes propres données de jeu avant de les pointer vers un port :
-
-- **[7-Zip](https://github.com/ip7z/7zip)** — une version minimale (ligne de commande) est fournie avec Ports Launcher, mais uniquement pour extraire en interne les releases des ports ; récupère la version classique séparément pour gérer des archives au besoin.
-- **[extract-xiso](https://github.com/XboxDev/extract-xiso)** — pas fourni avec Ports Launcher, à récupérer séparément : sert à extraire les assets de tes dumps Xbox/Xbox 360 que tu possèdes.
+  Sans `text`, il ne fait rien et les jeux gardent leur présence habituelle. **Discord Rich Presence** doit aussi être activé.
 
 ## Configuration
 
@@ -115,7 +120,7 @@ Tu peux aussi y ajouter une clé `"github_token"`/`"gitlab_token"` à la main po
 
 - [SteamGridDB](https://www.steamgriddb.com/) pour les visuels de boîte utilisés par les entrées du catalogue
 - Les créateurs des recomps/source-ports catalogués dans `ports.json` — sans leur travail, souvent des mois de rétro-ingénierie bénévole, rien de tout ça n'existerait
-- [7-Zip](https://github.com/ip7z/7zip) et [extract-xiso](https://github.com/XboxDev/extract-xiso), les deux outils externes utilisés/recommandés pour préparer les fichiers requis (voir [Outils utiles](#outils-utiles))
+- [7-Zip](https://github.com/ip7z/7zip), dont une version minimale en ligne de commande est fournie avec Ports Launcher pour extraire les releases des ports
 
 Construit avec [Claude](https://claude.com) (l'assistant de code IA d'Anthropic).
 

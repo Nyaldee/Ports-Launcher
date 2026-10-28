@@ -1,4 +1,3 @@
-
 use crate::AppWindow;
 use slint::ComponentHandle;
 

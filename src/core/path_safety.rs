@@ -1,4 +1,3 @@
-
 use std::path::{Component, Path, PathBuf};
 
 fn lexical_normalize(path: &Path) -> PathBuf {

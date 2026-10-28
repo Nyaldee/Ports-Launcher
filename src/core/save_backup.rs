@@ -1,4 +1,3 @@
-
 use super::installer::{run_7z, sevenzip_exe_path};
 use super::models::Port;
 use super::path_safety::{is_within, safe_join};

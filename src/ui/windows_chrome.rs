@@ -1,4 +1,3 @@
-
 use std::cell::OnceCell;
 use windows::core::{PCSTR, PCWSTR};
 use windows::Win32::Foundation::{CloseHandle, GetLastError, ERROR_ALREADY_EXISTS, HANDLE, HWND, LPARAM, POINT, WAIT_OBJECT_0, WPARAM};
@@ -277,8 +276,6 @@ pub fn register_desktop_entry() {}
 mod tests {
     #[test]
     fn default_font_family_renvoie_une_police() {
-        let family = super::default_font_family();
-        println!("police système : {family}");
-        assert!(!family.is_empty());
+        assert!(!super::default_font_family().is_empty());
     }
 }

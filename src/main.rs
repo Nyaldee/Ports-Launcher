@@ -187,6 +187,7 @@ fn main() {
             running_processes: RefCell::new(HashMap::new()),
             launch_started_at: RefCell::new(HashMap::new()),
             discord_presence: RefCell::new(HashMap::new()),
+            custom_presence: RefCell::new(None),
             pending_launch_after_install: RefCell::new(HashSet::new()),
             minimized_for_game: Cell::new(false),
         },
@@ -194,8 +195,7 @@ fn main() {
             dialogs: RefCell::new(DialogSlot::None),
             picker_index: Cell::new(0),
             info_nav_index: Cell::new(0),
-            confirm_nav_index: Cell::new(0),
-            error_nav_index: Cell::new(0),
+            two_button_nav_index: Cell::new(0),
             info_dialog_port_key: RefCell::new(None),
         },
         cheats: Default::default(),
@@ -215,6 +215,7 @@ fn main() {
         repeat(Duration::from_millis(100), move || poll_app_events(&app, &router))
     };
 
+    app.refresh_custom_presence();
     start_self_update_check(&app);
     start_catalog_sync(&app);
     start_themes_sync(&app);
@@ -247,6 +248,13 @@ fn wire_main_window(window: &AppWindow, app: &Rc<AppState>, router: &Rc<RefCell<
     }
 
     window.on_search_changed(with!(app => move |query| {
+        let query = match core::search::truncate_query(&query) {
+            Some(cut) => {
+                app.window().invoke_set_search(cut.as_str().into());
+                cut.into()
+            }
+            None => query,
+        };
         let query = if app::cheats::search_changed(&app, &query) { Default::default() } else { query };
         *app.windowed_nav.search_query.borrow_mut() = query.to_string();
         app.refresh_current_view();

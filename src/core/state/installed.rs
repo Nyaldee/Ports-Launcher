@@ -1,4 +1,3 @@
-
 use super::{now_timestamp, StateManager};
 use crate::core::models::InstalledInfo;
 

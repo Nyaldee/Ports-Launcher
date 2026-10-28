@@ -1,4 +1,3 @@
-
 pub const CARD_WIDTH: f32 = 200.0;
 pub const CARD_HEIGHT: f32 = 300.0;
 pub const CARD_SPACING: f32 = 14.0;

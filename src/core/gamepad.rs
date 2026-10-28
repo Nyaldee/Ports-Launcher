@@ -1,4 +1,3 @@
-
 use gilrs::{Axis, Button, Gilrs};
 
 #[derive(Debug, Clone, Copy, Default, PartialEq)]

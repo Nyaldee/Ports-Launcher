@@ -75,6 +75,9 @@ msgstr "Bahasa"
 msgid "Themes"
 msgstr "Tema"
 
+msgid "Tools"
+msgstr "Alat"
+
 msgid "Files"
 msgstr "Berkas"
 

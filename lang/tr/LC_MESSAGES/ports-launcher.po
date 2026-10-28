@@ -75,6 +75,9 @@ msgstr "Dil"
 msgid "Themes"
 msgstr "Temalar"
 
+msgid "Tools"
+msgstr "Araçlar"
+
 msgid "Files"
 msgstr "Dosyalar"
 

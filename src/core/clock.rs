@@ -1,4 +1,3 @@
-
 #[cfg(target_os = "windows")]
 pub fn format_now() -> String {
     use windows::core::PCWSTR;

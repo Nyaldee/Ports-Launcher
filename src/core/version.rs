@@ -1,4 +1,3 @@
-
 pub const APP_VERSION: &str = env!("APP_BUILD_DATE");
 
 pub const SELF_REPO: &str = "Nyaldee/Ports-Launcher";

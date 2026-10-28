@@ -75,6 +75,9 @@ msgstr "Idioma"
 msgid "Themes"
 msgstr "Temas"
 
+msgid "Tools"
+msgstr "Ferramentas"
+
 msgid "Files"
 msgstr "Arquivos"
 

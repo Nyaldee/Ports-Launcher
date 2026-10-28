@@ -1,4 +1,3 @@
-
 use super::dialogs::{apply_theme, preview_colors};
 use super::state::AppState;
 use crate::ui::theme::ThemeColors;

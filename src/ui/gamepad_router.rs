@@ -1,4 +1,3 @@
-
 use crate::core::gamepad::{GamepadPoller, GamepadState};
 use crate::app::cheats::CheatInput;
 use std::rc::Rc;

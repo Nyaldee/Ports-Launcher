@@ -1,4 +1,3 @@
-
 const GUTTER: i32 = 12;
 const BIG_MODE_SCALE: f64 = 1.6;
 const MAX_SCREEN_FRACTION: f64 = 0.9;
@@ -71,7 +70,7 @@ pub fn message_dialog_size(
 }
 
 #[allow(clippy::too_many_arguments)]
-pub fn error_dialog_size(
+pub fn two_button_dialog_size(
     work_w: i32,
     work_h: i32,
     family: &str,

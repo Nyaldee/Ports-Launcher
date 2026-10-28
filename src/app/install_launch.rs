@@ -1,9 +1,9 @@
-
 use super::dialogs::{dialog_is_open, open_error_dialog, open_info_dialog, open_message_dialog, open_picker_dialog, open_progress_dialog, open_update_toggle_dialog, tr};
 use super::events::{lock, AppEvent};
 use super::playtime::is_port_running;
 use super::state::AppState;
 use crate::core::executable_detect::ExecutableSelectionError;
+use crate::core::forge::Forge;
 use crate::core::installer::{InstallOverrides, InstallPaths};
 use crate::core::jobs::InstallOutcome;
 use crate::core::models::{Port, SourceType};
@@ -85,12 +85,11 @@ pub(crate) fn open_version_picker(app: &Rc<AppState>, router: &Router, port: Por
     let (github_token, gitlab_token) = app.api_tokens();
     let events = app.events.clone();
     let repo = port.repo.clone().unwrap_or_default();
-    let source_type = port.source_type;
+    let forge = Forge::of(port.source_type);
     std::thread::spawn(move || {
-        let result = match source_type {
-            SourceType::Github => crate::core::github_api::list_releases(&repo, github_token.as_deref(), VERSION_CHOICES),
-            SourceType::Gitlab => crate::core::gitlab_api::list_releases(&repo, gitlab_token.as_deref(), VERSION_CHOICES),
-            SourceType::DirectUrl | SourceType::None => Ok(Vec::new()),
+        let result = match forge {
+            Some(forge) => forge.list_releases(&repo, forge.token(github_token.as_deref(), gitlab_token.as_deref()), VERSION_CHOICES),
+            None => Ok(Vec::new()),
         };
         let event = match result {
             Ok(releases) if !releases.is_empty() => AppEvent::VersionsFetched { key, releases },
@@ -148,7 +147,11 @@ fn launch_executable(app: &Rc<AppState>, router: &Router, port: &Port, exe: &Pat
     let runtime = &app.install_runtime;
     runtime.running_processes.borrow_mut().insert(key.clone(), child);
     runtime.launch_started_at.borrow_mut().insert(key.clone(), Instant::now());
-    if app.state.borrow().discord_rpc_enabled {
+    let show_game_presence = {
+        let state = app.state.borrow();
+        state.discord_rpc_enabled && !state.custom_presence_active()
+    };
+    if show_game_presence {
         let large_image = port.icon.clone().or_else(|| port.image.clone());
         let handle = crate::core::discord_presence::start(port.display_name().to_string(), port.folder.clone(), large_image);
         runtime.discord_presence.borrow_mut().insert(key, handle);

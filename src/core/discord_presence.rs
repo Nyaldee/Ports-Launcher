@@ -1,4 +1,3 @@
-
 use super::version::PROJECT_URL;
 use discord_rich_presence::activity::{Activity, ActivityType, Assets, Button, Timestamps};
 use discord_rich_presence::{DiscordIpc, DiscordIpcClient};
@@ -9,6 +8,8 @@ use std::time::{Duration, SystemTime, UNIX_EPOCH};
 const CLIENT_ID: &str = "1548801841557541065";
 
 const POLL_INTERVAL: Duration = Duration::from_millis(500);
+const START_DELAY: Duration = Duration::from_secs(1);
+const REFRESH_INTERVAL: Duration = Duration::from_secs(15);
 
 const SMALL_IMAGE_KEY: &str = "icon_discord_apps";
 
@@ -38,35 +39,71 @@ impl PresenceHandle {
 }
 
 pub(crate) fn start(game_name: String, folder: String, large_image: Option<String>) -> PresenceHandle {
-    let game_name = truncate_for_discord(&game_name);
-    let folder = truncate_for_discord(&folder);
+    start_activity(game_name, Some(folder), large_image)
+}
+
+pub(crate) fn start_custom(text: String, icon_url: Option<String>) -> PresenceHandle {
+    start_activity(text, None, icon_url)
+}
+
+fn sleep_until_stopped(stop: &AtomicBool, duration: Duration) -> bool {
+    let mut waited = Duration::ZERO;
+    while waited < duration {
+        if stop.load(Ordering::Relaxed) {
+            return true;
+        }
+        std::thread::sleep(POLL_INTERVAL);
+        waited += POLL_INTERVAL;
+    }
+    stop.load(Ordering::Relaxed)
+}
+
+fn start_activity(name: String, details: Option<String>, large_image: Option<String>) -> PresenceHandle {
+    let name = truncate_for_discord(&name);
+    let details = details.map(|d| truncate_for_discord(&d));
     let stop = Arc::new(AtomicBool::new(false));
     let stop_thread = stop.clone();
 
     std::thread::spawn(move || {
-        let mut client = DiscordIpcClient::new(CLIENT_ID);
-        if client.connect().is_err() {
+        let started_at = now_unix();
+        if sleep_until_stopped(&stop_thread, START_DELAY) {
             return;
         }
-
-        let mut assets = Assets::new();
-        if let Some(image_url) = large_image.as_deref() {
-            assets = assets.large_image(image_url).large_text(&game_name).small_image(SMALL_IMAGE_KEY).small_text("Ports Launcher");
+        let mut client: Option<DiscordIpcClient> = None;
+        loop {
+            if client.is_none() {
+                let mut fresh = DiscordIpcClient::new(CLIENT_ID);
+                if fresh.connect().is_ok() {
+                    client = Some(fresh);
+                }
+            }
+            if let Some(connected) = client.as_mut() {
+                let mut assets = Assets::new();
+                if let Some(image_url) = large_image.as_deref() {
+                    assets = assets.large_image(image_url).large_text(&name).small_image(SMALL_IMAGE_KEY).small_text("Ports Launcher");
+                }
+                let mut activity = Activity::new()
+                    .activity_type(ActivityType::Playing)
+                    .name(&name)
+                    .timestamps(Timestamps::new().start(started_at))
+                    .assets(assets)
+                    .buttons(vec![Button::new("Ports Launcher", PROJECT_URL)]);
+                if let Some(details) = details.as_deref() {
+                    activity = activity.details(details);
+                }
+                if connected.set_activity(activity).is_err() {
+                    let _ = connected.close();
+                    client = None;
+                }
+            }
+            if sleep_until_stopped(&stop_thread, REFRESH_INTERVAL) {
+                break;
+            }
         }
-        let activity = Activity::new()
-            .activity_type(ActivityType::Playing)
-            .name(&game_name)
-            .details(&folder)
-            .timestamps(Timestamps::new().start(now_unix()))
-            .assets(assets)
-            .buttons(vec![Button::new("Ports Launcher", PROJECT_URL)]);
-        let _ = client.set_activity(activity);
-
-        while !stop_thread.load(Ordering::Relaxed) {
-            std::thread::sleep(POLL_INTERVAL);
+        if let Some(mut connected) = client {
+            let _ = connected.clear_activity();
+            let _ = connected.close();
         }
-        let _ = client.clear_activity();
-        let _ = client.close();
     });
 
     PresenceHandle { stop }

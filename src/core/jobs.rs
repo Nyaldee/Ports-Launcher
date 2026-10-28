@@ -1,8 +1,7 @@
-
+use super::forge::Forge;
 use super::installer::{self, InstallError, InstallOverrides, InstallPaths};
-use super::models::{Port, SourceType};
+use super::models::Port;
 use super::platform_resolve::resolve_preferred_asset;
-use super::{github_api, gitlab_api};
 use serde_json::Value;
 use std::path::Path;
 
@@ -40,14 +39,10 @@ pub fn run_update_check(
     github_token: Option<&str>,
     gitlab_token: Option<&str>,
 ) -> bool {
+    let Some(forge) = Forge::of(port.source_type) else { return false };
     let repo = port.repo.as_deref().unwrap_or_default();
     let preferred = port.preferred_asset.as_ref().and_then(resolve_preferred_asset);
-    let preferred = preferred.as_deref();
-    let latest = match port.source_type {
-        SourceType::Github => github_api::fetch_latest_tag_and_date(repo, github_token, preferred),
-        SourceType::Gitlab => gitlab_api::fetch_latest_tag_and_date(repo, gitlab_token, preferred),
-        SourceType::DirectUrl | SourceType::None => return false,
-    };
+    let latest = forge.fetch_latest_tag_and_date(repo, forge.token(github_token, gitlab_token), preferred.as_deref());
     latest.is_ok_and(|(tag, date)| update_decision(installed_tag, installed_at, &tag, date.as_deref()))
 }
 

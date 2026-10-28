@@ -1343,10 +1343,11 @@
       "save": "saves"
     },{
       "name": "F-Zero GX (F-ZERO-GLINUX)",
-      "tags": ["gc", "racing"],
+      "tags": ["quality", "gc", "racing"],
       "source": "https://github.com/Mabec-games/F-ZERO-GLINUX",
       "folder": "F-ZERO-GLINUX",
-      "instructions": "Required files: F-ZERO GX USA (GFZE01)",
+      "instructions": "Required files: F-Zero GX (USA).rvz (CRC32: 9195CB57)",
+      "mods": "https://forums.dolphin-emu.org/Thread-f-zero-gx-hd-ai-05-01-2022",
       "image": "https://cdn2.steamgriddb.com/grid/c8b79b414976ddca72cb73582ac889d3.png",
       "icon": "https://cdn2.steamgriddb.com/icon/a2ad21422707bdf0ac074f80b4c67181.png",
       "save": {
@@ -1363,7 +1364,7 @@
       "image": "https://cdn2.steamgriddb.com/grid/652e2fd3b2fa943f2b4ff310e419d7f2.png",
       "icon": "https://cdn2.steamgriddb.com/icon/45f71a702b70bc7415bcd9fcc790e551/32/256x256.png",
       "save": "saves",
-      "extra": "https://raw.githubusercontent.com/Nyaldee/Ports-Launcher/main/extra/G-Diffuser"
+      "extra": "https://github.com/Nyaldee/Ports-Launcher-Extras/releases/download/ports/G-Diffuser.zip"
     },{
       "name": "Fable II (Fable-2-Recomp)",
       "tags": ["360", "rpg"],
@@ -1901,7 +1902,7 @@
       "image": "https://cdn2.steamgriddb.com/grid/ad7bd21ea211a539896e40e449cdfd14.png",
       "icon": "https://cdn2.steamgriddb.com/icon/7a20fd764fa23d34b52bd85bf5cb49a6.png",
       "save": "%APPDATA%\\OpenGOAL",
-      "extra": "https://raw.githubusercontent.com/Nyaldee/Ports-Launcher/main/extra/jak-project/OpenGOAL_Launcher.bat"
+      "extra": "https://github.com/Nyaldee/Ports-Launcher-Extras/releases/download/ports/jak-project.zip"
     },{
       "name": "Jet Force Gemini (JetForceGemini-Recomp)",
       "tags": ["n64", "action-adventure"],
@@ -2570,20 +2571,20 @@
       "image": "https://cdn2.steamgriddb.com/grid/4530638519a69fd40e9d81aab74d63a1.png",
       "icon": "https://cdn2.steamgriddb.com/icon/5968fcb00017d7ca69fc4d324e273ed5/32/256x256.png"
     },{
-      "name": "NANACA†CRASH!! (nanaca-dokuro-ports)",
-      "tags": ["quality", "nyaldee", "flash", "android", "ps2", "cross channel", "dokuro", "arcade"],
-      "source": "https://github.com/Nyaldee/nanaca-dokuro-ports",
-      "folder": "nanaca-dokuro-ports",
+      "name": "NANACA†CRASH!! (nanaca-crash)",
+      "tags": ["quality", "nyaldee", "flash", "android", "cross channel"],
+      "source": "https://github.com/Nyaldee/nanaca-crash",
+      "folder": "nanaca-crash",
       "instructions": "Required files: NANACA†CRASH!! v1.10 (Flash, swf), NANACA†CRASH!! v1.2.0 (Android, apk), Game ni Natta yo - Dokuro-chan Kenkou Shindan Daisakusen (Japan) (PS2, ISO) (CRC32: 53A65665/BCBAB1C3/B9F5F0C5)",
       "image": "https://cdn2.steamgriddb.com/grid/13dd4e9c740391e242cf8b084b43f7e1.png",
       "icon": "https://cdn2.steamgriddb.com/icon/9b7c8d13e4b2f08895fb7bcead930b46/32/512x512.png",
       "save": {
-        "windows": "%USERPROFILE%\\Documents\\Nanaca Crash Flash",
-        "linux": "~/.local/share/Nanaca Crash Flash"
+        "windows": "%USERPROFILE%\\Documents\\My Games\\Nanaca Crash",
+        "linux": "~/.local/share/My Games/Nanaca Crash"
       },
       "save2": {
-        "windows": "%USERPROFILE%\\Documents\\Nanaca Crash Android",
-        "linux": "~/.local/share/Nanaca Crash Android"
+        "windows": "saves",
+        "linux": "saves"
       }
     },{
       "name": "Nanosaur",
@@ -2791,7 +2792,7 @@
       }
     },{
       "name": "Panzer Dragoon Saga (pds-recompile)",
-      "tags": ["saturn", "rpg"],
+      "tags": ["saturn", "rpg", "emucomp"],
       "source": "https://www.yabasanshiro.com/api/builder-url",
       "folder": "pds-recompile",
       "instructions": "Required files: Saturn discs (Japanese GS-9076 V1.001, or Panzer Dragoon Saga MK-81307 US / Europe) as .cue/.bin, .chd or .iso images.",
@@ -3855,7 +3856,7 @@
         "android": "Android/data/com.maniscat2.sm64coopdx/files"
       },
       "save2": "saves",
-      "extra": "https://raw.githubusercontent.com/Nyaldee/Ports-Launcher/main/extra/sm64coopdx"
+      "extra": "https://github.com/Nyaldee/Ports-Launcher-Extras/releases/download/ports/sm64coopdx.zip"
     },{
       "-name": "Super Mario 64 DS (sm64ds-decomp)",
       "tags": ["ds", "platformer"],
@@ -4226,7 +4227,7 @@
     },{
       "name": "The Legend of Zelda: A Link to the Past (zelda3-PL)",
       "tags": ["nyaldee", "snes", "action-adventure"],
-      "source": "https://raw.githubusercontent.com/Nyaldee/Ports-Launcher/main/extra/zelda3-PL/zelda3-PL.zip",
+      "source": "https://github.com/Nyaldee/Ports-Launcher-Extras/releases/download/ports/zelda3-PL.zip",
       "android_source": "https://github.com/Waterdish/zelda3-android",
       "android_package": "com.dishii.zelda3",
       "folder": "zelda3-PL",
@@ -4237,7 +4238,7 @@
         "windows": "saves",
         "android": "Android/data/com.dishii.zelda3/files"
       },
-      "extra": "https://raw.githubusercontent.com/Nyaldee/Ports-Launcher/main/extra/zelda3-PL/zelda3-redux-ja-zh-pt-ga-pl-fr-zelda3_assets.dat.rip"
+      "extra": "https://github.com/Nyaldee/Ports-Launcher-Extras/releases/download/ports/zelda3-redux-ja-zh-pt-ga-pl-fr-zelda3_assets.dat.rip"
     },{
       "-name": "The Legend of Zelda: Breath of the Wild (BotW-Native)",
       "tags": ["switch", "action-adventure", "multilingual"],
@@ -4298,7 +4299,8 @@
         "windows": "Save",
         "linux": "Save",
         "android": "/sdcard/2S2H"
-      }
+      },
+      "extra": "https://github.com/Nyaldee/Ports-Launcher-Extras/releases/download/ports/2ship2harkinian.zip"
     },{
       "name": "The Legend of Zelda: Majora's Mask (Zelda64Recomp)",
       "tags": ["n64", "action-adventure"],
@@ -4341,7 +4343,7 @@
         "linux": "Save",
         "android": "/sdcard/SOH"
       },
-      "extra": "https://raw.githubusercontent.com/Nyaldee/Ports-Launcher/main/extra/Shipwright/"
+      "extra": "https://github.com/Nyaldee/Ports-Launcher-Extras/releases/download/ports/Shipwright.zip"
     },{
       "name": "The Legend of Zelda: Ocarina of Time 3D (TriAevum)",
       "tags": ["3ds", "action-adventure", "multilingual"],
@@ -4977,6 +4979,85 @@
       "exe_is_archive": "optional -- anchor filename (any extension, not necessarily .exe) to locate inside the extracted archive when it isn't a plain top-level game folder (e.g. an NSIS installer, a zip-disguised-as-exe)",
       "preferred_asset": "optional -- substring to prefer when picking a GitHub/GitLab release asset, string or per-platform object like \"executable\"/\"save\"",
       "extra": "optional -- URL of a supplementary file/archive downloaded and merged into the folder AFTER the main install; silently ignored on failure"
+    }
+  ],
+  "tools": [
+    {
+      "name": "7-Zip (file archiver)",
+      "tags": ["archive"],
+      "source": "https://github.com/ip7z/7zip"
+    },{
+      "name": "Dear ImGui",
+      "tags": ["dev", "ui"],
+      "source": "https://github.com/ocornut/imgui"
+    },{
+      "name": "Extract XISO (Xbox 360)",
+      "tags": ["360", "xbox", "extractor"],
+      "source": "https://github.com/XboxDev/extract-xiso"
+    },{
+      "name": "FFDec (Flash SWF)",
+      "tags": ["flash", "decompiler"],
+      "source": "https://github.com/jindrapetrik/jpexs-decompiler"
+    },{
+      "name": "Flips (IPS/BPS patcher)",
+      "tags": ["patcher"],
+      "source": "https://github.com/Alcaro/Flips"
+    },{
+      "name": "GARbro (Visual Novel)",
+      "tags": ["visual novel", "extractor"],
+      "source": "https://github.com/morkt/garbro"
+    },{
+      "name": "Ghidra",
+      "tags": ["dev", "decompiler"],
+      "source": "https://github.com/nationalsecurityagency/ghidra"
+    },{
+      "name": "maxcso (PSP/PS2 CSO converter)",
+      "tags": ["psp", "ps2", "converter"],
+      "source": "https://github.com/unknownbrackets/maxcso"
+    },{
+      "name": "N64: Recompiled",
+      "tags": ["n64", "dev"],
+      "source": "https://github.com/N64Recomp/N64Recomp"
+    },{
+      "name": "PS3 Disc Dumper",
+      "tags": ["ps3", "dumper"],
+      "source": "https://github.com/13xforever/ps3-disc-dumper"
+    },{
+      "name": "recomp.fyi (recomp list)",
+      "tags": ["recomp", "list"],
+      "source": "https://recomp.fyi/"
+    },{
+      "name": "ReXGlue SDK (Xbox 360)",
+      "tags": ["360", "dev"],
+      "source": "https://github.com/rexglue/rexglue-sdk"
+    },{
+      "name": "Rom Patcher JS (patcher)",
+      "tags": ["patcher"],
+      "source": "https://github.com/marcrobledo/RomPatcher.js"
+    },{
+      "name": "ShadPs4Plus PKG Extractor (PlayStation 4)",
+      "tags": ["ps4", "extractor"],
+      "source": "https://github.com/AzaharPlus/shadPS4Plus"
+    },{
+      "name": "Solar RIP (rip patcher)",
+      "tags": ["patcher"],
+      "source": "https://github.com/Nyaldee/Ports-Launcher-Extras/releases/download/tools/solar_rip.exe"
+    },{
+      "name": "UMDGen.exe (PSP)",
+      "tags": ["psp"],
+      "source": "https://github.com/Nyaldee/Ports-Launcher-Extras/releases/download/tools/UMDGen.exe"
+    },{
+      "name": "vgmstream (extractor)",
+      "tags": ["audio", "extractor"],
+      "source": "https://github.com/vgmstream/vgmstream"
+    },{
+      "name": "Wheel Wizard (Mario Kart Mod Manager)",
+      "tags": ["wii", "mod manager"],
+      "source": "https://github.com/TeamWheelWizard/WheelWizard"
+    },{
+      "name": "xdelta UI (xdelta patcher)",
+      "tags": ["patcher"],
+      "source": "https://github.com/dan0v/xdelta3-cross-gui"
     }
   ]
 }

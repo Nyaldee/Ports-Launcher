@@ -1,4 +1,3 @@
-
 use super::dialogs::DialogSlot;
 use super::state::AppState;
 use crate::Tr;

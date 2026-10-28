@@ -1,4 +1,3 @@
-
 use super::path_safety::safe_join;
 use std::path::{Path, PathBuf};
 use std::time::Duration;

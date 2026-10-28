@@ -1,5 +1,4 @@
-
-use super::asset_select::{self, pick_asset, AssetSelectionError, RECENT_RELEASES_DEPTH};
+use super::asset_select::{pick_asset, AssetSelectionError};
 use super::http::api_agent;
 use serde_json::Value;
 
@@ -57,30 +56,6 @@ fn release_assets(release: &Value) -> Vec<Value> {
 
 pub fn pick_release_asset(release: &Value, preferred: Option<&str>) -> Result<Value, AssetSelectionError> {
     pick_asset(&release_assets(release), preferred)
-}
-
-pub fn most_recent_release(project_path: &str, token: Option<&str>) -> Result<Value, AssetSelectionError> {
-    list_releases(project_path, token, 1)?
-        .into_iter()
-        .next()
-        .ok_or_else(|| AssetSelectionError::Message(format!("No release found for {project_path}.")))
-}
-
-pub fn latest_installable_release(project_path: &str, token: Option<&str>, preferred: Option<&str>) -> Result<(Value, Value), AssetSelectionError> {
-    let releases = list_releases(project_path, token, RECENT_RELEASES_DEPTH)?;
-    asset_select::latest_installable_release(releases, preferred, pick_release_asset)
-}
-
-pub fn fetch_latest_tag_and_date(project_path: &str, token: Option<&str>, preferred: Option<&str>) -> Result<(String, Option<String>), AssetSelectionError> {
-    let releases = list_releases(project_path, token, RECENT_RELEASES_DEPTH)?;
-    let (release, _) = asset_select::release_for_update_check(releases, preferred, pick_release_asset)?;
-    let latest_tag = release.get("tag_name").and_then(Value::as_str).unwrap_or("").to_string();
-    let latest_date = release
-        .get("released_at")
-        .or_else(|| release.get("created_at"))
-        .and_then(Value::as_str)
-        .map(str::to_string);
-    Ok((latest_tag, latest_date))
 }
 
 #[cfg(test)]

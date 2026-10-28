@@ -1,4 +1,3 @@
-
 use super::cards::build_card_rows;
 use super::dialogs::DialogSlot;
 use super::events::{lock, AppEvent};
@@ -59,6 +58,7 @@ pub(crate) struct InstallRuntime {
     pub(crate) running_processes: RefCell<HashMap<String, crate::core::launch::LaunchedProcess>>,
     pub(crate) launch_started_at: RefCell<HashMap<String, Instant>>,
     pub(crate) discord_presence: RefCell<HashMap<String, crate::core::discord_presence::PresenceHandle>>,
+    pub(crate) custom_presence: RefCell<Option<crate::core::discord_presence::PresenceHandle>>,
     pub(crate) pending_launch_after_install: RefCell<HashSet<String>>,
     pub(crate) minimized_for_game: Cell<bool>,
 }
@@ -67,8 +67,7 @@ pub(crate) struct DialogNav {
     pub(crate) dialogs: RefCell<DialogSlot>,
     pub(crate) picker_index: Cell<i32>,
     pub(crate) info_nav_index: Cell<i32>,
-    pub(crate) confirm_nav_index: Cell<i32>,
-    pub(crate) error_nav_index: Cell<i32>,
+    pub(crate) two_button_nav_index: Cell<i32>,
     pub(crate) info_dialog_port_key: RefCell<Option<String>>,
 }
 
@@ -123,6 +122,23 @@ impl AppState {
         tray.set_recent_games(slint::ModelRc::new(slint::VecModel::from(games)));
     }
 
+    pub(crate) fn refresh_custom_presence(&self) {
+        let runtime = &self.install_runtime;
+        if let Some(handle) = runtime.custom_presence.borrow_mut().take() {
+            handle.stop();
+        }
+        let state = self.state.borrow();
+        if !state.custom_presence_active() {
+            return;
+        }
+        for (_, handle) in runtime.discord_presence.borrow_mut().drain() {
+            handle.stop();
+        }
+        let text = state.custom_presence_text.trim().to_string();
+        let icon = Some(state.custom_presence_icon.trim()).filter(|u| crate::core::launch::is_web_url(u)).map(str::to_string);
+        *runtime.custom_presence.borrow_mut() = Some(crate::core::discord_presence::start_custom(text, icon));
+    }
+
     pub(crate) fn api_tokens(&self) -> (Option<String>, Option<String>) {
         let s = self.state.borrow();
         (s.github_token.clone(), s.gitlab_token.clone())
@@ -139,7 +155,7 @@ impl AppState {
     }
 
     fn filter_for_display(&self, ports: Vec<&Port>, query: &str) -> Vec<Port> {
-        let mut ranked = crate::core::search::filter_and_sort(&ports, query);
+        let mut ranked = crate::core::search::filter_and_sort(ports, query, |p| (p.name_lower.as_str(), p.tags_lower.as_slice()));
         if query.trim().is_empty() {
             let state = self.state.borrow();
             let last_played = |p: &Port| state.get(p.key()).map(|i| i.last_played_at.clone()).unwrap_or_default();

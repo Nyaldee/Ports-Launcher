@@ -1,5 +1,4 @@
-
-use super::models::{port_from_value, Port};
+use super::models::{port_from_value, Port, Tool};
 use std::fmt;
 use std::fs;
 use std::path::Path;
@@ -60,6 +59,13 @@ pub fn load_local_config(path: &Path) -> Vec<Port> {
         .collect()
 }
 
+pub fn load_tools(path: &Path) -> Vec<Tool> {
+    let Ok(text) = fs::read_to_string(path) else { return Vec::new() };
+    let Ok(data) = serde_json::from_str::<serde_json::Value>(strip_bom(&text)) else { return Vec::new() };
+    let Some(raw_tools) = data.get("tools").and_then(serde_json::Value::as_array) else { return Vec::new() };
+    raw_tools.iter().filter_map(Tool::from_value).collect()
+}
+
 pub fn merge_local_catalog(mut main: Vec<Port>, local: Vec<Port>) -> Vec<Port> {
     for port in local {
         main.retain(|p| p.folder != port.folder);
@@ -77,6 +83,30 @@ mod tests {
         path.push(format!("ports_launcher_config_test_{}_{}.json", std::process::id(), name));
         fs::write(&path, contents).unwrap();
         path
+    }
+
+    #[test]
+    fn load_tools_ignore_le_modele_et_les_entrees_incompletes() {
+        let path = write_temp(
+            "tools",
+            r#"{"ports":[{"name":"A","folder":"a"}],"tools":[
+                {"name":"7-Zip","tags":["Archive"],"source":"https://github.com/ip7z/7zip"},
+                {"name":"Sans source"},
+                {"-name":"ZZemplate","source":"..."}
+            ]}"#,
+        );
+        let tools = load_tools(&path);
+        assert_eq!(tools.len(), 1);
+        assert_eq!(tools[0].name, "7-Zip");
+        assert_eq!(tools[0].tags_lower, vec!["archive".to_string()]);
+        let _ = fs::remove_file(&path);
+    }
+
+    #[test]
+    fn load_tools_sans_section_tools_est_vide() {
+        let path = write_temp("no_tools", r#"{"ports":[{"name":"A","folder":"a"}]}"#);
+        assert!(load_tools(&path).is_empty());
+        let _ = fs::remove_file(&path);
     }
 
     #[test]

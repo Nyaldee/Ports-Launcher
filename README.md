@@ -74,22 +74,27 @@ Ports Launcher handles two separate save mechanisms, both based on `ports.json`'
 
 ## Settings
 
-Open it from the **◯** button in the title bar — a menu with **Themes**, **Language**, **Files**, **Library**, **Save Backup**, **Check for Updates**, **Force Update**, and **Discord Rich Presence**.
+Open it from the **◯** button in the title bar — a menu with **Themes**, **Language**, **Tools**, **Files**, **Library**, **Save Backup**, **Check for Updates**, **Force Update**, **Discord Rich Presence**, and **Custom Rich Presence**.
 
-- **Themes** and **Language** both open the same kind of live, fuzzy-searchable picker. For Themes, moving the selection (mouse hover, or `↑`/`↓`/the controller stick) previews it instantly across the whole app; confirming writes straight back to `themes.json`, and closing without confirming (`Escape`) reverts to whichever theme was active before. Language switches the UI immediately on selection, no restart needed.
+- **Themes**, **Language**, and **Tools** all open the same kind of live, fuzzy-searchable picker. For Themes, moving the selection (mouse hover, or `↑`/`↓`/the controller stick) previews it instantly across the whole app; confirming writes straight back to `themes.json`, and closing without confirming (`Escape`) reverts to whichever theme was active before. Language switches the UI immediately on selection, no restart needed.
+- **Tools** lists handy external tools for preparing the files ports ask for (archivers, patchers, disc extractors, converters...), searchable by name or by tag (`patcher`, `psp`, `360`...). Picking one opens its page in your browser — you download and set it up yourself. The list comes from the `"tools"` section of `ports.json`, so it stays up to date with catalog updates.
 - **Files** opens shortcuts to `ports.json`, `ports.local.json`, `state.json`, and `themes.json`, which do nothing if the file doesn't exist yet.
 - **Library** jumps straight to that folder in Explorer.
 - **Save Backup** kicks off a full save export for the whole catalog into a dated `.zip` (see [Game Saves](#game-saves) above), with a progress window while it copies.
 - **Check for Updates** toggles On/Off right in the menu — turns every update check off at once (the launcher's own, and every installed port's at **Play**), for anyone who'd rather update everything by hand instead.
 - **Force Update** runs the launcher's own updater right away, without checking first whether a newer build actually exists — for anyone who doesn't want to wait for the periodic check (or has it turned off above).
 - **Discord Rich Presence** toggles On/Off right in the menu, off by default — shows the game you're playing on your Discord status while it's running, and clears itself the moment you close it.
+- **Custom Rich Presence** toggles On/Off right in the menu, off by default — shows your own status instead, for as long as Ports Launcher is running, with elapsed time and the **Ports Launcher** button; games no longer show their own presence while it's on. Set its text and icon in `state.json` (with Ports Launcher closed, or your edit gets overwritten):
 
-## Useful tools
+  ```json
+  "custom_presence": {
+    "enabled": true,
+    "text": "Your text",
+    "icon": "https://... (public image URL, optional)"
+  }
+  ```
 
-A couple of external tools come up repeatedly in `ports.json`'s **Required files** instructions, for preparing your own game data before pointing a port at it:
-
-- **[7-Zip](https://github.com/ip7z/7zip)** — a minimal, command-line-only copy ships with Ports Launcher, but only to extract port release archives internally; get the regular version separately to handle archives as needed.
-- **[extract-xiso](https://github.com/XboxDev/extract-xiso)** — not bundled, get it separately: for extracting the assets from your own Xbox/Xbox 360 dumps.
+  Without a `text`, it does nothing and games keep their presence as usual. **Discord Rich Presence** must be on too.
 
 ## Configuration
 
@@ -115,7 +120,7 @@ You can also add a `"github_token"`/`"gitlab_token"` key by hand to raise the Gi
 
 - [SteamGridDB](https://www.steamgriddb.com/) for the box art used by catalog entries
 - The creators of the recomps/source-ports listed in `ports.json` — often months of unpaid reverse-engineering work, without which none of this would exist
-- [7-Zip](https://github.com/ip7z/7zip) and [extract-xiso](https://github.com/XboxDev/extract-xiso), the two external tools used/recommended for preparing required files (see [Useful tools](#useful-tools))
+- [7-Zip](https://github.com/ip7z/7zip), a minimal command-line copy of which ships with Ports Launcher to extract port release archives
 
 Built together with [Claude](https://claude.com) (Anthropic's AI coding assistant).
 

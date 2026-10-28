@@ -137,6 +137,7 @@ export component SearchListDialog inherits Window {
     callback activate-selection-requested();
     callback search-changed(string);
     init => { search-input.focus(); }
+    public function set-search(text: string) { search-input.text = text; }
 
     in property <length> item-font-px-physical: 14px;
     in property <length> title-font-px-physical: 13px;

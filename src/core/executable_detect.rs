@@ -1,4 +1,3 @@
-
 use super::path_safety::safe_join;
 use super::platform_resolve::{is_truthy, resolve_per_platform};
 use serde_json::Value;

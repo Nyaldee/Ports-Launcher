@@ -1,4 +1,3 @@
-
 const SLINT_FILES: &[(&str, &str)] = &[
     ("app-window.slint", include_str!("../../ui/app-window.slint")),
     ("card-grid.slint", include_str!("../../ui/card-grid.slint")),

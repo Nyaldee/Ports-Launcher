@@ -1,7 +1,7 @@
 import { ListView } from "std-widgets.slint";
 import { CardGrid, CardItem, CardRow } from "card-grid.slint";
 import { SemanticColors, Theme, ThemedScrollbar, InertialScroller, TitleBarIconButton } from "shared.slint";
-import { MessageDialog, ConfirmDialog, ErrorDialog, InfoDialog, ProgressDialog, ListPickerDialog, SearchListDialog, PickerItem, Tr } from "dialogs.slint";
+import { MessageDialog, TwoButtonDialog, InfoDialog, ProgressDialog, ListPickerDialog, SearchListDialog, PickerItem, Tr } from "dialogs.slint";
 export { AppTray } from "tray.slint";
 
 export struct PortItem {
@@ -11,7 +11,7 @@ export struct PortItem {
     is-local: bool,
 }
 
-export { CardItem, CardRow, SemanticColors, Theme, MessageDialog, ConfirmDialog, ErrorDialog, InfoDialog, ProgressDialog, ListPickerDialog, SearchListDialog, PickerItem, Tr }
+export { CardItem, CardRow, SemanticColors, Theme, MessageDialog, TwoButtonDialog, InfoDialog, ProgressDialog, ListPickerDialog, SearchListDialog, PickerItem, Tr }
 
 component ActionButton inherits Rectangle {
     in property <string> text: "";
@@ -125,6 +125,7 @@ export component AppWindow inherits Window {
     property <length> action-button-height: row-height - row-spacing * 2;
     property <length> scrollbar-width: 6px / Theme.scale-factor;
     public function clear-search() { search-input.text = ""; }
+    public function set-search(text: string) { search-input.text = text; }
 
     public function barrel-roll() { root.roll-angle += 360deg; }
     property <angle> roll-angle: 0deg;

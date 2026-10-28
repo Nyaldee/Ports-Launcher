@@ -1,4 +1,3 @@
-
 use serde_json::Value;
 use slint::Color;
 use std::collections::HashMap;

@@ -1,4 +1,3 @@
-
 use super::dialogs::{open_settings_dialog, DialogSlot};
 use super::install_launch::{activate_selection, show_info_for_current_selection};
 use super::state::AppState;
@@ -47,8 +46,7 @@ fn current_dialog(app: &AppState) -> DialogSlot {
 pub(crate) fn dialog_reject(app: &AppState) {
     match current_dialog(app) {
         DialogSlot::Message(d) => d.invoke_close_requested(),
-        DialogSlot::Confirm(d) => d.invoke_close_requested(),
-        DialogSlot::Error(d) => d.invoke_close_requested(),
+        DialogSlot::TwoButton(d) => d.invoke_close_requested(),
         DialogSlot::Picker(d) => d.invoke_close_requested(),
         DialogSlot::Info(d) => d.invoke_close_requested(),
         DialogSlot::SearchList(d) => d.invoke_close_requested(),
@@ -60,10 +58,8 @@ pub(crate) fn dialog_activate(app: &AppState) {
     let nav = &app.dialog_nav;
     match current_dialog(app) {
         DialogSlot::Message(d) => d.invoke_close_requested(),
-        DialogSlot::Confirm(d) if nav.confirm_nav_index.get() == 0 => d.invoke_confirmed(),
-        DialogSlot::Confirm(d) => d.invoke_close_requested(),
-        DialogSlot::Error(d) if nav.error_nav_index.get() == 0 => d.invoke_reinstall_requested(),
-        DialogSlot::Error(d) => d.invoke_info_requested(),
+        DialogSlot::TwoButton(d) if nav.two_button_nav_index.get() == 0 => d.invoke_primary_requested(),
+        DialogSlot::TwoButton(d) => d.invoke_secondary_requested(),
         DialogSlot::Picker(d) => d.invoke_item_selected(nav.picker_index.get()),
         DialogSlot::SearchList(d) => d.invoke_item_selected(nav.picker_index.get()),
         DialogSlot::Info(d) => {
@@ -87,15 +83,9 @@ fn step(current: i32, delta: i32, count: i32) -> Option<i32> {
 pub(crate) fn dialog_move_selection(app: &AppState, dx: i32, dy: i32) {
     let nav = &app.dialog_nav;
     match current_dialog(app) {
-        DialogSlot::Confirm(d) => {
-            if let Some(next) = step(nav.confirm_nav_index.get(), dy, 2) {
-                nav.confirm_nav_index.set(next);
-                d.set_selected_index(next);
-            }
-        }
-        DialogSlot::Error(d) => {
-            if let Some(next) = step(nav.error_nav_index.get(), dy, 2) {
-                nav.error_nav_index.set(next);
+        DialogSlot::TwoButton(d) => {
+            if let Some(next) = step(nav.two_button_nav_index.get(), dy, 2) {
+                nav.two_button_nav_index.set(next);
                 d.set_selected_index(next);
             }
         }
@@ -149,8 +139,10 @@ impl GamepadTarget for DialogGamepadTarget {
     }
 
     fn show_info_for_selection(&self) {
-        if let DialogSlot::Error(d) = current_dialog(&self.app) {
-            d.invoke_info_requested();
+        if let DialogSlot::TwoButton(d) = current_dialog(&self.app) {
+            if d.get_info_shortcut() {
+                d.invoke_secondary_requested();
+            }
         }
     }
 }

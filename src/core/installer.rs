@@ -1,10 +1,9 @@
-
 use super::asset_select::AssetSelectionError;
+use super::forge::Forge;
 use super::models::{Port, SourceType};
 use super::path_safety::safe_join;
 use super::platform_resolve::{resolve_per_platform, resolve_preferred_asset};
 use super::save_backup;
-use super::{github_api, gitlab_api};
 use serde_json::Value;
 use std::ffi::OsStr;
 use std::fs;
@@ -373,42 +372,6 @@ pub struct InstallOverrides<'a> {
     pub release: Option<&'a Value>,
 }
 
-#[derive(Clone, Copy)]
-enum Forge {
-    Github,
-    Gitlab,
-}
-
-impl Forge {
-    fn latest_installable(self, repo: &str, token: Option<&str>, preferred: Option<&str>) -> Result<(Value, Value), AssetSelectionError> {
-        match self {
-            Forge::Github => github_api::latest_installable_release(repo, token, preferred),
-            Forge::Gitlab => gitlab_api::latest_installable_release(repo, token, preferred),
-        }
-    }
-
-    fn most_recent_release(self, repo: &str, token: Option<&str>) -> Result<Value, AssetSelectionError> {
-        match self {
-            Forge::Github => github_api::most_recent_release(repo, token),
-            Forge::Gitlab => gitlab_api::most_recent_release(repo, token),
-        }
-    }
-
-    fn pick_release_asset(self, release: &Value, preferred: Option<&str>) -> Result<Value, AssetSelectionError> {
-        match self {
-            Forge::Github => github_api::pick_release_asset(release, preferred),
-            Forge::Gitlab => gitlab_api::pick_release_asset(release, preferred),
-        }
-    }
-
-    fn url_field(self) -> &'static str {
-        match self {
-            Forge::Github => "browser_download_url",
-            Forge::Gitlab => "url",
-        }
-    }
-}
-
 fn download_release_asset(
     forge: Forge,
     repo: &str,
@@ -422,7 +385,7 @@ fn download_release_asset(
         (Some(r), Some(a)) => (r.clone(), a.clone()),
         (Some(r), None) => (r.clone(), forge.pick_release_asset(r, preferred)?),
         (None, Some(a)) => (forge.most_recent_release(repo, token)?, a.clone()),
-        (None, None) => forge.latest_installable(repo, token, preferred)?,
+        (None, None) => forge.latest_installable_release(repo, token, preferred)?,
     };
     let installed_tag = release.get("tag_name").and_then(Value::as_str).map(str::to_string);
     let name = asset.get("name").and_then(Value::as_str).unwrap_or("download");
@@ -448,23 +411,19 @@ pub fn install_port(
     let preferred_asset = port.preferred_asset.as_ref().and_then(resolve_preferred_asset);
     let repo = port.repo.as_deref().unwrap_or_default();
 
-    let (archive_path, installed_tag) = match port.source_type {
-        SourceType::Github => {
-            download_release_asset(Forge::Github, repo, github_token, preferred_asset.as_deref(), overrides, tmp.path(), on_progress)?
-        }
-        SourceType::Gitlab => {
-            download_release_asset(Forge::Gitlab, repo, gitlab_token, preferred_asset.as_deref(), overrides, tmp.path(), on_progress)?
-        }
-        SourceType::DirectUrl => {
-            let resolved = resolve_per_platform(&port.source);
-            let url = resolved
-                .as_ref()
-                .and_then(Value::as_str)
-                .ok_or_else(|| InstallError::Message("\"source\" is not a usable link for this port".to_string()))?;
-            let dest = tmp.path().join(safe_download_name(url.rsplit('/').next().unwrap_or("download")));
-            (download(url, &dest, on_progress)?, None)
-        }
-        SourceType::None => return Err(InstallError::Message("This port has nothing to download.".to_string())),
+    let (archive_path, installed_tag) = if let Some(forge) = Forge::of(port.source_type) {
+        let token = forge.token(github_token, gitlab_token);
+        download_release_asset(forge, repo, token, preferred_asset.as_deref(), overrides, tmp.path(), on_progress)?
+    } else if port.source_type == SourceType::DirectUrl {
+        let resolved = resolve_per_platform(&port.source);
+        let url = resolved
+            .as_ref()
+            .and_then(Value::as_str)
+            .ok_or_else(|| InstallError::Message("\"source\" is not a usable link for this port".to_string()))?;
+        let dest = tmp.path().join(safe_download_name(url.rsplit('/').next().unwrap_or("download")));
+        (download(url, &dest, on_progress)?, None)
+    } else {
+        return Err(InstallError::Message("This port has nothing to download.".to_string()));
     };
 
     extract(&archive_path, &dest_dir, library_dir, port.exe_is_archive.as_deref(), on_progress)?;
