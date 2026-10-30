@@ -1,0 +1,63 @@
+[package]
+name = "ports-launcher"
+version = "1.0.0"
+edition = "2021"
+description = "Ports Launcher — library manager and installer for native PC ports and recomps"
+license = "GPL-3.0-or-later"
+
+[[bin]]
+name = "ports_launcher"
+path = "src/main.rs"
+
+[dependencies]
+# Rendu OpenGL uniquement. "system-tray" est nécessaire à une icône de tray réelle.
+slint = { version = "1", default-features = false, features = ["raw-window-handle-06", "std", "backend-default", "renderer-femtovg", "accessibility", "compat-1-2", "system-tray"] }
+raw-window-handle = "0.6"
+# preserve_order : les valeurs par plateforme se replient sur la première clé déclarée.
+serde_json = { version = "1", features = ["preserve_order"] }
+ureq = { version = "3", features = ["json"] }
+# Jaquettes et icône uniquement ; les archives sont extraites par 7-Zip.
+image = { version = "0.25", default-features = false, features = ["png", "jpeg", "webp"] }
+chrono = "0.4"
+tempfile = "3"
+discord-rich-presence = "1"
+
+[target.'cfg(target_os = "windows")'.dependencies]
+# XInput reconnaît plus de manettes et d'émulateurs que Windows.Gaming.Input.
+gilrs = { version = "0.11", default-features = false, features = ["xinput"] }
+windows = { version = "0.62.2", features = [
+    "Win32_Foundation",
+    "Win32_Globalization",
+    "Win32_Graphics_Gdi",
+    "Win32_Security",
+    "Win32_System_Com",
+    # Requise par windows-rs pour ShellExecuteExW.
+    "Win32_System_Registry",
+    "Win32_System_LibraryLoader",
+    "Win32_System_SystemInformation",
+    "Win32_System_Threading",
+    "Win32_UI_HiDpi",
+    "Win32_UI_Input_KeyboardAndMouse",
+    "Win32_UI_Shell",
+    "Win32_UI_WindowsAndMessaging",
+] }
+
+[target.'cfg(target_os = "linux")'.dependencies]
+# Accès à la fenêtre winit : déplacement d'une fenêtre sans cadre sous Wayland.
+slint = { version = "1", features = ["unstable-winit-030"] }
+x11rb = "0.13"
+gilrs = "0.11"
+# Mesure de texte (voir src/ui/font_metrics.rs).
+fontdue = "0.9"
+
+[build-dependencies]
+slint-build = "1"
+winresource = "0.1"
+chrono = "0.4"
+
+[profile.release]
+opt-level = "z"
+lto = true
+codegen-units = 1
+strip = true
+# "unwind" (défaut) : une panique dans un thread d'arrière-plan n'arrête que ce thread.
