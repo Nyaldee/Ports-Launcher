@@ -1,11 +1,20 @@
 {
   "ports": [
     {
-      "-name": "007: Nightfire (??)",
-      "tags": ["gc", "fps", "multiplayer"],
-      "source": "",
-      "folder": "",
-      "instructions": "Required files: ",
+      "name": ".hack//Versus (dot-hack-versus-port)",
+      "tags": ["ps3", "fighting"],
+      "source": "https://github.com/joseflores-dev/dot-hack-versus-port",
+      "android_package": "com.hackversus.port",
+      "folder": "dot-hack-versus-port",
+      "instructions": "Required files: .hack//Versus (PS3, BLJS93008)",
+      "image": "https://cdn2.steamgriddb.com/grid/2b6263d0b58234374d4133627291dde3.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/dfab173bb4e49a200b37e660e2677709.png"
+    },{
+      "name": "007: Nightfire (nightfire-recomp)",
+      "tags": ["xbox", "fps", "multiplayer"],
+      "source": "https://github.com/hk21x/nightfire-recomp",
+      "folder": "nightfire-recomp",
+      "instructions": "Required files: 007: Nightfire for Xbox (USA or EU)",
       "image": "https://cdn2.steamgriddb.com/grid/29ec03bb2d04702c0e22fba276bf9a3e.png",
       "icon": "https://cdn2.steamgriddb.com/icon/a4cd9bc071c923daab48132b0bb2e4f3.png"
     },{
@@ -28,6 +37,14 @@
       "instructions": "Required files: 3d-pinball-space-cadet_multi.zip (CRC32: 3DBD6B2C)\n\nMove the pinball.dat file to the port's root folder.",
       "image": "https://cdn2.steamgriddb.com/grid/c06fea7bbaf463d21ae0cb8ca11a79f7.png",
       "icon": "https://cdn2.steamgriddb.com/icon/291806ebb9de8fe92dc92a02a2b46b5a.png"
+    },{
+      "name": "40 Winks (40WinksRecomp)",
+      "tags": ["n64", "platformer"],
+      "source": "https://github.com/DreaXer/40WinksRecomp",
+      "folder": "40WinksRecomp",
+      "instructions": "Required files: 40 Winks (Europe) (En,Fr,Es) (Piko Interactive).z64 (CRC32: 93C57D0B)",
+      "image": "https://cdn2.steamgriddb.com/grid/400f3b8471c0112a0dda51e6d46e3887.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/8ff7d9eca2df771f960b2ab4d0c67e6e.png"
     },{
       "name": "Abuse (Abuse_2025)",
       "tags": ["free", "macos", "shooter, multilingual"],
@@ -407,6 +424,14 @@
       },
       "save2": "saves"
     },{
+      "name": "Bomberman 64: The Second Attack (pommy-recomp)",
+      "tags": ["n64", "puzzle"],
+      "website": "https://github.com/bdragoncore/pommy-recomp",
+      "folder": "pommy-recomp",
+      "instructions": "Required files: Bomberman 64 - The Second Attack! (USA).z64 (CRC32: 57550007)",
+      "image": "https://cdn2.steamgriddb.com/grid/f46c6cef80babb6e47f4c399e178d059.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/f0f717dbbabbabab1a26beaf06fc3438.png"
+    },{
       "name": "Bomberman Hero (BMHeroRecomp)",
       "tags": ["n64", "platformer"],
       "source": "https://github.com/RevoSucks/BMHeroRecomp",
@@ -431,7 +456,7 @@
     },{
       "name": "Buck Bumble (project-bumble)",
       "tags": ["n64", "shooter"],
-      "website": "https://github.com/riseio/project-bumble/releases/",
+      "website": "https://github.com/riseio/project-bumble",
       "folder": "project-bumble",
       "instructions": "Download and install the game in Game folder (Library/project-bumble).",
       "image": "https://cdn2.steamgriddb.com/grid/8996151753255bb91316417afd0badc3.png",
@@ -514,6 +539,14 @@
       "instructions": "Required files: USA SLUS-01384 disc image: CUE/BIN or CHD",
       "image": "https://cdn2.steamgriddb.com/grid/ae7ece7b7a57e3d9b0a84971e865c078.png",
       "icon": "https://cdn2.steamgriddb.com/icon/c7cfbf9f79f5b277b5d74e2419c60a50.png"
+    },{
+      "name": "Castlevania: Harmony of Despair (HarmonyRecomp)",
+      "tags": ["360", "action-adventure"],
+      "source": "https://github.com/Wrexxial/HarmonyRecomp",
+      "folder": "HarmonyRecomp",
+      "instructions": "Required files: Castlevania: Harmony of Despair (Xbox Live Arcade, title ID 58410A7A)",
+      "image": "https://cdn2.steamgriddb.com/grid/4843753069533b0452053f05142dc8ca.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/f487c050e3c1f3c31f85b9f818ccc0c2.png"
     },{
       "name": "Castlevania: Legacy of Darkness (cvlod_recomp)",
       "tags": ["n64", "action-adventure"],
@@ -737,6 +770,14 @@
       "instructions": "Required files: Crash Team Racing: Nitro-Fueled (PS4, CUSA13795 v1.21)",
       "image": "https://cdn2.steamgriddb.com/grid/a0637e79c5b79afe6dd9bcabdb94040e.png",
       "icon": "https://cdn2.steamgriddb.com/icon/946fe5c21087bcb5ed3f73eace856a61.png"
+    },{
+      "name": "Crash TwinSanity (Crash-Twinsanity-Windows)",
+      "tags": ["ps2", "platformer"],
+      "source": "https://github.com/GioPixelGH/Crash-Twinsanity-Windows",
+      "folder": "Crash-Twinsanity-Windows",
+      "instructions": "Required files: Crash TwinSanity for PlayStation 2 (EU)",
+      "image": "https://cdn2.steamgriddb.com/grid/2d76b54ba6edfbfbf547c7c2e76ed586.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/ff2d0926d6b07ff0179183a9d687989e.png"
     },{
       "name": "Dante's Inferno (hells-gate-recomp)",
       "tags": ["360", "beat them all"],
@@ -1089,6 +1130,14 @@
       "instructions": "Required files: Dragon Ball Z - Budokai HD Collection (USA).iso (CRC32: 63DEBD61) for Xbox 360\n\nUse extract-xiso.exe to extract the contents of the ISO.\nInside the newly created folder, rename the DBZ1 folder to assets.\nMove the assets folder to the root of the port folder.\nInside the assets folder, rename yae1_xenon.xex to default.xex.\n\nLanguages: English.",
       "image": "https://cdn2.steamgriddb.com/grid/fc5d2ffcd6a10b1863e56d5ec5859bab.png",
       "icon": "https://cdn2.steamgriddb.com/icon/e4167ecc39403a361d445849dc87bfc4/32/256x256.png"
+    },{
+      "name": "Dragon Ball Z: Budokai 2 (OpenKai2)",
+      "tags": ["360", "fighting", "multiplayer"],
+      "source": "https://github.com/7v0biscuit/OpenKai2",
+      "folder": "OpenKai2",
+      "instructions": "Required files: Dragon Ball Z: Budokai 2 for PlayStation 2 (USA)\n\nLanguages: English.",
+      "image": "https://cdn2.steamgriddb.com/grid/d39d9b077655f2e500ce62bb9d19e73d.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/889ad55766e378b684eb4846a9379b79.png"
     },{
       "name": "Dragon Ball Z: Budokai 3 (DBZ-Budokai-3-HD-Collection)",
       "tags": ["360", "fighting", "multiplayer"],
@@ -1493,11 +1542,11 @@
       "icon": "https://cdn2.steamgriddb.com/icon/c02d43de36933d4d467dab644d02e6c6.png",
       "save": "saves"
     },{
-      "-name": "Fire Emblem: Three Houses (??)",
+      "name": "Fire Emblem: Three Houses (fe3h-recomp)",
       "tags": ["switch", "strategy"],
-      "source": "??",
-      "folder": "??",
-      "instructions": "Required files: ",
+      "source": "https://github.com/onerag90/fe3h-recomp",
+      "folder": "fe3h-recomp",
+      "instructions": "Required files: Fire Emblem: Three Houses (game + DLC)",
       "image": "https://cdn2.steamgriddb.com/grid/849460026d42c840faab34d4d3b9fc33.png",
       "icon": "https://cdn2.steamgriddb.com/icon/075a3a646faea7bfa9cd8b86c51a026b.png"
     },{
@@ -1648,12 +1697,11 @@
       "image": "https://cdn2.steamgriddb.com/grid/bc6a17604012da6895c1bacd28cdb9fa.png",
       "icon": "https://cdn2.steamgriddb.com/icon/6de138653a359bbbc1d392d52fa333e6.png"
     },{
-      "name": "Goemon's Great Adventure (Goemon64Recomp)",
+      "name": "Goemon's Great Adventure (GGA64Recomp)",
       "tags": ["n64", "platformer"],
-      "source": "https://github.com/klorfmorf/Goemon64Recomp",
-      "folder": "Goemon64Recomp",
+      "source": "https://github.com/StopSine/GGA64Recomp",
+      "folder": "GGA64Recomp",
       "instructions": "Required files: Goemon's Great Adventure (USA).z64 (CRC32: 52D418E1)\n\nWindows:\nPortable saves : portable.txt in root folder.",
-      "mods": "https://gamebanana.com/games/24290",
       "image": "https://cdn2.steamgriddb.com/grid/69b717a1d64f62465d96885dcaf9a77d.png",
       "icon": "https://cdn2.steamgriddb.com/icon/7624c43931e8ccf280b8fc7374e89412.png",
       "save": {
@@ -1723,10 +1771,10 @@
       "icon": "https://cdn2.steamgriddb.com/icon/65d2ea03425887a717c435081cfc5dbb/32/256x256.png"
     },{
       "-name": "Grand Theft Auto: Vice City Stories (PSPRecomp_vcs)",
-      "tags": ["gta", "psp", "action-adventure"],
-      "source": "https://github.com/jessicanataliagta/PSPRecomp/tree/main/profiles/vcs",
-      "folder": "PSPRecomp_vcs",
-      "instructions": "Required files: Vice City",
+      "tags": ["ps2", "gta", "action-adventure"],
+      "source": "https://github.com/gothamor/gta-vcs-recomp",
+      "folder": "gta-vcs-recomp",
+      "instructions": "Required files: Grand Theft Auto: Vice City Stories for PlayStation 2 (USA)",
       "image": "https://cdn2.steamgriddb.com/grid/c8aa48a3667e7a29486f3f978b0e0279.png",
       "icon": "https://cdn2.steamgriddb.com/icon/1a68e5f4ade56ed1d4bf273e55510750.png"
     },{
@@ -2019,6 +2067,14 @@
       "image": "https://cdn2.steamgriddb.com/grid/74d6f5bda24acb755767449631d17282.png",
       "icon": "https://cdn2.steamgriddb.com/icon/a7be1228195896ae985f9c015fbe7af8.png"
     },{
+      "-name": "Killzone 2 (??)",
+      "tags": ["ps3", "fps"],
+      "source": "",
+      "folder": "",
+      "instructions": "Required files: ",
+      "image": "https://cdn2.steamgriddb.com/grid/6469ebfbe763fc742112f8fc5e947318.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/1c6d11863a0505dc783ba8c1b714e9b2.png"
+    },{
       "name": "King Kong (king-kong-recompiled)",
       "tags": ["360", "fps"],
       "source": "https://github.com/TekRantGaming/king-kong-recompiled",
@@ -2227,6 +2283,14 @@
         "android": "Android/data/com.izzy.kart/files"
       }
     },{
+      "name": "Mario Kart DS",
+      "tags": ["nds", "racing"],
+      "source": "",
+      "folder": "",
+      "instructions": "Languages: English.",
+      "image": "https://cdn2.steamgriddb.com/grid/7935ca94dd2471ca7c4041496390bdc9.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/b212d59e08787ad647bc5bab8761b3c8.png"
+    },{
       "name": "Mario Kart Wii (Wiicompiled)",
       "tags": ["wii", "racing"],
       "source": "https://github.com/patchzyy/Wiicompiled",
@@ -2234,6 +2298,14 @@
       "instructions": "Required files: Mario Kart Wii (USA) (En,Fr,Es).rvz (CRC32: 79BD58C0)\n\nLanguages: Multilingual.\n\nMod manager: https://github.com/TeamWheelWizard/WheelWizard",
       "image": "https://cdn2.steamgriddb.com/grid/3e619c4f412f6fe1a79243f7e3217f00.png",
       "icon": "https://cdn2.steamgriddb.com/icon/e0501dd4a84df989ef1664ea7eb22adb.png"
+    },{
+      "name": "Mario Kart: Double Dash!! (project-tandem)",
+      "tags": ["gc", "racing"],
+      "source": "https://github.com/badcompany94-rcmp/project-tandem",
+      "folder": "project-tandem",
+      "instructions": " USA GM4E01 ISO/CISO\nLanguages: English.",
+      "image": "https://cdn2.steamgriddb.com/grid/6fd8a9e989f62bd98e7d20c2f81b1519.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/6498fece50ede60a446812e25f080c7d.png"
     },{
       "name": "Mario Kart: Super Circuit (MarioKartSuperCircuitRecomp)",
       "tags": ["gba", "racing"],
@@ -2660,6 +2732,13 @@
         "android": ""
       }
     },{
+      "name": "Muppet RaceMania (muppet-racemania-recompiled)",
+      "tags": ["ps1", "racing"],
+      "source": "https://github.com/TekRantGaming/muppet-racemania-recompiled",
+      "folder": "muppet-racemania-recompiled",
+      "instructions": "Required files: Muppet RaceMania (USA or EU)",
+      "image": "https://cdn2.steamgriddb.com/grid/8cda0e379ad0c2dd3ec72b1f13a9bf54.png"
+    },{
       "name": "Mutant Rampage: Bodyslam (mutant-rampage-bodyslam-static-recomp)",
       "tags": ["cd-i", "beat them all"],
       "source": "https://github.com/tools81/mutant-rampage-bodyslam-static-recomp",
@@ -2667,6 +2746,28 @@
       "instructions": "Required files: Mutant Rampage - Bodyslam (USA)",
       "image": "https://cdn2.steamgriddb.com/grid/9e18109b63582c8acae7470f7def0da8.jpg",
       "save": "saves"
+    },{
+      "name": "Mystical Ninja starring Goemon (Goemon64Recomp)",
+      "tags": ["n64", "platformer"],
+      "source": "https://github.com/klorfmorf/Goemon64Recomp",
+      "folder": "Goemon64Recomp",
+      "instructions": "Required files: Mystical Ninja Starring Goemon (USA).z64 (CRC32: 4180C296)\n\nWindows:\nPortable saves : portable.txt in root folder.",
+      "mods": "https://gamebanana.com/games/24290",
+      "image": "https://cdn2.steamgriddb.com/grid/5db765ca5b739c46109374b6e29e2463.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/5cbd31d6a0809f253c2679d508ecb6c2.png",
+      "save": {
+        "windows": "%LOCALAPPDATA%\\Goemon64Recompiled",
+        "linux": "~/.config/Goemon64Recompiled"
+      },
+      "save2": "saves"
+    },{
+      "-name": "Nagano Winter Olympics '98 (Nagano-Winter-Olympics-98-N64)",
+      "tags": ["n64", "sport"],
+      "source": "https://github.com/TheGh0stShip/Nagano-Winter-Olympics-98-N64",
+      "folder": "Nagano-Winter-Olympics-98-N64",
+      "instructions": "Required files: Nagano Winter Olympics '98 (USA).z64 (CRC32: EE8288D4)",
+      "image": "https://cdn2.steamgriddb.com/grid/69a8bc6c5211274d3cd7cf6f44842a29.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/6bbde85b7a16973bcc492610d11fc544/32/128x128.png"
     },{
       "name": "Namco System 22 (namco22-decompile)",
       "tags": ["arcade"],
@@ -2930,15 +3031,14 @@
       "image": "https://cdn2.steamgriddb.com/grid/0bdda950546ab40f55cb84fbc3f5f3c7.png",
       "icon": "https://cdn2.steamgriddb.com/icon/5803f670f46d8225b3962e0a69793951.png"
     },{
-      "name": "Parasite Eve (parasite-eve-recomp)",
-      "tags": ["ps1", "alexbeav"],
-      "source": "https://github.com/Alexbeav/parasite-eve-recomp",
-      "website": "https://alexbeav.github.io/psxrecomp-ports/",
-      "folder": "parasite-eve-recomp",
-      "instructions": "Required files: SLUS-00662 · SLUS-00668. BIOS: SCPH-1001. Known issues: Natural connected disc change is pending manual gameplay.",
+      "name": "Parasite Eve (parasite-eve-pc)",
+      "tags": ["ps1", "rpg", "squaresoft"],
+      "source": "https://github.com/khasinski/parasite-eve-pc",
+      "folder": "parasite-eve-pc",
+      "instructions": "Required files: Parasite Eve (USA)",
       "image": "https://cdn2.steamgriddb.com/grid/0bdda950546ab40f55cb84fbc3f5f3c7.png",
       "icon": "https://cdn2.steamgriddb.com/icon/5803f670f46d8225b3962e0a69793951.png",
-      "save": "saves"
+      "save": "memory-cards"
     },{
       "-name": "Parasite Eve 2 (Parasite-Eve-2-HD-Remaster)",
       "tags": ["ps1", "rpg", "squaresoft"],
@@ -3416,6 +3516,14 @@
       "instructions": "Required files: CUSA16429 game + v1.01 update",
       "image": "https://cdn2.steamgriddb.com/grid/49a71cf1f087a3bd58c69cd8f3305420.png",
       "icon": "https://cdn2.steamgriddb.com/icon/c447dec4c6828275655416d3ceebc18f.png"
+    },{
+      "name": "Scud Race (Scud-Race)",
+      "tags": ["am2", "racing"],
+      "source": "https://github.com/wanszai/Scud-Race",
+      "folder": "Scud-Race",
+      "instructions": "Required files: scud.zip + dayto2pe.zip",
+      "image": "https://cdn2.steamgriddb.com/grid/2775c65d0c32492b54b64a115c862352.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/5fe965190d817610081f185a5c8b683c.png"
     },{
       "name": "Sega Superstars Tennis (Sega-Superstars-Tennis-ReMatch)",
       "tags": ["360", "sport", "multiplayer"],
@@ -4291,6 +4399,23 @@
       "instructions": "Required files: Tekken Tag Tournament 2 (USA, Europe) for Xbox 360 and its Title Update 3",
       "image": "https://cdn2.steamgriddb.com/grid/39c39eb6c34b4b3799fd38a0509dd76b.png",
       "icon": "https://cdn2.steamgriddb.com/icon/4307b19662f691770fc350615ef104d2/32/256x256.png"
+    },{
+      "name": "Tenchu Z (TenchuZ-PC)",
+      "tags": ["360", "senran", "infiltration", "multilingual"],
+      "source": "https://github.com/8bitninja64/TenchuZ-PC",
+      "folder": "TenchuZ-PC",
+      "instructions": "Tenchu Z (USA, Europe) (En,Fr,De,Es,It)",
+      "image": "https://cdn2.steamgriddb.com/grid/db9d51709661c2a50a3f8f56117b994d.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/763e93e2312e239e5b6b3220cac943d6.png",
+      "save": "%APPDATA%\\TenchuZRecomp"
+    },{
+      "name": "Tenchu Z (TenchuZRecomp)",
+      "tags": ["360", "senran", "infiltration", "multilingual"],
+      "source": "https://github.com/Llamapixels/TenchuZRecomp",
+      "folder": "TenchuZRecomp",
+      "instructions": "Tenchu Z (USA, Europe) (En,Fr,De,Es,It)",
+      "image": "https://cdn2.steamgriddb.com/grid/db9d51709661c2a50a3f8f56117b994d.png",
+      "icon": "https://cdn2.steamgriddb.com/icon/763e93e2312e239e5b6b3220cac943d6.png"
     },{
       "name": "Tenchu: Stealth Assassins (tenchu-stealth-assassins-recomp)",
       "tags": ["ps1", "alexbeav"],
