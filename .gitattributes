@@ -1,0 +1,3 @@
+*.bat -text
+*.sh -text
+extra/** linguist-vendored

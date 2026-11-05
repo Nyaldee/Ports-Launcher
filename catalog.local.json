@@ -1,0 +1,27 @@
+{
+  "_readme": "Add your own local ports and tools here. Ports: games you already have installed yourself, no \"source\" needed. Just point folder at the folder you created under Library/, put the game files there yourself, and it shows up like any other port. Tools: extra entries for the Tools list in Settings; a tool with the same name as a catalog tool replaces it. This file is never overwritten by a catalog.json update, so your own additions always survive. The examples below are DISABLED on purpose (\"name\" set to null, which makes Ports Launcher skip them) -- copy one, fill in real values, and it becomes a real entry.",
+  "ports": [
+    {
+      "name": null,
+      "folder": null,
+      "tags": ["Example", "Local"],
+      "instructions": "Copy your game's files into Library/<folder> yourself, then set \"name\" and \"folder\" above to real values (folder must match the folder you created).",
+      "image": "https://example.com/cover.png",
+      "icon": "https://example.com/icon.png",
+      "save": "Save",
+      "executable": "game.exe"
+    },
+    {
+      "name": null,
+      "folder": null,
+      "tags": []
+    }
+  ],
+  "tools": [
+    {
+      "name": null,
+      "tags": ["Example", "Local"],
+      "source": "https://example.com/my-tool"
+    }
+  ]
+}
