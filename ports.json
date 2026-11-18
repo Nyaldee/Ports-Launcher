@@ -1,0 +1,11 @@
+{
+  "ports": [
+    {
+      "name": "Update required: use Settings > Force Update",
+      "folder": "update-required",
+      "android_package": "com.nyaldee.portslauncher.update_required",
+      "tags": [],
+      "instructions": "This version of Ports Launcher can no longer update its catalog. Open Settings and choose Force Update to get the latest version."
+    }
+  ]
+}
