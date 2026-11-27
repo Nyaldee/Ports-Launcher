@@ -120,6 +120,14 @@ Any `.json` file next to Ports Launcher with `catalog` in its name (`catalog.loc
 
 Ports Launcher creates `catalog.local.json` as an example if it doesn't exist yet, with a disabled port and tool (`"-name"` instead of `"name"`, which makes Ports Launcher skip them) — rename `"-name"` to `"name"`, fill in real values, and it becomes a real entry. An existing `ports.local.json` from an older version is renamed automatically.
 
+### On Android
+
+Settings → Catalogs works the same way, with a few differences:
+
+- **Catalog folder:** pick a folder on your device; its `.json` files with `catalog` in their name are read. An entry replaces the one with the same `name`. External catalogs in their own format aren't supported.
+- **Manage installed apps:** check your installed apps to add them to `catalog.local.json`, uncheck one to turn it off, long-press it (or **Y** on a gamepad) to delete it. The entries you write by hand in this file are never touched, as long as they don't contain `"android_managed"`.
+- **Export / Import configuration** (Settings) saves your settings and playtime to a file, to restore them on a new phone for example. Catalogs aren't included: they're already files in your folder.
+
 ### `state.json`
 
 Ports Launcher's configuration file — installed versions/playtime, window state, display preferences, and update-check timestamps, written automatically as you use the app.

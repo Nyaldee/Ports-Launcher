@@ -120,6 +120,14 @@ Tout fichier `.json` à côté de Ports Launcher dont le nom contient `catalog` 
 
 Ports Launcher crée `catalog.local.json` comme exemple s'il n'existe pas encore, avec un port et un outil désactivés (`"-name"` au lieu de `"name"`, ce qui fait que Ports Launcher les ignore) — renomme `"-name"` en `"name"`, remplis de vraies valeurs, et ça devient une vraie entrée. Un `ports.local.json` existant, venant d'une ancienne version, est renommé automatiquement.
 
+### Sur Android
+
+Réglages → Catalogues fonctionne de la même façon, à quelques différences près :
+
+- **Dossier des catalogues :** choisis un dossier de ton appareil ; ses `.json` dont le nom contient `catalog` sont lus. Une entrée remplace celle de même `name`. Les catalogues externes à leur propre format ne sont pas pris en charge.
+- **Gérer les applis installées :** coche tes applis installées pour les ajouter à `catalog.local.json`, décoche-en une pour la désactiver, fais un appui long dessus (ou **Y** à la manette) pour la supprimer. Les entrées que tu écris à la main dans ce fichier ne sont jamais modifiées, tant qu'elles ne contiennent pas `"android_managed"`.
+- **Exporter / Importer la configuration** (Réglages) enregistre tes réglages et tes temps de jeu dans un fichier, pour les restaurer sur un nouveau téléphone par exemple. Les catalogues n'en font pas partie : ce sont déjà des fichiers de ton dossier.
+
 ### `state.json`
 
 Le fichier de configuration de Ports Launcher — versions installées/temps de jeu, état de la fenêtre, préférences d'affichage, et horodatages des vérifications de mise à jour, écrit automatiquement au fil de l'utilisation.
